@@ -4,11 +4,11 @@
 
 **34 Tỉnh Thành** is a data platform that:
 
-1. **Collects** — import socio-economic indicators for Vietnam's 34 provinces (post-merger) from CSV, Excel, and manual entry
+1. **Collects** — import socio-economic indicators, infrastructure data, climate events, and geographic layers for Vietnam's 34 provinces (post-merger)
 2. **Normalizes** — clean, validate, and map old province codes to the new 34-province structure with minimum 5-year time series
-3. **Stores** — maintain a structured, queryable database with full provenance (source, update date, metadata)
-4. **Browses** — let journalists search, filter, and explore indicators by province, category, and year
-5. **Exports** — output clean datasets in formats ready for articles and visualizations (JSON, CSV)
+3. **Stores** — maintain a structured, queryable database with full data lineage (source → import → data point), plus cloud file storage for geographic data
+4. **Browses** — let journalists search, filter, and explore indicators, entities, events, and geographic layers by province, category, and year
+5. **Exports** — output clean datasets in formats ready for articles and visualizations (JSON, CSV, GeoJSON)
 
 ## Motivation
 
@@ -26,14 +26,20 @@ Vietnam's 2025 administrative merger reduced 63 provinces to 34. This creates th
 
 ## Scope
 
-### MVP Delivers
+### MVP (shippable after Month 5 core data is collected)
 
-- [ ] Database schema for 34 provinces with standardized indicator storage
-- [ ] Python pipeline to import, clean, and normalize raw data (CSV/Excel → database)
-- [ ] Web dashboard for journalists to browse, filter, and export data
-- [ ] Import UI for uploading new datasets without code
-- [ ] Auto-generated data dictionary (source, unit, coverage, last updated)
-- [ ] Month 5 core data seeded (10-15 indicators × 34 provinces × 5 years)
+- [ ] PostgreSQL schema (11 tables, hybrid: fixed columns + JSONB)
+- [ ] 34 provinces seeded (post-merger, with old_codes mapping)
+- [ ] Month 5 core data imported (10-15 indicators × 34 provinces × 5 years)
+- [ ] Python import pipeline (CSV/Excel → clean → database)
+- [ ] Web dashboard: browse, query, export data
+- [ ] Import UI: journalists can upload new datasets without code
+- [ ] Data lineage: every data point traces to its source
+- [ ] Auto-generated data dictionary
+
+### Post-MVP (incremental, no system changes)
+
+Months 6–12 data (socio-economic, rankings, infrastructure, climate, yearbooks, industry) imported incrementally through the same import workflow. The system doesn't change — only more data flows in.
 
 ### Deferred (Post-MVP)
 
