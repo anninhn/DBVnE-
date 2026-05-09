@@ -1,59 +1,87 @@
 # Roadmap
 
-Phases are intentionally small — each one is a shippable slice, independently reviewable and testable.
-
-Data collection (Tháng 5–12 from PROJECT_PLAN.md) runs in parallel — these phases build the *system*, the data fills it.
+Phases align with PROJECT_PLAN.md monthly data collection plan. Each phase completes one or more datasets. Phase 1 initializes the entire system from scratch (database, pipeline, dashboard, deploy); subsequent phases import data incrementally through the same pipeline and dashboard.
 
 ---
 
-## Phase 1 — Database Schema & Seed
+## Phase 1 — Init, Dashboard & Core Data (Month 5)
 
-- Design PostgreSQL schema (provinces, indicators, data_points, import_logs)
-- Set up Supabase project and connect from local environment
-- Write Python seed script to populate 34 provinces + Month 5 core data (10 indicators × 5 years)
-- Verify: can query province data from command line
+- Set up Supabase project, create all 11 tables (hybrid schema)
+- Set up Python environment (venv, psycopg2, pandas)
+- Build import pipeline: CSV/Excel → clean → normalize → insert
+- Seed provinces (34 rows) + categories
+- Import core data: địa giới hành chính, lãnh đạo, dân số, ngân sách, GRDP, FDI (10-15 indicators × 34 provinces × 5 years)
+- Build Next.js web dashboard: browse, query, export data
+- Import UI: upload CSV/Excel without code
+- Data dictionary (auto-generated from indicators + sources)
+- Data lineage UI: click any number → see source + import history
+- Geographic data: upload province boundaries to cloud storage, seed geo_layers, MapLibre integration
+- Deploy to production: Vercel + Supabase + cloud storage
+- Create data dictionary (first version)
+- Deliverable: production-ready newsroom database with Month 5 core data
 
-## Phase 2 — Data Pipeline (Python)
+## Phase 2 — Socio-economic Data (Month 6)
 
-- Build Python scripts to import CSV/Excel → clean → normalize → insert into database
-- Handle province merge mapping (old codes → new 34)
-- Add validation (required columns, data types, duplicate detection)
-- Log every import (rows imported, skipped, errors)
+- Import education data: số trường, giáo viên, điểm chuẩn, tỷ lệ chọi
+- Import healthcare data: bệnh viện, giường bệnh, nhân viên y tế
+- Import labor & employment data
+- Expand indicators table with new sub-categories
+- Dataset: ~30-40 indicators total
 
-## Phase 3 — Newsroom Dashboard: Browse & Query
+## Phase 3 — Rankings Data (Month 7)
 
-- Set up Next.js project with Tailwind CSS
-- Build province list page (search, filter by region)
-- Build province profile page (all indicators for one province)
-- Build indicator browser (filter by category, year)
-- API routes to serve data from PostgreSQL
+- Import PCI, PAPI, PAR Index, SIPAS scores + ranks (3-5 years)
+- First use of `score` and `rank` columns in data_points
+- Standardize all rankings to unified province × year format
+- Dataset: all 34 provinces ranked across 4 indices
 
-## Phase 4 — Newsroom Dashboard: Import & Data Dictionary
+## Phase 4 — Infrastructure Data (Month 8)
 
-- Build CSV/Excel upload form (drag & drop, column mapping)
-- Auto-generate data dictionary from indicators table
-- Import history page (see past uploads, row counts, errors)
-- Export functionality (filtered data → CSV/JSON download)
+- Import highways, airports, seaports, industrial zones, public investment projects
+- First use of `entities` + `entity_provinces` tables (JSONB attrs)
+- Dataset: infrastructure registry with geographic references
 
-## Phase 5 — Deploy to Production
+## Phase 5 — Climate & Environment Data (Month 9)
 
-- Push to GitHub, connect Vercel, deploy
-- Set up Supabase production database
-- Seed production with available data
-- Environment variables, error pages, basic logging
+- Import climate indicators: nhiệt độ, lượng mưa, chất lượng không khí → data_points
+- Import disaster events: bão, lũ, sạt lở → events + event_provinces tables
+- First use of `events` table
+- Dataset: climate time-series + disaster event records
 
-## Phase 6 — Polish & Hardening
+## Phase 6 — Yearbook Data (Month 10)
 
-- Responsive design pass (mobile-friendly for field reporting)
+- Import statistical yearbook data for all 34 provinces (minimum 5 years)
+- Bulk import: may require many new indicators
+- Dataset: comprehensive per-province profiles
+
+## Phase 7 — Industry & Enterprise Data (Month 11)
+
+- Import data from white papers: doanh nghiệp, CNTT-TT, thương mại điện tử, logistics
+- Sector-level data per province
+- Dataset: industry composition for all 34 provinces
+
+## Phase 8 — Polish & Package v1 (Month 12)
+
+- Responsive design pass (mobile-friendly)
 - Loading states, error messages, empty states (all in Vietnamese)
-- Input sanitization and file validation
 - Performance audit (query optimization, caching)
+- Input sanitization, file validation
+- Finalize data dictionary
+- Deliverable: production v1, shared newsroom database ready for ongoing use
 
 ---
 
-Later phases (not yet planned): User authentication, public data portal, visualization embed widgets, automated GSO data fetching.
+## Post-MVP Features
+
+- Text-to-SQL: natural language query (journalist types question → LLM generates SQL → returns data)
+- User authentication and role-based access
+- Public-facing data portal (separate project)
+- Visualization embed widgets for articles
+- Automated data fetching from GSO sources
 
 ## Replanning Log
 
 | Date | Phase Completed | What Changed | Why |
 |------|----------------|--------------|-----|
+| 2026-05-09 | Schema design | Redefined from 4 tables to 11 tables (hybrid approach) | Expanded to cover 6 data patterns across all 8 months |
+| 2026-05-09 | Roadmap | 8 phases aligned with PROJECT_PLAN.md months | Phase 1 delivers full working system; phases 2-7 add data; phase 8 polish |
