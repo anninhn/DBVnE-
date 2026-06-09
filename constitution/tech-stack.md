@@ -1,19 +1,25 @@
-# 34 Tỉnh Thành — Tech Stack
+# VNExpress Data Platform — Tech Stack
 
 ## System Design
 
-Kho tri thức wiki-style (tham khảo Hugging Face Hub) cho tòa soạn VNExpress. Phóng viên duyệt, tìm kiếm, upload, download tài nguyên qua web. Dữ liệu cấu trúc + metadata lưu PostgreSQL. File vật lý lưu Object Storage. Versioning kiểu Git nhẹ cho audit trail. Deploy lên Vercel + Supabase + Cloudflare R2.
+Kho dữ liệu + query + intelligence platform cho tòa soạn VNExpress, xây dựng incremental qua 3 phases.
+
+```
+Phase 1: Next.js Web App + Supabase + R2 (Dataset Hub)
+Phase 2: + LLM Layer (Query Templates → Text-to-SQL)
+Phase 3: + RAG Pipeline + Vector DB (Intelligence Platform)
+```
+
+## Phase 1 Stack (hiện tại)
 
 ```
 Frontend:      Next.js 15 (App Router) + Tailwind CSS
 API:           Next.js API Routes (serverless functions)
 Database:      PostgreSQL on Supabase
-File Storage:  Cloudflare R2 (file nhị phân: PDF, MP3, XLSX, GeoJSON)
+File Storage:  Cloudflare R2 (PDF, MP3, XLSX, GeoJSON)
 Pipeline:      Python 3 + pandas
 Hosting:       Vercel (auto-deploys from GitHub)
 ```
-
-## Tech Choices
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
@@ -21,11 +27,30 @@ Hosting:       Vercel (auto-deploys from GitHub)
 | Language | TypeScript | Type safety |
 | Database | PostgreSQL | JSONB support, GIN index, Supabase managed |
 | Database host | Supabase | Managed Postgres, dashboard UI, Auth sẵn sàng khi cần |
-| Object Storage | Cloudflare R2 | S3-compatible, không egress fee, phù hợp file tĩnh |
+| Object Storage | Cloudflare R2 | S3-compatible, không egress fee |
 | CSS | Tailwind CSS | Utility-first, rapid prototyping |
 | Data pipeline | Python 3 + pandas | Xử lý CSV/Excel chuẩn |
 | Hosting | Vercel | GitHub integration, auto-deploy |
 | Version control | Git + GitHub | Standard |
+
+## Phase 2 Stack (sau khi Phase 1 hoàn thành)
+
+| Layer | Technology | Rationale |
+|-------|-----------|-----------|
+| LLM (templates) | TBD — Claude API / OpenAI | Query generation + natural language |
+| Query engine | PostgreSQL views + functions | Promoted structured data |
+| Template system | Custom | Deterministic queries, không hallucinate |
+
+**Decision để lại Phase 2**: LLM choice, vector DB, embedding model — chờ Phase 1 thu thập usage data rồi quyết định.
+
+## Phase 3 Stack (sau khi Phase 2 hoàn thành)
+
+| Layer | Technology | Rationale |
+|-------|-----------|-----------|
+| Vector DB | TBD (pgvector / Pinecone / Weaviate) | RAG retrieval |
+| Embedding model | TBD | Document + audio embedding |
+| ASR | TBD (Whisper / Vietnamese ASR) | MP3 → text |
+| RAG framework | TBD (LangChain / LlamaIndex / custom) | Multi-source reasoning |
 
 ## Configuration
 
@@ -38,17 +63,17 @@ Hosting:       Vercel (auto-deploys from GitHub)
 | `R2_BUCKET_NAME` | Bucket name |
 | `NEXT_PUBLIC_APP_URL` | App URL |
 
-## Architecture
+## Architecture (Phase 1)
 
 ```
-┌─────────────────────────────────────────────────┐
-│  UI LAYER — Next.js Web App                     │
-│  - Trang tỉnh (wiki-style, giống HF dataset)    │
-│  - Upload form (số liệu + file đính kèm)        │
-│  - Search & filter (tags, loại, năm)            │
-│  - Version history (timeline updates)            │
-│  - Data dictionary (auto-generated)             │
-└───────────────────────┬─────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│  UI LAYER — Next.js Web App                          │
+│  - Dataset listing (giống HF /datasets)              │
+│  - Dataset detail: metadata, dictionary, quality,     │
+│    preview, files                                     │
+│  - Upload form                                        │
+│  - Search & filter                                    │
+└───────────────────────┬──────────────────────────────┘
                         │
                   REST API (Next.js)
                         │
@@ -58,95 +83,89 @@ Hosting:       Vercel (auto-deploys from GitHub)
 │   PostgreSQL        │    │  Cloudflare R2        │
 │   (Supabase)        │    │  (Object Storage)     │
 │                     │    │                       │
-│  - entities_catalog │    │  /VN-LA/2024/         │
-│  - resources        │    │    baocao_grdp.pdf    │
-│  - resource_versions│    │    phong_van.mp3      │
-│  - indicator_metadata│   │  /VN-HN/2023/         │
-│  - tags             │    │    nien_giam.xlsx     │
+│  - datasets         │    │  /dataset-slug/       │
+│  - resources        │    │    data.csv           │
+│  - data_dictionary  │    │    report.pdf         │
+│  - tags             │    │    interview.mp3      │
+│  - upload_log       │    │                       │
 └─────────────────────┘    └──────────────────────┘
 ```
 
-## Core Pipeline
+## Data Model (Phase 1)
 
-```
-1. UPLOAD   — Phóng viên gửi số liệu + file qua Web Form
-2. STORE    — File → R2 (nhận URL), Số liệu + metadata → PostgreSQL (resources)
-3. VERSION  — Mỗi update tạo snapshot mới trong resource_versions
-4. SERVE    — Trang tỉnh hiển thị resources, link tải file, history
-```
+### Design Principle: Dataset-centric
 
-## Data Model (~5 tables)
+Mọi thứ xoay quanh **dataset**. Một dataset có thể là:
+- Dữ liệu tỉnh thành (34 tỉnh × indicators)
+- Dữ liệu bầu cử quốc gia
+- Dữ liệu khí hậu
+- Báo cáo PDF
+- Phỏng vấn MP3
+- Bất kỳ tập dữ liệu nào tòa soạn cần
 
-### Design Principle: Wiki-first, promote sau
-
-- Mọi tài nguyên (số liệu, file, ghi chú) là 1 **resource**
-- Không thiết kế bảng cố định cho từng loại chỉ số — dùng JSONB
-- Khi xác định được hot indicators → promote sang views/tables riêng cho dashboard
-- File vật lý KHÔNG nằm trong database — chỉ lưu URL
-
-### `entities_catalog` (34+ rows)
-
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `entity_id` | VARCHAR(50) | PK | `VN-LA` (Long An), `REG-DNB` (Đông Nam Bộ), `NAT-VN` (Toàn quốc) |
-| `entity_name` | VARCHAR(150) | NOT NULL | |
-| `entity_type` | VARCHAR(30) | NOT NULL | `PROVINCE`, `REGION`, `NATIONAL`, `SECTOR` |
-| `old_codes` | TEXT[] | | Pre-merger province codes |
-| `region` | TEXT | | Vùng (ĐNB, ĐBSCL, etc.) — chỉ cho PROVINCE |
-| `tags` | TEXT[] | DEFAULT `{}` | |
-| `created_at` | TIMESTAMPTZ | DEFAULT NOW() | |
-
-### `resources` (bảng trung tâm)
+### `datasets` (bảng trung tâm)
 
 | Column | Type | Constraints | Notes |
 |--------|------|-------------|-------|
 | `id` | SERIAL | PK | |
-| `entity_id` | VARCHAR(50) | FK → entities_catalog, NOT NULL | |
-| `resource_type` | VARCHAR(30) | NOT NULL | `indicator`, `ranking`, `document`, `audio`, `dataset`, `geo_layer` |
-| `title` | TEXT | NOT NULL | 'GRDP growth rate 2020-2025' |
-| `year` | INT | | |
-| `structured_data` | JSONB | | `{"grdp_growth": 7.2, "population": 1200000, "unit": "%"}` |
+| `slug` | VARCHAR(100) | UNIQUE, NOT NULL | `grdp-34-tinh`, `ket-qua-bau-cu-2026` |
+| `title` | TEXT | NOT NULL | Tên hiển thị |
+| `description` | TEXT | | Mô tả README-style |
+| `category` | VARCHAR(50) | | `kinh-te`, `xa-hoi`, `chinh-tri`, `khi-hau`, `ha-tang` |
+| `tags` | TEXT[] | DEFAULT `{}` | Controlled vocabulary |
+| `license` | VARCHAR(50) | | `internal`, `public`, `restricted` |
+| `year_range` | INT[] | | `[2020, 2021, 2022, 2023, 2024]` |
+| `row_count` | INT | | Số dòng dữ liệu |
+| `file_count` | INT | | Số file đính kèm |
+| `total_size_mb` | NUMERIC | | |
+| `quality_score` | NUMERIC | | 0-100, auto-calculated |
+| `source` | TEXT | | 'GSO Niên giám 2024', 'PCI 2025' |
+| `uploaded_by` | VARCHAR(50) | NOT NULL | |
+| `uploaded_at` | TIMESTAMPTZ | DEFAULT NOW() | |
+| `updated_at` | TIMESTAMPTZ | DEFAULT NOW() | |
+| `last_verified_at` | TIMESTAMPTZ | | Lần cuối verify data |
+
+### `resources` (files + structured data trong dataset)
+
+| Column | Type | Constraints | Notes |
+|--------|------|-------------|-------|
+| `id` | SERIAL | PK | |
+| `dataset_id` | INT | FK → datasets, NOT NULL | |
+| `resource_type` | VARCHAR(30) | NOT NULL | `data`, `document`, `audio`, `geo_layer`, `image` |
+| `title` | TEXT | NOT NULL | |
+| `description` | TEXT | | |
 | `file_url` | TEXT | | R2 URL |
-| `file_type` | VARCHAR(10) | | `pdf`, `xlsx`, `mp3`, `docx`, `geojson` |
+| `file_type` | VARCHAR(10) | | `csv`, `xlsx`, `pdf`, `mp3`, `geojson` |
 | `file_size_mb` | NUMERIC | | |
-| `source` | TEXT | | 'Niên giám thống kê 2024', 'PCI 2025' |
-| `description` | TEXT | | Ghi chú phóng viên |
-| `tags` | TEXT[] | DEFAULT `{}` | `['vĩ mô', 'GRDP', 'tăng trưởng']` |
+| `file_hash` | TEXT | | SHA-256 để verify integrity |
+| `structured_data` | JSONB | | Preview data (first N rows) hoặc metadata |
+| `columns` | JSONB | | `[{"name": "grdp_growth", "type": "float", "label_vi": "Tốc độ tăng trưởng GRDP"}]` |
+| `row_count` | INT | | |
+| `tags` | TEXT[] | DEFAULT `{}` | |
+| `year` | INT | | |
 | `uploaded_by` | VARCHAR(50) | NOT NULL | |
 | `uploaded_at` | TIMESTAMPTZ | DEFAULT NOW() | |
 
 **Indexes**:
-- `idx_resources_entity` ON `(entity_id)`
+- `idx_resources_dataset` ON `(dataset_id)`
 - `idx_resources_type` ON `(resource_type)`
 - `idx_resources_tags_gin` ON `USING gin(tags)`
 - `idx_resources_structured_gin` ON `USING gin(structured_data)`
-- `idx_resources_year` ON `(year)`
 
-### `resource_versions` (lineage kiểu Git nhẹ)
+### `data_dictionary` (auto-generated)
 
 | Column | Type | Constraints | Notes |
 |--------|------|-------------|-------|
 | `id` | SERIAL | PK | |
-| `resource_id` | INT | FK → resources, NOT NULL | |
-| `version` | INT | NOT NULL | 1, 2, 3... |
-| `snapshot` | JSONB | NOT NULL | Snapshot toàn bộ resource lúc commit |
-| `file_url` | TEXT | | File URL nếu thay đổi file |
-| `changed_by` | VARCHAR(50) | NOT NULL | |
-| `changed_at` | TIMESTAMPTZ | DEFAULT NOW() | |
-| `change_note` | TEXT | | 'Sửa GRDP theo niên giám 2024 mới' |
-
-**Unique**: `(resource_id, version)`
-
-### `indicator_metadata` (data dictionary)
-
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `key` | TEXT | PK | `grdp_growth` |
-| `name_vi` | TEXT | NOT NULL | 'Tốc độ tăng trưởng GRDP' |
+| `dataset_id` | INT | FK → datasets | |
+| `column_name` | TEXT | NOT NULL | `grdp_growth` |
+| `label_vi` | TEXT | NOT NULL | 'Tốc độ tăng trưởng GRDP' |
+| `data_type` | VARCHAR(20) | | `float`, `int`, `text`, `date` |
 | `unit` | TEXT | | '%', 'tỷ đồng', 'người' |
-| `description` | TEXT | | Mô tả ngắn |
+| `description` | TEXT | | |
 | `source` | TEXT | | Nguồn tiêu chuẩn |
-| `category` | TEXT | | 'vĩ mô', 'giáo dục', 'y tế', 'xếp hạng' |
+| `category` | TEXT | | 'vĩ mô', 'giáo dục', 'y tế' |
+| `validation_rules` | JSONB | | `{"min": -100, "max": 100, "not_null": true}` |
 
 ### `tags` (controlled vocabulary)
 
@@ -156,18 +175,33 @@ Hosting:       Vercel (auto-deploys from GitHub)
 | `name` | TEXT | NOT NULL | 'Vĩ mô' |
 | `category` | TEXT | | 'loại dữ liệu', 'lĩnh vực', 'nguồn' |
 
+### `upload_log` (provenance & quality)
+
+| Column | Type | Constraints | Notes |
+|--------|------|-------------|-------|
+| `id` | SERIAL | PK | |
+| `dataset_id` | INT | FK → datasets | |
+| `resource_id` | INT | FK → resources, NULL | |
+| `action` | VARCHAR(20) | NOT NULL | `create`, `update`, `verify`, `delete` |
+| `changed_by` | VARCHAR(50) | NOT NULL | |
+| `changed_at` | TIMESTAMPTZ | DEFAULT NOW() | |
+| `change_note` | TEXT | | 'Import from GSO 2024' |
+| `snapshot_before` | JSONB | | |
+| `snapshot_after` | JSONB | | |
+
 ## API Design
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `GET` | `/api/entities` | Liệt kê entities (tỉnh, vùng) |
-| `GET` | `/api/entities/:id` | Trang tỉnh — mọi resources + tags |
-| `GET` | `/api/resources?entity=X&type=Y&tag=Z` | Tìm kiếm resources |
-| `GET` | `/api/resources/:id` | Chi tiết 1 resource + version history |
-| `POST` | `/api/resources` | Upload mới (số liệu + file) |
-| `PUT` | `/api/resources/:id` | Cập nhật (tạo version mới) |
-| `GET` | `/api/resources/:id/versions` | Version history |
-| `GET` | `/api/dictionary` | Data dictionary (từ indicator_metadata) |
+| `GET` | `/api/datasets` | Liệt kê datasets (filter, search) |
+| `GET` | `/api/datasets/:slug` | Chi tiết dataset + resources |
+| `POST` | `/api/datasets` | Tạo dataset mới |
+| `PUT` | `/api/datasets/:slug` | Cập nhật metadata dataset |
+| `GET` | `/api/datasets/:slug/resources` | Resources trong dataset |
+| `POST` | `/api/datasets/:slug/resources` | Upload resource mới |
+| `GET` | `/api/datasets/:slug/dictionary` | Data dictionary |
+| `GET` | `/api/datasets/:slug/quality` | Data quality report |
+| `GET` | `/api/datasets/:slug/preview` | Preview data (paginated) |
 | `GET` | `/api/tags` | Controlled vocabulary |
 | `GET` | `/api/search?q=keyword` | Full-text search |
 
@@ -187,74 +221,37 @@ Hosting:       Vercel (auto-deploys from GitHub)
 │       └── requirements.txt
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx         — Homepage: search, entity list
-│   │   ├── entities/
-│   │   │   └── [id]/
-│   │   │       └── page.tsx — Wiki page per entity
+│   │   ├── page.tsx         — Dataset listing (HF-style)
+│   │   ├── datasets/
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx — Dataset detail (tabs: info, data, files)
 │   │   ├── upload/
 │   │   │   └── page.tsx     — Upload form
 │   │   ├── dictionary/
 │   │   │   └── page.tsx     — Data dictionary
 │   │   └── api/
-│   │       ├── entities/
-│   │       ├── resources/
-│   │       ├── dictionary/
+│   │       ├── datasets/
 │   │       ├── tags/
 │   │       └── search/
 │   ├── lib/
 │   │   ├── db/              — Database client
 │   │   └── storage/         — R2 client
 │   └── components/
-│       ├── EntityCard.tsx
-│       ├── ResourceList.tsx
-│       ├── UploadForm.tsx
-│       ├── VersionHistory.tsx
-│       └── SearchBar.tsx
+│       ├── DatasetCard.tsx
+│       ├── DataTable.tsx
+│       ├── SearchFilter.tsx
+│       └── ...
 ├── public/
 ├── package.json
 ├── next.config.js
 └── tailwind.config.js
 ```
 
-## Data Flow: Upload Scenario
-
-```
-Phóng viên upload: Long An GRDP 2024 + file baocao.pdf
-    │
-    ▼
-Frontend: POST /api/resources
-    │
-    ├──→ R2: Upload baocao.pdf → /VN-LA/2024/baocao_grdp.pdf → nhận URL
-    │
-    └──→ PostgreSQL:
-         1. INSERT INTO resources (entity_id='VN-LA', resource_type='indicator',
-            structured_data={"grdp_growth": 7.2}, file_url='...', uploaded_by='Hoa')
-         2. INSERT INTO resource_versions (resource_id, version=1, snapshot={...})
-    │
-    ▼
-Frontend: Trang Long An hiển thị resource mới + link download PDF
-```
-
-## Medallion Pattern (cho dashboard sau)
-
-```
-Bronze (raw):     resources table + R2 files — mọi thứ
-Silver (clean):   Materialized views cho hot indicators
-Gold (serving):   Dashboard reads từ views
-```
-
-Promote khi đã biết indicators nào cần query nhanh. Không redesign — chỉ `CREATE MATERIALIZED VIEW`.
-
 ## Constraints
 
 - Vietnamese UI throughout
-- Mobile-friendly (phóng viên có thể duyệt trên điện thoại)
-- No auth cho MVP (internal tool)
-- JSONB keys phải khớp indicator_metadata — không tự do đặt tên
+- Mobile-friendly
+- No auth cho Phase 1 (internal tool)
+- JSONB keys phải khớp data_dictionary — không tự do đặt tên
 - Tags chọn từ controlled vocabulary — không gõ tự do
-
-## Open Questions
-
-1. Full-text search: PostgreSQL `tsvector` hay external (Meilisearch, Typesense)?
-2. ORM: Drizzle, Prisma, hay raw queries?
-3. Province code: GSO mới hay internal convention (`VN-LA`)?
+- Mỗi con số phải trace được nguồn (provenance)

@@ -1,16 +1,16 @@
-# 34 Tỉnh Thành — Hồ sơ toàn cảnh Việt Nam
+# VNExpress Data Platform
 
 ## Constitution
 
 This project uses Spec-Driven Development. Read these files before implementing any feature:
 
-- `constitution/mission.md` — Why: wiki-style knowledge repository cho newsroom, motivation, personas, scope
-- `constitution/tech-stack.md` — How: ~5 tables wiki architecture, R2 storage, pipeline, API, data model
-- `constitution/roadmap.md` — When: 8 phases, wiki-first → data incremental → promote dashboard cuối
+- `constitution/mission.md` — Why: data platform cho tòa soạn VNExpress, motivation, personas, 3 phases
+- `constitution/tech-stack.md` — How: dataset-centric architecture, Supabase, R2, API, data model
+- `constitution/roadmap.md` — When: Phase 1 (Dataset Hub) → Phase 2 (Query Layer) → Phase 3 (Intelligence)
 
 ## Architecture Principle
 
-**Wiki-first, promote sau**: Hệ thống là kho tri thức (giống Hugging Face Hub), không phải analytics engine. Mọi tài nguyên (số liệu, PDF, MP3) là 1 resource. Khi xác định được hot indicators → promote sang views/tables cho dashboard.
+**Dataset-centric, iterative**: Mọi thứ xoay quanh dataset (bất kỳ loại — CSV, PDF, MP3, GeoJSON). Phase 1 tập trung upload/browse/preview. Phase 2 thêm query capability. Phase 3 thêm RAG + intelligence. Mỗi phase xây trên phase trước, không redesign.
 
 ## Feature Workflow
 
@@ -25,6 +25,7 @@ This project uses Spec-Driven Development. Read these files before implementing 
 - Follow existing conventions in the codebase
 - Each phase must be independently shippable
 - Update constitution/roadmap.md during replanning between phases
+- Mỗi feature = 1 spec riêng, không gộp
 
 ## Quy ước
 
@@ -32,12 +33,9 @@ This project uses Spec-Driven Development. Read these files before implementing 
 - Không thêm feature ngoài yêu cầu
 - Dữ liệu thô (CSV, Excel) → xử lý bằng Python script (`data/scripts/parse_*.py`) → upload qua API → PostgreSQL + R2
 - File vật lý (PDF, MP3, XLSX) → Object Storage (R2), database chỉ lưu URL
-- JSONB keys trong `structured_data` phải khớp `indicator_metadata` — không tự do đặt tên
+- JSONB keys phải khớp `data_dictionary` — không tự do đặt tên
 - Tags chọn từ controlled vocabulary (`tags` table) — không gõ tự do
-
-## KPI & Lộ trình
-
-Xem `PROJECT_PLAN.md` — 8 giai đoạn (Tháng 5–12), mỗi tháng bổ sung tài nguyên mới.
+- Mỗi con số phải trace được nguồn (provenance qua `upload_log`)
 
 ## Skills
 

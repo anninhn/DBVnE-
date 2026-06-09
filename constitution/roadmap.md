@@ -1,85 +1,121 @@
 # Roadmap
 
-Mỗi phase bổ sung data vào cùng một hệ thống. Phase 1 xây hệ thống wiki từ đầu; Phase 2–7 thêm data qua cùng workflow; Phase 8 promote hot indicators cho dashboard.
+## Phase 1 — Dataset Hub (Tháng 6–7)
+
+**Mục tiêu**: Xây HF-style dataset platform. Data journalist upload dataset, browse, preview, download. Mọi dataset tòa soạn cần được tập trung 1 nơi.
+
+### 1.1 — Nền tảng & Design System
+- Setup project Next.js 15 + Tailwind + Supabase
+- HF design system: fonts (Source Sans 3 + IBM Plex Mono), colors (`#FFD21E`), components
+- Database schema: `datasets`, `resources`, `data_dictionary`, `tags`, `upload_log`
+
+### 1.2 — Dataset Listing Page (`/`)
+- HF-style listing: sidebar filters (category, tags), search bar, sort
+- Dataset cards: title, description, tags, quality score, file count
+- Responsive grid layout
+
+### 1.3 — Dataset Detail Page (`/datasets/[slug]`)
+- Tab bar (HF yellow underline): Hồ sơ | Dữ liệu | Files
+- **Hồ sơ tab**: metadata, description, data quality report, provenance
+- **Dữ liệu tab**: interactive data table viewer (paginated, column headers from schema)
+- **Files tab**: file list with download buttons, file type icons
+- Right sidebar: metadata cards (category, tags, size, quality, upload info)
+
+### 1.4 — Upload & Data Entry
+- Upload form: tạo dataset mới + upload files
+- Structured data preview (first N rows) auto-extracted from CSV/Excel
+- Data dictionary auto-generated from column headers
+- Upload log (provenance): ai, khi nào, từ nguồn nào
+
+### 1.5 — Data Quality & Dictionary
+- Data quality metrics: completeness, freshness, validity
+- Data dictionary page: browse tất cả indicators + metadata
+- Validation rules per column (min/max, not null, type check)
+
+### 1.6 — Seed Data
+- Import 34 tỉnh thành dataset (địa giới, lãnh đạo, dân số, GRDP, FDI)
+- Import tags vocabulary
+- Import data dictionary entries
+
+**Deliverable**: Production dataset hub, data journalist có thể upload, browse, preview, download. Data quality visible. Provenance tracked.
 
 ---
 
-## Phase 1 — Wiki Infrastructure & Core Data (Tháng 5–6)
+## Phase 2 — Query Layer (Tháng 8–10)
 
-- Setup Supabase project, tạo 5 tables (entities_catalog, resources, resource_versions, indicator_metadata, tags)
-- Setup Cloudflare R2 bucket, cấu trúc thư mục `/{entity_id}/{year}/`
-- Seed 34 tỉnh (entities_catalog) + controlled tags + indicator_metadata cơ bản
-- Build Next.js wiki app: homepage search, trang tỉnh (resource list), upload form
-- Build version history: mỗi update tạo snapshot trong resource_versions
-- Build data dictionary page (auto-generated từ indicator_metadata)
-- Import core data: địa giới hành chính, lãnh đạo, dân số, ngân sách, GRDP, FDI (10-15 indicators × 34 provinces × 5 years)
-- Python pipeline: CSV/Excel → clean → upload via API
-- Deploy: Vercel + Supabase + R2
-- **Deliverable**: Production wiki, phóng viên có thể browse, search, upload, download
+**Mục tiêu**: Phóng viên hỏi câu hỏi từ data → platform trả lời ngay, chính xác. Bắt đầu bằng deterministic templates, sau đó thêm text-to-sql.
 
-## Phase 2 — Socio-economic Data (Tháng 6)
+### 2.1 — Usage Analytics
+- Track: datasets nào view nhiều, queries nào phổ biến, phóng viên nào active
+- Dashboard cho Minh (Editor): data usage overview
 
-- Import education data: số trường, giáo viên, điểm chuẩn, tỷ lệ chọi
-- Import healthcare data: bệnh viện, giường bệnh, nhân viên y tế
-- Import labor & employment data
-- Mở rộng indicator_metadata + tags
-- Dataset: ~30-40 indicators total
+### 2.2 — Query Templates
+- Pre-built templates: phóng viên chọn template, điền tham số
+  - "So sánh [chỉ số] của [tỉnh A] vs [tỉnh B] giai đoạn [năm]"
+  - "Xu hướng [chỉ số] của [tỉnh] trong [N] năm — có bất thường không?"
+  - "Top [N] tỉnh [chỉ số] năm [năm]"
+- Deterministic — luôn trả đúng kết quả, không hallucinate
+- Source verification: show query + data gốc
 
-## Phase 3 — Rankings Data (Tháng 7)
+### 2.3 — Dataset Promotion
+- Promote popular datasets → structured tables/materialized views
+- Clean + validate data during promotion
+- Fast query response từ promoted tables
 
-- Import PCI, PAPI, PAR Index, SIPAS scores + ranks (3-5 years)
-- Resource type `ranking` — structured_data chứa score + rank
-- Dataset: all 34 provinces ranked across 4 indices
+### 2.4 — Text-to-SQL (sau khi templates ổn)
+- Free-form Vietnamese question → LLM → SQL → answer
+- Schema context provided cho LLM từ data_dictionary
+- Guardrails: chỉ query promoted tables, sandbox SQL, show generated query
+- Fallback to templates khi LLM không chắc chắn
 
-## Phase 4 — Infrastructure Data (Tháng 8)
-
-- Import highways, airports, seaports, industrial zones, public investment projects
-- File quy hoạch (PDF) upload lên R2, resource type `document`
-- Dataset: hạ tầng trọng yếu + file quy hoạch
-
-## Phase 5 — Climate & Environment Data (Tháng 9)
-
-- Import climate indicators: nhiệt độ, lượng mưa, chất lượng không khí
-- Import disaster events: bão, lũ, sạt lở
-- File báo cáo thiên tai upload lên R2
-- Dataset: khí hậu + thiên tai + file đính kèm
-
-## Phase 6 — Yearbook Data (Tháng 10)
-
-- Import statistical yearbook data cho 34 provinces (minimum 5 years)
-- Bulk import: nhiều indicators mới → mở rộng indicator_metadata
-- Dataset: comprehensive per-province profiles
-
-## Phase 7 — Industry & Enterprise Data (Tháng 11)
-
-- Import từ sách trắng: doanh nghiệp, CNTT-TT, thương mại điện tử, logistics
-- Sector-level data, resource type `dataset` + files R2
-- Bắt đầu ghi âm phỏng vấn (MP3) → upload resource type `audio`
-
-## Phase 8 — Promote Hot Indicators & Dashboard v1 (Tháng 12)
-
-- Phân tích usage: indicators nào phóng viên tra nhiều nhất
-- Promote hot indicators → materialized views
-- Build dashboard đơn giản: so sánh tỉnh, bản đồ heatmap
-- Responsive design pass
-- Performance audit
-- Finalize data dictionary
-- **Deliverable**: Wiki v1 + Dashboard v1, sẵn sàng dùng lâu dài
+**Deliverable**: Phóng viên hỏi "GRDP TPHCM năm nay 20% có bất thường không?" → platform trả lời ngay với chart + source.
 
 ---
 
-## Post-MVP Features
+## Phase 3 — Intelligence Platform (Tháng 11–12+)
 
-- Text-to-SQL: natural language query (journalist types question → LLM → returns data)
-- User authentication and role-based access
-- Public-facing data portal (project riêng)
+**Mục tiêu**: AI-powered platform cho 300 phóng viên. RAG trên mọi loại data, multi-source reasoning, story detection.
+
+### 3a — Document RAG
+- PDF, báo cáo, tài liệu → chunking + embedding → vector DB
+- Q&A trên documents: phóng viên hỏi → retrieve relevant docs → generate answer
+- Source citation: luôn link đến trang PDF cụ thể
+
+### 3b — Audio RAG
+- MP3 phỏng vấn → ASR (Whisper / Vietnamese model) → transcript
+- Transcript → embedding → vector DB
+- Search + extract quotes từ phỏng vấn
+- Link về timestamp gốc trong audio
+
+### 3c — Multi-source Reasoning
+- Kết hợp structured data (Phase 2) + documents (3a) + audio (3b)
+- Example: "Tóm tắt quan điểm chủ tịch TPHCM về GRDP 2024 từ bài phỏng vấn + so sánh với số liệu thực tế"
+- Cross-reference: data nói gì vs. chính trị gia nói gì
+
+### 3d — Story Detection
+- Anomaly detection tự động trên structured data
+- Trend alerts: chỉ số bất thường → notify editor
+- Potential story suggestions dựa trên data patterns
+- Weekly data digest cho editorial team
+
+**Deliverable**: Intelligence platform phục vụ 300 phóng viên. Hỏi đáp, fact-check, story discovery.
+
+---
+
+## Post-Phase 3
+
+- User authentication và role-based access
+- Public-facing data portal
 - Visualization embed widgets cho bài báo
-- Automated data fetching từ GSO sources
+- Automated data fetching từ GSO, World Bank, etc.
+- Mobile app
+- Real-time data feeds
 
 ## Replanning Log
 
-| Date | Phase Completed | What Changed | Why |
-|------|----------------|--------------|-----|
-| 2026-05-09 | Schema design | 11 tables hybrid → 5 tables wiki | Phóng viên cần browse/download, không cần analytics engine |
-| 2026-05-09 | Roadmap | 8 phases aligned with PROJECT_PLAN.md | Phase 1 delivers wiki; phases 2-7 add data; phase 8 adds dashboard |
-| 2026-06-08 | Architecture | Redesign: analytics database → wiki/HF hub | Phản biện: wiki model phù hợp use case newsroom hơn, promote dashboard sau khi biết hot indicators |
+| Date | What Changed | Why |
+|------|-------------|-----|
+| 2026-05-09 | Schema: 11 tables → 5 tables wiki | Phóng viên cần browse/download |
+| 2026-05-09 | Roadmap: 8 phases | Phase 1 wiki → phases 2-7 data → phase 8 dashboard |
+| 2026-06-08 | Architecture: analytics → wiki/HF hub | Wiki model phù hợp newsroom hơn |
+| 2026-06-09 | **Redefinition**: "34 Tỉnh wiki" → "VNExpress Data Platform" | Scope rộng hơn: mọi dataset tòa soạn, không chỉ 34 tỉnh. 3 phases: hub → query → intelligence. Thêm data quality, provenance, RAG roadmap. |

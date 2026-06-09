@@ -1,73 +1,81 @@
-# Hồ sơ toàn cảnh 34 tỉnh, thành Việt Nam
+# VNExpress Data Platform
 
 ## Overview
 
-**34 Tỉnh Thành** là kho tri thức (knowledge repository) cho tòa soạn VNExpress, mô hình tham khảo Hugging Face Hub:
+**VNExpress Data Platform** là kho dữ liệu và công cụ情报 cho tòa soạn VNExpress, xây dựng theo 3 giai đoạn:
 
-1. **Thu thập** — nhập chỉ số KT-XH, dữ liệu hạ tầng, khí hậu, file quy hoạch (PDF), ghi âm phỏng vấn (MP3) cho 34 tỉnh thành (sau sáp nhập)
-2. **Lưu trữ lai** — số liệu cấu trúc trong PostgreSQL (JSONB), file vật lý (PDF, MP3, XLSX) trên Object Storage (Cloudflare R2)
-3. **Duyệt & Tìm kiếm** — phóng viên vào trang tỉnh → thấy mọi tài nguyên sẵn có → tải file gốc, giống duyệt dataset trên Hugging Face
-4. **Traceability** — mỗi con số đi kèm link đến file gốc trên Object Storage, phóng viên click đối chiếu bằng mắt
-5. **Versioning** — lịch sử cập nhật theo mô hình Git nhẹ (ai sửa lúc nào, snapshot trước sau)
-
-Hệ thống là **wiki tra cứu**, không phải analytics engine. Phóng viên browse/search để tìm data, bước phân tích tổng hợp tự làm.
+1. **Phase 1 — Dataset Hub**: Platform upload, browse, preview datasets theo mô hình Hugging Face Hub. Phục vụ nhóm data journalist đầu tiên — họ cần tìm dataset phù hợp cho topic báo chí.
+2. **Phase 2 — Query Layer**: Structured query system cho datasets phổ biến. Phóng viên hỏi "GRDP TPHCM năm nay 20% có bất thường so 20 năm trước không?" → platform trả lời ngay, chính xác, dựa trên data đã lưu.
+3. **Phase 3 — Intelligence Platform**: RAG + advanced AI cho toàn tòa soạn (300 phóng viên). Hỏi đáp, tìm potential story, fact-check, multi-source reasoning.
 
 ## Motivation
 
-Sáp nhập hành chính 2025 giảm 63 tỉnh xuống 34. Ba gap:
+Phóng viên VNExpress cần dữ liệu liên tục: số liệu kinh tế, dân số, bầu cử, khí hậu, báo cáo PDF, phỏng vấn MP3... Hiện tại:
 
-- **Merge gap**: Không có dataset thống nhất ánh xạ pre-merger → 34 tỉnh mới — phóng viên phải tự ghép thủ công
-- **Access gap**: Phóng viên VNExpress dựa vào PDF GSO rải rác, Excel lẻ tẻ — không có nơi tập trung để duyệt, tìm kiếm, tải file gốc
-- **Traceability gap**: Khi dùng số liệu trong bài, không có cách nhanh chóng trỏ về file gốc để kiểm chứng
+- **Fragmentation**: Data rải rác — PDF GSO, Excel lẻ tẻ, file cá nhân, Google Sheets shared
+- **No single source of truth**: Cùng 1 con số, 2 nguồn khác nhau, không biết cái nào đúng
+- **No provenance**: Không truy được nguồn gốc — ai nhập, từ đâu, khi nào
+- **Manual lookup**: Phóng viên tự tìm, tự đối chiếu, mất giờ
+
+Platform này giải quyết bằng cách: tập trung mọi dataset → chuẩn hóa → cho phép query → trả lời câu hỏi từ data.
 
 ## Target Audience
 
-- **Hoa (Reporter)**: Cần tìm chỉ số cụ thể (GRDP, số trường, giường bệnh) cho 1 tỉnh để trích dẫn trong bài. Non-technical — muốn search bar, click download.
-- **Minh (Editor)**: Duyệt xem có data gì, phát hiện trend, giao bài. Upload dataset mới nhận từ cơ quan nhà nước.
-- **Ninh (Data Journalist)**: Tìm kiếm potential story dựa trên data — so sánh tỉnh, phát hiện outlier, trả lời research questions. Xây pipeline, viết script xử lý, thiết kế visualization. Power user, quản lý hệ thống.
+- **Hoa (Reporter)**: Cần fact-check nhanh. "GRDP TPHCM 20% năm nay có đúng không?" → platform trả lời với nguồn. Non-technical, dùng search + chat. (Phase 2+)
+- **Minh (Editor)**: Quản lý data tòa soạn. Upload dataset mới, kiểm tra data quality, giao bài dựa trên insight từ data. (Phase 1+)
+- **Ninh (Data Journalist)**: Tìm potential story, phân tích sâu, xây pipeline xử lý data. Power user, cần API access + raw data download. (Phase 1+)
 
 ## Scope
 
-### MVP (Giai đoạn 1 — Tháng 5–6)
+### Phase 1 — Dataset Hub (MVP)
 
-- [ ] PostgreSQL schema (~5 tables: entities_catalog, resources, resource_versions, indicator_metadata, tags)
-- [ ] Object Storage (Cloudflare R2) cho file nhị phân
-- [ ] 34 tỉnh seeded (post-merger, mapping old_codes)
-- [ ] Upload UI: phóng viên upload số liệu + file đính kèm qua web form
-- [ ] Wiki-style browse: trang tỉnh hiển thị mọi tài nguyên, filter theo tags/loại/năm
-- [ ] Version history: mỗi update tạo snapshot, xem được timeline
-- [ ] Traceability: số liệu đi kèm link file gốc
-- [ ] Auto-generated data dictionary (từ indicator_metadata)
-- [ ] Search: tìm theo keyword, tags, loại tài nguyên
+- Platform upload dataset (bất kỳ loại: CSV, Excel, PDF, MP3, GeoJSON...)
+- Browse/search datasets theo category, tags, keyword
+- Dataset detail page: metadata, data dictionary, data quality report, preview
+- Data dictionary auto-generated từ metadata
+- Data quality: provenance (nguồn, ai nhập, khi nào), freshness, completeness
+- Download file gốc
+- **Target user**: Ninh (Data Journalist) + Minh (Editor)
 
-### Post-MVP (incremental, không thay đổi hệ thống)
+### Phase 2 — Query Layer
 
-Tháng 6–12: bổ sung data qua cùng workflow (upload → resource → version). Hệ thống không đổi, chỉ data chảy vào.
+- Query templates: phóng viên chọn template, điền tham số → kết quả deterministic
+  - Ví dụ: "So sánh [chỉ số] của [tỉnh A] vs [tỉnh B] giai đoạn [năm]"
+  - Ví dụ: "Xu hướng [chỉ số] của [tỉnh] trong [N] năm — có bất thường không?"
+- Popular dataset promotion: merge/structure datasets dùng nhiều → fast query
+- Text-to-SQL (sau khi template system ổn định): free-form question → SQL → answer
+- Source verification: luôn show query + data gốc để phóng viên tự kiểm chứng
+- **Target user**: Hoa (Reporter) + Ninh
 
-### Dashboard Layer (Giai đoạn cuối — Tháng 12)
+### Phase 3 — Intelligence Platform
 
-Khi đã xác định được chỉ số nào cần query nhanh (hot indicators), promote sang materialized views hoặc bảng riêng để phục vụ dashboard. Không redesign — chỉ thêm layer phía trên.
+- **3a — Document RAG**: Q&A trên PDF, báo cáo, tài liệu → vector search + retrieval
+- **3b — Audio RAG**: Transcribe MP3 phỏng vấn → search + extract quotes
+- **3c — Multi-source reasoning**: Kết hợp structured data + documents + audio → trả lời câu hỏi phức tạp
+- **3d — Story detection**: Anomaly detection tự động, trend alerts, potential story suggestions
+- **Target user**: toàn tòa soạn (300 phóng viên)
 
-### Deferred (Post-MVP)
+### Deferred
 
-- User authentication và role-based access (MVP là internal tool)
-- Public-facing data portal (project riêng)
-- Dashboard tương tác (sau khi có đủ data để xác định hot indicators)
+- User authentication và role-based access (Phase 1 là internal tool)
+- Public-facing data portal
+- Visualization embed widgets cho bài báo
+- Automated data fetching từ external sources
 
 ## Success Metrics
 
-| What We Measure | Success Threshold | Method |
-|-----------------|-------------------|--------|
-| Data coverage | 34 provinces × 10 indicators × 5 years populated | Count resources in database |
-| Upload workflow | Phóng viên upload 1 dataset mới không cần giúp | User test với Hoa/Minh |
-| Page load | Trang tỉnh load < 2 giây | Measure page load time |
-| Traceability | 100% số liệu có link file gốc | Verify resources có file_url |
-| Search | Tìm thấy data cần trong < 3 clicks | User test |
-| Data dictionary | 100% indicator keys có metadata | Verify indicator_metadata rows |
+| What | Success | Method |
+|------|---------|--------|
+| Data centralization | 80% datasets tòa soạn có trên platform | Inventory audit |
+| Upload workflow | Data journalist upload 1 dataset mới < 5 phút | User test |
+| Query accuracy | 100% câu trả lời có kèm nguồn data gốc | Verify source links |
+| Query speed | Template query < 3 giây | Measure latency |
+| Adoption | 50+ phóng viên dùng platform hàng tuần | Usage analytics |
 
-## Open Questions
+## Key Principles
 
-1. Province codes: theo chuẩn GSO mới hay định nghĩa internal IDs (như đề xuất `VN-LA` cho Long An)?
-2. Tag vocabulary: cố định (chọn từ danh sách) hay tự do (phóng viên tự gõ)?
-3. Object Storage: Cloudflare R2 hay Supabase Storage?
-4. Xử lý tỉnh sáp nhập từ nhiều tỉnh cũ: tổng, trung bình gia quyền, hoặc giữ tất cả variants?
+1. **Accuracy first**: Mỗi con số phải trace được nguồn gốc. Sai số → tin sai → mất uy tín.
+2. **Source transparency**: Luôn show data gốc, query, reasoning — phóng viên tự verify.
+3. **Iterative**: Phase 1 → thu thập usage data → quyết định Phase 2. Không over-engineer sớm.
+4. **Store everything**: Structured data (PostgreSQL) + unstructured (R2) — không loại trừ.
+5. **Vietnamese-first**: UI, query, response đều tiếng Việt.
