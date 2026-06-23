@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+/*
+ * Design tokens — clone từ HF prototype (prototype/hf-clone.html).
+ * Đăng ký qua @theme (Tailwind v4) → utility classes:
+ *   bg-hf-bg-subtle, text-hf-text-muted, border-hf-border, ...
+ *
+ * Source: Google Fonts — Source Sans 3 (body) + IBM Plex Mono (data/code).
+ * Wire trong layout.tsx.
+ */
+@theme {
+  /* Nền */
+  --color-hf-bg: #ffffff;
+  --color-hf-bg-subtle: #f9fafb;
+  --color-hf-bg-muted: #f3f4f6;
+
+  /* Border */
+  --color-hf-border: #e5e7eb;
+  --color-hf-border-strong: #d1d5db;
+
+  /* Text */
+  --color-hf-text: #1f2937;
+  --color-hf-text-muted: #6b7280;
+  --color-hf-text-faint: #9ca3af;
+
+  /* Accent — HF yellow */
+  --color-hf-yellow: #ffd21e;
+  --color-hf-yellow-50: #fef3c7;
+
+  /* Functional */
+  --color-hf-link: #2563eb;
+  --color-hf-green: #10b981;
+  --color-hf-red: #ef4444;
+
+  /* Fonts */
+  --font-sans: "Source Sans 3", -apple-system, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+}
+
+body {
+  font-feature-settings: "tnum" 0;
+}

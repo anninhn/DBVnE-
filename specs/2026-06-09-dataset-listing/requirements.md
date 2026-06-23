@@ -1,5 +1,9 @@
 # Spec 1.3 — Dataset Listing Page
 
+> ⚠️ **SUPERSEDED 2026-06-23** — Spec này mô tả card-grid layout, đã bị thay bằng
+> HF compact-row layout. Xem `specs/2026-06-23-hf-frontend-demo/requirements.md`.
+> Giữ lại để truy vết quyết định. Không implement theo spec này nữa.
+
 ## Scope
 
 Trang chủ `/` hiển thị danh sách datasets theo mô hình HF `/datasets`.

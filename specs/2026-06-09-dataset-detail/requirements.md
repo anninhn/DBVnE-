@@ -1,5 +1,10 @@
 # Spec 1.4 — Dataset Detail Page
 
+> ⚠️ **SUPERSEDED 2026-06-23** — Spec này mô tả layout cũ (Hồ sơ/Dữ liệu/Files tabs,
+> right sidebar có Chất lượng box). Đã thay bằng HF dataset page (Dataset card/Files/
+> Community tabs, dataset viewer có mini charts, không Chất lượng box). Xem
+> `specs/2026-06-23-hf-frontend-demo/requirements.md`. Giữ lại để truy vết.
+
 ## Scope
 
 Trang chi tiết dataset `/datasets/[slug]` theo mô hình HF `/datasets/[id]`.
