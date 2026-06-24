@@ -1,6 +1,11 @@
 import { listDatasets } from "@/lib/data/datasets";
 import DatasetExplorer from "@/components/DatasetExplorer";
 
+// Render per-request, not at build time. The listing reads from Supabase,
+// so prerendering would (a) fail without env vars at build time and
+// (b) bake a stale dataset list into the deploy. See F1 deploy fix.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const datasets = await listDatasets();
   return (
