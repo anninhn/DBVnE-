@@ -1,4 +1,4 @@
-import type { Dataset } from "@/lib/mock/datasets";
+import type { Dataset } from "@/lib/types/dataset";
 
 interface MetadataSidebarProps {
   dataset: Dataset;

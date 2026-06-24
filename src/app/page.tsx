@@ -1,7 +1,8 @@
-import { datasets } from "@/lib/mock/datasets";
+import { listDatasets } from "@/lib/data/datasets";
 import DatasetExplorer from "@/components/DatasetExplorer";
 
-export default function Home() {
+export default async function Home() {
+  const datasets = await listDatasets();
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top nav — HF clone */}

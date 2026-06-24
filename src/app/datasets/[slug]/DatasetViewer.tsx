@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { DataDictionaryEntry, Dataset, Resource } from "@/lib/mock/datasets";
+import type { ColumnStats, DataDictionaryEntry, Dataset, Resource } from "@/lib/types/dataset";
 
 const ROWS_PER_PAGE = 10;
 
@@ -106,7 +106,12 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
           <thead>
             <tr>
               {columns.map((col) => (
-                <ColumnHeader key={col.name} col={col} rows={rows} />
+                <ColumnHeader
+                  key={col.name}
+                  col={col}
+                  rows={rows}
+                  stats={resource.column_stats?.[col.name]}
+                />
               ))}
             </tr>
           </thead>
@@ -176,9 +181,11 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
 function ColumnHeader({
   col,
   rows,
+  stats,
 }: {
   col: ColumnDef;
-  rows: Record<string, string | number | null | undefined>[];
+  rows: Record<string, string | number | boolean | null | undefined>[];
+  stats?: ColumnStats;
 }) {
   return (
     <th
@@ -198,18 +205,18 @@ function ColumnHeader({
           {typeBadge(col.dtype)}
         </span>
         {col.isNumeric ? (
-          <NumericStats rows={rows} colName={col.name} />
+          <NumericStats rows={rows} colName={col.name} stats={stats} />
         ) : (
-          <CategoricalStats rows={rows} colName={col.name} />
+          <CategoricalStats rows={rows} colName={col.name} stats={stats} />
         )}
       </div>
 
       {/* Mini chart */}
       <div className="mt-1.5 h-8 flex items-end">
         {col.isNumeric ? (
-          <Histogram rows={rows} colName={col.name} />
+          <Histogram rows={rows} colName={col.name} stats={stats} />
         ) : (
-          <ProportionBar rows={rows} colName={col.name} />
+          <ProportionBar rows={rows} colName={col.name} stats={stats} />
         )}
       </div>
     </th>
@@ -219,17 +226,22 @@ function ColumnHeader({
 function NumericStats({
   rows,
   colName,
+  stats,
 }: {
-  rows: Record<string, string | number | null | undefined>[];
+  rows: Record<string, string | number | boolean | null | undefined>[];
   colName: string;
+  stats?: ColumnStats;
 }) {
-  const stats = numericStats(rows, colName);
-  if (!stats) return null;
+  // Prefer precomputed stats (over full dataset); fall back to preview computation.
+  const computed = stats && stats.kind === "numeric"
+    ? { min: stats.min.toLocaleString("vi-VN"), max: stats.max.toLocaleString("vi-VN") }
+    : numericStats(rows, colName);
+  if (!computed) return null;
   return (
     <>
-      <span>{stats.min}</span>
+      <span>{computed.min}</span>
       <span className="text-hf-text-faint">→</span>
-      <span>{stats.max}</span>
+      <span>{computed.max}</span>
     </>
   );
 }
@@ -237,33 +249,39 @@ function NumericStats({
 function CategoricalStats({
   rows,
   colName,
+  stats,
 }: {
-  rows: Record<string, string | number | null | undefined>[];
+  rows: Record<string, string | number | boolean | null | undefined>[];
   colName: string;
+  stats?: ColumnStats;
 }) {
-  const distinct = countDistinct(rows, colName);
+  const distinct =
+    stats && stats.kind === "categorical" ? stats.distinct : countDistinct(rows, colName);
   return <span>{distinct} giá trị</span>;
 }
 
-/** Histogram — inline SVG, 8 bins */
+/** Histogram — inline SVG, 8 bins. Reads precomputed stats if available. */
 function Histogram({
   rows,
   colName,
+  stats,
 }: {
-  rows: Record<string, string | number | null | undefined>[];
+  rows: Record<string, string | number | boolean | null | undefined>[];
   colName: string;
+  stats?: ColumnStats;
 }) {
-  const bins = histogramBins(rows, colName);
-  if (!bins) return null;
+  const counts =
+    stats && stats.kind === "numeric" ? stats.histogram : histogramBins(rows, colName)?.counts;
+  if (!counts) return null;
 
   const W = 110,
     H = 30,
-    BAR_W = W / bins.counts.length;
-  const maxCount = Math.max(...bins.counts);
+    BAR_W = W / counts.length;
+  const maxCount = Math.max(...counts);
 
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-      {bins.counts.map((count, i) => {
+      {counts.map((count, i) => {
         const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
         const x = i * BAR_W + 1;
         const y = H - h;
@@ -283,15 +301,20 @@ function Histogram({
   );
 }
 
-/** Proportion bar — stacked horizontal segments, top-12 classes */
+/** Proportion bar — stacked horizontal segments, top-12 classes. Reads precomputed if available. */
 function ProportionBar({
   rows,
   colName,
+  stats,
 }: {
-  rows: Record<string, string | number | null | undefined>[];
+  rows: Record<string, string | number | boolean | null | undefined>[];
   colName: string;
+  stats?: ColumnStats;
 }) {
-  const result = categoricalSegments(rows, colName);
+  const result =
+    stats && stats.kind === "categorical"
+      ? { segments: stats.segments, total: stats.segments.reduce((s, x) => s + x.count, 0) }
+      : categoricalSegments(rows, colName);
   if (!result) return null;
 
   const W = 110,
@@ -328,8 +351,9 @@ function ProportionBar({
 // Pure stats helpers
 // ──────────────────────────────────────────────────────────────────────────────
 
-function formatCell(value: string | number | null | undefined, numeric: boolean): string {
+function formatCell(value: string | number | boolean | null | undefined, numeric: boolean): string {
   if (value === null || value === undefined || value === "") return "";
+  if (typeof value === "boolean") return value ? "Có" : "Không";
   if (numeric) {
     const n = typeof value === "string" ? parseFloat(value) : value;
     if (Number.isNaN(n)) return String(value);
@@ -339,7 +363,7 @@ function formatCell(value: string | number | null | undefined, numeric: boolean)
 }
 
 function numericStats(
-  rows: Record<string, string | number | null | undefined>[],
+  rows: Record<string, string | number | boolean | null | undefined>[],
   colName: string
 ): { min: string; max: string } | null {
   const values = rows
@@ -354,7 +378,7 @@ function numericStats(
 }
 
 function histogramBins(
-  rows: Record<string, string | number | null | undefined>[],
+  rows: Record<string, string | number | boolean | null | undefined>[],
   colName: string
 ): { counts: number[] } | null {
   const values = rows
@@ -377,7 +401,7 @@ function histogramBins(
 }
 
 function countDistinct(
-  rows: Record<string, string | number | null | undefined>[],
+  rows: Record<string, string | number | boolean | null | undefined>[],
   colName: string
 ): number {
   const set = new Set(
@@ -390,7 +414,7 @@ function countDistinct(
 }
 
 function categoricalSegments(
-  rows: Record<string, string | number | null | undefined>[],
+  rows: Record<string, string | number | boolean | null | undefined>[],
   colName: string
 ): { segments: { label: string; count: number }[]; total: number } | null {
   const counts: Record<string, number> = {};

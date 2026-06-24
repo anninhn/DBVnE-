@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { Category, Dataset } from "@/lib/mock/datasets";
-import { CATEGORY_LABELS } from "@/lib/mock/datasets";
+import type { Category, Dataset } from "@/lib/types/dataset";
+import { CATEGORY_LABELS } from "@/lib/types/dataset";
 
 type SortKey = "trending" | "recent" | "downloaded" | "liked";
 

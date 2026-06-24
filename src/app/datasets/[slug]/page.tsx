@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getDatasetBySlug } from "@/lib/mock/datasets";
+import { getDatasetBySlug } from "@/lib/data/datasets";
 import TabSwitcher from "./TabSwitcher";
 import DatasetViewer from "./DatasetViewer";
 import MetadataSidebar from "./MetadataSidebar";
+import Markdown from "./Markdown";
+import DataDictionary from "./DataDictionary";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -12,7 +14,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const dataset = getDatasetBySlug(slug);
+  const dataset = await getDatasetBySlug(slug);
   if (!dataset) return { title: "Không tìm thấy dataset" };
   return { title: `${dataset.title} — VNExpress Data Platform` };
 }
@@ -37,7 +39,7 @@ function fileIcon(type?: string): string {
 
 export default async function DatasetPage({ params }: PageProps) {
   const { slug } = await params;
-  const dataset = getDatasetBySlug(slug);
+  const dataset = await getDatasetBySlug(slug);
   if (!dataset) notFound();
 
   return (
@@ -115,31 +117,20 @@ export default async function DatasetPage({ params }: PageProps) {
                 <h2 className="text-lg font-semibold text-hf-text mt-5 mb-2 pb-1.5 border-b border-hf-border">
                   {dataset.title}
                 </h2>
-                <p className="mb-2.5 text-hf-text leading-relaxed">{dataset.description}</p>
+                <Markdown>{dataset.description}</Markdown>
                 <p className="mb-2.5 text-hf-text leading-relaxed">
                   <strong>Nguồn:</strong> {dataset.source}
                 </p>
-                {dataset.data_dictionary.length > 0 && (
-                  <>
-                    <h3 className="text-base font-semibold text-hf-text mt-5 mb-2">Trường dữ liệu</h3>
-                    <ul className="list-disc ml-5 mb-2.5">
-                      {dataset.data_dictionary.slice(0, 8).map((d) => (
-                        <li key={d.column_name} className="mb-1">
-                          <code className="font-mono text-sm bg-hf-bg-muted px-1.5 py-0.5 rounded">
-                            {d.column_name}
-                          </code>
-                          {" — "}
-                          {d.label_vi}
-                          {d.unit && ` (${d.unit})`}
-                        </li>
-                      ))}
-                      {dataset.data_dictionary.length > 8 && (
-                        <li className="text-hf-text-muted text-sm">
-                          ... và {dataset.data_dictionary.length - 8} trường khác
-                        </li>
-                      )}
-                    </ul>
-                  </>
+                {dataset.resources.length > 0 && dataset.data_dictionary.length > 0 && (
+                  <div className="mt-6">
+                    <h2 className="text-lg font-semibold text-hf-text mt-5 mb-2 pb-1.5 border-b border-hf-border">
+                      Từ điển dữ liệu
+                    </h2>
+                    <DataDictionary
+                      resources={dataset.resources}
+                      dictionary={dataset.data_dictionary}
+                    />
+                  </div>
                 )}
               </div>
             </div>
