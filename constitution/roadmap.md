@@ -1,46 +1,36 @@
 # Roadmap
 
-## Phase 1 — Dataset Hub (Tháng 6–7)
+## Phase 1 — Dataset Catalog (re-architected 2026-07-02)
 
-**Mục tiêu**: Xây nơi tập trung mọi raw data tòa soạn. HF-style frontend pattern cho browse/preview/download. Data journalist browse, preview, download. Mọi dataset tòa soạn cần được tập trung 1 nơi.
+**Mục tiêu**: File-based catalog + AI-assisted upload + tracking usage. Mục đích chính **không phải** lưu mọi data tòa soạn, và các data đã được lưu từ các bên khác như GSO, World Bank — mà là **demand discovery**: thu thập + chuẩn hóa + track usage dataset để biết cái nào đáng đầu tư structured query (Phase 2).
 
-**Scope data**: Không giới hạn 34 tỉnh — bao gồm kinh tế vĩ mô, quốc tế, dân số, giáo dục, y tế, bầu cử, khí hậu, PDF reports, MP3 phỏng vấn, GeoJSON... Mọi data tòa soạn cần.
+**Substrate**: File-based (git + markdown + parquet), KHÔNG PostgreSQL cho Phase 1. Next.js giữ từ F1, kết hợp SSG (catalog) + dynamic API route (upload). Chi tiết: `constitution/tech-stack.md`.
 
-**Scope MVP (replanned 2026-06-24)**: Chỉ read-path — frontend HF (đã build ở `specs/2026-06-23-hf-frontend-demo/`) wire vào DB + API thật. Upload, quality scoring, data dictionary browse page **deferred** (xem "Deferred trong Phase 1" cuối phase). Phase 1 chia thành 5 feature độc lập, mỗi feature 1 spec dưới `specs/2026-06-24-<name>/`, build theo thứ tự F1→F5.
+**Spec**: cần viết lại specs cho lần re-architecture này.
 
-### F1 — Dataset Catalog & Listing · `specs/2026-06-24-dataset-catalog/`
-- **Foundation (substrate)**: tạo constitution schema clean (`datasets`, `resources`, `data_dictionary`, `upload_log`, reuse `tags`); DROP legacy entity `resources`/`resource_versions`/`indicator_metadata`; KEEP typed tables `province_stats`/`wards`/`leadership` làm nguồn seed.
-- Seed 1 dataset thật "Hồ sơ 34 tỉnh thành 2025" (3 resources + ~25 dictionary entries).
-- **Capability**: browse + find datasets. HF compact-row listing `/` với sidebar filters, search, sort. Listing hiện chỉ dataset thật (mock datasets ẩn — không badge DEMO); thêm dataset mới qua SQL seed đến khi upload feature build.
-- API: `GET /api/datasets`.
-- Build: schema migration `005`, seed `006`, types `src/lib/types/dataset.ts`, data layer `src/lib/data/datasets.ts`.
+### Build chunks trong Phase 1 re-arch
 
-### F2 — Dataset Detail & Card · `specs/2026-06-24-dataset-detail/`
-- **Capability**: đọc metadata, nguồn, mô tả của 1 dataset. Detail page header (`org/name`), metadata pills, Dataset card tab (description, source, README, dictionary preview), sidebar (Tải về/Quy mô/Nguồn gốc).
-- API: `GET /api/datasets/[slug]` (full dataset + resources + dictionary).
-- Build: wire `datasets/[slug]/page.tsx` vào data layer (component không đổi).
+1. **Migration foundation** — Tạo `datasets/` metadata folder trong GitHub + setup Cloudflare R2 bucket (`staging/`, `<slug>/` prefixes, lifecycle rule 24h cho staging). Migrate "Hồ sơ 34 tỉnh" từ PostgreSQL: export tables → CSV upload R2, đồng thời generate `metadata.yaml` + `dictionary.md` commit GitHub (script `tools/migrate_f1_to_files.py`). `tags.yaml` controlled vocabulary.
+2. **Catalog display (SSG)** — Listing + detail page đọc từ `datasets/*/metadata.yaml` thay vì PostgreSQL. File preview fetch trực tiếp từ R2 URL trong `files:` field. Giữ DatasetCard, DataViewer, Histogram components (đổi data source). Pagefind search.
+3. **Upload wizard UI** — `/upload` page drag-and-drop + multi-step: presigned URL upload → server analyze → review AI proposal → edit → commit. Components mới: UploadDropzone (gọi `/api/upload/presign`, PUT R2), MetadataEditor, DictionaryEditor.
+4. **AI Dataset Reviewer backend** — `/api/upload/analyze` server fetch file từ R2 → Claude API với per-format system prompt → đề xuất metadata + dictionary. `/api/upload/commit` user-approved → R2 object move `staging/` → `<slug>/` + git push metadata → trigger rebuild.
+5. **Tracking** — Plausible/Umami integration. Log view/download/request. Dashboard đơn giản cho Ninh xem top datasets.
 
-### F3 — Data Viewer · `specs/2026-06-24-data-viewer/`
-- **Capability**: preview rows + hiểu phân bố mỗi cột. DatasetViewer: resource dropdown, bảng với per-column mini charts (histogram numeric / proportion bar categorical), type badges, `min→max`/`N giá trị`, pagination, "End of preview".
-- API: dùng F2's route (resources mang `structured_data` JSONB + `columns`).
-- **Column statistics** (`specs/2026-06-24-column-statistics/`, built alongside F1): mini charts đọc `resources.column_stats` JSONB — stats precompute ở seed time trên **full typed table** (không phải 10-row preview), nên histogram/proportion bar phản ánh distribution thật. Viewer fallback về client-side compute từ preview nếu `column_stats` null.
-- Build: hero viewer render real province_stats rows, histograms từ real data, dropdown switch 3 resources.
+### Superseded (cũ, không build tiếp)
 
-### F4 — Files Browser · `specs/2026-06-24-files-browser/`
-- **Capability**: xem files trong dataset + download. Files and versions tab: bảng file (filename, size, rows, updated, download) với icon theo loại file.
-- API: F2's route trả resources; feature này chỉ render subset file.
-- Build: Files tab render 3 hero resources đúng size/rows; download link trỏ `file_url`.
+F1-F5 plan cũ (PostgreSQL-backed) **superseded by re-arch**:
+- ~~F1 — Dataset Catalog & Listing~~ → đã ship trên PostgreSQL, sẽ migrate sang files
+- ~~F2 — Dataset Detail & Card~~ → merge vào build chunk #2
+- ~~F3 — Data Viewer~~ → giữ component, merge vào build chunk #2
+- ~~F4 — Files Browser~~ → merge vào detail page (build chunk #2)
+- ~~F5 — Search & Filter API contract~~ → thay bằng Pagefind client-side search (build chunk #2)
 
-### F5 — Search & Filter API contract · `specs/2026-06-24-search-filter/`
-- **Capability**: tìm dataset trong catalog bằng text/category/tag/size. Listing search box + sidebar facets (hiện client-side).
-- Build: promote search/filter lên server-side — `GET /api/datasets?search=&category=&tag=&size=&sort=` chấp nhận và honor query params. UI vẫn filter client-side (5 datasets), nhưng API contract sẵn sàng cho scale Phase 2. Cleanup legacy routes ở đây.
+### Vẫn deferred (giữ từ plan cũ)
 
-### Deferred trong Phase 1 (moved out of MVP scope)
-- **Upload flow** (tạo dataset / thêm resources / trích CSV preview / auto-dictionary) — cũ 1.4, defer vì read-path priority
-- **Quality scoring** (completeness/freshness/validity) — cũ 1.5, defer (Chất lượng box đã gỡ khỏi UI)
-- **Data dictionary browse page** — cũ 1.5, defer (dictionary hiện render trong detail page)
+- **Quality scoring auto-calculated** — chưa có formula rõ, để Ninh đánh giá manual dựa usage data
+- **Data dictionary browse page riêng** — dictionary hiện render trong detail page là đủ
 
-**Deliverable**: Dataset hub thật, data journalist browse/preview/download dataset thật. Upload + quality tracking theo sau.
+**Deliverable**: Catalog thật trên file-based substrate + Upload wizard AI-assisted hoạt động + Tracking thu thập usage → đủ signal để quyết định Phase 2.
 
 ---
 
@@ -142,3 +132,4 @@
 | 2026-06-12 | **Clarify scope và approach** | Phase 1 scope: mọi data tòa soạn (không chỉ 34 tỉnh). HF-style frontend = pattern cho browse/preview, không phải copy HF. Phase 2/3 = research direction, chưa committed. Đánh dấu Phase 2/3 là "điều chỉnh sau khi phase trước chạy". |
 | 2026-06-24 | **Phase 1 → 5 features (read-path MVP)** | Cũ: Phase 1 gộp 6 mục (1.1–1.6) gồm cả upload + quality + dictionary browse. Mới: Phase 1 chia 5 feature độc lập F1–F5 (Catalog/Detail/Viewer/Files/Search), chỉ read-path. Frontend HF đã build (spec 2026-06-23). Upload, quality scoring, dictionary browse page → "Deferred trong Phase 1". Schema: legacy entity `resources` drop, build constitution `resources` clean. Listing hiện chỉ dataset thật (mock ẩn); thêm qua SQL seed đến khi upload build. Lý do: chốt UI trước (đã duyệt prototype), wire vào DB thật từng feature, không over-build upload trước khi biết usage. |
 | 2026-06-24 | **Column statistics (precomputed, full-table)** | Thêm `resources.column_stats` JSONB — mini charts của Dataset Viewer (F3) đọc stats precompute ở seed time trên full typed table thay vì compute từ 10-row preview. Trước: histogram/proportion bar phản ánh phân bố sai (chỉ 10 province đầu theo alphabet). Sau: phân bố thật của 34 provinces, HCM outlier hiện rõ. Migration 007 + update seed 006 (self-sufficient). Lý do: HF làm đúng vì precompute server-side; copy visual mà không copy architecture = chart đúng hình sai số. Xem `specs/2026-06-24-column-statistics/`. |
+| 2026-07-02 | **Phase 1 Re-architecture: PostgreSQL → File-based + AI-assisted upload** | Cũ: Phase 1 = Next.js + Supabase PostgreSQL + 5 features F1-F5 (catalog/detail/viewer/files/search) + upload deferred. Mới: file-based storage (git + markdown + parquet/CSV/XLSX giữ nguyên gốc), AI-assisted upload wizard trên UI (drag-drop → Claude phân tích → user review metadata/dictionary → commit), Plausible tracking, không PostgreSQL cho Phase 1. Lý do (4): (1) Treadmill chẩn đoán — mỗi dataset = ~1000 dòng code SQL seed, không scale cho 1 người; (2) `upload_log` table = reimplementation git history; (3) Phase 1 purpose thật là **demand discovery** qua tracking, không phải "single source of truth" warehouse; (4) User sẽ không tự viết metadata/dictionary → cần AI-assisted tại upload time. DuckDB (Phase 2) query trực tiếp CSV/XLSX/Parquet — không cần PostgreSQL substrate sớm. PostgreSQL move xuống Phase 2 optional (chỉ khi promotion structured table cần). F1-F5 plan cũ superseded. Xem `specs/2026-07-02-phase1-rearch/`, `constitution/tech-stack.md` (re-architected). |

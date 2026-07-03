@@ -2,256 +2,578 @@
 
 ## System Design
 
-Kho dữ liệu + query + intelligence platform cho tòa soạn VNExpress, xây dựng incremental qua 3 phases.
+Dataset catalog + query + intelligence platform cho tòa soạn VNExpress, xây dựng incremental qua 3 phases. **Re-architected 2026-07-02**: Phase 1 chuyển từ PostgreSQL-centric sang file-based + AI-assisted upload trên UI.
 
 ```
-Phase 1: Next.js Web App + Supabase + R2 (Dataset Hub)
-Phase 2: + LLM Layer (Query Templates → Text-to-SQL)
-Phase 3: + RAG Pipeline + Vector DB (Intelligence Platform)
+Phase 1: Next.js (catalog static + upload dynamic) + Cloudflare R2 (file storage) + GitHub repo (metadata) + Claude API (upload AI assist)
+Phase 2: + DuckDB (query parquet from R2 directly) → Promote popular to PostgreSQL (optional)
+Phase 3: + RAG Pipeline (pgvector hoặc separate vector store) + Claude API
 ```
 
-## Phase 1 Stack (hiện tại)
+**Tool nội bộ, không public**: không ưu tiên SEO, không cần auth phức tạp, không cần scale massively.
+
+**Storage principle**: tách rõ 2 loại storage theo tính chất data:
+- **Metadata + dictionary + tags + README** (text, nhẹ) → **GitHub repo** — git history = provenance
+- **Raw files** (CSV/XLSX/Parquet/PDF/MP3/GeoJSON binary, bất kỳ size) → **Cloudflare R2** — zero egress, presigned URL upload
+
+## Phase 1 Stack (re-architected 2026-07-02)
 
 ```
-Frontend:      Next.js 15 (App Router) + Tailwind CSS
-API:           Next.js API Routes (serverless functions)
-Database:      PostgreSQL on Supabase
-File Storage:  Cloudflare R2 (PDF, MP3, XLSX, GeoJSON)
-Pipeline:      Python 3 + pandas
-Hosting:       Vercel (auto-deploys from GitHub)
+Framework:       Next.js 15 (App Router) — GIỮ từ F1 hiện tại
+Catalog:         Static Generation (SSG) từ metadata files trong GitHub repo
+Upload:          Dynamic page + API Route với presigned URL pattern
+Metadata store:  GitHub repo (text files: metadata.yaml, dictionary.md, tags.yaml)
+File store:      Cloudflare R2 (binary files: CSV, XLSX, Parquet, PDF, MP3, GeoJSON)
+                 - Zero egress, free 10GB tier
+                 - Browser upload trực tiếp qua presigned URL (không qua Vercel)
+                 - Object versioning cho file history
+Search:          Pagefind (built vào static catalog) hoặc client-side flexsearch
+Data Preview:    Client-side render, fetch file trực tiếp từ R2 URL
+Tracking:        Plausible (self-host hoặc $9/mo cloud) hoặc Umami (free self-host)
+AI Upload:       Claude API (Anthropic) qua Next.js API route
+Hosting:         Vercel (đã deploy F1) hoặc Cloudflare Pages
 ```
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
-| Framework | Next.js 15 (App Router) | Full-stack React, SSR, API routes, native Vercel |
+| Framework | Next.js 15 (App Router) | Đã có F1 codebase, giữ; vừa SSG cho catalog vừa API route cho upload |
 | Language | TypeScript | Type safety |
-| Database | PostgreSQL | JSONB support, GIN index, Supabase managed |
-| Database host | Supabase | Managed Postgres, dashboard UI, Auth sẵn sàng khi cần |
-| Object Storage | Cloudflare R2 | S3-compatible, không egress fee |
-| CSS | Tailwind CSS | Utility-first, rapid prototyping |
-| Data pipeline | Python 3 + pandas | Xử lý CSV/Excel chuẩn |
-| Hosting | Vercel | GitHub integration, auto-deploy |
-| Version control | Git + GitHub | Standard |
+| Source of truth | Git (GitHub) | Version control miễn phí, provenance tự động qua git history (không cần `upload_log` table) |
+| Metadata format | YAML + Markdown (format-aware templates) | Đơn giản, human-readable; **template khác nhau theo file type** |
+| Data format | **Giữ nguyên gốc** user upload — CSV, XLSX, Parquet, PDF, MP3, GeoJSON. Không ép convert | Tòa soạn VnExpress chủ yếu CSV + XLSX + PDF; converting = friction |
+| Catalog search | Pagefind hoặc flexsearch | Built-in static site search, không cần backend |
+| Tracking | Plausible / Umami | Privacy-friendly, đơn giản, không cần DB |
+| AI assist | Claude API (Anthropic) | Phân tích file → propose metadata (template theo format) |
+| Hosting | Vercel | Đã setup F1, auto-deploy từ git push |
+| Pipeline | Python 3 + pandas (cho script migration) | Parse file cũ |
 
-## Phase 2 Stack (sau khi Phase 1 hoàn thành)
+### Format support matrix
+
+| Format | Lưu trữ | Data Preview | DuckDB query (Phase 2) | AI Reviewer hành vi |
+|--------|---------|--------------|------------------------|---------------------|
+| **CSV / TSV** | ✅ Nguyên gốc | ✅ Table + histogram | ✅ Native | Inspect columns + sample → metadata + dictionary |
+| **XLSX** | ✅ Nguyên gốc | ✅ SheetJS render | ✅ Native | Inspect sheets + columns → metadata + dictionary |
+| **Parquet** | ✅ Nguyên gốc | ✅ DuckDB-WASM | ✅ Native (best perf) | Inspect schema → metadata + dictionary |
+| **PDF** | ✅ Nguyên gốc | ⚠️ Extract text + first page render | ❌ Extract tables ra CSV trước | Extract text → metadata + key_findings (**không dictionary**) |
+| **MP3** | ✅ Nguyên gốc | ⚠️ Waveform + playback | ❌ Không áp dụng | Chỉ metadata cơ bản (Whisper transcript ở Phase 3) |
+| **GeoJSON** | ✅ Nguyên gốc | ✅ Map render | ⚠️ Spatial extension | Inspect properties → metadata + light properties schema |
+
+**Bắc star thiết kế**: mỗi metadata field phải serve 1 trong 3 mục đích:
+1. **Query**: search/filter/find (title, tags, category, source, key_findings)
+2. **Preview**: render mà không cần download (file_format, row_count, geometry_type, page_count)
+3. **Quick understanding**: grasp nội dung mà không mở file (description, key_findings, methodology, coverage)
+
+Field nào không serve 1 trong 3 → không capture.
+
+### Tại sao không PostgreSQL cho Phase 1?
+
+| Việc Phase 1 cần | PostgreSQL | Files + git |
+|---|---|---|
+| Lưu metadata dataset | ✅ | ✅ YAML |
+| Lưu data dictionary | ✅ | ✅ Markdown |
+| Lưu raw data | ⚠️ JSONB hoặc link R2 | ✅ File trực tiếp |
+| Browse catalog | ✅ | ✅ Static site |
+| Search | ✅ LIKE query | ✅ Pagefind |
+| Filter tag/category | ✅ WHERE | ✅ Build-time group hoặc client-side |
+| Sort by popularity | ✅ ORDER BY | ✅ Đọc analytics API |
+| **Provenance** (ai, khi nào) | ⚠️ `upload_log` table (reimplement git) | ✅ **git history — mạnh hơn** |
+| Schema migration | ❌ Mỗi thay đổi = SQL migration | ✅ Không cần |
+
+PostgreSQL chỉ trả giá (pay off) ở Phase 2 (cross-dataset SQL query, concurrent writes từ nhiều user, high-volume transactions). Phase 1 không có requirement nào trong đó.
+
+## Upload Flow — UI đa bước với AI Assist (key innovation)
+
+**Yêu cầu**: Upload là web UI feature, không phải CLI. User drag-and-drop file → browser upload thẳng lên R2 qua presigned URL (không qua Vercel serverless) → server fetch file từ R2 để analyze → frontend guide user review/edit metadata + (nếu tabular) dictionary → user OK hết → server commit metadata vào GitHub.
+
+**Presigned URL pattern là bắt buộc** — Vercel serverless có body size limit (~4.5 MB hobby, 5-50 MB Pro). Dataset thật có thể 50-200 MB (XLSX niên giám, PDF báo cáo). Browser upload trực tiếp lên R2 = không giới hạn size, không tốn Vercel bandwidth.
+
+**Flow cụ thể thay đổi theo format**:
+- **Tabular** (CSV/XLSX/Parquet): inspect columns + sample rows → propose metadata + dictionary
+- **PDF**: extract text → propose metadata + key_findings (NO dictionary section)
+- **MP3**: chỉ metadata cơ bản (duration, participants optional) — không AI analysis sâu (Phase 3 Whisper transcript sau)
+- **GeoJSON**: inspect properties schema → propose metadata + light properties dictionary
+
+Ví dụ dưới đây là cho **tabular** (phổ biến nhất). PDF/MP3/GeoJSON tương tự nhưng bỏ phần dictionary.
+
+```
+┌─ Bước 1: Drag & drop ─────────────────────────┐
+│  Upload page (/upload)                         │
+│  ┌──────────────────────────────────────────┐  │
+│  │   📁 Kéo thả file vào đây                 │  │
+│  │      hoặc [Chọn file]                     │  │
+│  │                                            │  │
+│  │   Hỗ trợ: CSV, XLSX, Parquet, PDF, MP3    │  │
+│  │   Không giới hạn size (upload thẳng R2)    │  │
+│  └──────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────┘
+                     ↓
+┌─ Bước 2: Presigned URL + R2 upload ───────────┐
+│  POST /api/upload/presign (Next.js API route) │
+│    → trả { presignedUrl, r2Key, fileId }       │
+│                                                 │
+│  Browser PUT file → presignedUrl (R2 direct)   │
+│    (không qua Vercel, không giới hạn size)     │
+└─────────────────────────────────────────────────┘
+                     ↓
+┌─ Bước 3: Backend analyze ──────────────────────┐
+│  POST /api/upload/analyze (gửi fileId)         │
+│                                                 │
+│  Server side:                                   │
+│  1. Fetch file từ R2 (private, server-only)    │
+│  2. Inspect: columns, dtypes, sample rows,     │
+│     basic stats (min/max/unique/null count)    │
+│  3. Call Claude API với "Dataset Reviewer"     │
+│     subagent system prompt + inspection JSON   │
+│  4. Return proposal JSON cho frontend          │
+│  (File vẫn nằm trong R2 — staged, chưa commit) │
+└─────────────────────────────────────────────────┘
+                     ↓
+┌─ Bước 4: Review UI (FRONTEND GUIDE USER) ──────┐
+│  /upload/preview (cùng page, đổi state)        │
+│                                                 │
+│  ┌─ File info ──────────────────────────────┐  │
+│  │ grdp_2024.csv • 34 rows × 5 cols • 2 KB  │  │
+│  └──────────────────────────────────────────┘  │
+│                                                 │
+│  ┌─ Data preview (first 10 rows) ───────────┐  │
+│  │ | tinh      | grdp_2024 | growth | ...   │  │
+│  │ | Hà Nội    | 150000000 | 7.5    | ...   │  │
+│  │ | ...       | ...       | ...    | ...   │  │
+│  └──────────────────────────────────────────┘  │
+│                                                 │
+│  ┌─ 🤖 AI-proposed metadata (EDIT ĐƯỢC) ────┐  │
+│  │ Title:       [GRDP 34 tỉnh 2024       ]  │  │
+│  │ Description: [Tổng hợp GRDP 2024...   ]  │  │
+│  │ Category:    [kinh-te ▾]                  │  │
+│  │ Tags:        [kinh-te] [grdp] [+]         │  │
+│  │ Source:      [GSO (inferred) ▾]           │  │
+│  │ Source URL:  [https://gso.gov.vn/...  ]  │  │
+│  │ Confidence:  🟢 High / 🟡 Medium / 🔴 Low│  │
+│  └──────────────────────────────────────────┘  │
+│                                                 │
+│  ┌─ 🤖 AI-proposed data dictionary ─────────┐  │
+│  │ | Column    | Type   | Unit    | Desc  |  │  │
+│  │ | tinh      | string | -       | Tên   |  │  │
+│  │ |           |        |         | tỉnh  |  │  │
+│  │ | grdp_2024 | number | tỷ VND  | GRDP  |  │  │
+│  │ |           |        |         | thực  |  │  │
+│  │ | growth    | number | %       | Tăng  |  │  │
+│  │ |           |        |         | trưởng|  │  │
+│  │ [Mỗi cell EDIT ĐƯỢC]                      │  │
+│  └──────────────────────────────────────────┘  │
+│                                                 │
+│  ┌─ AI questions (cần user confirm) ────────┐  │
+│  │ ⚠️ "Source có phải GSO không? (tôi đoán)"│  │
+│  │ ⚠️ "Đơn vị grdp_2024 là tỷ VND đúng không?"│  │
+│  └──────────────────────────────────────────┘  │
+│                                                 │
+│  [← Hủy]              [💾 Lưu draft]  [✓ XÁC NHẬN & COMMIT]│
+└─────────────────────────────────────────────────┘
+                     ↓ (user click XÁC NHẬN)
+┌─ Bước 5: Commit metadata ──────────────────────┐
+│  POST /api/upload/commit                       │
+│                                                 │
+│  Server side:                                   │
+│  1. R2 object: chuyển từ staging → final path   │
+│     (e.g. staging/<fileId> → <slug>/data/...)   │
+│  2. Viết metadata.yaml — gồm field `files:`     │
+│     liệt kê R2 object keys + public/default URL │
+│  3. Viết dictionary.md (nếu tabular/geojson)    │
+│  4. Git commit + push (server-side, GH PAT)     │
+│     → chỉ metadata text, không có binary        │
+│  5. Trigger Vercel rebuild → catalog updated    │
+│                                                 │
+│  User redirect tới /dataset/<slug> (live)       │
+│  (Preview page fetch file trực tiếp từ R2 URL)  │
+└─────────────────────────────────────────────────┘
+```
+
+**Effort per clean dataset**: 5-10 phút (chủ yếu review AI proposal trên UI).
+
+**Lý do thiết kế này**:
+- **Không giới hạn file size**: presigned URL upload bypass Vercel body limit. Dataset 100-200 MB OK.
+- **Không tốn Vercel bandwidth**: traffic browser ↔ R2 thẳng, Vercel chỉ handle metadata.
+- **User không bao giờ phải tự viết metadata từ trang trắng** — AI draft trước.
+- **User vẫn kiểm soát**: mọi field edit được, AI flag uncertainty rõ ràng.
+- **Server commit metadata保证 schema chuẩn** (không file lỗi) + raw file đã ở R2 (không cần move).
+- **Trigger rebuild** → catalog cập nhật ngay sau upload.
+- **Staging pattern**: file nằm ở `staging/<fileId>` trong R2 cho đến khi commit. Nếu user hủy → R2 lifecycle policy auto-clean sau 24h.
+
+### Subagent "Dataset Reviewer" (backend, format-aware)
+
+Không phải Claude Code subagent (đây là production runtime). Là **multi-prompt system** — system prompt khác nhau theo file type, gọi từ Next.js API route:
+
+```typescript
+// src/app/api/upload/analyze/route.ts (pseudo)
+// File đã ở R2 (đã upload qua presigned URL ở bước trước)
+const { r2Key, filename } = await db.uploads.get(fileId); // track staging uploads
+const format = detectFormat(filename); // csv | xlsx | parquet | pdf | mp3 | geojson
+
+// Stream/fetch file từ R2 (server-only, private read)
+const fileBuffer = await r2.getObject(r2Key);
+const inspection = await inspectFile(fileBuffer, format); // columns+stats | text+pages | ...
+
+const prompt = DATASET_REVIEWER_PROMPTS[format]; // per-format system prompt
+const response = await anthropic.messages.create({
+  model: "claude-opus-4-6",
+  system: prompt,
+  messages: [{
+    role: "user",
+    content: [
+      { type: "text", text: `File: ${filename} (${format})` },
+      // Cho PDF có thể dùng document tool, cho tabular inspection JSON là đủ:
+      { type: "text", text: `Inspection: ${JSON.stringify(inspection)}` },
+    ]
+  }]
+});
+
+// Response schema cũng per-format:
+// - tabular → { metadata, dictionary, questions }
+// - pdf     → { metadata, key_findings, questions }  (no dictionary)
+// - mp3     → { metadata }                            (no analysis)
+// - geojson → { metadata, properties_dictionary }
+return Response.json({ proposal: response, filePreview });
+```
+
+**Prompt templates stored ở**: `tools/prompts/` (version controlled):
+- `dataset-reviewer-tabular.md`
+- `dataset-reviewer-pdf.md`
+- `dataset-reviewer-mp3.md` (minimal)
+- `dataset-reviewer-geojson.md`
+
+## Folder Structure
+
+**Tách 2 loại storage**:
+
+```
+GITHUB REPO (metadata only — text, nhẹ, git-tracked)       R2 BUCKET (raw files — binary, bất kỳ size)
+┌──────────────────────────────────────────────┐          ┌──────────────────────────────────────────┐
+│ datasets/                                     │          │ <bucket>/                                 │
+│ ├── ho-so-34-tinh/                  # TABULAR │          │ ├── ho-so-34-tinh/                        │
+│ │   ├── metadata.yaml              # có files:│  ──────► │ │   ├── province_stats.csv                 │
+│ │   ├── dictionary.md                         │  ref via │ │   ├── wards.csv                          │
+│ │   └── README.md                  # optional │   r2 key │ │   └── leadership.csv                     │
+│ ├── bao-cao-gso-2024/                  # PDF  │          │ ├── bao-cao-gso-2024/                     │
+│ │   ├── metadata.yaml              # có files:│  ──────► │ │   ├── bao-cao-gso-2024.pdf               │
+│ │   └── preview/                              │          │ │   └── preview/  (auto-gen, lifecycle)    │
+│ │       ├── page-1.png                        │          │ │       ├── page-1.png                     │
+│ │       └── extracted.txt                     │          │ │       └── extracted.txt                  │
+│ ├── phong-van-chu-tich-tphcm/          # MP3  │          │ ├── phong-van-chu-tich-tphcm/             │
+│ │   └── metadata.yaml                         │  ──────► │ │   └── phong-van-2024-12.mp3              │
+│ ├── ranh-gioi-34-tinh/              # GeoJSON │          │ ├── ranh-gioi-34-tinh/                    │
+│ │   ├── metadata.yaml                         │  ──────► │ │   └── ranh-gioi.geojson                  │
+│ │   └── dictionary.md                         │          │ └── staging/  # upload chờ commit, 24h TTL│
+│ └── tags.yaml                       # vocab   │          │     └── <fileId>                          │
+└──────────────────────────────────────────────┘          └──────────────────────────────────────────┘
+```
+
+**Quy ước**:
+- Mọi dataset có `metadata.yaml` trong GitHub (bắt buộc, format-aware)
+- `metadata.yaml` chứa field `files:` liệt kê R2 object keys + URL — đây là cầu nối giữa 2 store
+- Raw files **không** commit vào git — chỉ lưu ở R2
+- Chỉ tabular + geojson có `dictionary.md` (column/properties schema)
+- PDF preview (page render + extracted text) có thể generate-on-demand và lưu ở R2 `preview/` subfolder với lifecycle rule
+- MP3 không có preview riêng (render bằng audio element, src là R2 URL)
+- R2 bucket có `staging/` prefix cho upload chờ commit — lifecycle rule auto-clean sau 24h nếu không commit
+
+### Format-aware metadata templates
+
+**Nguyên tắc**: template metadata khác nhau theo file type. Tabular có data dictionary; PDF/MP3 không cần (chỉ metadata cơ bản). Mục tiêu: **dễ query, dễ preview, dễ hiểu nhanh**.
+
+#### Common fields (mọi format đều có)
+
+```yaml
+title:           # Query + Understanding — bắt buộc
+slug:            # Query (URL) — auto-generate từ title, edit được
+description:     # Query + Understanding — bắt buộc, 1-3 câu
+category:        # Query filter — từ tags.yaml controlled vocabulary
+tags:            # Query filter — từ tags.yaml controlled vocabulary
+source:          # Understanding (provenance)
+  name:
+  url:
+  retrieved:
+  method:        # download | email | leak | scrape | manual_entry
+license:         # public | internal | restricted
+format:          # csv | xlsx | parquet | pdf | mp3 | geojson (auto-detected)
+size_mb:         # auto
+uploaded_by:     # auto from session/git
+uploaded_at:     # auto
+files:           # R2 object references — CẦU NỐI tới R2 bucket
+  - path: ho-so-34-tinh/province_stats.csv   # R2 object key
+    size_mb: 0.4
+    sha256: abc123...                          # integrity check
+  - path: ho-so-34-tinh/wards.csv
+    size_mb: 1.1
+    sha256: def456...
+r2_public_base:  # optional — nếu bucket có public read qua custom domain
+  # https://data.vnexpress.net/  →  files[].path appended tại runtime
+```
+
+#### Tabular (CSV/XLSX/Parquet) — thêm fields + có dictionary
+
+```yaml
+row_count:              # auto
+columns_count:          # auto
+coverage:
+  temporal: [2024]      # list of years
+  geographic: "34 tỉnh thành VN"
+next_refresh: 2026-02-01   # khi nào data cần update lại (null = one-time)
+methodology_notes: |        # optional, ghi chú về cách tính/chuẩn hóa
+  3 cách tính GRDP: cơ bản/thực tế/so sánh — file dùng giá thực tế
+```
+
+Plus `dictionary.md` (markdown table): column | type | unit | description | source.
+
+#### PDF (document) — KHÔNG có dictionary
+
+```yaml
+page_count: 45             # auto
+doc_type: report           # report | whitepaper | letter | legal | research | presentation
+published_date: 2025-01-15 # ngày tài liệu publish (khác retrieved_date)
+language: vi               # vi | en | other
+key_findings: |            # optional nhưng khuyến khích — 1-3 câu tóm tắt phát phẩm chính
+  - GRDP TPHCM 2024 tăng 7.5%, cao thứ 2 cả nước
+  - FDI Bắc Ninh dẫn đầu, chủ yếu từ Hàn Quốc
+  - ...
+# KHÔNG có row_count, columns_count, dictionary.md
+```
+
+Preview: first page render + extracted text (search được).
+
+#### MP3 (audio) — KHÔNG có dictionary
+
+```yaml
+duration_seconds: 3600     # auto
+participants:              # list of names (nếu biết)
+  - "Chủ tịch TPHCM"
+  - "PV VnExpress"
+recorded_date: 2024-12-15
+language: vi
+# KHÔNG có row_count, columns_count, dictionary.md
+# Transcript = Phase 3 (Whisper)
+```
+
+Preview: waveform + playback controls.
+
+#### GeoJSON (geographic) — light dictionary cho properties
+
+```yaml
+feature_count: 34          # auto
+geometry_type: Polygon     # Point | Line | Polygon | Multi*
+bbox: [102.1, 8.2, 109.5, 23.4]   # auto
+crs: EPSG:4326             # auto
+# dictionary.md: properties schema (light) — khác tabular ở chỗ mô tả JSON properties
+```
+
+Preview: map render (Leaflet/MapLibre).
+
+## Phase 2 Stack (sau khi Phase 1 thu thập usage data)
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
-| LLM (templates) | TBD — Claude API / OpenAI | Query generation + natural language |
-| Query engine | PostgreSQL views + functions | Promoted structured data |
-| Template system | Custom | Deterministic queries, không hallucinate |
+| LLM | Claude API (Anthropic) | Xử lý tiếng Việt tốt, API ổn định |
+| Query engine (light) | DuckDB | Query CSV/Parquet trực tiếp, sub-second cho scale VN |
+| Query engine (heavy, optional) | PostgreSQL | Chỉ khi dataset promoted cần structured schema nghiêm ngặt |
+| Template system | Custom (Next.js API route) | Deterministic queries, không hallucinate |
+| Promotion pipeline | Python script | Đọc file → validate → insert PostgreSQL (nếu cần) |
+| Usage tracking | Đã có từ Phase 1 (Plausible/Umami) | Reuse |
 
-**Decision để lại Phase 2**: LLM choice, vector DB, embedding model — chờ Phase 1 thu thập usage data rồi quyết định.
+### Data Promotion Pattern (Phase 1 files → Phase 2 structured)
 
-## Phase 3 Stack (sau khi Phase 2 hoàn thành)
+```
+Phase 1 (files)              Phase 2 (light)              Phase 2 (heavy, optional)
+┌──────────────────┐         ┌────────────────────┐       ┌──────────────────┐
+│ datasets/         │         │ DuckDB query       │       │ PostgreSQL       │
+│   metadata.yaml   │──read──→│ trên parquet files │──────→│ promoted_tables  │
+│   dictionary.md   │         │ (no ingestion)     │       │ (typed, indexed) │
+│   data/*.parquet  │         │                    │       │                  │
+│                   │         │ Use case:          │       │ Use case:        │
+│ Tracking qua      │         │ ad-hoc query từ    │       │ production query │
+│ Plausible/Umami   │         │ reporter           │       │ templates, high  │
+│                   │         │                    │       │ volume           │
+└──────────────────┘         └────────────────────┘       └──────────────────┘
+```
+
+**Promotion criteria** (chỉ promote khi Phase 1 tracking chỉ ra):
+1. Top 3-5 datasets theo view/download/repeat_user (rolling 30 ngày)
+2. Tabular với data dictionary đầy đủ
+3. Update frequency justify structured investment
+
+## Phase 3 Stack (research direction)
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
-| Vector DB | TBD (pgvector / Pinecone / Weaviate) | RAG retrieval |
-| Embedding model | TBD | Document + audio embedding |
-| ASR | TBD (Whisper / Vietnamese ASR) | MP3 → text |
-| RAG framework | TBD (LangChain / LlamaIndex / custom) | Multi-source reasoning |
+| Vector DB | pgvector (trên Supabase) HOẶC separate (Qdrant/Weaviate) | Quyết định sau Phase 2 |
+| Embedding | multilingual-e5-large (Hugging Face) | Multilingual, VN support, open-source |
+| ASR | Whisper (OpenAI) | MP3 → transcript |
+| LLM (RAG) | Claude API | Cùng LLM với Phase 2 |
+| RAG framework | Custom (lightweight) | Không LangChain/LlamaIndex |
 
 ## Configuration
 
-| Variable | Description |
-|----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string (Supabase) |
-| `R2_ACCOUNT_ID` | Cloudflare account ID |
-| `R2_ACCESS_KEY_ID` | R2 API token |
-| `R2_SECRET_ACCESS_KEY` | R2 secret |
-| `R2_BUCKET_NAME` | Bucket name |
-| `NEXT_PUBLIC_APP_URL` | App URL |
+| Variable | Description | Phase |
+|----------|-------------|-------|
+| `ANTHROPIC_API_KEY` | Claude API cho upload subagent | Phase 1+ |
+| `R2_ACCOUNT_ID` | Cloudflare account ID | Phase 1+ |
+| `R2_ACCESS_KEY_ID` | R2 access key (server-only, không expose browser) | Phase 1+ |
+| `R2_SECRET_ACCESS_KEY` | R2 secret key (server-only) | Phase 1+ |
+| `R2_BUCKET_NAME` | Tên R2 bucket (e.g. `vne-data-platform`) | Phase 1+ |
+| `R2_PUBLIC_BASE` | Custom domain hoặc R2 public URL cho file đọc từ browser | Phase 1+ |
+| `GITHUB_TOKEN` | PAT để commit metadata từ server | Phase 1+ |
+| `PLAUSIBLE_DOMAIN` | Domain cho Plausible tracking | Phase 1+ |
+| `DATABASE_URL` (nếu cần) | PostgreSQL — chỉ khi Phase 2 promotion | Phase 2+ |
 
-## Architecture (Phase 1)
+**R2 bucket layout** (object keys):
+- `<slug>/<filename>` — committed files (e.g. `ho-so-34-tinh/province_stats.csv`)
+- `<slug>/preview/<generated>` — preview artifacts (PDF page renders, text extracts)
+- `staging/<fileId>` — uploads chờ commit (lifecycle: xóa sau 24h)
 
-```
-┌──────────────────────────────────────────────────────┐
-│  UI LAYER — Next.js Web App                          │
-│  - Dataset listing (giống HF /datasets)              │
-│  - Dataset detail: metadata, dictionary, quality,     │
-│    preview, files                                     │
-│  - Upload form                                        │
-│  - Search & filter                                    │
-└───────────────────────┬──────────────────────────────┘
-                        │
-                  REST API (Next.js)
-                        │
-          ┌─────────────┴──────────────┐
-          ▼                            ▼
-┌─────────────────────┐    ┌──────────────────────┐
-│   PostgreSQL        │    │  Cloudflare R2        │
-│   (Supabase)        │    │  (Object Storage)     │
-│                     │    │                       │
-│  - datasets         │    │  /dataset-slug/       │
-│  - resources        │    │    data.csv           │
-│  - data_dictionary  │    │    report.pdf         │
-│  - tags             │    │    interview.mp3      │
-│  - upload_log       │    │                       │
-└─────────────────────┘    └──────────────────────┘
-```
+**R2 permissions**:
+- Server (Access Key): full read/write/delete — dùng cho analyze, commit, preview generate
+- Browser (presigned URL): PUT-only cho `staging/*` (time-limited 15 phút)
+- Public read (nếu enable): chỉ qua `R2_PUBLIC_BASE` custom domain, scope per-object qua metadata.yaml `files:` list
 
-## Data Model (Phase 1)
+## API Design (Phase 1)
 
-### Design Principle: Dataset-centric
+| Method | Path | Type | Description |
+|--------|------|------|-------------|
+| GET | `/` | SSG | Listing page (generated from `datasets/*/metadata.yaml` at build time) |
+| GET | `/dataset/[slug]` | SSG | Detail + preview page (file fetch từ R2 URL trong metadata.yaml) |
+| GET | `/upload` | Dynamic | Upload wizard UI |
+| POST | `/api/upload/presign` | Dynamic | Trả presigned URL cho browser PUT file thẳng R2 staging |
+| POST | `/api/upload/analyze` | Dynamic | Server fetch file từ R2 → Claude API → proposal JSON |
+| POST | `/api/upload/commit` | Dynamic | User-approved metadata → R2 object move staging→final + git commit |
+| GET | `/search` | Client-side | Pagefind index (no backend) |
+| GET | `/api/files/[...path]` | Dynamic | (Optional) signed URL proxy nếu không muốn public R2 |
 
-Mọi thứ xoay quanh **dataset**. Một dataset có thể là:
-- Dữ liệu tỉnh thành (34 tỉnh × indicators)
-- Dữ liệu bầu cử quốc gia
-- Dữ liệu khí hậu
-- Báo cáo PDF
-- Phỏng vấn MP3
-- Bất kỳ tập dữ liệu nào tòa soạn cần
+**Static catalog** + **dynamic upload** = hybrid Next.js app. Catalog rebuild khi git push.
 
-### `datasets` (bảng trung tâm)
+**R2 access pattern**:
+- Browser upload: PUT qua presigned URL (15 phút TTL, scope `staging/*`)
+- Server analyze/commit: dùng R2 SDK với Access Key
+- Browser preview/download: đọc qua `R2_PUBLIC_BASE` (custom domain) HOẶC `/api/files/*` proxy (signed URL)
 
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `id` | SERIAL | PK | |
-| `slug` | VARCHAR(100) | UNIQUE, NOT NULL | `grdp-34-tinh`, `ket-qua-bau-cu-2026` |
-| `title` | TEXT | NOT NULL | Tên hiển thị |
-| `description` | TEXT | | Mô tả README-style |
-| `category` | VARCHAR(50) | | `kinh-te`, `xa-hoi`, `chinh-tri`, `khi-hau`, `ha-tang` |
-| `tags` | TEXT[] | DEFAULT `{}` | Controlled vocabulary |
-| `license` | VARCHAR(50) | | `internal`, `public`, `restricted` |
-| `year_range` | INT[] | | `[2020, 2021, 2022, 2023, 2024]` |
-| `row_count` | INT | | Số dòng dữ liệu |
-| `file_count` | INT | | Số file đính kèm |
-| `total_size_mb` | NUMERIC | | |
-| `quality_score` | NUMERIC | | 0-100, auto-calculated |
-| `source` | TEXT | | 'GSO Niên giám 2024', 'PCI 2025' |
-| `uploaded_by` | VARCHAR(50) | NOT NULL | |
-| `uploaded_at` | TIMESTAMPTZ | DEFAULT NOW() | |
-| `updated_at` | TIMESTAMPTZ | DEFAULT NOW() | |
-| `last_verified_at` | TIMESTAMPTZ | | Lần cuối verify data |
-
-### `resources` (files + structured data trong dataset)
-
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `id` | SERIAL | PK | |
-| `dataset_id` | INT | FK → datasets, NOT NULL | |
-| `resource_type` | VARCHAR(30) | NOT NULL | `data`, `document`, `audio`, `geo_layer`, `image` |
-| `title` | TEXT | NOT NULL | |
-| `description` | TEXT | | |
-| `file_url` | TEXT | | R2 URL |
-| `file_type` | VARCHAR(10) | | `csv`, `xlsx`, `pdf`, `mp3`, `geojson` |
-| `file_size_mb` | NUMERIC | | |
-| `file_hash` | TEXT | | SHA-256 để verify integrity |
-| `structured_data` | JSONB | | Preview data (first N rows) hoặc metadata |
-| `columns` | JSONB | | `[{"name": "grdp_growth", "type": "float", "label_vi": "Tốc độ tăng trưởng GRDP"}]` |
-| `row_count` | INT | | |
-| `tags` | TEXT[] | DEFAULT `{}` | |
-| `year` | INT | | |
-| `uploaded_by` | VARCHAR(50) | NOT NULL | |
-| `uploaded_at` | TIMESTAMPTZ | DEFAULT NOW() | |
-
-**Indexes**:
-- `idx_resources_dataset` ON `(dataset_id)`
-- `idx_resources_type` ON `(resource_type)`
-- `idx_resources_tags_gin` ON `USING gin(tags)`
-- `idx_resources_structured_gin` ON `USING gin(structured_data)`
-
-### `data_dictionary` (auto-generated)
-
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `id` | SERIAL | PK | |
-| `dataset_id` | INT | FK → datasets | |
-| `column_name` | TEXT | NOT NULL | `grdp_growth` |
-| `label_vi` | TEXT | NOT NULL | 'Tốc độ tăng trưởng GRDP' |
-| `data_type` | VARCHAR(20) | | `float`, `int`, `text`, `date` |
-| `unit` | TEXT | | '%', 'tỷ đồng', 'người' |
-| `description` | TEXT | | |
-| `source` | TEXT | | Nguồn tiêu chuẩn |
-| `category` | TEXT | | 'vĩ mô', 'giáo dục', 'y tế' |
-| `validation_rules` | JSONB | | `{"min": -100, "max": 100, "not_null": true}` |
-
-### `tags` (controlled vocabulary)
-
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `slug` | TEXT | PK | `vi-mo` |
-| `name` | TEXT | NOT NULL | 'Vĩ mô' |
-| `category` | TEXT | | 'loại dữ liệu', 'lĩnh vực', 'nguồn' |
-
-### `upload_log` (provenance & quality)
-
-| Column | Type | Constraints | Notes |
-|--------|------|-------------|-------|
-| `id` | SERIAL | PK | |
-| `dataset_id` | INT | FK → datasets | |
-| `resource_id` | INT | FK → resources, NULL | |
-| `action` | VARCHAR(20) | NOT NULL | `create`, `update`, `verify`, `delete` |
-| `changed_by` | VARCHAR(50) | NOT NULL | |
-| `changed_at` | TIMESTAMPTZ | DEFAULT NOW() | |
-| `change_note` | TEXT | | 'Import from GSO 2024' |
-| `snapshot_before` | JSONB | | |
-| `snapshot_after` | JSONB | | |
-
-## API Design
-
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/api/datasets` | Liệt kê datasets (filter, search) |
-| `GET` | `/api/datasets/:slug` | Chi tiết dataset + resources |
-| `POST` | `/api/datasets` | Tạo dataset mới |
-| `PUT` | `/api/datasets/:slug` | Cập nhật metadata dataset |
-| `GET` | `/api/datasets/:slug/resources` | Resources trong dataset |
-| `POST` | `/api/datasets/:slug/resources` | Upload resource mới |
-| `GET` | `/api/datasets/:slug/dictionary` | Data dictionary |
-| `GET` | `/api/datasets/:slug/quality` | Data quality report |
-| `GET` | `/api/datasets/:slug/preview` | Preview data (paginated) |
-| `GET` | `/api/tags` | Controlled vocabulary |
-| `GET` | `/api/search?q=keyword` | Full-text search |
-
-## Project Layout
+## Project Layout (re-architected)
 
 ```
 /
 ├── constitution/
 │   ├── mission.md
 │   ├── tech-stack.md
-│   └── roadmap.md
+│   ├── roadmap.md
+│   └── vne-color-palette.md
 ├── specs/
-├── data/
-│   ├── raw/                 — Raw files trước khi upload
-│   └── scripts/             — Python preprocessing
-│       ├── parse_*.py
-│       └── requirements.txt
-├── src/
+│   └── 2026-07-02-phase1-rearch/
+├── datasets/                            # ← GitHub repo — METADATA ONLY (text files)
+│   ├── ho-so-34-tinh/
+│   │   ├── metadata.yaml                # có field files: → R2 object keys
+│   │   ├── dictionary.md
+│   │   └── README.md                    # optional, long-form notes
+│   ├── tags.yaml                        # controlled vocabulary
+│   └── ...
+├── src/                                 # ← Next.js app (GIỮ từ F1, rewrite interior)
 │   ├── app/
-│   │   ├── page.tsx         — Dataset listing (HF-style)
-│   │   ├── datasets/
-│   │   │   └── [slug]/
-│   │   │       └── page.tsx — Dataset detail (tabs: info, data, files)
+│   │   ├── page.tsx                    # Catalog listing (SSG from datasets/)
+│   │   ├── dataset/[slug]/
+│   │   │   └── page.tsx                # Dataset detail (SSG) — file fetch từ R2
 │   │   ├── upload/
-│   │   │   └── page.tsx     — Upload form
-│   │   ├── dictionary/
-│   │   │   └── page.tsx     — Data dictionary
+│   │   │   ├── page.tsx                # Upload wizard UI (dynamic)
+│   │   │   └── UploadWizard.tsx        # Multi-step component
 │   │   └── api/
-│   │       ├── datasets/
-│   │       ├── tags/
-│   │       └── search/
+│   │       └── upload/
+│   │           ├── presign/route.ts    # Trả presigned URL cho browser PUT R2
+│   │           ├── analyze/route.ts    # Server fetch R2 → Claude API → proposal
+│   │           └── commit/route.ts     # R2 move staging→final + git commit metadata
 │   ├── lib/
-│   │   ├── db/              — Database client
-│   │   └── storage/         — R2 client
+│   │   ├── datasets/                   # Read datasets/ folder (replace db/)
+│   │   │   ├── list.ts
+│   │   │   ├── read.ts
+│   │   │   └── types.ts
+│   │   ├── r2/                         # MỚI — R2 SDK wrapper
+│   │   │   ├── presign.ts              # Tạo presigned PUT URL (staging)
+│   │   │   ├── get.ts                  # Server-side fetch object
+│   │   │   └── move.ts                 # staging → final path sau commit
+│   │   ├── ai/
+│   │   │   └── dataset-reviewer.ts     # Claude API integration (per-format prompts)
+│   │   └── git/
+│   │       └── commit.ts               # Server-side git commit (metadata only)
 │   └── components/
-│       ├── DatasetCard.tsx
-│       ├── DataTable.tsx
-│       ├── SearchFilter.tsx
-│       └── ...
-├── public/
-├── package.json
-├── next.config.js
-└── tailwind.config.js
+│       ├── DatasetCard.tsx             # GIỮ từ F1
+│       ├── DataViewer.tsx              # GIỮ, đổi data source sang R2 URL
+│       ├── Histogram.tsx               # GIỮ
+│       ├── UploadDropzone.tsx          # MỚI — drag-drop, lấy presigned URL, PUT R2
+│       ├── MetadataEditor.tsx          # MỚI
+│       └── DictionaryEditor.tsx        # MỚI
+├── tools/
+│   ├── prompts/
+│   │   ├── dataset-reviewer-tabular.md # Per-format system prompts
+│   │   ├── dataset-reviewer-pdf.md
+│   │   ├── dataset-reviewer-mp3.md
+│   │   └── dataset-reviewer-geojson.md
+│   ├── migrate_f1_to_files.py          # Export PostgreSQL → metadata.yaml + push R2
+│   └── upload_to_r2.py                 # One-time bulk upload existing files
+└── data/                                # Legacy (F1 SQL scripts)
+    └── scripts/
+        └── (archive)
 ```
+
+**Note**: `datasets/` folder chứa **chỉ text files** (metadata.yaml, dictionary.md, README.md). Raw files (CSV, PDF, MP3) **không** trong repo — chỉ ở R2.
+
+## Migration từ F1 hiện tại
+
+**Giữ**:
+- Next.js framework + Vercel deploy
+- Data Viewer component (DatasetViewer, Histogram) → đổi data source từ JSONB → parquet
+- DatasetCard component
+- HF-inspired UI pattern + VNE color palette
+- TypeScript types (adapt)
+
+**Migrate**:
+- "Hồ sơ 34 tỉnh" dataset: export PostgreSQL tables → CSV files upload lên R2 (`ho-so-34-tinh/*.csv`), đồng thời generate `metadata.yaml` + `dictionary.md` commit vào GitHub `datasets/ho-so-34-tinh/`. Script 1-lần: `tools/migrate_f1_to_files.py` (gọi `tools/upload_to_r2.py` cho file upload).
+- Tags controlled vocabulary: `datasets/tags.yaml` thay vì PostgreSQL table
+- Listing page: đổi từ `listDatasets()` query PostgreSQL → đọc `datasets/*/metadata.yaml`
+
+**Add mới**:
+- `/upload` page + wizard
+- `/api/upload/presign` + `/api/upload/analyze` + `/api/upload/commit` API routes
+- `MetadataEditor` + `DictionaryEditor` + `UploadDropzone` components
+- `src/lib/r2/` — R2 SDK wrapper (presign, get, move)
+- Per-format Dataset Reviewer system prompts (4 files trong `tools/prompts/`)
+
+**Archive** (move sang `_archive/`, không xóa):
+- `src/app/api/datasets/` (PostgreSQL routes)
+- `src/app/api/entities/`, `province-stats/`, `wards/`, `leadership/` (legacy)
+- `src/app/entities/` page
+- `src/lib/db/`, `src/lib/mock/`
+- `src/lib/data/datasets.ts` (sẽ thay bằng `src/lib/datasets/list.ts`)
+- `data/scripts/005-007` SQL migrations (đã chạy, không cần nữa)
+
+**Drop hẳn**:
+- `upload_log` table concept (replaced by git)
+- `quality_score` field (chưa bao giờ implemented)
+- Legacy entity routes (`/entities/[id]`, `/api/province-stats` etc.)
+
+## Phase 2/3 Solution Analysis (reference)
+
+Đánh giá 3 giải pháp platform cho Phase 2/3 (đánh giá tháng 6/2026, vẫn đúng):
+
+| Giải pháp | Phù hợp Phase 2? | Phù hợp Phase 3? | Phán xét |
+|-----------|-----------------|-----------------|----------|
+| Databricks Lakehouse + Genie | Tốt nhưng limit | Yếu | Over-engineered |
+| AWS + Bedrock Multi-Agent | Mạnh nhất nhưng phức tạp | Trung bình | Quá nặng |
+| Holistics + PostgreSQL | Tốt cho structured | Không | Optional Phase 2 |
+
+**Kết luận (vẫn đúng)**: Giữ custom build + Claude API. Vietnamese AI companies (FPT.AI, PhoBERT) không apply. **Substrate thay đổi: file-based cho Phase 1, DB optional ở Phase 2.**
 
 ## Constraints
 
 - Vietnamese UI throughout
 - Mobile-friendly
-- No auth cho Phase 1 (internal tool)
-- JSONB keys phải khớp data_dictionary — không tự do đặt tên
-- Tags chọn từ controlled vocabulary — không gõ tự do
-- Mỗi con số phải trace được nguồn (provenance)
+- Internal tool — không cần auth phức tạp Phase 1, không ưu tiên SEO
+- Mỗi dataset phải có `metadata.yaml` (+ `dictionary.md` nếu tabular/geojson) — enforced bằng CI check + upload wizard
+- **Raw files KHÔNG commit vào git** — chỉ metadata text. Raw files chỉ ở R2.
+- **Browser upload qua presigned URL** — không qua Vercel serverless (tránh body size limit)
+- Tags chọn từ `datasets/tags.yaml` controlled vocabulary — không gõ tự do
+- Mỗi con số phải trace được nguồn (provenance qua git history + `source` field trong metadata + R2 object versioning)
+- Phase 2/3: dùng LLM API (Claude), không lock-in platform
+- **Không thêm PostgreSQL/Supabase cho Phase 1** — chỉ khi Phase 2 promotion thực sự cần
