@@ -43,7 +43,15 @@ async function fetchRaw(path: string): Promise<string | null> {
     "Cache-Control": "no-cache",
   };
 
-  const res = await fetch(url, { headers, cache: "no-store" });
+  let res = await fetch(url, { headers, cache: "no-store" });
+
+  // Retry 1 lần sau 2s nếu 404 — có thể file vừa commit xong, GitHub raw CDN
+  // cần vài giây để propagate (thường 5-15s sau git push).
+  if (res.status === 404) {
+    await new Promise((r) => setTimeout(r, 2000));
+    res = await fetch(url, { headers, cache: "no-store" });
+  }
+
   if (res.status === 404) return null;
   if (!res.ok) {
     throw new Error(`GitHub raw fetch failed: ${path} (${res.status})`);
