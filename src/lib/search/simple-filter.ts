@@ -4,6 +4,9 @@
  * Không dùng external search engine. Match text trên metadata fields với scoring:
  * title 10 / slug 5 / tags 3 (per tag) / description 2 / category 2.
  *
+ * Token-based AND match: query "thu tuc" → tokens ["thu","tuc"] — cả 2 phải match
+ * somewhere (bất kể field nào). Chấp nhận space, hyphen, diacritics mismatch.
+ *
  * Phase sau: swap sang FlexsearchAdapter (cùng interface, không đổi UI code).
  */
 
@@ -18,6 +21,18 @@ function sizeBucket(rowCount: number): string {
   if (rowCount < 1000) return "< 1K";
   if (rowCount < 10000) return "1K–10K";
   return "10K–100K";
+}
+
+/**
+ * Normalize text cho search: lowercase + strip diacritics + đ→d.
+ * "Thủ tục" → "thu tuc". Slug đã normalize sẵn nhưng gọi lại cho safe.
+ */
+function normalize(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d");
 }
 
 /** Điểm weight cho mỗi field khi match query text */
@@ -44,7 +59,7 @@ export class SimpleFilterAdapter implements SearchAdapter {
   }
 
   search(query: SearchQuery): SearchResult[] {
-    const q = query.text.trim().toLowerCase();
+    const tokens = this.tokenize(query.text);
 
     // Bước 1: Lọc theo facet filters (category/tags/sizes) — AND logic
     let candidates = this.datasets;
@@ -52,8 +67,8 @@ export class SimpleFilterAdapter implements SearchAdapter {
       candidates = candidates.filter((d) => this.matchesFilters(d, query.filters!));
     }
 
-    // Bước 2: Nếu có query text → score + filter, ngược lại trả tất cả (score 0)
-    if (!q) {
+    // Bước 2: Không có query text → trả tất cả candidates (score 0)
+    if (tokens.length === 0) {
       return candidates.map((dataset) => ({
         dataset,
         score: 0,
@@ -61,51 +76,84 @@ export class SimpleFilterAdapter implements SearchAdapter {
       }));
     }
 
+    // Bước 3: Score + filter — ALL tokens phải match (AND semantics)
     const scored: SearchResult[] = [];
     for (const d of candidates) {
-      const score = this.scoreMatch(d, q);
-      if (score > 0) {
-        scored.push({
-          dataset: d,
-          score,
-          matchedFields: this.findMatchedFields(d, q),
-        });
-      }
+      const fields = this.findMatchedFields(d, tokens);
+      if (fields.size === 0) continue;
+
+      // AND: mỗi token phải match ít nhất 1 field
+      const allTokensMatch = tokens.every((tok) => this.tokenMatchesSomeField(d, tok));
+      if (!allTokensMatch) continue;
+
+      scored.push({
+        dataset: d,
+        score: this.scoreMatch(d, tokens),
+        matchedFields: Array.from(fields),
+      });
     }
 
-    // Sắp xếp theo score giảm dần
     scored.sort((a, b) => b.score - a.score);
     return scored;
   }
 
+  /** Split query thành tokens — lowercase, strip diacritics, split theo space/hyphen */
+  private tokenize(text: string): string[] {
+    return normalize(text)
+      .split(/[\s-]+/)
+      .filter((t) => t.length > 0);
+  }
+
   /**
-   * Tính điểm match — tổng điểm từ tất cả fields.
-   * Title match (10) > slug (5) > tag (3/tag) > description (2) > category (2).
+   * Check xem 1 token có match bất kỳ field nào của dataset không.
    */
-  private scoreMatch(d: Dataset, q: string): number {
+  private tokenMatchesSomeField(d: Dataset, token: string): boolean {
+    if (normalize(d.title).includes(token)) return true;
+    if (normalize(d.slug).includes(token)) return true;
+    if (normalize(d.description).includes(token)) return true;
+    if (normalize(d.category).includes(token)) return true;
+    return d.tags.some((t) => normalize(t).includes(token));
+  }
+
+  /**
+   * Tính tổng điểm — cộng điểm từ mỗi token trên mỗi field match.
+   * Title (10/token) > slug (5) > tag (3/tag) > description (2) > category (2).
+   */
+  private scoreMatch(d: Dataset, tokens: string[]): number {
     let score = 0;
+    const title = normalize(d.title);
+    const slug = normalize(d.slug);
+    const desc = normalize(d.description);
+    const cat = normalize(d.category);
+    const tags = d.tags.map(normalize);
 
-    if (d.title.toLowerCase().includes(q)) score += SCORE_WEIGHTS.title;
-    if (d.slug.toLowerCase().includes(q)) score += SCORE_WEIGHTS.slug;
-    if (d.description.toLowerCase().includes(q)) score += SCORE_WEIGHTS.description;
-    if (d.category.toLowerCase().includes(q)) score += SCORE_WEIGHTS.category;
-
-    // Mỗi tag match cộng điểm riêng
-    for (const tag of d.tags) {
-      if (tag.toLowerCase().includes(q)) score += SCORE_WEIGHTS.tag;
+    for (const tok of tokens) {
+      if (title.includes(tok)) score += SCORE_WEIGHTS.title;
+      if (slug.includes(tok)) score += SCORE_WEIGHTS.slug;
+      if (desc.includes(tok)) score += SCORE_WEIGHTS.description;
+      if (cat.includes(tok)) score += SCORE_WEIGHTS.category;
+      for (const t of tags) {
+        if (t.includes(tok)) score += SCORE_WEIGHTS.tag;
+      }
     }
-
     return score;
   }
 
-  /** Trả về danh sách field names match query — dùng cho debug/future highlight */
-  private findMatchedFields(d: Dataset, q: string): string[] {
-    const fields: string[] = [];
-    if (d.title.toLowerCase().includes(q)) fields.push("title");
-    if (d.slug.toLowerCase().includes(q)) fields.push("slug");
-    if (d.description.toLowerCase().includes(q)) fields.push("description");
-    if (d.category.toLowerCase().includes(q)) fields.push("category");
-    if (d.tags.some((t) => t.toLowerCase().includes(q))) fields.push("tags");
+  /** Tập hợp field names match ít nhất 1 token — dùng cho debug/future highlight */
+  private findMatchedFields(d: Dataset, tokens: string[]): Set<string> {
+    const fields = new Set<string>();
+    const title = normalize(d.title);
+    const slug = normalize(d.slug);
+    const desc = normalize(d.description);
+    const cat = normalize(d.category);
+
+    for (const tok of tokens) {
+      if (title.includes(tok)) fields.add("title");
+      if (slug.includes(tok)) fields.add("slug");
+      if (desc.includes(tok)) fields.add("description");
+      if (cat.includes(tok)) fields.add("category");
+      if (d.tags.some((t) => normalize(t).includes(tok))) fields.add("tags");
+    }
     return fields;
   }
 
