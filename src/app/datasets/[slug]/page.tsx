@@ -8,6 +8,11 @@ import MetadataSidebar from "./MetadataSidebar";
 import Markdown from "./Markdown";
 import DataDictionary from "./DataDictionary";
 
+// Dynamic SSR runtime — tránh Vercel cache 404 khi dataset chưa tồn tại
+// (cache layer fetch vẫn 60s qua `next: { revalidate: 60 }`).
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
