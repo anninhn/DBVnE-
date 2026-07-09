@@ -1,0 +1,251 @@
+/**
+ * Cleanup orphans — scan GitHub metadata vs R2 objects, report + xóa chéo.
+ *
+ * 2 loại orphan:
+ *   - GitHub orphan: metadata.yaml có r2_key nhưng object không tồn tại trong R2
+ *   - R2 orphan: object tồn tại trong R2 nhưng không có metadata nào reference
+ *
+ * Usage:
+ *   node tools/cleanup-orphans.mjs          # dry-run, chỉ report
+ *   node tools/cleanup-orphans.mjs --apply   # xóa thật
+ *
+ * Cần env vars trong .env.local:
+ *   GITHUB_TOKEN, GITHUB_REPO_OWNER, GITHUB_REPO_NAME, GITHUB_REPO_BRANCH
+ *   R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET_NAME
+ */
+import { S3Client, ListObjectsV2Command, DeleteObjectsCommand } from "@aws-sdk/client-s3";
+import { readFileSync } from "fs";
+import { parse as parseYaml } from "yaml";
+
+// ─── Load env ──────────────────────────────────────────────────────────────
+
+const envContent = readFileSync(".env.local", "utf-8");
+for (const line of envContent.split("\n")) {
+  const match = line.match(/^([A-Z][A-Z0-9_]*)=(.*)$/);
+  if (match && match[2]) process.env[match[1]] = match[2];
+}
+
+const GH_TOKEN = process.env.GITHUB_TOKEN;
+const GH_OWNER = process.env.GITHUB_REPO_OWNER;
+const GH_REPO = process.env.GITHUB_REPO_NAME;
+const GH_BRANCH = process.env.GITHUB_REPO_BRANCH || "main";
+
+const R2_ACCOUNT_ID = process.env.R2_ACCOUNT_ID;
+const R2_ACCESS_KEY_ID = process.env.R2_ACCESS_KEY_ID;
+const R2_SECRET_ACCESS_KEY = process.env.R2_SECRET_ACCESS_KEY;
+const R2_BUCKET = process.env.R2_BUCKET_NAME;
+
+const missing = [
+  !GH_OWNER && "GITHUB_REPO_OWNER",
+  !GH_REPO && "GITHUB_REPO_NAME",
+  !R2_ACCOUNT_ID && "R2_ACCOUNT_ID",
+  !R2_ACCESS_KEY_ID && "R2_ACCESS_KEY_ID",
+  !R2_SECRET_ACCESS_KEY && "R2_SECRET_ACCESS_KEY",
+  !R2_BUCKET && "R2_BUCKET_NAME",
+].filter(Boolean);
+if (missing.length > 0) {
+  console.error(`❌ Missing env vars: ${missing.join(", ")}`);
+  process.exit(1);
+}
+
+const APPLY = process.argv.includes("--apply");
+
+// AWS SDK v3 mặc định thêm checksum → R2 reject. Tắt đi.
+const r2 = new S3Client({
+  region: "auto",
+  endpoint: `https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
+  credentials: { accessKeyId: R2_ACCESS_KEY_ID, secretAccessKey: R2_SECRET_ACCESS_KEY },
+  requestChecksumCalculation: "WHEN_REQUIRED",
+  responseChecksumValidation: "WHEN_REQUIRED",
+});
+
+// ─── GitHub helpers ────────────────────────────────────────────────────────
+
+async function ghFetch(url) {
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${GH_TOKEN}`,
+      "User-Agent": "cleanup-orphans-script",
+      Accept: "application/vnd.github+json",
+    },
+  });
+  if (!res.ok) throw new Error(`GitHub ${res.status}: ${url}`);
+  return res.json();
+}
+
+async function listDatasetSlugs() {
+  const data = await ghFetch(
+    `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/datasets?ref=${GH_BRANCH}`
+  );
+  return data.filter((e) => e.type === "dir").map((e) => e.name);
+}
+
+async function getMetadataR2Keys(slug) {
+  const url = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/datasets/${slug}/metadata.yaml`;
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${GH_TOKEN}`, "User-Agent": "cleanup-orphans" },
+  });
+  if (!res.ok) return { keys: [], title: slug };
+
+  const meta = parseYaml(await res.text());
+  const keys = (meta.files ?? [])
+    .map((f) => f.r2_key)
+    .filter(Boolean);
+  return { keys, title: meta.title ?? slug };
+}
+
+async function deleteGithubFolder(slug) {
+  // Lấy SHA của tất cả files trong folder để commit delete
+  const entries = await ghFetch(
+    `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/datasets/${slug}?ref=${GH_BRANCH}`
+  );
+
+  for (const entry of entries) {
+    if (entry.type !== "file") continue;
+    await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${entry.path}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${GH_TOKEN}`,
+          "User-Agent": "cleanup-orphans-script",
+          Accept: "application/vnd.github+json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: `Cleanup orphan: delete ${entry.path}`,
+          sha: entry.sha,
+          branch: GH_BRANCH,
+        }),
+      }
+    );
+  }
+}
+
+// ─── R2 helpers ────────────────────────────────────────────────────────────
+
+async function listR2Objects() {
+  const keys = [];
+  let cursor;
+  do {
+    const res = await r2.send(
+      new ListObjectsV2Command({ Bucket: R2_BUCKET, ContinuationToken: cursor })
+    );
+    for (const obj of res.Contents ?? []) keys.push(obj.Key);
+    cursor = res.IsTruncated ? res.NextContinuationToken : undefined;
+  } while (cursor);
+  return keys;
+}
+
+async function deleteR2Objects(keys) {
+  // R2 giới hạn 1000 keys/batch DeleteObjects
+  for (let i = 0; i < keys.length; i += 1000) {
+    const batch = keys.slice(i, i + 1000);
+    await r2.send(
+      new DeleteObjectsCommand({
+        Bucket: R2_BUCKET,
+        Delete: { Objects: batch.map((Key) => ({ Key })) },
+      })
+    );
+  }
+}
+
+// ─── Main ──────────────────────────────────────────────────────────────────
+
+console.log(`\n${APPLY ? "🔴 APPLY MODE" : "🔵 DRY RUN"} (add --apply to delete)\n`);
+
+// 1. List GitHub slugs + collect r2_keys
+console.log("→ Scanning GitHub datasets...");
+const slugs = await listDatasetSlugs();
+const slugToMeta = new Map();
+const githubR2Keys = new Set();
+for (const slug of slugs) {
+  const { keys, title } = await getMetadataR2Keys(slug);
+  slugToMeta.set(slug, { keys, title });
+  keys.forEach((k) => githubR2Keys.add(k));
+}
+console.log(`   ${slugs.length} datasets, ${githubR2Keys.size} r2_keys referenced\n`);
+
+// 2. List R2 objects
+console.log("→ Scanning R2 bucket...");
+const r2Keys = new Set(await listR2Objects());
+console.log(`   ${r2Keys.size} objects in R2\n`);
+
+// 3. Diff
+const githubOrphans = []; // metadata exists, R2 missing
+for (const [slug, { keys, title }] of slugToMeta) {
+  for (const key of keys) {
+    if (!r2Keys.has(key)) {
+      githubOrphans.push({ slug, title, missingKey: key });
+    }
+  }
+}
+
+const r2Orphans = []; // R2 exists, no metadata
+for (const key of r2Keys) {
+  if (!githubR2Keys.has(key)) {
+    r2Orphans.push(key);
+  }
+}
+
+// 4. Report
+console.log("═══ REPORT ═══\n");
+
+if (githubOrphans.length === 0 && r2Orphans.length === 0) {
+  console.log("✅ No orphans. GitHub + R2 synced.\n");
+  process.exit(0);
+}
+
+if (githubOrphans.length > 0) {
+  console.log(`GitHub orphans (metadata references missing R2 file): ${githubOrphans.length}`);
+  for (const o of githubOrphans) {
+    console.log(`  • ${o.slug}`);
+    console.log(`      title: ${o.title}`);
+    console.log(`      missing r2_key: ${o.missingKey}`);
+  }
+  console.log("");
+}
+
+if (r2Orphans.length > 0) {
+  console.log(`R2 orphans (file exists but no metadata references it): ${r2Orphans.length}`);
+  for (const key of r2Orphans) {
+    console.log(`  • ${key}`);
+  }
+  console.log("");
+}
+
+if (!APPLY) {
+  console.log("Dry run only. Run with --apply to delete orphans.\n");
+  process.exit(0);
+}
+
+// 5. Apply deletion
+console.log("═══ APPLYING ═══\n");
+
+// GitHub orphan: xóa cả folder metadata (vì file chính đã mất, metadata vô dụng)
+// Trừ khi user muốn giữ metadata — hiện chọn delete toàn bộ
+if (githubOrphans.length > 0) {
+  const slugsToDelete = [...new Set(githubOrphans.map((o) => o.slug))];
+  console.log(`→ Deleting ${slugsToDelete.length} GitHub dataset folders...`);
+  for (const slug of slugsToDelete) {
+    try {
+      await deleteGithubFolder(slug);
+      console.log(`  ✓ datasets/${slug}/`);
+    } catch (err) {
+      console.error(`  ✗ ${slug}: ${err.message}`);
+    }
+  }
+}
+
+// R2 orphan: xóa object
+if (r2Orphans.length > 0) {
+  console.log(`→ Deleting ${r2Orphans.length} R2 orphan objects...`);
+  try {
+    await deleteR2Objects(r2Orphans);
+    console.log(`  ✓ All orphan objects deleted`);
+  } catch (err) {
+    console.error(`  ✗ ${err.message}`);
+  }
+}
+
+console.log("\n✅ Cleanup complete.\n");
