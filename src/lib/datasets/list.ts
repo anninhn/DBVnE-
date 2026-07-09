@@ -62,11 +62,12 @@ async function fetchMetadata(slug: string): Promise<MetadataYaml | null> {
   const url = rawUrl(config, `datasets/${slug}/metadata.yaml`);
 
   const headers: Record<string, string> = {
-    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
+    Accept: "application/vnd.github+json",
     "User-Agent": "vnexpress-data-platform",
-    "Cache-Control": "no-cache",
+    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
   };
 
+  // Contents API: response JSON có field `content` base64-encoded
   const res = await fetch(url, { headers, cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) {
@@ -74,7 +75,11 @@ async function fetchMetadata(slug: string): Promise<MetadataYaml | null> {
     return null;
   }
 
-  const text = await res.text();
+  const data = (await res.json()) as { content?: string };
+  if (!data.content) return null;
+  const b64 = data.content.replace(/\n/g, "");
+  const text = Buffer.from(b64, "base64").toString("utf-8");
+
   try {
     return parseYaml(text) as MetadataYaml;
   } catch (err) {

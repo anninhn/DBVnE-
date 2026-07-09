@@ -134,9 +134,15 @@ export function getGithubConfig(): GithubConfig {
 }
 
 /**
- * Raw URL cho file metadata.yaml/dictionary.md trong GitHub repo.
- * CDN cache, anonymous OK nếu repo public, có token cho private.
+ * Contents API URL cho file metadata.yaml/dictionary.md.
+ *
+ * Dùng API (không dùng raw.githubusercontent.com) vì:
+ * - raw endpoint có CDN cache (Fastly) → propagation 10-30s sau commit
+ * - API endpoint authoritative → đọc được ngay sau git push
+ *
+ * Trade-off: rate limit 5000 req/hour (authenticated) vs raw unlimited.
+ * Phase 1 traffic thấp, OK. Phase sau nếu cần → thêm ETag caching.
  */
 export function rawUrl(config: GithubConfig, path: string): string {
-  return `https://raw.githubusercontent.com/${config.owner}/${config.repo}/${config.branch}/${path}`;
+  return `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${path}?ref=${config.branch}`;
 }

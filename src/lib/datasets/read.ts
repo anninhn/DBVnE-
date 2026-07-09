@@ -33,30 +33,22 @@ async function fetchRaw(path: string): Promise<string | null> {
   const config = getGithubConfig();
   const url = rawUrl(config, path);
   const headers: Record<string, string> = {
-    // GitHub raw endpoint cần token nếu repo private.
-    // Public repo: anonymous OK nhưng rate-limited 60 req/h.
-    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
-    // Force edge revalidation (GitHub raw CDN cache 5 phút mặc định)
+    Accept: "application/vnd.github+json",
     "User-Agent": "vnexpress-data-platform",
-    // Cache-bust: GitHub raw CDN có thể cache 404 đến 5 phút.
-    // Thêm timestamp để force fetch mới sau upload.
-    "Cache-Control": "no-cache",
+    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
   };
 
-  let res = await fetch(url, { headers, cache: "no-store" });
-
-  // Retry 1 lần sau 2s nếu 404 — có thể file vừa commit xong, GitHub raw CDN
-  // cần vài giây để propagate (thường 5-15s sau git push).
-  if (res.status === 404) {
-    await new Promise((r) => setTimeout(r, 2000));
-    res = await fetch(url, { headers, cache: "no-store" });
-  }
-
+  // Contents API: response JSON có field `content` base64-encoded
+  const res = await fetch(url, { headers, cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) {
-    throw new Error(`GitHub raw fetch failed: ${path} (${res.status})`);
+    throw new Error(`GitHub contents API failed: ${path} (${res.status})`);
   }
-  return res.text();
+  const data = (await res.json()) as { content?: string; encoding?: string };
+  if (!data.content) return null;
+  // Contents API trả content base64-encoded, có newlines → strip trước khi decode
+  const b64 = data.content.replace(/\n/g, "");
+  return Buffer.from(b64, "base64").toString("utf-8");
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
