@@ -1,9 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Category, Dataset } from "@/lib/types/dataset";
 import { CATEGORY_LABELS } from "@/lib/types/dataset";
+import { createSearchAdapter } from "@/lib/search";
+import type { SearchAdapter } from "@/lib/search";
+import SearchBox from "@/components/search/SearchBox";
+import CatalogNav from "@/components/CatalogNav";
 
 type SortKey = "trending" | "recent" | "downloaded" | "liked";
 
@@ -16,11 +20,14 @@ const SORT_LABELS: Record<SortKey, string> = {
 
 const ALL_CATEGORIES: Category[] = ["kinh-te", "xa-hoi", "chinh-tri", "khi-hau", "ha-tang"];
 
+/** Số dataset hiển thị mỗi trang — HF standard */
+const PAGE_SIZE = 20;
+
 interface DatasetExplorerProps {
   datasets: Dataset[];
 }
 
-/** Quy mô → nhóm size (HF style) */
+/** Quy mô → nhóm size (HF style) — khớp với sizeBucket trong SimpleFilterAdapter */
 function sizeBucket(rowCount: number): string {
   if (rowCount < 1000) return "< 1K";
   if (rowCount < 10000) return "1K–10K";
@@ -33,6 +40,13 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
   const [activeSizes, setActiveSizes] = useState<Set<string>>(new Set());
   const [sort, setSort] = useState<SortKey>("trending");
+  const [page, setPage] = useState(0);
+
+  // Search adapter — tạo 1 lần, index khi datasets thay đổi
+  const adapter: SearchAdapter = useMemo(() => createSearchAdapter(), []);
+  useEffect(() => {
+    adapter.index(datasets);
+  }, [datasets, adapter]);
 
   // Vocab từ dữ liệu
   const allTags = useMemo(() => {
@@ -49,49 +63,55 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     return counts;
   }, [datasets]);
 
-  const filtered = useMemo(() => {
-    let result = datasets;
+  // Search qua adapter — thay thế inline filter useMemo cũ (D1)
+  const results = useMemo(() => {
+    const searchResults = adapter.search({
+      text: query,
+      filters: {
+        categories: Array.from(activeCategories),
+        tags: Array.from(activeTags),
+        sizes: Array.from(activeSizes),
+      },
+    });
+    return searchResults.map((r) => r.dataset);
+  }, [adapter, query, activeCategories, activeTags, activeSizes]);
 
-    if (activeCategories.size > 0) {
-      result = result.filter((d) => activeCategories.has(d.category));
-    }
-    if (activeTags.size > 0) {
-      result = result.filter((d) => d.tags.some((t) => activeTags.has(t)));
-    }
-    if (activeSizes.size > 0) {
-      result = result.filter((d) => activeSizes.has(sizeBucket(d.row_count)));
-    }
-
-    const q = query.trim().toLowerCase();
-    if (q) {
-      result = result.filter(
-        (d) =>
-          d.title.toLowerCase().includes(q) ||
-          d.slug.toLowerCase().includes(q) ||
-          d.description.toLowerCase().includes(q) ||
-          d.tags.some((t) => t.toLowerCase().includes(q))
-      );
-    }
-
-    const sorted = [...result];
+  // Sort kết quả search — tách riêng khỏi adapter (sort không phải search concern)
+  const sorted = useMemo(() => {
+    const arr = [...results];
     switch (sort) {
       case "recent":
-        sorted.sort((a, b) => +new Date(b.uploaded_at) - +new Date(a.uploaded_at));
+        arr.sort((a, b) => +new Date(b.uploaded_at) - +new Date(a.uploaded_at));
         break;
       case "downloaded":
-        sorted.sort((a, b) => b.downloads - a.downloads);
+        arr.sort((a, b) => b.downloads - a.downloads);
         break;
       case "liked":
-        sorted.sort((a, b) => b.likes - a.likes);
+        arr.sort((a, b) => b.likes - a.likes);
         break;
       case "trending":
       default:
         // Trending = blend downloads + likes
-        sorted.sort((a, b) => b.downloads + b.likes * 2 - (a.downloads + a.likes * 2));
+        arr.sort((a, b) => b.downloads + b.likes * 2 - (a.downloads + a.likes * 2));
         break;
     }
-    return sorted;
-  }, [datasets, query, activeCategories, activeTags, activeSizes, sort]);
+    return arr;
+  }, [results, sort]);
+
+  // Reset page về 1 khi search/filter/sort thay đổi
+  useEffect(() => {
+    setPage(0);
+  }, [query, activeCategories, activeTags, activeSizes, sort]);
+
+  // Pagination — slice kết quả đã sort
+  const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages - 1);
+  const paginatedResults = sorted.slice(
+    currentPage * PAGE_SIZE,
+    (currentPage + 1) * PAGE_SIZE
+  );
+  const rangeStart = sorted.length > 0 ? currentPage * PAGE_SIZE + 1 : 0;
+  const rangeEnd = Math.min((currentPage + 1) * PAGE_SIZE, sorted.length);
 
   const toggle = <T,>(setter: React.Dispatch<React.SetStateAction<Set<T>>>) => (value: T) => {
     setter((prev) => {
@@ -116,154 +136,187 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     query !== "" || activeCategories.size > 0 || activeTags.size > 0 || activeSizes.size > 0;
 
   return (
-    <div className="max-w-[1280px] mx-auto bg-hf-bg min-h-[calc(100vh-52px)] grid grid-cols-[256px_1fr]">
-      {/* ─── Sidebar filters ─── */}
-      <aside className="border-r border-hf-border p-4">
-        <FilterGroup title="Lĩnh vực">
-          {ALL_CATEGORIES.map((c) => (
-            <FilterCheckbox
-              key={c}
-              label={CATEGORY_LABELS[c]}
-              count={categoryCounts[c] ?? 0}
-              checked={activeCategories.has(c)}
-              onChange={() => toggleCategory(c)}
-            />
-          ))}
-        </FilterGroup>
+    <div className="min-h-screen flex flex-col">
+      {/* ─── Top nav — CatalogNav client component (D7) ─── */}
+      <CatalogNav query={query} onQueryChange={setQuery} />
 
-        <FilterGroup title="Quy mô (dòng)">
-          {["< 1K", "1K–10K", "10K–100K"].map((s) => (
-            <FilterCheckbox
-              key={s}
-              label={s}
-              checked={activeSizes.has(s)}
-              onChange={() => toggleSize(s)}
-            />
-          ))}
-        </FilterGroup>
-
-        <FilterGroup title="Định dạng">
-          {["csv", "xlsx", "parquet", "pdf"].map((f) => (
-            <FilterCheckbox key={f} label={f} checked={false} onChange={() => {}} />
-          ))}
-        </FilterGroup>
-
-        <FilterGroup title="Tags">
-          {allTags.map((t) => (
-            <FilterCheckbox
-              key={t}
-              label={t}
-              checked={activeTags.has(t)}
-              onChange={() => toggleTag(t)}
-            />
-          ))}
-        </FilterGroup>
-
-        {hasActiveFilter && (
-          <button
-            onClick={clearFilters}
-            className="text-xs text-hf-red hover:underline mt-2"
-          >
-            Xóa bộ lọc
-          </button>
-        )}
-      </aside>
-
-      {/* ─── Main listing ─── */}
-      <main className="p-4 px-6">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-lg font-semibold text-hf-text">
-            Datasets{" "}
-            <span className="text-hf-text-faint font-normal text-sm">
-              {filtered.length} results
-            </span>
-          </h1>
-        </div>
-
-        <div className="flex gap-2 mb-4">
-          <div className="relative flex-1">
-            <svg
-              className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-hf-text-faint"
-              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-            >
-              <circle cx="11" cy="11" r="7" />
-              <path d="m21 21-4.3-4.3" strokeLinecap="round" />
-            </svg>
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search datasets…"
-              className="w-full pl-9 pr-3 py-2 text-sm border border-hf-border rounded-md focus:outline-none focus:border-hf-yellow focus:ring-2 focus:ring-hf-yellow-50"
-            />
-          </div>
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value as SortKey)}
-            className="px-3 py-2 text-sm border border-hf-border rounded-md bg-hf-bg focus:outline-none focus:border-hf-yellow focus:ring-2 focus:ring-hf-yellow-50"
-          >
-            {(Object.keys(SORT_LABELS) as SortKey[]).map((k) => (
-              <option key={k} value={k}>{SORT_LABELS[k]}</option>
+      <div className="flex-1 max-w-[1280px] w-full mx-auto bg-hf-bg grid grid-cols-[256px_1fr]">
+        {/* ─── Sidebar filters ─── */}
+        <aside className="border-r border-hf-border p-4">
+          <FilterGroup title="Lĩnh vực">
+            {ALL_CATEGORIES.map((c) => (
+              <FilterCheckbox
+                key={c}
+                label={CATEGORY_LABELS[c]}
+                count={categoryCounts[c] ?? 0}
+                checked={activeCategories.has(c)}
+                onChange={() => toggleCategory(c)}
+              />
             ))}
-          </select>
-        </div>
+          </FilterGroup>
 
-        {/* Dataset rows — compact, HF style */}
-        {filtered.length > 0 ? (
-          <div className="border-t border-hf-border">
-            {filtered.map((d) => {
-              const hasData = d.resources.some(
-                (r) => r.structured_data && r.structured_data.length > 0
-              );
-              return (
-                <Link
-                  key={d.slug}
-                  href={`/datasets/${d.slug}`}
-                  className="flex items-center gap-2 px-2 py-2.5 border-b border-hf-border text-[13px] hover:bg-hf-bg-subtle transition-colors"
-                >
-                  <span className="font-medium text-hf-text">
-                    <span className="text-hf-text-muted">{d.uploaded_by.toLowerCase()}/</span>
-                    {d.slug}
-                  </span>
-                  <span
-                    className={`inline-block px-2 py-px rounded-full text-[11px] font-medium ${
-                      hasData
-                        ? "bg-blue-100 text-blue-800"
-                        : "bg-hf-bg-muted text-hf-text-muted"
-                    }`}
+          <FilterGroup title="Quy mô (dòng)">
+            {["< 1K", "1K–10K", "10K–100K"].map((s) => (
+              <FilterCheckbox
+                key={s}
+                label={s}
+                checked={activeSizes.has(s)}
+                onChange={() => toggleSize(s)}
+              />
+            ))}
+          </FilterGroup>
+
+          <FilterGroup title="Định dạng">
+            {["csv", "xlsx", "parquet", "pdf"].map((f) => (
+              <FilterCheckbox key={f} label={f} checked={false} onChange={() => {}} />
+            ))}
+          </FilterGroup>
+
+          <FilterGroup title="Tags">
+            {allTags.map((t) => (
+              <FilterCheckbox
+                key={t}
+                label={t}
+                checked={activeTags.has(t)}
+                onChange={() => toggleTag(t)}
+              />
+            ))}
+          </FilterGroup>
+
+          {hasActiveFilter && (
+            <button
+              onClick={clearFilters}
+              className="text-xs text-hf-red hover:underline mt-2"
+            >
+              Xóa bộ lọc
+            </button>
+          )}
+        </aside>
+
+        {/* ─── Main listing ─── */}
+        <main className="p-4 px-6">
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-lg font-semibold text-hf-text">
+              Datasets{" "}
+              <span className="text-hf-text-faint font-normal text-sm">
+                {sorted.length} results
+              </span>
+            </h1>
+          </div>
+
+          <div className="flex gap-2 mb-4">
+            {/* Sidebar search input — SearchBox presentational component */}
+            <div className="flex-1">
+              <SearchBox query={query} onQueryChange={setQuery} placeholder="Search datasets…" />
+            </div>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as SortKey)}
+              className="px-3 py-2 text-sm border border-hf-border rounded-md bg-hf-bg focus:outline-none focus:border-hf-yellow focus:ring-2 focus:ring-hf-yellow-50"
+            >
+              {(Object.keys(SORT_LABELS) as SortKey[]).map((k) => (
+                <option key={k} value={k}>{SORT_LABELS[k]}</option>
+              ))}
+            </select>
+          </div>
+
+          {/* Metadata line — HF style "Hiển thị X–Y trong Z datasets" */}
+          {sorted.length > 0 && (
+            <div className="text-[13px] text-hf-text-muted mb-3">
+              Hiển thị {rangeStart}–{rangeEnd} trong {sorted.length} datasets
+            </div>
+          )}
+
+          {/* Dataset rows — compact, HF style */}
+          {paginatedResults.length > 0 ? (
+            <div className="border-t border-hf-border">
+              {paginatedResults.map((d) => {
+                const hasData = d.resources.some(
+                  (r) => r.structured_data && r.structured_data.length > 0
+                );
+                return (
+                  <Link
+                    key={d.slug}
+                    href={`/datasets/${d.slug}`}
+                    className="flex items-center gap-2 px-2 py-2.5 border-b border-hf-border text-[13px] hover:bg-hf-bg-subtle transition-colors"
                   >
-                    {hasData ? "Viewer" : "Preview"}
-                  </span>
-                  <span className="text-hf-text-muted">
-                    Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
-                    <span className="text-hf-text-faint mx-1">•</span>
-                    {d.row_count.toLocaleString("vi-VN")} rows
-                    <span className="text-hf-text-faint mx-1">•</span>
-                    {d.file_count} file{d.file_count !== 1 ? "s" : ""}
-                    <span className="text-hf-text-faint mx-1">•</span>
-                    {d.total_size_mb} MB
-                  </span>
-                  <span className="ml-auto text-hf-text-muted flex items-center gap-1">
-                    ★ {d.likes}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        ) : (
-          <div className="text-center py-20 text-hf-text-faint">
-            <p className="text-sm">Không tìm thấy dataset phù hợp.</p>
-            {hasActiveFilter && (
+                    <span className="font-medium text-hf-text">
+                      <span className="text-hf-text-muted">{d.uploaded_by.toLowerCase()}/</span>
+                      {d.slug}
+                    </span>
+                    <span
+                      className={`inline-block px-2 py-px rounded-full text-[11px] font-medium ${
+                        hasData
+                          ? "bg-blue-100 text-blue-800"
+                          : "bg-hf-bg-muted text-hf-text-muted"
+                      }`}
+                    >
+                      {hasData ? "Viewer" : "Preview"}
+                    </span>
+                    <span className="text-hf-text-muted">
+                      Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
+                      <span className="text-hf-text-faint mx-1">•</span>
+                      {d.row_count.toLocaleString("vi-VN")} rows
+                      <span className="text-hf-text-faint mx-1">•</span>
+                      {d.file_count} file{d.file_count !== 1 ? "s" : ""}
+                      <span className="text-hf-text-faint mx-1">•</span>
+                      {d.total_size_mb} MB
+                    </span>
+                    <span className="ml-auto text-hf-text-muted flex items-center gap-1">
+                      ★ {d.likes}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-20 text-hf-text-faint">
+              <p className="text-sm">Không tìm thấy dataset phù hợp.</p>
+              {hasActiveFilter && (
+                <button
+                  onClick={clearFilters}
+                  className="mt-2 text-sm text-hf-red hover:underline"
+                >
+                  Xóa bộ lọc
+                </button>
+              )}
+            </div>
+          )}
+
+          {/* Pagination — reuse pattern từ DatasetViewer.tsx */}
+          {totalPages > 1 && (
+            <div className="flex justify-center gap-1 py-4">
               <button
-                onClick={clearFilters}
-                className="mt-2 text-sm text-hf-red hover:underline"
+                onClick={() => setPage((p) => Math.max(0, p - 1))}
+                disabled={currentPage === 0}
+                className="px-2.5 py-1 text-[13px] text-hf-text-muted rounded hover:bg-hf-bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                Xóa bộ lọc
+                ‹ Previous
               </button>
-            )}
-          </div>
-        )}
-      </main>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i)}
+                  className={`min-w-[32px] px-2 py-1 text-[13px] rounded ${
+                    i === currentPage
+                      ? "bg-hf-text text-white font-medium"
+                      : "text-hf-text-muted hover:bg-hf-bg-muted"
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+                disabled={currentPage >= totalPages - 1}
+                className="px-2.5 py-1 text-[13px] text-hf-text-muted rounded hover:bg-hf-bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                Next ›
+              </button>
+            </div>
+          )}
+        </main>
+      </div>
     </div>
   );
 }
