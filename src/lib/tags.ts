@@ -1,39 +1,41 @@
-import { getSupabase } from "@/lib/db/supabase";
-
-let _cache: { tags: string[]; expiry: number } | null = null;
-const CACHE_TTL_MS = 5 * 60 * 1000; // 5 phút
+/**
+ * Controlled vocabulary cho dataset tags — hardcoded.
+ *
+ * Trước đây lưu trong PostgreSQL `tags` table (Supabase). Sau re-arch
+ * 2026-07-02, source of truth chuyển sang file-based → tags cũng chuyển
+ * sang hardcoded vì:
+ *   - Controlled vocabulary, đổi cực hiếm (< 1 lần/tháng)
+ *   - 20 entries — không cần DB để query
+ *   - Mỗi tag mới = 1 PR review (better governance)
+ *
+ * Để thêm tag: edit array này + commit.
+ */
+const TAGS: string[] = [
+  "bao-cao",
+  "bo-tai-chinh",
+  "csv",
+  "doanh-nghiep",
+  "geojson",
+  "giao-duc",
+  "gso",
+  "ha-tang",
+  "khi-hau",
+  "lao-dong",
+  "nien-giam",
+  "papi",
+  "pci",
+  "pdf",
+  "phong-van",
+  "quy-hoach",
+  "sach-trang",
+  "vi-mo",
+  "xep-hang",
+  "y-te",
+];
 
 /**
- * Fetch tags từ PostgreSQL tags table qua Supabase.
- *
- * Cache in-memory 5 phút để tránh query DB mỗi lần MetadataEditor render.
- * Tags thay đổi ít — cache TTL dài OK.
- *
- * Fallback: nếu DB error, return empty array (wizard vẫn hoạt động,
- * user có thể type tag thủ công).
+ * Return list of tag slugs — sync, không cần cache (in-memory constant).
  */
-export async function getTags(): Promise<string[]> {
-  // Cache hit
-  if (_cache && Date.now() < _cache.expiry) {
-    return _cache.tags;
-  }
-
-  try {
-    const supabase = getSupabase();
-    const { data, error } = await supabase
-      .from("tags")
-      .select("slug, name")
-      .order("slug");
-
-    if (error) throw error;
-
-    // Dùng slug (kebab-case identifier) — consistent với tags[] trong Resource/EntitiesCatalog
-    const tags = (data ?? []).map((row) => row.slug as string).filter(Boolean);
-
-    _cache = { tags, expiry: Date.now() + CACHE_TTL_MS };
-    return tags;
-  } catch (err) {
-    console.warn("[tags] Fetch thất bại, fallback empty array:", err);
-    return [];
-  }
+export function getTags(): string[] {
+  return TAGS;
 }

@@ -2,15 +2,9 @@ import { NextResponse } from "next/server";
 import { getTags } from "@/lib/tags";
 
 /**
- * GET /api/tags — return list of tag slugs từ PostgreSQL.
- * Cache 5 phút ở lib layer.
+ * GET /api/tags — return controlled vocabulary tag slugs.
+ * Hardcoded trong src/lib/tags.ts (post-Supabase migration).
  */
 export async function GET() {
-  try {
-    const tags = await getTags();
-    return NextResponse.json({ tags });
-  } catch (err) {
-    console.error("[tags] GET error:", err);
-    return NextResponse.json({ tags: [] }, { status: 200 });
-  }
+  return NextResponse.json({ tags: getTags() });
 }
