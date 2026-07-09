@@ -31,10 +31,12 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Verify r2Key thuộc staging prefix (chặn path traversal)
-  if (!r2Key.startsWith("staging/")) {
+  // Verify r2Key match pattern `<fileId>/<filename>` (UUID-based, chặn traversal)
+  // Key pattern thay đổi sau khi skip staging prefix (plan synchronous-toasting-kahn.md)
+  const UUID_RE = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\//;
+  if (r2Key.includes("..") || !UUID_RE.test(r2Key)) {
     return NextResponse.json(
-      { error: "r2Key phải bắt đầu bằng 'staging/'" },
+      { error: "r2Key phải có dạng <UUID>/<filename>" },
       { status: 400 }
     );
   }
