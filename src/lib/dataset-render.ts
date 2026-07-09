@@ -51,6 +51,8 @@ export function renderMetadataYaml(
     uploaded_at?: string;
     r2Key?: string;
     r2Meta?: { version_id?: string; sha256?: string; size_mb?: number };
+    row_count?: number;
+    columns_count?: number;
   }
 ): string {
   const today = new Date().toISOString().slice(0, 10);
@@ -58,6 +60,14 @@ export function renderMetadataYaml(
     meta.tags.length > 0
       ? `\n${meta.tags.map((t) => `  - ${t}`).join("\n")}`
       : " []";
+
+  // row_count + columns_count — provenance từ analyze (inspection). Chỉ render khi có.
+  const rowLine =
+    options?.row_count != null ? `\nrow_count: ${options.row_count}` : "";
+  const colLine =
+    options?.columns_count != null
+      ? `\ncolumns_count: ${options.columns_count}`
+      : "";
 
   // Nếu có files[] sẵn (edit mode) → giữ nguyên
   let filesSection: string;
@@ -104,7 +114,7 @@ source:
   retrieved: "${today}"
   method: manual_entry
 license: internal
-format: ${format}
+format: ${format}${rowLine}${colLine}
 confidence: ${meta.confidence}
 uploaded_by: ${uploadedBy}
 uploaded_at: "${uploadedAt}"

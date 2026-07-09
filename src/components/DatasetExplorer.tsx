@@ -6,7 +6,6 @@ import type { Category, Dataset } from "@/lib/types/dataset";
 import { CATEGORY_LABELS } from "@/lib/types/dataset";
 import { createSearchAdapter } from "@/lib/search";
 import type { SearchAdapter } from "@/lib/search";
-import SearchBox from "@/components/search/SearchBox";
 import CatalogNav from "@/components/CatalogNav";
 
 type SortKey = "trending" | "recent" | "downloaded" | "liked";
@@ -42,11 +41,10 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const [sort, setSort] = useState<SortKey>("trending");
   const [page, setPage] = useState(0);
 
-  // Search adapter — tạo 1 lần, index khi datasets thay đổi
+  // Search adapter — tạo 1 lần. Index ngay trong results useMemo (O(1) assignment,
+  // idempotent) thay vì useEffect — effect chạy sau render + không trigger re-render
+  // nên SSR/first-render listing bị rỗng (adapter chưa index kịp).
   const adapter: SearchAdapter = useMemo(() => createSearchAdapter(), []);
-  useEffect(() => {
-    adapter.index(datasets);
-  }, [datasets, adapter]);
 
   // Vocab từ dữ liệu
   const allTags = useMemo(() => {
@@ -63,8 +61,9 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     return counts;
   }, [datasets]);
 
-  // Search qua adapter — thay thế inline filter useMemo cũ (D1)
+  // Search qua adapter — index trước khi search để results đúng ở first render.
   const results = useMemo(() => {
+    adapter.index(datasets);
     const searchResults = adapter.search({
       text: query,
       filters: {
@@ -74,7 +73,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
       },
     });
     return searchResults.map((r) => r.dataset);
-  }, [adapter, query, activeCategories, activeTags, activeSizes]);
+  }, [adapter, datasets, query, activeCategories, activeTags, activeSizes]);
 
   // Sort kết quả search — tách riêng khỏi adapter (sort không phải search concern)
   const sorted = useMemo(() => {
@@ -97,6 +96,13 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     }
     return arr;
   }, [results, sort]);
+
+  // Pre-fill query từ URL param (khi navigate từ detail page search).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (q) setQuery(q);
+  }, []);
 
   // Reset page về 1 khi search/filter/sort thay đổi
   useEffect(() => {
@@ -202,13 +208,6 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
                 {sorted.length} results
               </span>
             </h1>
-          </div>
-
-          <div className="flex gap-2 mb-4">
-            {/* Sidebar search input — SearchBox presentational component */}
-            <div className="flex-1">
-              <SearchBox query={query} onQueryChange={setQuery} placeholder="Search datasets…" />
-            </div>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
@@ -256,7 +255,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
                     <span className="text-hf-text-muted">
                       Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
                       <span className="text-hf-text-faint mx-1">•</span>
-                      {d.row_count.toLocaleString("vi-VN")} rows
+                      {d.row_count > 0 ? `${d.row_count.toLocaleString("vi-VN")} rows` : "—"}
                       <span className="text-hf-text-faint mx-1">•</span>
                       {d.file_count} file{d.file_count !== 1 ? "s" : ""}
                       <span className="text-hf-text-faint mx-1">•</span>

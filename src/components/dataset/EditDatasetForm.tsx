@@ -116,6 +116,8 @@ export default function EditDatasetForm({
           : "csv",
         uploaded_by: initialMetadata.uploaded_by,
         uploaded_at: initialMetadata.uploaded_at,
+        row_count: initialMetadata.row_count,
+        columns_count: initialMetadata.columns_count,
       }
     );
     const markdownContent = renderDictionaryMarkdown(dictionary);

@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import type { UploadResult } from "./UploadWizard";
 
-const MAX_SIZE_BYTES = 100 * 1024 * 1024;
+const MAX_SIZE_BYTES = 500 * 1024 * 1024;
 const ALLOWED_EXTS = [".csv", ".tsv", ".xlsx", ".xls"];
 
 interface Props {
@@ -25,7 +25,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
       return;
     }
     if (file.size > MAX_SIZE_BYTES) {
-      onError(`File quá lớn: ${(file.size / 1024 / 1024).toFixed(1)}MB. Tối đa 100MB.`);
+      onError(`File quá lớn: ${(file.size / 1024 / 1024).toFixed(1)}MB. Tối đa 500MB.`);
       return;
     }
 
@@ -125,7 +125,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
             hoặc <span className="text-hf-link hover:underline">click để chọn file</span>
           </p>
           <p className="text-[11px] text-hf-text-faint">
-            Hỗ trợ: CSV, TSV, XLSX • Tối đa 100MB
+            Hỗ trợ: CSV, TSV, XLSX • Tối đa 500MB
           </p>
         </>
       )}

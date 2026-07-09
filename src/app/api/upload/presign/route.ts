@@ -5,7 +5,7 @@ import { detectFormat } from "@/lib/ai/inspect";
 
 export const maxDuration = 60; // Vercel Fluid Compute
 
-const MAX_SIZE_BYTES = 100 * 1024 * 1024; // 100MB
+const MAX_SIZE_BYTES = 500 * 1024 * 1024; // 500MB
 
 const ALLOWED_CONTENT_TYPES = new Set([
   "text/csv",
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
   if (size > MAX_SIZE_BYTES) {
     return NextResponse.json(
       {
-        error: `File quá lớn. Tối đa 100MB, nhận được ${(size / 1024 / 1024).toFixed(1)}MB`,
+        error: `File quá lớn. Tối đa 500MB, nhận được ${(size / 1024 / 1024).toFixed(1)}MB`,
       },
       { status: 413 }
     );

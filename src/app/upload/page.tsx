@@ -1,7 +1,7 @@
 import UploadWizard from "@/components/upload/UploadWizard";
 
 export const metadata = {
-  title: "Upload Dataset · VNExpress Data",
+  title: "Upload Dataset · VnExpress Data",
 };
 
 export default function UploadPage() {

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VNExpress Data Platform",
-  description: "Kho dữ liệu tòa soạn VNExpress — tìm, xem trước và tải về các dataset.",
+  title: "VnExpress Data Platform",
+  description: "Kho dữ liệu tòa soạn VnExpress — tìm, xem trước và tải về các dataset.",
 };
 
 export default function RootLayout({

@@ -216,6 +216,8 @@ export default function UploadWizard() {
                         ...proposal.metadata,
                         format: upload.format,
                         filename: upload.filename,
+                        row_count: filePreview?.rowCount,
+                        columns_count: filePreview?.columnCount,
                       },
                       dictionary: proposal.dictionary,
                       custom_slug: slug || undefined,

@@ -22,7 +22,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const meta = await getMetadataYaml(slug);
   if (!meta) return { title: "Không tìm thấy dataset" };
-  return { title: `Edit: ${meta.title} — VNExpress Data Platform` };
+  return { title: `Edit: ${meta.title} — VnExpress Data Platform` };
 }
 
 /** Fetch dictionary.md raw content từ GitHub raw */
@@ -70,7 +70,7 @@ export default async function EditDatasetPage({ params }: PageProps) {
           className="flex items-center gap-2 font-bold text-[15px] text-hf-text"
         >
           <span className="text-[22px]">🤗</span>
-          <span>VNExpress Data</span>
+          <span>VnExpress Data</span>
         </Link>
         <div className="flex gap-5 flex-1 text-sm">
           <Link href="/" className="font-semibold text-hf-text">

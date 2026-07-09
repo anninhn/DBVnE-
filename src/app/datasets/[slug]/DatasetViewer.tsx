@@ -48,6 +48,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
 
   const [resourceIdx, setResourceIdx] = useState(0);
   const [page, setPage] = useState(0);
+  const [search, setSearch] = useState("");
 
   const resource = viewableResources[resourceIdx] ?? viewableResources[0];
 
@@ -77,8 +78,21 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
     });
   }, [resource, rows, dataset.data_dictionary]);
 
-  const totalPages = Math.max(1, Math.ceil(rows.length / ROWS_PER_PAGE));
-  const pageRows = rows.slice(page * ROWS_PER_PAGE, (page + 1) * ROWS_PER_PAGE);
+  // Filter rows theo search query (client-side, chỉ trong preview rows ≤1000).
+  const filteredRows = useMemo(() => {
+    if (!search.trim()) return rows;
+    const q = search.trim().toLowerCase();
+    return rows.filter((row) =>
+      columns.some((col) => {
+        const v = row[col.name];
+        if (v == null) return false;
+        return String(v).toLowerCase().includes(q);
+      }),
+    );
+  }, [rows, search, columns]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredRows.length / ROWS_PER_PAGE));
+  const pageRows = filteredRows.slice(page * ROWS_PER_PAGE, (page + 1) * ROWS_PER_PAGE);
 
   return (
     <div>
@@ -101,6 +115,11 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
         </select>
         <input
           type="text"
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPage(0);
+          }}
           placeholder="Search rows…"
           className="ml-auto px-2.5 py-1 border border-hf-border rounded-md w-[180px] focus:outline-none focus:border-hf-yellow"
         />
@@ -122,20 +141,28 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
             </tr>
           </thead>
           <tbody>
-            {pageRows.map((row, i) => (
-              <tr key={i} className="border-b border-hf-border last:border-0 hover:bg-hf-bg-subtle">
-                {columns.map((col) => (
-                  <td
-                    key={col.name}
-                    className={`px-3 py-1.5 border-r border-hf-border last:border-r-0 whitespace-nowrap font-mono text-[12.5px] text-hf-text ${
-                      col.isNumeric ? "text-right tabular-nums" : ""
-                    }`}
-                  >
-                    {formatCell(row[col.name], col.isNumeric)}
-                  </td>
-                ))}
+            {pageRows.length === 0 ? (
+              <tr>
+                <td colSpan={columns.length} className="px-3 py-10 text-center text-hf-text-faint text-sm">
+                  Không tìm thấy dòng phù hợp với "{search}".
+                </td>
               </tr>
-            ))}
+            ) : (
+              pageRows.map((row, i) => (
+                <tr key={i} className="border-b border-hf-border last:border-0 hover:bg-hf-bg-subtle">
+                  {columns.map((col) => (
+                    <td
+                      key={col.name}
+                      className={`px-3 py-1.5 border-r border-hf-border last:border-r-0 whitespace-nowrap font-mono text-[12.5px] text-hf-text ${
+                        col.isNumeric ? "text-right tabular-nums" : ""
+                      }`}
+                    >
+                      {formatCell(row[col.name], col.isNumeric)}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
@@ -149,19 +176,25 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
         >
           ‹ Previous
         </button>
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i}
-            onClick={() => setPage(i)}
-            className={`min-w-[32px] px-2 py-1 text-[13px] rounded ${
-              i === page
-                ? "bg-hf-text text-white font-medium"
-                : "text-hf-text-muted hover:bg-hf-bg-muted"
-            }`}
-          >
-            {i + 1}
-          </button>
-        ))}
+        {pageWindow(page, totalPages).map((item, idx) =>
+          item === "…" ? (
+            <span key={`e${idx}`} className="px-1 py-1 text-[13px] text-hf-text-muted">
+              …
+            </span>
+          ) : (
+            <button
+              key={item}
+              onClick={() => setPage(item)}
+              className={`min-w-[32px] px-2 py-1 text-[13px] rounded ${
+                item === page
+                  ? "bg-hf-text text-white font-medium"
+                  : "text-hf-text-muted hover:bg-hf-bg-muted"
+              }`}
+            >
+              {item + 1}
+            </button>
+          )
+        )}
         <button
           onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
           disabled={page >= totalPages - 1}
@@ -171,6 +204,11 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
         </button>
       </div>
       <div className="text-center text-[13px] text-hf-text-muted py-4">
+        {search.trim() && (
+          <span>
+            {filteredRows.length.toLocaleString("vi-VN")} / {rows.length.toLocaleString("vi-VN")} dòng khớp "{search}".{" "}
+          </span>
+        )}
         End of preview.{" "}
         <a href="#" className="font-medium text-hf-link hover:underline">
           Expand in Data Studio
@@ -366,4 +404,22 @@ function formatCell(value: string | number | boolean | null | undefined, numeric
     return n.toLocaleString("vi-VN");
   }
   return String(value);
+}
+
+/**
+ * Windowed pagination — trả danh sách page index (0-based) + "…" cho ellipsis.
+ * Luôn show first + last, window current±2 ở giữa. Tránh render 100 button → tràn ngang.
+ */
+function pageWindow(current: number, total: number): (number | "…")[] {
+  if (total <= 7) {
+    return Array.from({ length: total }, (_, i) => i);
+  }
+  const items: (number | "…")[] = [0];
+  const start = Math.max(1, current - 2);
+  const end = Math.min(total - 2, current + 2);
+  if (start > 1) items.push("…");
+  for (let i = start; i <= end; i++) items.push(i);
+  if (end < total - 2) items.push("…");
+  items.push(total - 1);
+  return items;
 }

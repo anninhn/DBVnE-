@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getDatasetBySlug } from "@/lib/datasets/read";
+import { getDatasetBySlug, withPreviewData } from "@/lib/datasets/read";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import CatalogNav from "@/components/CatalogNav";
 import TabSwitcher from "./TabSwitcher";
@@ -24,13 +24,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const dataset = await getDatasetBySlug(slug);
   if (!dataset) return { title: "Không tìm thấy dataset" };
-  return { title: `${dataset.title} — VNExpress Data Platform` };
+  return { title: `${dataset.title} — VnExpress Data Platform` };
 }
 
 export default async function DatasetPage({ params }: PageProps) {
   const { slug } = await params;
   const dataset = await getDatasetBySlug(slug);
   if (!dataset) notFound();
+
+  // Populate structured_data cho resource CSV đầu tiên → DatasetViewer render
+  // table + histogram ở tab "Dataset card" (SSR, không flicker client fetch).
+  await withPreviewData(dataset);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -68,9 +72,19 @@ export default async function DatasetPage({ params }: PageProps) {
           {/* Metadata pills */}
           <div className="flex flex-wrap gap-4 mt-3 text-[13px]">
             <PillGroup label="Modalities:"><Pill>Tabular</Pill></PillGroup>
-            <PillGroup label="Formats:"><Pill>csv</Pill></PillGroup>
+            <PillGroup label="Formats:">
+              {Array.from(
+                new Set(
+                  dataset.resources
+                    .map((r) => r.file_type)
+                    .filter((t): t is NonNullable<typeof t> => Boolean(t))
+                ),
+              ).map((ft) => (
+                <Pill key={ft}>{ft}</Pill>
+              ))}
+            </PillGroup>
             <PillGroup label="Size:">
-              <Pill>{dataset.row_count.toLocaleString("vi-VN")} rows</Pill>
+              <Pill>{dataset.row_count > 0 ? `${dataset.row_count.toLocaleString("vi-VN")} rows` : "—"}</Pill>
             </PillGroup>
             <PillGroup label="Library:">
               <Pill>Datasets</Pill>
@@ -105,7 +119,7 @@ export default async function DatasetPage({ params }: PageProps) {
                 {dataset.resources.length > 0 && dataset.data_dictionary.length > 0 && (
                   <div className="mt-6">
                     <h2 className="text-lg font-semibold text-hf-text mt-5 mb-2 pb-1.5 border-b border-hf-border">
-                      Từ điển dữ liệu
+                      Data Dictionary
                     </h2>
                     <DataDictionary
                       resources={dataset.resources}

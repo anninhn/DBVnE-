@@ -26,6 +26,8 @@ interface CommitRequest {
     confidence: "high" | "medium" | "low";
     format: "csv" | "xlsx";
     filename: string;
+    row_count?: number;
+    columns_count?: number;
   };
   dictionary: DictionaryForRender[];
   /** Optional custom slug từ user — nếu thiếu, fallback sang slugify(title) */
@@ -121,6 +123,8 @@ export async function POST(req: NextRequest) {
       filename: metadata.filename,
       r2Key,
       r2Meta,
+      row_count: metadata.row_count,
+      columns_count: metadata.columns_count,
     }
   );
   const markdownContent = renderDictionaryMarkdown(dictionary ?? []);
