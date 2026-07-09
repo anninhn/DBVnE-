@@ -154,8 +154,9 @@ export async function commitMetadataFiles(
 /**
  * Xóa metadata.yaml + dictionary.md của 1 dataset khỏi git repo.
  *
- * Dùng tree item có `sha` nhưng KHÔNG có `mode`/`type` → GitHub API
- * hiểu đây là delete operation (mark file removed trong tree mới).
+ * Pattern delete qua createTree: mỗi item cần path + mode + type + sha:null.
+ * GitHub API dùng sha:null làm signal "mark deletion" — mode/type vẫn bắt buộc
+ * (raw tree item schema yêu cầu, không optional như comment cũ ghi).
  *
  * @param slug — dataset slug
  * @returns CommitResult cho commit delete
@@ -170,10 +171,12 @@ export async function deleteDatasetFiles(
   const metadataPath = `datasets/${slug}/metadata.yaml`;
   const dictionaryPath = `datasets/${slug}/dictionary.md`;
 
-  // 1. Lấy SHA hiện tại của metadata.yaml + dictionary.md
+  // 1. Verify files tồn tại (getContent) — skip nếu 404, không cần SHA cho delete
   const treeItems: Array<{
     path: string;
-    sha?: string | null;
+    mode: "100644";
+    type: "blob";
+    sha: null;
   }> = [];
 
   for (const filePath of [metadataPath, dictionaryPath]) {
@@ -186,11 +189,13 @@ export async function deleteDatasetFiles(
       });
 
       // getContent trả array nếu path là directory, object nếu file.
-      // Ở đây path là file cụ thể → object.
+      // Ở đây path là file cụ thể → object (có field sha).
       if (!Array.isArray(contentResponse.data) && "sha" in contentResponse.data) {
         treeItems.push({
           path: filePath,
-          sha: contentResponse.data.sha,
+          mode: "100644",
+          type: "blob",
+          sha: null, // null = signal delete cho GitHub createTree
         });
       }
     } catch (err) {
@@ -220,7 +225,7 @@ export async function deleteDatasetFiles(
   });
   const baseTreeSha = commitResponse.data.tree.sha;
 
-  // 3. Create tree với delete items (sha + null mode/type = mark delete)
+  // 3. Create tree với delete items (path + mode + type + sha:null = mark delete)
   const newTree = await octokit.rest.git.createTree({
     owner,
     repo,
