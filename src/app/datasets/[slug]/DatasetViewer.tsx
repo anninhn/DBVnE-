@@ -2,6 +2,12 @@
 
 import { useMemo, useState } from "react";
 import type { ColumnStats, DataDictionaryEntry, Dataset, Resource } from "@/lib/types/dataset";
+import {
+  numericStats,
+  histogramBins,
+  countDistinct,
+  categoricalSegments,
+} from "@/lib/viz/column-stats";
 
 const ROWS_PER_PAGE = 10;
 
@@ -348,7 +354,7 @@ function ProportionBar({
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Pure stats helpers
+// Helpers
 // ──────────────────────────────────────────────────────────────────────────────
 
 function formatCell(value: string | number | boolean | null | undefined, numeric: boolean): string {
@@ -360,76 +366,4 @@ function formatCell(value: string | number | boolean | null | undefined, numeric
     return n.toLocaleString("vi-VN");
   }
   return String(value);
-}
-
-function numericStats(
-  rows: Record<string, string | number | boolean | null | undefined>[],
-  colName: string
-): { min: string; max: string } | null {
-  const values = rows
-    .map((r) => r[colName])
-    .filter((v) => v != null && v !== "")
-    .map((v) => (typeof v === "string" ? parseFloat(v) : (v as number)))
-    .filter((n) => !Number.isNaN(n));
-  if (values.length === 0) return null;
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  return { min: min.toLocaleString("vi-VN"), max: max.toLocaleString("vi-VN") };
-}
-
-function histogramBins(
-  rows: Record<string, string | number | boolean | null | undefined>[],
-  colName: string
-): { counts: number[] } | null {
-  const values = rows
-    .map((r) => r[colName])
-    .filter((v) => v != null && v !== "")
-    .map((v) => (typeof v === "string" ? parseFloat(v) : (v as number)))
-    .filter((n) => !Number.isNaN(n));
-  if (values.length === 0) return null;
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const BINS = 8;
-  const step = (max - min) / BINS || 1;
-  const counts = new Array(BINS).fill(0);
-  values.forEach((v) => {
-    let idx = Math.floor((v - min) / step);
-    if (idx >= BINS) idx = BINS - 1;
-    counts[idx]++;
-  });
-  return { counts };
-}
-
-function countDistinct(
-  rows: Record<string, string | number | boolean | null | undefined>[],
-  colName: string
-): number {
-  const set = new Set(
-    rows
-      .map((r) => r[colName])
-      .filter((v) => v != null && v !== "")
-      .map((v) => String(v))
-  );
-  return set.size;
-}
-
-function categoricalSegments(
-  rows: Record<string, string | number | boolean | null | undefined>[],
-  colName: string
-): { segments: { label: string; count: number }[]; total: number } | null {
-  const counts: Record<string, number> = {};
-  let total = 0;
-  rows.forEach((r) => {
-    const v = r[colName];
-    if (v == null || v === "") return;
-    const key = String(v);
-    counts[key] = (counts[key] ?? 0) + 1;
-    total++;
-  });
-  const entries = Object.entries(counts)
-    .map(([label, count]) => ({ label, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 12);
-  if (entries.length === 0) return null;
-  return { segments: entries, total };
 }

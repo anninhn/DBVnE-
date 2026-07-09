@@ -15,6 +15,7 @@ import type {
   Resource,
   DataDictionaryEntry,
 } from "@/lib/types/dataset";
+import { buildFileUrl } from "@/lib/r2/client";
 import {
   type DictionaryEntry,
   type GithubConfig,
@@ -110,16 +111,22 @@ function mapFilesToResources(
 ): { resources: Resource[]; totalSizeMb: number } {
   if (!files || files.length === 0) return { resources: [], totalSizeMb: 0 };
 
-  const resources: Resource[] = files.map((f, i) => ({
-    id: i + 1,
-    resource_type: inferResourceType(f.filename ?? f.r2_key, format),
-    title: f.filename ?? f.r2_key.split("/").pop() ?? "untitled",
-    file_url: undefined, // Sẽ wire sau qua R2 public base hoặc /api/files proxy
-    file_type: inferFileType(f.filename ?? f.r2_key, format),
-    file_size_mb: f.size_mb ?? 0,
-    uploaded_by: "demo",
-    uploaded_at: new Date().toISOString(),
-  }));
+  const resources: Resource[] = files.map((f, i) => {
+    const r2Key = f.r2_key ?? "";
+    if (!r2Key) {
+      console.warn(`[datasets] File ref thiếu r2_key — skip file_url cho index ${i}`);
+    }
+    return {
+      id: i + 1,
+      resource_type: inferResourceType(f.filename ?? r2Key, format),
+      title: f.filename ?? r2Key.split("/").pop() ?? "untitled",
+      file_url: r2Key ? buildFileUrl(r2Key) : undefined,
+      file_type: inferFileType(f.filename ?? r2Key, format),
+      file_size_mb: f.size_mb ?? 0,
+      uploaded_by: "demo",
+      uploaded_at: new Date().toISOString(),
+    };
+  });
 
   const totalSizeMb = files.reduce((sum, f) => sum + (f.size_mb ?? 0), 0);
   return { resources, totalSizeMb };

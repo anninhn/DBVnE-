@@ -42,3 +42,21 @@ export function getR2Bucket(): string {
   if (!bucket) throw new Error("R2_BUCKET_NAME missing trong .env.local");
   return bucket;
 }
+
+/**
+ * Xây dựng public URL cho R2 object — browser fetch trực tiếp, không proxy server (D2).
+ *
+ * Format: `${R2_PUBLIC_BASE}/${r2Key}`
+ * Ví dụ: https://pub-abc123.r2.dev/550e8400-e29b-41d4-a716-446655440000/data.csv
+ *
+ * Lưu ý: R2 bucket phải config public access + CORS cho vercel.app + localhost.
+ */
+export function buildFileUrl(r2Key: string): string {
+  const base = process.env.R2_PUBLIC_BASE;
+  if (!base) {
+    throw new Error(
+      "R2_PUBLIC_BASE missing trong .env.local — cần set URL public R2 (vd: https://pub-abc123.r2.dev)"
+    );
+  }
+  return `${base}/${r2Key}`;
+}

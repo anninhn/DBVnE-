@@ -7,6 +7,7 @@ import DatasetViewer from "./DatasetViewer";
 import MetadataSidebar from "./MetadataSidebar";
 import Markdown from "./Markdown";
 import DataDictionary from "./DataDictionary";
+import FilesTabContent from "./FilesTabContent";
 
 // Dynamic SSR runtime — tránh Vercel cache 404 khi dataset chưa tồn tại
 // (cache layer fetch vẫn 60s qua `next: { revalidate: 60 }`).
@@ -22,24 +23,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const dataset = await getDatasetBySlug(slug);
   if (!dataset) return { title: "Không tìm thấy dataset" };
   return { title: `${dataset.title} — VNExpress Data Platform` };
-}
-
-function fileIcon(type?: string): string {
-  switch (type) {
-    case "csv":
-    case "xlsx":
-      return "📊";
-    case "pdf":
-      return "📄";
-    case "mp3":
-      return "🎵";
-    case "geojson":
-      return "🗺️";
-    case "json":
-      return "🧩";
-    default:
-      return "📁";
-  }
 }
 
 export default async function DatasetPage({ params }: PageProps) {
@@ -147,43 +130,7 @@ export default async function DatasetPage({ params }: PageProps) {
           </div>
 
           {/* ── Files tab ── */}
-          <div className="p-6">
-            <table className="w-full border-collapse text-[13px] font-mono border-t border-hf-border">
-              <thead>
-                <tr>
-                  {["filename", "size", "rows", "updated", ""].map((h) => (
-                    <th
-                      key={h}
-                      className="text-left px-3 pt-2.5 pb-2 bg-hf-bg-subtle border-b border-hf-border font-semibold font-sans text-hf-text"
-                    >
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {dataset.resources.map((r) => (
-                  <tr key={r.id} className="border-b border-hf-border last:border-0">
-                    <td className="px-3 py-1.5">
-                      {fileIcon(r.file_type)} {r.title.toLowerCase().replace(/\s+/g, "_")}.{r.file_type ?? "csv"}
-                    </td>
-                    <td className="px-3 py-1.5 text-right">{r.file_size_mb} MB</td>
-                    <td className="px-3 py-1.5 text-right">
-                      {r.structured_data?.length.toLocaleString("vi-VN") ?? "—"}
-                    </td>
-                    <td className="px-3 py-1.5">
-                      {new Date(r.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
-                    </td>
-                    <td className="px-3 py-1.5">
-                      <a href={r.file_url ?? "#"} className="text-hf-link hover:underline">
-                        download
-                      </a>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <FilesTabContent resources={dataset.resources} />
 
           {/* ── Community tab ── */}
           <div className="p-6 text-center text-hf-text-muted py-24">
