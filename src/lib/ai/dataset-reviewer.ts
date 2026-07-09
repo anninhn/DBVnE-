@@ -65,6 +65,9 @@ async function loadSystemPrompt(): Promise<string> {
 
 /**
  * Parse JSON từ LLM response — handle markdown wrapper nếu có.
+ *
+ * Throw error kèm raw content (truncated) nếu parse fail — giúp debug
+ * trường hợp AI truncate giữa string do max_tokens quá thấp.
  */
 function parseJSONResponse(content: string): unknown {
   let cleaned = content.trim();
@@ -74,7 +77,18 @@ function parseJSONResponse(content: string): unknown {
     cleaned = cleaned.replace(/^```(?:json)?\s*\n?/, "").replace(/\n?```\s*$/, "");
   }
 
-  return JSON.parse(cleaned);
+  try {
+    return JSON.parse(cleaned);
+  } catch (err) {
+    // Log raw content để debug — thường là do max_tokens cắt giữa chuỗi
+    const preview = cleaned.length > 300 ? cleaned.slice(0, 300) + "…[truncated]" : cleaned;
+    console.error("[analyze] JSON parse fail. Raw content:", preview);
+    throw new Error(
+      `AI response không parse được JSON: ${err instanceof Error ? err.message : "unknown"}. ` +
+      `Content length: ${cleaned.length} chars (có thể do max_tokens cắt giữa chuỗi). ` +
+      `Preview: ${preview}`
+    );
+  }
 }
 
 /**
@@ -115,7 +129,7 @@ export async function analyzeDataset(
       },
     ],
     temperature: 0.3, // thấp — muốn output deterministic, không sáng tạo
-    max_tokens: 2000,
+    max_tokens: 8000, // đủ chỗ cho metadata + dictionary đầy đủ (fix truncate)
     // Gemini OpenAI-compat: JSON mode → output luôn JSON hợp lệ
     response_format: { type: "json_object" },
   });
