@@ -6,6 +6,64 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ## [Unreleased] — Phase 1 Dataset Hub (đang phát triển)
 
+### 2026-07-10 — Phase 1 completion + polish (commit 08ed11a)
+
+Hoàn thiện Phase 1: 4 features còn thiếu + perf fix + rebrand. All validation gaps resolved.
+
+**Performance**
+- CSV preview qua HTTP Range (1MB chunk) — detail page 23s → 2.3s cho file 153MB/1.58M rows
+- `enrichRowCounts` size cap ≥10MB — skip download file lớn khi listing count rows
+- RSC-safe XLSX cell coercion (`coerceCell`) — fix "Only plain objects can be passed to Client Components"
+
+**Features**
+- Wire-up "Search rows…" filter trong DatasetViewer (client-side, ≤1000 preview rows)
+- CatalogNav: luôn hiển thị search box; detail page Enter → navigate `/?q=`
+- Windowed pagination trong DatasetViewer — fix overflow khi nhiều pages
+- row_count/columns_count persist vào metadata.yaml lúc upload + read-time fallback cho dataset cũ
+
+**Changed**
+- Rename "VNExpress" → "VnExpress" toàn bộ UI (8 instances, 6 files)
+- Upload size limit 100MB → 500MB
+- Formats pill wired to actual resource file_type (không hardcode "csv")
+- "Từ điển dữ liệu" → "Data Dictionary"
+
+### 2026-07-09 — Phase 1 production-ready (commits 5354573–b4f03df)
+
+Source of truth chuyển sang GitHub Contents API + R2. Supabase drop hoàn toàn.
+
+**Architecture**
+- File-based: `datasets/<slug>/metadata.yaml` qua GitHub Contents API (authoritative, không CDN stale)
+- R2 public access enabled — object URL thay vì Supabase Storage
+- Dynamic SSR (`force-dynamic`) cho mọi page fetch external data — tránh Vercel cache 404
+
+**Shipped**
+- Search adapter: SimpleFilterAdapter, token-AND + diacritics-insensitive
+- Pagination (PAGE_SIZE=20) trong DatasetExplorer
+- R2 file viewer: CSV/XLSX/PDF/MP3, native CSV parser (no papaparse)
+- Edit/Delete dataset: EditDatasetForm (metadata-only), DeleteDatasetButton (dev-only)
+- Editable slug trong upload wizard (auto-fill + server conflict resolve)
+- `tools/cleanup-orphans.mjs` — sync GitHub metadata vs R2 objects
+
+**Bug fixes**
+- 404 sau upload (force-dynamic + Contents API)
+- Search diacritics + token-AND match
+- Delete tree items thiếu mode + type
+- Stale listing (list.ts no-store)
+
+### 2026-07-03 — Upload Wizard MVP / re-arch (commits a29816f–20e272d)
+
+Pivot từ PostgreSQL → file-based + R2 + AI-assisted upload. Constitution update.
+
+**Added**
+- Upload Wizard: drag-and-drop CSV/XLSX → R2 upload → AI inspect (metadata + dictionary) → preview commit → GitHub Contents API
+- AI naming neutral: `AI_BASE_URL`/`AI_MODEL`/`AI_ENV_VAR` consts (swap provider không đổi code)
+- CORS R2 config cho localhost + vercel.app
+- r2Key validation: UUID/filename pattern
+
+### 2026-06-24 — Dataset Catalog (commits 0757032–5e31495)
+
+Wire frontend mock → real data + viewer improvements.
+
 ### 2026-06-23 — HF Frontend Demo (mock data)
 
 Triển khai giao diện HF-style — **chỉ frontend, mock data, không đụng DB/API**.
