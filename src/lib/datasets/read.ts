@@ -2,7 +2,8 @@
  * Đọc 1 dataset từ GitHub raw — runtime fetch.
  *
  * Page `/datasets/[slug]` gọi `getDatasetBySlug(slug)` mỗi request.
- * Cache in-memory 60s để giảm GitHub API calls + tăng tốc response.
+ * Không cache fetch layer (no-store) — tránh stale 404 sau upload.
+ * Per-request cache vẫn có qua React `cache()` wrapper ở getDatasetBySlug.
  *
  * Atomic link: metadata.yaml field `files[].r2_key + version_id + sha256`
  * tham chiếu R2 object. Chi tiết: constitution/tech-stack.md.
@@ -37,9 +38,12 @@ async function fetchRaw(path: string): Promise<string | null> {
     ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
     // Force edge revalidation (GitHub raw CDN cache 5 phút mặc định)
     "User-Agent": "vnexpress-data-platform",
+    // Cache-bust: GitHub raw CDN có thể cache 404 đến 5 phút.
+    // Thêm timestamp để force fetch mới sau upload.
+    "Cache-Control": "no-cache",
   };
 
-  const res = await fetch(url, { headers, next: { revalidate: 60 } });
+  const res = await fetch(url, { headers, cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) {
     throw new Error(`GitHub raw fetch failed: ${path} (${res.status})`);
