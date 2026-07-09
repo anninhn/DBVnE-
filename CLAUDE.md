@@ -41,3 +41,27 @@ This project uses Spec-Driven Development. Read these files before implementing 
 
 - `/feature-spec` — Start the next feature phase
 - `/changelog` — Generate/update CHANGELOG.md from git history
+
+## Maintenance Scripts
+
+**Quan trọng**: KHÔNG edit trực tiếp GitHub repo hay R2 bucket mà không qua app. Mọi thay đổi (upload/edit/delete dataset) phải qua UI hoặc API để giữ sync giữa GitHub metadata và R2 files.
+
+Nếu đã edit trực tiếp (hoặc nghi ngờ inconsistent), chạy script cleanup:
+
+```bash
+# Dry-run — scan + report orphans 2 chiều (GitHub metadata vs R2 objects)
+node tools/cleanup-orphans.mjs
+
+# Apply — xóa orphans thật
+node tools/cleanup-orphans.mjs --apply
+```
+
+Loại orphan script xử lý:
+- **GitHub orphan**: `metadata.yaml` references `r2_key` nhưng object không tồn tại trong R2 → xóa cả folder `datasets/<slug>/`
+- **R2 orphan**: object tồn tại trong R2 nhưng không có metadata nào reference → xóa object
+
+Setup CORS R2 (chỉ chạy 1 lần khi config bucket mới):
+```bash
+node tools/setup-r2-cors.mjs
+```
+
