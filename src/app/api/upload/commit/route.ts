@@ -4,6 +4,7 @@ export const maxDuration = 30;
 
 import { getObjectMetadata } from "@/lib/r2/get";
 import { getMetadataYaml } from "@/lib/datasets/read";
+import { slugify, isValidSlug } from "@/lib/slugify";
 import {
   commitMetadata,
   renderMetadataYaml,
@@ -27,22 +28,8 @@ interface CommitRequest {
     filename: string;
   };
   dictionary: DictionaryForRender[];
-}
-
-/**
- * Convert slug từ title (Vietnamese-safe).
- * "GRDP 34 Tỉnh 2024" → "grdp-34-tinh-2024"
- */
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // strip diacritics
-    .replace(/đ/g, "d")
-    .replace(/[^a-z0-9\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-")
-    .slice(0, 60);
+  /** Optional custom slug từ user — nếu thiếu, fallback sang slugify(title) */
+  custom_slug?: string;
 }
 
 /**
@@ -72,7 +59,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { fileId, r2Key, metadata, dictionary } = body;
+  const { fileId, r2Key, metadata, dictionary, custom_slug } = body;
 
   if (!metadata?.title || !metadata?.description) {
     return NextResponse.json(
@@ -81,8 +68,23 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 1. Generate unique slug (check conflict trong repo)
-  const baseSlug = slugify(metadata.title);
+  // 1. Generate unique slug — ưu tiên custom_slug (đã sanitize), fallback slugify(title)
+  let baseSlug: string;
+  if (custom_slug && custom_slug.trim()) {
+    // Sanitize custom slug qua slugify để strip ký tự lạ (defensive — client cũng validate rồi)
+    baseSlug = slugify(custom_slug);
+    if (!isValidSlug(baseSlug)) {
+      return NextResponse.json(
+        {
+          error: `Custom slug "${custom_slug}" không hợp lệ sau khi sanitize. Chỉ cho phép [a-z0-9-], 1-60 ký tự.`,
+        },
+        { status: 400 }
+      );
+    }
+  } else {
+    baseSlug = slugify(metadata.title);
+  }
+
   if (!baseSlug) {
     return NextResponse.json(
       { error: "Không generate được slug từ title" },

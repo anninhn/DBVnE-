@@ -1,11 +1,20 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AIProposal } from "./UploadWizard";
+import { slugify, isValidSlug } from "@/lib/slugify";
 
 interface Props {
   initial: AIProposal["metadata"];
   onChange: (metadata: AIProposal["metadata"]) => void;
+  /** Slug state — lifted lên UploadWizard để pass vào commit API */
+  slug: string;
+  onSlugChange: (slug: string) => void;
+  /**
+   * Read-only mode — used trong EditDatasetForm (D3: slug cố định sau upload).
+   * Khi true: render slug dạng info box, không phải input field.
+   */
+  slugReadOnly?: boolean;
 }
 
 const CATEGORIES = [
@@ -32,11 +41,18 @@ const CONFIDENCE_LABELS = {
   low: "Thấp",
 };
 
-export default function MetadataEditor({ initial, onChange }: Props) {
+export default function MetadataEditor({ initial, onChange, slug, onSlugChange, slugReadOnly }: Props) {
   const [value, setValue] = useState(initial);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
   const [tagsLoaded, setTagsLoaded] = useState(false);
+
+  /**
+   * slugTouched — true khi user đã chỉnh slug input thủ công.
+   * Khi chưa touched: auto-update slug theo title (live preview).
+   * Khi touched: slug cố định, không còn follow title.
+   */
+  const slugTouchedRef = useRef(false);
 
   // Fetch tags từ DB
   useEffect(() => {
@@ -49,7 +65,15 @@ export default function MetadataEditor({ initial, onChange }: Props) {
       .catch(() => setTagsLoaded(true));
   }, []);
 
-  // Sync up
+  // Auto-fill slug từ title — chỉ khi user chưa chỉnh slug thủ công VÀ không phải read-only mode
+  useEffect(() => {
+    if (!slugReadOnly && !slugTouchedRef.current) {
+      onSlugChange(slugify(value.title));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value.title]);
+
+  // Sync metadata up
   useEffect(() => {
     onChange(value);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,6 +123,57 @@ export default function MetadataEditor({ initial, onChange }: Props) {
             onChange={(e) => setValue({ ...value, title: e.target.value })}
             className="w-full border border-hf-border rounded-md px-3 py-2 text-sm focus:border-hf-yellow focus:ring-2 focus:ring-hf-yellow-50 focus:outline-none"
           />
+        </div>
+
+        {/* Slug — auto từ title (upload) hoặc read-only (edit D3) */}
+        <div>
+          <label className="block text-xs font-medium text-hf-text-muted mb-1">
+            Slug <span className="text-hf-text-faint font-normal">(URL path)</span>
+          </label>
+          {slugReadOnly ? (
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-hf-text-faint shrink-0">demo /</span>
+              <code className="flex-1 font-mono text-sm text-hf-text bg-hf-bg-muted border border-hf-border rounded-md px-3 py-2">
+                {slug}
+              </code>
+              <span className="text-[11px] text-hf-text-faint shrink-0">
+                🔒 Không đổi được (D3)
+              </span>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-hf-text-faint shrink-0">demo /</span>
+                <input
+                  type="text"
+                  value={slug}
+                  onChange={(e) => {
+                    slugTouchedRef.current = true;
+                    onSlugChange(e.target.value);
+                  }}
+                  placeholder="tu-dong-sinh-tu-tieu-de"
+                  className={`flex-1 border rounded-md px-3 py-2 text-sm font-mono focus:outline-none ${
+                    isValidSlug(slug)
+                      ? "border-hf-border focus:border-hf-yellow focus:ring-2 focus:ring-hf-yellow-50"
+                      : "border-hf-red/50 focus:border-hf-red focus:ring-2 focus:ring-red-50"
+                  }`}
+                />
+              </div>
+              {slug && !isValidSlug(slug) && (
+                <p className="text-[11px] text-hf-red mt-1">
+                  Chỉ cho phép chữ thường [a-z], số [0-9], dấu gạch (-). Tối đa 60 ký tự.
+                </p>
+              )}
+              {slug && isValidSlug(slug) && (
+                <p className="text-[11px] text-hf-text-faint mt-1">
+                  URL cuối cùng: <code className="text-hf-text">/datasets/{slug}</code>
+                  {slugTouchedRef.current && (
+                    <span className="ml-2 text-hf-text-faint">(đã chỉnh thủ công)</span>
+                  )}
+                </p>
+              )}
+            </>
+          )}
         </div>
 
         {/* Description */}

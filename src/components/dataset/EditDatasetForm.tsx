@@ -245,6 +245,11 @@ export default function EditDatasetForm({
           <MetadataEditor
             initial={metadata}
             onChange={setMetadata}
+            slug={initialSlug}
+            onSlugChange={() => {
+              /* no-op: slug cố định trong edit mode (D3) */
+            }}
+            slugReadOnly
           />
 
           <DictionaryEditor

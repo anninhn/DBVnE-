@@ -70,6 +70,7 @@ export default function UploadWizard() {
   const [filePreview, setFilePreview] = useState<FilePreview | null>(null);
   const [commitPreview, setCommitPreview] = useState<CommitPreview | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [slug, setSlug] = useState("");
 
   function reset() {
     setStep(1);
@@ -78,6 +79,7 @@ export default function UploadWizard() {
     setFilePreview(null);
     setCommitPreview(null);
     setError(null);
+    setSlug("");
   }
 
   return (
@@ -182,6 +184,8 @@ export default function UploadWizard() {
             onChange={(metadata) =>
               setProposal({ ...proposal, metadata })
             }
+            slug={slug}
+            onSlugChange={setSlug}
           />
 
           <DictionaryEditor
@@ -214,6 +218,7 @@ export default function UploadWizard() {
                         filename: upload.filename,
                       },
                       dictionary: proposal.dictionary,
+                      custom_slug: slug || undefined,
                     }),
                   });
                   const data = await res.json();
