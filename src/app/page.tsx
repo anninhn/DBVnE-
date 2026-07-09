@@ -1,10 +1,10 @@
-import { listDatasets } from "@/lib/data/datasets";
+import { listDatasets } from "@/lib/datasets/list";
 import DatasetExplorer from "@/components/DatasetExplorer";
 
-// Render per-request, not at build time. The listing reads from Supabase,
-// so prerendering would (a) fail without env vars at build time and
-// (b) bake a stale dataset list into the deploy. See F1 deploy fix.
+// Dynamic SSR runtime — fetch metadata.yaml từ GitHub raw mỗi request.
+// Không còn PostgreSQL dependency. Cache 60s qua React cache() + GitHub CDN.
 export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function Home() {
   const datasets = await listDatasets();

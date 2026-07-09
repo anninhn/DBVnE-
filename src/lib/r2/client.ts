@@ -28,6 +28,10 @@ export function getR2Client(): S3Client {
     region: "auto",
     endpoint: `https://${accountId}.r2.cloudflarestorage.com`,
     credentials: { accessKeyId, secretAccessKey },
+    // R2 không support AWS SDK v3 default checksum on presigned PUT.
+    // Without this, presigned URL chứa `x-amz-checksum-crc32=...` → R2 reject.
+    requestChecksumCalculation: "WHEN_REQUIRED",
+    responseChecksumValidation: "WHEN_REQUIRED",
   });
 
   return _client;

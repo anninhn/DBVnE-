@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { listDatasets } from "@/lib/data/datasets";
+import { listDatasets } from "@/lib/datasets/list";
 
 /**
  * GET /api/datasets — listing metadata (lightweight, không resources/dictionary).

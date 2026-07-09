@@ -13,17 +13,40 @@ type Tab = "yaml" | "markdown";
 
 export default function CommitPreview({ preview, onReset }: Props) {
   const [tab, setTab] = useState<Tab>("yaml");
+  const committed = preview.committed;
 
   return (
     <div className="space-y-4">
-      {/* Notice banner */}
-      <div className="border border-hf-yellow/40 bg-hf-yellow-50/40 text-hf-text px-4 py-3 rounded-md text-sm">
-        <strong>⚠️ Preview-only.</strong> {preview.message}{" "}
-        <span className="text-hf-text-muted">
-          File đã lưu ở R2 <code className="font-mono text-xs">staging/</code>{" "}
-          (auto-clean sau 24h).
-        </span>
-      </div>
+      {/* Status banner */}
+      {committed ? (
+        <div className="border border-hf-green/40 bg-green-50 text-hf-text px-4 py-3 rounded-md text-sm">
+          <strong>✓ Đã commit.</strong> {preview.message}{" "}
+          <a
+            href={`/datasets/${preview.slug}`}
+            className="text-hf-link hover:underline font-medium"
+          >
+            Xem dataset →
+          </a>
+          {preview.commitUrl && (
+            <>
+              {" "}
+              ·{" "}
+              <a
+                href={preview.commitUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-hf-link hover:underline"
+              >
+                Git commit
+              </a>
+            </>
+          )}
+        </div>
+      ) : (
+        <div className="border border-hf-yellow/40 bg-hf-yellow-50/40 text-hf-text px-4 py-3 rounded-md text-sm">
+          <strong>⚠️ Preview-only.</strong> {preview.message}
+        </div>
+      )}
 
       {/* Slug info */}
       <div className="bg-hf-bg border border-hf-border rounded-md px-4 py-2.5 text-[13px]">
@@ -70,21 +93,35 @@ export default function CommitPreview({ preview, onReset }: Props) {
       </div>
 
       {/* Footer actions */}
-      <div className="flex justify-between items-center pt-2">
-        <a
-          href="https://dash.cloudflare.com"
-          target="_blank"
-          rel="noreferrer"
-          className="text-xs text-hf-link hover:underline"
-        >
-          → Xem file trên Cloudflare R2 dashboard
-        </a>
-        <button
-          onClick={onReset}
-          className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
-        >
-          Upload dataset khác
-        </button>
+      <div className="flex justify-between items-center pt-2 gap-2">
+        {committed ? (
+          <>
+            <span className="text-xs text-hf-text-muted">
+              💡 Có thể mất 60s để catalog `/` hiển thị dataset mới (cache).
+            </span>
+            <div className="flex gap-2">
+              <a
+                href={`/datasets/${preview.slug}`}
+                className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
+              >
+                Xem dataset →
+              </a>
+              <button
+                onClick={onReset}
+                className="border border-hf-border-strong bg-hf-bg text-hf-text px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-bg-muted transition"
+              >
+                Upload dataset khác
+              </button>
+            </div>
+          </>
+        ) : (
+          <button
+            onClick={onReset}
+            className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
+          >
+            Upload dataset khác
+          </button>
+        )}
       </div>
     </div>
   );

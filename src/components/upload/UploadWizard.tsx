@@ -51,6 +51,9 @@ export interface CommitPreview {
   markdownPreview: string;
   committed: boolean;
   message: string;
+  commitSha?: string;
+  commitUrl?: string;
+  url?: string;
 }
 
 const STEP_LABELS: Record<Step, string> = {
@@ -223,7 +226,7 @@ export default function UploadWizard() {
               }}
               className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
             >
-              Preview commit →
+              Xác nhận commit →
             </button>
           </div>
         </div>

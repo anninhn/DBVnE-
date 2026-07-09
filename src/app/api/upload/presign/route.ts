@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
-import { presignStagingUpload } from "@/lib/r2/presign";
+import { presignUpload } from "@/lib/r2/presign";
 import { detectFormat } from "@/lib/ai/inspect";
 
 export const maxDuration = 60; // Vercel Fluid Compute
@@ -79,8 +79,9 @@ export async function POST(req: NextRequest) {
   const finalContentType = contentType || (format === "csv" ? "text/csv" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 
   try {
-    const { presignedUrl, r2Key, bucket } = await presignStagingUpload(
+    const { presignedUrl, r2Key, bucket } = await presignUpload(
       fileId,
+      filename,
       finalContentType
     );
 

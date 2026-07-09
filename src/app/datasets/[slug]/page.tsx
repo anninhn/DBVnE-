@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getDatasetBySlug } from "@/lib/data/datasets";
+import { getDatasetBySlug } from "@/lib/datasets/read";
 import TabSwitcher from "./TabSwitcher";
 import DatasetViewer from "./DatasetViewer";
 import MetadataSidebar from "./MetadataSidebar";

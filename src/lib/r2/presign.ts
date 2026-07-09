@@ -2,24 +2,32 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { getR2Bucket, getR2Client } from "./client";
 
-const STAGING_TTL_SECONDS = 15 * 60; // 15 phút — đủ cho browser upload file lớn
+const TTL_SECONDS = 15 * 60; // 15 phút — đủ cho browser upload file lớn
 
 /**
- * Tạo presigned PUT URL cho browser upload thẳng R2 staging/.
+ * Tạo presigned PUT URL cho browser upload thẳng R2.
  *
  * Pattern: browser → PUT file → R2 (không qua Vercel serverless).
  * TTL 15 phút — nếu user idle quá lâu phải refresh.
  *
- * @param fileId UUID do server generate (vd: crypto.randomUUID())
- * @param contentType MIME type từ file user chọn (vd: text/csv)
+ * R2 key pattern: `<fileId>/<filename>` — final path, không qua staging.
+ * Lý do skip staging prefix: git commit là "publish boundary" (xem plan
+ * synchronous-toasting-kahn.md). R2 chỉ là dumb binary store.
+ *
+ * @param fileId UUID do server generate
+ * @param filename tên file gốc (vd: "grdp_test.csv") — dùng làm suffix R2 key
+ * @param contentType MIME type (vd: text/csv)
  */
-export async function presignStagingUpload(
+export async function presignUpload(
   fileId: string,
+  filename: string,
   contentType: string
 ): Promise<{ presignedUrl: string; r2Key: string; bucket: string }> {
   const client = getR2Client();
   const bucket = getR2Bucket();
-  const r2Key = `staging/${fileId}`;
+  // Sanitize filename — chỉ giữ [a-zA-Z0-9._-]
+  const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
+  const r2Key = `${fileId}/${safeName}`;
 
   const command = new PutObjectCommand({
     Bucket: bucket,
@@ -28,7 +36,7 @@ export async function presignStagingUpload(
   });
 
   const presignedUrl = await getSignedUrl(client, command, {
-    expiresIn: STAGING_TTL_SECONDS,
+    expiresIn: TTL_SECONDS,
   });
 
   return { presignedUrl, r2Key, bucket };
