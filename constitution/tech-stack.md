@@ -20,23 +20,29 @@ Phase 3: + RAG Pipeline (pgvector hoặc separate vector store) + Claude API
 
 ```
 Framework:       Next.js 15 (App Router) — GIỮ từ F1 hiện tại
-Catalog:         Static Generation (SSG) từ metadata files trong GitHub repo
+Catalog:         Dynamic SSR runtime — fetch metadata.yaml từ GitHub raw mỗi request
+                 (force-dynamic + revalidate 60s). Không SSG, không Vercel rebuild
+                 khi upload dataset mới.
 Upload:          Dynamic page + API Route với presigned URL pattern
-Metadata store:  GitHub repo (text files: metadata.yaml, dictionary.md, tags.yaml)
+Metadata store:  GitHub repo (text files: metadata.yaml, dictionary.md) — commit qua
+                 Octokit REST API từ server sau khi user confirm trong wizard
+Tags:            Hardcoded controlled vocabulary trong src/lib/tags.ts (PostgreSQL
+                 tags table đã drop 2026-07-09)
 File store:      Cloudflare R2 (binary files: CSV, XLSX, Parquet, PDF, MP3, GeoJSON)
                  - Zero egress, free 10GB tier
                  - Browser upload trực tiếp qua presigned URL (không qua Vercel)
-                 - Object versioning cho file history
+                 - Object Versioning chưa GA → sha256 (ChecksumMode=ENABLED) là
+                   primary atomic reference; version_id optional
 Search:          Pagefind (built vào static catalog) hoặc client-side flexsearch
 Data Preview:    Client-side render, fetch file trực tiếp từ R2 URL
 Tracking:        Plausible (self-host hoặc $9/mo cloud) hoặc Umami (free self-host)
-AI Upload:       Claude API (Anthropic) qua Next.js API route
+AI Upload:       OpenAI-compatible API (default Gemini 2.5 Flash, swap qua 3 env vars)
 Hosting:         Vercel (đã deploy F1) hoặc Cloudflare Pages
 ```
 
 | Layer | Technology | Rationale |
 |-------|-----------|-----------|
-| Framework | Next.js 15 (App Router) | Đã có F1 codebase, giữ; vừa SSG cho catalog vừa API route cho upload |
+| Framework | Next.js 15 (App Router) | Đã có F1 codebase, giữ; dynamic SSR cho catalog + API route cho upload |
 | Language | TypeScript | Type safety |
 | Source of truth | Git (GitHub) | Version control miễn phí, provenance tự động qua git history (không cần `upload_log` table) |
 | Metadata format | YAML + Markdown (format-aware templates) | Đơn giản, human-readable; **template khác nhau theo file type** |
@@ -437,13 +443,15 @@ Phase 1 (files)              Phase 2 (light)              Phase 2 (heavy, option
 
 | Method | Path | Type | Description |
 |--------|------|------|-------------|
-| GET | `/` | SSG | Listing page (generated from `datasets/*/metadata.yaml` at build time) |
-| GET | `/dataset/[slug]` | SSG | Detail + preview page (file fetch từ R2 URL trong metadata.yaml) |
+| GET | `/` | Dynamic SSR | Listing page (fetch `datasets/*/metadata.yaml` runtime từ GitHub raw) |
+| GET | `/datasets/[slug]` | Dynamic SSR | Detail + preview page (force-dynamic, không cache 404) |
 | GET | `/upload` | Dynamic | Upload wizard UI |
-| POST | `/api/upload/presign` | Dynamic | Trả presigned URL cho browser PUT file thẳng R2 staging |
-| POST | `/api/upload/analyze` | Dynamic | Server fetch file từ R2 → Claude API → proposal JSON |
-| POST | `/api/upload/commit` | Dynamic | User-approved metadata → R2 object move staging→final + git commit |
-| GET | `/search` | Client-side | Pagefind index (no backend) |
+| GET | `/api/tags` | Sync | Hardcoded tags array |
+| GET | `/api/datasets` | Dynamic SSR | JSON list (cho client-side filter) |
+| POST | `/api/upload/presign` | Dynamic | Trả presigned URL cho browser PUT file thẳng R2 (`<fileId>/<filename>`) |
+| POST | `/api/upload/analyze` | Dynamic | Server fetch file từ R2 → AI provider → proposal JSON |
+| POST | `/api/upload/commit` | Dynamic | User-approved metadata → git commit metadata.yaml + dictionary.md qua Octokit |
+| GET | `/search` | Client-side | Pagefind index (no backend) — chưa wire |
 | GET | `/api/files/[...path]` | Dynamic | (Optional) signed URL proxy nếu không muốn public R2 |
 
 **Static catalog** + **dynamic upload** = hybrid Next.js app. Catalog rebuild khi git push.
@@ -528,30 +536,32 @@ Phase 1 (files)              Phase 2 (light)              Phase 2 (heavy, option
 - HF-inspired UI pattern + VNE color palette
 - TypeScript types (adapt)
 
-**Migrate**:
-- "Hồ sơ 34 tỉnh" dataset: export PostgreSQL tables → CSV files upload lên R2 (`ho-so-34-tinh/*.csv`), đồng thời generate `metadata.yaml` + `dictionary.md` commit vào GitHub `datasets/ho-so-34-tinh/`. Script 1-lần: `tools/migrate_f1_to_files.py` (gọi `tools/upload_to_r2.py` cho file upload).
-- Tags controlled vocabulary: `datasets/tags.yaml` thay vì PostgreSQL table
-- Listing page: đổi từ `listDatasets()` query PostgreSQL → đọc `datasets/*/metadata.yaml`
+**Migrate** (đã thực hiện 2026-07-09):
+- ✅ Listing page: đổi từ `listDatasets()` query PostgreSQL → dynamic SSR đọc `datasets/*/metadata.yaml` runtime từ GitHub raw
+- ✅ Tags controlled vocabulary: hardcoded trong `src/lib/tags.ts` (PostgreSQL table + `tags.yaml` đều không dùng)
+- "Hồ sơ 34 tỉnh" dataset: chưa migrate — defer đến khi cần (script `tools/migrate_f1_to_files.py` chưa viết)
 
 **Add mới**:
-- `/upload` page + wizard
-- `/api/upload/presign` + `/api/upload/analyze` + `/api/upload/commit` API routes
-- `MetadataEditor` + `DictionaryEditor` + `UploadDropzone` components
-- `src/lib/r2/` — R2 SDK wrapper (presign, get, move)
+- ✅ `/upload` page + wizard (4 bước: presign → R2 PUT → AI analyze → review → commit)
+- ✅ `/api/upload/presign` + `/api/upload/analyze` + `/api/upload/commit` API routes
+- ✅ `MetadataEditor` + `DictionaryEditor` + `UploadDropzone` components
+- ✅ `src/lib/r2/` — R2 SDK wrapper (presign, get metadata)
+- ✅ `src/lib/datasets/` — reader layer (types.ts, list.ts, read.ts)
+- ✅ `src/lib/git/commit.ts` — Octokit wrapper cho server-side git push
 - Per-format Dataset Reviewer system prompts (4 files trong `tools/prompts/`)
 
-**Archive** (move sang `_archive/`, không xóa):
-- `src/app/api/datasets/` (PostgreSQL routes)
-- `src/app/api/entities/`, `province-stats/`, `wards/`, `leadership/` (legacy)
-- `src/app/entities/` page
-- `src/lib/db/`, `src/lib/mock/`
-- `src/lib/data/datasets.ts` (sẽ thay bằng `src/lib/datasets/list.ts`)
-- `data/scripts/005-007` SQL migrations (đã chạy, không cần nữa)
+**Archive** (đã move sang `_archive/`):
+- ✅ `src/lib/data/datasets.ts` → `_archive/data-datasets-postgres.ts`
+- ✅ `src/lib/db/supabase.ts` → `_archive/db-supabase.ts`
+- ✅ `src/app/entities/` → `_archive/entities-legacy/`
 
 **Drop hẳn**:
-- `upload_log` table concept (replaced by git)
-- `quality_score` field (chưa bao giờ implemented)
-- Legacy entity routes (`/entities/[id]`, `/api/province-stats` etc.)
+- ✅ `upload_log` table concept (replaced by git history)
+- ✅ `quality_score` field (chưa bao giờ implemented)
+- ✅ Legacy entity routes (`/entities/[id]`, `/api/province-stats`, `/api/wards`, `/api/leadership`)
+- ✅ `@supabase/supabase-js` dependency
+- ✅ `src/app/api/datasets/` PostgreSQL route (đã replace bằng `/api/datasets` đọc từ GitHub raw)
+- ✅ `src/lib/storage/`, `src/lib/db/` — toàn bộ Supabase integration
 
 ## Phase 2/3 Solution Analysis (reference)
 
@@ -576,4 +586,4 @@ Phase 1 (files)              Phase 2 (light)              Phase 2 (heavy, option
 - Tags chọn từ `datasets/tags.yaml` controlled vocabulary — không gõ tự do
 - Mỗi con số phải trace được nguồn (provenance qua git history + `source` field trong metadata + R2 object versioning)
 - Phase 2/3: dùng LLM API (Claude), không lock-in platform
-- **Không thêm PostgreSQL/Supabase cho Phase 1** — chỉ khi Phase 2 promotion thực sự cần
+- **Không thêm PostgreSQL/Supabase cho Phase 1** — chỉ khi Phase 2 promotion thực sự cần *(note: Supabase đã drop hoàn toàn 2026-07-09 sau khi tags chuyển sang hardcoded)*
