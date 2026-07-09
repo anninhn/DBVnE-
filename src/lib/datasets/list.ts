@@ -1,8 +1,9 @@
 /**
  * Listing catalog — runtime fetch từ GitHub contents API.
  *
- * Page `/` gọi `listDatasets()` mỗi request. Cache in-memory 60s qua
- * React `cache()` + GitHub raw CDN cache.
+ * Page `/` gọi `listDatasets()` mỗi request. Không cache fetch layer
+ * (no-store) — tránh stale list sau khi upload/delete dataset.
+ * Per-request cache vẫn có qua React `cache()` wrapper ở listDatasets.
  *
  * Flow:
  *   1. GET /repos/{owner}/{repo}/contents/datasets → list folder slugs
@@ -35,10 +36,11 @@ async function listDatasetFolders(): Promise<string[]> {
   const headers: Record<string, string> = {
     Accept: "application/vnd.github+json",
     "User-Agent": "vnexpress-data-platform",
+    "Cache-Control": "no-cache",
     ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
   };
 
-  const res = await fetch(url, { headers, next: { revalidate: 60 } });
+  const res = await fetch(url, { headers, cache: "no-store" });
   if (res.status === 404) {
     // datasets/ folder chưa tồn tại — chưa có dataset nào
     return [];
@@ -62,9 +64,10 @@ async function fetchMetadata(slug: string): Promise<MetadataYaml | null> {
   const headers: Record<string, string> = {
     ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
     "User-Agent": "vnexpress-data-platform",
+    "Cache-Control": "no-cache",
   };
 
-  const res = await fetch(url, { headers, next: { revalidate: 60 } });
+  const res = await fetch(url, { headers, cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) {
     console.warn(`[listDatasets] skip ${slug}: ${res.status}`);
