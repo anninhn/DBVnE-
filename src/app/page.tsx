@@ -27,6 +27,12 @@ export default async function Home() {
           placeholder="Search VNExpress data…"
           className="bg-hf-bg-muted border border-hf-border rounded-md px-3 py-1.5 text-[13px] w-[200px] text-hf-text-muted"
         />
+        <a
+          href="/upload"
+          className="bg-hf-yellow text-hf-text px-3 py-1.5 rounded-md text-[13px] font-medium hover:bg-hf-yellow/80 transition"
+        >
+          + Upload dataset
+        </a>
       </nav>
 
       <main className="flex-1">
