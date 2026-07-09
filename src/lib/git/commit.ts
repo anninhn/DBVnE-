@@ -33,9 +33,9 @@ export interface FileToCommit {
   path: string;
   /** File content (UTF-8 string — YAML/Markdown) */
   content: string;
-  /** "create" (mặc định) hoặc "update" */
+  /** Unix permission mode: `100644` = regular file (mặc định). KHÔNG phải create/update semantic. */
   mode?: "100644";
-  /** "blob" cho file text */
+  /** Git object type: `blob` = file text (mặc định) */
   type?: "blob";
 }
 
@@ -133,7 +133,8 @@ export async function commitFiles(
 export async function commitMetadataFiles(
   slug: string,
   metadataYaml: string,
-  dictionaryMarkdown: string
+  dictionaryMarkdown: string,
+  commitMessage?: string
 ): Promise<CommitResult> {
   return commitFiles(
     [
@@ -146,6 +147,107 @@ export async function commitMetadataFiles(
         content: dictionaryMarkdown,
       },
     ],
-    `Upload dataset ${slug}`
+    commitMessage ?? `Upload dataset ${slug}`
   );
+}
+
+/**
+ * Xóa metadata.yaml + dictionary.md của 1 dataset khỏi git repo.
+ *
+ * Dùng tree item có `sha` nhưng KHÔNG có `mode`/`type` → GitHub API
+ * hiểu đây là delete operation (mark file removed trong tree mới).
+ *
+ * @param slug — dataset slug
+ * @returns CommitResult cho commit delete
+ */
+export async function deleteDatasetFiles(
+  slug: string
+): Promise<CommitResult> {
+  const config = getGithubConfig();
+  const octokit = getOctokit();
+  const { owner, repo, branch } = config;
+
+  const metadataPath = `datasets/${slug}/metadata.yaml`;
+  const dictionaryPath = `datasets/${slug}/dictionary.md`;
+
+  // 1. Lấy SHA hiện tại của metadata.yaml + dictionary.md
+  const treeItems: Array<{
+    path: string;
+    sha?: string | null;
+  }> = [];
+
+  for (const filePath of [metadataPath, dictionaryPath]) {
+    try {
+      const contentResponse = await octokit.rest.repos.getContent({
+        owner,
+        repo,
+        path: filePath,
+        ref: branch,
+      });
+
+      // getContent trả array nếu path là directory, object nếu file.
+      // Ở đây path là file cụ thể → object.
+      if (!Array.isArray(contentResponse.data) && "sha" in contentResponse.data) {
+        treeItems.push({
+          path: filePath,
+          sha: contentResponse.data.sha,
+        });
+      }
+    } catch (err) {
+      // File không tồn tại (404) — skip, không cần delete
+      console.warn(`[delete] File ${filePath} không tồn tại, skip:`, err);
+    }
+  }
+
+  if (treeItems.length === 0) {
+    throw new Error(
+      `Không tìm thấy metadata.yaml hoặc dictionary.md cho slug: ${slug}`
+    );
+  }
+
+  // 2. Lấy current HEAD commit SHA + tree SHA
+  const refResponse = await octokit.rest.git.getRef({
+    owner,
+    repo,
+    ref: `heads/${branch}`,
+  });
+  const parentSha = refResponse.data.object.sha;
+
+  const commitResponse = await octokit.rest.git.getCommit({
+    owner,
+    repo,
+    commit_sha: parentSha,
+  });
+  const baseTreeSha = commitResponse.data.tree.sha;
+
+  // 3. Create tree với delete items (sha + null mode/type = mark delete)
+  const newTree = await octokit.rest.git.createTree({
+    owner,
+    repo,
+    base_tree: baseTreeSha,
+    tree: treeItems,
+  });
+
+  // 4. Create commit
+  const newCommit = await octokit.rest.git.createCommit({
+    owner,
+    repo,
+    message: `Delete dataset ${slug}`,
+    tree: newTree.data.sha,
+    parents: [parentSha],
+  });
+
+  // 5. Update ref (push)
+  await octokit.rest.git.updateRef({
+    owner,
+    repo,
+    ref: `heads/${branch}`,
+    sha: newCommit.data.sha,
+  });
+
+  return {
+    commitSha: newCommit.data.sha,
+    commitUrl: newCommit.data.html_url,
+    message: `Delete dataset ${slug}`,
+  };
 }

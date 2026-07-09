@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getDatasetBySlug } from "@/lib/datasets/read";
+import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import TabSwitcher from "./TabSwitcher";
 import DatasetViewer from "./DatasetViewer";
 import MetadataSidebar from "./MetadataSidebar";
@@ -69,6 +70,13 @@ export default async function DatasetPage({ params }: PageProps) {
               <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted">
                 + Follow
               </button>
+              <Link
+                href={`/datasets/${slug}/edit`}
+                className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted transition"
+              >
+                Edit metadata
+              </Link>
+              <DeleteDatasetButton slug={slug} />
             </span>
           </h1>
 
