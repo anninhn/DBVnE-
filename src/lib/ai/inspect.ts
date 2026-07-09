@@ -1,5 +1,5 @@
-import Papa from "papaparse";
 import * as XLSX from "xlsx";
+import { parseCSV } from "@/lib/parse/csv";
 
 export type TabularFormat = "csv" | "xlsx";
 
@@ -45,22 +45,42 @@ export function detectFormat(filename: string): TabularFormat | null {
 
 /**
  * Inspect CSV/TSV buffer → FileInspection.
+ *
+ * Dùng native parseCSV (D6) — không papaparse. Header row → objects keyed by column name.
  */
 function inspectCsv(buffer: Buffer, filename: string): FileInspection {
   const text = buffer.toString("utf-8");
-  const parsed = Papa.parse<Record<string, string>>(text, {
-    header: true,
-    skipEmptyLines: true,
-    dynamicTyping: false, // giữ string để AI tự infer
-  });
+  const rawRows = parseCSV(text);
+  if (rawRows.length === 0) {
+    return {
+      format: "csv",
+      filename,
+      rowCount: 0,
+      columnCount: 0,
+      columns: [],
+      sampleRows: [],
+    };
+  }
 
-  const rows = parsed.data.slice(0, MAX_ROWS_FOR_INSPECTION);
-  const columns = parsed.meta.fields ?? [];
+  const columns = rawRows[0];
+  // Map rows (skip header) → objects, skip empty rows
+  const allRows: Record<string, string>[] = [];
+  for (let r = 1; r < rawRows.length; r++) {
+    const row = rawRows[r];
+    if (row.every((c) => c === "")) continue; // skipEmptyLines
+    const obj: Record<string, string> = {};
+    columns.forEach((col, i) => {
+      obj[col] = row[i] ?? "";
+    });
+    allRows.push(obj);
+  }
+
+  const rows = allRows.slice(0, MAX_ROWS_FOR_INSPECTION);
 
   return {
     format: "csv",
     filename,
-    rowCount: parsed.data.length,
+    rowCount: allRows.length,
     columnCount: columns.length,
     columns: columns.map((col) => inspectColumn(col, rows)),
     sampleRows: rows.slice(0, MAX_SAMPLE_ROWS_FOR_AI),

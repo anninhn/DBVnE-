@@ -14,13 +14,14 @@ import Link from "next/link";
 import SearchBox from "@/components/search/SearchBox";
 
 interface CatalogNavProps {
-  /** Query text hiện tại — controlled input */
-  query: string;
-  /** Callback khi user type vào search input */
-  onQueryChange: (q: string) => void;
+  /** Query text hiện tại — controlled input. Optional: omit trên detail page (chỉ nav + upload). */
+  query?: string;
+  /** Callback khi user type vào search input. Bắt buộc nếu `query` provided. */
+  onQueryChange?: (q: string) => void;
 }
 
 export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
+  const showSearch = query !== undefined && onQueryChange !== undefined;
   return (
     <nav className="bg-hf-bg border-b border-hf-border h-[52px] px-4 flex items-center gap-6 sticky top-0 z-50">
       {/* Logo */}
@@ -42,10 +43,12 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
         <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Community</span>
       </div>
 
-      {/* Top-nav search input — cùng state với sidebar input */}
-      <div className="w-[240px]">
-        <SearchBox query={query} onQueryChange={onQueryChange} placeholder="Search VNExpress data…" />
-      </div>
+      {/* Top-nav search input — cùng state với sidebar input (chỉ render khi có query prop) */}
+      {showSearch && (
+        <div className="w-[240px]">
+          <SearchBox query={query} onQueryChange={onQueryChange} placeholder="Search VNExpress data…" />
+        </div>
+      )}
 
       {/* Upload button */}
       <Link

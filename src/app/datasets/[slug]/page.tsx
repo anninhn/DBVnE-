@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getDatasetBySlug } from "@/lib/datasets/read";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
+import CatalogNav from "@/components/CatalogNav";
 import TabSwitcher from "./TabSwitcher";
 import DatasetViewer from "./DatasetViewer";
 import MetadataSidebar from "./MetadataSidebar";
@@ -33,24 +34,8 @@ export default async function DatasetPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Top nav — đồng bộ với listing */}
-      <nav className="bg-hf-bg border-b border-hf-border h-[52px] px-4 flex items-center gap-6 sticky top-0 z-50">
-        <Link href="/" className="flex items-center gap-2 font-bold text-[15px] text-hf-text">
-          <span className="text-[22px]">🤗</span>
-          <span>VNExpress Data</span>
-        </Link>
-        <div className="flex gap-5 flex-1 text-sm">
-          <Link href="/" className="font-semibold text-hf-text">Datasets</Link>
-          <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Spaces</span>
-          <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Tasks</span>
-          <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Community</span>
-        </div>
-        <input
-          type="text"
-          placeholder="Search VNExpress data…"
-          className="bg-hf-bg-muted border border-hf-border rounded-md px-3 py-1.5 text-[13px] w-[200px] text-hf-text-muted"
-        />
-      </nav>
+      {/* Top nav — shared component, không có search input trên detail (D7) */}
+      <CatalogNav />
 
       <div className="max-w-[1280px] mx-auto bg-hf-bg w-full flex-1">
         {/* Detail header — org/name + actions + metadata pills */}
