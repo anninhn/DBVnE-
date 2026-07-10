@@ -124,7 +124,19 @@ export default async function DatasetPage({ params }: PageProps) {
                 </h2>
                 <Markdown>{dataset.description}</Markdown>
                 <p className="mb-2.5 text-hf-text leading-relaxed">
-                  <strong>Nguồn:</strong> {dataset.source}
+                  <strong>Nguồn:</strong>{" "}
+                  {dataset.source_url ? (
+                    <a
+                      href={dataset.source_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-hf-link hover:underline"
+                    >
+                      {dataset.source}
+                    </a>
+                  ) : (
+                    dataset.source
+                  )}
                 </p>
                 {dataset.resources.length > 0 && dataset.data_dictionary.length > 0 && (
                   <div className="mt-6">

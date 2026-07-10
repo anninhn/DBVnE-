@@ -49,7 +49,17 @@ export interface FileRef {
   size_mb?: number;
   /** Tên file gốc (vd: "grdp_2024.csv") — hiển thị trong Files tab */
   filename?: string;
+  /** Full-dataset column stats — computed tại upload time, persisted trong metadata */
+  column_stats?: Record<string, ColumnStats>;
 }
+
+/**
+ * Stats cho 1 cột — mirror type từ src/lib/types/dataset.ts.
+ * Duplicate ở đây để tránh circular import (types/dataset.ts import từ datasets/ layer).
+ */
+export type ColumnStats =
+  | { kind: "numeric"; min: number; max: number; histogram: number[] }
+  | { kind: "categorical"; distinct: number; segments: { label: string; count: number }[] };
 
 export interface MetadataYaml {
   // Common

@@ -79,6 +79,7 @@ export interface Dataset {
   downloads: number;
   likes: number;
   source: string;
+  source_url?: string;
   uploaded_by: string;
   uploaded_at: string; // ISO
   resources: Resource[];

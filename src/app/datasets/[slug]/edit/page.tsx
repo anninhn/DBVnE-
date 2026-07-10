@@ -25,7 +25,7 @@ export async function generateMetadata({
   return { title: `Edit: ${meta.title} — VnExpress Data Platform` };
 }
 
-/** Fetch dictionary.md raw content từ GitHub raw */
+/** Fetch dictionary.md raw content từ GitHub Contents API */
 async function fetchDictionaryMarkdown(
   slug: string
 ): Promise<string | null> {
@@ -33,18 +33,24 @@ async function fetchDictionaryMarkdown(
   const url = rawUrl(config, `datasets/${slug}/dictionary.md`);
 
   const headers: Record<string, string> = {
+    Accept: "application/vnd.github+json",
     ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
     "User-Agent": "vnexpress-data-platform",
   };
 
-  const res = await fetch(url, { headers, next: { revalidate: 60 } });
+  const res = await fetch(url, { headers, cache: "no-store" });
   if (res.status === 404) return null;
   if (!res.ok) {
     throw new Error(
-      `GitHub raw fetch failed: datasets/${slug}/dictionary.md (${res.status})`
+      `GitHub Contents API failed: datasets/${slug}/dictionary.md (${res.status})`
     );
   }
-  return res.text();
+
+  // Contents API trả JSON { content: base64, encoding: "base64" } — cần decode
+  const data = (await res.json()) as { content?: string; encoding?: string };
+  if (!data.content) return null;
+  const b64 = data.content.replace(/\n/g, "");
+  return Buffer.from(b64, "base64").toString("utf-8");
 }
 
 export default async function EditDatasetPage({ params }: PageProps) {

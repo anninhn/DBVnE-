@@ -12,6 +12,7 @@ import {
   type MetadataForRender,
   type DictionaryForRender,
 } from "@/lib/dataset-commit";
+import type { ColumnStats } from "@/lib/types/dataset";
 
 interface CommitRequest {
   fileId: string;
@@ -30,6 +31,8 @@ interface CommitRequest {
     columns_count?: number;
   };
   dictionary: DictionaryForRender[];
+  /** Full-dataset stats per column — computed tại analyze time, persisted vào metadata */
+  column_stats?: Record<string, ColumnStats>;
   /** Optional custom slug từ user — nếu thiếu, fallback sang slugify(title) */
   custom_slug?: string;
 }
@@ -61,7 +64,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { fileId, r2Key, metadata, dictionary, custom_slug } = body;
+  const { fileId, r2Key, metadata, dictionary, custom_slug, column_stats } = body;
 
   if (!metadata?.title || !metadata?.description) {
     return NextResponse.json(
@@ -125,6 +128,7 @@ export async function POST(req: NextRequest) {
       r2Meta,
       row_count: metadata.row_count,
       columns_count: metadata.columns_count,
+      column_stats: column_stats,
     }
   );
   const markdownContent = renderDictionaryMarkdown(dictionary ?? []);

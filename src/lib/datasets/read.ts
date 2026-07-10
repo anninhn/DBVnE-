@@ -111,6 +111,11 @@ function flattenSource(source: MetadataYaml["source"]): string {
   return source.name;
 }
 
+function extractSourceUrl(source: MetadataYaml["source"]): string {
+  if (!source || typeof source === "string") return "";
+  return source.url ?? "";
+}
+
 function mapFilesToResources(
   files: MetadataYaml["files"],
   format: string | undefined,
@@ -129,6 +134,7 @@ function mapFilesToResources(
       file_url: r2Key ? buildFileUrl(r2Key) : undefined,
       file_type: inferFileType(f.filename ?? r2Key, format),
       file_size_mb: f.size_mb ?? 0,
+      column_stats: f.column_stats,
       uploaded_by: "demo",
       uploaded_at: new Date().toISOString(),
     };
@@ -188,6 +194,7 @@ export function metadataToDataset(
     downloads: 0,
     likes: 0,
     source: flattenSource(meta.source),
+    source_url: extractSourceUrl(meta.source),
     uploaded_by: meta.uploaded_by ?? "unknown",
     uploaded_at: meta.uploaded_at ?? new Date().toISOString(),
     resources,

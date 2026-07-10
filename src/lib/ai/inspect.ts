@@ -1,5 +1,6 @@
 import * as XLSX from "xlsx";
-import { parseCSV } from "@/lib/parse/csv";
+import { parseCSVHead, forEachCSVRow } from "@/lib/parse/csv";
+import type { ColumnStats } from "@/lib/types/dataset";
 
 export type TabularFormat = "csv" | "xlsx";
 
@@ -25,6 +26,11 @@ export interface FileInspection {
   columns: ColumnInspection[];
   /** 5 sample rows cho AI context */
   sampleRows: Record<string, string | number | boolean | null>[];
+  /**
+   * Full-dataset stats per column — computed streaming, không từ sample.
+   * DatasetViewer dùng cho histogram/proportion bar/min-max display.
+   */
+  columnStats?: Record<string, ColumnStats>;
   /** sheet name nếu XLSX */
   sheetName?: string;
 }
@@ -32,6 +38,10 @@ export interface FileInspection {
 const MAX_SAMPLE_ROWS_FOR_AI = 5;
 const MAX_SAMPLE_VALUES_PER_COLUMN = 5;
 const MAX_ROWS_FOR_INSPECTION = 1000; // cap để tránh file khổng lồ
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Format detection
+// ──────────────────────────────────────────────────────────────────────────────
 
 /**
  * Detect format từ filename.
@@ -43,14 +53,192 @@ export function detectFormat(filename: string): TabularFormat | null {
   return null;
 }
 
+// ──────────────────────────────────────────────────────────────────────────────
+// Full-dataset stats — streaming, không store rows
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Compute per-column stats từ FULL CSV dataset (streaming, không store rows).
+ *
+ * Numeric: accumulate values → min/max/histogram (8 bins) ở cuối.
+ * Categorical: Map<value, count> → distinct + top-12 segments.
+ *
+ * Memory: O(numeric_rows × cols × 8 bytes) cho numeric values +
+ *         O(distinct_cap × cols) cho categorical maps.
+ * Không store toàn bộ rows → handle được hàng triệu rows.
+ *
+ * @param text CSV text (toàn bộ file, bao gồm header)
+ * @param columnNames thứ tự cột (từ header row)
+ * @param typeMap inferred type per column ("number" | "string" | "date")
+ */
+function computeCSVStats(
+  text: string,
+  columnNames: string[],
+  typeMap: Map<string, string>
+): Record<string, ColumnStats> {
+  // Map column name → index trong row array
+  const colIndex = new Map<string, number>();
+  columnNames.forEach((col, i) => colIndex.set(col, i));
+
+  // Numeric: store values để compute min/max/histogram
+  const numericCols = columnNames.filter((c) => typeMap.get(c) === "number");
+  const numericValues = new Map<string, number[]>();
+  numericCols.forEach((c) => numericValues.set(c, []));
+
+  // Categorical: Map<value, count>
+  const catCols = columnNames.filter((c) => typeMap.get(c) !== "number");
+  const catCounts = new Map<string, Map<string, number>>();
+  catCols.forEach((c) => catCounts.set(c, new Map()));
+
+  const DISTINCT_CAP = 10000;
+  const catCapped = new Set<string>();
+  let firstRow = true;
+
+  forEachCSVRow(text, (fields) => {
+    if (firstRow) {
+      firstRow = false;
+      return; // skip header
+    }
+
+    for (const col of numericCols) {
+      const idx = colIndex.get(col)!;
+      const raw = fields[idx];
+      if (!raw) continue;
+      const val = Number(raw);
+      if (!Number.isNaN(val)) numericValues.get(col)!.push(val);
+    }
+
+    for (const col of catCols) {
+      if (catCapped.has(col)) continue;
+      const idx = colIndex.get(col)!;
+      const raw = fields[idx];
+      if (!raw || raw === "") continue;
+      const counts = catCounts.get(col)!;
+      counts.set(raw, (counts.get(raw) ?? 0) + 1);
+      if (counts.size > DISTINCT_CAP) catCapped.add(col);
+    }
+  });
+
+  // Build result
+  const result: Record<string, ColumnStats> = {};
+
+  // Numeric: min/max + histogram
+  const BINS = 8;
+  for (const [col, values] of numericValues) {
+    if (values.length === 0) continue;
+    let min = Infinity;
+    let max = -Infinity;
+    for (const v of values) {
+      if (v < min) min = v;
+      if (v > max) max = v;
+    }
+    const step = (max - min) / BINS || 1;
+    const histogram = new Array(BINS).fill(0);
+    for (const v of values) {
+      let idx = Math.floor((v - min) / step);
+      if (idx >= BINS) idx = BINS - 1;
+      if (idx < 0) idx = 0;
+      histogram[idx]++;
+    }
+    result[col] = { kind: "numeric", min, max, histogram };
+  }
+
+  // Categorical: distinct + top-12 segments
+  for (const [col, counts] of catCounts) {
+    if (counts.size === 0) continue;
+    const segments = Array.from(counts.entries())
+      .map(([label, count]) => ({ label, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 12);
+    result[col] = {
+      kind: "categorical",
+      distinct: counts.size,
+      segments,
+    };
+  }
+
+  return result;
+}
+
+/**
+ * Compute stats từ XLSX rows (đã load full vào memory qua xlsx package).
+ * XLSX files trong app đều nhỏ (< 1MB) → safe parse full.
+ */
+function computeXlsxStats(
+  allRows: Record<string, unknown>[],
+  columnNames: string[],
+  typeMap: Map<string, string>
+): Record<string, ColumnStats> {
+  const result: Record<string, ColumnStats> = {};
+  const BINS = 8;
+
+  for (const col of columnNames) {
+    const isNumeric = typeMap.get(col) === "number";
+
+    if (isNumeric) {
+      const values: number[] = [];
+      for (const row of allRows) {
+        const raw = row[col];
+        if (raw == null || raw === "") continue;
+        const val = typeof raw === "number" ? raw : Number(raw);
+        if (!Number.isNaN(val)) values.push(val);
+      }
+      if (values.length === 0) continue;
+      let min = Infinity;
+      let max = -Infinity;
+      for (const v of values) {
+        if (v < min) min = v;
+        if (v > max) max = v;
+      }
+      const step = (max - min) / BINS || 1;
+      const histogram = new Array(BINS).fill(0);
+      for (const v of values) {
+        let idx = Math.floor((v - min) / step);
+        if (idx >= BINS) idx = BINS - 1;
+        if (idx < 0) idx = 0;
+        histogram[idx]++;
+      }
+      result[col] = { kind: "numeric", min, max, histogram };
+    } else {
+      const counts = new Map<string, number>();
+      for (const row of allRows) {
+        const raw = row[col];
+        if (raw == null || raw === "") continue;
+        const key = String(raw);
+        counts.set(key, (counts.get(key) ?? 0) + 1);
+      }
+      if (counts.size === 0) continue;
+      const segments = Array.from(counts.entries())
+        .map(([label, count]) => ({ label, count }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 12);
+      result[col] = { kind: "categorical", distinct: counts.size, segments };
+    }
+  }
+
+  return result;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Inspect functions
+// ──────────────────────────────────────────────────────────────────────────────
+
 /**
  * Inspect CSV/TSV buffer → FileInspection.
  *
- * Dùng native parseCSV (D6) — không papaparse. Header row → objects keyed by column name.
+ * 2 giai đoạn:
+ * 1. parseCSVHead → first 1000 rows: type inference + sampleRows (cho AI)
+ * 2. computeCSVStats → streaming toàn bộ file: min/max/histogram/distinct (cho UI)
  */
 function inspectCsv(buffer: Buffer, filename: string): FileInspection {
   const text = buffer.toString("utf-8");
-  const rawRows = parseCSV(text);
+
+  // Giai đoạn 1: parse first MAX_ROWS_FOR_INSPECTION+1 rows (1 header + data)
+  const { rows: rawRows, totalRowCount } = parseCSVHead(
+    text,
+    MAX_ROWS_FOR_INSPECTION + 1
+  );
+
   if (rawRows.length === 0) {
     return {
       format: "csv",
@@ -63,8 +251,8 @@ function inspectCsv(buffer: Buffer, filename: string): FileInspection {
   }
 
   const columns = rawRows[0];
-  // Map rows (skip header) → objects, skip empty rows
-  const allRows: Record<string, string>[] = [];
+  // Map data rows (skip header) → objects
+  const rows: Record<string, string>[] = [];
   for (let r = 1; r < rawRows.length; r++) {
     const row = rawRows[r];
     if (row.every((c) => c === "")) continue; // skipEmptyLines
@@ -72,18 +260,25 @@ function inspectCsv(buffer: Buffer, filename: string): FileInspection {
     columns.forEach((col, i) => {
       obj[col] = row[i] ?? "";
     });
-    allRows.push(obj);
+    rows.push(obj);
   }
 
-  const rows = allRows.slice(0, MAX_ROWS_FOR_INSPECTION);
+  const rowCount = Math.max(0, totalRowCount - 1);
+  const columnInspections = columns.map((col) => inspectColumn(col, rows));
+
+  // Giai đoạn 2: full-dataset stats (streaming, không store rows)
+  const typeMap = new Map<string, string>();
+  columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
+  const columnStats = computeCSVStats(text, columns, typeMap);
 
   return {
     format: "csv",
     filename,
-    rowCount: allRows.length,
+    rowCount,
     columnCount: columns.length,
-    columns: columns.map((col) => inspectColumn(col, rows)),
+    columns: columnInspections,
     sampleRows: rows.slice(0, MAX_SAMPLE_ROWS_FOR_AI),
+    columnStats,
   };
 }
 
@@ -97,26 +292,44 @@ function inspectXlsx(buffer: Buffer, filename: string): FileInspection {
     throw new Error("XLSX không có sheet nào");
   }
   const sheet = workbook.Sheets[sheetName];
-  const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, {
+  const allRows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, {
     defval: null,
   });
-  const sliced = rows.slice(0, MAX_ROWS_FOR_INSPECTION);
+  const sliced = allRows.slice(0, MAX_ROWS_FOR_INSPECTION);
 
   // Column order từ keys của row đầu (giữ thứ tự xuất hiện)
   const columnSet = new Set<string>();
   sliced.forEach((r) => Object.keys(r).forEach((k) => columnSet.add(k)));
   const columns = Array.from(columnSet);
 
+  const columnInspections = columns.map((col) =>
+    inspectColumn(col, sliced as Record<string, string | number | boolean | null>[])
+  );
+
+  // Full-dataset stats (XLSX nhỏ → safe compute từ allRows)
+  const typeMap = new Map<string, string>();
+  columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
+  const columnStats = computeXlsxStats(allRows, columns, typeMap);
+
   return {
     format: "xlsx",
     filename,
-    rowCount: rows.length,
+    rowCount: allRows.length,
     columnCount: columns.length,
-    columns: columns.map((col) => inspectColumn(col, sliced as Record<string, string | number | boolean | null>[])),
-    sampleRows: sliced.slice(0, MAX_SAMPLE_ROWS_FOR_AI) as Record<string, string | number | boolean | null>[],
+    columns: columnInspections,
+    sampleRows:
+      sliced.slice(0, MAX_SAMPLE_ROWS_FOR_AI) as Record<
+        string,
+        string | number | boolean | null
+      >[],
+    columnStats,
     sheetName,
   };
 }
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Column inspection (từ sample rows — cho AI context)
+// ──────────────────────────────────────────────────────────────────────────────
 
 /**
  * Inspect 1 column → stats cơ bản + samples.
@@ -165,9 +378,10 @@ function inspectColumn(
   };
 }
 
-/**
- * Entry point — inspect file dựa trên format detect từ filename.
- */
+// ──────────────────────────────────────────────────────────────────────────────
+// Entry point
+// ──────────────────────────────────────────────────────────────────────────────
+
 export function inspectFile(
   buffer: Buffer,
   filename: string

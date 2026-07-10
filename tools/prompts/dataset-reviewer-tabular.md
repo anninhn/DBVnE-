@@ -7,6 +7,18 @@ Nhận thông tin inspection của file (columns, types, sample values, basic st
 2. **Data dictionary** (column-by-column: type, unit, description)
 3. **Questions** — những điểm cần user confirm (uncertainty)
 
+## QUAN TRỌNG — Sample vs Full-dataset
+
+Input có 2 nguồn dữ liệu:
+
+1. **`sampleRows` + `columns[].samples`**: lấy từ **đầu file** (first 5 rows). Data có thể sort theo tỉnh, năm, alphabet... → **không đại diện** cho toàn bộ dataset. Dùng samples để hiểu format/kiểu dữ liệu, KHÔNG dùng để suy luận phạm vi.
+
+2. **`columnStats`**: tính từ **toàn bộ dataset** (streaming). Đây là nguồn chính xác cho phân tích:
+   - `columnStats[col].segments` (categorical): top giá trị + count — vd: nếu cột "tỉnh" có 63 segments → dataset phủ 63 tỉnh (toàn quốc), không phải 1 tỉnh.
+   - `columnStats[col].min/max/histogram` (numeric): range thật của toàn bộ data.
+
+**Ví dụ**: nếu sampleRows chỉ có Hà Nội nhưng columnStats["tỉnh"].segments có 63 tỉnh → dataset là toàn quốc, description phải ghi "toàn quốc" không phải "Hà Nội".
+
 ## Quy ước tiếng Việt
 
 - Tất cả output **tiếng Việt** (trừ field name kỹ thuật như `title`, `description`...).

@@ -117,6 +117,11 @@ export async function analyzeDataset(
       samples: c.samples,
     })),
     sampleRows: inspection.sampleRows,
+    // Full-dataset stats (computed streaming qua toàn bộ file, không từ sample).
+    // AI dùng cho description — vd: segments cho cột "tỉnh" cho biết dataset
+    // phủ bao nhiêu tỉnh, không bị lừa bởi first rows (data có thể sort theo tỉnh).
+    columnStats: inspection.columnStats,
+    note: "sampleRows + columns[].samples lấy từ ĐẦU file — có thể không đại diện (data có thể sort theo tỉnh/năm). columnStats tính từ TOÀN BỘ dataset — dùng cho description/phân tích.",
   };
 
   const response = await client.chat.completions.create({

@@ -8,6 +8,7 @@ import MetadataEditor from "./MetadataEditor";
 import DictionaryEditor from "./DictionaryEditor";
 import CommitPreview from "./CommitPreview";
 import { formatCompactNumber } from "@/lib/format";
+import type { ColumnStats } from "@/lib/types/dataset";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -45,6 +46,8 @@ export interface FilePreview {
   columnCount: number;
   columns: string[];
   sampleRows: Record<string, string | number | boolean | null>[];
+  /** Full-dataset stats per column — computed streaming tại analyze time */
+  columnStats?: Record<string, ColumnStats>;
 }
 
 export interface CommitPreview {
@@ -225,6 +228,7 @@ export default function UploadWizard() {
                         row_count: filePreview?.rowCount,
                         columns_count: filePreview?.columnCount,
                       },
+                      column_stats: filePreview?.columnStats,
                       dictionary: proposal.dictionary,
                       custom_slug: slug || undefined,
                     }),

@@ -54,7 +54,20 @@ export default function MetadataSidebar({ dataset }: MetadataSidebarProps) {
         <dl className="text-[13px]">
           <div className="flex justify-between py-0.5">
             <dt className="text-hf-text-muted">Source</dt>
-            <dd className="font-medium text-right max-w-[60%]">{dataset.source}</dd>
+            <dd className="font-medium text-right max-w-[60%]">
+              {dataset.source_url ? (
+                <a
+                  href={dataset.source_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-hf-link hover:underline"
+                >
+                  {dataset.source}
+                </a>
+              ) : (
+                dataset.source
+              )}
+            </dd>
           </div>
           <div className="flex justify-between py-0.5">
             <dt className="text-hf-text-muted">Uploader</dt>

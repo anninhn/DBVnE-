@@ -60,6 +60,7 @@ export async function POST(req: NextRequest) {
         columnCount: inspection.columnCount,
         columns: inspection.columns.map((c) => c.name),
         sampleRows: inspection.sampleRows,
+        columnStats: inspection.columnStats,
       },
       fileId,
     });
