@@ -10,8 +10,8 @@ tags:
   - ha-noi
   - 2021
 source:
-  name: "unknown"
-  url: ""
+  name: "Bộ Giáo dục và Đào tạo "
+  url: "https://diemthi.vnexpress.net"
   retrieved: "2026-07-10"
   method: manual_entry
 license: internal
