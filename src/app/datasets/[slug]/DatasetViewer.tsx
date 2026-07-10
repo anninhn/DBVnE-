@@ -8,6 +8,7 @@ import {
   countDistinct,
   categoricalSegments,
 } from "@/lib/viz/column-stats";
+import { formatCompactNumber } from "@/lib/format";
 
 const ROWS_PER_PAGE = 10;
 
@@ -109,7 +110,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
         >
           {viewableResources.map((r, i) => (
             <option key={r.id} value={i}>
-              {r.title} · {r.structured_data?.length ?? 0} rows
+              {r.title} · {formatCompactNumber(r.structured_data?.length ?? 0)} rows
             </option>
           ))}
         </select>
@@ -144,7 +145,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
             {pageRows.length === 0 ? (
               <tr>
                 <td colSpan={columns.length} className="px-3 py-10 text-center text-hf-text-faint text-sm">
-                  Không tìm thấy dòng phù hợp với "{search}".
+                  No rows match "{search}".
                 </td>
               </tr>
             ) : (
@@ -206,12 +207,12 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
       <div className="text-center text-[13px] text-hf-text-muted py-4">
         {search.trim() && (
           <span>
-            {filteredRows.length.toLocaleString("vi-VN")} / {rows.length.toLocaleString("vi-VN")} dòng khớp "{search}".{" "}
+            {formatCompactNumber(filteredRows.length)} / {formatCompactNumber(rows.length)} rows match "{search}".{" "}
           </span>
         )}
         End of preview.{" "}
         <a href="#" className="font-medium text-hf-link hover:underline">
-          Expand in Data Studio
+          Expand
         </a>
       </div>
     </div>

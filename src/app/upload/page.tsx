@@ -19,12 +19,12 @@ export default function UploadPage() {
           <h1 className="text-xl font-semibold text-hf-text">
             Upload Dataset{" "}
             <span className="text-hf-text-faint font-normal text-sm ml-2">
-              AI-assisted metadata
+              AI hỗ trợ điền thông tin
             </span>
           </h1>
           <p className="text-sm text-hf-text-muted mt-1">
-            Drag-and-drop file CSV/XLSX. AI sẽ đề xuất metadata + data
-            dictionary — bạn review và preview commit.
+            Kéo thả file CSV/XLSX. AI sẽ đề xuất metadata và data dictionary
+            — bạn xem lại và lưu.
           </p>
         </header>
         <UploadWizard />

@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
 
   if (!slug || !metadataYaml) {
     return NextResponse.json(
-      { error: "Thiếu slug hoặc metadataYaml" },
+      { error: "Thiếu thông tin dataset cần cập nhật" },
       { status: 400 }
     );
   }
@@ -49,14 +49,13 @@ export async function POST(req: NextRequest) {
       slug,
       commitSha: result.commitSha,
       commitUrl: result.commitUrl,
-      message: `Đã cập nhật dataset ${slug}`,
+      message: `Đã lưu cập nhật cho dataset "${slug}".`,
       redirect: `/datasets/${slug}`,
     });
   } catch (err) {
     console.error("[edit] Git commit thất bại:", err);
-    const message = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
-      { error: `Không commit được metadata lên GitHub: ${message}` },
+      { error: "Không thể lưu cập nhật. Vui lòng thử lại." },
       { status: 500 }
     );
   }

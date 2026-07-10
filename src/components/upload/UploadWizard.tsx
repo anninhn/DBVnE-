@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 import UploadDropzone from "./UploadDropzone";
 import AIAnalyzingLoader from "./AIAnalyzingLoader";
 import MetadataEditor from "./MetadataEditor";
 import DictionaryEditor from "./DictionaryEditor";
 import CommitPreview from "./CommitPreview";
+import { formatCompactNumber } from "@/lib/format";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -58,9 +60,9 @@ export interface CommitPreview {
 
 const STEP_LABELS: Record<Step, string> = {
   1: "Upload file",
-  2: "AI phân tích",
+  2: "AI analysis",
   3: "Review metadata",
-  4: "Preview commit",
+  4: "Preview",
 };
 
 export default function UploadWizard() {
@@ -71,6 +73,7 @@ export default function UploadWizard() {
   const [commitPreview, setCommitPreview] = useState<CommitPreview | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [slug, setSlug] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   function reset() {
     setStep(1);
@@ -159,7 +162,7 @@ export default function UploadWizard() {
             <div className="bg-hf-bg border border-hf-border rounded-md px-4 py-2.5 text-[13px] text-hf-text-muted">
               <span className="font-medium text-hf-text">{upload.filename}</span>
               <span className="text-hf-text-faint mx-2">•</span>
-              {filePreview.rowCount.toLocaleString("vi-VN")} rows × {filePreview.columnCount} cols
+              {formatCompactNumber(filePreview.rowCount)} dòng × {filePreview.columnCount} cột
               <span className="text-hf-text-faint mx-2">•</span>
               <span className="uppercase">{filePreview.format}</span>
             </div>
@@ -198,14 +201,17 @@ export default function UploadWizard() {
           <div className="flex justify-between items-center pt-2">
             <button
               onClick={reset}
-              className="text-sm text-hf-text-muted hover:text-hf-text hover:underline"
+              disabled={submitting}
+              className="text-sm text-hf-text-muted hover:text-hf-text hover:underline disabled:opacity-40 disabled:cursor-not-allowed disabled:no-underline"
             >
               ← Hủy & upload lại
             </button>
             <button
               onClick={async () => {
+                if (submitting) return;
+                setSubmitting(true);
+                setError(null);
                 try {
-                  setError(null);
                   const res = await fetch("/api/upload/commit", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -224,16 +230,20 @@ export default function UploadWizard() {
                     }),
                   });
                   const data = await res.json();
-                  if (!res.ok) throw new Error(data.error ?? "Commit failed");
+                  if (!res.ok) throw new Error(data.error ?? "Không thể lưu dataset");
                   setCommitPreview(data);
                   setStep(4);
                 } catch (err) {
                   setError(err instanceof Error ? err.message : "Lỗi không xác định");
+                } finally {
+                  setSubmitting(false);
                 }
               }}
-              className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
+              disabled={submitting}
+              className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center gap-2"
             >
-              Xác nhận commit →
+              {submitting && <Loader2 className="w-4 h-4 animate-spin" strokeWidth={2.5} aria-hidden />}
+              {submitting ? "Đang lưu..." : "Lưu dataset →"}
             </button>
           </div>
         </div>

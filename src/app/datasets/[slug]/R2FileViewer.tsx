@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import type { Resource } from "@/lib/types/dataset";
 import { parseCSV } from "@/lib/parse/csv";
+import { formatCompactNumber } from "@/lib/format";
 import { numericStats, histogramBins, countDistinct } from "@/lib/viz/column-stats";
 
 const PREVIEW_ROW_LIMIT = 100;
@@ -37,7 +38,7 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
     // Không có URL → không tải được
     if (!fileUrl) {
       setState("error");
-      setErrorMsg("File URL không khả dụng (thiếu R2_PUBLIC_BASE hoặc r2_key).");
+      setErrorMsg("File không khả dụng để xem trước.");
       return;
     }
 
@@ -109,7 +110,7 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
         </svg>
-        Đang tải file từ R2…
+        Đang tải file…
       </div>
     );
   }
@@ -141,10 +142,10 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
   if (!tableData) {
     return (
       <div className="py-4 text-[13px] text-hf-text-muted">
-        Preview không hỗ trợ format này.{" "}
+        Preview không hỗ trợ định dạng này.{" "}
         {fileUrl && (
           <a href={fileUrl} className="text-hf-link hover:underline">
-            Tải về
+            Download
           </a>
         )}
       </div>
@@ -248,8 +249,8 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
 
       {/* Footer */}
       <div className="px-3 py-2 bg-hf-bg-subtle border-t border-hf-border text-[12px] text-hf-text-muted">
-        Hiển thị {previewRows.length} / {rows.length.toLocaleString("vi-VN")} rows.{" "}
-        <span className="text-hf-text-faint">Tải về để xem đầy đủ.</span>
+        Showing {previewRows.length} / {formatCompactNumber(rows.length)} rows.{" "}
+        <span className="text-hf-text-faint">Download để xem đầy đủ.</span>
       </div>
     </div>
   );

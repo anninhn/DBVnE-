@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
   if (!metadata?.title || !metadata?.description) {
     return NextResponse.json(
-      { error: "Metadata thiếu title hoặc description" },
+      { error: "Thiếu tiêu đề hoặc mô tả dataset" },
       { status: 400 }
     );
   }
@@ -89,7 +89,7 @@ export async function POST(req: NextRequest) {
 
   if (!baseSlug) {
     return NextResponse.json(
-      { error: "Không generate được slug từ title" },
+      { error: "Không tạo được slug từ tiêu đề" },
       { status: 400 }
     );
   }
@@ -140,10 +140,9 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error("[commit] Git push thất bại:", err);
-    const message = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
       {
-        error: `Không commit được metadata lên GitHub: ${message}`,
+        error: "Không thể lưu dataset. Vui lòng thử lại.",
         slug,
         yamlPreview: yamlContent,
         markdownPreview: markdownContent,
@@ -168,6 +167,6 @@ export async function POST(req: NextRequest) {
     commitSha: commitResult.commitSha,
     commitUrl: commitResult.commitUrl,
     url: `/datasets/${slug}`,
-    message: `Dataset đã publish tại /datasets/${slug}.`,
+    message: `Dataset đã được lưu.`,
   });
 }

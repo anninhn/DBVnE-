@@ -1,29 +1,37 @@
 "use client";
 
 import { Fragment, useState } from "react";
+import {
+  FileSpreadsheet,
+  FileText,
+  FileAudio,
+  File,
+  Map as MapIcon,
+} from "lucide-react";
 import type { Resource } from "@/lib/types/dataset";
+import { formatCompactNumber } from "@/lib/format";
 import R2FileViewer from "./R2FileViewer";
 
-interface FilesTabContentProps {
-  resources: Resource[];
-}
-
-function fileIcon(type?: string): string {
+function FileIcon({ type, className }: { type?: string; className?: string }) {
+  const common = { className, strokeWidth: 1.75, "aria-hidden": true as const };
   switch (type) {
     case "csv":
     case "xlsx":
-      return "📊";
+      return <FileSpreadsheet {...common} />;
     case "pdf":
-      return "📄";
+      return <FileText {...common} />;
     case "mp3":
-      return "🎵";
+      return <FileAudio {...common} />;
     case "geojson":
-      return "🗺️";
-    case "json":
-      return "🧩";
+      return <MapIcon {...common} />;
     default:
-      return "📁";
+      return <File {...common} />;
   }
+}
+
+interface FilesTabContentProps {
+  resources: Resource[];
+  slug: string;
 }
 
 /**
@@ -31,7 +39,7 @@ function fileIcon(type?: string): string {
  *
  * Client component vì cần state toggle cho mỗi row.
  */
-export default function FilesTabContent({ resources }: FilesTabContentProps) {
+export default function FilesTabContent({ resources, slug }: FilesTabContentProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   if (resources.length === 0) {
@@ -61,12 +69,17 @@ export default function FilesTabContent({ resources }: FilesTabContentProps) {
           {resources.map((r) => (
             <Fragment key={r.id}>
               <tr className="border-b border-hf-border last:border-0">
-                <td className="px-3 py-1.5">
-                  {fileIcon(r.file_type)} {r.title.toLowerCase().replace(/\s+/g, "_")}.{r.file_type ?? "csv"}
+                <td className="px-3 py-1.5 flex items-center gap-1.5">
+                  <FileIcon type={r.file_type} className="w-3.5 h-3.5 text-hf-text-faint shrink-0" />
+                  <span className="font-mono">
+                    {r.title.toLowerCase().replace(/\s+/g, "_")}.{r.file_type ?? "csv"}
+                  </span>
                 </td>
                 <td className="px-3 py-1.5 text-right">{r.file_size_mb} MB</td>
                 <td className="px-3 py-1.5 text-right">
-                  {r.structured_data?.length.toLocaleString("vi-VN") ?? "—"}
+                  {r.structured_data?.length != null
+                    ? `${formatCompactNumber(r.structured_data.length)} rows`
+                    : "—"}
                 </td>
                 <td className="px-3 py-1.5">
                   {new Date(r.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
@@ -76,10 +89,13 @@ export default function FilesTabContent({ resources }: FilesTabContentProps) {
                     onClick={() => setExpandedId(expandedId === r.id ? null : r.id)}
                     className="text-hf-link hover:underline text-[13px] font-sans"
                   >
-                    {expandedId === r.id ? "Thu gọn" : "Xem trước"}
+                    {expandedId === r.id ? "Collapse" : "Preview"}
                   </button>
-                  <a href={r.file_url ?? "#"} className="text-hf-link hover:underline">
-                    download
+                  <a
+                    href={`/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${r.id}`}
+                    className="text-hf-link hover:underline"
+                  >
+                    Download
                   </a>
                 </td>
               </tr>

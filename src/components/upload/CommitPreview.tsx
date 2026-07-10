@@ -20,27 +20,13 @@ export default function CommitPreview({ preview, onReset }: Props) {
       {/* Status banner */}
       {committed ? (
         <div className="border border-hf-green/40 bg-green-50 text-hf-text px-4 py-3 rounded-md text-sm">
-          <strong>✓ Đã commit.</strong> {preview.message}{" "}
+          <strong>✓ Đã lưu.</strong> {preview.message}{" "}
           <a
             href={`/datasets/${preview.slug}`}
             className="text-hf-link hover:underline font-medium"
           >
             Xem dataset →
           </a>
-          {preview.commitUrl && (
-            <>
-              {" "}
-              ·{" "}
-              <a
-                href={preview.commitUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-hf-link hover:underline"
-              >
-                Git commit
-              </a>
-            </>
-          )}
         </div>
       ) : (
         <div className="border border-hf-yellow/40 bg-hf-yellow-50/40 text-hf-text px-4 py-3 rounded-md text-sm">
@@ -65,7 +51,7 @@ export default function CommitPreview({ preview, onReset }: Props) {
                 : "bg-hf-bg text-hf-text-muted hover:text-hf-text"
             }`}
           >
-            <code className="font-mono">metadata.yaml</code>
+            Metadata
           </button>
           <button
             onClick={() => setTab("markdown")}
@@ -75,7 +61,7 @@ export default function CommitPreview({ preview, onReset }: Props) {
                 : "bg-hf-bg text-hf-text-muted hover:text-hf-text"
             }`}
           >
-            <code className="font-mono">dictionary.md</code>
+            Data Dictionary
           </button>
         </div>
 
@@ -97,7 +83,7 @@ export default function CommitPreview({ preview, onReset }: Props) {
         {committed ? (
           <>
             <span className="text-xs text-hf-text-muted">
-              💡 Có thể mất 60s để catalog `/` hiển thị dataset mới (cache).
+              💡 Dataset mới sẽ hiển thị trên trang chủ trong khoảng 1 phút.
             </span>
             <div className="flex gap-2">
               <a

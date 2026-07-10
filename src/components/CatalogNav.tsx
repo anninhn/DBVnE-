@@ -12,6 +12,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Upload } from "lucide-react";
 import SearchBox from "@/components/search/SearchBox";
 
 interface CatalogNavProps {
@@ -79,9 +80,10 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
       {/* Upload button */}
       <Link
         href="/upload"
-        className="bg-hf-yellow text-hf-text px-3 py-1.5 rounded-md text-[13px] font-medium hover:bg-hf-yellow/80 transition shrink-0"
+        className="bg-hf-yellow text-hf-text px-3 py-1.5 rounded-md text-[13px] font-medium hover:bg-hf-yellow/80 transition shrink-0 inline-flex items-center gap-1.5"
       >
-        + Upload dataset
+        <Upload className="w-3.5 h-3.5" strokeWidth={2.5} aria-hidden />
+        Upload dataset
       </Link>
     </nav>
   );

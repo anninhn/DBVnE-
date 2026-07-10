@@ -63,9 +63,8 @@ export async function POST(req: NextRequest) {
     await deleteDatasetFiles(slug);
   } catch (err) {
     console.error("[delete] Git rm thất bại:", err);
-    const message = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(
-      { error: `Không xóa được dataset khỏi git: ${message}` },
+      { error: "Không xóa được dataset. Vui lòng thử lại." },
       { status: 500 }
     );
   }
@@ -96,10 +95,6 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({
     success: true,
     redirect: "/",
-    message: `Dataset "${slug}" đã xóa${
-      r2Errors.length > 0
-        ? ` (⚠️ ${r2Errors.length} R2 object(s) orphaned — xem server log)`
-        : ""
-    }`,
+    message: `Dataset "${slug}" đã được xóa.`,
   });
 }

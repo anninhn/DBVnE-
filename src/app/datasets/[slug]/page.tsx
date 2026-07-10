@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { Star, Pencil, Bookmark, Download } from "lucide-react";
 import { getDatasetBySlug, withPreviewData } from "@/lib/datasets/read";
+import { formatCompactNumber } from "@/lib/format";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import CatalogNav from "@/components/CatalogNav";
 import TabSwitcher from "./TabSwitcher";
@@ -53,17 +55,29 @@ export default async function DatasetPage({ params }: PageProps) {
               {dataset.slug}
             </span>
             <span className="flex gap-2 ml-auto">
-              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted">
-                ★ {dataset.likes}
+              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
+                <Star className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
+                {dataset.likes}
               </button>
-              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted">
-                + Follow
+              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
+                <Bookmark className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
+                Follow
               </button>
+              {dataset.resources[0]?.file_url && (
+                <a
+                  href={`/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${dataset.resources[0].id}`}
+                  className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted transition inline-flex items-center gap-1.5"
+                >
+                  <Download className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
+                  Download
+                </a>
+              )}
               <Link
                 href={`/datasets/${slug}/edit`}
-                className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted transition"
+                className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted transition inline-flex items-center gap-1.5"
               >
-                Edit metadata
+                <Pencil className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
+                Edit
               </Link>
               <DeleteDatasetButton slug={slug} />
             </span>
@@ -84,11 +98,7 @@ export default async function DatasetPage({ params }: PageProps) {
               ))}
             </PillGroup>
             <PillGroup label="Size:">
-              <Pill>{dataset.row_count > 0 ? `${dataset.row_count.toLocaleString("vi-VN")} rows` : "—"}</Pill>
-            </PillGroup>
-            <PillGroup label="Library:">
-              <Pill>Datasets</Pill>
-              <Pill>pandas</Pill>
+              <Pill>{dataset.row_count > 0 ? `${formatCompactNumber(dataset.row_count)} rows` : "—"}</Pill>
             </PillGroup>
             <PillGroup label="License:"><Pill>{dataset.license}</Pill></PillGroup>
           </div>
@@ -137,7 +147,7 @@ export default async function DatasetPage({ params }: PageProps) {
           </div>
 
           {/* ── Files tab ── */}
-          <FilesTabContent resources={dataset.resources} />
+          <FilesTabContent resources={dataset.resources} slug={slug} />
 
           {/* ── Community tab ── */}
           <div className="p-6 text-center text-hf-text-muted py-24">

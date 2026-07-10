@@ -8,6 +8,8 @@
  * Cùng state vì cùng prop source.
  */
 
+import { Search } from "lucide-react";
+
 interface SearchBoxProps {
   /** Giá trị input hiện tại */
   query: string;
@@ -24,13 +26,11 @@ export default function SearchBox({
 }: SearchBoxProps) {
   return (
     <div className="relative">
-      <svg
+      <Search
         className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-hf-text-faint"
-        fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-      >
-        <circle cx="11" cy="11" r="7" />
-        <path d="m21 21-4.3-4.3" strokeLinecap="round" />
-      </svg>
+        strokeWidth={2}
+        aria-hidden
+      />
       <input
         type="text"
         value={query}

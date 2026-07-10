@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { UploadCloud, Loader2 } from "lucide-react";
 import type { UploadResult } from "./UploadWizard";
 
 const MAX_SIZE_BYTES = 500 * 1024 * 1024;
@@ -30,7 +31,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
     }
 
     setUploading(true);
-    setProgress("Đang xin presigned URL...");
+    setProgress("Đang chuẩn bị upload...");
     try {
       // 1. Get presigned URL
       const presignRes = await fetch("/api/upload/presign", {
@@ -43,18 +44,17 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
         }),
       });
       const presign = await presignRes.json();
-      if (!presignRes.ok) throw new Error(presign.error ?? "Presign failed");
+      if (!presignRes.ok) throw new Error(presign.error ?? "Không thể chuẩn bị upload");
 
       // 2. PUT file trực tiếp lên R2 (không qua Vercel)
-      setProgress(`Đang upload ${(file.size / 1024 / 1024).toFixed(1)}MB lên R2...`);
+      setProgress(`Đang upload file (${(file.size / 1024 / 1024).toFixed(1)}MB)...`);
       const putRes = await fetch(presign.presignedUrl, {
         method: "PUT",
         body: file,
         headers: { "Content-Type": file.type || "application/octet-stream" },
       });
       if (!putRes.ok) {
-        const errText = await putRes.text();
-        throw new Error(`R2 PUT failed (${putRes.status}): ${errText.slice(0, 200)}`);
+        throw new Error(`Upload thất bại (${putRes.status}). Vui lòng thử lại.`);
       }
 
       const format: "csv" | "xlsx" = filename.endsWith(".xlsx") || filename.endsWith(".xls") ? "xlsx" : "csv";
@@ -109,7 +109,13 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
         disabled={uploading}
       />
 
-      <div className="text-4xl mb-3">{uploading ? "⏳" : "📁"}</div>
+      <div className="flex justify-center mb-3">
+        {uploading ? (
+          <Loader2 className="w-10 h-10 text-hf-yellow animate-spin" strokeWidth={1.5} />
+        ) : (
+          <UploadCloud className="w-10 h-10 text-hf-text-faint" strokeWidth={1.5} />
+        )}
+      </div>
 
       {uploading ? (
         <>

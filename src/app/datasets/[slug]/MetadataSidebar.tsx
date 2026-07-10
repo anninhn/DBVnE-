@@ -1,4 +1,5 @@
 import type { Dataset } from "@/lib/types/dataset";
+import { formatCompactNumber } from "@/lib/format";
 
 interface MetadataSidebarProps {
   dataset: Dataset;
@@ -17,28 +18,28 @@ export default function MetadataSidebar({ dataset }: MetadataSidebarProps) {
   return (
     <div>
       {/* Downloads */}
-      <Card title="Tải về (tháng qua)">
+      <Card title="Downloads">
         <div className="text-2xl font-bold text-hf-text">{dataset.downloads}</div>
-        <div className="text-xs text-hf-text-muted">lượt tải</div>
+        <div className="text-xs text-hf-text-muted">last 30 days</div>
       </Card>
 
-      {/* Quy mô */}
-      <Card title="Quy mô">
+      {/* Size */}
+      <Card title="Size">
         <dl className="text-[13px]">
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Số dòng</dt>
-            <dd className="font-medium">{dataset.row_count.toLocaleString("vi-VN")}</dd>
+            <dt className="text-hf-text-muted">Rows</dt>
+            <dd className="font-medium">{formatCompactNumber(dataset.row_count)}</dd>
           </div>
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Số file</dt>
+            <dt className="text-hf-text-muted">Files</dt>
             <dd className="font-medium">{dataset.file_count}</dd>
           </div>
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Dung lượng</dt>
+            <dt className="text-hf-text-muted">Size</dt>
             <dd className="font-medium">{dataset.total_size_mb} MB</dd>
           </div>
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Năm</dt>
+            <dt className="text-hf-text-muted">Year</dt>
             <dd className="font-medium">
               {dataset.year_range.length > 1
                 ? `${Math.min(...dataset.year_range)}–${Math.max(...dataset.year_range)}`
@@ -48,25 +49,25 @@ export default function MetadataSidebar({ dataset }: MetadataSidebarProps) {
         </dl>
       </Card>
 
-      {/* Nguồn gốc */}
-      <Card title="Nguồn gốc">
+      {/* Source */}
+      <Card title="Source">
         <dl className="text-[13px]">
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Nguồn</dt>
+            <dt className="text-hf-text-muted">Source</dt>
             <dd className="font-medium text-right max-w-[60%]">{dataset.source}</dd>
           </div>
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Người tải</dt>
+            <dt className="text-hf-text-muted">Uploader</dt>
             <dd className="font-medium">{dataset.uploaded_by}</dd>
           </div>
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Tải lên</dt>
+            <dt className="text-hf-text-muted">Uploaded</dt>
             <dd className="font-medium">
               {new Date(dataset.uploaded_at).toLocaleDateString("vi-VN")}
             </dd>
           </div>
           <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Giấy phép</dt>
+            <dt className="text-hf-text-muted">License</dt>
             <dd className="font-medium capitalize">{dataset.license}</dd>
           </div>
         </dl>

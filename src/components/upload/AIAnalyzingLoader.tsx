@@ -10,10 +10,10 @@ interface Props {
 }
 
 const STAGES = [
-  "Đang tải file từ R2...",
+  "Đang đọc file...",
   "Đang phân tích cấu trúc cột...",
-  "Đang gọi AI phân tích...",
-  "Đang tạo đề xuất metadata + dictionary...",
+  "Đang phân tích dữ liệu...",
+  "Đang tạo đề xuất thông tin dataset...",
 ];
 
 export default function AIAnalyzingLoader({ upload, onDone, onError }: Props) {

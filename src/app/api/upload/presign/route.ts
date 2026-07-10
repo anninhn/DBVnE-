@@ -94,9 +94,8 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error("[presign] Error:", err);
-    const message = err instanceof Error ? err.message : "Lỗi không xác định";
     return NextResponse.json(
-      { error: `Không tạo được presigned URL: ${message}` },
+      { error: "Không thể chuẩn bị upload. Vui lòng thử lại." },
       { status: 500 }
     );
   }

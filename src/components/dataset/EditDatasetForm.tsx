@@ -127,7 +127,7 @@ export default function EditDatasetForm({
       yamlPreview: yamlContent,
       markdownPreview: markdownContent,
       committed: false,
-      message: `Sẵn sàng commit "Update dataset ${initialSlug}"`,
+      message: `Sẵn sàng lưu cập nhật cho dataset "${initialSlug}"`,
     });
     setStep("preview");
   }
@@ -151,13 +151,13 @@ export default function EditDatasetForm({
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error ?? "Commit thất bại");
+        throw new Error(data.error ?? "Không thể lưu cập nhật");
       }
 
       setCommitPreview({
         ...commitPreview,
         committed: true,
-        message: `Đã cập nhật metadata. Commit: ${data.commitSha?.slice(0, 7) ?? "?"}`,
+        message: `Đã lưu cập nhật cho dataset "${initialSlug}".`,
         commitSha: data.commitSha,
         commitUrl: data.commitUrl,
       });
@@ -168,7 +168,7 @@ export default function EditDatasetForm({
       setError(
         err instanceof Error
           ? err.message
-          : "Lỗi không xác định khi commit"
+          : "Lỗi không xác định khi lưu"
       );
       // Giữ ở step preview để retry
     } finally {
@@ -206,7 +206,7 @@ export default function EditDatasetForm({
                   {isDone ? "✓" : i + 1}
                 </span>
                 <span className={isActive ? "font-medium" : ""}>
-                  {s === "review" ? "Review metadata" : "Preview commit"}
+                  {s === "review" ? "Review metadata" : "Preview"}
                 </span>
               </div>
               {i < 1 && <span className="text-hf-text-faint">→</span>}
@@ -235,8 +235,8 @@ export default function EditDatasetForm({
           {/* File info bar — D3: edit metadata only, không replace file */}
           {initialMetadata.files && initialMetadata.files.length > 0 && (
             <div className="bg-hf-yellow-50/30 border border-hf-yellow/30 rounded-md px-4 py-2.5 text-[13px] text-hf-text-muted">
-              <strong className="text-hf-text">Chỉnh sửa metadata only.</strong>{" "}
-              File đính kèm không thay đổi (D3).{" "}
+              <strong className="text-hf-text">Editing metadata only.</strong>{" "}
+              Attached files will not be changed.{" "}
               {initialMetadata.files.length} file(s):{" "}
               {initialMetadata.files
                 .map((f) => f.filename ?? f.r2_key)
@@ -264,13 +264,13 @@ export default function EditDatasetForm({
               onClick={() => router.back()}
               className="text-sm text-hf-text-muted hover:text-hf-text hover:underline"
             >
-              ← Hủy
+              ← Cancel
             </button>
             <button
               onClick={handlePreviewCommit}
               className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
             >
-              Preview commit →
+              Preview →
             </button>
           </div>
         </div>
@@ -292,7 +292,7 @@ export default function EditDatasetForm({
                 disabled={submitting}
                 className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {submitting ? "Đang commit..." : "Commit update →"}
+                {submitting ? "Saving..." : "Save changes →"}
               </button>
             </div>
           )}
