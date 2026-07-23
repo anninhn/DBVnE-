@@ -46,6 +46,10 @@ export interface AIProposal {
     type: "string" | "number" | "date" | "boolean" | "category";
     unit: string;
     description: string;
+    /** Frictionless Data Table Schema — optional, chỉ cho type: "number" */
+    decimal_char?: "." | ",";
+    /** Frictionless Data Table Schema — optional, chỉ cho type: "number" */
+    group_char?: "." | "," | " ";
   }[];
   questions: string[];
 }
@@ -115,6 +119,11 @@ export async function analyzeDataset(
       ...(c.min !== undefined && { min: c.min }),
       ...(c.max !== undefined && { max: c.max }),
       samples: c.samples,
+      // Frictionless schema detection — gợi ý cho AI declare decimal_char/group_char
+      ...(c.decimalFormat && c.decimalFormat !== "unknown" && {
+        decimalFormat: c.decimalFormat,
+        decimalSchema: c.decimalSchema,
+      }),
     })),
     sampleRows: inspection.sampleRows,
     // Full-dataset stats (computed streaming qua toàn bộ file, không từ sample).

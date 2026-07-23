@@ -6,26 +6,46 @@
  *  - histogramBins: 8 bins từ min→max
  *  - countDistinct: số giá trị unique
  *  - categoricalSegments: top-12 segments theo count desc
+ *
+ * Frictionless schema (decimal_char/group_char) hỗ trợ parse số từ raw cell
+ * theo đúng locale của dataset. Nếu không truyền schema → fallback `.` decimal.
  */
+
+import type { NumberSchema } from "@/lib/parse/number";
+import { parseNumberWithSchema } from "@/lib/parse/number";
 
 type CellValue = string | number | boolean | null | undefined;
 type DataRow = Record<string, CellValue>;
 
-/** Trích giá trị số từ cột — parse string → number, bỏ NaN/null. */
-function extractNumericValues(rows: DataRow[], colName: string): number[] {
+/**
+ * Trích giá trị số từ cột — parse string → number theo schema, bỏ NaN/null.
+ *
+ * Không có schema → parseFloat default (`.` decimal).
+ * Có schema vi (decimal_char: ",") → parse đúng `1.234,56` → 1234.56.
+ */
+function extractNumericValues(
+  rows: DataRow[],
+  colName: string,
+  schema?: NumberSchema
+): number[] {
   return rows
     .map((r) => r[colName])
     .filter((v) => v != null && v !== "")
-    .map((v) => (typeof v === "string" ? parseFloat(v) : (v as number)))
-    .filter((n) => !Number.isNaN(n));
+    .map((v) => {
+      if (typeof v === "number") return v;
+      if (typeof v === "string") return parseNumberWithSchema(v, schema);
+      return null;
+    })
+    .filter((n): n is number => n != null && !Number.isNaN(n));
 }
 
 /** Min/max dạng chuỗi định dạng vi-VN — cho hiển thị stats header. */
 export function numericStats(
   rows: DataRow[],
-  colName: string
+  colName: string,
+  schema?: NumberSchema
 ): { min: string; max: string } | null {
-  const values = extractNumericValues(rows, colName);
+  const values = extractNumericValues(rows, colName, schema);
   if (values.length === 0) return null;
   const min = Math.min(...values);
   const max = Math.max(...values);
@@ -35,9 +55,10 @@ export function numericStats(
 /** Histogram 8 bins — trả counts array cho inline SVG chart. */
 export function histogramBins(
   rows: DataRow[],
-  colName: string
+  colName: string,
+  schema?: NumberSchema
 ): { counts: number[] } | null {
-  const values = extractNumericValues(rows, colName);
+  const values = extractNumericValues(rows, colName, schema);
   if (values.length === 0) return null;
   const min = Math.min(...values);
   const max = Math.max(...values);

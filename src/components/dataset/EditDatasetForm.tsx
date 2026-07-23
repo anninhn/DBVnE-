@@ -58,6 +58,9 @@ function toEditorDictionary(
     type: (mapDataTypeToEditor(d.data_type) as DictionaryEntry["type"]),
     unit: d.unit ?? "-",
     description: d.description ?? "",
+    // Preserve Frictionless schema fields khi edit
+    decimal_char: d.decimal_char,
+    group_char: d.group_char,
   }));
 }
 

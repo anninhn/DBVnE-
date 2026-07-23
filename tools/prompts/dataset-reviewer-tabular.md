@@ -36,6 +36,23 @@ Input có 2 nguồn dữ liệu:
 - Mỗi `dictionary` entry phải có đủ: column (tên cột), type (`string` | `number` | `date` | `boolean` | `category`), unit, description.
 - `description` cho column phải giải thích **ý nghĩa** (vd: `"GRDP thực năm 2024 tính theo giá so sánh"` tốt hơn `"số tiền"`).
 
+## Frictionless schema — decimal_char + group_char
+
+Cho cột `type: "number"`, declare thêm `decimal_char` + `group_char` (Frictionless Data Table Schema):
+- `decimal_char`: ký tự thập phân — `"."` (mặc định, quốc tế) hoặc `","` (Việt Nam / châu Âu).
+- `group_char`: ký tự nhóm hàng nghìn — `","` (mặc định), `"."` (Việt Nam), hoặc `" "` (ISO 31-0).
+
+**Detection**: input inspection có `columns[].decimalFormat` (`"vi"` | `"en"` | `"unknown"`) từ auto-detect. Nếu `"vi"` → đề xuất `decimal_char: ","`, `group_char: "."`. Nếu `"en"` → đề xuất `decimal_char: "."`, `group_char: ","`. Nếu `"unknown"` → KHÔNG include 2 fields này (dùng default).
+
+**Chỉ include `decimal_char`/`group_char` khi:**
+1. `type: "number"`
+2. Detection confident (`decimalFormat !== "unknown"`)
+
+**Ví dụ**:
+- Cột `grdp_vnd` có samples `["1.234.567,89", "890.123,45"]` + `decimalFormat: "vi"` → đề xuất `decimal_char: ","`, `group_char: "."`
+- Cột `year` có samples `["2024", "2023"]` (integer, `decimalFormat: "unknown"`) → không include 2 fields
+- Cột `tinh` (string) → không include 2 fields
+
 ## Output format — JSON strict
 
 Trả về **đúng** JSON schema sau, không markdown wrapper, không giải thích thêm:
@@ -56,7 +73,9 @@ Trả về **đúng** JSON schema sau, không markdown wrapper, không giải th
       "column": "string — tên cột chính xác như trong inspection",
       "type": "string | number | date | boolean | category",
       "unit": "string — đơn vị (vd: 'tỷ VND', '%', 'năm', '-') hoặc 'unknown'",
-      "description": "string — ý nghĩa cột bằng tiếng Việt"
+      "description": "string — ý nghĩa cột bằng tiếng Việt",
+      "decimal_char": ". hoặc , (optional — chỉ cho number, theo detection)",
+      "group_char": ". hoặc , hoặc space (optional — chỉ cho number, theo detection)"
     }
   ],
   "questions": [

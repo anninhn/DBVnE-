@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { ColumnStats, DataDictionaryEntry, Dataset, Resource } from "@/lib/types/dataset";
+import type { NumberSchema } from "@/lib/parse/number";
 import {
   numericStats,
   histogramBins,
@@ -38,6 +39,8 @@ interface ColumnDef {
   dtype: string;
   unit?: string;
   isNumeric: boolean;
+  /** Frictionless schema — dùng cho parse number trong stats/histogram */
+  schema?: NumberSchema;
 }
 
 export default function DatasetViewer({ dataset }: DatasetViewerProps) {
@@ -69,12 +72,21 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
     return order.map((name) => {
       const meta = dataset.data_dictionary.find((d) => d.column_name === name);
       const dtype = meta?.data_type ?? "text";
+      // Build Frictionless schema từ dictionary (decimal_char/group_char)
+      const schema: NumberSchema | undefined =
+        meta?.decimal_char || meta?.group_char
+          ? {
+              decimal_char: meta?.decimal_char,
+              group_char: meta?.group_char,
+            }
+          : undefined;
       return {
         name,
         label: meta?.label_vi ?? name,
         unit: meta?.unit,
         dtype,
         isNumeric: dtype === "int" || dtype === "float",
+        schema,
       };
     });
   }, [resource, rows, dataset.data_dictionary]);
@@ -158,7 +170,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
                         col.isNumeric ? "text-right tabular-nums" : ""
                       }`}
                     >
-                      {formatCell(row[col.name], col.isNumeric)}
+                      {formatCell(row[col.name])}
                     </td>
                   ))}
                 </tr>
@@ -250,7 +262,7 @@ function ColumnHeader({
           {typeBadge(col.dtype)}
         </span>
         {col.isNumeric ? (
-          <NumericStats rows={rows} colName={col.name} stats={stats} />
+          <NumericStats rows={rows} colName={col.name} stats={stats} schema={col.schema} />
         ) : (
           <CategoricalStats rows={rows} colName={col.name} stats={stats} />
         )}
@@ -259,7 +271,7 @@ function ColumnHeader({
       {/* Mini chart */}
       <div className="mt-1.5 h-8 flex items-end">
         {col.isNumeric ? (
-          <Histogram rows={rows} colName={col.name} stats={stats} />
+          <Histogram rows={rows} colName={col.name} stats={stats} schema={col.schema} />
         ) : (
           <ProportionBar rows={rows} colName={col.name} stats={stats} />
         )}
@@ -272,15 +284,19 @@ function NumericStats({
   rows,
   colName,
   stats,
+  schema,
 }: {
   rows: Record<string, string | number | boolean | null | undefined>[];
   colName: string;
   stats?: ColumnStats;
+  schema?: NumberSchema;
 }) {
   // Prefer precomputed stats (over full dataset); fall back to preview computation.
+  // Precomputed stats đã parse đúng tại upload time (inspect.ts dùng detection).
+  // Fallback numericStats cần schema để parse đúng raw cell.
   const computed = stats && stats.kind === "numeric"
     ? { min: stats.min.toLocaleString("vi-VN"), max: stats.max.toLocaleString("vi-VN") }
-    : numericStats(rows, colName);
+    : numericStats(rows, colName, schema);
   if (!computed) return null;
   return (
     <>
@@ -310,13 +326,15 @@ function Histogram({
   rows,
   colName,
   stats,
+  schema,
 }: {
   rows: Record<string, string | number | boolean | null | undefined>[];
   colName: string;
   stats?: ColumnStats;
+  schema?: NumberSchema;
 }) {
   const counts =
-    stats && stats.kind === "numeric" ? stats.histogram : histogramBins(rows, colName)?.counts;
+    stats && stats.kind === "numeric" ? stats.histogram : histogramBins(rows, colName, schema)?.counts;
   if (!counts) return null;
 
   const W = 110,
@@ -396,16 +414,11 @@ function ProportionBar({
 // Helpers
 // ──────────────────────────────────────────────────────────────────────────────
 
-function formatCell(value: string | number | boolean | null | undefined, numeric: boolean): string {
+// Hiển thị raw trực tiếp từ R2 — storage đã canonical (`.` decimal, `,` thousand).
+// Không convert qua toLocaleString: interchange an toàn và nhất quán với file download.
+function formatCell(value: string | number | boolean | null | undefined): string {
   if (value === null || value === undefined || value === "") return "";
   if (typeof value === "boolean") return value ? "Có" : "Không";
-  // Cell từ CSV là string gốc — giữ nguyên chuỗi để không mất precision
-  // và tránh parseFloat cắt sai giá trị có dấu thập phân phẩy ("3,14" → 3).
-  if (typeof value === "string") return value;
-  // Cell từ XLSX là number thực — định dạng vi-VN nhưng giữ tối đa chữ số thập phân.
-  if (numeric) {
-    return value.toLocaleString("vi-VN", { maximumFractionDigits: 20 });
-  }
   return String(value);
 }
 

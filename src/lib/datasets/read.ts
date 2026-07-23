@@ -59,9 +59,12 @@ async function fetchRaw(path: string): Promise<string | null> {
 
 /**
  * Parse markdown table:
- *   | Column | Type | Unit | Description |
- *   |--------|------|------|-------------|
- *   | tinh   | string | - | Tên tỉnh |
+ *   | Column | Type | Dec | Group | Unit | Description |
+ *   |--------|------|-----|-------|------|-------------|
+ *   | `grdp` | number | , | . | tỷ VND | GRDP |
+ *
+ * Backward compat: nếu chỉ có 4 cột cũ (Column|Type|Unit|Description) thì parse OK,
+ * decimal_char/group_char = undefined (sử dụng default `.` và `,`).
  *
  * → DataDictionaryEntry[] (compat với Dataset.data_dictionary type hiện tại).
  */
@@ -73,18 +76,42 @@ export function parseDictionaryMarkdown(md: string): DataDictionaryEntry[] {
   const dataRows = lines.slice(2);
   return dataRows
     .map((line) => {
-      const cells = line
-        .split("|")
-        .map((c) => c.trim())
-        .filter(Boolean);
-      if (cells.length < 1) return null;
-      const [column, type, unit, description] = cells;
+      // Split theo `|`, filter empty (do leading/trailing `|` tạo 2 empty cells)
+      const cells = line.split("|").map((c) => c.trim());
+      // Bỏ 2 empty cells ở 2 đầu (vì markdown table `| a | b |` → ["", "a", "b", ""])
+      const trimmed = cells.filter((_, i) => i !== 0 && i !== cells.length - 1);
+      if (trimmed.length < 1) return null;
+
+      // Layout mới (6 cột): Column | Type | Dec | Group | Unit | Description
+      // Layout cũ (4 cột):   Column | Type | Unit | Description
+      let column: string | undefined;
+      let type: string | undefined;
+      let decimalChar: string | undefined;
+      let groupChar: string | undefined;
+      let unit: string | undefined;
+      let description: string | undefined;
+
+      if (trimmed.length >= 6) {
+        [column, type, decimalChar, groupChar, unit, description] = trimmed;
+      } else {
+        // Layout cũ — không có Dec/Group
+        [column, type, unit, description] = trimmed;
+      }
+
+      const normalizeSep = (v: string | undefined): "." | "," | " " | undefined => {
+        if (!v || v === "-") return undefined;
+        if (v === "." || v === "," || v === " ") return v;
+        return undefined;
+      };
+
       return {
         column_name: column?.replace(/`/g, "") ?? "",
         label_vi: column?.replace(/`/g, "") ?? "",
         data_type: mapDictionaryType(type),
         unit: unit && unit !== "-" ? unit : undefined,
         description: description && description !== "-" ? description : undefined,
+        decimal_char: normalizeSep(decimalChar) as DataDictionaryEntry["decimal_char"],
+        group_char: normalizeSep(groupChar) as DataDictionaryEntry["group_char"],
       } as DataDictionaryEntry;
     })
     .filter((row): row is DataDictionaryEntry => row !== null);

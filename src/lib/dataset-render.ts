@@ -27,6 +27,10 @@ export interface DictionaryForRender {
   type: string;
   unit: string;
   description: string;
+  /** Frictionless schema — ký tự thập phân (`.` mặc định, `,` cho VN) */
+  decimal_char?: "." | ",";
+  /** Frictionless schema — ký tự nhóm hàng nghìn (`,`, `.`, hoặc space) */
+  group_char?: "." | "," | " ";
 }
 
 /** File ref cho render YAML files[] section */
@@ -186,6 +190,9 @@ ${filesSection}
 
 /**
  * Render dictionary.md content (markdown table).
+ *
+ * Bao gồm 2 cột Frictionless schema: `Dec` (decimal_char) + `Group` (group_char).
+ * Default `-` khi không có — backward compat với dictionary cũ.
  */
 export function renderDictionaryMarkdown(
   entries: DictionaryForRender[]
@@ -195,11 +202,11 @@ export function renderDictionaryMarkdown(
   }
 
   const header =
-    "| Column | Type | Unit | Description |\n|--------|------|------|-------------|";
+    "| Column | Type | Dec | Group | Unit | Description |\n|--------|------|-----|-------|------|-------------|";
   const rows = entries
     .map(
       (e) =>
-        `| \`${e.column}\` | ${e.type} | ${e.unit || "-"} | ${e.description || ""} |`
+        `| \`${e.column}\` | ${e.type} | ${e.decimal_char ?? "-"} | ${e.group_char ?? "-"} | ${e.unit || "-"} | ${e.description || ""} |`
     )
     .join("\n");
 

@@ -38,6 +38,10 @@ export interface DictionaryEntry {
   type: "string" | "number" | "date" | "boolean" | "category";
   unit: string;
   description: string;
+  /** Frictionless Data Table Schema — optional, chỉ cho type: "number" */
+  decimal_char?: "." | ",";
+  /** Frictionless Data Table Schema — optional, chỉ cho type: "number" */
+  group_char?: "." | "," | " ";
 }
 
 export interface FilePreview {

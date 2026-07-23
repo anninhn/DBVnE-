@@ -29,6 +29,18 @@ export interface DataDictionaryEntry {
   unit?: string;
   description?: string;
   source?: string;
+  /**
+   * Frictionless Data Table Schema: ký tự phân cách thập phân.
+   * Mặc định `.` (canonical). `,` cho định dạng Việt Nam / châu Âu.
+   * Parser đọc field này để parse đúng số từ raw cell.
+   * See: https://frictionlessdata.io/specs/table-schema/
+   */
+  decimal_char?: "." | ",";
+  /**
+   * Frictionless Data Table Schema: ký tự nhóm hàng nghìn.
+   * Mặc định `,`. `.` cho định dạng Việt Nam. `" "` cho chuẩn ISO 31-0.
+   */
+  group_char?: "." | "," | " ";
 }
 
 export interface Resource {

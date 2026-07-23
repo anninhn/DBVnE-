@@ -1,5 +1,6 @@
 import * as XLSX from "xlsx";
 import { parseCSVHead, forEachCSVRow } from "@/lib/parse/csv";
+import { detectDecimalFormat, type DecimalFormat } from "@/lib/parse/decimal-detect";
 import type { ColumnStats } from "@/lib/types/dataset";
 
 export type TabularFormat = "csv" | "xlsx";
@@ -16,6 +17,14 @@ export interface ColumnInspection {
   max?: number;
   /** sample values (3-5) để AI hiểu context */
   samples: (string | number | boolean | null)[];
+  /**
+   * Frictionless schema đề xuất từ auto-detect ("vi" | "en" | "unknown").
+   * Chỉ áp dụng cho cột numeric — chỉ ra decimal_char/group_char cần dùng.
+   * AI sẽ dùng làm gợi ý ban đầu; user có thể override trong wizard.
+   */
+  decimalFormat?: DecimalFormat;
+  /** Schema đề xuất chi tiết (decimal_char + group_char) khi decimalFormat !== "unknown" */
+  decimalSchema?: { decimal_char: "." | ","; group_char: "." | "," };
 }
 
 export interface FileInspection {
@@ -332,7 +341,10 @@ function inspectXlsx(buffer: Buffer, filename: string): FileInspection {
 // ──────────────────────────────────────────────────────────────────────────────
 
 /**
- * Inspect 1 column → stats cơ bản + samples.
+ * Inspect 1 column → stats cơ bản + samples + decimal format detection.
+ *
+ * Detection Frictionless schema: nếu column có strong signal vi format (`1.234,56`)
+ * hoặc en format (`1,234.56`), đề xuất decimal_char/group_char cho dictionary.
  */
 function inspectColumn(
   name: string,
@@ -343,7 +355,7 @@ function inspectColumn(
   const uniqueValues = new Set(nonNull.map(String));
   const nullCount = values.length - nonNull.length;
 
-  // Try numeric infer
+  // Try numeric infer (theo canonical `.` — không biết vi format)
   const numericSamples = nonNull
     .map((v) => Number(v))
     .filter((n) => !Number.isNaN(n));
@@ -367,6 +379,38 @@ function inspectColumn(
     }
   }
 
+  // Auto-detect decimal format (Frictionless schema proposal)
+  // Chỉ detect cho cột có vẻ numeric nhưng parse `.` fail (có thể là vi format)
+  // hoặc cho mọi cột string có digits — đều chạy detection.
+  let decimalFormat: DecimalFormat | undefined;
+  let decimalSchema: ColumnInspection["decimalSchema"];
+  if (inferredType !== "date") {
+    const stringSamples = nonNull.map(String);
+    const detection = detectDecimalFormat(stringSamples);
+    if (detection.format !== "unknown") {
+      decimalFormat = detection.format;
+      decimalSchema = detection.schema;
+      // Nếu detect vi và column chưa được infer là number, có thể là do parse `.` fail
+      // → mark là number với schema vi
+      if (detection.format === "vi" && inferredType !== "number") {
+        inferredType = "number";
+        // Re-compute min/max với schema vi
+        const viNumbers = stringSamples
+          .map((s) => {
+            // Strip group_char `.`, đổi `,` decimal → `.`, parseFloat
+            const normalized = s.replace(/\./g, "").replace(",", ".");
+            const n = parseFloat(normalized);
+            return Number.isFinite(n) ? n : NaN;
+          })
+          .filter((n) => !Number.isNaN(n));
+        if (viNumbers.length > 0) {
+          min = Math.min(...viNumbers);
+          max = Math.max(...viNumbers);
+        }
+      }
+    }
+  }
+
   return {
     name,
     inferredType,
@@ -375,6 +419,8 @@ function inspectColumn(
     min,
     max,
     samples: nonNull.slice(0, MAX_SAMPLE_VALUES_PER_COLUMN).map(String),
+    decimalFormat,
+    decimalSchema,
   };
 }
 
