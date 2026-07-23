@@ -6,6 +6,40 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ## [Unreleased] — Phase 1 Dataset Hub (đang phát triển)
 
+### 2026-07-23 — Frictionless Data Table Schema (commit f6f3ca9)
+
+Pivot decimal convention từ auto-normalize sang Frictionless Data Table Schema. Storage raw giữ nguyên, schema lưu trong dictionary, parser đọc schema.
+
+**Why**: Auto-normalize mất raw gốc → vi phạm CLAUDE.md "Mỗi con số phải trace được nguồn". Frictionless là industry standard cho publishing platforms (CKAN, data.gov, OpenDataSoft).
+
+**New**
+- `src/lib/parse/number.ts` — `parseNumberWithSchema` + `formatNumberWithSchema` (Frictionless-compatible)
+- `src/lib/parse/decimal-detect.ts` — `detectDecimalFormat` (regex majority vote per-column, skip ambiguous)
+
+**Changed**
+- Types: `DataDictionaryEntry` + `DictionaryForRender` + `AIProposal.dictionary` + `DictionaryEntry` thêm `decimal_char` + `group_char` optional
+- `inspect.ts:inspectColumn` detect decimal format, re-compute min/max nếu vi format
+- `column-stats.ts`: `numericStats` + `histogramBins` nhận optional `NumberSchema`
+- `dataset-render.ts`: `renderDictionaryMarkdown` render 6 cột (Column|Type|Dec|Group|Unit|Description)
+- `read.ts`: `parseDictionaryMarkdown` parser backward compat (4 hoặc 6 cột)
+- `DictionaryEditor.tsx`: 2 dropdown Dec/Group, disabled cho non-number
+- `dataset-reviewer.ts`: `trimmedInspection` gửi `decimalFormat` cho AI
+- `tools/prompts/dataset-reviewer-tabular.md`: section mới Frictionless schema
+- `DatasetViewer.tsx`: `ColumnDef.schema` build từ dictionary, pass xuống `NumericStats`/`Histogram`
+
+**Display convention**: cell UI = RAW (publishing — user nhìn đúng những gì download). Stats UI = format vi-VN (presentation layer).
+
+Resolves Phase 2 backlog #2A. See `memory/project_frictionless_schema_2026_07_23.md`.
+
+### 2026-07-23 — Fix preview rounding (commit c2e8b0e)
+
+**Fixed**
+- `DatasetViewer.tsx:formatCell` bỏ `toLocaleString("vi-VN")` (mặc định max 3 decimal → mất precision). Cell CSV giữ nguyên string gốc; cell XLSX render qua `String(value)`.
+- `R2FileViewer.tsx`: cùng pattern — hiển thị raw trực tiếp từ R2.
+- Sửa silent bug `parseFloat("3,14") = 3` (vi decimal).
+
+Sau đó sửa lại khi pivot Frictionless: cell luôn raw, không transform.
+
 ### 2026-07-10 — Phase 1 completion + polish (commit 08ed11a)
 
 Hoàn thiện Phase 1: 4 features còn thiếu + perf fix + rebrand. All validation gaps resolved.
