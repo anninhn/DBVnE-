@@ -57,7 +57,7 @@ const MAX_ROWS_FOR_INSPECTION = 1000; // cap để tránh file khổng lồ
  */
 export function detectFormat(filename: string): TabularFormat | null {
   const lower = filename.toLowerCase();
-  if (lower.endsWith(".csv") || lower.endsWith(".tsv")) return "csv";
+  if (lower.endsWith(".csv")) return "csv";
   if (lower.endsWith(".xlsx") || lower.endsWith(".xls")) return "xlsx";
   return null;
 }
@@ -233,7 +233,7 @@ function computeXlsxStats(
 // ──────────────────────────────────────────────────────────────────────────────
 
 /**
- * Inspect CSV/TSV buffer → FileInspection.
+ * Inspect CSV buffer → FileInspection.
  *
  * 2 giai đoạn:
  * 1. parseCSVHead → first 1000 rows: type inference + sampleRows (cho AI)

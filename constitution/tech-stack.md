@@ -57,7 +57,7 @@ Hosting:         Vercel (đã deploy F1) hoặc Cloudflare Pages
 
 | Format | Lưu trữ | Data Preview | DuckDB query (Phase 2) | AI Reviewer hành vi |
 |--------|---------|--------------|------------------------|---------------------|
-| **CSV / TSV** | ✅ Nguyên gốc | ✅ Table + histogram | ✅ Native | Inspect columns + sample → metadata + dictionary |
+| **CSV** | ✅ Nguyên gốc | ✅ Table + histogram | ✅ Native | Inspect columns + sample → metadata + dictionary |
 | **XLSX** | ✅ Nguyên gốc | ✅ SheetJS render | ✅ Native | Inspect sheets + columns → metadata + dictionary |
 | **Parquet** | ✅ Nguyên gốc | ✅ DuckDB-WASM | ✅ Native (best perf) | Inspect schema → metadata + dictionary |
 | **PDF** | ✅ Nguyên gốc | ⚠️ Extract text + first page render | ❌ Extract tables ra CSV trước | Extract text → metadata + key_findings (**không dictionary**) |

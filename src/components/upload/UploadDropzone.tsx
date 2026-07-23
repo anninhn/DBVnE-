@@ -5,7 +5,7 @@ import { UploadCloud, Loader2 } from "lucide-react";
 import type { UploadResult } from "./UploadWizard";
 
 const MAX_SIZE_BYTES = 500 * 1024 * 1024;
-const ALLOWED_EXTS = [".csv", ".tsv", ".xlsx", ".xls"];
+const ALLOWED_EXTS = [".csv", ".xlsx", ".xls"];
 
 interface Props {
   onUploaded: (result: UploadResult) => void;
@@ -103,7 +103,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
       <input
         ref={inputRef}
         type="file"
-        accept=".csv,.tsv,.xlsx,.xls"
+        accept=".csv,.xlsx,.xls"
         onChange={onSelect}
         className="hidden"
         disabled={uploading}
@@ -131,7 +131,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
             hoặc <span className="text-hf-link hover:underline">click để chọn file</span>
           </p>
           <p className="text-[11px] text-hf-text-faint">
-            Hỗ trợ: CSV, TSV, XLSX • Tối đa 500MB
+            Hỗ trợ: CSV, XLSX, XLS • Tối đa 500MB
           </p>
         </>
       )}
