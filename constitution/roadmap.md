@@ -6,6 +6,14 @@
 
 **Substrate**: File-based (git + markdown + parquet), KHÔNG PostgreSQL cho Phase 1. Next.js giữ từ F1, kết hợp SSG (catalog) + dynamic API route (upload). Chi tiết: `constitution/tech-stack.md`.
 
+**Format scope (chốt 2026-07-23)**: Giữ tinh thần "dataset = tabular + geospatial". Phase 1 chỉ accept:
+- ✅ Tabular: CSV/TSV/XLSX/XLS (đã ship)
+- ✅ GeoJSON (geospatial = data, làm trong #1A)
+- ⏸️ **PDF defer Phase 3** (Document RAG) — cả 2 luồng wizard + add-file, cả 2 loại text-based + scanned
+- ⏸️ **MP3 defer Phase 3** (Audio RAG)
+
+Lý do thu hẹp: hạn chế phức tạp MVP. PDF/MP3 = document/audio, thuộc Phase 3 RAG chứ không phải Phase 1 dataset.
+
 **Spec**: cần viết lại specs cho lần re-architecture này.
 
 ### Build chunks trong Phase 1 re-arch
@@ -81,12 +89,14 @@ Vector embedding **không phải default** — là opt-in khi trigger criteria m
 **Tech stack**: pgvector (cùng Supabase) + multilingual-e5-large (embeddings) + Whisper (ASR) + Claude API (LLM). Lightweight custom RAG, không dùng heavy framework (LangChain/LlamaIndex).
 
 ### 3a — Document RAG
+- **Upload flow** (defer từ Phase 1 #1A): PDF text-based (`pdf-parse` extract) + scanned (OCR hoặc AI File API vision). Cả 2 luồng: wizard (tạo dataset mới) + add-file (attach vào dataset có sẵn)
 - PDF, báo cáo, tài liệu → chunking + embedding → pgvector
 - Q&A trên documents: phóng viên hỏi → retrieve relevant chunks → Claude API generate answer
 - Source citation: luôn link đến trang PDF cụ thể
 - Embedding model: multilingual-e5-large (Hugging Face, hỗ trợ tiếng Việt)
 
 ### 3b — Audio RAG
+- **Upload flow** (defer từ Phase 1 #1A): MP3 qua wizard + add-file
 - MP3 phỏng vấn → Whisper (ASR) → transcript tiếng Việt
 - Transcript → embedding → pgvector
 - Search + extract quotes từ phỏng vấn
@@ -168,3 +178,4 @@ Triggers cụ thể để cân nhắc bổ sung:
 | 2026-06-24 | **Column statistics (precomputed, full-table)** | Thêm `resources.column_stats` JSONB — mini charts của Dataset Viewer (F3) đọc stats precompute ở seed time trên full typed table thay vì compute từ 10-row preview. Trước: histogram/proportion bar phản ánh phân bố sai (chỉ 10 province đầu theo alphabet). Sau: phân bố thật của 34 provinces, HCM outlier hiện rõ. Migration 007 + update seed 006 (self-sufficient). Lý do: HF làm đúng vì precompute server-side; copy visual mà không copy architecture = chart đúng hình sai số. Xem `specs/2026-06-24-column-statistics/`. |
 | 2026-07-02 | **Phase 1 Re-architecture: PostgreSQL → File-based + AI-assisted upload** | Cũ: Phase 1 = Next.js + Supabase PostgreSQL + 5 features F1-F5 (catalog/detail/viewer/files/search) + upload deferred. Mới: file-based storage (git + markdown + parquet/CSV/XLSX giữ nguyên gốc), AI-assisted upload wizard trên UI (drag-drop → Claude phân tích → user review metadata/dictionary → commit), Plausible tracking, không PostgreSQL cho Phase 1. Lý do (4): (1) Treadmill chẩn đoán — mỗi dataset = ~1000 dòng code SQL seed, không scale cho 1 người; (2) `upload_log` table = reimplementation git history; (3) Phase 1 purpose thật là **demand discovery** qua tracking, không phải "single source of truth" warehouse; (4) User sẽ không tự viết metadata/dictionary → cần AI-assisted tại upload time. DuckDB (Phase 2) query trực tiếp CSV/XLSX/Parquet — không cần PostgreSQL substrate sớm. PostgreSQL move xuống Phase 2 optional (chỉ khi promotion structured table cần). F1-F5 plan cũ superseded. Xem `specs/2026-07-02-phase1-rearch/`, `constitution/tech-stack.md` (re-architected). |
 | 2026-07-23 | **Phase 2/3 scope adjustment sau brainstorm Intelligence** | Phase 2 thu hẹp: chỉ **Discovery Chat** (LLM routing zero-infra, Claude thấy metadata tất cả datasets → trả top-3 cards + lý do). Bỏ chart builder + SQL panel + query templates + dataset promotion + text-to-SQL. Phase 3 thêm **3e Structured Data Q&A** (NL→SQL bằng schema-aware prompting với Claude tool-use + DuckDB query R2 trực tiếp, KHÔNG semantic layer default). Phase 3 thêm **3f Optional extensions** với triggers cụ thể: vector DB/RAG khi catalog >100 + fuzzy intent; semantic layer khi multi-surface; AI auto-suggest wizard chỉ enrich metadata tự nhiên. Lý do: (1) Vector DB over-engineering cho 10-100 datasets — LLM routing đủ; (2) Semantic layer (Cube/dbt) là enterprise pattern cho multi-surface consistency, không fit newsroom 1 surface; (3) Fine-tune text-to-SQL overkill — zero-shot + rich context đủ; (4) Phóng viên không hiểu metrics/dimensions — UX phải giấu concepts. Reference: SOTA research 2026 (Spider2/BIRD broken, Cube semantic layer trend, Vanna RAG, Anthropic tool use). |
+| 2026-07-23 | **Phase 1 format scope — tabular + GeoJSON, defer PDF/MP3 sang Phase 3** | Cũ: #1A multi-format gồm pdf/mp3/geojson/zip. Mới: #1A chỉ còn **GeoJSON** (geospatial = data). PDF + MP3 defer Phase 3 — cả 2 luồng (wizard + add-file) và 2 loại PDF (text-based `pdf-parse` extract + scanned OCR/AI vision). Lý do: giữ tinh thần "dataset = tabular" cho MVP, hạn chế phức tạp. PDF/MP3 = document/audio, thuộc Phase 3 RAG infrastructure (3a Document RAG pickup upload flow, 3b Audio RAG pickup upload flow) chứ không phải Phase 1 dataset. Phase 1 `detectFormat` accept CSV/TSV/XLSX/XLS + GeoJSON (native `JSON.parse`, không library ngoài). Dictionary reuse cho GeoJSON (columns = feature.properties.keys()). Preview GeoJSON: render table từ features.properties, defer map (Leaflet/MapLibre) cho sau. |
