@@ -2,7 +2,7 @@
 title: "Ranh giới hành chính 34 tỉnh thành Việt Nam"
 slug: "ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam"
 description: "Dataset chứa ranh giới hành chính của 34 tỉnh thành Việt Nam, với mỗi tỉnh thành được biểu diễn bằng geometry MultiPolygon. Dữ liệu bao gồm 34 features và sử dụng hệ tọa độ WGS84, phủ khắp lãnh thổ Việt Nam."
-category: hanh-chinh
+category: chinh-tri
 tags:
   - ranh-gioi
   - hanh-chinh
@@ -18,10 +18,6 @@ license: internal
 format: geojson
 row_count: 34
 columns_count: 8
-feature_count: 34
-geometry_type: "MultiPolygon"
-bbox: [102.141487, 7.183812, 117.827998, 23.393308]
-crs: "EPSG:4326"
 confidence: medium
 uploaded_by: demo
 uploaded_at: "2026-07-23T08:07:59.283Z"
