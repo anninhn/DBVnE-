@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { ColumnStats, DataDictionaryEntry, Dataset, Resource } from "@/lib/types/dataset";
 import type { NumberSchema } from "@/lib/parse/number";
 import {
@@ -12,6 +12,9 @@ import {
 import { formatCompactNumber } from "@/lib/format";
 
 const ROWS_PER_PAGE = 10;
+const PREVIEW_ROW_LIMIT = 1000;
+
+type Row = Record<string, string | number | boolean | null>;
 
 interface DatasetViewerProps {
   dataset: Dataset;
@@ -44,30 +47,111 @@ interface ColumnDef {
 }
 
 export default function DatasetViewer({ dataset }: DatasetViewerProps) {
-  // Chỉ những resource có structured_data mới viewer được
-  const viewableResources = useMemo(
+  // Chỉ những resource có structured_data mới viewer được (SSR path)
+  const ssrViewableResources = useMemo(
     () => dataset.resources.filter((r) => r.structured_data && r.structured_data.length > 0),
     [dataset.resources]
   );
+
+  // GeoJSON resource cần client-side fetch khi SSR skip (file >10MB → withPreviewData
+  // early-return, không set structured_data). DatasetViewer tự fetch trong browser
+  // (không block Vercel), populate local state → render với đầy đủ features (search,
+  // pagination, resource selector, histograms) thay vì fallback table đơn giản.
+  const geoResourceForFetch = useMemo(
+    () =>
+      ssrViewableResources.length > 0
+        ? null
+        : dataset.resources.find((r) => r.file_type === "geojson" && r.file_url) ?? null,
+    [ssrViewableResources.length, dataset.resources],
+  );
+
+  const [clientFetch, setClientFetch] = useState<{
+    state: "idle" | "loading" | "ready" | "error";
+    data?: { structuredData: Row[]; columns: string[] };
+    errorMsg?: string;
+  }>({ state: "idle" });
+
+  useEffect(() => {
+    if (!geoResourceForFetch?.file_url) {
+      // Render-time check; không setState ở đây để tránh cascading render warning.
+      return;
+    }
+    const fileUrl = geoResourceForFetch.file_url;
+    let cancelled = false;
+    setClientFetch({ state: "loading" });
+
+    (async () => {
+      try {
+        const res = await fetch(fileUrl);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const json = (await res.json()) as GeoJSON.FeatureCollection;
+        const features = Array.isArray(json?.features) ? json.features : [];
+        if (features.length === 0) throw new Error("GeoJSON không có features");
+
+        // Collect headers từ tất cả features (mỗi feature có thể có props khác nhau)
+        const headerSet = new Set<string>();
+        for (const f of features) {
+          for (const k of Object.keys(f?.properties ?? {})) headerSet.add(k);
+        }
+        const columns = Array.from(headerSet);
+
+        const structuredData: Row[] = features.slice(0, PREVIEW_ROW_LIMIT).map((f) => {
+          const props = (f?.properties ?? {}) as Record<string, unknown>;
+          const obj: Row = {};
+          for (const h of columns) {
+            const v = props[h];
+            if (v == null) obj[h] = null;
+            else if (typeof v === "number" || typeof v === "boolean") obj[h] = v;
+            else if (typeof v === "string") obj[h] = v;
+            else obj[h] = JSON.stringify(v);
+          }
+          return obj;
+        });
+
+        if (!cancelled) {
+          setClientFetch({ state: "ready", data: { structuredData, columns } });
+        }
+      } catch (err) {
+        if (!cancelled) {
+          setClientFetch({
+            state: "error",
+            errorMsg: err instanceof Error ? err.message : "Không xác định",
+          });
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [geoResourceForFetch?.file_url]);
+
+  // Effective viewable resources = SSR resources, hoặc synthetic resource từ client fetch.
+  const viewableResources = useMemo<Resource[]>(() => {
+    if (ssrViewableResources.length > 0) return ssrViewableResources;
+    if (clientFetch.state === "ready" && clientFetch.data && geoResourceForFetch) {
+      return [
+        {
+          ...geoResourceForFetch,
+          structured_data: clientFetch.data.structuredData,
+          columns: clientFetch.data.columns,
+        },
+      ];
+    }
+    return [];
+  }, [ssrViewableResources, clientFetch, geoResourceForFetch]);
 
   const [resourceIdx, setResourceIdx] = useState(0);
   const [page, setPage] = useState(0);
   const [search, setSearch] = useState("");
 
   const resource = viewableResources[resourceIdx] ?? viewableResources[0];
+  const rows = resource?.structured_data ?? [];
 
-  if (!resource) {
-    return (
-      <div className="text-center py-16 text-hf-text-faint text-sm">
-        Chưa có dữ liệu cấu trúc cho dataset này.
-      </div>
-    );
-  }
-
-  const rows = resource.structured_data ?? [];
-
-  // Định nghĩa cột + thống kê
+  // Định nghĩa cột + thống kê — phải gọi unconditional (rules-of-hooks).
+  // Khi resource null → columns rỗng, render empty state bên dưới.
   const columns: ColumnDef[] = useMemo(() => {
+    if (!resource) return [];
     const order = resource.columns ?? (rows[0] ? Object.keys(rows[0]) : []);
     return order.map((name) => {
       const meta = dataset.data_dictionary.find((d) => d.column_name === name);
@@ -93,7 +177,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
 
   // Filter rows theo search query (client-side, chỉ trong preview rows ≤1000).
   const filteredRows = useMemo(() => {
-    if (!search.trim()) return rows;
+    if (!resource || !search.trim()) return rows;
     const q = search.trim().toLowerCase();
     return rows.filter((row) =>
       columns.some((col) => {
@@ -102,7 +186,45 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
         return String(v).toLowerCase().includes(q);
       }),
     );
-  }, [rows, search, columns]);
+  }, [resource, rows, search, columns]);
+
+  // Empty / loading / error state — đặt SAU tất cả các hooks (rules-of-hooks).
+  if (!resource) {
+    // GeoJSON đang fetch client-side
+    if (geoResourceForFetch) {
+      if (clientFetch.state === "loading") {
+        return (
+          <div className="flex items-center justify-center gap-2 py-12 text-[13px] text-hf-text-muted">
+            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            Đang tải {formatCompactNumber(geoResourceForFetch.file_size_mb ?? 0)}MB GeoJSON…
+          </div>
+        );
+      }
+      if (clientFetch.state === "error") {
+        return (
+          <div className="py-10 text-center text-[13px] text-hf-text-muted">
+            Không tải được dữ liệu.{" "}
+            {clientFetch.errorMsg && (
+              <span className="text-hf-text-faint">({clientFetch.errorMsg})</span>
+            )}{" "}
+            {geoResourceForFetch.file_url && (
+              <a href={geoResourceForFetch.file_url} className="text-hf-link hover:underline">
+                Tải về trực tiếp
+              </a>
+            )}
+          </div>
+        );
+      }
+    }
+    return (
+      <div className="text-center py-16 text-hf-text-faint text-sm">
+        Chưa có dữ liệu cấu trúc cho dataset này.
+      </div>
+    );
+  }
 
   const totalPages = Math.max(1, Math.ceil(filteredRows.length / ROWS_PER_PAGE));
   const pageRows = filteredRows.slice(page * ROWS_PER_PAGE, (page + 1) * ROWS_PER_PAGE);
@@ -110,7 +232,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
   return (
     <div>
       {/* Controls: resource selector + search */}
-      <div className="flex gap-2 mb-3 items-center text-[13px]">
+      <div className="flex gap-2 mb-3 items-center text-[13px] px-3 pt-3">
         <span className="text-hf-text-muted">Resource:</span>
         <select
           value={resourceIdx}

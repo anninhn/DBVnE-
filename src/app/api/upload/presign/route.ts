@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { presignUpload } from "@/lib/r2/presign";
+import { buildFileUrl } from "@/lib/r2/client";
 import { detectFormat } from "@/lib/ai/inspect";
 
 export const maxDuration = 60; // Vercel Fluid Compute
@@ -9,11 +10,12 @@ const MAX_SIZE_BYTES = 500 * 1024 * 1024; // 500MB
 
 const ALLOWED_CONTENT_TYPES = new Set([
   "text/csv",
-  "text/tab-separated-values",
   "application/csv",
   "application/vnd.ms-excel",
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "", // browser có khi không set cho CSV — validate bằng extension thay
+  "application/geo+json",
+  "application/json",
+  "", // browser có khi không set cho CSV/GeoJSON — validate bằng extension thay
 ]);
 
 interface PresignRequest {
@@ -45,7 +47,7 @@ export async function POST(req: NextRequest) {
   const format = detectFormat(filename);
   if (!format) {
     return NextResponse.json(
-      { error: "Định dạng file không hỗ trợ. Chỉ chấp nhận .csv hoặc .xlsx" },
+      { error: "Định dạng file không hỗ trợ. Chỉ chấp nhận .csv, .geojson, .xlsx, .xls." },
       { status: 400 }
     );
   }
@@ -76,7 +78,13 @@ export async function POST(req: NextRequest) {
 
   // Generate fileId + presigned URL
   const fileId = randomUUID();
-  const finalContentType = contentType || (format === "csv" ? "text/csv" : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  const finalContentType =
+    contentType ||
+    (format === "csv"
+      ? "text/csv"
+      : format === "geojson"
+        ? "application/geo+json"
+        : "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 
   try {
     const { presignedUrl, r2Key, bucket } = await presignUpload(
@@ -85,11 +93,21 @@ export async function POST(req: NextRequest) {
       finalContentType
     );
 
+    // Public GET URL — wizard + detail page fetch trực tiếp từ R2 browser-side.
+    // Try/catch vì buildFileUrl throw nếu R2_PUBLIC_BASE missing — không block upload.
+    let publicUrl = "";
+    try {
+      publicUrl = buildFileUrl(r2Key);
+    } catch {
+      // Sẽ không có map preview, nhưng upload vẫn OK
+    }
+
     return NextResponse.json({
       presignedUrl,
       fileId,
       r2Key,
       bucket,
+      publicUrl,
       expiresIn: 900, // 15 phút (seconds)
     });
   } catch (err) {

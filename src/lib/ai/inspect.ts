@@ -1,9 +1,19 @@
 import * as XLSX from "xlsx";
 import { parseCSVHead, forEachCSVRow } from "@/lib/parse/csv";
 import { detectDecimalFormat, type DecimalFormat } from "@/lib/parse/decimal-detect";
+import {
+  parseGeoJson,
+  computeBbox,
+  majorityGeometryType,
+  extractCrs,
+  type GeoJsonGeometryType,
+} from "@/lib/parse/geojson";
 import type { ColumnStats } from "@/lib/types/dataset";
 
-export type TabularFormat = "csv" | "xlsx";
+/**
+ * Format mà inspect layer hỗ trợ. Tabular (csv/xlsx) + geospatial (geojson).
+ */
+export type InspectionFormat = "csv" | "xlsx" | "geojson";
 
 export interface ColumnInspection {
   name: string;
@@ -28,7 +38,7 @@ export interface ColumnInspection {
 }
 
 export interface FileInspection {
-  format: TabularFormat;
+  format: InspectionFormat;
   filename: string;
   rowCount: number;
   columnCount: number;
@@ -42,6 +52,14 @@ export interface FileInspection {
   columnStats?: Record<string, ColumnStats>;
   /** sheet name nếu XLSX */
   sheetName?: string;
+  /** GeoJSON-only: số features (tương đương rowCount cho GeoJSON) */
+  featureCount?: number;
+  /** GeoJSON-only: majority geometry type */
+  geometryType?: GeoJsonGeometryType;
+  /** GeoJSON-only: [minLng, minLat, maxLng, maxLat] */
+  bbox?: [number, number, number, number];
+  /** GeoJSON-only: CRS string, vd "EPSG:4326" */
+  crs?: string;
 }
 
 const MAX_SAMPLE_ROWS_FOR_AI = 5;
@@ -55,9 +73,10 @@ const MAX_ROWS_FOR_INSPECTION = 1000; // cap để tránh file khổng lồ
 /**
  * Detect format từ filename.
  */
-export function detectFormat(filename: string): TabularFormat | null {
+export function detectFormat(filename: string): InspectionFormat | null {
   const lower = filename.toLowerCase();
   if (lower.endsWith(".csv")) return "csv";
+  if (lower.endsWith(".geojson")) return "geojson";
   if (lower.endsWith(".xlsx") || lower.endsWith(".xls")) return "xlsx";
   return null;
 }
@@ -170,10 +189,12 @@ function computeCSVStats(
 }
 
 /**
- * Compute stats từ XLSX rows (đã load full vào memory qua xlsx package).
+ * Compute stats từ rows đã load full vào memory (XLSX hoặc GeoJSON features.properties).
+ *
  * XLSX files trong app đều nhỏ (< 1MB) → safe parse full.
+ * GeoJSON feature_count cap ở STATS_FEATURE_CAP (10000) → safe parse first N features.
  */
-function computeXlsxStats(
+function computeStatsFromRows(
   allRows: Record<string, unknown>[],
   columnNames: string[],
   typeMap: Map<string, string>
@@ -318,7 +339,7 @@ function inspectXlsx(buffer: Buffer, filename: string): FileInspection {
   // Full-dataset stats (XLSX nhỏ → safe compute từ allRows)
   const typeMap = new Map<string, string>();
   columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
-  const columnStats = computeXlsxStats(allRows, columns, typeMap);
+  const columnStats = computeStatsFromRows(allRows, columns, typeMap);
 
   return {
     format: "xlsx",
@@ -424,6 +445,81 @@ function inspectColumn(
   };
 }
 
+/**
+ * Inspect GeoJSON buffer → FileInspection.
+ *
+ * Map features[].properties → rows[] (cho column inference + stats).
+ * Cap stats ở STATS_FEATURE_CAP (10000) features; featureCount = full count.
+ * Bbox + geometryType cũng cap ở STATS_FEATURE_CAP.
+ */
+const STATS_FEATURE_CAP = 10000;
+
+function inspectGeoJson(buffer: Buffer, filename: string): FileInspection {
+  const fc = parseGeoJson(buffer);
+  const features = fc.features;
+  const featureCount = features.length;
+
+  // Stats chỉ trên first N features (cap), full count cho featureCount
+  const statsFeatures = features.slice(0, STATS_FEATURE_CAP);
+
+  const geometryType = majorityGeometryType(statsFeatures);
+  const bbox = computeBbox(statsFeatures);
+  const crs = extractCrs(fc);
+
+  // Build rows from features.properties — reuse inspectColumn + computeStatsFromRows
+  const allRows: Record<string, string | number | boolean | null>[] = [];
+  const columnSet = new Set<string>();
+  for (const f of statsFeatures) {
+    const props = (f.properties ?? {}) as Record<string, unknown>;
+    const row: Record<string, string | number | boolean | null> = {};
+    for (const [k, v] of Object.entries(props)) {
+      columnSet.add(k);
+      if (v === null || v === undefined) row[k] = null;
+      else if (typeof v === "number" || typeof v === "boolean") row[k] = v;
+      else row[k] = String(v);
+    }
+    allRows.push(row);
+  }
+  const columns = Array.from(columnSet);
+
+  const columnInspections = columns.map((col) => inspectColumn(col, allRows));
+
+  const typeMap = new Map<string, string>();
+  columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
+  const columnStats = computeStatsFromRows(
+    allRows as Record<string, unknown>[],
+    columns,
+    typeMap
+  );
+
+  // Sample rows: first 5 features.properties (cho AI context)
+  const sampleRows: Record<string, string | number | boolean | null>[] = [];
+  for (let i = 0; i < Math.min(MAX_SAMPLE_ROWS_FOR_AI, featureCount); i++) {
+    const props = (features[i].properties ?? {}) as Record<string, unknown>;
+    const row: Record<string, string | number | boolean | null> = {};
+    for (const [k, v] of Object.entries(props)) {
+      if (v === null || v === undefined) row[k] = null;
+      else if (typeof v === "number" || typeof v === "boolean") row[k] = v;
+      else row[k] = String(v);
+    }
+    sampleRows.push(row);
+  }
+
+  return {
+    format: "geojson",
+    filename,
+    rowCount: featureCount, // rowCount = featureCount cho GeoJSON (consistent field)
+    columnCount: columns.length,
+    columns: columnInspections,
+    sampleRows,
+    columnStats,
+    featureCount,
+    geometryType: geometryType ?? undefined,
+    bbox: bbox ?? undefined,
+    crs,
+  };
+}
+
 // ──────────────────────────────────────────────────────────────────────────────
 // Entry point
 // ──────────────────────────────────────────────────────────────────────────────
@@ -437,5 +533,6 @@ export function inspectFile(
     throw new Error(`Unsupported file format: ${filename}`);
   }
   if (format === "csv") return inspectCsv(buffer, filename);
+  if (format === "geojson") return inspectGeoJson(buffer, filename);
   return inspectXlsx(buffer, filename);
 }

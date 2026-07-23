@@ -61,6 +61,11 @@ export async function POST(req: NextRequest) {
         columns: inspection.columns.map((c) => c.name),
         sampleRows: inspection.sampleRows,
         columnStats: inspection.columnStats,
+        // GeoJSON-only — undefined cho tabular, frontend tự skip
+        featureCount: inspection.featureCount,
+        geometryType: inspection.geometryType,
+        bbox: inspection.bbox,
+        crs: inspection.crs,
       },
       fileId,
     });
@@ -74,10 +79,16 @@ export async function POST(req: NextRequest) {
       userMsg = "AI chưa được cấu hình. Liên hệ admin.";
     } else if (msg.includes("quota") || msg.includes("429") || msg.includes("RESOURCE_EXHAUSTED")) {
       userMsg = "AI đã hết quota gọi trong ngày. Thử lại vào ngày mai.";
+    } else if (msg.includes("503") || msg.includes("502") || msg.includes("OVERLOAD")) {
+      userMsg = "AI đang quá tải. Đã thử lại 3 lần không thành công. Vui lòng đợi 1-2 phút rồi thử lại.";
     } else if (msg.includes("timeout") || msg.includes("Timeout") || msg.includes("Deadline")) {
       userMsg = "AI phân tích quá lâu. Thử lại với file nhỏ hơn.";
     } else if (msg.includes("Unsupported file format")) {
-      userMsg = "Định dạng file không hỗ trợ. Chỉ chấp nhận .csv hoặc .xlsx.";
+      userMsg = "Định dạng file không hỗ trợ. Chỉ chấp nhận .csv, .geojson, .xlsx, .xls.";
+    } else if (msg.includes("Invalid GeoJSON")) {
+      userMsg = `File GeoJSON không hợp lệ: ${msg.replace(/^Invalid GeoJSON:\s*/, "")}`;
+    } else if (msg.includes("Unsupported CRS")) {
+      userMsg = msg; // message đã rõ ràng, hiển thị nguyên văn
     } else if (msg.includes("XLSX không có sheet")) {
       userMsg = "File Excel không có sheet nào để phân tích.";
     } else if (process.env.NODE_ENV === "development") {

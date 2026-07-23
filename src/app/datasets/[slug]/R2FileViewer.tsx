@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
+import { Map as MapIcon, Table as TableIcon } from "lucide-react";
 import type { Resource } from "@/lib/types/dataset";
 import { parseCSV } from "@/lib/parse/csv";
 import { formatCompactNumber } from "@/lib/format";
 import { numericStats, histogramBins, countDistinct } from "@/lib/viz/column-stats";
+import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";
 
 const PREVIEW_ROW_LIMIT = 100;
 
@@ -23,12 +25,14 @@ interface TableData {
 /**
  * R2 File Viewer — xem trước nội dung file trực tiếp từ R2 public URL (D2).
  *
- * Hỗ trợ: CSV (native parser), XLSX (xlsx package), PDF (iframe), MP3 (audio).
- * Không hỗ trợ: GeoJSON/unknown → message + link tải về.
+ * Hỗ trợ: CSV (native parser), XLSX (xlsx package), GeoJSON (features[].properties
+ * thành table + histogram), PDF (iframe), MP3 (audio).
  */
 export default function R2FileViewer({ resource }: R2FileViewerProps) {
   const [state, setState] = useState<LoadState>("loading");
   const [tableData, setTableData] = useState<TableData | null>(null);
+  const [geojsonData, setGeojsonData] = useState<GeoJSON.FeatureCollection | null>(null);
+  const [geojsonView, setGeojsonView] = useState<"map" | "table">("map");
   const [errorMsg, setErrorMsg] = useState("");
 
   const fileUrl = resource.file_url;
@@ -42,8 +46,8 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
       return;
     }
 
-    // PDF/MP3/GeoJSON — không cần fetch text, render trực tiếp
-    if (fileType === "pdf" || fileType === "mp3" || fileType === "geojson" || fileType === "json") {
+    // PDF/MP3 — không cần fetch text, render trực tiếp
+    if (fileType === "pdf" || fileType === "mp3" || fileType === "json") {
       setState("ready");
       return;
     }
@@ -84,6 +88,33 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
           const headers = jsonRows.length > 0 ? Object.keys(jsonRows[0]) : [];
           if (!cancelled) {
             setTableData({ headers, rows: jsonRows });
+            setState("ready");
+          }
+        } else if (fileType === "geojson") {
+          // GeoJSON: lưu raw FeatureCollection cho map + flatten properties cho table.
+          // Toggle Map/Table ở header cho phép user switch view.
+          const data = (await res.json()) as GeoJSON.FeatureCollection;
+          const features = Array.isArray(data?.features) ? data.features : [];
+          if (features.length === 0) throw new Error("GeoJSON không có features");
+          const headerSet = new Set<string>();
+          const dataRows: Record<string, string | number | boolean | null>[] = [];
+          for (const feat of features) {
+            const props = feat?.properties ?? null;
+            if (!props) continue;
+            const row: Record<string, string | number | boolean | null> = {};
+            for (const [k, v] of Object.entries(props)) {
+              headerSet.add(k);
+              if (v == null) row[k] = null;
+              else if (typeof v === "number" || typeof v === "boolean") row[k] = v;
+              else if (typeof v === "string") row[k] = v;
+              else row[k] = JSON.stringify(v);
+            }
+            dataRows.push(row);
+          }
+          const headers = Array.from(headerSet);
+          if (!cancelled) {
+            setGeojsonData(data);
+            setTableData({ headers, rows: dataRows });
             setState("ready");
           }
         } else {
@@ -152,9 +183,10 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
     );
   }
 
-  // CSV/XLSX — render table
+  // CSV/XLSX/GeoJSON — render table (GeoJSON có toggle map/table)
   const { headers, rows } = tableData;
   const previewRows = rows.slice(0, PREVIEW_ROW_LIMIT);
+  const isGeojson = fileType === "geojson" && geojsonData;
 
   // Phát hiện cột numeric cho histogram
   const numericCols = headers.filter((h) => {
@@ -169,6 +201,34 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
 
   return (
     <div className="border border-hf-border rounded-md overflow-hidden mt-2 mb-4">
+      {/* GeoJSON toggle Map/Table */}
+      {isGeojson && (
+        <div className="flex items-center justify-between px-3 py-1.5 bg-hf-bg-subtle border-b border-hf-border">
+          <span className="text-[11px] text-hf-text-faint">
+            {geojsonData?.features.length ?? 0} features
+          </span>
+          <div className="flex gap-1">
+            <ToggleButton
+              active={geojsonView === "map"}
+              onClick={() => setGeojsonView("map")}
+              icon={<MapIcon className="w-3 h-3" strokeWidth={1.75} aria-hidden />}
+              label="Map"
+            />
+            <ToggleButton
+              active={geojsonView === "table"}
+              onClick={() => setGeojsonView("table")}
+              icon={<TableIcon className="w-3 h-3" strokeWidth={1.75} aria-hidden />}
+              label="Table"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* GeoJSON map view — render map thay cho table */}
+      {isGeojson && geojsonView === "map" && geojsonData ? (
+        <GeoJsonMapLazy data={geojsonData} height={400} />
+      ) : (
+        <>
       {/* Histogram cho numeric columns */}
       {numericCols.length > 0 && (
         <div className="flex gap-4 px-3 py-2 bg-hf-bg-subtle border-b border-hf-border text-[11px] text-hf-text-muted">
@@ -243,7 +303,36 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
         Showing {previewRows.length} / {formatCompactNumber(rows.length)} rows.{" "}
         <span className="text-hf-text-faint">Download để xem đầy đủ.</span>
       </div>
+        </>
+      )}
     </div>
+  );
+}
+
+/** Toggle pill button — dùng cho GeoJSON Map/Table switch. */
+function ToggleButton({
+  active,
+  onClick,
+  icon,
+  label,
+}: {
+  active: boolean;
+  onClick: () => void;
+  icon: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium transition ${
+        active
+          ? "bg-hf-text text-hf-bg"
+          : "bg-hf-bg text-hf-text-muted hover:text-hf-text border border-hf-border"
+      }`}
+    >
+      {icon}
+      {label}
+    </button>
   );
 }
 

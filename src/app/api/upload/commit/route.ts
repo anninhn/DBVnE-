@@ -25,10 +25,15 @@ interface CommitRequest {
     source: string;
     source_url: string;
     confidence: "high" | "medium" | "low";
-    format: "csv" | "xlsx";
+    format: "csv" | "xlsx" | "geojson";
     filename: string;
     row_count?: number;
     columns_count?: number;
+    /** GeoJSON-only */
+    feature_count?: number;
+    geometry_type?: string;
+    bbox?: [number, number, number, number];
+    crs?: string;
   };
   dictionary: DictionaryForRender[];
   /** Full-dataset stats per column — computed tại analyze time, persisted vào metadata */
@@ -129,6 +134,11 @@ export async function POST(req: NextRequest) {
       row_count: metadata.row_count,
       columns_count: metadata.columns_count,
       column_stats: column_stats,
+      // GeoJSON-only fields — undefined cho tabular, render helper tự skip
+      feature_count: metadata.feature_count,
+      geometry_type: metadata.geometry_type,
+      bbox: metadata.bbox,
+      crs: metadata.crs,
     }
   );
   const markdownContent = renderDictionaryMarkdown(dictionary ?? []);

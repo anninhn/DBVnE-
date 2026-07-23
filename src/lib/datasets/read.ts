@@ -226,6 +226,14 @@ export function metadataToDataset(
     uploaded_at: meta.uploaded_at ?? new Date().toISOString(),
     resources,
     data_dictionary: dictionary,
+    // GeoJSON-only — undefined cho tabular/pdf/mp3.
+    feature_count: meta.feature_count,
+    geometry_type: meta.geometry_type,
+    bbox:
+      Array.isArray(meta.bbox) && meta.bbox.length === 4
+        ? [meta.bbox[0], meta.bbox[1], meta.bbox[2], meta.bbox[3]]
+        : undefined,
+    crs: meta.crs,
   };
 }
 
@@ -289,7 +297,9 @@ function coerceCell(v: unknown): string | number | boolean | null {
  */
 export async function withPreviewData(dataset: Dataset): Promise<Dataset> {
   const tabular = dataset.resources.find(
-    (r) => (r.file_type === "csv" || r.file_type === "xlsx") && r.file_url,
+    (r) =>
+      (r.file_type === "csv" || r.file_type === "xlsx" || r.file_type === "geojson") &&
+      r.file_url,
   );
   if (!tabular?.file_url) return dataset;
 
@@ -327,7 +337,7 @@ export async function withPreviewData(dataset: Dataset): Promise<Dataset> {
         });
         return obj;
       });
-    } else {
+    } else if (tabular.file_type === "xlsx") {
       // XLSX — parse full qua xlsx package (file XLSX trong app đều nhỏ < 1MB,
       // không range-parse được binary).
       // Rebuild từng row thành plain object {} với value primitive, vì sheet_to_json
@@ -351,6 +361,42 @@ export async function withPreviewData(dataset: Dataset): Promise<Dataset> {
         const obj: Record<string, string | number | boolean | null> = {};
         headers.forEach((h) => {
           obj[h] = coerceCell(row[h]);
+        });
+        return obj;
+      });
+    } else {
+      // GeoJSON — flatten features.properties thành rows (table view ở Dataset card).
+      // Skip file lớn (>10MB) vì fetch + JSON.parse blocking SSR; user vẫn xem table
+      // ở tab "Files and versions" (client-side fetch). 169MB wards → skip, 18MB power → skip,
+      // 2.2MB provinces → OK.
+      if ((tabular.file_size_mb ?? 0) > 10) {
+        console.info(
+          `[datasets] GeoJSON ${dataset.slug} quá lớn (${tabular.file_size_mb}MB) — skip preview table`,
+        );
+        return dataset;
+      }
+      const res = await fetch(tabular.file_url);
+      if (!res.ok) {
+        console.warn(`[datasets] preview fetch failed (${res.status}) cho ${dataset.slug}`);
+        return dataset;
+      }
+      const json = (await res.json()) as GeoJSON.FeatureCollection;
+      const features = Array.isArray(json?.features) ? json.features : [];
+      if (features.length === 0) return dataset;
+
+      // Collect headers từ tất cả features (mỗi feature có thể có props khác nhau)
+      const headerSet = new Set<string>();
+      for (const f of features) {
+        const props = f?.properties ?? {};
+        for (const k of Object.keys(props)) headerSet.add(k);
+      }
+      headers = Array.from(headerSet);
+      trueTotal = features.length;
+      dataRows = features.slice(0, PREVIEW_ROW_LIMIT).map((f) => {
+        const props = f?.properties ?? {};
+        const obj: Record<string, string | number | boolean | null> = {};
+        headers.forEach((h) => {
+          obj[h] = coerceCell(props[h]);
         });
         return obj;
       });

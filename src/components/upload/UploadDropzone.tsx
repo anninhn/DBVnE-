@@ -5,7 +5,7 @@ import { UploadCloud, Loader2 } from "lucide-react";
 import type { UploadResult } from "./UploadWizard";
 
 const MAX_SIZE_BYTES = 500 * 1024 * 1024;
-const ALLOWED_EXTS = [".csv", ".xlsx", ".xls"];
+const ALLOWED_EXTS = [".csv", ".geojson", ".xlsx", ".xls"];
 
 interface Props {
   onUploaded: (result: UploadResult) => void;
@@ -57,12 +57,17 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
         throw new Error(`Upload thất bại (${putRes.status}). Vui lòng thử lại.`);
       }
 
-      const format: "csv" | "xlsx" = filename.endsWith(".xlsx") || filename.endsWith(".xls") ? "xlsx" : "csv";
+      const format: "csv" | "xlsx" | "geojson" = filename.endsWith(".geojson")
+        ? "geojson"
+        : filename.endsWith(".xlsx") || filename.endsWith(".xls")
+          ? "xlsx"
+          : "csv";
       onUploaded({
         fileId: presign.fileId,
         r2Key: presign.r2Key,
         filename: file.name,
         format,
+        publicUrl: presign.publicUrl,
       });
     } catch (err) {
       onError(err instanceof Error ? err.message : "Upload thất bại");
@@ -103,7 +108,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
       <input
         ref={inputRef}
         type="file"
-        accept=".csv,.xlsx,.xls"
+        accept=".csv,.geojson,.xlsx,.xls"
         onChange={onSelect}
         className="hidden"
         disabled={uploading}
@@ -131,7 +136,7 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
             hoặc <span className="text-hf-link hover:underline">click để chọn file</span>
           </p>
           <p className="text-[11px] text-hf-text-faint">
-            Hỗ trợ: CSV, XLSX, XLS • Tối đa 500MB
+            Hỗ trợ: CSV, XLSX, XLS, GeoJSON • Tối đa 500MB
           </p>
         </>
       )}

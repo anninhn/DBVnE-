@@ -7,7 +7,7 @@ import { formatCompactNumber } from "@/lib/format";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import CatalogNav from "@/components/CatalogNav";
 import TabSwitcher from "./TabSwitcher";
-import DatasetViewer from "./DatasetViewer";
+import DatasetCardTabs from "./DatasetCardTabs";
 import MetadataSidebar from "./MetadataSidebar";
 import Markdown from "./Markdown";
 import DataDictionary from "./DataDictionary";
@@ -85,7 +85,9 @@ export default async function DatasetPage({ params }: PageProps) {
 
           {/* Metadata pills */}
           <div className="flex flex-wrap gap-4 mt-3 text-[13px]">
-            <PillGroup label="Modalities:"><Pill>Tabular</Pill></PillGroup>
+            <PillGroup label="Modalities:">
+              <Pill>{dataset.feature_count != null ? "Geospatial" : "Tabular"}</Pill>
+            </PillGroup>
             <PillGroup label="Formats:">
               {Array.from(
                 new Set(
@@ -98,7 +100,13 @@ export default async function DatasetPage({ params }: PageProps) {
               ))}
             </PillGroup>
             <PillGroup label="Size:">
-              <Pill>{dataset.row_count > 0 ? `${formatCompactNumber(dataset.row_count)} rows` : "—"}</Pill>
+              <Pill>
+                {dataset.feature_count != null
+                  ? `${formatCompactNumber(dataset.feature_count)} features${dataset.geometry_type ? ` • ${dataset.geometry_type}` : ""}`
+                  : dataset.row_count > 0
+                    ? `${formatCompactNumber(dataset.row_count)} rows`
+                    : "—"}
+              </Pill>
             </PillGroup>
             <PillGroup label="License:"><Pill>{dataset.license}</Pill></PillGroup>
           </div>
@@ -115,7 +123,7 @@ export default async function DatasetPage({ params }: PageProps) {
           {/* ── Dataset card tab (viewer + readme) ── */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
             <div className="p-6 border-r border-hf-border min-w-0">
-              <DatasetViewer dataset={dataset} />
+              <DatasetCardTabs dataset={dataset} />
 
               {/* README */}
               <div className="mt-6">

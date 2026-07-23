@@ -96,6 +96,11 @@ export interface Dataset {
   uploaded_at: string; // ISO
   resources: Resource[];
   data_dictionary: DataDictionaryEntry[];
+  /** GeoJSON-only — undefined cho tabular/pdf/mp3. */
+  feature_count?: number;
+  geometry_type?: string;
+  bbox?: [number, number, number, number];
+  crs?: string;
 }
 
 export const CATEGORY_LABELS: Record<Category, string> = {

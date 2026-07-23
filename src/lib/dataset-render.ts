@@ -111,6 +111,11 @@ export function renderMetadataYaml(
     row_count?: number;
     columns_count?: number;
     column_stats?: Record<string, ColumnStatsForRender>;
+    /** GeoJSON-only */
+    feature_count?: number;
+    geometry_type?: string;
+    bbox?: [number, number, number, number];
+    crs?: string;
   }
 ): string {
   const today = new Date().toISOString().slice(0, 10);
@@ -120,12 +125,30 @@ export function renderMetadataYaml(
       : " []";
 
   // row_count + columns_count — provenance từ analyze (inspection). Chỉ render khi có.
+  // Cho GeoJSON: row_count = feature_count (consistent), columns_count = số properties.
   const rowLine =
     options?.row_count != null ? `\nrow_count: ${options.row_count}` : "";
   const colLine =
     options?.columns_count != null
       ? `\ncolumns_count: ${options.columns_count}`
       : "";
+
+  // GeoJSON-only fields — render sau columns_count khi format=geojson
+  const isGeoJson = options?.format === "geojson";
+  const featureLine =
+    isGeoJson && options?.feature_count != null
+      ? `\nfeature_count: ${options.feature_count}`
+      : "";
+  const geomLine =
+    isGeoJson && options?.geometry_type
+      ? `\ngeometry_type: "${options.geometry_type}"`
+      : "";
+  const bboxLine =
+    isGeoJson && options?.bbox
+      ? `\nbbox: [${options.bbox.join(", ")}]`
+      : "";
+  const crsLine =
+    isGeoJson && options?.crs ? `\ncrs: "${options.crs}"` : "";
 
   // Nếu có files[] sẵn (edit mode) → giữ nguyên
   let filesSection: string;
@@ -179,7 +202,7 @@ source:
   retrieved: "${today}"
   method: manual_entry
 license: internal
-format: ${format}${rowLine}${colLine}
+format: ${format}${rowLine}${colLine}${featureLine}${geomLine}${bboxLine}${crsLine}
 confidence: ${meta.confidence}
 uploaded_by: ${uploadedBy}
 uploaded_at: "${uploadedAt}"

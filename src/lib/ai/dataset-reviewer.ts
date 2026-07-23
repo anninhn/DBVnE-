@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import OpenAI, { APIError } from "openai";
 import { readFile } from "fs/promises";
 import path from "path";
 import type { FileInspection } from "./inspect";
@@ -56,13 +56,20 @@ export interface AIProposal {
 
 /**
  * Load system prompt từ file markdown (version-controlled).
+ *
+ * Branch theo format: tabular (csv/xlsx) → tabular prompt, geojson → geojson prompt.
+ * GeoJSON prompt có sections riêng (geometry vs properties, bbox coverage, source hints).
  */
-async function loadSystemPrompt(): Promise<string> {
+async function loadSystemPrompt(format: string): Promise<string> {
+  const promptFile =
+    format === "geojson"
+      ? "dataset-reviewer-geojson.md"
+      : "dataset-reviewer-tabular.md";
   const promptPath = path.join(
     process.cwd(),
     "tools",
     "prompts",
-    "dataset-reviewer-tabular.md"
+    promptFile
   );
   return readFile(promptPath, "utf-8");
 }
@@ -96,21 +103,77 @@ function parseJSONResponse(content: string): unknown {
 }
 
 /**
+ * Wrap `client.chat.completions.create` với retry cho transient errors.
+ *
+ * Retry khi: 429 (rate limit), 500/502/503/504 (server overload), network errors.
+ * Backoff: 1s → 2s → 4s + jitter (max 3 attempts, tổng tối đa ~7s chờ).
+ *
+ * Gemini free tier thường trả 503 khi capacity constraint → retry thường recover.
+ */
+async function callAIWithRetry(
+  params: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming
+): Promise<OpenAI.Chat.Completions.ChatCompletion> {
+  const MAX_ATTEMPTS = 3;
+  const TRANSIENT_STATUS = new Set([429, 500, 502, 503, 504]);
+
+  let lastErr: unknown;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      return await getAIClient().chat.completions.create(params);
+    } catch (err) {
+      lastErr = err;
+
+      // OpenAI SDK ném APIError với status — check transient
+      const status =
+        err instanceof APIError ? err.status ?? 0 : 0;
+      const isTransient =
+        TRANSIENT_STATUS.has(status) ||
+        // Network/timeout errors không có status → cũng retry
+        !(err instanceof APIError);
+
+      if (!isTransient || attempt === MAX_ATTEMPTS) {
+        throw err;
+      }
+
+      // Exponential backoff + jitter (0-500ms)
+      const baseMs = 1000 * Math.pow(2, attempt - 1);
+      const jitter = Math.floor(Math.random() * 500);
+      const waitMs = baseMs + jitter;
+      console.warn(
+        `[analyze] AI call attempt ${attempt}/${MAX_ATTEMPTS} failed (status=${status || "network"}). Retry in ${waitMs}ms...`
+      );
+      await new Promise((r) => setTimeout(r, waitMs));
+    }
+  }
+  throw lastErr;
+}
+
+/**
  * Analyze file inspection → AIProposal (metadata + dictionary + questions).
+ *
+ * Retry 3 lần với exponential backoff cho transient errors (429, 500, 502, 503, 504)
+ * — Gemini free tier thường trả 503 khi capacity constraint, retry thường recover.
  */
 export async function analyzeDataset(
   inspection: FileInspection
 ): Promise<AIProposal> {
   const client = getAIClient();
-  const systemPrompt = await loadSystemPrompt();
+  const systemPrompt = await loadSystemPrompt(inspection.format);
 
-  // Trim inspection để tiết kiệm token — chỉ gửi stats + samples, không full rows
+  // Trim inspection để tiết kiệm token — chỉ gửi stats + samples, không full rows.
+  // GeoJSON inspection thêm feature_count + geometry_type + bbox + crs — prompt dùng
+  // để suy luận phạm vi địa lý (coverage) + loại dataset từ geometry_type + properties.
   const trimmedInspection = {
     format: inspection.format,
     filename: inspection.filename,
     rowCount: inspection.rowCount,
     columnCount: inspection.columnCount,
     sheetName: inspection.sheetName,
+    // GeoJSON-only — undefined cho tabular, JSON.stringify tự omit
+    featureCount: inspection.featureCount,
+    geometryType: inspection.geometryType,
+    bbox: inspection.bbox,
+    crs: inspection.crs,
     columns: inspection.columns.map((c) => ({
       name: c.name,
       inferredType: c.inferredType,
@@ -130,10 +193,13 @@ export async function analyzeDataset(
     // AI dùng cho description — vd: segments cho cột "tỉnh" cho biết dataset
     // phủ bao nhiêu tỉnh, không bị lừa bởi first rows (data có thể sort theo tỉnh).
     columnStats: inspection.columnStats,
-    note: "sampleRows + columns[].samples lấy từ ĐẦU file — có thể không đại diện (data có thể sort theo tỉnh/năm). columnStats tính từ TOÀN BỘ dataset — dùng cho description/phân tích.",
+    note:
+      inspection.format === "geojson"
+        ? "GeoJSON: properties là tabular data embedded trong features. sampleRows lấy từ first 5 features — có thể không đại diện. columnStats tính từ TOÀN BỘ features (cap 10000). bbox + geometry_type dùng suy luận phạm vi địa lý + loại dataset."
+        : "sampleRows + columns[].samples lấy từ ĐẦU file — có thể không đại diện (data có thể sort theo tỉnh/năm). columnStats tính từ TOÀN BỘ dataset — dùng cho description/phân tích.",
   };
 
-  const response = await client.chat.completions.create({
+  const response = await callAIWithRetry({
     model: AI_MODEL,
     messages: [
       { role: "system", content: systemPrompt },

@@ -8,6 +8,7 @@ import MetadataEditor from "./MetadataEditor";
 import DictionaryEditor from "./DictionaryEditor";
 import CommitPreview from "./CommitPreview";
 import { formatCompactNumber } from "@/lib/format";
+import UploadWizardMapPreview from "@/components/geo/UploadWizardMapPreview";
 import type { ColumnStats } from "@/lib/types/dataset";
 
 type Step = 1 | 2 | 3 | 4;
@@ -16,7 +17,9 @@ export interface UploadResult {
   fileId: string;
   r2Key: string;
   filename: string;
-  format: "csv" | "xlsx";
+  format: "csv" | "xlsx" | "geojson";
+  /** Public GET URL từ R2 — dùng cho map preview + client fetch. Empty nếu R2_PUBLIC_BASE chưa set. */
+  publicUrl?: string;
 }
 
 export interface AIProposal {
@@ -52,6 +55,14 @@ export interface FilePreview {
   sampleRows: Record<string, string | number | boolean | null>[];
   /** Full-dataset stats per column — computed streaming tại analyze time */
   columnStats?: Record<string, ColumnStats>;
+  /** GeoJSON-only: số features */
+  featureCount?: number;
+  /** GeoJSON-only: majority geometry type */
+  geometryType?: string;
+  /** GeoJSON-only: [minLng, minLat, maxLng, maxLat] */
+  bbox?: [number, number, number, number];
+  /** GeoJSON-only: CRS string, vd "EPSG:4326" */
+  crs?: string;
 }
 
 export interface CommitPreview {
@@ -169,7 +180,22 @@ export default function UploadWizard() {
             <div className="bg-hf-bg border border-hf-border rounded-md px-4 py-2.5 text-[13px] text-hf-text-muted">
               <span className="font-medium text-hf-text">{upload.filename}</span>
               <span className="text-hf-text-faint mx-2">•</span>
-              {formatCompactNumber(filePreview.rowCount)} dòng × {filePreview.columnCount} cột
+              {filePreview.format === "geojson" ? (
+                <>
+                  {formatCompactNumber(filePreview.featureCount ?? filePreview.rowCount)} features ×{" "}
+                  {filePreview.columnCount} properties
+                  {filePreview.geometryType && (
+                    <>
+                      <span className="text-hf-text-faint mx-2">•</span>
+                      {filePreview.geometryType}
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  {formatCompactNumber(filePreview.rowCount)} dòng × {filePreview.columnCount} cột
+                </>
+              )}
               <span className="text-hf-text-faint mx-2">•</span>
               <span className="uppercase">{filePreview.format}</span>
             </div>
@@ -197,6 +223,8 @@ export default function UploadWizard() {
             slug={slug}
             onSlugChange={setSlug}
           />
+
+          <UploadWizardMapPreview upload={upload} />
 
           <DictionaryEditor
             entries={proposal.dictionary}
@@ -231,6 +259,11 @@ export default function UploadWizard() {
                         filename: upload.filename,
                         row_count: filePreview?.rowCount,
                         columns_count: filePreview?.columnCount,
+                        // GeoJSON-only fields — undefined cho tabular, OK bỏ qua
+                        feature_count: filePreview?.featureCount,
+                        geometry_type: filePreview?.geometryType,
+                        bbox: filePreview?.bbox,
+                        crs: filePreview?.crs,
                       },
                       column_stats: filePreview?.columnStats,
                       dictionary: proposal.dictionary,
