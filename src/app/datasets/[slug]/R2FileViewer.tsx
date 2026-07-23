@@ -228,16 +228,16 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
                         isNumeric ? "text-right tabular-nums" : ""
                       }`}
                     >
-                      {isNumeric && typeof val === "string"
-                        ? (() => {
-                            const n = parseFloat(val);
-                            return Number.isNaN(n) ? val : n.toLocaleString("vi-VN");
-                          })()
-                        : typeof val === "number"
-                          ? val.toLocaleString("vi-VN")
-                          : val === null || val === undefined
-                            ? ""
-                            : String(val)}
+                      {typeof val === "number"
+                        // Cell XLSX — number thực: giữ tối đa chữ số thập phân.
+                        ? (isNumeric
+                            ? val.toLocaleString("vi-VN", { maximumFractionDigits: 20 })
+                            : val.toLocaleString("vi-VN"))
+                        : val === null || val === undefined
+                          ? ""
+                          // Cell CSV — string gốc: giữ nguyên để không mất precision
+                          // và tránh parseFloat cắt sai giá trị có dấu phẩy thập phân.
+                          : String(val)}
                     </td>
                   );
                 })}

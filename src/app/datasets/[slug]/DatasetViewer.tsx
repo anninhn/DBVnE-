@@ -399,10 +399,12 @@ function ProportionBar({
 function formatCell(value: string | number | boolean | null | undefined, numeric: boolean): string {
   if (value === null || value === undefined || value === "") return "";
   if (typeof value === "boolean") return value ? "Có" : "Không";
+  // Cell từ CSV là string gốc — giữ nguyên chuỗi để không mất precision
+  // và tránh parseFloat cắt sai giá trị có dấu thập phân phẩy ("3,14" → 3).
+  if (typeof value === "string") return value;
+  // Cell từ XLSX là number thực — định dạng vi-VN nhưng giữ tối đa chữ số thập phân.
   if (numeric) {
-    const n = typeof value === "string" ? parseFloat(value) : value;
-    if (Number.isNaN(n)) return String(value);
-    return n.toLocaleString("vi-VN");
+    return value.toLocaleString("vi-VN", { maximumFractionDigits: 20 });
   }
   return String(value);
 }
