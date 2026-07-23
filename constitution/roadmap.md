@@ -34,44 +34,41 @@ F1-F5 plan cũ (PostgreSQL-backed) **superseded by re-arch**:
 
 ---
 
-## Phase 2 — Query Layer (Tháng 8–10, điều chỉnh sau khi Phase 1 chạy)
+## Phase 2 — Discovery Chat (Tháng 8–10, điều chỉnh sau khi Phase 1 chạy)
 
-**Mục tiêu**: Phóng viên hỏi câu hỏi từ data → platform trả lời ngay, chính xác. Bắt đầu bằng deterministic templates, sau đó thêm text-to-sql.
+**Mục tiêu**: Phóng viên hỏi "có data gì về X?" bằng tiếng Việt tự nhiên → platform trả về top-K dataset cards phù hợp nhất + lý do.
 
-**Lưu ý**: Đây là research direction, không phải committed plan. Chi tiết cụ thể sẽ điều chỉnh sau khi Phase 1 thu thập đủ usage data thực tế.
+**Lưu ý**: Scope thu hẹp so với plan cũ. Bỏ chart builder, SQL panel, query templates, dataset promotion, text-to-SQL — tất cả đẩy Phase 3. Discovery chỉ query **metadata catalog**, không query **data rows**.
 
-**Data flow**: Phase 1 Dataset Hub (Bronze) → Usage tracking → Promote popular datasets → Structured tables (Silver/Gold) → Query templates → Text-to-SQL
+### 2.1 — Discovery Chat (sub-feature duy nhất)
 
-### 2.1 — Usage Analytics & Data Promotion
-- Track: datasets nào view nhiều, downloads, preview interactions, repeat users
-- `dataset_access_log` table: auto-log mọi access (view, download, preview, api_query)
-- Popularity scoring: `views × 1 + downloads × 3 + preview × 2 + repeat_users × 5` (rolling 30 ngày)
-- Dashboard cho Minh (Editor): data usage overview + promotion candidates
-- **Promotion criteria**: popularity threshold AND quality_score >= 80 AND tabular AND has data_dictionary AND has provenance
+**Approach**: LLM routing zero-infra — Claude thấy metadata tất cả datasets + câu hỏi → trả top-3 cards + giải thích "tại sao phù hợp".
 
-### 2.2 — Query Templates
-- Pre-built templates: phóng viên chọn template, điền tham số
-  - "So sánh [chỉ số] của [tỉnh A] vs [tỉnh B] giai đoạn [năm]"
-  - "Xu hướng [chỉ số] của [tỉnh] trong [N] năm — có bất thường không?"
-  - "Top [N] tỉnh [chỉ số] năm [năm]"
-- Deterministic — luôn trả đúng kết quả, không hallucinate
-- Source verification: show query + data gốc
+- **Input context**: flatten `metadata.yaml` thành ~200-500 tokens/dataset (title + description + tags + column names + data_dictionary entries + sample rows). 50 datasets × ~400 tokens = ~20K input tokens, fits trong Claude context.
+- **Output**: top-3 dataset cards + 1 câu giải thích mỗi card ("Dataset này phù hợp vì có cột `dan_so` theo năm và tỉnh")
+- **Cost**: ~$0.01-0.05/query với Haiku. Cache câu hỏi phổ biến.
 
-### 2.3 — Dataset Promotion (Bronze → Silver)
-- Promote popular datasets → real PostgreSQL tables (không còn JSONB)
-- Validation pipeline: check types, ranges, completeness dựa trên `data_dictionary`
-- Python script `data/scripts/promote_dataset.py`: đọc từ `resources.structured_data` hoặc R2 CSV → tạo typed table
-- Materialized views cho aggregation patterns phổ biến (top N, trend, comparison)
-- `promoted_tables` registry: tracking schema version, last refreshed, row_count
+### 2.2 — Scale path (khi nào upgrade)
 
-### 2.4 — Text-to-SQL (sau khi templates ổn)
-- Free-form Vietnamese question → Claude API → SQL → answer
-- Schema context provided cho LLM từ `data_dictionary` + `promoted_tables`
-- Guardrails: chỉ query promoted tables, read-only connection, row-limited, show generated SQL
-- Fallback to templates khi LLM không chắc chắn
-- LLM choice: Claude API (xử lý tiếng Việt tốt, pricing rõ ràng, không lock-in platform)
+LLM routing đủ cho catalog <50-100 datasets. Khi vượt ngưỡng hoặc thấy miss intent, upgrade theo thứ tự:
 
-**Deliverable**: Phóng viên hỏi "GRDP TPHCM năm nay 20% có bất thường không?" → platform trả lời ngay với chart + source.
+1. **PostgreSQL FTS + pg_trgm** — keyword match + typo tolerant, không cần vector
+2. **Hybrid BM25 + LLM re-rank** — search engine (Meilisearch/Typesense) filter candidate → LLM re-rank top-K
+3. **Vector DB (pgvector/Qdrant)** — chỉ khi fuzzy intent phức tạp (synonyms vùng miền, cross-language)
+
+Vector embedding **không phải default** — là opt-in khi trigger criteria met.
+
+### Không build trong Phase 2
+
+- ❌ Chart builder
+- ❌ SQL panel cho phóng viên
+- ❌ Query templates (deterministic)
+- ❌ Dataset promotion (Bronze → Silver PostgreSQL)
+- ❌ Text-to-SQL
+
+→ Tất cả trên đẩy Phase 3 hoặc loại bỏ.
+
+**Deliverable**: Chat box trên homepage/detail → phóng viên hỏi "kinh tế miền Nam gần đây" → top-3 datasets về GRDP/tài chính khu vực. Zero infrastructure mới ngoài Claude API đã có.
 
 ---
 
@@ -102,12 +99,49 @@ F1-F5 plan cũ (PostgreSQL-backed) **superseded by re-arch**:
 - Single query interface: phóng viên hỏi 1 câu → system auto-route structured / document / audio / multi
 
 ### 3d — Story Detection
-- Anomaly detection tự động trên promoted structured data (Phase 2 Silver/Gold tables)
+- Anomaly detection tự động trên structured data (Phase 3e Silver/Gold tables)
 - Trend alerts: chỉ số bất thường → notify editor
 - Potential story suggestions dựa trên data patterns
 - Weekly data digest cho editorial team
 
-**Deliverable**: Intelligence platform phục vụ 300 phóng viên. Hỏi đáp, fact-check, story discovery.
+### 3e — Structured Data Q&A (NL → SQL)
+
+**Mục tiêu**: Phóng viên hỏi "dân số HCM 2024 so với Hà Nội?" → câu trả lời câu văn + bảng + chart, không cần biết SQL. Đây là phần Generation mà Phase 2 không làm.
+
+**Approach — schema-aware prompting** (KHÔNG semantic layer mặc định):
+- LLM nhận metadata dataset đã pick (columns + types + descriptions + sample rows từ `metadata.yaml` hiện có)
+- Claude tool-use agent với tools: `get_dataset_schema`, `run_sql_query` (read-only, row limit, timeout), `verify_result`
+- Verify loop: query → inspect result → re-prompt nếu schema mismatch
+- DuckDB query trực tiếp CSV/XLSX/Parquet từ R2 — không cần PostgreSQL substrate
+
+**UX cho phóng viên (non-technical)**:
+- Chat box "Hỏi dữ liệu"
+- Câu trả lời dạng câu văn: "Năm 2024, dân số TP.HCM 9.1M, Hà Nội 8.9M — HCM cao hơn 200K"
+- "Xem chi tiết" → bảng + chart
+- "Sao chép số liệu" → copy vào bài báo
+- "Show query" (collapse, cho power user) → SQL + dataset version pin
+
+**Guardrails**:
+- Read-only connection ở DB level (không phải app level) — lesson từ Cursor agent xoá DB
+- Row limit + timeout per query
+- SQL trace vào `upload_log` cho provenance
+- Version pin (gắn plan versioning 2026-07-10) — reproducibility journalism
+
+**Loại bỏ khỏi scope (justified)**:
+- ❌ Fine-tune text-to-SQL — overkill cho newsroom scale
+- ❌ LangChain SQL agent auto-explore — burn tokens, hard to debug
+- ❌ Raw SQL editor cho user — phóng viên không phải data engineer
+- ❌ Concept metrics/dimensions expose cho user — phóng viên không hiểu
+
+### 3f — Optional extensions (open for, không default)
+
+Triggers cụ thể để cân nhắc bổ sung:
+
+- **Vector DB / RAG trên metadata**: bổ sung pgvector/Qdrant khi (1) catalog >100 datasets với semantic overlap cao, (2) FTS miss fuzzy intent ("kinh tế Nam Bộ" → "ĐBSCL"), (3) cross-language matching cần thiết. Pattern Vanna AI.
+- **Semantic layer** (Cube/dbt/Looker style): bổ sung `metrics[]`/`dimensions[]` per dataset khi có **multiple BI surfaces** cần consistent metrics (Looker + Tableau + Slack bot cùng metric). VNExpress hiện 1 surface → không cần. Pattern inspired Cube.dev 2026.
+- **AI auto-suggest trong upload wizard**: chỉ enrich metadata tự nhiên cho phóng viên (description, synonyms, tags, sample values). KHÔNG expose concepts metrics/dimensions.
+
+**Deliverable**: Intelligence platform phục vụ 300 phóng viên. Hỏi đáp, fact-check, story discovery. Structured Q&A cho phóng viên không biết SQL.
 
 ---
 
@@ -133,3 +167,4 @@ F1-F5 plan cũ (PostgreSQL-backed) **superseded by re-arch**:
 | 2026-06-24 | **Phase 1 → 5 features (read-path MVP)** | Cũ: Phase 1 gộp 6 mục (1.1–1.6) gồm cả upload + quality + dictionary browse. Mới: Phase 1 chia 5 feature độc lập F1–F5 (Catalog/Detail/Viewer/Files/Search), chỉ read-path. Frontend HF đã build (spec 2026-06-23). Upload, quality scoring, dictionary browse page → "Deferred trong Phase 1". Schema: legacy entity `resources` drop, build constitution `resources` clean. Listing hiện chỉ dataset thật (mock ẩn); thêm qua SQL seed đến khi upload build. Lý do: chốt UI trước (đã duyệt prototype), wire vào DB thật từng feature, không over-build upload trước khi biết usage. |
 | 2026-06-24 | **Column statistics (precomputed, full-table)** | Thêm `resources.column_stats` JSONB — mini charts của Dataset Viewer (F3) đọc stats precompute ở seed time trên full typed table thay vì compute từ 10-row preview. Trước: histogram/proportion bar phản ánh phân bố sai (chỉ 10 province đầu theo alphabet). Sau: phân bố thật của 34 provinces, HCM outlier hiện rõ. Migration 007 + update seed 006 (self-sufficient). Lý do: HF làm đúng vì precompute server-side; copy visual mà không copy architecture = chart đúng hình sai số. Xem `specs/2026-06-24-column-statistics/`. |
 | 2026-07-02 | **Phase 1 Re-architecture: PostgreSQL → File-based + AI-assisted upload** | Cũ: Phase 1 = Next.js + Supabase PostgreSQL + 5 features F1-F5 (catalog/detail/viewer/files/search) + upload deferred. Mới: file-based storage (git + markdown + parquet/CSV/XLSX giữ nguyên gốc), AI-assisted upload wizard trên UI (drag-drop → Claude phân tích → user review metadata/dictionary → commit), Plausible tracking, không PostgreSQL cho Phase 1. Lý do (4): (1) Treadmill chẩn đoán — mỗi dataset = ~1000 dòng code SQL seed, không scale cho 1 người; (2) `upload_log` table = reimplementation git history; (3) Phase 1 purpose thật là **demand discovery** qua tracking, không phải "single source of truth" warehouse; (4) User sẽ không tự viết metadata/dictionary → cần AI-assisted tại upload time. DuckDB (Phase 2) query trực tiếp CSV/XLSX/Parquet — không cần PostgreSQL substrate sớm. PostgreSQL move xuống Phase 2 optional (chỉ khi promotion structured table cần). F1-F5 plan cũ superseded. Xem `specs/2026-07-02-phase1-rearch/`, `constitution/tech-stack.md` (re-architected). |
+| 2026-07-23 | **Phase 2/3 scope adjustment sau brainstorm Intelligence** | Phase 2 thu hẹp: chỉ **Discovery Chat** (LLM routing zero-infra, Claude thấy metadata tất cả datasets → trả top-3 cards + lý do). Bỏ chart builder + SQL panel + query templates + dataset promotion + text-to-SQL. Phase 3 thêm **3e Structured Data Q&A** (NL→SQL bằng schema-aware prompting với Claude tool-use + DuckDB query R2 trực tiếp, KHÔNG semantic layer default). Phase 3 thêm **3f Optional extensions** với triggers cụ thể: vector DB/RAG khi catalog >100 + fuzzy intent; semantic layer khi multi-surface; AI auto-suggest wizard chỉ enrich metadata tự nhiên. Lý do: (1) Vector DB over-engineering cho 10-100 datasets — LLM routing đủ; (2) Semantic layer (Cube/dbt) là enterprise pattern cho multi-surface consistency, không fit newsroom 1 surface; (3) Fine-tune text-to-SQL overkill — zero-shot + rich context đủ; (4) Phóng viên không hiểu metrics/dimensions — UX phải giấu concepts. Reference: SOTA research 2026 (Spider2/BIRD broken, Cube semantic layer trend, Vanna RAG, Anthropic tool use). |
