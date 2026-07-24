@@ -14,13 +14,15 @@ interface Props {
  * Local dev: click → modal → type slug để confirm → API call → redirect.
  */
 export default function DeleteDatasetButton({ slug }: Props) {
-  // Guard: production render nothing
-  if (process.env.NODE_ENV === "production") return null;
-
+  // Hooks phải gọi unconditional (rules-of-hooks) — kể cả khi production
+  // render null, hooks vẫn chạy để giữ thứ tự stable giữa các render.
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmInput, setConfirmInput] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Guard: production render nothing
+  if (process.env.NODE_ENV === "production") return null;
 
   async function handleDelete() {
     setSubmitting(true);

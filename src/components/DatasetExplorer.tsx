@@ -33,13 +33,6 @@ interface DatasetExplorerProps {
   datasets: Dataset[];
 }
 
-/** Quy mô → nhóm size (HF style) — khớp với sizeBucket trong SimpleFilterAdapter */
-function sizeBucket(rowCount: number): string {
-  if (rowCount < 1000) return "< 1K";
-  if (rowCount < 10000) return "1K–10K";
-  return "10K–100K";
-}
-
 export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const [query, setQuery] = useState("");
   const [activeCategories, setActiveCategories] = useState<Set<Category>>(new Set());
@@ -151,7 +144,11 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const toggle = <T,>(setter: React.Dispatch<React.SetStateAction<Set<T>>>) => (value: T) => {
     setter((prev) => {
       const next = new Set(prev);
-      next.has(value) ? next.delete(value) : next.add(value);
+      if (next.has(value)) {
+        next.delete(value);
+      } else {
+        next.add(value);
+      }
       return next;
     });
   };

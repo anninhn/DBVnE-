@@ -15,7 +15,6 @@ import {
 } from "@/lib/dataset-commit";
 import type { ColumnStats } from "@/lib/types/dataset";
 import { requireUserOr401 } from "@/lib/auth";
-import { injectUploaded } from "@/lib/auth/inject-actor";
 
 interface CommitRequest {
   fileId: string;
@@ -77,7 +76,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { fileId, r2Key, metadata, dictionary, custom_slug, column_stats } = body;
+  const { r2Key, metadata, dictionary, custom_slug, column_stats } = body;
 
   if (!metadata?.title || !metadata?.description) {
     return NextResponse.json(

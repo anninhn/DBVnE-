@@ -157,7 +157,6 @@ async function callAIWithRetry(
 export async function analyzeDataset(
   inspection: FileInspection
 ): Promise<AIProposal> {
-  const client = getAIClient();
   const systemPrompt = await loadSystemPrompt(inspection.format);
 
   // Trim inspection để tiết kiệm token — chỉ gửi stats + samples, không full rows.

@@ -85,7 +85,7 @@ export default function DictionaryEditor({ entries, onChange }: Props) {
             {local.length === 0 && (
               <tr>
                 <td colSpan={7} className="px-3 py-8 text-center text-hf-text-faint text-xs">
-                  Chưa có column nào. Click "Add column" để thêm thủ công.
+                  Chưa có column nào. Click &quot;Add column&quot; để thêm thủ công.
                 </td>
               </tr>
             )}
