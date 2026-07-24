@@ -20,7 +20,19 @@ export type Category =
   | "xa-hoi"
   | "chinh-tri"
   | "khi-hau"
-  | "ha-tang";
+  | "ha-tang"
+  | "giao-duc";
+
+/**
+ * Edit history entry — mirror MetadataYaml.edits[] (spec D2).
+ * Duplicate ở đây thay vì import từ datasets/types.ts để tránh circular import
+ * (xem convention comment ở ColumnStats duplicate trong datasets/types.ts).
+ */
+export interface EditEntry {
+  by: string;        // username
+  at: string;        // ISO datetime
+  summary?: string;  // vd: "Edit metadata", auto-generated
+}
 
 export interface DataDictionaryEntry {
   column_name: string;
@@ -97,6 +109,8 @@ export interface Dataset {
   /** Auth nhẹ (spec 2026-07-24) — actor tracking */
   last_edited_by?: string;
   last_edited_at?: string; // ISO
+  /** Full edit history — append mỗi lần user edit metadata (spec D2). */
+  edits?: EditEntry[];
   resources: Resource[];
   data_dictionary: DataDictionaryEntry[];
   /** GeoJSON-only — undefined cho tabular/pdf/mp3. */
@@ -112,6 +126,7 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   "chinh-tri": "Chính trị",
   "khi-hau": "Khí hậu",
   "ha-tang": "Hạ tầng",
+  "giao-duc": "Giáo dục",
 };
 
 export const RESOURCE_TYPE_LABELS: Record<ResourceType, string> = {

@@ -235,6 +235,7 @@ export function metadataToDataset(
     // Auth nhẹ (spec D2) — optional, undefined cho dataset chưa edit
     last_edited_by: meta.last_edited_by,
     last_edited_at: meta.last_edited_at,
+    edits: meta.edits,
     resources,
     data_dictionary: dictionary,
     // GeoJSON-only — undefined cho tabular/pdf/mp3.
@@ -279,6 +280,18 @@ export async function getMetadataYaml(
   const yamlText = await fetchRaw(`datasets/${slug}/metadata.yaml`);
   if (!yamlText) return null;
   return parseYaml(yamlText) as MetadataYaml;
+}
+
+/**
+ * Get raw metadata.yaml text (không parse) — cho edit route merge auth fields.
+ *
+ * Trả về text thay vì object vì `injectEdited`/`mergeAuthFields` làm việc với text
+ * (parse → mutate → stringify) để giữ formatting + comments tối đa.
+ */
+export async function getMetadataYamlRaw(
+  slug: string,
+): Promise<string | null> {
+  return fetchRaw(`datasets/${slug}/metadata.yaml`);
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

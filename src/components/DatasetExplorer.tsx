@@ -7,7 +7,7 @@ import { CATEGORY_LABELS } from "@/lib/types/dataset";
 import { createSearchAdapter } from "@/lib/search";
 import type { SearchAdapter } from "@/lib/search";
 import { formatCompactNumber } from "@/lib/format";
-import { Star, Database, FileSpreadsheet } from "lucide-react";
+import { Star, Database, Table2, MapPin, FileText } from "lucide-react";
 import CatalogNav from "@/components/CatalogNav";
 
 type SortKey = "trending" | "recent" | "downloaded" | "liked";
@@ -19,10 +19,16 @@ const SORT_LABELS: Record<SortKey, string> = {
   liked: "Most liked",
 };
 
-const ALL_CATEGORIES: Category[] = ["kinh-te", "xa-hoi", "chinh-tri", "khi-hau", "ha-tang"];
+const ALL_CATEGORIES: Category[] = ["kinh-te", "xa-hoi", "chinh-tri", "khi-hau", "ha-tang", "giao-duc"];
 
 /** Số dataset hiển thị mỗi trang — HF standard */
 const PAGE_SIZE = 20;
+
+/** Formats được support — khớp FileType trong types/dataset.ts (bỏ parquet, chưa có trong upload flow) */
+const ALL_FORMATS = ["csv", "xlsx", "pdf", "mp3", "geojson"] as const;
+
+/** Số tag preview trước khi ẩn phần còn lại */
+const TAG_PREVIEW_COUNT = 8;
 
 interface DatasetExplorerProps {
   datasets: Dataset[];
@@ -40,6 +46,8 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const [activeCategories, setActiveCategories] = useState<Set<Category>>(new Set());
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
   const [activeSizes, setActiveSizes] = useState<Set<string>>(new Set());
+  const [activeFormats, setActiveFormats] = useState<Set<string>>(new Set());
+  const [showAllTags, setShowAllTags] = useState(false);
   const [sort, setSort] = useState<SortKey>("trending");
   const [page, setPage] = useState(0);
 
@@ -63,6 +71,21 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     return counts;
   }, [datasets]);
 
+  // Đếm dataset theo format (resource file_type). 1 dataset có nhiều resource types
+  // → đếm distinct per-dataset tránh double count.
+  const formatCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    datasets.forEach((d) => {
+      const types = new Set(
+        d.resources.map((r) => r.file_type).filter(Boolean) as string[]
+      );
+      types.forEach((t) => {
+        counts[t] = (counts[t] ?? 0) + 1;
+      });
+    });
+    return counts;
+  }, [datasets]);
+
   // Search qua adapter — index trước khi search để results đúng ở first render.
   const results = useMemo(() => {
     adapter.index(datasets);
@@ -74,8 +97,16 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
         sizes: Array.from(activeSizes),
       },
     });
-    return searchResults.map((r) => r.dataset);
-  }, [adapter, datasets, query, activeCategories, activeTags, activeSizes]);
+    const mapped = searchResults.map((r) => r.dataset);
+    // Format filter — post-search client-side (adapter chưa support format).
+    // Dataset match nếu CÓ ÍT NHẤT 1 resource có file_type nằm trong activeFormats.
+    if (activeFormats.size === 0) return mapped;
+    return mapped.filter((d) =>
+      d.resources.some(
+        (r) => r.file_type != null && activeFormats.has(r.file_type),
+      ),
+    );
+  }, [adapter, datasets, query, activeCategories, activeTags, activeSizes, activeFormats]);
 
   // Sort kết quả search — tách riêng khỏi adapter (sort không phải search concern)
   const sorted = useMemo(() => {
@@ -109,7 +140,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   // Reset page về 1 khi search/filter/sort thay đổi
   useEffect(() => {
     setPage(0);
-  }, [query, activeCategories, activeTags, activeSizes, sort]);
+  }, [query, activeCategories, activeTags, activeSizes, activeFormats, sort]);
 
   // Pagination — slice kết quả đã sort
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
@@ -132,16 +163,22 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const toggleCategory = toggle(setActiveCategories);
   const toggleTag = toggle(setActiveTags);
   const toggleSize = toggle(setActiveSizes);
+  const toggleFormat = toggle(setActiveFormats);
 
   const clearFilters = () => {
     setActiveCategories(new Set());
     setActiveTags(new Set());
     setActiveSizes(new Set());
+    setActiveFormats(new Set());
     setQuery("");
   };
 
   const hasActiveFilter =
-    query !== "" || activeCategories.size > 0 || activeTags.size > 0 || activeSizes.size > 0;
+    query !== "" ||
+    activeCategories.size > 0 ||
+    activeTags.size > 0 ||
+    activeSizes.size > 0 ||
+    activeFormats.size > 0;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -175,13 +212,19 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
           </FilterGroup>
 
           <FilterGroup title="Format">
-            {["csv", "xlsx", "parquet", "pdf"].map((f) => (
-              <FilterCheckbox key={f} label={f} checked={false} onChange={() => {}} />
+            {ALL_FORMATS.filter((f) => (formatCounts[f] ?? 0) > 0).map((f) => (
+              <FilterCheckbox
+                key={f}
+                label={f}
+                count={formatCounts[f] ?? 0}
+                checked={activeFormats.has(f)}
+                onChange={() => toggleFormat(f)}
+              />
             ))}
           </FilterGroup>
 
           <FilterGroup title="Tags">
-            {allTags.map((t) => (
+            {(showAllTags ? allTags : allTags.slice(0, TAG_PREVIEW_COUNT)).map((t) => (
               <FilterCheckbox
                 key={t}
                 label={t}
@@ -189,6 +232,16 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
                 onChange={() => toggleTag(t)}
               />
             ))}
+            {allTags.length > TAG_PREVIEW_COUNT && (
+              <button
+                onClick={() => setShowAllTags(!showAllTags)}
+                className="text-xs text-hf-link hover:underline mt-1 ml-5"
+              >
+                {showAllTags
+                  ? "Thu gọn"
+                  : `Xem thêm ${allTags.length - TAG_PREVIEW_COUNT}`}
+              </button>
+            )}
           </FilterGroup>
 
           {hasActiveFilter && (
@@ -232,39 +285,50 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
           {paginatedResults.length > 0 ? (
             <div className="border-t border-hf-border">
               {paginatedResults.map((d) => {
-                const hasData = d.resources.some(
-                  (r) => r.structured_data && r.structured_data.length > 0
+                // Preview type — icon phân biệt Map/Table/File (thay badge text).
+                //   Map: GeoJSON (feature_count set HOẶC resource geojson) → MapPin emerald
+                //   Table: CSV/XLSX tabular → Table2 blue
+                //   File: PDF/MP3 hoặc không có preview data → FileText gray
+                const isMap =
+                  d.feature_count != null ||
+                  d.resources.some((r) => r.file_type === "geojson");
+                const isTabular = d.resources.some(
+                  (r) => r.file_type === "csv" || r.file_type === "xlsx",
                 );
+                const PreviewIcon = isMap ? MapPin : isTabular ? Table2 : FileText;
+                const iconColor = isMap
+                  ? "text-red-600"
+                  : isTabular
+                    ? "text-blue-600"
+                    : "text-hf-text-faint";
                 return (
                   <Link
                     key={d.slug}
                     href={`/datasets/${d.slug}`}
-                    className="flex items-center gap-2 px-2 py-2.5 border-b border-hf-border text-[13px] hover:bg-hf-bg-subtle transition-colors"
+                    className="flex items-start gap-2 px-2 py-2.5 border-b border-hf-border text-[13px] hover:bg-hf-bg-subtle transition-colors"
                   >
-                    <FileSpreadsheet className="w-3.5 h-3.5 text-hf-text-faint shrink-0" strokeWidth={1.75} aria-hidden />
-                    <span className="font-medium text-hf-text">
-                      <span className="text-hf-text-muted">{d.uploaded_by.toLowerCase()}/</span>
-                      {d.slug}
-                    </span>
-                    <span
-                      className={`inline-block px-2 py-px rounded-full text-[11px] font-medium ${
-                        hasData
-                          ? "bg-blue-100 text-blue-800"
-                          : "bg-hf-bg-muted text-hf-text-muted"
-                      }`}
-                    >
-                      {hasData ? "Viewer" : "Preview"}
-                    </span>
-                    <span className="text-hf-text-muted">
-                      Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
-                      <span className="text-hf-text-faint mx-1">•</span>
-                      {d.row_count > 0 ? `${formatCompactNumber(d.row_count)} rows` : "—"}
-                      <span className="text-hf-text-faint mx-1">•</span>
-                      {d.file_count} file{d.file_count !== 1 ? "s" : ""}
-                      <span className="text-hf-text-faint mx-1">•</span>
-                      {d.total_size_mb} MB
-                    </span>
-                    <span className="ml-auto text-hf-text-muted flex items-center gap-1">
+                    <PreviewIcon className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${iconColor}`} strokeWidth={1.75} aria-hidden />
+                    {/* Content column — title (row 1) + metadata 2 dòng */}
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium text-hf-text truncate">
+                        {d.title}
+                      </div>
+                      <div className="flex items-center gap-2 mt-0.5 text-[11px]">
+                        {/* Primary: Updated + rows */}
+                        <span className="text-hf-text-muted">
+                          Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
+                          <span className="text-hf-text-faint mx-1">•</span>
+                          {d.row_count > 0 ? `${formatCompactNumber(d.row_count)} rows` : "—"}
+                        </span>
+                        {/* Secondary: files + size (muted hơn) */}
+                        <span className="text-hf-text-faint">
+                          {d.file_count} file{d.file_count !== 1 ? "s" : ""}
+                          <span className="mx-1">•</span>
+                          {d.total_size_mb} MB
+                        </span>
+                      </div>
+                    </div>
+                    <span className="ml-auto text-hf-text-muted flex items-center gap-1 shrink-0">
                       <Star className="w-3 h-3" strokeWidth={1.75} aria-hidden />
                       {d.likes}
                     </span>
@@ -353,11 +417,11 @@ function FilterCheckbox({
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="w-3.5 h-3.5 accent-[var(--color-hf-yellow)]"
+        className="w-3.5 h-3.5 accent-[var(--color-hf-yellow)] shrink-0"
       />
-      {label}
+      <span className="truncate flex-1 min-w-0" title={label}>{label}</span>
       {count !== undefined && (
-        <span className="ml-auto text-xs text-hf-text-faint">{count}</span>
+        <span className="ml-auto text-xs text-hf-text-faint shrink-0">{count}</span>
       )}
     </label>
   );

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Star, Pencil, Bookmark, Download } from "lucide-react";
 import { getDatasetBySlug, withPreviewData } from "@/lib/datasets/read";
 import { formatCompactNumber } from "@/lib/format";
+import { lookupDisplayName } from "@/lib/auth";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import CatalogNav from "@/components/CatalogNav";
 import TabSwitcher from "./TabSwitcher";
@@ -38,6 +39,9 @@ export default async function DatasetPage({ params }: PageProps) {
   // table + histogram ở tab "Dataset card" (SSR, không flicker client fetch).
   await withPreviewData(dataset);
 
+  // Resolve displayName cho header (đồng bộ với sidebar ActorRow).
+  const ownerDisplay = await lookupDisplayName(dataset.uploaded_by);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top nav — shared component, không có search input trên detail (D7) */}
@@ -47,13 +51,10 @@ export default async function DatasetPage({ params }: PageProps) {
         {/* Detail header — org/name + actions + metadata pills */}
         <div className="px-6 py-4 border-b border-hf-border">
           <div className="text-xs text-hf-text-faint mb-2">
-            Datasets / {dataset.uploaded_by.toLowerCase()} / {dataset.slug}
+            Datasets / {ownerDisplay} / {dataset.slug}
           </div>
           <h1 className="text-[22px] font-semibold text-hf-text flex items-center gap-4">
-            <span>
-              <span className="text-hf-text-muted font-normal">{dataset.uploaded_by.toLowerCase()} /</span>{" "}
-              {dataset.slug}
-            </span>
+            <span className="min-w-0">{dataset.title}</span>
             <span className="flex gap-2 ml-auto">
               <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
                 <Star className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />

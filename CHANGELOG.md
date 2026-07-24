@@ -6,6 +6,69 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ## [Unreleased] — Phase 1 Dataset Hub (đang phát triển)
 
+### 2026-07-24 — UX/UI tracking + listing polish
+
+Auth nhẹ ship 2026-07-24 (commits 03865e8 + 05fe82f) thêm actor tracking vào metadata nhưng phần display chưa polish. Session này hoàn thiện UX/UI provenance + redesign listing cho readability.
+
+**Why**: Journalistic provenance cần (1) hiển thị rõ ai edit khi nào, (2) timestamp chính xác không relative time mơ hồ, (3) listing dễ scan để phóng viên tìm dataset nhanh.
+
+**New — Timeline `edits[]` History**
+- `src/lib/types/dataset.ts` — thêm `EditEntry` type + `edits?: EditEntry[]` field
+- `src/lib/datasets/read.ts` — `metadataToDataset()` expose `edits[]`; thêm `getMetadataYamlRaw()` helper
+- `src/app/datasets/[slug]/MetadataSidebar.tsx` — `ActivityTimeline` component với vertical dots + connector line. Layout reverse-chrono (latest on top, convention GitHub/HF). Latest dot highlight `bg-hf-link`, older dots `bg-hf-text-muted`. Badge "Mới nhất" cho top entry khi >1 entry. Card split: "Source" (Source + License) + "Hoạt động" (timeline).
+
+**Bug fix — edits[] bị reset mỗi lần edit**
+- `EditDatasetForm.tsx` xây YAML mới từ scratch qua `renderMetadataYaml()` → không giữ `edits[]` → `injectEdited()` reset về 1 entry mỗi lần.
+- Fix: edit route fetch existing metadata.yaml từ GitHub → `mergeAuthFields()` copy edits[]/last_edited_by/at/status/deleted_by/at sang client YAML → `injectEdited()` append vào history nguyên vẹn.
+- `src/lib/auth/inject-actor.ts` — thêm `mergeAuthFields(clientYaml, existingYaml)` helper.
+- Lưu ý: edit history đã mất trước fix KHÔNG recover qua app (chỉ trace qua git log).
+
+**Display polish**
+- `MetadataSidebar.tsx` — `formatTimestamp()`: absolute `dd/mm/yyyy, hh:mm` (giờ VN, `Asia/Ho_Chi_Minh`). Bỏ relative time ("2 ngày trước") vì journalism cần timestamp chính xác.
+- `page.tsx` — header breadcrumb + H1 dùng `lookupDisplayName()` thay raw username. H1 đổi từ `owner/slug` → `dataset.title` (human-readable, Vietnamese).
+
+**Listing redesign — `DatasetExplorer.tsx`**
+- Tên dataset: `owner/slug` → `d.title` (truncate min-w-0)
+- Icon theo preview type: Map (`MapPin` đỏ) / Table (`Table2` xanh) / File (`FileText` xám) — thay `FileSpreadsheet` generic
+- Layout 2 dòng: title (primary) + metadata cluster (Updated • rows primary muted + files • size secondary faint)
+- Bỏ badge text "Map/Table/File" — icon đã truyền đủ info
+
+**Sidebar filter cleanup**
+- Format filter: trước hardcoded `["csv","xlsx","parquet","pdf"]` + `onChange` noop (decorative) → functional với state riêng + count + chỉ hiện formats có dataset (count > 0)
+- Tags: truncate first 8 + "Xem thêm N" button (expand/collapse). FilterCheckbox label truncate với `title` attr cho full text hover.
+- Category: thêm `giao-duc` ("Giáo dục") vào vocab — có 1 dataset dùng category không hợp lệ trước đó
+
+**Icon consistency** — `FilesTabContent.tsx`
+- Đổi `FileSpreadsheet` → `Table2`, `Map as MapIcon` → `MapPin` để match list view. pdf/mp3 giữ riêng (FileText/FileAudio).
+
+### 2026-07-23 — GeoJSON upload + Dataset card preview toggle (commit d326df2)
+
+GeoJSON upload pipeline end-to-end + Dataset card UX cải tiến cho geospatial datasets.
+
+**Why**: Map là view chính cho geospatial data — table không truyền tải ý nghĩa địa lý. Cần ship toggle Map/Table ở Dataset card giống Files tab, dictionary hiển thị độc lập với preview data, và table preview cho file GeoJSON lớn (>10MB) vốn bị SSR skip.
+
+**New**
+- `src/lib/parse/geojson.ts` — native parser (parseGeoJson, computeBbox, majorityGeometryType, extractCrs). Reject CRS khác WGS84, validate RFC 7946.
+- `src/components/geo/` — `GeoJsonMap` (Leaflet ~40KB, CartoDB Positron grayscale), `GeoJsonMapLazy` (dynamic ssr:false), `DatasetGeoJsonPreview` (R2 fetch + render, `embedded` prop), `UploadWizardMapPreview` (wizard step 3)
+- `src/app/datasets/[slug]/DatasetCardTabs.tsx` — wrapper toggle Map/Table cho GeoJSON datasets (default Map). Map lazy mount giữ state, table lazy mount tránh fetch lớn trên page load.
+- `tools/prompts/dataset-reviewer-geojson.md` — prompt riêng cho AI reviewer khi format=geojson
+- `specs/2026-07-23-geojson-upload/` — spec requirements/plan/validation
+
+**Changed**
+- `inspect.ts`: GeoJSON branch extract geometry_type/bbox/crs/feature_count
+- `dataset-render.ts`: render geo fields vào metadata.yaml khi format=geojson
+- `read.ts:withPreviewData`: handle GeoJSON ≤10MB (flatten features.properties); lớn hơn skip SSR
+- `read.ts:mapFilesToResources`: populate feature_count/geometry_type/bbox/crs từ metadata
+- `types/dataset.ts`: thêm geo fields optional
+- `UploadWizard.tsx`: gửi geo fields qua commit, preview Leaflet map
+- `R2FileViewer.tsx`: toggle Map/Table cho GeoJSON (giống DatasetCardTabs)
+- `DataDictionary.tsx`: **decouple khỏi `resource.columns`** — fallback render dictionary trực tiếp khi SSR skip preview data
+- `DatasetViewer.tsx`: **hybrid** — tự fetch client-side cho GeoJSON lớn khi structured_data rỗng, giữ đầy đủ features (search/pagination/resource/histograms). Controls padding fix.
+- `page.tsx`: dùng `DatasetCardTabs` thay stacked map+table layout
+- `package.json`: thêm `leaflet` + `@types/leaflet`
+
+**Resilient**: `DatasetCardTabs` detect GeoJSON từ `resources[].file_type === "geojson"` OR `dataset.geometry_type` — xử lý metadata cũ thiếu geo fields (vd upload trước code geo-fields support được deploy).
+
 ### 2026-07-23 — Frictionless Data Table Schema (commit f6f3ca9)
 
 Pivot decimal convention từ auto-normalize sang Frictionless Data Table Schema. Storage raw giữ nguyên, schema lưu trong dictionary, parser đọc schema.

@@ -2,11 +2,11 @@
 
 import { Fragment, useState } from "react";
 import {
-  FileSpreadsheet,
+  Table2,
+  MapPin,
   FileText,
   FileAudio,
   File,
-  Map as MapIcon,
 } from "lucide-react";
 import type { Resource } from "@/lib/types/dataset";
 import { formatCompactNumber } from "@/lib/format";
@@ -17,13 +17,13 @@ function FileIcon({ type, className }: { type?: string; className?: string }) {
   switch (type) {
     case "csv":
     case "xlsx":
-      return <FileSpreadsheet {...common} />;
+      return <Table2 {...common} />;
     case "pdf":
       return <FileText {...common} />;
     case "mp3":
       return <FileAudio {...common} />;
     case "geojson":
-      return <MapIcon {...common} />;
+      return <MapPin {...common} />;
     default:
       return <File {...common} />;
   }

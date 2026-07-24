@@ -48,6 +48,36 @@ export function injectEdited(
 }
 
 /**
+ * Merge auth fields từ existing metadata.yaml vào client-submitted YAML.
+ *
+ * EditDatasetForm.tsx gọi `renderMetadataYaml()` xây YAML mới từ scratch —
+ * không giữ `edits[]`, `last_edited_by/at`, `status`, `deleted_by/at`.
+ * Nếu gọi `injectEdited()` thẳng trên YAML đó, edits[] sẽ bị reset về 1 entry
+ * mỗi lần edit (history mất).
+ *
+ * Helper này copy các auth field từ existing YAML (fetch từ GitHub) sang
+ * client YAML trước khi inject — giữ history nguyên vẹn.
+ */
+export function mergeAuthFields(
+  clientYaml: string,
+  existingYaml: string | null,
+): string {
+  if (!existingYaml) return clientYaml;
+
+  const client = parseYaml(clientYaml) as MetadataYaml;
+  const existing = parseYaml(existingYaml) as MetadataYaml;
+
+  client.edits = existing.edits;
+  client.last_edited_by = existing.last_edited_by;
+  client.last_edited_at = existing.last_edited_at;
+  client.status = existing.status;
+  client.deleted_by = existing.deleted_by;
+  client.deleted_at = existing.deleted_at;
+
+  return stringifyYaml(client);
+}
+
+/**
  * Mark dataset as soft-deleted (cho delete route).
  * Không xóa folder/file — chỉ set status + actor.
  */

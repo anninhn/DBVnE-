@@ -20,7 +20,8 @@ export type Category =
   | "xa-hoi"
   | "chinh-tri"
   | "khi-hau"
-  | "ha-tang";
+  | "ha-tang"
+  | "giao-duc";
 
 export type License = "internal" | "public" | "restricted";
 
