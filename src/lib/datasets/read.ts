@@ -10,6 +10,7 @@
  */
 
 import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { parse as parseYaml } from "yaml";
 import type {
   Dataset,
@@ -19,6 +20,7 @@ import type {
 import { buildFileUrl } from "@/lib/r2/client";
 import { getDownloadCount } from "@/lib/r2/counter";
 import { fetchFileContents } from "@/lib/github/contents-api";
+import { withPreviewData } from "./enrichment";
 import {
   type DictionaryEntry,
   type GithubConfig,
@@ -236,7 +238,7 @@ export function metadataToDataset(
 // ──────────────────────────────────────────────────────────────────────────────
 
 /** Read 1 dataset by slug từ GitHub raw metadata.yaml + dictionary.md. */
-export const getDatasetBySlug = cache(async (slug: string): Promise<Dataset | null> => {
+async function getDatasetBySlugImpl(slug: string): Promise<Dataset | null> {
   // Fetch metadata.yaml + dictionary.md + download counter song song
   // (độc lập, không phụ thuộc nhau) → giảm latency tổng.
   const [yamlText, dictText, downloads] = await Promise.all([
@@ -261,6 +263,49 @@ export const getDatasetBySlug = cache(async (slug: string): Promise<Dataset | nu
   // Hydrate downloads từ R2 counter (luôn >= 0, không bao giờ undefined)
   dataset.downloads = downloads;
   return dataset;
+}
+
+/**
+ * Cached metadata fetch — cross-request cache 60s + invalidate qua tag
+ * "datasets" (revalidateTag ở upload/edit/delete routes).
+ *
+ * Dùng cho listing/generateMetadata — không bao gồm preview data.
+ * Detail page dùng `getDatasetDetail` (bao gồm cả preview).
+ */
+const getDatasetBySlugMemo = cache(getDatasetBySlugImpl);
+
+export const getDatasetBySlug = unstable_cache(getDatasetBySlugMemo, [
+  "dataset-by-slug-v1",
+], {
+  revalidate: 60,
+  tags: ["datasets"],
+});
+
+/**
+ * Detail fetch bao gồm preview data (structured_data cho DatasetViewer).
+ *
+ * Cache bao gồm cả kết quả `withPreviewData` (fetch + parse file CSV/XLSX/GeoJSON).
+ * Sau hit đầu mỗi phút: detail page 3s → ~50ms.
+ *
+ * `withPreviewData` mutate dataset.resources[].structured_data in-place — đã
+ * included trong cached result.
+ */
+async function getDatasetDetailImpl(slug: string): Promise<Dataset | null> {
+  // Gọi impl trực tiếp (không qua cache layer) — tránh double-cache với
+  // getDatasetBySlug. getDatasetDetail là cache outermost.
+  const dataset = await getDatasetBySlugImpl(slug);
+  if (!dataset) return null;
+  await withPreviewData(dataset);
+  return dataset;
+}
+
+const getDatasetDetailMemo = cache(getDatasetDetailImpl);
+
+export const getDatasetDetail = unstable_cache(getDatasetDetailMemo, [
+  "dataset-detail-v1",
+], {
+  revalidate: 60,
+  tags: ["datasets"],
 });
 
 /** Get raw MetadataYaml (không map) — cho commit route check slug exists. */
