@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment, useState } from "react";
+import dynamic from "next/dynamic";
 import {
   Table2,
   MapPin,
@@ -10,7 +11,14 @@ import {
 } from "lucide-react";
 import type { Resource } from "@/lib/types/dataset";
 import { formatCompactNumber } from "@/lib/format";
-import R2FileViewer from "./R2FileViewer";
+
+// Lazy-load R2FileViewer — component kéo theo xlsx (~711 KB parsed) và các parser
+// chỉ cần khi user click "Preview". Tách khỏi INITIAL chunk của detail page.
+const R2FileViewer = dynamic(() => import("./R2FileViewer"), {
+  loading: () => (
+    <div className="py-4 text-[13px] text-hf-text-muted">Đang tải viewer…</div>
+  ),
+});
 
 function FileIcon({ type, className }: { type?: string; className?: string }) {
   const common = { className, strokeWidth: 1.75, "aria-hidden": true as const };

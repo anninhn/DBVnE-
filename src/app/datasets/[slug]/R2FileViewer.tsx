@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import * as XLSX from "xlsx";
 import { Map as MapIcon, Table as TableIcon } from "lucide-react";
 import type { Resource } from "@/lib/types/dataset";
+import type * as XLSXTypes from "xlsx";
 import { parseCSV } from "@/lib/parse/csv";
 import { formatCompactNumber } from "@/lib/format";
 import { numericStats, histogramBins, countDistinct } from "@/lib/viz/column-stats";
@@ -79,6 +79,9 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
             setState("ready");
           }
         } else if (fileType === "xlsx") {
+          // Lazy-load xlsx (~711 KB) chỉ khi user preview file .xlsx.
+          // Tránh kéo lib này vào INITIAL chunk của detail page.
+          const XLSX: typeof XLSXTypes = await import("xlsx");
           const buf = await res.arrayBuffer();
           const wb = XLSX.read(buf, { type: "array" });
           const firstSheet = wb.Sheets[wb.SheetNames[0]];
