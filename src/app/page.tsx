@@ -1,9 +1,11 @@
 import { listDatasets } from "@/lib/datasets/list";
 import DatasetExplorer from "@/components/DatasetExplorer";
 
-// Dynamic SSR runtime — fetch metadata.yaml từ GitHub raw mỗi request.
-// Không còn PostgreSQL dependency. Cache 60s qua React cache() + GitHub CDN.
-export const dynamic = "force-dynamic";
+// ISR + cross-request cache:
+//   - `revalidate: 60` — page regenerate tối đa mỗi 60s
+//   - `unstable_cache` trong listDatasets cũng cache 60s với tag "datasets"
+//   - Upload/edit/delete gọi `revalidateTag("datasets")` → invalidate ngay
+// KHÔNG dùng `force-dynamic` — sẽ override revalidate và tắt ISR.
 export const revalidate = 60;
 
 export default async function Home() {
