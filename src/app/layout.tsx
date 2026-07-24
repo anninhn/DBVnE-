@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 import SessionProvider from "@/components/auth/SessionProvider";
 
@@ -36,6 +37,12 @@ export default function RootLayout({
       className={`${sourceSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-hf-bg-subtle text-hf-text font-sans">
+        <NextTopLoader
+          color="#ffd21e"
+          showSpinner={false}
+          height={2}
+          shadow="0 0 8px rgba(255,210,30,0.4)"
+        />
         <SessionProvider>{children}</SessionProvider>
       </body>
     </html>

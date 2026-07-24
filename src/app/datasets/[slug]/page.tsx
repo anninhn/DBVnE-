@@ -2,8 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Pencil, Download } from "lucide-react";
-import { getDatasetBySlug } from "@/lib/datasets/read";
-import { withPreviewData } from "@/lib/datasets/enrichment";
+import { getDatasetBySlug, getDatasetDetail } from "@/lib/datasets/read";
 import { formatCompactNumber } from "@/lib/format";
 import { lookupDisplayName } from "@/lib/auth";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
@@ -17,7 +16,9 @@ import FilesTabContent from "./FilesTabContent";
 import ArticlesTab from "./ArticlesTab";
 
 // Dynamic SSR runtime — tránh Vercel cache 404 khi dataset chưa tồn tại
-// (cache layer fetch vẫn 60s qua `next: { revalidate: 60 }`).
+// (cache layer fetch vẫn 60s qua unstable_cache).
+// Page luôn re-render mỗi request (force-dynamic), nhưng data fetch qua
+// getDatasetDetail dùng cross-request cache 60s → hit ~50ms, miss ~1-3s.
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
@@ -34,12 +35,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function DatasetPage({ params }: PageProps) {
   const { slug } = await params;
-  const dataset = await getDatasetBySlug(slug);
+  // getDatasetDetail đã bao gồm withPreviewData (cached). Sau hit đầu mỗi
+  // phút hoặc sau revalidateTag (upload/edit/delete): cold ~1-3s, hot ~50ms.
+  const dataset = await getDatasetDetail(slug);
   if (!dataset) notFound();
-
-  // Populate structured_data cho resource CSV đầu tiên → DatasetViewer render
-  // table + histogram ở tab "Dataset card" (SSR, không flicker client fetch).
-  await withPreviewData(dataset);
 
   // Resolve displayName cho header (đồng bộ với sidebar ActorRow).
   const ownerDisplay = await lookupDisplayName(dataset.uploaded_by);
