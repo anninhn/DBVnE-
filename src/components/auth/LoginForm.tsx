@@ -7,7 +7,6 @@
  */
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 interface Props {
@@ -15,7 +14,6 @@ interface Props {
 }
 
 export default function LoginForm({ next }: Props) {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -44,8 +42,11 @@ export default function LoginForm({ next }: Props) {
       return;
     }
 
-    router.push(next);
-    router.refresh();
+    // Hard navigation thay vì router.push: sau signIn(redirect:false), cookie
+    // session đã set nhưng client-side RSC fetch tới protected route fail
+    // ("cannot load page"). Full page load gửi cookie mới → server render đúng.
+    // (Refresh thủ công cũng fix — cùng cơ chế.)
+    window.location.replace(next);
   }
 
   return (
