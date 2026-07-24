@@ -4,9 +4,54 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ---
 
-## [Unreleased] — Phase 2 Discovery Chat
+## [Unreleased] — Inter-phase Pre-launch Refactor
 
-Phase 2 bắt đầu sau Phase 1 wrap-up (2026-07-24). Scope: LLM routing zero-infra — Claude thấy metadata tất cả datasets + câu hỏi → top-3 cards + lý do. Bỏ chart builder / SQL panel / text-to-SQL (đẩy Phase 3). Xem `constitution/roadmap.md` + `docs/phase-1.md`.
+Refactor sau Phase 1 + Phase 2 ship, trước khi bắt đầu Phase 3. Scope: security patches (xlsx CVE), code health (split god files, extract helpers, resolve type duplication), UX/onboarding (README, .env.example, loading states), documentation (`docs/phase-2.md`). Spec: `specs/2026-07-24-pre-launch-refactor/`.
+
+---
+
+## [Phase 2] - 2026-07-24 — Discovery Chat
+
+Phase 2 hoàn thành 2026-07-24. Wrap-up đầy đủ: `docs/phase-2.md`. Merged main qua PR #2 (a9b38ab).
+
+### 2026-07-24 — Discovery Chat feature (commit a413e55)
+
+**Discovery Chat — Metadata Q&A (Tier 1)**: phóng viên hỏi câu hỏi tiếng Việt tự nhiên về data tòa soạn → Gemini 2.5 Flash đọc metadata + data dictionary của tất cả datasets → trả lời dạng text + cite dataset cụ thể + suggest follow-up prompts. Tier 2 (Full Q&A với NL→SQL) đẩy Phase 3e.
+
+**Why**: Phase 1 catalog xong nhưng phóng viên vẫn phải browse/filter manually. Pivot từ Discovery cards (user feedback 2026-07-24): phóng viên muốn câu trả lời, không phải list datasets. Tier 1 = cầu nối giá trị cao / phức tạp thấp.
+
+**New — `/hoi-du-lieu` page + ChatBox**
+- `src/app/hoi-du-lieu/page.tsx` — dedicated discovery chat page, login required (`auth.config.ts` protect)
+- `src/components/chat/ChatBox.tsx` — ChatGPT-style centered pill input + capability hints (Tìm dataset / Khám phá / Gợi ý cho đề tài) + random greeting + casual placeholder per mount (dùng `useEffect` thay `useMemo` tránh hydration mismatch)
+- `transition: all → transition-colors/opacity` để tránh layout jank
+
+**New — Discovery API (streaming)**
+- `src/app/api/chat/discovery/route.ts` — POST `{ query }` → stream JSON structured `{ answer, datasets[], follow_ups[] }`. Gemini 2.5 Flash qua OpenAI-compat endpoint, reuse `openai` SDK v6 + `AI_BASE_URL`/`AI_MODEL`/`AI_ENV_VAR` swap pattern (không thêm dependency)
+- `src/lib/chat/extract-json.ts` — robust parse handle markdown fence + conversational wrap (LLM thỉnh thoảng bao JSON trong prose)
+- `src/lib/chat/flatten-metadata.ts` — build compact context từ metadata + dictionary tất cả datasets (sau refactor dùng `fetchFileContents` + `listFolderEntries` helper)
+- Per-user + global quota check qua `Promise.all`: per-user 100/day, global hard limit 1200/day (80% buffer của 1500 RPD Gemini). Returns 429 Vietnamese message khi exceeded
+
+**New — Citation UI components**
+- `src/components/chat/CitationCard.tsx` — mini DatasetCard (title link → detail page, confidence badge, reason 1 câu)
+- `src/components/chat/FollowUpPills.tsx` — render `follow_ups[]` thành pill buttons, click → pre-fill input + submit
+- `src/components/chat/ThumbsFeedback.tsx` — 👍/👎 + optional text feedback khi 👎
+- `src/components/chat/EmptyState.tsx` — "Không tìm thấy dataset phù hợp" + suggest 3-4 topics (kinh tế, dân số, bầu cử, khí hậu)
+
+**New — R2 chat log + feedback endpoint**
+- `src/lib/r2/chat-log.ts` — append-only array per day at `logs/chat/<YYYY-MM-DD>.json`. Schema: `{ id, timestamp, user_email, query, answer_summary, datasets_cited[], thumbs, feedback_text, latency_ms }`. Reuse Phase 1 R2 counter pattern
+- `src/app/api/chat/feedback/route.ts` — POST append 👍/👎 + text vào entry log
+- `GLOBAL_QUOTA_HARD_LIMIT = 1200` (rename từ `GLOBAL_QUOTA_WARN_THRESHOLD`)
+
+**Cross-linking CTA + nav**
+- `src/app/datasets/[slug]/MetadataSidebar.tsx` — "Hỏi về dataset này" → `/hoi-du-lieu?prefill=<title>` — pre-fill input, KHÔNG auto-submit (user agency)
+- `src/components/CatalogNav.tsx` — header "Hỏi dữ liệu" + beta badge (thay Coming soon placeholder)
+
+**Eval suite**
+- `scripts/eval-chat.mjs` + `eval/gold-questions.json` (26 câu) → `eval/reports/<date>.json`
+- Baseline 2026-07-24: 87.5% success rate, 100% accuracy on cited slugs, 100% Vietnamese compliance
+- `npm run eval:chat` — run trước mỗi ship để catch regression
+
+**Out of scope (explicit defer)**: Full Data Q&A (NL→SQL + DuckDB query) → Phase 3e. Multi-turn memory context. Chart builder / SQL panel. Vector DB / semantic search → Phase 3f optional. Caching common queries. Anonymous access. Spec: `specs/2026-07-24-discovery-chat/`.
 
 ---
 

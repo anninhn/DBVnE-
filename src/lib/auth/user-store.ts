@@ -9,7 +9,7 @@
  */
 
 import { cache } from "react";
-import { getGithubConfig, rawUrl } from "@/lib/datasets/types";
+import { fetchFileContents } from "@/lib/github/contents-api";
 
 export interface UserRecord {
   id: string;
@@ -27,32 +27,18 @@ interface UsersFile {
 
 /**
  * Fetch users.json qua GitHub Contents API (authoritative, không CDN cache).
- * Same pattern với read.ts fetchRaw.
  */
 export const readUsersJson = cache(async (): Promise<UserRecord[]> => {
-  const config = getGithubConfig();
-  const url = rawUrl(config, "datasets/_users/users.json");
-
-  const headers: Record<string, string> = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "vnexpress-data-platform",
-    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
-  };
-
-  const res = await fetch(url, { headers, cache: "no-store" });
-  if (res.status === 404) {
+  const result = await fetchFileContents("datasets/_users/users.json");
+  if (!result) {
     console.warn("[auth] datasets/_users/users.json không tồn tại trong repo");
     return [];
   }
-  if (!res.ok) {
-    throw new Error(`GitHub contents API failed: users.json (${res.status})`);
+  try {
+    const parsed = JSON.parse(result.content) as UsersFile;
+    return parsed.users ?? [];
+  } catch (err) {
+    console.warn("[auth] users.json parse failed:", err);
+    return [];
   }
-
-  const data = (await res.json()) as { content?: string; encoding?: string };
-  if (!data.content) return [];
-
-  const b64 = data.content.replace(/\n/g, "");
-  const text = Buffer.from(b64, "base64").toString("utf-8");
-  const parsed = JSON.parse(text) as UsersFile;
-  return parsed.users ?? [];
 });

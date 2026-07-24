@@ -7,6 +7,7 @@ import { getMetadataYaml } from "@/lib/datasets/read";
 import { requireUserOr401 } from "@/lib/auth";
 import { injectDeleted } from "@/lib/auth/inject-actor";
 import { appendDeleteAudit } from "@/lib/auth/audit-log";
+import { fetchFileContents } from "@/lib/github/contents-api";
 
 interface DeleteRequest {
   slug: string;
@@ -52,36 +53,14 @@ export async function POST(req: NextRequest) {
   }
 
   // 1. Fetch metadata.yaml hiện tại (raw text để inject field)
-  const config_resp = await fetch(
-    `https://api.github.com/repos/${process.env.GITHUB_REPO_OWNER}/${process.env.GITHUB_REPO_NAME}/contents/datasets/${slug}/metadata.yaml?ref=${process.env.GITHUB_REPO_BRANCH ?? "main"}`,
-    {
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-        "User-Agent": "vnexpress-data-platform",
-      },
-      cache: "no-store",
-    }
-  );
-  if (config_resp.status === 404) {
+  const result = await fetchFileContents(`datasets/${slug}/metadata.yaml`);
+  if (!result) {
     return NextResponse.json(
       { error: `Dataset "${slug}" không tồn tại` },
       { status: 404 }
     );
   }
-  if (!config_resp.ok) {
-    return NextResponse.json(
-      { error: "Không đọc được metadata.yaml" },
-      { status: 500 }
-    );
-  }
-
-  const data = (await config_resp.json()) as {
-    content?: string;
-    sha?: string;
-  };
-  const b64 = (data.content ?? "").replace(/\n/g, "");
-  const yamlText = Buffer.from(b64, "base64").toString("utf-8");
+  const yamlText = result.content;
 
   // 2. Inject status: deleted + deleted_by/at
   const isoNow = new Date().toISOString();

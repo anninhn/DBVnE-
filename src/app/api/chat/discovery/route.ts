@@ -32,7 +32,9 @@ import { flattenAllDatasets } from "@/lib/chat/flatten-metadata";
 import { extractDiscoveryJSON } from "@/lib/chat/extract-json";
 import {
   appendChatLog,
+  getDailyQuota,
   getUserDailyCount,
+  GLOBAL_QUOTA_HARD_LIMIT,
   incrementDailyQuota,
   RATE_LIMIT_PER_USER_PER_DAY,
 } from "@/lib/r2/chat-log";
@@ -90,12 +92,23 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 3. Rate limit
-  const userCount = await getUserDailyCount(userEmail);
+  // 3. Rate limit — per-user + global (Gemini free tier guard)
+  const [userCount, globalQuota] = await Promise.all([
+    getUserDailyCount(userEmail),
+    getDailyQuota(),
+  ]);
   if (userCount >= RATE_LIMIT_PER_USER_PER_DAY) {
     return NextResponse.json(
       {
         error: `Bạn đã hỏi quá ${RATE_LIMIT_PER_USER_PER_DAY} câu hôm nay. Quay lại sau.`,
+      },
+      { status: 429 },
+    );
+  }
+  if (globalQuota.count >= GLOBAL_QUOTA_HARD_LIMIT) {
+    return NextResponse.json(
+      {
+        error: "Hệ thống đã đạt giới hạn câu hỏi trong ngày. Vui lòng thử lại vào ngày mai.",
       },
       { status: 429 },
     );

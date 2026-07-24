@@ -13,7 +13,10 @@
 
 import { parse as parseYaml } from "yaml";
 import type { MetadataYaml } from "@/lib/datasets/types";
-import { getGithubConfig, rawUrl } from "@/lib/datasets/types";
+import {
+  fetchFileContents,
+  listFolderEntries,
+} from "@/lib/github/contents-api";
 import { parseDictionaryMarkdown } from "@/lib/datasets/read";
 import type { DataDictionaryEntry } from "@/lib/types/dataset";
 
@@ -30,52 +33,16 @@ export function clearFlattenCache(): void {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// GitHub fetch helpers (pattern list.ts + read.ts)
+// Helpers
 // ──────────────────────────────────────────────────────────────────────────────
 
-interface GithubContentEntry {
-  name: string;
-  path: string;
-  type: "file" | "dir";
-}
-
-function authHeaders(token?: string): Record<string, string> {
-  return {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "vnexpress-data-platform",
-    ...(token ? { Authorization: `Bearer ${token}` } : {}),
-  };
-}
-
 async function listSlugs(): Promise<string[]> {
-  const config = getGithubConfig();
-  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/datasets?ref=${config.branch}`;
-  const res = await fetch(url, {
-    headers: { ...authHeaders(config.token), "Cache-Control": "no-cache" },
-    cache: "no-store",
-  });
-  if (res.status === 404) return [];
-  if (!res.ok) throw new Error(`GitHub contents API failed: ${res.status}`);
-
-  const entries = (await res.json()) as GithubContentEntry[];
+  const entries = await listFolderEntries("datasets");
   return entries.filter((e) => e.type === "dir").map((e) => e.name);
 }
 
 async function fetchRaw(path: string): Promise<string | null> {
-  const config = getGithubConfig();
-  const res = await fetch(rawUrl(config, path), {
-    headers: authHeaders(config.token),
-    cache: "no-store",
-  });
-  if (res.status === 404) return null;
-  if (!res.ok) {
-    console.warn(`[flatten] fetch fail ${path}: ${res.status}`);
-    return null;
-  }
-  const data = (await res.json()) as { content?: string };
-  if (!data.content) return null;
-  const b64 = data.content.replace(/\n/g, "");
-  return Buffer.from(b64, "base64").toString("utf-8");
+  return (await fetchFileContents(path))?.content ?? null;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

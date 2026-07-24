@@ -16,40 +16,19 @@ import { cache } from "react";
 import { parse as parseYaml } from "yaml";
 import type { Dataset } from "@/lib/types/dataset";
 import type { MetadataYaml } from "./types";
-import { getGithubConfig, rawUrl } from "./types";
-import { metadataToDataset, enrichRowCounts, enrichDownloadCounts } from "./read";
+import {
+  fetchFileContents,
+  listFolderEntries,
+} from "@/lib/github/contents-api";
+import { metadataToDataset } from "./read";
+import { enrichRowCounts, enrichDownloadCounts } from "./enrichment";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // GitHub contents API
 // ──────────────────────────────────────────────────────────────────────────────
 
-interface GithubContentEntry {
-  name: string;
-  path: string;
-  type: "file" | "dir";
-}
-
 async function listDatasetFolders(): Promise<string[]> {
-  const config = getGithubConfig();
-  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/datasets?ref=${config.branch}`;
-
-  const headers: Record<string, string> = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "vnexpress-data-platform",
-    "Cache-Control": "no-cache",
-    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
-  };
-
-  const res = await fetch(url, { headers, cache: "no-store" });
-  if (res.status === 404) {
-    // datasets/ folder chưa tồn tại — chưa có dataset nào
-    return [];
-  }
-  if (!res.ok) {
-    throw new Error(`GitHub contents API failed: ${res.status}`);
-  }
-
-  const entries = (await res.json()) as GithubContentEntry[];
+  const entries = await listFolderEntries("datasets");
   return entries.filter((e) => e.type === "dir").map((e) => e.name);
 }
 
@@ -58,30 +37,10 @@ async function listDatasetFolders(): Promise<string[]> {
 // ──────────────────────────────────────────────────────────────────────────────
 
 async function fetchMetadata(slug: string): Promise<MetadataYaml | null> {
-  const config = getGithubConfig();
-  const url = rawUrl(config, `datasets/${slug}/metadata.yaml`);
-
-  const headers: Record<string, string> = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "vnexpress-data-platform",
-    ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
-  };
-
-  // Contents API: response JSON có field `content` base64-encoded
-  const res = await fetch(url, { headers, cache: "no-store" });
-  if (res.status === 404) return null;
-  if (!res.ok) {
-    console.warn(`[listDatasets] skip ${slug}: ${res.status}`);
-    return null;
-  }
-
-  const data = (await res.json()) as { content?: string };
-  if (!data.content) return null;
-  const b64 = data.content.replace(/\n/g, "");
-  const text = Buffer.from(b64, "base64").toString("utf-8");
-
+  const result = await fetchFileContents(`datasets/${slug}/metadata.yaml`);
+  if (!result) return null;
   try {
-    return parseYaml(text) as MetadataYaml;
+    return parseYaml(result.content) as MetadataYaml;
   } catch (err) {
     console.warn(`[listDatasets] parse fail ${slug}:`, err);
     return null;

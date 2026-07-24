@@ -25,8 +25,7 @@ export type Category =
 
 /**
  * Edit history entry — mirror MetadataYaml.edits[] (spec D2).
- * Duplicate ở đây thay vì import từ datasets/types.ts để tránh circular import
- * (xem convention comment ở ColumnStats duplicate trong datasets/types.ts).
+ * Canonical location — `src/lib/datasets/types.ts` re-export từ đây.
  */
 export interface EditEntry {
   by: string;        // username
@@ -36,7 +35,7 @@ export interface EditEntry {
 
 /**
  * Article link — mirror MetadataYaml.articles[] (spec 2026-07-24-article-linking).
- * Duplicate ở đây theo cùng convention EditEntry/ColumnStats (tránh circular import).
+ * Canonical location — `src/lib/datasets/types.ts` re-export từ đây.
  */
 export interface ArticleEntry {
   url: string;
@@ -99,6 +98,8 @@ export interface Resource {
  * Stats cho 1 cột. Phân biệt bằng `kind`:
  *  - numeric: min/max + histogram (8 bins) — render bar chart
  *  - categorical: distinct count + top segments — render proportion bar
+ *
+ * Canonical location — `src/lib/datasets/types.ts` re-export từ đây.
  */
 export type ColumnStats =
   | { kind: "numeric"; min: number; max: number; histogram: number[] }

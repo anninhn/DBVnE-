@@ -24,8 +24,13 @@ const CHAT_LOG_PREFIX = "logs/chat";
 /** Per-user rate limit — Gemini free tier 15 RPM global, 1500 RPD. */
 export const RATE_LIMIT_PER_USER_PER_DAY = 100;
 
-/** Alert threshold (80% của Gemini free tier 1500 RPD). */
-export const GLOBAL_QUOTA_WARN_THRESHOLD = 1200;
+/**
+ * Hard limit global queries/day across all users — 80% của Gemini free tier 1500 RPD,
+ * buffer 300 cho eval script + retry + dev testing. Route check trước khi call Gemini,
+ * exceed → HTTP 429. Race condition overshoot có thể xảy ra (read-then-write) — acceptable
+ * cho low traffic internal newsroom.
+ */
+export const GLOBAL_QUOTA_HARD_LIMIT = 1200;
 
 export interface ChatLogEntry {
   id: string;
@@ -158,8 +163,8 @@ export async function getDailyQuota(): Promise<DailyQuota> {
   });
 }
 
-/** Tăng global quota counter + update last_query_at. */
-export async function incrementDailyQuota(): Promise<void> {
+/** Tăng global quota counter + update last_query_at. Trả count mới (hoặc -1 nếu fail). */
+export async function incrementDailyQuota(): Promise<number> {
   try {
     const date = todayDate();
     const current = await getDailyQuota();
@@ -169,13 +174,16 @@ export async function incrementDailyQuota(): Promise<void> {
     };
     await writeJson(quotaKey(date), next);
 
-    // Warn khi >80% Gemini free tier (1500 RPD)
-    if (next.count === GLOBAL_QUOTA_WARN_THRESHOLD) {
+    // Warn khi chạm hard limit — signal overshoot do race condition (route đã block ở
+    // >= HARD_LIMIT nhưng read-then-write race có thể làm count vượt vài đơn vị).
+    if (next.count >= GLOBAL_QUOTA_HARD_LIMIT) {
       console.warn(
-        `[chat-log] Global daily quota hit ${GLOBAL_QUOTA_WARN_THRESHOLD} (80% of Gemini free tier 1500 RPD). Consider upgrade or fallback provider.`,
+        `[chat-log] Global daily quota reached ${next.count} (hard limit ${GLOBAL_QUOTA_HARD_LIMIT}). Gemini free tier 1500 RPD approach — consider upgrade hoặc fallback provider.`,
       );
     }
+    return next.count;
   } catch (err) {
     console.warn(`[chat-log] increment quota failed:`, err);
+    return -1;
   }
 }
