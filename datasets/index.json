@@ -1,0 +1,230 @@
+[
+  {
+    "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-cua-viet-nam",
+    "title": "Ranh giới hành chính cấp phường/xã của Việt Nam",
+    "description": "Dữ liệu ranh giới hành chính cấp xã (phường, xã, thị trấn) của Việt Nam, bao gồm 3321 đơn vị với định dạng MultiPolygon. Phạm vi địa lý bao phủ toàn bộ lãnh thổ Việt Nam, bao gồm cả các đảo.",
+    "category": "chinh-tri",
+    "tags": [
+      "hanh-chinh",
+      "ranh-gioi",
+      "cap-xa",
+      "viet-nam",
+      "ban-do"
+    ],
+    "uploaded_at": "2026-07-23T08:11:58.664Z",
+    "uploaded_by": "demo",
+    "row_count": 3321,
+    "file_count": 1,
+    "total_size_mb": 169.21,
+    "format": "geojson",
+    "source": "Tổng hợp từ GSO",
+    "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "geojson",
+        "r2_key": "2562d538-953e-47c2-b6c5-a06cb6113e90/vietnam_wards.geojson",
+        "size_mb": 169.21
+      }
+    ],
+    "feature_count": 3321,
+    "geometry_type": "MultiPolygon",
+    "bbox": [
+      102.143914,
+      7.183812,
+      117.827998,
+      23.392643
+    ],
+    "crs": "EPSG:4326"
+  },
+  {
+    "slug": "ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam",
+    "title": "Ranh giới hành chính 34 tỉnh thành Việt Nam",
+    "description": "Dataset chứa ranh giới hành chính của 34 tỉnh thành Việt Nam, với mỗi tỉnh thành được biểu diễn bằng geometry MultiPolygon. Dữ liệu bao gồm 34 features và sử dụng hệ tọa độ WGS84, phủ khắp lãnh thổ Việt Nam. TEST 2",
+    "category": "chinh-tri",
+    "tags": [
+      "ranh-gioi",
+      "hanh-chinh",
+      "tinh-thanh",
+      "viet-nam",
+      "ban-do"
+    ],
+    "uploaded_at": "2026-07-23T08:07:59.283Z",
+    "uploaded_by": "demo",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-07-24T03:31:53.339Z",
+    "row_count": 34,
+    "file_count": 1,
+    "total_size_mb": 2.2,
+    "format": "geojson",
+    "source": "Tổng hợp từ GSO",
+    "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "geojson",
+        "r2_key": "2043dfa2-1fcf-4014-a60b-4631e5c0344b/vietnam_provinces.geojson",
+        "size_mb": 2.2
+      }
+    ]
+  },
+  {
+    "slug": "vi-tri-ha-tang-truyen-tai-dien-tai-viet-nam",
+    "title": "Vị trí hạ tầng truyền tải điện tại Việt Nam",
+    "description": "Dữ liệu vị trí của 114001 điểm (Point) hạ tầng truyền tải điện (cột điện, tháp điện, trạm biến áp) tại các khu vực của Việt Nam, bao gồm các đường dây 500kV, 220kV,.... Dữ liệu bao gồm thông tin về thiết kế, vật liệu, điện áp và nhà vận hành. Data được trích xuất từ OpenStreetMap tại thời điểm 10/04/2026.",
+    "category": "ha-tang",
+    "tags": [
+      "dien-luc",
+      "ha-tang",
+      "truyen-tai",
+      "cot-dien",
+      "thap-dien",
+      "evn",
+      "nang-luong",
+      "ban-do"
+    ],
+    "uploaded_at": "2026-07-23T07:57:14.492Z",
+    "uploaded_by": "demo",
+    "row_count": 114001,
+    "file_count": 1,
+    "total_size_mb": 18.03,
+    "format": "geojson",
+    "source": "OpenStreetMap",
+    "source_url": "https://www.openstreetmap.org",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "geojson",
+        "r2_key": "d331e95e-e836-471c-a7b5-8bf9578190d8/power.geojson",
+        "size_mb": 18.03
+      }
+    ],
+    "feature_count": 114001,
+    "geometry_type": "Point",
+    "bbox": [
+      105.4384914,
+      10.1335966,
+      108.7398418,
+      21.0013677
+    ],
+    "crs": "EPSG:4326"
+  },
+  {
+    "slug": "quy-hoach-he-thong-cang-hang-khong-viet-nam-2030-2050",
+    "title": "Quy hoạch hệ thống cảng hàng không Việt Nam đến năm 2030 và 2050",
+    "description": "Dữ liệu chi tiết về quy hoạch các cảng hàng không tại Việt Nam, bao gồm tên cảng, vị trí địa lý, quy mô, cấp sân bay, công suất thiết kế, diện tích đất và ước tính chi phí đầu tư cho các giai đoạn đến năm 2030 và 2050.",
+    "category": "ha-tang",
+    "tags": [
+      "san-bay",
+      "hang-khong",
+      "quy-hoach",
+      "dau-tu",
+      "ha-tang",
+      "giao-thong"
+    ],
+    "uploaded_at": "2026-07-16T08:40:48.369Z",
+    "uploaded_by": "demo",
+    "row_count": 37,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Bộ Xây dựng (Quyết định số 1140/QĐ-BXD ngày 01 tháng 7 năm 2026)",
+    "source_url": "https://moc.gov.vn/vn/tin-tuc/1176/95584/phe-duyet-dieu-chinh-quy-hoach-he-thong-cang-hang-khong-toan-quoc-thoi-ky-2021-2030--tam-nhin-den-nam-2050.aspx",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7a92dee4-81ac-44ac-bd9f-3b1be51eb44f/Quy_hoa_ch_he___tho__ng_ca_ng_ha_ng_kho_ng__Phu__lu_c_I___II__-_Quy_hoa_ch_he___tho__ng_ca_ng_ha_ng_kho_ng__Phu__lu_c_I___II_.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
+    "slug": "diem-thi-tot-nghiep-thpt-quoc-gia",
+    "title": "Điểm thi tốt nghiệp THPT Quốc gia",
+    "description": "Dữ liệu tổng hợp điểm thi của thí sinh trong kỳ thi tốt nghiệp THPT Quốc gia (thi Đại học) trên toàn quốc, bao gồm điểm các môn học chính và một số môn tự chọn, từ năm 2021 đến 2026.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "diem-thi",
+      "thpt-quoc-gia",
+      "mon-hoc",
+      "thi-sinh"
+    ],
+    "uploaded_at": "2026-07-10T08:38:27.024Z",
+    "uploaded_by": "demo",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-07-24T06:37:16.567Z",
+    "row_count": 6443905,
+    "file_count": 1,
+    "total_size_mb": 429.47,
+    "format": "csv",
+    "source": "VnExpress tổng hợp từ Bộ Giáo dục và Đào tạo (Bộ GD&ĐT)",
+    "source_url": "https://diemthi.vnexpress.net",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "bd6ce9db-b6d7-42e7-a429-2b675faaa2d4/diem_thi_tong_hop.csv",
+        "size_mb": 429.47
+      }
+    ]
+  },
+  {
+    "slug": "thu-tuc-hanh-chinh-theo-linh-vuc-va-co-quan-quan-ly",
+    "title": "Thủ tục hành chính theo lĩnh vực và cơ quan quản lý",
+    "description": "Dataset thống kê các lĩnh vực quản lý thủ tục hành chính, số lượng thủ tục tương ứng, và cơ quan quản lý trước/sau sáp nhập. Dữ liệu cũng bao gồm nguồn văn bản pháp luật liên quan.",
+    "category": "chinh-tri",
+    "tags": [
+      "thu-tuc-hanh-chinh",
+      "hanh-chinh-cong",
+      "bo-nganh",
+      "quan-ly-nha-nuoc"
+    ],
+    "uploaded_at": "2026-07-10T05:53:58.721Z",
+    "uploaded_by": "demo",
+    "row_count": 272,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Văn phòng Chính phủ",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e58f4baa-06fa-49fc-9635-628b429b4617/Li_nh_vu__c_qua_n_ly__thu__tu_c_ha_nh_chi_nh_Bo___nga_nh.xlsx_-_To__ng.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
+    "slug": "thong-tin-34-tinhthanh-pho",
+    "title": "Thông tin 34 tỉnh/thành phố và kịch bản sáp nhập hành chính đề xuất",
+    "description": "Dataset cung cấp thông tin về dân số, diện tích, kinh tế và hạ tầng của 34 tỉnh/thành phố, kèm theo các chỉ số liên quan đến một kịch bản đề xuất sáp nhập đơn vị hành chính.",
+    "category": "chinh-tri",
+    "tags": [
+      "tinh-thanh",
+      "sap-nhap-hanh-chinh",
+      "dan-so",
+      "kinh-te",
+      "ha-tang"
+    ],
+    "uploaded_at": "2026-07-09T18:11:58.012Z",
+    "uploaded_by": "demo",
+    "row_count": 34,
+    "file_count": 1,
+    "total_size_mb": 0.76,
+    "format": "xlsx",
+    "source": "unknown",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "3ff7a8f6-ea22-43a6-8b3d-7f54a2a6348d/250703_34tinhthanh_Cleaned_.xlsx",
+        "size_mb": 0.76
+      }
+    ]
+  }
+]
