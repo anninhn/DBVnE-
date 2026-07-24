@@ -20,7 +20,7 @@ format: geojson
 row_count: 34
 columns_count: 8
 confidence: medium
-uploaded_by: demo
+uploaded_by: ninh
 uploaded_at: 2026-07-23T08:07:59.283Z
 files:
   - filename: vietnam_provinces.geojson

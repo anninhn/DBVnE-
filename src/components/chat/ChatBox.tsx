@@ -18,7 +18,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import { Loader2, ArrowUp, AlertCircle, Search, Compass, Lightbulb } from "lucide-react";
+import { Loader2, ArrowUp, AlertCircle, Search, Compass, Lightbulb, Database, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CitationCard from "./CitationCard";
@@ -68,12 +68,21 @@ interface ChatEntry {
   error?: string;
 }
 
-export default function ChatBox({ displayName }: { displayName: string }) {
+export default function ChatBox({
+  displayName,
+  attachedDataset: initialAttached,
+}: {
+  displayName: string;
+  attachedDataset?: { slug: string; title: string } | null;
+}) {
   const searchParams = useSearchParams();
   const [input, setInput] = useState("");
   const [entries, setEntries] = useState<ChatEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const [streamingText, setStreamingText] = useState("");
+  // Attach dataset (ChatGPT-style chip) — từ sidebar "Hỏi về dataset này".
+  // Submit gửi attachedSlug → API inject full metadata + dictionary làm FOCUS.
+  const [attached, setAttached] = useState(initialAttached ?? null);
   const scrollRef = useRef<HTMLDivElement>(null);
   // Guard chống apply prefill nhiều lần (StrictMode double-invoke + URL ref change).
   // Apply 1 lần duy nhất trên mount.
@@ -120,7 +129,7 @@ export default function ChatBox({ displayName }: { displayName: string }) {
       const res = await fetch("/api/chat/discovery", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query, attachedSlug: attached?.slug }),
       });
 
       if (!res.ok) {
@@ -200,7 +209,7 @@ export default function ChatBox({ displayName }: { displayName: string }) {
       setLoading(false);
       setStreamingText("");
     }
-  }, [loading]);
+  }, [loading, attached?.slug]);
 
   // Pre-fill từ URL ?prefill=<title> — CTA từ dataset detail page.
   // CHỈ fill input, KHÔNG auto-submit — user có agency edit/ask câu riêng.
@@ -219,10 +228,34 @@ export default function ChatBox({ displayName }: { displayName: string }) {
 
   const hasEntries = entries.length > 0;
 
+  // Attach chip — ChatGPT-style, render phía trên input. Click X để clear attach.
+  // (User có thể clear nếu muốn hỏi về dataset khác hoặc câu generic.)
+  const renderAttachChip = () =>
+    attached ? (
+      <div className="flex justify-start mb-2">
+        <div className="inline-flex items-center gap-1.5 pl-2.5 pr-1.5 py-1 rounded-full bg-hf-yellow/15 border border-hf-yellow/50 text-[12px] text-hf-text max-w-full">
+          <Database className="w-3 h-3 shrink-0 text-hf-text-muted" aria-hidden />
+          <span className="truncate max-w-[260px]" title={attached.title}>
+            {attached.title}
+          </span>
+          <button
+            type="button"
+            onClick={() => setAttached(null)}
+            disabled={loading}
+            aria-label="Bỏ attach dataset"
+            className="ml-0.5 p-0.5 rounded-full hover:bg-hf-yellow/30 text-hf-text-muted hover:text-hf-text disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            <X className="w-3 h-3" strokeWidth={2.5} />
+          </button>
+        </div>
+      </div>
+    ) : null;
+
   // Input form reused ở 2 nơi: greeting state (centered) + conversation state (bottom).
   // Function tạo element mới mỗi call → tránh shared-ref issue khi render 2 nơi.
   const renderInput = () => (
     <form onSubmit={handleSubmit}>
+      {renderAttachChip()}
       <div className="relative flex items-center rounded-full border border-hf-border bg-hf-bg shadow-sm transition-colors focus-within:border-hf-border-strong">
         <input
           type="text"

@@ -13,7 +13,7 @@
  */
 
 import { useState, memo } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { Upload, LogIn } from "lucide-react";
@@ -36,7 +36,13 @@ function CatalogNavImpl({ query, onQueryChange }: CatalogNavProps) {
   const isControlled = query !== undefined && onQueryChange !== undefined;
   const [localQuery, setLocalQuery] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
   const { data: session } = useSession();
+
+  // Active tab detection — AMA là prefix match vì có thể có query params,
+  // Datasets phải là root exact (tránh match /datasets/<slug>).
+  const isDatasetsActive = pathname === "/";
+  const isAmaActive = pathname?.startsWith("/hoi-du-lieu") ?? false;
 
   const user = session?.user as
     | { displayName?: string; username?: string }
@@ -53,14 +59,26 @@ function CatalogNavImpl({ query, onQueryChange }: CatalogNavProps) {
         <span>VnExpress Data</span>
       </Link>
 
-      {/* Nav links — Datasets (catalog) + Hỏi dữ liệu (Discovery Chat Phase 2). */}
+      {/* Nav links — Datasets (catalog) + Hỏi dữ liệu (Discovery Chat Phase 2).
+          Active tab phản ánh qua color: active = đậm text-hf-text, inactive = muted. */}
       <div className="flex gap-5 text-sm shrink-0 items-center">
-        <Link href="/" className="font-semibold text-hf-text">
+        <Link
+          href="/"
+          className={`font-semibold transition-colors ${
+            isDatasetsActive
+              ? "text-hf-text"
+              : "text-hf-text-muted hover:text-hf-text"
+          }`}
+        >
           Datasets
         </Link>
         <Link
           href="/hoi-du-lieu"
-          className="font-semibold text-hf-text-muted hover:text-hf-text transition inline-flex items-center gap-1.5"
+          className={`font-semibold transition-colors inline-flex items-center gap-1.5 ${
+            isAmaActive
+              ? "text-hf-text"
+              : "text-hf-text-muted hover:text-hf-text"
+          }`}
         >
           Ask Me Anything
           <span className="text-[10px] font-bold leading-none px-1.5 py-0.5 rounded bg-hf-yellow text-hf-text">

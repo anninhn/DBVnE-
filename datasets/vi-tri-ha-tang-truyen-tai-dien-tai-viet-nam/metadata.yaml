@@ -26,7 +26,7 @@ geometry_type: "Point"
 bbox: [105.4384914, 10.1335966, 108.7398418, 21.0013677]
 crs: "EPSG:4326"
 confidence: high
-uploaded_by: demo
+uploaded_by: ninh
 uploaded_at: "2026-07-23T07:57:14.492Z"
 files:
   - filename: "power.geojson"

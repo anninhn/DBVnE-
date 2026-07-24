@@ -23,7 +23,7 @@ geometry_type: "MultiPolygon"
 bbox: [102.143914, 7.183812, 117.827998, 23.392643]
 crs: "EPSG:4326"
 confidence: medium
-uploaded_by: demo
+uploaded_by: ninh
 uploaded_at: "2026-07-23T08:11:58.664Z"
 files:
   - filename: "vietnam_wards.geojson"

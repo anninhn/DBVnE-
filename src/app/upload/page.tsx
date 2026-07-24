@@ -1,5 +1,5 @@
-import Link from "next/link";
 import UploadWizard from "@/components/upload/UploadWizard";
+import CatalogNav from "@/components/CatalogNav";
 
 export const metadata = {
   title: "Upload Dataset · VnExpress Data",
@@ -7,16 +7,10 @@ export const metadata = {
 
 export default function UploadPage() {
   return (
-    <div className="min-h-[calc(100vh-52px)] bg-hf-bg-subtle">
-      <div className="max-w-[1280px] mx-auto px-6 py-8">
+    <div className="min-h-screen flex flex-col">
+      <CatalogNav />
+      <div className="max-w-[1280px] mx-auto px-6 py-8 w-full flex-1">
         <header className="mb-6">
-          <nav className="text-xs text-hf-text-faint mb-2">
-            <Link href="/" className="hover:text-hf-text-muted hover:underline">
-              Catalog
-            </Link>
-            <span className="mx-1">/</span>
-            <span className="text-hf-text-muted">Upload</span>
-          </nav>
           <h1 className="text-xl font-semibold text-hf-text">
             Upload Dataset{" "}
             <span className="text-hf-text-faint font-normal text-sm ml-2">

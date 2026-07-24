@@ -16,9 +16,13 @@ const ROWS_PER_PAGE = 10;
 
 interface DatasetViewerProps {
   dataset: Dataset;
+  /** Khi false, link "Tải về trực tiếp" → /login thay vì R2 public URL. */
+  canDownload?: boolean;
+  /** Slug — dùng build /login?next khi !canDownload. */
+  slug?: string;
 }
 
-export default function DatasetViewer({ dataset }: DatasetViewerProps) {
+export default function DatasetViewer({ dataset, canDownload = true, slug }: DatasetViewerProps) {
   const { geoResourceForFetch, clientFetch, viewableResources } =
     useDatasetPreview(dataset);
 
@@ -90,14 +94,17 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
         );
       }
       if (clientFetch.state === "error") {
+        const href = !canDownload && slug
+          ? `/login?next=${encodeURIComponent(`/datasets/${slug}`)}`
+          : geoResourceForFetch.file_url;
         return (
           <div className="py-10 text-center text-[13px] text-hf-text-muted">
             Không tải được dữ liệu.{" "}
             {clientFetch.errorMsg && (
               <span className="text-hf-text-faint">({clientFetch.errorMsg})</span>
             )}{" "}
-            {geoResourceForFetch.file_url && (
-              <a href={geoResourceForFetch.file_url} className="text-hf-link hover:underline">
+            {href && (
+              <a href={href} className="text-hf-link hover:underline">
                 Tải về trực tiếp
               </a>
             )}

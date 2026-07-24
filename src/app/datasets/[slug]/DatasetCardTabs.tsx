@@ -9,6 +9,8 @@ import DatasetGeoJsonPreview from "@/components/geo/DatasetGeoJsonPreview";
 
 interface Props {
   dataset: Dataset;
+  canDownload?: boolean;
+  slug?: string;
 }
 
 /**
@@ -23,7 +25,7 @@ interface Props {
  * thay vì conditional — vì DatasetGeoJsonPreview đã fetch GeoJSON client-side,
  * unmount sẽ reset state.
  */
-export default function DatasetCardTabs({ dataset }: Props) {
+export default function DatasetCardTabs({ dataset, canDownload, slug }: Props) {
   // Detect GeoJSON từ resource file_type (authoritative) HOẶC geometry_type
   // (metadata field). Cần cả 2 vì metadata cũ có thể thiếu geometry_type khi upload
   // trước khi geo fields support được commit.
@@ -33,7 +35,7 @@ export default function DatasetCardTabs({ dataset }: Props) {
   const [view, setView] = useState<"map" | "table">("map");
 
   // Tabular — không cần toggle, render thẳng DatasetViewer.
-  if (!isGeo) return <DatasetViewer dataset={dataset} />;
+  if (!isGeo) return <DatasetViewer dataset={dataset} canDownload={canDownload} slug={slug} />;
 
   const featureCount = dataset.feature_count;
 
@@ -72,7 +74,7 @@ export default function DatasetCardTabs({ dataset }: Props) {
             GeoJSON lớn (>10MB), SSR skip structured_data → DatasetViewer render
             GeoJsonClientTable fetch client-side. Mount upfront = download 169MB
             trên page load dù user chỉ xem map. Lazy mount tránh điều đó. */}
-        {view === "table" && <DatasetViewer dataset={dataset} />}
+        {view === "table" && <DatasetViewer dataset={dataset} canDownload={canDownload} slug={slug} />}
       </div>
     </div>
   );

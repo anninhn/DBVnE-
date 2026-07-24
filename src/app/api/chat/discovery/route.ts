@@ -28,8 +28,9 @@ import path from "path";
 import { randomUUID } from "crypto";
 import { requireUserOr401 } from "@/lib/auth";
 import { getAIClient } from "@/lib/ai/dataset-reviewer";
-import { flattenAllDatasets } from "@/lib/chat/flatten-metadata";
+import { flattenAllDatasets, buildFocusBlock } from "@/lib/chat/flatten-metadata";
 import { extractDiscoveryJSON } from "@/lib/chat/extract-json";
+import { getDatasetDetail } from "@/lib/datasets/read";
 import {
   appendChatLog,
   getDailyQuota,
@@ -47,6 +48,8 @@ export const maxDuration = 60; // AI stream có thể mất 10-30s với catalog
 
 interface DiscoveryRequest {
   query: string;
+  /** Optional slug dataset user đã attach (ChatGPT-style chip). */
+  attachedSlug?: string;
 }
 
 async function loadSystemPrompt(): Promise<string> {
@@ -92,6 +95,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const attachedSlug = body.attachedSlug?.trim() || undefined;
+
   // 3. Rate limit — per-user + global (Gemini free tier guard)
   const [userCount, globalQuota] = await Promise.all([
     getUserDailyCount(userEmail),
@@ -114,14 +119,27 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 4. Flatten metadata + load system prompt
+  // 4. Flatten metadata + load system prompt + build FOCUS block (nếu attached)
   let flattened: string;
   let systemPrompt: string;
+  let focusBlock = "";
   try {
     [flattened, systemPrompt] = await Promise.all([
       flattenAllDatasets(),
       loadSystemPrompt(),
     ]);
+
+    // FOCUS block — fetch full metadata + dictionary + sample rows của dataset attach.
+    // Silent fallback: slug invalid/deleted → focusBlock rỗng → flow như không attach.
+    if (attachedSlug) {
+      const detail = await getDatasetDetail(attachedSlug);
+      if (detail) {
+        const sampleRows = detail.resources[0]?.structured_data?.slice(0, 5);
+        focusBlock = buildFocusBlock(detail, sampleRows);
+      } else {
+        console.warn(`[chat/discovery] attachedSlug "${attachedSlug}" not found — ignoring attach`);
+      }
+    }
   } catch (err) {
     console.error("[chat/discovery] context prep failed:", err);
     return NextResponse.json(
@@ -145,7 +163,9 @@ export async function POST(req: NextRequest) {
             { role: "system", content: systemPrompt },
             {
               role: "user",
-              content: `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n\nDANH SÁCH DATASET:\n${flattened}`,
+              content: focusBlock
+                ? `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n${focusBlock}\n\nDANH SÁCH DATASET:\n${flattened}`
+                : `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n\nDANH SÁCH DATASET:\n${flattened}`,
             },
           ],
           temperature: 0.3,

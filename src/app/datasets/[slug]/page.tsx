@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Pencil, Download } from "lucide-react";
 import { getDatasetBySlug, getDatasetDetail } from "@/lib/datasets/read";
 import { formatCompactNumber } from "@/lib/format";
-import { lookupDisplayName } from "@/lib/auth";
+import { lookupDisplayName, requireUser } from "@/lib/auth";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import CatalogNav from "@/components/CatalogNav";
 import TabSwitcher from "./TabSwitcher";
@@ -42,6 +42,8 @@ export default async function DatasetPage({ params }: PageProps) {
 
   // Resolve displayName cho header (đồng bộ với sidebar ActorRow).
   const ownerDisplay = await lookupDisplayName(dataset.uploaded_by);
+  // Download yêu cầu đăng nhập (API route đã có requireUserOr401).
+  const currentUser = await requireUser();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -61,7 +63,11 @@ export default async function DatasetPage({ params }: PageProps) {
                   Sẽ enable lại khi build social features. */}
               {dataset.resources[0]?.file_url && (
                 <a
-                  href={`/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${dataset.resources[0].id}`}
+                  href={
+                    currentUser
+                      ? `/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${dataset.resources[0].id}`
+                      : `/login?next=${encodeURIComponent(`/datasets/${slug}`)}`
+                  }
                   className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted transition inline-flex items-center gap-1.5"
                 >
                   <Download className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
@@ -119,7 +125,7 @@ export default async function DatasetPage({ params }: PageProps) {
           {/* ── Dataset card tab (viewer + readme) ── */}
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px]">
             <div className="p-6 border-r border-hf-border min-w-0">
-              <DatasetCardTabs dataset={dataset} />
+              <DatasetCardTabs dataset={dataset} canDownload={!!currentUser} slug={slug} />
 
               {/* README */}
               <div className="mt-6">
@@ -163,7 +169,11 @@ export default async function DatasetPage({ params }: PageProps) {
           </div>
 
           {/* ── Files tab ── */}
-          <FilesTabContent resources={dataset.resources} slug={slug} />
+          <FilesTabContent
+            resources={dataset.resources}
+            slug={slug}
+            canDownload={!!currentUser}
+          />
 
           {/* ── Articles tab (spec 2026-07-24-article-linking) ── */}
           <ArticlesTab slug={slug} initialArticles={dataset.articles ?? []} />

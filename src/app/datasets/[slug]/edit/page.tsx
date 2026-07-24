@@ -7,6 +7,7 @@ import {
 } from "@/lib/datasets/read";
 import { getGithubConfig, rawUrl } from "@/lib/datasets/types";
 import EditDatasetForm from "@/components/dataset/EditDatasetForm";
+import CatalogNav from "@/components/CatalogNav";
 
 // Dynamic SSR — tránh Vercel cache 404
 export const dynamic = "force-dynamic";
@@ -69,21 +70,7 @@ export default async function EditDatasetPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Top nav — đơn giản hơn listing (không search input) */}
-      <nav className="bg-hf-bg border-b border-hf-border h-[52px] px-4 flex items-center gap-6 sticky top-0 z-50">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-bold text-[15px] text-hf-text"
-        >
-          <span className="text-[22px]">🤗</span>
-          <span>VnExpress Data</span>
-        </Link>
-        <div className="flex gap-5 flex-1 text-sm">
-          <Link href="/" className="font-semibold text-hf-text">
-            Datasets
-          </Link>
-        </div>
-      </nav>
+      <CatalogNav />
 
       <div className="max-w-[900px] mx-auto bg-hf-bg w-full flex-1 p-6">
         {/* Header */}

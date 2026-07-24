@@ -20,7 +20,7 @@ format: csv
 row_count: 6443905
 columns_count: 19
 confidence: high
-uploaded_by: demo
+uploaded_by: ninh
 uploaded_at: 2026-07-10T08:38:27.024Z
 files:
   - filename: diem_thi_tong_hop.csv
