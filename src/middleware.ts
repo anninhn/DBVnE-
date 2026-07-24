@@ -1,41 +1,28 @@
 /**
- * Next.js middleware — page-level auth protection.
+ * Next.js middleware — page-level auth protection qua NextAuth v5 auth() wrapper.
  *
- * Protect write pages (/upload, /datasets/[slug]/edit). API routes wrap riêng
- * qua requireUser helper (defense in depth — không phụ thuộc middleware).
+ * Pattern chính thức NextAuth v5: import authConfig từ src/auth.config.ts
+ * (edge-safe subset), wrap với NextAuth(), export default auth() làm middleware.
  *
- * Public paths: browse/preview/download/login/auth APIs.
+ * authorized() callback trong authConfig quyết định allow/redirect. Redirect
+ * target (/login) lấy từ authConfig.pages.signIn — NextAuth tự thêm ?next=
+ * param giữ original URL.
  *
  * Spec D5 + plan task 12.
  */
 
-import { NextResponse, type NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
+import NextAuth from "next-auth";
+import { authConfig } from "@/auth.config";
 
-/**
- * Matcher — chỉ activate middleware cho paths cần protect.
- * Tránh chạy cho static assets, public API, /login, /api/auth/*.
- */
+export const { auth: middleware } = NextAuth(authConfig);
+
 export const config = {
   matcher: [
+    // Skip static + Next internals
+    "/((?!_next/static|_next/image|favicon.ico|api/auth).*)",
     "/upload",
     "/upload/:path*",
     "/datasets/:slug/edit",
     "/datasets/:slug/edit/:path*",
   ],
 };
-
-export async function middleware(req: NextRequest) {
-  const token = await getToken({
-    req,
-    secret: process.env.AUTH_SECRET,
-  });
-
-  if (!token) {
-    const loginUrl = new URL("/login", req.url);
-    loginUrl.searchParams.set("next", req.nextUrl.pathname + req.nextUrl.search);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  return NextResponse.next();
-}

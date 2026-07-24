@@ -12,6 +12,7 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import { authConfig } from "@/auth.config";
 import { readUsersJson, type UserRecord } from "./user-store";
 
 const TEN_YEARS_SECONDS = 10 * 365 * 24 * 60 * 60;
@@ -63,45 +64,9 @@ async function authorize(
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  // trustHost: Vercel preview deploy có dynamic host (.vercel.app subdomain).
-  // NextAuth default reject request nếu Host header không khớp AUTH_URL → cần bypass.
-  // CSRF built-in (double-submit cookie) vẫn active. Spec S5.
-  trustHost: true,
-  session: {
-    strategy: "jwt",
-    maxAge: TEN_YEARS_SECONDS,
-  },
-  // Cookie flags — dùng default NextAuth cookie names (next-auth.session-token etc.)
-  // để getToken() trong middleware hoạt động mà không cần custom cookieName param.
-  // Override chỉ flags httpOnly/sameSite/secure, không đổi name.
-  cookies: {
-    sessionToken: {
-      name: "next-auth.session-token",
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-    callbackUrl: {
-      name: "next-auth.callback-url",
-      options: {
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-    csrfToken: {
-      name: "next-auth.csrf-token",
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: process.env.NODE_ENV === "production",
-      },
-    },
-  },
+  ...authConfig,
+  // Override session maxAge (authConfig đã có, nhưng đảm bảo sync explicit)
+  session: { strategy: "jwt", maxAge: TEN_YEARS_SECONDS },
   providers: [
     Credentials({
       credentials: {
@@ -112,6 +77,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     }),
   ],
   callbacks: {
+    ...authConfig.callbacks,
     /**
      * Inject username + displayName + role vào JWT token.
      */

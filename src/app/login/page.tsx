@@ -13,16 +13,31 @@ export const dynamic = "force-dynamic";
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<{ next?: string; callbackUrl?: string }>;
 }) {
-  const session = await auth();
-  if (session?.user) {
-    const next = (await searchParams).next;
-    redirect(next && next.startsWith("/") ? next : "/");
+  const sp = await searchParams;
+  // NextAuth v5 middleware redirect truyền `callbackUrl` — có thể là absolute URL
+  // (http://localhost:3000/...) hoặc relative path. Code cũ dùng `next`.
+  // Accept cả 3 (ưu tiên callbackUrl). Strip origin để tránh open-redirect.
+  const rawNext = sp.callbackUrl ?? sp.next;
+  let safeNext = "/";
+  if (rawNext) {
+    try {
+      const u = new URL(rawNext, "http://placeholder");
+      // Chỉ accept same-origin path — strip host, giữ pathname+search
+      if (u.pathname.startsWith("/")) {
+        safeNext = u.pathname + u.search;
+      }
+    } catch {
+      // rawNext là relative path — accept nếu startsWith "/"
+      if (rawNext.startsWith("/")) safeNext = rawNext;
+    }
   }
 
-  const next = (await searchParams).next;
-  const safeNext = next && next.startsWith("/") ? next : "/";
+  const session = await auth();
+  if (session?.user) {
+    redirect(safeNext);
+  }
 
   return (
     <>
