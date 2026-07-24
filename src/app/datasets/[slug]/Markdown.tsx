@@ -1,11 +1,12 @@
-"use client";
-
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 /**
- * Render Markdown an toàn (no raw HTML) với styling khớp HF tokens.
- * Dùng cho dataset description (README) trên Dataset card tab.
+ * Server component — render Markdown an toàn (no raw HTML) với styling
+ * khớp HF tokens. Dùng cho dataset description (README) trên Dataset card tab.
+ *
+ * Bỏ "use client" (2026-07-24): component pure, không hooks → render SSR
+ * loại react-markdown + remark-gfm (~35KB gz) khỏi client bundle.
  * spec: specs/2026-06-24-markdown-description/
  */
 export default function Markdown({ children }: { children: string }) {
