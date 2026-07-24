@@ -12,7 +12,7 @@
  * Nếu không → ẩn (browse công khai). Spec plan task 10.
  */
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -27,7 +27,12 @@ interface CatalogNavProps {
   onQueryChange?: (q: string) => void;
 }
 
-export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
+/**
+ * CatalogNav — memoized vì parent (DatasetExplorer) re-render khi sort/filter/page
+ * change, nhưng nav không phụ thuộc những state đó. Tránh re-render SearchBox +
+ * useSession (đắt) mỗi lần user toggle filter.
+ */
+function CatalogNavImpl({ query, onQueryChange }: CatalogNavProps) {
   const isControlled = query !== undefined && onQueryChange !== undefined;
   const [localQuery, setLocalQuery] = useState("");
   const router = useRouter();
@@ -48,14 +53,21 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
         <span>VnExpress Data</span>
       </Link>
 
-      {/* Nav links */}
-      <div className="flex gap-5 text-sm shrink-0">
+      {/* Nav links — Phase 1 chỉ có Datasets functional.
+          Ask Me Anything là placeholder cho Phase 2 (Discovery Chat) + Phase 3 (Intelligence Q&A). */}
+      <div className="flex gap-5 text-sm shrink-0 items-center">
         <Link href="/" className="font-semibold text-hf-text">
           Datasets
         </Link>
-        <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Spaces</span>
-        <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Tasks</span>
-        <span className="text-hf-text-muted hover:text-hf-text cursor-pointer">Community</span>
+        <span
+          className="inline-flex items-center gap-1.5 text-hf-text-faint cursor-not-allowed"
+          title="Sẵn có ở Phase 2+ — Discovery Chat + Q&A"
+        >
+          Ask Me Anything
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-hf-bg-muted text-hf-text-faint font-medium uppercase tracking-wide">
+            Coming soon
+          </span>
+        </span>
       </div>
 
       {/* Search — luôn hiển thị. Listing: controlled (live). Detail: Enter → navigate. */}
@@ -111,3 +123,6 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
     </nav>
   );
 }
+
+const CatalogNav = memo(CatalogNavImpl);
+export default CatalogNav;

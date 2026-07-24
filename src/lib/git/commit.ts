@@ -152,6 +152,29 @@ export async function commitMetadataFiles(
 }
 
 /**
+ * Commit CHỈ metadata.yaml — không đụng dictionary.md.
+ *
+ * Spec 2026-07-24-article-linking: add article là metadata-only mutation,
+ * không cần re-render dictionary. Tránh overwrite dictionary.md content
+ * (caller không có existing dictionary text → sẽ bị empty).
+ */
+export async function commitMetadataYamlOnly(
+  slug: string,
+  metadataYaml: string,
+  commitMessage: string
+): Promise<CommitResult> {
+  return commitFiles(
+    [
+      {
+        path: `datasets/${slug}/metadata.yaml`,
+        content: metadataYaml,
+      },
+    ],
+    commitMessage
+  );
+}
+
+/**
  * Xóa metadata.yaml + dictionary.md của 1 dataset khỏi git repo.
  *
  * Pattern delete qua createTree: mỗi item cần path + mode + type + sha:null.

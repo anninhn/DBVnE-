@@ -65,6 +65,22 @@ export interface EditEntry {
 }
 
 /**
+ * Article link — bài báo VNExpress sử dụng dataset.
+ * Spec 2026-07-24-article-linking. Duplicate type tại đây theo convention
+ * ColumnStats (tránh circular import với src/lib/types/dataset.ts).
+ */
+export interface ArticleEntry {
+  url: string;
+  title: string;
+  author?: string;
+  published_at?: string;
+  section?: string;
+  thumbnail?: string;
+  added_at: string;
+  added_by: string;
+}
+
+/**
  * Stats cho 1 cột — mirror type từ src/lib/types/dataset.ts.
  * Duplicate ở đây để tránh circular import (types/dataset.ts import từ datasets/ layer).
  */
@@ -122,6 +138,10 @@ export interface MetadataYaml {
   geometry_type?: string;
   bbox?: number[];
   crs?: string;
+
+  // Articles (spec 2026-07-24-article-linking) — provenance ngược:
+  // bài báo VNExpress đã publish nào sử dụng dataset này.
+  articles?: ArticleEntry[];
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

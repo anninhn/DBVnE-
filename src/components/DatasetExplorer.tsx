@@ -1,22 +1,21 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Category, Dataset } from "@/lib/types/dataset";
 import { CATEGORY_LABELS } from "@/lib/types/dataset";
 import { createSearchAdapter } from "@/lib/search";
 import type { SearchAdapter } from "@/lib/search";
 import { formatCompactNumber } from "@/lib/format";
-import { Star, Database, Table2, MapPin, FileText } from "lucide-react";
+import { Database, Table2, MapPin, FileText } from "lucide-react";
 import CatalogNav from "@/components/CatalogNav";
 
-type SortKey = "trending" | "recent" | "downloaded" | "liked";
+type SortKey = "trending" | "recent" | "downloaded";
 
 const SORT_LABELS: Record<SortKey, string> = {
   trending: "Trending",
   recent: "Recently updated",
   downloaded: "Most downloaded",
-  liked: "Most liked",
 };
 
 const ALL_CATEGORIES: Category[] = ["kinh-te", "xa-hoi", "chinh-tri", "khi-hau", "ha-tang", "giao-duc"];
@@ -118,13 +117,10 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
       case "downloaded":
         arr.sort((a, b) => b.downloads - a.downloads);
         break;
-      case "liked":
-        arr.sort((a, b) => b.likes - a.likes);
-        break;
       case "trending":
       default:
-        // Trending = blend downloads + likes
-        arr.sort((a, b) => b.downloads + b.likes * 2 - (a.downloads + a.likes * 2));
+        // Trending = downloads only (likes ẩn tạm do chưa có backend)
+        arr.sort((a, b) => b.downloads - a.downloads);
         break;
     }
     return arr;
@@ -281,60 +277,14 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
             </div>
           )}
 
-          {/* Dataset rows — compact, HF style */}
+          {/* Dataset rows — compact, HF style. Mỗi row memoized: khi sort/filter
+              change, mảng sorted/reference mới nhưng các Dataset object giữ nguyên
+              reference → memo skip re-render 20 rows. */}
           {paginatedResults.length > 0 ? (
             <div className="border-t border-hf-border">
-              {paginatedResults.map((d) => {
-                // Preview type — icon phân biệt Map/Table/File (thay badge text).
-                //   Map: GeoJSON (feature_count set HOẶC resource geojson) → MapPin emerald
-                //   Table: CSV/XLSX tabular → Table2 blue
-                //   File: PDF/MP3 hoặc không có preview data → FileText gray
-                const isMap =
-                  d.feature_count != null ||
-                  d.resources.some((r) => r.file_type === "geojson");
-                const isTabular = d.resources.some(
-                  (r) => r.file_type === "csv" || r.file_type === "xlsx",
-                );
-                const PreviewIcon = isMap ? MapPin : isTabular ? Table2 : FileText;
-                const iconColor = isMap
-                  ? "text-red-600"
-                  : isTabular
-                    ? "text-blue-600"
-                    : "text-hf-text-faint";
-                return (
-                  <Link
-                    key={d.slug}
-                    href={`/datasets/${d.slug}`}
-                    className="flex items-start gap-2 px-2 py-2.5 border-b border-hf-border text-[13px] hover:bg-hf-bg-subtle transition-colors"
-                  >
-                    <PreviewIcon className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${iconColor}`} strokeWidth={1.75} aria-hidden />
-                    {/* Content column — title (row 1) + metadata 2 dòng */}
-                    <div className="flex-1 min-w-0">
-                      <div className="font-medium text-hf-text truncate">
-                        {d.title}
-                      </div>
-                      <div className="flex items-center gap-2 mt-0.5 text-[11px]">
-                        {/* Primary: Updated + rows */}
-                        <span className="text-hf-text-muted">
-                          Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
-                          <span className="text-hf-text-faint mx-1">•</span>
-                          {d.row_count > 0 ? `${formatCompactNumber(d.row_count)} rows` : "—"}
-                        </span>
-                        {/* Secondary: files + size (muted hơn) */}
-                        <span className="text-hf-text-faint">
-                          {d.file_count} file{d.file_count !== 1 ? "s" : ""}
-                          <span className="mx-1">•</span>
-                          {d.total_size_mb} MB
-                        </span>
-                      </div>
-                    </div>
-                    <span className="ml-auto text-hf-text-muted flex items-center gap-1 shrink-0">
-                      <Star className="w-3 h-3" strokeWidth={1.75} aria-hidden />
-                      {d.likes}
-                    </span>
-                  </Link>
-                );
-              })}
+              {paginatedResults.map((d) => (
+                <DatasetRow key={d.slug} d={d} />
+              ))}
             </div>
           ) : (
             <div className="text-center py-20 text-hf-text-faint">
@@ -426,3 +376,68 @@ function FilterCheckbox({
     </label>
   );
 }
+
+// ─── Dataset row — memoized để skip re-render khi sort/page change ───
+
+/**
+ * Một row trong listing. Memoized vì:
+ * - Parent re-render khi sort/filter/page change.
+ * - Array `sorted` reference mới mỗi lần, nhưng các Dataset object giữ nguyên
+ *   reference (từ `results` useMemo) → memo skip.
+ * - Tránh re-mount lucide icons (SVG) + Intl.DateTimeFormat cho 20 rows.
+ */
+const DatasetRow = memo(function DatasetRow({ d }: { d: Dataset }) {
+  // Preview type — icon phân biệt Map/Table/File (thay badge text).
+  //   Map: GeoJSON (feature_count set HOẶC resource geojson) → MapPin emerald
+  //   Table: CSV/XLSX tabular → Table2 blue
+  //   File: PDF/MP3 hoặc không có preview data → FileText gray
+  const isMap =
+    d.feature_count != null ||
+    d.resources.some((r) => r.file_type === "geojson");
+  const isTabular = d.resources.some(
+    (r) => r.file_type === "csv" || r.file_type === "xlsx",
+  );
+  const PreviewIcon = isMap ? MapPin : isTabular ? Table2 : FileText;
+  const iconColor = isMap
+    ? "text-red-600"
+    : isTabular
+      ? "text-blue-600"
+      : "text-hf-text-faint";
+
+  return (
+    <Link
+      href={`/datasets/${d.slug}`}
+      className="flex items-start gap-2 px-2 py-2.5 border-b border-hf-border text-[13px] hover:bg-hf-bg-subtle transition-colors"
+    >
+      <PreviewIcon className={`w-3.5 h-3.5 mt-0.5 shrink-0 ${iconColor}`} strokeWidth={1.75} aria-hidden />
+      {/* Content column — title (row 1) + metadata 2 dòng */}
+      <div className="flex-1 min-w-0">
+        <div className="font-medium text-hf-text truncate">
+          {d.title}
+        </div>
+        <div className="flex items-center gap-2 mt-0.5 text-[11px]">
+          {/* Primary: Updated + rows */}
+          <span className="text-hf-text-muted">
+            Updated {new Date(d.uploaded_at).toLocaleDateString("vi-VN", { month: "short", day: "numeric" })}
+            <span className="text-hf-text-faint mx-1">•</span>
+            {d.row_count > 0 ? `${formatCompactNumber(d.row_count)} rows` : "—"}
+          </span>
+          {/* Secondary: files + size + downloads (muted hơn) */}
+          <span className="text-hf-text-faint">
+            {d.file_count} file{d.file_count !== 1 ? "s" : ""}
+            <span className="mx-1">•</span>
+            {d.total_size_mb} MB
+            <span className="mx-1">•</span>
+            {formatCompactNumber(d.downloads)} downloads
+            {d.articles && d.articles.length > 0 && (
+              <>
+                <span className="mx-1">•</span>
+                {d.articles.length} bài báo
+              </>
+            )}
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+});

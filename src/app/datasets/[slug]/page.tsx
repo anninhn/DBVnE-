@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Star, Pencil, Bookmark, Download } from "lucide-react";
+import { Pencil, Download } from "lucide-react";
 import { getDatasetBySlug, withPreviewData } from "@/lib/datasets/read";
 import { formatCompactNumber } from "@/lib/format";
 import { lookupDisplayName } from "@/lib/auth";
@@ -13,6 +13,7 @@ import MetadataSidebar from "./MetadataSidebar";
 import Markdown from "./Markdown";
 import DataDictionary from "./DataDictionary";
 import FilesTabContent from "./FilesTabContent";
+import ArticlesTab from "./ArticlesTab";
 
 // Dynamic SSR runtime — tránh Vercel cache 404 khi dataset chưa tồn tại
 // (cache layer fetch vẫn 60s qua `next: { revalidate: 60 }`).
@@ -56,14 +57,8 @@ export default async function DatasetPage({ params }: PageProps) {
           <h1 className="text-[22px] font-semibold text-hf-text flex items-center gap-4">
             <span className="min-w-0">{dataset.title}</span>
             <span className="flex gap-2 ml-auto">
-              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
-                <Star className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
-                {dataset.likes}
-              </button>
-              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
-                <Bookmark className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
-                Follow
-              </button>
+              {/* Star (likes) + Follow ẩn tạm — chưa có backend/volume user.
+                  Sẽ enable lại khi build social features. */}
               {dataset.resources[0]?.file_url && (
                 <a
                   href={`/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${dataset.resources[0].id}`}
@@ -118,7 +113,7 @@ export default async function DatasetPage({ params }: PageProps) {
           tabs={[
             { key: "card", label: "Dataset card" },
             { key: "files", label: "Files and versions" },
-            { key: "community", label: "Community" },
+            { key: "articles", label: "Article Linking" },
           ]}
         >
           {/* ── Dataset card tab (viewer + readme) ── */}
@@ -170,10 +165,9 @@ export default async function DatasetPage({ params }: PageProps) {
           {/* ── Files tab ── */}
           <FilesTabContent resources={dataset.resources} slug={slug} />
 
-          {/* ── Community tab ── */}
-          <div className="p-6 text-center text-hf-text-muted py-24">
-            Chưa có thảo luận. Hãy là người đầu tiên bình luận.
-          </div>
+          {/* ── Articles tab (spec 2026-07-24-article-linking) ── */}
+          <ArticlesTab slug={slug} initialArticles={dataset.articles ?? []} />
+
         </TabSwitcher>
       </div>
     </div>
