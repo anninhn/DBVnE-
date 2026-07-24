@@ -17,7 +17,7 @@ import { parse as parseYaml } from "yaml";
 import type { Dataset } from "@/lib/types/dataset";
 import type { MetadataYaml } from "./types";
 import { getGithubConfig, rawUrl } from "./types";
-import { metadataToDataset, enrichRowCounts } from "./read";
+import { metadataToDataset, enrichRowCounts, enrichDownloadCounts } from "./read";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // GitHub contents API
@@ -113,6 +113,10 @@ export const listDatasets = cache(async (): Promise<Dataset[]> => {
   // Backfill row_count cho dataset cũ thiếu metadata row_count (self-healing).
   // Chỉ fetch file khi row_count===0 — dataset mới đã persist nên skip.
   await enrichRowCounts(datasets);
+
+  // Hydrate downloads từ R2 counters (fetch song song, 1 round-trip tổng).
+  // Cần trước khi sort "Most downloaded" / "Trending" để sort đúng.
+  await enrichDownloadCounts(datasets);
 
   // Sort by uploaded_at desc (mới nhất trước)
   datasets.sort((a, b) => {

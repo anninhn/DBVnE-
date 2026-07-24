@@ -17,6 +17,7 @@ import type {
   DataDictionaryEntry,
 } from "@/lib/types/dataset";
 import { buildFileUrl } from "@/lib/r2/client";
+import { getDownloadCount } from "@/lib/r2/counter";
 import { parseCSV } from "@/lib/parse/csv";
 import * as XLSX from "xlsx";
 import {
@@ -255,7 +256,14 @@ export function metadataToDataset(
 
 /** Read 1 dataset by slug từ GitHub raw metadata.yaml + dictionary.md. */
 export const getDatasetBySlug = cache(async (slug: string): Promise<Dataset | null> => {
-  const yamlText = await fetchRaw(`datasets/${slug}/metadata.yaml`);
+  // Fetch metadata.yaml + dictionary.md + download counter song song
+  // (độc lập, không phụ thuộc nhau) → giảm latency tổng.
+  const [yamlText, dictText, downloads] = await Promise.all([
+    fetchRaw(`datasets/${slug}/metadata.yaml`),
+    fetchRaw(`datasets/${slug}/dictionary.md`),
+    getDownloadCount(slug),
+  ]);
+
   if (!yamlText) return null;
 
   const meta = parseYaml(yamlText) as MetadataYaml;
@@ -267,10 +275,11 @@ export const getDatasetBySlug = cache(async (slug: string): Promise<Dataset | nu
   // Skip soft-deleted — spec D3, detail page return null → 404
   if (meta.status === "deleted") return null;
 
-  const dictText = await fetchRaw(`datasets/${slug}/dictionary.md`);
   const dictionary = dictText ? parseDictionaryMarkdown(dictText) : [];
-
-  return metadataToDataset(meta, dictionary);
+  const dataset = metadataToDataset(meta, dictionary);
+  // Hydrate downloads từ R2 counter (luôn >= 0, không bao giờ undefined)
+  dataset.downloads = downloads;
+  return dataset;
 });
 
 /** Get raw MetadataYaml (không map) — cho commit route check slug exists. */
@@ -488,6 +497,24 @@ export async function enrichRowCounts(datasets: Dataset[]): Promise<void> {
       if ((tabular.file_size_mb ?? 0) >= ROW_COUNT_SIZE_CAP_MB) return;
       const count = await countRows(tabular);
       if (count != null) d.row_count = count;
+    }),
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// Download-count enrichment — fetch R2 counters song song cho listing
+// ──────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Hydrate `downloads` field cho mỗi dataset từ R2 counter file.
+ *
+ * R2 GET/object ~50ms, fetch song song nên listing 20 dataset vẫn ~50ms tổng
+ * (không phải 20×50ms). Failures tự động trả 0 trong getDownloadCount.
+ */
+export async function enrichDownloadCounts(datasets: Dataset[]): Promise<void> {
+  await Promise.all(
+    datasets.map(async (d) => {
+      d.downloads = await getDownloadCount(d.slug);
     }),
   );
 }

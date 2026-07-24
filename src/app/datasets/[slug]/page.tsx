@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Star, Pencil, Bookmark, Download } from "lucide-react";
+import { Pencil, Download } from "lucide-react";
 import { getDatasetBySlug, withPreviewData } from "@/lib/datasets/read";
 import { formatCompactNumber } from "@/lib/format";
 import { lookupDisplayName } from "@/lib/auth";
@@ -56,14 +56,8 @@ export default async function DatasetPage({ params }: PageProps) {
           <h1 className="text-[22px] font-semibold text-hf-text flex items-center gap-4">
             <span className="min-w-0">{dataset.title}</span>
             <span className="flex gap-2 ml-auto">
-              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
-                <Star className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
-                {dataset.likes}
-              </button>
-              <button className="px-3.5 py-1 rounded-md border border-hf-border-strong bg-hf-bg text-[13px] font-medium text-hf-text hover:bg-hf-bg-muted inline-flex items-center gap-1.5">
-                <Bookmark className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden />
-                Follow
-              </button>
+              {/* Star (likes) + Follow ẩn tạm — chưa có backend/volume user.
+                  Sẽ enable lại khi build social features. */}
               {dataset.resources[0]?.file_url && (
                 <a
                   href={`/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${dataset.resources[0].id}`}

@@ -3,6 +3,7 @@ import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { getR2Bucket, getR2Client } from "@/lib/r2/client";
 import { getDatasetBySlug } from "@/lib/datasets/read";
+import { incrementDownloadCount } from "@/lib/r2/counter";
 
 export const maxDuration = 30;
 export const dynamic = "force-dynamic";
@@ -90,6 +91,16 @@ export async function GET(req: NextRequest) {
 
   try {
     const url = await getSignedUrl(getR2Client(), command, { expiresIn: 60 });
+
+    // Increment download counter sync trước redirect (~150ms R2 GET+PUT).
+    // Why sync: Vercel serverless có thể kill function sau response → fire-and-forget
+    // mất count. Best-effort: nếu increment fail, vẫn redirect để user download được.
+    try {
+      await incrementDownloadCount(slug);
+    } catch (err) {
+      console.warn(`[download] Increment counter fail cho ${slug}:`, err);
+    }
+
     return NextResponse.redirect(url, { status: 302 });
   } catch (err) {
     console.error("[download] Presign GET thất bại:", err);

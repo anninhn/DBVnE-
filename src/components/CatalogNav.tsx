@@ -12,7 +12,7 @@
  * Nếu không → ẩn (browse công khai). Spec plan task 10.
  */
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -27,7 +27,12 @@ interface CatalogNavProps {
   onQueryChange?: (q: string) => void;
 }
 
-export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
+/**
+ * CatalogNav — memoized vì parent (DatasetExplorer) re-render khi sort/filter/page
+ * change, nhưng nav không phụ thuộc những state đó. Tránh re-render SearchBox +
+ * useSession (đắt) mỗi lần user toggle filter.
+ */
+function CatalogNavImpl({ query, onQueryChange }: CatalogNavProps) {
   const isControlled = query !== undefined && onQueryChange !== undefined;
   const [localQuery, setLocalQuery] = useState("");
   const router = useRouter();
@@ -111,3 +116,6 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
     </nav>
   );
 }
+
+const CatalogNav = memo(CatalogNavImpl);
+export default CatalogNav;

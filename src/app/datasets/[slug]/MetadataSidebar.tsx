@@ -125,7 +125,7 @@ export default async function MetadataSidebar({ dataset }: MetadataSidebarProps)
       {/* Downloads */}
       <Card title="Downloads">
         <div className="text-2xl font-bold text-hf-text">{dataset.downloads}</div>
-        <div className="text-xs text-hf-text-muted">last 30 days</div>
+        <div className="text-xs text-hf-text-muted">all time</div>
       </Card>
 
       {/* Size */}
