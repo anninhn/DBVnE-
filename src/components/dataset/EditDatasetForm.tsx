@@ -121,6 +121,9 @@ export default function EditDatasetForm({
         uploaded_at: initialMetadata.uploaded_at,
         row_count: initialMetadata.row_count,
         columns_count: initialMetadata.columns_count,
+        // Spec 2026-07-24-article-linking: truyền articles để giữ khi edit metadata.
+        // Nếu không truyền → renderMetadataYaml build YAML mới không có articles → data loss.
+        articles: initialMetadata.articles,
       }
     );
     const markdownContent = renderDictionaryMarkdown(dictionary);

@@ -104,10 +104,6 @@ export default function LoginForm({ next }: Props) {
       >
         {loading ? "Đang đăng nhập…" : "Đăng nhập"}
       </button>
-
-      <p className="text-xs text-hf-text-faint text-center">
-        Session lưu vĩnh viễn — không cần đăng nhập lại sau lần đầu.
-      </p>
     </form>
   );
 }

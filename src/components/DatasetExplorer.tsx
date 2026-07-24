@@ -429,6 +429,12 @@ const DatasetRow = memo(function DatasetRow({ d }: { d: Dataset }) {
             {d.total_size_mb} MB
             <span className="mx-1">•</span>
             {formatCompactNumber(d.downloads)} downloads
+            {d.articles && d.articles.length > 0 && (
+              <>
+                <span className="mx-1">•</span>
+                {d.articles.length} bài báo
+              </>
+            )}
           </span>
         </div>
       </div>

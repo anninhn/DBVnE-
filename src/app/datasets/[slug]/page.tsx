@@ -13,6 +13,7 @@ import MetadataSidebar from "./MetadataSidebar";
 import Markdown from "./Markdown";
 import DataDictionary from "./DataDictionary";
 import FilesTabContent from "./FilesTabContent";
+import ArticlesTab from "./ArticlesTab";
 
 // Dynamic SSR runtime — tránh Vercel cache 404 khi dataset chưa tồn tại
 // (cache layer fetch vẫn 60s qua `next: { revalidate: 60 }`).
@@ -112,7 +113,7 @@ export default async function DatasetPage({ params }: PageProps) {
           tabs={[
             { key: "card", label: "Dataset card" },
             { key: "files", label: "Files and versions" },
-            { key: "community", label: "Community" },
+            { key: "articles", label: "Article Linking" },
           ]}
         >
           {/* ── Dataset card tab (viewer + readme) ── */}
@@ -164,10 +165,9 @@ export default async function DatasetPage({ params }: PageProps) {
           {/* ── Files tab ── */}
           <FilesTabContent resources={dataset.resources} slug={slug} />
 
-          {/* ── Community tab ── */}
-          <div className="p-6 text-center text-hf-text-muted py-24">
-            Chưa có thảo luận. Hãy là người đầu tiên bình luận.
-          </div>
+          {/* ── Articles tab (spec 2026-07-24-article-linking) ── */}
+          <ArticlesTab slug={slug} initialArticles={dataset.articles ?? []} />
+
         </TabSwitcher>
       </div>
     </div>

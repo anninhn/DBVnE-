@@ -34,6 +34,21 @@ export interface EditEntry {
   summary?: string;  // vd: "Edit metadata", auto-generated
 }
 
+/**
+ * Article link — mirror MetadataYaml.articles[] (spec 2026-07-24-article-linking).
+ * Duplicate ở đây theo cùng convention EditEntry/ColumnStats (tránh circular import).
+ */
+export interface ArticleEntry {
+  url: string;
+  title: string;
+  author?: string;
+  published_at?: string;
+  section?: string;
+  thumbnail?: string;
+  added_at: string;
+  added_by: string;
+}
+
 export interface DataDictionaryEntry {
   column_name: string;
   label_vi: string;
@@ -118,6 +133,8 @@ export interface Dataset {
   geometry_type?: string;
   bbox?: [number, number, number, number];
   crs?: string;
+  /** Articles — provenance ngược, bài báo đã dùng dataset (spec 2026-07-24). */
+  articles?: ArticleEntry[];
 }
 
 export const CATEGORY_LABELS: Record<Category, string> = {

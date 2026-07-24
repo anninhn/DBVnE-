@@ -247,6 +247,8 @@ export function metadataToDataset(
         ? [meta.bbox[0], meta.bbox[1], meta.bbox[2], meta.bbox[3]]
         : undefined,
     crs: meta.crs,
+    // Articles (spec 2026-07-24) — provenance ngược từ bài báo VNExpress.
+    articles: meta.articles,
   };
 }
 
