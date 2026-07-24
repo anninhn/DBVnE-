@@ -63,7 +63,7 @@ function CatalogNavImpl({ query, onQueryChange }: CatalogNavProps) {
           className="font-semibold text-hf-text-muted hover:text-hf-text transition inline-flex items-center gap-1.5"
         >
           Ask Me Anything
-          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-hf-yellow text-hf-text align-middle">
+          <span className="text-[10px] font-bold leading-none px-1.5 py-0.5 rounded bg-hf-yellow text-hf-text">
             beta
           </span>
         </Link>

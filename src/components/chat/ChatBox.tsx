@@ -258,7 +258,7 @@ export default function ChatBox({ displayName }: { displayName: string }) {
           <div className="flex flex-col items-center justify-center min-h-full px-4 pt-16 pb-10 text-center">
             <div className="inline-flex items-center gap-1.5 mb-2 text-xs uppercase tracking-wider text-hf-text-faint">
               <span>Ask Me Anything</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-hf-yellow text-hf-text normal-case tracking-normal">
+              <span className="text-[10px] font-bold leading-none px-1.5 py-0.5 rounded bg-hf-yellow text-hf-text normal-case tracking-normal">
                 beta
               </span>
             </div>
