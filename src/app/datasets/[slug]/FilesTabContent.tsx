@@ -40,6 +40,7 @@ function FileIcon({ type, className }: { type?: string; className?: string }) {
 interface FilesTabContentProps {
   resources: Resource[];
   slug: string;
+  canDownload?: boolean;
 }
 
 /**
@@ -47,7 +48,7 @@ interface FilesTabContentProps {
  *
  * Client component vì cần state toggle cho mỗi row.
  */
-export default function FilesTabContent({ resources, slug }: FilesTabContentProps) {
+export default function FilesTabContent({ resources, slug, canDownload = true }: FilesTabContentProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   if (resources.length === 0) {
@@ -100,7 +101,11 @@ export default function FilesTabContent({ resources, slug }: FilesTabContentProp
                     {expandedId === r.id ? "Collapse" : "Preview"}
                   </button>
                   <a
-                    href={`/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${r.id}`}
+                    href={
+                      canDownload
+                        ? `/api/dataset/download?slug=${encodeURIComponent(slug)}&resourceId=${r.id}`
+                        : `/login?next=${encodeURIComponent(`/datasets/${slug}`)}`
+                    }
                     className="text-hf-link hover:underline"
                   >
                     Download
@@ -110,7 +115,7 @@ export default function FilesTabContent({ resources, slug }: FilesTabContentProp
               {expandedId === r.id && (
                 <tr className="border-b border-hf-border">
                   <td colSpan={5} className="px-3 py-2 bg-hf-bg">
-                    <R2FileViewer resource={r} />
+                    <R2FileViewer resource={r} canDownload={canDownload} slug={slug} />
                   </td>
                 </tr>
               )}

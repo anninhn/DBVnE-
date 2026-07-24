@@ -47,7 +47,7 @@ export default async function LoginPage({
           <div className="text-center mb-6">
             <h1 className="text-xl font-semibold text-hf-text">Đăng nhập</h1>
             <p className="text-sm text-hf-text-muted mt-1">
-              Cần đăng nhập để upload, chỉnh sửa hoặc xóa dataset.
+              Đăng nhập để download, upload, sửa dataset hoặc hỏi đáp.
             </p>
           </div>
           <LoginForm next={safeNext} />

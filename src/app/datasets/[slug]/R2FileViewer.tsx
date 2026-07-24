@@ -13,6 +13,10 @@ const PREVIEW_ROW_LIMIT = 100;
 
 interface R2FileViewerProps {
   resource: Resource;
+  /** Khi false, link download fallback → /login?next thay vì R2 public URL. */
+  canDownload?: boolean;
+  /** Slug dataset — dùng build /login?next khi !canDownload. */
+  slug?: string;
 }
 
 type LoadState = "loading" | "error" | "ready";
@@ -28,7 +32,16 @@ interface TableData {
  * Hỗ trợ: CSV (native parser), XLSX (xlsx package), GeoJSON (features[].properties
  * thành table + histogram), PDF (iframe), MP3 (audio).
  */
-export default function R2FileViewer({ resource }: R2FileViewerProps) {
+export default function R2FileViewer({ resource, canDownload = true, slug }: R2FileViewerProps) {
+  // Build href cho link download fallback:
+  // - Đã login → R2 public URL (download trực tiếp)
+  // - Chưa login → /login?next=/datasets/<slug>
+  const downloadHref = (defaultUrl: string | undefined) => {
+    if (!defaultUrl) return undefined;
+    if (canDownload) return defaultUrl;
+    if (slug) return `/login?next=${encodeURIComponent(`/datasets/${slug}`)}`;
+    return "/login";
+  };
   const [state, setState] = useState<LoadState>("loading");
   const [tableData, setTableData] = useState<TableData | null>(null);
   const [geojsonData, setGeojsonData] = useState<GeoJSON.FeatureCollection | null>(null);
@@ -150,11 +163,12 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
   }
 
   if (state === "error") {
+    const href = downloadHref(fileUrl);
     return (
       <div className="py-4 text-[13px] text-hf-text-muted">
         Không tải được file. {errorMsg && <span className="text-hf-text-faint">({errorMsg})</span>}{" "}
-        {fileUrl && (
-          <a href={fileUrl} className="text-hf-link hover:underline">
+        {href && (
+          <a href={href} className="text-hf-link hover:underline">
             Tải về trực tiếp
           </a>
         )}
@@ -174,11 +188,12 @@ export default function R2FileViewer({ resource }: R2FileViewerProps) {
 
   // GeoJSON/unknown — không hỗ trợ preview
   if (!tableData) {
+    const href = downloadHref(fileUrl);
     return (
       <div className="py-4 text-[13px] text-hf-text-muted">
         Preview không hỗ trợ định dạng này.{" "}
-        {fileUrl && (
-          <a href={fileUrl} className="text-hf-link hover:underline">
+        {href && (
+          <a href={href} className="text-hf-link hover:underline">
             Download
           </a>
         )}

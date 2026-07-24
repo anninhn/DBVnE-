@@ -18,7 +18,7 @@ import {
   listFolderEntries,
 } from "@/lib/github/contents-api";
 import { parseDictionaryMarkdown } from "@/lib/datasets/read";
-import type { DataDictionaryEntry } from "@/lib/types/dataset";
+import type { DataDictionaryEntry, Dataset } from "@/lib/types/dataset";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Cache
@@ -158,4 +158,90 @@ export async function flattenAllDatasets(): Promise<string> {
 
   _cache = { text, at: Date.now() };
   return text;
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
+// FOCUS block — Discovery Chat attach dataset
+// ──────────────────────────────────────────────────────────────────────────────
+
+const FOCUS_SAMPLE_ROWS = 5; // sample rows bổ trợ minh họa, không phải primary context
+
+/**
+ * Build FOCUS block cho Discovery Chat khi user attach dataset cụ thể (click
+ * "Hỏi về dataset này" từ sidebar).
+ *
+ * Format tương tự `formatDataset` NHƯNG:
+ * - Toàn bộ data dictionary (không cap MAX_COLUMNS) — AI cần columns đầy đủ để
+ *   trả lời chính xác, không phụ thuộc sample rows.
+ * - Có marker `🎯 FOCUS DATASET` để system prompt nhận biết priority.
+ * - Kèm 5 sample rows đầu (nếu có structured_data) — CHỈ bổ trợ minh họa data
+ *   shape/value pattern. Nếu structured_data null (file quá lớn) → block vẫn
+ *   đủ metadata + dictionary để AI trả lời chính xác.
+ */
+export function buildFocusBlock(
+  dataset: Dataset,
+  sampleRows?: Record<string, string | number | boolean | null>[],
+): string {
+  const lines: string[] = [];
+  lines.push("🎯 FOCUS DATASET (user đã chọn — ưu tiên trả lời dựa trên dataset này):");
+  lines.push(`### ${dataset.title}`);
+  lines.push(`slug: \`${dataset.slug}\``);
+
+  if (dataset.description) lines.push(`Mô tả: ${dataset.description}`);
+  if (dataset.category) lines.push(`Danh mục: ${dataset.category}`);
+  if (dataset.tags?.length) lines.push(`Tags: ${dataset.tags.join(", ")}`);
+
+  // Formats — distinct file_type từ resources
+  const formats = Array.from(
+    new Set(
+      dataset.resources
+        .map((r) => r.file_type)
+        .filter((t): t is NonNullable<typeof t> => Boolean(t)),
+    ),
+  );
+  if (formats.length > 0) lines.push(`Định dạng: ${formats.join(", ")}`);
+
+  if (dataset.row_count) lines.push(`Số dòng: ${dataset.row_count}`);
+  if (dataset.year_range?.length) {
+    lines.push(`Phạm vi thời gian: ${dataset.year_range.join(", ")}`);
+  }
+  if (dataset.feature_count != null) lines.push(`Số features: ${dataset.feature_count}`);
+  if (dataset.geometry_type) lines.push(`Geometry: ${dataset.geometry_type}`);
+  if (dataset.license) lines.push(`License: ${dataset.license}`);
+  if (dataset.source) lines.push(`Nguồn: ${dataset.source}`);
+
+  // FULL data dictionary — không cap. Primary context cho AI matching.
+  if (dataset.data_dictionary.length > 0) {
+    lines.push("Tất cả các cột/trường dữ liệu (data dictionary đầy đủ):");
+    for (const entry of dataset.data_dictionary) {
+      const parts = [`  - \`${entry.column_name}\``];
+      if (entry.data_type) parts.push(`(${entry.data_type})`);
+      if (entry.unit && entry.unit !== "-") parts.push(`[${entry.unit}]`);
+      if (entry.description) parts.push(`— ${entry.description}`);
+      lines.push(parts.join(" "));
+    }
+  }
+
+  // Sample rows — CHỈ bổ trợ minh họa, KHÔNG bắt buộc để trả lời
+  const rows = sampleRows?.slice(0, FOCUS_SAMPLE_ROWS) ?? [];
+  if (rows.length > 0) {
+    const headers = dataset.data_dictionary.length > 0
+      ? dataset.data_dictionary.map((d) => d.column_name)
+      : Object.keys(rows[0]);
+    lines.push(`DỮ LIỆU MẪU (${rows.length} dòng đầu — chỉ bổ trợ minh họa):`);
+    lines.push(`| ${headers.join(" | ")} |`);
+    lines.push(`| ${headers.map(() => "---").join(" | ")} |`);
+    for (const row of rows) {
+      const cells = headers.map((h) => {
+        const v = row[h];
+        if (v == null) return "";
+        return String(v).replace(/\|/g, "\\|").replace(/\n/g, " ");
+      });
+      lines.push(`| ${cells.join(" | ")} |`);
+    }
+  } else {
+    lines.push("DỮ LIỆU MẪU: (không có sample rows — dựa vào metadata + dictionary ở trên)");
+  }
+
+  return lines.join("\n");
 }

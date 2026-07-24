@@ -7,11 +7,23 @@ import type { CommitPreview } from "./UploadWizard";
 interface Props {
   preview: CommitPreview;
   onReset: () => void;
+  /**
+   * Optional nút primary ở bên phải footer (ví dụ "Save changes →" trong edit flow).
+   * Wizard upload không truyền → footer chỉ có "Upload dataset khác".
+   */
+  primaryAction?: React.ReactNode;
+  /** Label nút reset (trái). Default "Upload dataset khác". */
+  resetLabel?: string;
 }
 
 type Tab = "yaml" | "markdown";
 
-export default function CommitPreview({ preview, onReset }: Props) {
+export default function CommitPreview({
+  preview,
+  onReset,
+  primaryAction,
+  resetLabel = "Upload dataset khác",
+}: Props) {
   const [tab, setTab] = useState<Tab>("yaml");
   const committed = preview.committed;
 
@@ -101,12 +113,19 @@ export default function CommitPreview({ preview, onReset }: Props) {
             </div>
           </>
         ) : (
-          <button
-            onClick={onReset}
-            className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
-          >
-            Upload dataset khác
-          </button>
+          <>
+            <button
+              onClick={onReset}
+              className={
+                primaryAction
+                  ? "border border-hf-border-strong bg-hf-bg text-hf-text px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-bg-muted transition"
+                  : "bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition"
+              }
+            >
+              {resetLabel}
+            </button>
+            {primaryAction}
+          </>
         )}
       </div>
     </div>

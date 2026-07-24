@@ -288,20 +288,19 @@ export default function EditDatasetForm({
           <CommitPreview
             preview={commitPreview}
             onReset={() => setStep("review")}
+            resetLabel="← Quay lại chỉnh sửa"
+            primaryAction={
+              !commitPreview.committed && (
+                <button
+                  onClick={handleCommit}
+                  disabled={submitting}
+                  className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Saving..." : "Save changes →"}
+                </button>
+              )
+            }
           />
-
-          {/* Commit button — chỉ hiện khi chưa committed */}
-          {!commitPreview.committed && (
-            <div className="flex justify-end">
-              <button
-                onClick={handleCommit}
-                disabled={submitting}
-                className="bg-hf-text text-hf-bg px-4 py-2 rounded-md text-sm font-medium hover:bg-hf-text-muted transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {submitting ? "Saving..." : "Save changes →"}
-              </button>
-            </div>
-          )}
         </div>
       )}
     </div>

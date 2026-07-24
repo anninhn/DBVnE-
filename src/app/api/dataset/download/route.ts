@@ -4,6 +4,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { getR2Bucket, getR2Client } from "@/lib/r2/client";
 import { getDatasetBySlug } from "@/lib/datasets/read";
 import { incrementDownloadCount } from "@/lib/r2/counter";
+import { requireUserOr401 } from "@/lib/auth";
 
 export const maxDuration = 30;
 export const dynamic = "force-dynamic";
@@ -41,6 +42,9 @@ function encodeContentDisposition(filename: string): string {
  * Usage: `<a href="/api/dataset/download?slug=X&resourceId=1">Download</a>`
  */
 export async function GET(req: NextRequest) {
+  const authCheck = await requireUserOr401();
+  if (!authCheck.ok) return authCheck.response;
+
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("slug");
   const resourceIdParam = searchParams.get("resourceId");

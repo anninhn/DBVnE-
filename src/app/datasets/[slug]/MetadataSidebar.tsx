@@ -125,10 +125,11 @@ export default async function MetadataSidebar({ dataset }: MetadataSidebarProps)
   return (
     <div>
       {/* Ask about this dataset — Discovery Chat CTA (spec Phase 2).
-          Link sang /hoi-du-lieu?prefill=<title> → ChatBox pre-fill input với title,
-          user tự viết câu hỏi + Enter. KHÔNG auto-submit (user agency). */}
+          Link sang /hoi-du-lieu?prefill=<title>&attached=<slug> → ChatBox pre-fill
+          input + attach dataset (ChatGPT-style chip). API inject full metadata +
+          data dictionary của dataset được attach vào LLM context. */}
       <Link
-        href={`/hoi-du-lieu?prefill=${encodeURIComponent(dataset.title)}`}
+        href={`/hoi-du-lieu?prefill=${encodeURIComponent(dataset.title)}&attached=${encodeURIComponent(dataset.slug)}`}
         className="flex items-center justify-center gap-2 bg-hf-yellow/20 hover:bg-hf-yellow/40 border border-hf-yellow/50 rounded-lg px-3 py-2.5 mb-3 text-[13px] font-medium text-hf-text transition group"
       >
         <MessageCircle className="w-3.5 h-3.5" aria-hidden />
