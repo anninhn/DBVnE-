@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { AIProposal } from "./UploadWizard";
 import { slugify, isValidSlug } from "@/lib/slugify";
 
@@ -51,8 +51,11 @@ export default function MetadataEditor({ initial, onChange, slug, onSlugChange, 
    * slugTouched — true khi user đã chỉnh slug input thủ công.
    * Khi chưa touched: auto-update slug theo title (live preview).
    * Khi touched: slug cố định, không còn follow title.
+   *
+   * Dùng state (không phải ref) để React biết khi render indicator
+   * "(đã chỉnh thủ công)" trong URL preview.
    */
-  const slugTouchedRef = useRef(false);
+  const [slugTouched, setSlugTouched] = useState(false);
 
   // Fetch tags từ DB
   useEffect(() => {
@@ -67,7 +70,7 @@ export default function MetadataEditor({ initial, onChange, slug, onSlugChange, 
 
   // Auto-fill slug từ title — chỉ khi user chưa chỉnh slug thủ công VÀ không phải read-only mode
   useEffect(() => {
-    if (!slugReadOnly && !slugTouchedRef.current) {
+    if (!slugReadOnly && !slugTouched) {
       onSlugChange(slugify(value.title));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,7 +151,7 @@ export default function MetadataEditor({ initial, onChange, slug, onSlugChange, 
                   type="text"
                   value={slug}
                   onChange={(e) => {
-                    slugTouchedRef.current = true;
+                    setSlugTouched(true);
                     onSlugChange(e.target.value);
                   }}
                   placeholder="tu-dong-sinh-tu-tieu-de"
@@ -167,7 +170,7 @@ export default function MetadataEditor({ initial, onChange, slug, onSlugChange, 
               {slug && isValidSlug(slug) && (
                 <p className="text-[11px] text-hf-text-faint mt-1">
                   URL cuối cùng: <code className="text-hf-text">/datasets/{slug}</code>
-                  {slugTouchedRef.current && (
+                  {slugTouched && (
                     <span className="ml-2 text-hf-text-faint">(đã chỉnh thủ công)</span>
                   )}
                 </p>

@@ -27,7 +27,12 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
   const [search, setSearch] = useState("");
 
   const resource = viewableResources[resourceIdx] ?? viewableResources[0];
-  const rows = resource?.structured_data ?? [];
+  // Wrap rows trong useMemo — tránh tạo array literal mới mỗi render,
+  // làm dependencies của columns/filteredRows useMemo thay đổi liên tục.
+  const rows = useMemo(
+    () => resource?.structured_data ?? [],
+    [resource]
+  );
 
   // Định nghĩa cột + thống kê — phải gọi unconditional (rules-of-hooks).
   // Khi resource null → columns rỗng, render empty state bên dưới.
@@ -160,7 +165,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
             {pageRows.length === 0 ? (
               <tr>
                 <td colSpan={columns.length} className="px-3 py-10 text-center text-hf-text-faint text-sm">
-                  No rows match "{search}".
+                  No rows match &quot;{search}&quot;.
                 </td>
               </tr>
             ) : (
@@ -222,7 +227,7 @@ export default function DatasetViewer({ dataset }: DatasetViewerProps) {
       <div className="text-center text-[13px] text-hf-text-muted py-4">
         {search.trim() && (
           <span>
-            {formatCompactNumber(filteredRows.length)} / {formatCompactNumber(rows.length)} rows match "{search}".{" "}
+            {formatCompactNumber(filteredRows.length)} / {formatCompactNumber(rows.length)} rows match &quot;{search}&quot;.{" "}
           </span>
         )}
         End of preview.{" "}

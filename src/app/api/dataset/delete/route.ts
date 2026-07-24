@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 export const maxDuration = 30;
 
 import { commitFiles } from "@/lib/git/commit";
-import { getMetadataYaml } from "@/lib/datasets/read";
 import { requireUserOr401 } from "@/lib/auth";
 import { injectDeleted } from "@/lib/auth/inject-actor";
 import { appendDeleteAudit } from "@/lib/auth/audit-log";

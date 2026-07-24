@@ -239,24 +239,28 @@ function ProportionBar({
     "#8B5CF6", "#F472B6",
   ];
 
-  let x = 0;
+  // Precompute width + position của mỗi segment — functional (không mutation)
+  // để tránh react-hooks/immutability rule. n ≤ 12 (palette size) nên O(n²) OK.
+  const widths = result.segments.map((s) => (s.count / result.total) * W);
+  const bars = widths.map((w, i) => ({
+    key: i,
+    x: widths.slice(0, i).reduce((sum, prev) => sum + prev, 0),
+    w,
+    fill: palette[i % palette.length],
+  }));
+
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-      {result.segments.map((seg, i) => {
-        const w = (seg.count / result.total) * W;
-        const el = (
-          <rect
-            key={i}
-            x={x.toFixed(1)}
-            y={0}
-            width={w.toFixed(1)}
-            height={H}
-            fill={palette[i % palette.length]}
-          />
-        );
-        x += w;
-        return el;
-      })}
+      {bars.map((b) => (
+        <rect
+          key={b.key}
+          x={b.x.toFixed(1)}
+          y={0}
+          width={b.w.toFixed(1)}
+          height={H}
+          fill={b.fill}
+        />
+      ))}
     </svg>
   );
 }
