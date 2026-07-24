@@ -2,7 +2,7 @@ title: Ranh giới hành chính 34 tỉnh thành Việt Nam
 slug: ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam
 description: Dataset chứa ranh giới hành chính của 34 tỉnh thành Việt Nam, với
   mỗi tỉnh thành được biểu diễn bằng geometry MultiPolygon. Dữ liệu bao gồm 34
-  features và sử dụng hệ tọa độ WGS84, phủ khắp lãnh thổ Việt Nam. TEST
+  features và sử dụng hệ tọa độ WGS84, phủ khắp lãnh thổ Việt Nam. TEST 2
 category: chinh-tri
 tags:
   - ranh-gioi
@@ -222,9 +222,12 @@ files:
           - 2
           - 0
           - 2
-last_edited_by: ninh
-last_edited_at: 2026-07-24T03:15:12.141Z
 edits:
   - by: ninh
     at: 2026-07-24T03:15:12.141Z
     summary: Edit metadata
+  - by: ninh
+    at: 2026-07-24T03:31:53.339Z
+    summary: Edit metadata
+last_edited_by: ninh
+last_edited_at: 2026-07-24T03:31:53.339Z
