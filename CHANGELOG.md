@@ -6,6 +6,41 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ## [Unreleased] — Phase 1 Dataset Hub (đang phát triển)
 
+### 2026-07-24 — Article Linking feature (commit 728782f)
+
+Attach VnExpress article URLs vào dataset cho reverse provenance — "dataset này đã được dùng trong bài báo nào".
+
+**Why**: Data journalism cần track impact định tính. "Dataset sinh ra bài báo nào" quan trọng hơn "bao nhiêu lượt download" ở tòa soạn.
+
+**New — ArticlesTab** (thay Community placeholder)
+- `src/lib/articles/types.ts` — `ArticleEntry` interface (url, title, author?, published_at?, section?, thumbnail?, added_at, added_by)
+- `src/lib/articles/og-fetch.ts` — `assertVnexpressUrl()` (hostname endsWith vnexpress.net) + `fetchOgMeta()` (cheerio, 8s timeout, custom UA, redirect check) + `ogMetaToArticle()`
+- `src/app/api/dataset/articles/og/route.ts` — GET auth-gate, fetch OG tags server-side. Returns 200/400/401/422/502/504 theo error type
+- `src/app/api/dataset/articles/route.ts` — POST validate + canonicalize URL (dedup) + audit `injectEdited()` summary `"Thêm bài báo: <title>"` + `commitMetadataYamlOnly()`
+- `src/app/datasets/[slug]/ArticlesTab.tsx` — Client component. Paste URL → Enter → auto-fetch OG → auto-commit. Fallback title-only input khi OG fail. Card style VnExpress spotlight (thumbnail 120×72 trái, title serif hover `#087cce`, section tag đỏ `#A9324E` uppercase, "Added by {user} • {date}")
+
+**Critical fix — `renderMetadataYaml` data loss**
+- `src/lib/dataset-render.ts` thêm param `articles?: ArticleForRender[]` + `renderArticlesYaml()` helper. Render trước files section.
+- `src/components/dataset/EditDatasetForm.tsx` truyền `initialMetadata.articles` — nếu không, edit metadata sẽ mất articles (function build YAML từ scratch).
+
+**Sidebar consolidation — `MetadataSidebar.tsx`**
+- Trước 4 card stacked (Downloads / Article Linking / Size / Source) → giờ 2 card:
+  - **Usage** = Downloads + Articles (grid-cols-2 + vertical divider) — cùng phản ánh impact
+  - **Details** = Source + Size + Files (Source group + divider + Size group) — cùng metadata tĩnh
+- License ẩn: 7/7 dataset `internal`, không variation = không thông tin. Defer khi có public/restricted.
+
+**Nav cleanup — `CatalogNav.tsx`**
+- Remove HF mock tabs (Spaces / Tasks / Community)
+- Add "Ask Me Anything" + badge "Coming soon" (disabled, tooltip) — placeholder cho Phase 2 (Discovery Chat) + Phase 3 (Q&A)
+
+**Misc**
+- `LoginForm.tsx` — remove "Session lưu vĩnh viễn" text
+- `DatasetExplorer.tsx` — DatasetRow show "• N bài báo" khi `articles.length > 0`
+- `commit.ts` — thêm `commitMetadataYamlOnly(slug, yaml, msg)` helper (chỉ commit metadata.yaml, không đụng dictionary.md)
+- `package.json` — thêm `cheerio` (user-approved, 1st dep ngoài stack)
+
+**Scope**: MVP add + display only. Edit/delete defer. URL scope `vnexpress.net` (accept subdomain). Permission: mọi user login được add vào bất kỳ dataset nào. Spec: `specs/2026-07-24-article-linking/`.
+
 ### 2026-07-24 — UX/UI tracking + listing polish
 
 Auth nhẹ ship 2026-07-24 (commits 03865e8 + 05fe82f) thêm actor tracking vào metadata nhưng phần display chưa polish. Session này hoàn thiện UX/UI provenance + redesign listing cho readability.
