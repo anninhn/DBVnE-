@@ -9,7 +9,7 @@
  */
 
 import { commitFiles } from "@/lib/git/commit";
-import { getGithubConfig } from "@/lib/datasets/types";
+import { fetchFileContents } from "@/lib/github/contents-api";
 
 export interface DeleteAuditEntry {
   username: string;
@@ -24,25 +24,8 @@ const AUDIT_PATH = "datasets/_audit/delete.log";
  * Read existing audit log content (raw text) — returns "" nếu file chưa tồn tại.
  */
 async function readExistingLog(): Promise<string> {
-  const config = getGithubConfig();
-  const url = `https://api.github.com/repos/${config.owner}/${config.repo}/contents/${AUDIT_PATH}?ref=${config.branch}`;
-
-  const res = await fetch(url, {
-    headers: {
-      Accept: "application/vnd.github+json",
-      "User-Agent": "vnexpress-data-platform",
-      ...(config.token ? { Authorization: `Bearer ${config.token}` } : {}),
-    },
-    cache: "no-store",
-  });
-  if (res.status === 404) return ""; // file chưa tồn tại
-  if (!res.ok) {
-    console.warn(`[audit] read delete.log failed (${res.status})`);
-    return "";
-  }
-  const data = (await res.json()) as { content?: string };
-  const b64 = (data.content ?? "").replace(/\n/g, "");
-  return Buffer.from(b64, "base64").toString("utf-8");
+  const result = await fetchFileContents(AUDIT_PATH);
+  return result?.content ?? "";
 }
 
 /**

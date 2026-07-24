@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { NotFound } from "@aws-sdk/client-s3";
 
 export const maxDuration = 30;
 
@@ -110,7 +111,9 @@ export async function POST(req: NextRequest) {
   }
   const slug = await resolveUniqueSlug(baseSlug);
 
-  // 2. Fetch R2 object metadata (version_id, sha256, size_mb)
+  // 2. Fetch R2 object metadata (version_id, sha256, size_mb).
+  // HeadObject cũng validate object tồn tại — chặn orphan metadata.yaml reference
+  // R2 key không tồn tại (user upload rồi đóng tab, staging lifecycle expire sau 24h).
   let r2Meta: {
     version_id?: string;
     sha256?: string;
@@ -124,8 +127,18 @@ export async function POST(req: NextRequest) {
       size_mb: full.size_mb,
     };
   } catch (err) {
-    console.warn("[commit] R2 metadata fetch thất bại:", err);
-    // Continue — fields optional trong metadata.yaml
+    if (err instanceof NotFound) {
+      console.warn("[commit] R2 object không tồn tại, likely staging expire:", r2Key);
+      return NextResponse.json(
+        {
+          error:
+            "File chưa upload xong hoặc đã hết hạn. Vui lòng upload lại từ đầu.",
+        },
+        { status: 400 }
+      );
+    }
+    // Other R2 errors (network, auth) — log + continue best-effort.
+    console.warn("[commit] R2 metadata fetch thất bại (non-NotFound):", err);
   }
 
   // 3. Render YAML + markdown content (shared helpers)

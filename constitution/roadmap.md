@@ -48,6 +48,8 @@ F1-F5 plan cũ (PostgreSQL-backed) **superseded by re-arch**:
 
 ## Phase 2 — Discovery Chat (Tháng 8–10, điều chỉnh sau khi Phase 1 chạy)
 
+> **Status: DELIVERED 2026-07-24** via PR #2 (merge commit `a9b38ab`). Tier 1 Metadata Q&A, Gemini 2.5 Flash streaming + R2 log + eval set. Spec: `specs/2026-07-24-discovery-chat/`.
+
 **Mục tiêu**: Phóng viên hỏi "có data gì về X?" bằng tiếng Việt tự nhiên → platform trả về top-K dataset cards phù hợp nhất + lý do.
 
 **Lưu ý**: Scope thu hẹp so với plan cũ. Bỏ chart builder, SQL panel, query templates, dataset promotion, text-to-SQL — tất cả đẩy Phase 3. Discovery chỉ query **metadata catalog**, không query **data rows**.
@@ -81,6 +83,26 @@ Vector embedding **không phải default** — là opt-in khi trigger criteria m
 → Tất cả trên đẩy Phase 3 hoặc loại bỏ.
 
 **Deliverable**: Chat box trên homepage/detail → phóng viên hỏi "kinh tế miền Nam gần đây" → top-3 datasets về GRDP/tài chính khu vực. Zero infrastructure mới ngoài Claude API đã có.
+
+---
+
+## Inter-phase — Pre-launch Refactor (2026-07-24, internal newsroom launch)
+
+> **Spec**: `specs/2026-07-24-pre-launch-refactor/`. Branch `refactor-pre-launch`. **Không phải Phase 3** — không mở rộng feature, chỉ harden + cleanup.
+
+**Mục tiêu**: Chuẩn bị codebase sạch + ổn định + onboard-able trước khi mở rộng user trong tòa soạn hoặc onboarding dev mới.
+
+**Audience launch target**: Internal newsroom (7 user hiện tại: 1 admin Ninh + 6 editor). KHÔNG public vnexpress.net.
+
+**Scope (4 bundles)**:
+1. **Security pack** — xlsx@0.18.5 (CVE, npm frozen) → SheetJS CDN tarball 0.20.3; global rate limit `/api/chat/discovery` 1200/day; validate R2 object tồn tại trước commit metadata.
+2. **Code health pack** — Extract `src/lib/github/contents-api.ts` (DRY 5 chỗ duplicate); giải type duplication `ColumnStats`/`EditEntry` ở 4 file; split god files `read.ts` (524) + `inspect.ts` (538) + `DatasetViewer.tsx` (563).
+3. **UX/onboarding pack** — `README.md` root + `.env.example` đầy đủ + commit `loading.tsx` bug fix (đang untracked).
+4. **docs/phase-2.md wrap-up** — mirror `docs/phase-1.md` structure cho Phase 2; CHANGELOG promote; roadmap mark DELIVERED.
+
+**Out of scope (defer)**: CSP/security headers (public launch), atomic counters (low traffic), test suite (separate effort), error tracking (Sentry), change-password self-service (admin-only per decision 2026-07-24), bundle optimization, Phase 3 features.
+
+**Deliverable**: Codebase pass security audit cho internal launch + 3 god files < 400 dòng + onboarding possible từ README alone.
 
 ---
 
@@ -184,3 +206,4 @@ Triggers cụ thể để cân nhắc bổ sung:
 | 2026-07-23 | **Phase 2/3 scope adjustment sau brainstorm Intelligence** | Phase 2 thu hẹp: chỉ **Discovery Chat** (LLM routing zero-infra, Claude thấy metadata tất cả datasets → trả top-3 cards + lý do). Bỏ chart builder + SQL panel + query templates + dataset promotion + text-to-SQL. Phase 3 thêm **3e Structured Data Q&A** (NL→SQL bằng schema-aware prompting với Claude tool-use + DuckDB query R2 trực tiếp, KHÔNG semantic layer default). Phase 3 thêm **3f Optional extensions** với triggers cụ thể: vector DB/RAG khi catalog >100 + fuzzy intent; semantic layer khi multi-surface; AI auto-suggest wizard chỉ enrich metadata tự nhiên. Lý do: (1) Vector DB over-engineering cho 10-100 datasets — LLM routing đủ; (2) Semantic layer (Cube/dbt) là enterprise pattern cho multi-surface consistency, không fit newsroom 1 surface; (3) Fine-tune text-to-SQL overkill — zero-shot + rich context đủ; (4) Phóng viên không hiểu metrics/dimensions — UX phải giấu concepts. Reference: SOTA research 2026 (Spider2/BIRD broken, Cube semantic layer trend, Vanna RAG, Anthropic tool use). |
 | 2026-07-23 | **Phase 1 format scope — tabular + GeoJSON, defer PDF/MP3 sang Phase 3** | Cũ: #1A multi-format gồm pdf/mp3/geojson/zip. Mới: #1A chỉ còn **GeoJSON** (geospatial = data). PDF + MP3 defer Phase 3 — cả 2 luồng (wizard + add-file) và 2 loại PDF (text-based `pdf-parse` extract + scanned OCR/AI vision). Lý do: giữ tinh thần "dataset = tabular" cho MVP, hạn chế phức tạp. PDF/MP3 = document/audio, thuộc Phase 3 RAG infrastructure (3a Document RAG pickup upload flow, 3b Audio RAG pickup upload flow) chứ không phải Phase 1 dataset. Phase 1 `detectFormat` accept CSV/XLSX/XLS + GeoJSON (native `JSON.parse`, không library ngoài). Dictionary reuse cho GeoJSON (columns = feature.properties.keys()). Preview GeoJSON: render table từ features.properties, defer map (Leaflet/MapLibre) cho sau. **TSV cũng bỏ cùng ngày** — `parseCSV` hardcode comma delimiter, TSV file upload sẽ parse sai (1 cột duy nhất); ưu tiên sửa sau nếu có demand thực tế thay vì quảng cáo sai. |
 | 2026-07-24 | **Phase 1 wrap-up** | Đóng gói chính thức Phase 1 (Dataset Hub). CHANGELOG promote `[Unreleased]` → `[Phase 1] - 2026-07-24`. Wrap-up doc mới `docs/phase-1.md` — feature map (11 nhóm: catalog/upload/preview/search/edit-delete/geojson/frictionless/auth/articles/downloads/perf), architecture snapshot, source-of-truth, known gaps + workarounds, Phase 2 entry point. Ngoài plan gốc 2026-07-09 (4 features: search/pagination/viewer/edit-delete), Phase 1 còn ship các enhancement: GeoJSON upload, Frictionless Data Table Schema, Auth nhẹ + edit history timeline, Article Linking (reverse provenance), Download counter, listing render perf. Roadmap Phase 1 mark DELIVERED. |
+| 2026-07-24 | **Phase 2 DELIVERED + Inter-phase refactor mở** | Phase 2 Discovery Chat merge `origin/main` qua PR #2 (`a9b38ab`). Mở `refactor-pre-launch` branch cho inter-phase pre-launch refactor (KHÔNG phải Phase 3 — không mở rộng feature, chỉ harden + cleanup). Spec `specs/2026-07-24-pre-launch-refactor/`. Scope 4 bundles: security (xlsx CVE + global rate limit + R2-exist check), code health (GitHub helper DRY + type dedup + split god files), UX/onboarding (README + .env.example + loading.tsx commit), docs/phase-2.md wrap-up. Audience: internal newsroom (7 user). Phase 3 Intelligence còn defer cho sau khi Phase 2 có traffic data. |

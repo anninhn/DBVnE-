@@ -54,39 +54,16 @@ export interface FileRef {
   column_stats?: Record<string, ColumnStats>;
 }
 
-/**
- * Edit history entry — append mỗi lần user edit metadata.
- * Spec D2 — actor tracking.
- */
-export interface EditEntry {
-  by: string;        // username
-  at: string;        // ISO datetime
-  summary?: string;  // vd: "Edit metadata", auto-generated
-}
-
-/**
- * Article link — bài báo VNExpress sử dụng dataset.
- * Spec 2026-07-24-article-linking. Duplicate type tại đây theo convention
- * ColumnStats (tránh circular import với src/lib/types/dataset.ts).
- */
-export interface ArticleEntry {
-  url: string;
-  title: string;
-  author?: string;
-  published_at?: string;
-  section?: string;
-  thumbnail?: string;
-  added_at: string;
-  added_by: string;
-}
-
-/**
- * Stats cho 1 cột — mirror type từ src/lib/types/dataset.ts.
- * Duplicate ở đây để tránh circular import (types/dataset.ts import từ datasets/ layer).
- */
-export type ColumnStats =
-  | { kind: "numeric"; min: number; max: number; histogram: number[] }
-  | { kind: "categorical"; distinct: number; segments: { label: string; count: number }[] };
+// Re-export shared domain types từ canonical location (src/lib/types/dataset.ts).
+// Refactor 2026-07-24-pre-launch-refactor — giải duplicate type Convention
+// ColumnStats/EditEntry/ArticleEntry trước đây duplicate để "tránh circular import"
+// (claim cũ không còn đúng sau khi extract GitHub Contents API helper).
+import type {
+  ColumnStats,
+  EditEntry,
+  ArticleEntry,
+} from "@/lib/types/dataset";
+export type { ColumnStats, EditEntry, ArticleEntry };
 
 export interface MetadataYaml {
   // Common
