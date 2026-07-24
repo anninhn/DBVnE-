@@ -6,7 +6,7 @@ This project uses Spec-Driven Development. Read these files before implementing 
 
 - `constitution/mission.md` — Why: data platform cho tòa soạn VNExpress, motivation, personas, 3 phases
 - `constitution/tech-stack.md` — How: dataset-centric architecture, Supabase, R2, API, data model
-- `constitution/roadmap.md` — When: Phase 1 (Dataset Hub) → Phase 2 (Query Layer) → Phase 3 (Intelligence)
+- `constitution/roadmap.md` — When: Phase 1 (Dataset Hub) ✅ → Phase 2 (Discovery Chat) → Phase 3 (Intelligence). Wrap-up Phase 1: `docs/phase-1.md`
 
 ## Architecture Principle
 

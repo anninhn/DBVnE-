@@ -4,7 +4,15 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ---
 
-## [Unreleased] — Phase 1 Dataset Hub (đang phát triển)
+## [Unreleased] — Phase 2 Discovery Chat
+
+Phase 2 bắt đầu sau Phase 1 wrap-up (2026-07-24). Scope: LLM routing zero-infra — Claude thấy metadata tất cả datasets + câu hỏi → top-3 cards + lý do. Bỏ chart builder / SQL panel / text-to-SQL (đẩy Phase 3). Xem `constitution/roadmap.md` + `docs/phase-1.md`.
+
+---
+
+## [Phase 1] - 2026-07-24 — Dataset Hub
+
+Phase 1 hoàn thành 2026-07-24. Wrap-up đầy đủ: `docs/phase-1.md`.
 
 ### 2026-07-24 — Article Linking feature (commit 728782f)
 

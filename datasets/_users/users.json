@@ -19,6 +19,66 @@
       "createdAt": "2026-07-24T00:00:00Z",
       "active": true,
       "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "username": "hang",
+      "passwordHash": "$2b$12$hjIC93swkvlb.V..RaY9Q.Dz4FLrZMmiPrQ6TW3tbPRnaoa/novOW",
+      "displayName": "Hang",
+      "role": "editor",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "username": "ha",
+      "passwordHash": "$2b$12$gT0Hyry3PvX5PHI5tKgGAuA69vwq3MFp/Q5jg5Ct6vTxk8RnVDT8q",
+      "displayName": "Ha",
+      "role": "editor",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000004",
+      "username": "khanh",
+      "passwordHash": "$2b$12$RncI7RHmRJiGgDyUIk60Fu4.LOX8AahWnIdYZManvYJVIIP.qHF92",
+      "displayName": "Khanh",
+      "role": "editor",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000005",
+      "username": "thanh",
+      "passwordHash": "$2b$12$SZz69nbBhZw0Y0yrfE2q/OsKXteALEzapUjeLtGmq.PIuFQQ2RFh6",
+      "displayName": "Thanh",
+      "role": "editor",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000006",
+      "username": "tien",
+      "passwordHash": "$2b$12$rpxOE.73Rz7nxRShM0bXfu9ehB9HZayTpOe/58eeW4DPQcFmrUce2",
+      "displayName": "Tien",
+      "role": "editor",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000007",
+      "username": "thao",
+      "passwordHash": "$2b$12$k/mqsGvxbqsI5U3DyJO6z.TdUAqgCM0GhWRkfmpHuxvSPg3Oy8D5y",
+      "displayName": "Thao",
+      "role": "editor",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
     }
   ]
 }
