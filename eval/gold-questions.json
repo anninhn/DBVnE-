@@ -1,0 +1,65 @@
+[
+  {
+    "id": "q001",
+    "query": "Có data gì về kinh tế miền Nam?",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "GRDP|kinh tế|tỉnh",
+    "vietnamese_only": true,
+    "note": "Generic — Ninh curate slug cụ thể sau khi catalog có dataset kinh tế"
+  },
+  {
+    "id": "q002",
+    "query": "Dân số TP.HCM 2024 bao nhiêu?",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "dân số|HCM|TP\\.HCM|9\\.",
+    "vietnamese_only": true,
+    "note": "Lookup cụ thể — test Tier 1 behavior (cite dataset, không bịa con số)"
+  },
+  {
+    "id": "q003",
+    "query": "Có data gì về bầu cử quốc hội?",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "bầu cử|quốc hội|không",
+    "vietnamese_only": true
+  },
+  {
+    "id": "q004",
+    "query": "xyz123abc random text",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "không|chưa có|không tìm thấy",
+    "vietnamese_only": true,
+    "zero_match": true,
+    "note": "Zero-match test — EmptyState render"
+  },
+  {
+    "id": "q005",
+    "query": "GRDP ĐBSCL 5 năm gần đây thế nào?",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "GRDP|ĐBSCL|đồng bằng",
+    "vietnamese_only": true,
+    "note": "Synonyms vùng miền — ĐBSCL = đồng bằng sông Cửu Long = miền Tây"
+  },
+  {
+    "id": "q006",
+    "query": "Danh sách lãnh đạo 34 tỉnh thành",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "lãnh đạo|chủ tịch|tỉnh",
+    "vietnamese_only": true
+  },
+  {
+    "id": "q007",
+    "query": "FDI Việt Nam theo năm",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "FDI|đầu tư|nước ngoài",
+    "vietnamese_only": true,
+    "note": "English terminology mixed với Vietnamese"
+  },
+  {
+    "id": "q008",
+    "query": "Ranh giới hành chính 34 tỉnh",
+    "expected_dataset_slugs": [],
+    "expected_answer_pattern": "ranh giới|geojson|hành chính",
+    "vietnamese_only": true,
+    "note": "GeoJSON dataset test"
+  }
+]

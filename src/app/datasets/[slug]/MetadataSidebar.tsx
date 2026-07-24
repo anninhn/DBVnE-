@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { MessageCircle } from "lucide-react";
 import type { Dataset } from "@/lib/types/dataset";
 import { formatCompactNumber } from "@/lib/format";
 import { lookupDisplayName } from "@/lib/auth";
@@ -122,6 +124,18 @@ async function ActivityTimeline({ dataset }: { dataset: Dataset }) {
 export default async function MetadataSidebar({ dataset }: MetadataSidebarProps) {
   return (
     <div>
+      {/* Ask about this dataset — Discovery Chat CTA (spec Phase 2).
+          Link sang /hoi-du-lieu?prefill=<title> → ChatBox pre-fill input với title,
+          user tự viết câu hỏi + Enter. KHÔNG auto-submit (user agency). */}
+      <Link
+        href={`/hoi-du-lieu?prefill=${encodeURIComponent(dataset.title)}`}
+        className="flex items-center justify-center gap-2 bg-hf-yellow/20 hover:bg-hf-yellow/40 border border-hf-yellow/50 rounded-lg px-3 py-2.5 mb-3 text-[13px] font-medium text-hf-text transition group"
+      >
+        <MessageCircle className="w-3.5 h-3.5" aria-hidden />
+        Hỏi về dataset này
+        <span className="text-hf-text-muted group-hover:ml-0.5 transition-all">→</span>
+      </Link>
+
       {/* Usage — gộp Downloads + Article Linking (spec 2026-07-24).
           Cả 2 metric cùng phản ánh mức độ lan tỏa thực tế của dataset. */}
       <Card title="Usage">

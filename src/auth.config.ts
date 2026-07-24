@@ -36,6 +36,7 @@ export const authConfig = {
       const isLoggedIn = !!auth?.user;
       const isProtected =
         nextUrl.pathname.startsWith("/upload") ||
+        nextUrl.pathname.startsWith("/hoi-du-lieu") ||
         /\/datasets\/[^/]+\/edit(\/|$)/.test(nextUrl.pathname);
       if (isProtected) {
         if (isLoggedIn) return true;
