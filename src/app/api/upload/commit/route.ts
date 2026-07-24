@@ -13,6 +13,8 @@ import {
   type DictionaryForRender,
 } from "@/lib/dataset-commit";
 import type { ColumnStats } from "@/lib/types/dataset";
+import { requireUserOr401 } from "@/lib/auth";
+import { injectUploaded } from "@/lib/auth/inject-actor";
 
 interface CommitRequest {
   fileId: string;
@@ -59,6 +61,11 @@ async function resolveUniqueSlug(baseSlug: string): Promise<string> {
 }
 
 export async function POST(req: NextRequest) {
+  // Auth check — spec plan task 14
+  const authCheck = await requireUserOr401();
+  if (!authCheck.ok) return authCheck.response;
+  const user = authCheck.user;
+
   let body: CommitRequest;
   try {
     body = await req.json();
@@ -139,6 +146,9 @@ export async function POST(req: NextRequest) {
       geometry_type: metadata.geometry_type,
       bbox: metadata.bbox,
       crs: metadata.crs,
+      // Auth — inject actor từ session (spec D2)
+      uploaded_by: user.username,
+      uploaded_at: new Date().toISOString(),
     }
   );
   const markdownContent = renderDictionaryMarkdown(dictionary ?? []);

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getObject } from "@/lib/r2/get";
 import { inspectFile } from "@/lib/ai/inspect";
 import { analyzeDataset } from "@/lib/ai/dataset-reviewer";
+import { requireUserOr401 } from "@/lib/auth";
 
 export const maxDuration = 60; // AI call có thể mất 10-30s với file lớn
 
@@ -12,6 +13,10 @@ interface AnalyzeRequest {
 }
 
 export async function POST(req: NextRequest) {
+  // Auth check — spec plan task 14
+  const authCheck = await requireUserOr401();
+  if (!authCheck.ok) return authCheck.response;
+
   let body: AnalyzeRequest;
   try {
     body = await req.json();

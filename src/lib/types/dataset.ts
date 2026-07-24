@@ -94,6 +94,9 @@ export interface Dataset {
   source_url?: string;
   uploaded_by: string;
   uploaded_at: string; // ISO
+  /** Auth nhẹ (spec 2026-07-24) — actor tracking */
+  last_edited_by?: string;
+  last_edited_at?: string; // ISO
   resources: Resource[];
   data_dictionary: DataDictionaryEntry[];
   /** GeoJSON-only — undefined cho tabular/pdf/mp3. */

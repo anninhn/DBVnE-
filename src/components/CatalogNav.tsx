@@ -7,13 +7,18 @@
  * - Listing page (controlled): pass query + onQueryChange → live filter.
  * - Detail page (navigate): không pass props → Enter điều hướng về /?q=query.
  *   Listing đọc ?q từ URL để pre-fill (useEffect trong DatasetExplorer).
+ *
+ * Auth: nếu session tồn tại → hiển thị UserMenu (displayName + logout).
+ * Nếu không → ẩn (browse công khai). Spec plan task 10.
  */
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Upload } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { Upload, LogIn } from "lucide-react";
 import SearchBox from "@/components/search/SearchBox";
+import UserMenu from "@/components/auth/UserMenu";
 
 interface CatalogNavProps {
   /** Query text hiện tại — controlled input. Optional: omit trên detail page. */
@@ -26,6 +31,11 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
   const isControlled = query !== undefined && onQueryChange !== undefined;
   const [localQuery, setLocalQuery] = useState("");
   const router = useRouter();
+  const { data: session } = useSession();
+
+  const user = session?.user as
+    | { displayName?: string; username?: string }
+    | undefined;
 
   return (
     <nav className="bg-hf-bg border-b border-hf-border h-[52px] px-4 flex items-center gap-6 sticky top-0 z-50">
@@ -85,6 +95,19 @@ export default function CatalogNav({ query, onQueryChange }: CatalogNavProps) {
         <Upload className="w-3.5 h-3.5" strokeWidth={2.5} aria-hidden />
         Upload dataset
       </Link>
+
+      {/* Auth: UserMenu nếu login, không thì link "Đăng nhập" subtle */}
+      {user?.displayName && user?.username ? (
+        <UserMenu displayName={user.displayName} username={user.username} />
+      ) : (
+        <Link
+          href="/login"
+          className="text-sm text-hf-text-muted hover:text-hf-text shrink-0 inline-flex items-center gap-1"
+        >
+          <LogIn className="w-3.5 h-3.5" aria-hidden />
+          Đăng nhập
+        </Link>
+      )}
     </nav>
   );
 }

@@ -1,8 +1,50 @@
 import type { Dataset } from "@/lib/types/dataset";
 import { formatCompactNumber } from "@/lib/format";
+import { lookupDisplayName } from "@/lib/auth";
 
 interface MetadataSidebarProps {
   dataset: Dataset;
+}
+
+/**
+ * Format ISO date → relative time tiếng Việt (vd: "2 ngày trước").
+ * Fallback: absolute date nếu > 30 ngày.
+ */
+function relativeTime(iso: string): string {
+  const now = Date.now();
+  const then = new Date(iso).getTime();
+  const diffMs = now - then;
+  const diffMin = Math.floor(diffMs / 60000);
+  const diffHour = Math.floor(diffMin / 60);
+  const diffDay = Math.floor(diffHour / 24);
+
+  if (diffMin < 1) return "vừa xong";
+  if (diffMin < 60) return `${diffMin} phút trước`;
+  if (diffHour < 24) return `${diffHour} giờ trước`;
+  if (diffDay < 30) return `${diffDay} ngày trước`;
+  return new Date(iso).toLocaleDateString("vi-VN");
+}
+
+async function ActorRow({
+  label,
+  username,
+  isoTime,
+}: {
+  label: string;
+  username?: string;
+  isoTime?: string;
+}) {
+  if (!username || !isoTime) return null;
+  const displayName = await lookupDisplayName(username);
+  return (
+    <div className="flex justify-between py-0.5">
+      <dt className="text-hf-text-muted">{label}</dt>
+      <dd className="font-medium text-right max-w-[60%]">
+        <span className="font-medium">{displayName}</span>
+        <span className="text-hf-text-faint ml-1">• {relativeTime(isoTime)}</span>
+      </dd>
+    </div>
+  );
 }
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
@@ -14,7 +56,7 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-export default function MetadataSidebar({ dataset }: MetadataSidebarProps) {
+export default async function MetadataSidebar({ dataset }: MetadataSidebarProps) {
   return (
     <div>
       {/* Downloads */}
@@ -49,7 +91,7 @@ export default function MetadataSidebar({ dataset }: MetadataSidebarProps) {
         </dl>
       </Card>
 
-      {/* Source */}
+      {/* Source + Actor (spec D2 — display uploaded_by/last_edited_by từ top-level metadata) */}
       <Card title="Source">
         <dl className="text-[13px]">
           <div className="flex justify-between py-0.5">
@@ -69,16 +111,16 @@ export default function MetadataSidebar({ dataset }: MetadataSidebarProps) {
               )}
             </dd>
           </div>
-          <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Uploader</dt>
-            <dd className="font-medium">{dataset.uploaded_by}</dd>
-          </div>
-          <div className="flex justify-between py-0.5">
-            <dt className="text-hf-text-muted">Uploaded</dt>
-            <dd className="font-medium">
-              {new Date(dataset.uploaded_at).toLocaleDateString("vi-VN")}
-            </dd>
-          </div>
+          <ActorRow
+            label="Người đăng"
+            username={dataset.uploaded_by}
+            isoTime={dataset.uploaded_at}
+          />
+          <ActorRow
+            label="Chỉnh sửa cuối"
+            username={dataset.last_edited_by}
+            isoTime={dataset.last_edited_at}
+          />
           <div className="flex justify-between py-0.5">
             <dt className="text-hf-text-muted">License</dt>
             <dd className="font-medium capitalize">{dataset.license}</dd>

@@ -54,6 +54,16 @@ export interface FileRef {
 }
 
 /**
+ * Edit history entry — append mỗi lần user edit metadata.
+ * Spec D2 — actor tracking.
+ */
+export interface EditEntry {
+  by: string;        // username
+  at: string;        // ISO datetime
+  summary?: string;  // vd: "Edit metadata", auto-generated
+}
+
+/**
  * Stats cho 1 cột — mirror type từ src/lib/types/dataset.ts.
  * Duplicate ở đây để tránh circular import (types/dataset.ts import từ datasets/ layer).
  */
@@ -75,6 +85,14 @@ export interface MetadataYaml {
   uploaded_at?: string; // ISO datetime
   confidence?: "high" | "medium" | "low";
   files?: FileRef[];
+
+  // Auth nhẹ (spec 2026-07-24) — actor tracking + soft delete
+  last_edited_by?: string;
+  last_edited_at?: string; // ISO datetime
+  edits?: EditEntry[];
+  status?: "active" | "deleted"; // omit = active (backward compat)
+  deleted_by?: string;
+  deleted_at?: string; // ISO datetime
 
   // Tabular (CSV/XLSX/Parquet)
   row_count?: number;

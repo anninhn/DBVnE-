@@ -146,6 +146,8 @@ function extractSourceUrl(source: MetadataYaml["source"]): string {
 function mapFilesToResources(
   files: MetadataYaml["files"],
   format: string | undefined,
+  uploadedBy?: string,
+  uploadedAt?: string,
 ): { resources: Resource[]; totalSizeMb: number } {
   if (!files || files.length === 0) return { resources: [], totalSizeMb: 0 };
 
@@ -162,8 +164,9 @@ function mapFilesToResources(
       file_type: inferFileType(f.filename ?? r2Key, format),
       file_size_mb: f.size_mb ?? 0,
       column_stats: f.column_stats,
-      uploaded_by: "demo",
-      uploaded_at: new Date().toISOString(),
+      // Spec T3 — lấy từ metadata top-level (real actor), không hardcode "demo"
+      uploaded_by: uploadedBy ?? "unknown",
+      uploaded_at: uploadedAt ?? new Date().toISOString(),
     };
   });
 
@@ -201,7 +204,12 @@ export function metadataToDataset(
   dictionary: DataDictionaryEntry[],
 ): Dataset {
   const format = typeof meta.format === "string" ? meta.format : undefined;
-  const { resources, totalSizeMb } = mapFilesToResources(meta.files, format);
+  const { resources, totalSizeMb } = mapFilesToResources(
+    meta.files,
+    format,
+    meta.uploaded_by,
+    meta.uploaded_at,
+  );
   const temporal = meta.coverage?.temporal ?? [];
   const year_range = temporal
     .map((t) => (typeof t === "number" ? t : parseInt(String(t), 10)))
@@ -224,6 +232,9 @@ export function metadataToDataset(
     source_url: extractSourceUrl(meta.source),
     uploaded_by: meta.uploaded_by ?? "unknown",
     uploaded_at: meta.uploaded_at ?? new Date().toISOString(),
+    // Auth nhẹ (spec D2) — optional, undefined cho dataset chưa edit
+    last_edited_by: meta.last_edited_by,
+    last_edited_at: meta.last_edited_at,
     resources,
     data_dictionary: dictionary,
     // GeoJSON-only — undefined cho tabular/pdf/mp3.
@@ -251,6 +262,9 @@ export const getDatasetBySlug = cache(async (slug: string): Promise<Dataset | nu
     console.warn(`[datasets] metadata.yaml không hợp lệ cho slug: ${slug}`);
     return null;
   }
+
+  // Skip soft-deleted — spec D3, detail page return null → 404
+  if (meta.status === "deleted") return null;
 
   const dictText = await fetchRaw(`datasets/${slug}/dictionary.md`);
   const dictionary = dictText ? parseDictionaryMarkdown(dictText) : [];

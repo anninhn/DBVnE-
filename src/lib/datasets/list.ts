@@ -104,6 +104,8 @@ export const listDatasets = cache(async (): Promise<Dataset[]> => {
     if (r.status !== "fulfilled" || !r.value) continue;
     const meta = r.value;
     if (!meta.title || !meta.slug) continue;
+    // Skip soft-deleted — spec D3, listing không render dataset có status: deleted
+    if (meta.status === "deleted") continue;
     // Listing không cần dictionary — load only khi click vào detail
     datasets.push(metadataToDataset(meta, []));
   }

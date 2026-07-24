@@ -1,13 +1,19 @@
 /**
  * Cleanup orphans — scan GitHub metadata vs R2 objects, report + xóa chéo.
  *
- * 2 loại orphan:
+ * 2 loại orphan (luôn scan):
  *   - GitHub orphan: metadata.yaml có r2_key nhưng object không tồn tại trong R2
  *   - R2 orphan: object tồn tại trong R2 nhưng không có metadata nào reference
  *
+ * Optional --include-deleted (spec D3 hard delete):
+ *   Scan dataset có `status: deleted` trong metadata.yaml → hard delete GitHub
+ *   folder + R2 objects. Log vào datasets/_audit/purge.log.
+ *
  * Usage:
- *   node tools/cleanup-orphans.mjs          # dry-run, chỉ report
- *   node tools/cleanup-orphans.mjs --apply   # xóa thật
+ *   node tools/cleanup-orphans.mjs                          # dry-run, chỉ report
+ *   node tools/cleanup-orphans.mjs --apply                   # xóa orphans thật
+ *   node tools/cleanup-orphans.mjs --include-deleted         # dry-run + show soft-deleted
+ *   node tools/cleanup-orphans.mjs --include-deleted --apply # hard delete soft-deleted + orphans
  *
  * Cần env vars trong .env.local:
  *   GITHUB_TOKEN, GITHUB_REPO_OWNER, GITHUB_REPO_NAME, GITHUB_REPO_BRANCH
@@ -49,6 +55,7 @@ if (missing.length > 0) {
 }
 
 const APPLY = process.argv.includes("--apply");
+const INCLUDE_DELETED = process.argv.includes("--include-deleted");
 
 // AWS SDK v3 mặc định thêm checksum → R2 reject. Tắt đi.
 const r2 = new S3Client({
@@ -77,7 +84,10 @@ async function listDatasetSlugs() {
   const data = await ghFetch(
     `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/datasets?ref=${GH_BRANCH}`
   );
-  return data.filter((e) => e.type === "dir").map((e) => e.name);
+  // Skip internal folders _users + _audit (spec 2026-07-24)
+  return data
+    .filter((e) => e.type === "dir" && !e.name.startsWith("_"))
+    .map((e) => e.name);
 }
 
 async function getMetadataR2Keys(slug) {
@@ -85,13 +95,13 @@ async function getMetadataR2Keys(slug) {
   const res = await fetch(url, {
     headers: { Authorization: `Bearer ${GH_TOKEN}`, "User-Agent": "cleanup-orphans" },
   });
-  if (!res.ok) return { keys: [], title: slug };
+  if (!res.ok) return { keys: [], title: slug, status: undefined };
 
   const meta = parseYaml(await res.text());
   const keys = (meta.files ?? [])
     .map((f) => f.r2_key)
     .filter(Boolean);
-  return { keys, title: meta.title ?? slug };
+  return { keys, title: meta.title ?? slug, status: meta.status };
 }
 
 async function deleteGithubFolder(slug) {
@@ -152,19 +162,21 @@ async function deleteR2Objects(keys) {
 
 // ─── Main ──────────────────────────────────────────────────────────────────
 
-console.log(`\n${APPLY ? "🔴 APPLY MODE" : "🔵 DRY RUN"} (add --apply to delete)\n`);
+console.log(`\n${APPLY ? "🔴 APPLY MODE" : "🔵 DRY RUN"} (add --apply to delete)${INCLUDE_DELETED ? " + --include-deleted" : ""}\n`);
 
 // 1. List GitHub slugs + collect r2_keys
 console.log("→ Scanning GitHub datasets...");
 const slugs = await listDatasetSlugs();
 const slugToMeta = new Map();
 const githubR2Keys = new Set();
+const softDeleted = []; // spec D3 — datasets có status: deleted
 for (const slug of slugs) {
-  const { keys, title } = await getMetadataR2Keys(slug);
-  slugToMeta.set(slug, { keys, title });
+  const { keys, title, status } = await getMetadataR2Keys(slug);
+  slugToMeta.set(slug, { keys, title, status });
   keys.forEach((k) => githubR2Keys.add(k));
+  if (status === "deleted") softDeleted.push(slug);
 }
-console.log(`   ${slugs.length} datasets, ${githubR2Keys.size} r2_keys referenced\n`);
+console.log(`   ${slugs.length} datasets, ${githubR2Keys.size} r2_keys referenced, ${softDeleted.length} soft-deleted\n`);
 
 // 2. List R2 objects
 console.log("→ Scanning R2 bucket...");
@@ -214,6 +226,19 @@ if (r2Orphans.length > 0) {
   console.log("");
 }
 
+// Soft-deleted (spec D3 — only with --include-deleted flag)
+if (INCLUDE_DELETED && softDeleted.length > 0) {
+  console.log(`Soft-deleted datasets (status: deleted) — will hard delete: ${softDeleted.length}`);
+  for (const slug of softDeleted) {
+    const meta = slugToMeta.get(slug);
+    console.log(`  • ${slug} — ${meta.title} (${meta.keys.length} R2 keys)`);
+  }
+  console.log("");
+} else if (!INCLUDE_DELETED && softDeleted.length > 0) {
+  console.log(`ℹ️  ${softDeleted.length} soft-deleted dataset(s) skipped — re-run with --include-deleted to hard delete`);
+  console.log("");
+}
+
 if (!APPLY) {
   console.log("Dry run only. Run with --apply to delete orphans.\n");
   process.exit(0);
@@ -245,6 +270,67 @@ if (r2Orphans.length > 0) {
     console.log(`  ✓ All orphan objects deleted`);
   } catch (err) {
     console.error(`  ✗ ${err.message}`);
+  }
+}
+
+// Soft-deleted: hard delete GitHub folder + R2 objects + append purge.log (spec D3)
+if (INCLUDE_DELETED && softDeleted.length > 0) {
+  console.log(`\n→ Hard deleting ${softDeleted.length} soft-deleted dataset(s)...`);
+  const purgeLogLines = [];
+  for (const slug of softDeleted) {
+    const meta = slugToMeta.get(slug);
+    const iso = new Date().toISOString();
+    try {
+      // Delete R2 objects
+      if (meta.keys.length > 0) {
+        await deleteR2Objects(meta.keys);
+      }
+      // Delete GitHub folder
+      await deleteGithubFolder(slug);
+      purgeLogLines.push(`${iso} | ${slug} | ${meta.keys.length} r2 keys | github folder purged`);
+      console.log(`  ✓ ${slug} — purged (${meta.keys.length} R2 keys + GitHub folder)`);
+    } catch (err) {
+      purgeLogLines.push(`${iso} | ${slug} | ERROR: ${err.message}`);
+      console.error(`  ✗ ${slug}: ${err.message}`);
+    }
+  }
+
+  // Append purge.log (best-effort)
+  if (purgeLogLines.length > 0) {
+    try {
+      const purgePath = "datasets/_audit/purge.log";
+      let existing = "";
+      try {
+        const resp = await ghFetch(
+          `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${purgePath}?ref=${GH_BRANCH}`
+        );
+        existing = Buffer.from(resp.content.replace(/\n/g, ""), "base64").toString("utf-8");
+      } catch {
+        // 404 OK — file mới
+      }
+      const newContent = existing + purgeLogLines.join("\n") + "\n";
+      const b64 = Buffer.from(newContent, "utf-8").toString("base64");
+      await fetch(
+        `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${purgePath}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${GH_TOKEN}`,
+            "User-Agent": "cleanup-orphans-script",
+            Accept: "application/vnd.github+json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: `Purge ${softDeleted.length} soft-deleted datasets`,
+            content: b64,
+            branch: GH_BRANCH,
+          }),
+        }
+      );
+      console.log(`✓ Appended ${purgeLogLines.length} entries to datasets/_audit/purge.log`);
+    } catch (err) {
+      console.warn(`⚠ Could not append purge.log: ${err.message}`);
+    }
   }
 }
 

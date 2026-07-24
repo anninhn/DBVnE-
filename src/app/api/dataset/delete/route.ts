@@ -2,32 +2,34 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const maxDuration = 30;
 
-import { deleteDatasetFiles } from "@/lib/git/commit";
-import { deleteObject } from "@/lib/r2/delete";
+import { commitFiles } from "@/lib/git/commit";
 import { getMetadataYaml } from "@/lib/datasets/read";
+import { requireUserOr401 } from "@/lib/auth";
+import { injectDeleted } from "@/lib/auth/inject-actor";
+import { appendDeleteAudit } from "@/lib/auth/audit-log";
 
 interface DeleteRequest {
   slug: string;
   confirmSlug: string;
+  reason?: string;
 }
 
 /**
- * API xóa dataset — DEV-ONLY (D4).
+ * API soft-delete dataset.
  *
- * NODE_ENV guard: return 404 khi production.
+ * Spec D3 — xóa NODE_ENV guard (prod có delete capability khi login).
+ * Soft delete: set `status: deleted` + `deleted_by/at` trong metadata.yaml.
+ * Raw file R2 + folder GitHub KHÔNG xóa — recovery cho đến khi hard delete.
  *
- * Order: git rm FIRST (metadata.yaml + dictionary.md), R2 delete AFTER.
- * Nếu R2 delete fail → log error, KHÔNG rollback git.
- * Orphaned R2 object acceptable (dataset đã khỏi catalog, metadata clean).
+ * Hard delete = manual admin qua tools/cleanup-orphans.mjs --include-deleted.
+ *
+ * Audit log: append line vào datasets/_audit/delete.log (race window — spec D4).
  */
 export async function POST(req: NextRequest) {
-  // Guard: dev-only — production KHÔNG có delete capability
-  if (process.env.NODE_ENV === "production") {
-    return NextResponse.json(
-      { error: "Delete disabled in production" },
-      { status: 404 }
-    );
-  }
+  // Auth check — thay NODE_ENV guard cũ
+  const authCheck = await requireUserOr401();
+  if (!authCheck.ok) return authCheck.response;
+  const user = authCheck.user;
 
   let body: DeleteRequest;
   try {
@@ -39,7 +41,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { slug, confirmSlug } = body;
+  const { slug, confirmSlug, reason } = body;
 
   // Backend validation: slug phải khớp confirmSlug
   if (!slug || slug !== confirmSlug) {
@@ -49,52 +51,79 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 1. Fetch metadata.yaml để lấy danh sách r2_key
-  const meta = await getMetadataYaml(slug);
-  if (!meta) {
+  // 1. Fetch metadata.yaml hiện tại (raw text để inject field)
+  const config_resp = await fetch(
+    `https://api.github.com/repos/${process.env.GITHUB_REPO_OWNER}/${process.env.GITHUB_REPO_NAME}/contents/datasets/${slug}/metadata.yaml?ref=${process.env.GITHUB_REPO_BRANCH ?? "main"}`,
+    {
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        "User-Agent": "vnexpress-data-platform",
+      },
+      cache: "no-store",
+    }
+  );
+  if (config_resp.status === 404) {
     return NextResponse.json(
       { error: `Dataset "${slug}" không tồn tại` },
       { status: 404 }
     );
   }
+  if (!config_resp.ok) {
+    return NextResponse.json(
+      { error: "Không đọc được metadata.yaml" },
+      { status: 500 }
+    );
+  }
 
-  // 2. Git rm FIRST — commit xóa metadata.yaml + dictionary.md
+  const data = (await config_resp.json()) as {
+    content?: string;
+    sha?: string;
+  };
+  const b64 = (data.content ?? "").replace(/\n/g, "");
+  const yamlText = Buffer.from(b64, "base64").toString("utf-8");
+
+  // 2. Inject status: deleted + deleted_by/at
+  const isoNow = new Date().toISOString();
+  const yamlWithDelete = injectDeleted(yamlText, user.username, isoNow);
+
+  // 3. Commit metadata.yaml cập nhật (KHÔNG xóa file)
   try {
-    await deleteDatasetFiles(slug);
+    await commitFiles(
+      [
+        {
+          path: `datasets/${slug}/metadata.yaml`,
+          content: yamlWithDelete,
+        },
+      ],
+      `Soft-delete dataset ${slug} by ${user.username}`
+    );
   } catch (err) {
-    console.error("[delete] Git rm thất bại:", err);
+    console.error("[delete] Git commit thất bại:", err);
     return NextResponse.json(
       { error: "Không xóa được dataset. Vui lòng thử lại." },
       { status: 500 }
     );
   }
 
-  // 3. R2 delete AFTER — xóa từng object
-  const r2Keys = meta.files?.map((f) => f.r2_key).filter(Boolean) ?? [];
-  const r2Errors: string[] = [];
-
-  for (const key of r2Keys) {
-    try {
-      await deleteObject(key);
-      console.info(`[delete] R2 object đã xóa: ${key}`);
-    } catch (err) {
-      // Log error, KHÔNG rollback git — orphaned R2 object acceptable (D4)
-      const msg = err instanceof Error ? err.message : "Unknown error";
-      console.error(`[delete] R2 delete thất bại cho key ${key}:`, msg);
-      r2Errors.push(`${key}: ${msg}`);
-    }
-  }
-
-  if (r2Errors.length > 0) {
+  // 4. Append audit log (best-effort, không fail request nếu log fail)
+  try {
+    await appendDeleteAudit({
+      username: user.username,
+      slug,
+      reason,
+      isoTime: isoNow,
+    });
+  } catch (err) {
     console.warn(
-      `[delete] Dataset ${slug} đã xóa khỏi git nhưng ${r2Errors.length} R2 object(s) orphaned:`,
-      r2Errors
+      `[delete] Audit log append thất bại (commit đã thành công, log được trace qua git history):`,
+      err
     );
   }
 
   return NextResponse.json({
     success: true,
     redirect: "/",
-    message: `Dataset "${slug}" đã được xóa.`,
+    message: `Dataset "${slug}" đã được xóa (soft delete). Raw file vẫn còn ở R2 cho đến khi admin hard-delete.`,
   });
 }

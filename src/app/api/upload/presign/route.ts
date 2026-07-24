@@ -3,6 +3,7 @@ import { randomUUID } from "crypto";
 import { presignUpload } from "@/lib/r2/presign";
 import { buildFileUrl } from "@/lib/r2/client";
 import { detectFormat } from "@/lib/ai/inspect";
+import { requireUserOr401 } from "@/lib/auth";
 
 export const maxDuration = 60; // Vercel Fluid Compute
 
@@ -25,6 +26,10 @@ interface PresignRequest {
 }
 
 export async function POST(req: NextRequest) {
+  // Auth check — spec plan task 14
+  const authCheck = await requireUserOr401();
+  if (!authCheck.ok) return authCheck.response;
+
   let body: PresignRequest;
   try {
     body = await req.json();
