@@ -5,8 +5,9 @@
  * Đăng ký qua @theme (Tailwind v4) → utility classes:
  *   bg-hf-bg-subtle, text-hf-text-muted, border-hf-border, ...
  *
- * Source: Google Fonts — Source Sans 3 (body) + IBM Plex Mono (data/code).
- * Wire trong layout.tsx.
+ * Fonts: Source Sans 3 (body) + IBM Plex Mono (data/code) loaded self-host
+ * qua next/font/google trong layout.tsx. CSS variable injected vào <html>,
+ * reference tại đây qua var(--font-source-sans) / var(--font-ibm-plex-mono).
  */
 @theme {
   /* Nền */
@@ -32,9 +33,10 @@
   --color-hf-green: #10b981;
   --color-hf-red: #ef4444;
 
-  /* Fonts */
-  --font-sans: "Source Sans 3", -apple-system, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  /* Fonts — var() inject bởi next/font/google (layout.tsx).
+   * Fallback chain nếu font chưa load: system stack. */
+  --font-sans: var(--font-source-sans), -apple-system, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), "SF Mono", Menlo, monospace;
 }
 
 body {
