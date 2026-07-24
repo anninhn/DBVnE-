@@ -1,0 +1,24 @@
+{
+  "_comment": "User store cho Auth nhẹ — bcrypt hash cost 12. Đổi password qua tools/hash-password.mjs rồi dán hash mới vào passwordHash. Repo private = hash không public, nhưng nếu từng leak → rotate TẤT CẢ password.",
+  "_schema": {
+    "id": "uuid (stable, không đổi)",
+    "username": "lowercase, dùng trong metadata.yaml uploaded_by",
+    "passwordHash": "bcrypt hash $2b$12$...",
+    "displayName": "tên hiển thị UI (vd: 'Ninh')",
+    "role": "editor | admin (single-role Phase này, mọi user đã login có quyền write như nhau)",
+    "createdAt": "ISO datetime",
+    "active": "true | false (false = disable login mà không xóa user)"
+  },
+  "users": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "username": "ninh",
+      "passwordHash": "$2b$12$hg7j28OmkG6ZL5RAf1tF3OCiLTuN0mDWFThhtSU6DHj3WgJBxDuX2",
+      "displayName": "Ninh",
+      "role": "admin",
+      "createdAt": "2026-07-24T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    }
+  ]
+}
