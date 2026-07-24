@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 
 export const maxDuration = 30;
 
@@ -75,6 +76,10 @@ export async function POST(req: NextRequest) {
       dictionaryMarkdown,
       mode: "update",
     });
+
+    // Invalidate listing cache — homepage refresh ngay < 1s sau edit.
+    // Next.js 16: profile={expire:0} cho route handler = expire immediately.
+    revalidateTag("datasets", { expire: 0 });
 
     return NextResponse.json({
       success: true,

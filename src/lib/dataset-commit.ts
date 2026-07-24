@@ -12,7 +12,8 @@
  * sang `src/lib/dataset-render.ts` (pure functions, safe cho client components).
  */
 
-import { commitMetadataFiles, type CommitResult } from "@/lib/git/commit";
+import { commitFiles, type CommitResult } from "@/lib/git/commit";
+import { buildIndexFileFromYaml } from "@/lib/datasets/index-json";
 
 // Re-export render helpers cho server-side callers (API routes)
 export {
@@ -52,10 +53,29 @@ export async function commitMetadata(
       ? `Upload dataset ${input.slug}`
       : `Update dataset ${input.slug}`;
 
-  return commitMetadataFiles(
-    input.slug,
-    input.metadataYaml,
-    input.dictionaryMarkdown,
-    commitMessage
-  );
+  // Atomic commit: metadata.yaml + dictionary.md + index.json cùng 1 SHA.
+  // Index.json update best-effort — nếu fetch/parse fail, vẫn commit metadata
+  // (index có thể rebuild sau qua `tools/rebuild-index.mjs`).
+  const files: Parameters<typeof commitFiles>[0] = [
+    {
+      path: `datasets/${input.slug}/metadata.yaml`,
+      content: input.metadataYaml,
+    },
+    {
+      path: `datasets/${input.slug}/dictionary.md`,
+      content: input.dictionaryMarkdown,
+    },
+  ];
+
+  try {
+    const indexFile = await buildIndexFileFromYaml(input.metadataYaml);
+    if (indexFile) files.push(indexFile);
+  } catch (err) {
+    console.warn(
+      `[commitMetadata] index.json update fail — proceed commit metadata only:`,
+      err,
+    );
+  }
+
+  return commitFiles(files, commitMessage);
 }

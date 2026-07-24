@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 import { NotFound } from "@aws-sdk/client-s3";
 
 export const maxDuration = 30;
@@ -194,6 +195,10 @@ export async function POST(req: NextRequest) {
     r2Key,
     r2VersionId: r2Meta.version_id,
   });
+
+  // Invalidate listing cache — homepage refresh ngay < 1s sau upload.
+  // Next.js 16: profile={expire:0} cho route handler = expire immediately.
+  revalidateTag("datasets", { expire: 0 });
 
   return NextResponse.json({
     slug,

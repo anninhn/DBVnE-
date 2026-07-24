@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 
 export const maxDuration = 30;
 
@@ -7,6 +8,7 @@ import { requireUserOr401 } from "@/lib/auth";
 import { injectDeleted } from "@/lib/auth/inject-actor";
 import { appendDeleteAudit } from "@/lib/auth/audit-log";
 import { fetchFileContents } from "@/lib/github/contents-api";
+import { buildIndexFileFromYaml } from "@/lib/datasets/index-json";
 
 interface DeleteRequest {
   slug: string;
@@ -65,17 +67,24 @@ export async function POST(req: NextRequest) {
   const isoNow = new Date().toISOString();
   const yamlWithDelete = injectDeleted(yamlText, user.username, isoNow);
 
-  // 3. Commit metadata.yaml cập nhật (KHÔNG xóa file)
+  // 3. Commit metadata.yaml + index.json (status: deleted) — atomic cùng SHA.
   try {
-    await commitFiles(
-      [
-        {
-          path: `datasets/${slug}/metadata.yaml`,
-          content: yamlWithDelete,
-        },
-      ],
-      `Soft-delete dataset ${slug} by ${user.username}`
-    );
+    const files: Parameters<typeof commitFiles>[0] = [
+      {
+        path: `datasets/${slug}/metadata.yaml`,
+        content: yamlWithDelete,
+      },
+    ];
+    try {
+      const indexFile = await buildIndexFileFromYaml(yamlWithDelete);
+      if (indexFile) files.push(indexFile);
+    } catch (err) {
+      console.warn(
+        `[delete] index.json update fail — proceed commit metadata only:`,
+        err,
+      );
+    }
+    await commitFiles(files, `Soft-delete dataset ${slug} by ${user.username}`);
   } catch (err) {
     console.error("[delete] Git commit thất bại:", err);
     return NextResponse.json(
@@ -84,7 +93,11 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 4. Append audit log (best-effort, không fail request nếu log fail)
+  // 4. Invalidate listing cache — homepage refresh ngay < 1s sau delete.
+  // Next.js 16: profile={expire:0} cho route handler = expire immediately.
+  revalidateTag("datasets", { expire: 0 });
+
+  // 5. Append audit log (best-effort, không fail request nếu log fail)
   try {
     await appendDeleteAudit({
       username: user.username,
