@@ -1,8 +1,9 @@
 /**
- * Next.js middleware — page-level auth protection qua NextAuth v5 auth() wrapper.
+ * Next.js proxy (trước đây "middleware") — page-level auth protection qua
+ * NextAuth v5 auth() wrapper.
  *
  * Pattern chính thức NextAuth v5: import authConfig từ src/auth.config.ts
- * (edge-safe subset), wrap với NextAuth(), export default auth() làm middleware.
+ * (edge-safe subset), wrap với NextAuth(), export auth() làm proxy.
  *
  * authorized() callback trong authConfig quyết định allow/redirect. Redirect
  * target (/login) lấy từ authConfig.pages.signIn — NextAuth tự thêm ?next=
@@ -14,7 +15,7 @@
 import NextAuth from "next-auth";
 import { authConfig } from "@/auth.config";
 
-export const { auth: middleware } = NextAuth(authConfig);
+export const { auth: proxy } = NextAuth(authConfig);
 
 export const config = {
   matcher: [
