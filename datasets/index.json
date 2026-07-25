@@ -1,5 +1,43 @@
 [
   {
+    "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-ha-noi",
+    "title": "Ranh giới hành chính cấp phường/xã Hà Nội",
+    "description": "Dataset chứa ranh giới hành chính của 126 phường/xã thuộc thành phố Hà Nội, được biểu diễn dưới dạng MultiPolygon (WGS84).",
+    "category": "chinh-tri",
+    "tags": [
+      "hanh-chinh",
+      "ranh-gioi",
+      "ha-noi",
+      "phuong",
+      "xa"
+    ],
+    "uploaded_at": "2026-07-25T05:42:27.257Z",
+    "uploaded_by": "ninh",
+    "row_count": 126,
+    "file_count": 1,
+    "total_size_mb": 3.19,
+    "format": "geojson",
+    "source": "Tổng hợp từ GSO",
+    "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "geojson",
+        "r2_key": "c20596b0-523c-48df-8ec2-188806df9564/hanoi_wards_full.geojson",
+        "size_mb": 3.19
+      }
+    ],
+    "feature_count": 126,
+    "geometry_type": "MultiPolygon",
+    "bbox": [
+      105.285352,
+      20.564283,
+      106.020128,
+      21.385421
+    ],
+    "crs": "EPSG:4326"
+  },
+  {
     "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-tp-ho-chi-minh",
     "title": "Ranh giới hành chính cấp phường/xã TP. Hồ Chí Minh",
     "description": "Dữ liệu ranh giới hành chính cấp xã (phường/xã/thị trấn) của TP HCM: 168 đơn vị, được thể hiện dưới dạng MultiPolygon. ",
