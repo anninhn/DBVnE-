@@ -1,5 +1,43 @@
 [
   {
+    "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-tp-ho-chi-minh",
+    "title": "Ranh giới hành chính cấp phường/xã TP. Hồ Chí Minh",
+    "description": "Dữ liệu ranh giới hành chính cấp xã (phường/xã/thị trấn) của TP HCM: 168 đơn vị, được thể hiện dưới dạng MultiPolygon. ",
+    "category": "chinh-tri",
+    "tags": [
+      "ranh-gioi",
+      "hanh-chinh",
+      "phuong-xa",
+      "ho-chi-minh",
+      "binh-duong"
+    ],
+    "uploaded_at": "2026-07-25T05:40:32.691Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 5.2,
+    "format": "geojson",
+    "source": "Tổng hợp từ GSO ",
+    "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "geojson",
+        "r2_key": "b2518794-bbdc-4e24-bda2-3994e7f3ed66/tphcm_wards_full.geojson",
+        "size_mb": 5.2
+      }
+    ],
+    "feature_count": 168,
+    "geometry_type": "MultiPolygon",
+    "bbox": [
+      106.088109,
+      8.577055,
+      107.571928,
+      11.50104
+    ],
+    "crs": "EPSG:4326"
+  },
+  {
     "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-cua-viet-nam",
     "title": "Ranh giới hành chính cấp phường/xã của Việt Nam",
     "description": "Dữ liệu ranh giới hành chính cấp xã (phường, xã, thị trấn) của Việt Nam, bao gồm 3321 đơn vị với định dạng MultiPolygon. Phạm vi địa lý bao phủ toàn bộ lãnh thổ Việt Nam, bao gồm cả các đảo.",
