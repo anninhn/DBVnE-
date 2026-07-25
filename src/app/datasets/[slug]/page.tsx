@@ -116,7 +116,9 @@ export default async function DatasetPage({ params }: PageProps) {
                     : "—"}
               </Pill>
             </PillGroup>
-            <PillGroup label="License:"><Pill>{dataset.license}</Pill></PillGroup>
+            {dataset.license && dataset.license.toLowerCase() !== "internal" && (
+              <PillGroup label="License:"><Pill>{dataset.license}</Pill></PillGroup>
+            )}
           </div>
         </div>
 
