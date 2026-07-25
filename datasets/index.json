@@ -89,11 +89,13 @@
     ],
     "uploaded_at": "2026-07-25T05:40:32.691Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-07-25T05:55:03.127Z",
     "row_count": 168,
     "file_count": 1,
     "total_size_mb": 5.2,
     "format": "geojson",
-    "source": "Tổng hợp từ GSO ",
+    "source": "thanglequoc/vietnamese-provinces-database (Tổng hợp từ GSO)thanglequoc/vietnamese-provinces-database (Tổng hợp từ GSO)",
     "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
     "year_range": [],
     "resources": [
@@ -102,16 +104,7 @@
         "r2_key": "b2518794-bbdc-4e24-bda2-3994e7f3ed66/tphcm_wards_full.geojson",
         "size_mb": 5.2
       }
-    ],
-    "feature_count": 168,
-    "geometry_type": "MultiPolygon",
-    "bbox": [
-      106.088109,
-      8.577055,
-      107.571928,
-      11.50104
-    ],
-    "crs": "EPSG:4326"
+    ]
   },
   {
     "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-cua-viet-nam",
