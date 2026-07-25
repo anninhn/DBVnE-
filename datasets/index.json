@@ -1,5 +1,43 @@
 [
   {
+    "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-viet-nam",
+    "title": "Ranh giới hành chính cấp phường/xã Việt Nam",
+    "description": "Dataset chứa ranh giới hành chính cấp xã (phường, xã, thị trấn) của Việt Nam, bao gồm 3321 features với geometry MultiPolygon, phủ khắp lãnh thổ Việt Nam (bao gồm cả các quần đảo).",
+    "category": "chinh-tri",
+    "tags": [
+      "hanh-chinh",
+      "ranh-gioi",
+      "cap-xa",
+      "viet-nam",
+      "ban-do"
+    ],
+    "uploaded_at": "2026-07-25T05:53:32.685Z",
+    "uploaded_by": "ninh",
+    "row_count": 3321,
+    "file_count": 1,
+    "total_size_mb": 169.4,
+    "format": "geojson",
+    "source": "thanglequoc/vietnamese-provinces-database (Tổng hợp từ GSO)",
+    "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "geojson",
+        "r2_key": "79dfacf9-7b11-4c75-944d-ee699dec5753/vietnam_wards_enriched.geojson",
+        "size_mb": 169.4
+      }
+    ],
+    "feature_count": 3321,
+    "geometry_type": "MultiPolygon",
+    "bbox": [
+      102.143914,
+      7.183812,
+      117.827998,
+      23.392643
+    ],
+    "crs": "EPSG:4326"
+  },
+  {
     "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-ha-noi",
     "title": "Ranh giới hành chính cấp phường/xã Hà Nội",
     "description": "Dataset chứa ranh giới hành chính của 126 phường/xã thuộc thành phố Hà Nội, được biểu diễn dưới dạng MultiPolygon (WGS84).",
