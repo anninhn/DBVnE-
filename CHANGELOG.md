@@ -4,6 +4,37 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ---
 
+## [Branch ssr-optimization] - 2026-07-24 — Discovery attach + auth gates (commit 3c67250)
+
+### Discovery Chat attach dataset (ChatGPT-style chip)
+
+Sidebar "Hỏi về dataset này" trước chỉ prefill text title → Discovery API flatten tất cả datasets → Gemini semantic match → rủi ro chọn dataset sai nếu title ambiguous. Enhancement này bind chính xác dataset user click vào conversation.
+
+- Sidebar link thêm `&attached=<slug>` → server fetch title qua `getDatasetBySlug`, pass prop `attachedDataset` xuống ChatBox
+- ChatBox render chip "🗄 <title> ✕" phía trên input (palette yellow consistent với Upload button + AMA beta badge), nút X clear attach
+- Submit body thêm `attachedSlug` → API fetch `getDatasetDetail` (metadata + structured_data)
+- Helper `buildFocusBlock` trong `src/lib/chat/flatten-metadata.ts` — full metadata + **toàn bộ data dictionary** (không cap MAX_COLUMNS như flatten catalog) + 5 sample rows (chỉ bổ trợ). AI trả lời chính xác dựa trên metadata + dictionary, không phụ thuộc sample rows
+- System prompt `tools/prompts/discovery-chat.md` thêm rule #9: ưu tiên FOCUS dataset, cite confidence "high", giải thích columns cụ thể
+- Silent fallback: slug invalid/deleted → chip không hiện, API không attach, flow như không attach
+
+### Download auth gate (defense in depth)
+
+Trước đó public user có thể download dataset qua R2 public URL. Ninh yêu cầu login gate.
+
+- `/api/dataset/download` thêm `requireUserOr401()` (API-level check song song middleware)
+- Detail page header + Files tab: render nút Download luôn, nhưng href = `/login?next=<current>` nếu chưa login (user agency — vẫn thấy nút)
+- **Audit fix 3 chỗ R2 public URL bypass**: `R2FileViewer.tsx` (2 link: "Tải về trực tiếp" + "Download") + `DatasetViewer.tsx` (GeoJSON error "Tải về trực tiếp") — tất cả dùng prop `canDownload` + `slug` truyền qua `FilesTabContent` + `DatasetCardTabs`
+- `/login` text update: "Đăng nhập để download, upload, sửa dataset hoặc hỏi đáp"
+
+### Nav + UI consistency
+
+- `/upload` + `/datasets/[slug]/edit` dùng `<CatalogNav />` thay nav inline (trước chỉ có Datasets, thiếu AMA link)
+- `CatalogNav.tsx` thêm `usePathname` toggle active color (active = đậm text-hf-text, inactive = muted)
+- `CommitPreview` thêm props `primaryAction` + `resetLabel` → fix bug button alignment lệch ở edit form (trước 2 div justify-end riêng → "Save changes" phải, "Upload dataset khác" trái). Edit form pass "← Quay lại chỉnh sửa" (secondary) + "Save changes →" (primary) cùng flex row
+- 7 dataset metadata.yaml: `uploaded_by: demo` → `uploaded_by: ninh` (consistent với user thực)
+
+---
+
 ## [Unreleased] — Inter-phase Pre-launch Refactor
 
 Refactor sau Phase 1 + Phase 2 ship, trước khi bắt đầu Phase 3. Scope: security patches (xlsx CVE), code health (split god files, extract helpers, resolve type duplication), UX/onboarding (README, .env.example, loading states), documentation (`docs/phase-2.md`). Spec: `specs/2026-07-24-pre-launch-refactor/`.

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Pencil, Download } from "lucide-react";
 import { getDatasetBySlug, getDatasetDetail } from "@/lib/datasets/read";
 import { formatCompactNumber } from "@/lib/format";
+import { classifyModalities } from "@/lib/datasets/modalities";
 import { lookupDisplayName, requireUser } from "@/lib/auth";
 import DeleteDatasetButton from "@/components/dataset/DeleteDatasetButton";
 import CatalogNav from "@/components/CatalogNav";
@@ -88,7 +89,12 @@ export default async function DatasetPage({ params }: PageProps) {
           {/* Metadata pills */}
           <div className="flex flex-wrap gap-4 mt-3 text-[13px]">
             <PillGroup label="Modalities:">
-              <Pill>{dataset.feature_count != null ? "Geospatial" : "Tabular"}</Pill>
+              {(() => {
+                const mods = classifyModalities(dataset.resources);
+                return (mods.length > 0 ? mods : (["Tabular"] as const)).map((m) => (
+                  <Pill key={m}>{m}</Pill>
+                ));
+              })()}
             </PillGroup>
             <PillGroup label="Formats:">
               {Array.from(
@@ -110,7 +116,9 @@ export default async function DatasetPage({ params }: PageProps) {
                     : "—"}
               </Pill>
             </PillGroup>
-            <PillGroup label="License:"><Pill>{dataset.license}</Pill></PillGroup>
+            {dataset.license && dataset.license.toLowerCase() !== "internal" && (
+              <PillGroup label="License:"><Pill>{dataset.license}</Pill></PillGroup>
+            )}
           </div>
         </div>
 
