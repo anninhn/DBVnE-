@@ -10,10 +10,9 @@ tags:
   - ho-chi-minh
   - binh-duong
 source:
-  name: thanglequoc/vietnamese-provinces-database (Tổng hợp từ
-    GSO)thanglequoc/vietnamese-provinces-database (Tổng hợp từ GSO)
+  name: thanglequoc/vietnamese-provinces-database (Tổng hợp từ GSO)
   url: https://github.com/thanglequoc/vietnamese-provinces-database
-  retrieved: 2026-07-25
+  retrieved: 2026-07-27
   method: manual_entry
 license: internal
 format: geojson
@@ -241,9 +240,12 @@ files:
         segments:
           - label: Hồ Chí Minh
             count: 168
-last_edited_by: ninh
-last_edited_at: 2026-07-25T05:55:03.127Z
 edits:
   - by: ninh
     at: 2026-07-25T05:55:03.127Z
     summary: Edit metadata
+  - by: ninh
+    at: 2026-07-27T08:03:48.119Z
+    summary: Edit metadata
+last_edited_by: ninh
+last_edited_at: 2026-07-27T08:03:48.119Z
