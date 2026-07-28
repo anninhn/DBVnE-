@@ -169,18 +169,34 @@ export async function POST(req: NextRequest) {
             },
           ],
           temperature: 0.3,
-          max_tokens: 2000,
+          // 4000 tokens cho headroom khi LLM liệt kê 4+ datasets (bài Đà Nẵng
+          // cut tại entry #4 với max_tokens=2000 → JSON parse fail → EmptyState).
+          max_tokens: 4000,
           stream: true,
           // KHÔNG dùng response_format json_object — Gemini OpenAI compat chưa ổn định
           // với stream + json_object. Rely vào system prompt để enforce JSON output.
         });
 
+        let finishReason: string | null = null;
         for await (const chunk of completion) {
-          const delta = chunk.choices[0]?.delta?.content ?? "";
+          const choice = chunk.choices[0];
+          const delta = choice?.delta?.content ?? "";
           if (delta) {
             fullContent += delta;
             controller.enqueue(encoder.encode(delta));
           }
+          if (choice?.finish_reason) {
+            finishReason = choice.finish_reason;
+          }
+        }
+
+        // Phát hiện stream bị cắt do max_tokens — JSON không đóng → parse fail
+        // → fallback datasets: [] → EmptyState dù LLM đã planned datasets.
+        if (finishReason === "length") {
+          console.warn(
+            "[chat/discovery] stream truncated (max_tokens=4000 hit). " +
+              "Answer likely incomplete — JSON parse may fail → EmptyState.",
+          );
         }
 
         // 6. Parse JSON cuối + log — robust extractor handle conversational

@@ -45,6 +45,8 @@ function CitationCardImpl({
   return (
     <Link
       href={`/datasets/${slug}`}
+      target="_blank"
+      rel="noopener noreferrer"
       className="block border border-hf-border rounded-md p-3 hover:border-hf-yellow hover:bg-hf-bg-subtle transition group"
     >
       <div className="flex items-center justify-between gap-2 mb-1">
