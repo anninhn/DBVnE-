@@ -2,7 +2,8 @@
  * EmptyState — render khi Discovery response không có dataset match.
  *
  * Show message rõ ràng + suggest 3-4 topics phổ biến để user refine query.
- * Click topic → onSelect(query) → ChatBox pre-fill + submit.
+ * Click topic → onPrefill(query) → ChatBox fill input, KHÔNG auto-submit
+ * (giống ?prefill URL pattern — user có agency edit/enter).
  *
  * Spec 2026-07-24-discovery-chat — hard empty pattern (KHÔNG fake match).
  */
@@ -10,7 +11,7 @@
 import { memo } from "react";
 
 export interface EmptyStateProps {
-  onSelect: (query: string) => void;
+  onPrefill: (query: string) => void;
   disabled?: boolean;
 }
 
@@ -21,7 +22,7 @@ const TOPIC_SUGGESTIONS = [
   { label: "Khí hậu", query: "Có dữ liệu về khí hậu miền Trung không?" },
 ];
 
-function EmptyStateImpl({ onSelect, disabled }: EmptyStateProps) {
+function EmptyStateImpl({ onPrefill, disabled }: EmptyStateProps) {
   return (
     <div className="border border-dashed border-hf-border rounded-md p-6 bg-hf-bg-subtle">
       <p className="text-hf-text font-medium mb-1">Không tìm thấy dataset phù hợp</p>
@@ -34,7 +35,7 @@ function EmptyStateImpl({ onSelect, disabled }: EmptyStateProps) {
             key={t.label}
             type="button"
             disabled={disabled}
-            onClick={() => onSelect(t.query)}
+            onClick={() => onPrefill(t.query)}
             className="text-[13px] px-3 py-1.5 rounded-md border border-hf-border bg-hf-bg hover:bg-hf-yellow/20 hover:border-hf-yellow/50 text-hf-text-muted hover:text-hf-text transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {t.label}

@@ -1,7 +1,8 @@
 /**
  * FollowUpPills — render follow_ups[] từ Discovery response thành pill buttons.
  *
- * Click → call onSelect(followUp) → ChatBox pre-fill input + auto-submit.
+ * Click → call onPrefill(followUp) → ChatBox fill input, KHÔNG auto-submit
+ * (user có agency edit/enter — consistent với EmptyState + ?prefill URL).
  *
  * Spec 2026-07-24-discovery-chat.
  */
@@ -10,14 +11,14 @@ import { memo } from "react";
 
 export interface FollowUpPillsProps {
   followUps: string[];
-  onSelect: (query: string) => void;
+  onPrefill: (query: string) => void;
   /** Disable khi đang loading/streaming — tránh spam submit. */
   disabled?: boolean;
 }
 
 function FollowUpPillsImpl({
   followUps,
-  onSelect,
+  onPrefill,
   disabled,
 }: FollowUpPillsProps) {
   if (followUps.length === 0) return null;
@@ -33,7 +34,7 @@ function FollowUpPillsImpl({
             key={`${q}-${i}`}
             type="button"
             disabled={disabled}
-            onClick={() => onSelect(q)}
+            onClick={() => onPrefill(q)}
             className="text-[13px] px-2.5 py-1 rounded-full border border-hf-border bg-hf-bg hover:bg-hf-yellow/20 hover:border-hf-yellow/50 text-hf-text-muted hover:text-hf-text transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {q}
