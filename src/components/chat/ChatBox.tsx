@@ -343,7 +343,7 @@ export default function ChatBox({
                       <ResponseView
                         response={entry.response}
                         disabled={loading}
-                        onSelectFollowUp={submit}
+                        onPrefill={setInput}
                         chatId={entry.chatId}
                       />
                     ) : null}
@@ -390,12 +390,12 @@ export default function ChatBox({
 function ResponseView({
   response,
   disabled,
-  onSelectFollowUp,
+  onPrefill,
   chatId,
 }: {
   response: DiscoveryResponse;
   disabled?: boolean;
-  onSelectFollowUp: (q: string) => void;
+  onPrefill: (q: string) => void;
   chatId?: string;
 }) {
   const hasDatasets = response.datasets.length > 0;
@@ -425,13 +425,13 @@ function ResponseView({
       )}
 
       {/* Empty state khi không có dataset match */}
-      {!hasDatasets && <EmptyState onSelect={onSelectFollowUp} disabled={disabled} />}
+      {!hasDatasets && <EmptyState onPrefill={onPrefill} disabled={disabled} />}
 
       {/* Follow-ups */}
       {hasDatasets && response.follow_ups.length > 0 && (
         <FollowUpPills
           followUps={response.follow_ups}
-          onSelect={onSelectFollowUp}
+          onPrefill={onPrefill}
           disabled={disabled}
         />
       )}
