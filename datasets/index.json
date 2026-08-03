@@ -1,5 +1,36 @@
 [
   {
+    "slug": "dien-tich-rung-va-ty-le-che-phu-rung-cua-63-tinh-thanh-pho-v",
+    "title": "Diện tích rừng và tỷ lệ che phủ rừng của 63 tỉnh, thành phố Việt Nam giai đoạn 2014-2024",
+    "description": "Dataset cung cấp thông tin về tổng diện tích rừng, diện tích rừng tự nhiên, diện tích rừng trồng và tỷ lệ che phủ rừng của 63 tỉnh, thành phố trực thuộc trung ương của Việt Nam từ năm 2014 đến năm 2024.",
+    "category": "moi-truong",
+    "tags": [
+      "rung",
+      "lam-nghiep",
+      "moi-truong",
+      "dien-tich-rung",
+      "ty-le-che-phu",
+      "viet-nam",
+      "tinh-thanh"
+    ],
+    "uploaded_at": "2026-08-03T09:50:06.600Z",
+    "uploaded_by": "ha",
+    "row_count": 693,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Tổng cục Thống kê (GSO)",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "867bc76e-4467-448a-9991-c1a13666a4b3/Di_n_t_ch_r_ng_c_c_t_nh_2014-2024_Clean.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-viet-nam",
     "title": "Ranh giới hành chính cấp phường/xã Việt Nam",
     "description": "Dataset chứa ranh giới hành chính cấp xã (phường, xã, thị trấn) của Việt Nam, bao gồm 3321 features với geometry MultiPolygon, phủ khắp lãnh thổ Việt Nam (bao gồm cả các quần đảo).",
