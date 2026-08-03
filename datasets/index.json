@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-rung-va-ty-le-che-phu-rung-toan-quoc-giai-doan-199",
+    "title": "Diện tích rừng và tỷ lệ che phủ rừng toàn quốc giai đoạn 1999-2025",
+    "description": "Dữ liệu thống kê về diện tích rừng tự nhiên, rừng trồng, tốc độ tăng/giảm và tỷ lệ che phủ rừng trên toàn quốc từ năm 1999 đến năm 2025.",
+    "category": "moi-truong",
+    "tags": [
+      "rung",
+      "lam-nghiep",
+      "moi-truong",
+      "dien-tich-rung",
+      "ty-le-che-phu"
+    ],
+    "uploaded_at": "2026-08-03T10:03:24.861Z",
+    "uploaded_by": "ha",
+    "row_count": 27,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Báo cáo hiện trạng rừng quốc gia - Bộ Nông nghiệp và Phát triển nông thôn",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3c95087b-9ed7-4785-a523-93e0e6d8321f/Di_n_t_ch_r_ng_c__n__c_giai__o_n_1999-2025.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-rung-va-ty-le-che-phu-rung-cua-63-tinh-thanh-pho-v",
     "title": "Diện tích rừng và tỷ lệ che phủ rừng của 63 tỉnh, thành phố Việt Nam giai đoạn 2014-2024",
     "description": "Dataset cung cấp thông tin về tổng diện tích rừng, diện tích rừng tự nhiên, diện tích rừng trồng và tỷ lệ che phủ rừng của 63 tỉnh, thành phố trực thuộc trung ương của Việt Nam từ năm 2014 đến năm 2024.",
