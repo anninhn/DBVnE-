@@ -2,7 +2,7 @@
 
 | Column | Type | Dec | Group | Unit | Description |
 |--------|------|-----|-------|------|-------------|
-| `Tinh_Thanh` | category | - | - | - | Tên tỉnh/thành phố trực thuộc trung ương của Việt Nam. |
+| `Tinh_Thanh` | string | - | - | - | Tên tỉnh/thành phố trực thuộc trung ương của Việt Nam. |
 | `Nam` | number | - | - | năm | Năm thống kê dữ liệu. |
 | `Tong_ha` | number | - | - | ha | Tổng diện tích rừng của tỉnh/thành phố. |
 | `Rung_tu_nhien_ha` | number | - | - | ha | Diện tích rừng tự nhiên của tỉnh/thành phố. |
