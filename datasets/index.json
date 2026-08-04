@@ -1,7 +1,7 @@
 [
   {
     "slug": "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024-2",
-    "title": "Hiện trạng rừng các tỉnh thành Việt Nam giai đoạn 2005-2024",
+    "title": "Diện tích và tỷ lệ che phủ rừng các tỉnh thành Việt Nam giai đoạn 2005-2024",
     "description": "Dataset cung cấp thông tin về tổng diện tích rừng, diện tích rừng tự nhiên, diện tích rừng trồng và tỷ lệ che phủ rừng của các tỉnh, thành phố trực thuộc trung ương và toàn quốc từ năm 2005 đến năm 2024 (thiếu dữ liệu năm 2006 và 2007).",
     "category": "moi-truong",
     "tags": [
@@ -13,6 +13,8 @@
     ],
     "uploaded_at": "2026-08-04T06:54:50.044Z",
     "uploaded_by": "ha",
+    "last_edited_by": "ha",
+    "last_edited_at": "2026-08-04T06:59:44.699Z",
     "row_count": 1152,
     "file_count": 1,
     "total_size_mb": 0.05,
