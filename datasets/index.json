@@ -21,6 +21,7 @@
     "format": "csv",
     "source": "Báo cáo hiện trạng rừng quốc gia qua từng năm - Bộ Nông nghiệp và Phát triển Nông thôn (MARD)",
     "source_url": "",
+    "status": "deleted",
     "year_range": [],
     "resources": [
       {
