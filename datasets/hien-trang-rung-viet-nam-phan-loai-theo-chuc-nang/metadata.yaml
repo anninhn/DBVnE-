@@ -1,4 +1,4 @@
-title: Hiện trạng rừng Việt Nam phân loại theo chức năng
+title: Hiện trạng rừng Việt Nam phân loại theo chức năng giai đoạn 2005-2025
 slug: hien-trang-rung-viet-nam-phan-loai-theo-chuc-nang
 description: "Dữ liệu về diện tích rừng tự nhiên và rừng trồng tại Việt Nam,
   được phân loại theo chức năng (đặc dụng, phòng hộ, sản xuất) và diện tích đất
@@ -163,9 +163,12 @@ files:
             count: 1
           - label: "155589"
             count: 1
-last_edited_by: ha
-last_edited_at: 2026-08-06T11:42:16.127Z
 edits:
   - by: ha
     at: 2026-08-06T11:42:16.127Z
     summary: Edit metadata
+  - by: ha
+    at: 2026-08-06T11:54:21.413Z
+    summary: Edit metadata
+last_edited_by: ha
+last_edited_at: 2026-08-06T11:54:21.413Z
