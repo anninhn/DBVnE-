@@ -1,5 +1,34 @@
 [
   {
+    "slug": "hien-trang-rung-viet-nam-phan-loai-theo-chu-quan-ly-giai-doa",
+    "title": "Hiện trạng rừng Việt Nam phân loại theo chủ quản lý giai đoạn 2005-2024",
+    "description": "Dataset thống kê diện tích rừng tự nhiên và rừng trồng của Việt Nam từ năm 2005 đến 2024, phân loại theo các chủ thể quản lý khác nhau như Ban Quản lý rừng, Doanh nghiệp, Gia đình, Tập thể, Đơn vị vũ trang và UBND.",
+    "category": "moi-truong",
+    "tags": [
+      "rung",
+      "lam-nghiep",
+      "dien-tich",
+      "chu-quan-ly",
+      "moi-truong"
+    ],
+    "uploaded_at": "2026-08-06T11:53:36.135Z",
+    "uploaded_by": "ha",
+    "row_count": 38,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Báo cáo hiện trạng rừng quốc gia từng năm - Bộ Nông nghiệp và Phát triển nông thôn ",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "96f30bf0-819d-4a06-96ae-2adeb439224d/Hi_n_tr_ng_r_ng_2005-2024_Ph_n_lo_i_theo_ch__qu_n_l_.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "hien-trang-rung-viet-nam-phan-loai-theo-chuc-nang",
     "title": "Hiện trạng rừng Việt Nam phân loại theo chức năng",
     "description": "Dữ liệu về diện tích rừng tự nhiên và rừng trồng tại Việt Nam, được phân loại theo chức năng (đặc dụng, phòng hộ, sản xuất) và diện tích đất ngoài quy hoạch rừng, thống kê theo từng năm từ 2005 đến 2025. Diện tích đất ngoài quy hoạch rừng chỉ được thống kê trong giai đoạn 2010-2018. ",
