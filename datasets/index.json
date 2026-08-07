@@ -1,5 +1,35 @@
 [
   {
+    "slug": "san-luong-khai-thac-go-theo-dia-phuong-tai-viet-nam",
+    "title": "Sản lượng khai thác gỗ theo địa phương tại Việt Nam",
+    "description": "Dataset này cung cấp dữ liệu về sản lượng gỗ khai thác (tính bằng nghìn mét khối) theo từng tỉnh/thành phố và các vùng kinh tế - xã hội của Việt Nam, từ năm 1995 đến 2024.",
+    "category": "moi-truong",
+    "tags": [
+      "khai-thac-go",
+      "lam-nghiep",
+      "san-luong",
+      "dia-phuong",
+      "viet-nam",
+      "rung"
+    ],
+    "uploaded_at": "2026-08-07T05:38:45.360Z",
+    "uploaded_by": "ninh",
+    "row_count": 2100,
+    "file_count": 1,
+    "total_size_mb": 0.14,
+    "format": "csv",
+    "source": "Cục Thống kê ",
+    "source_url": "https://www.nso.gov.vn/px-web-2/?pxid=V0656&theme=Nông%2C%20lâm%20nghiệp%20và%20thủy%20sản",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fdebdf09-3aec-4ed0-b585-d246a4d57b54/Di_n_t_ch_khai_th_c_g__theo___a_ph__ng.csv",
+        "size_mb": 0.14
+      }
+    ]
+  },
+  {
     "slug": "hien-trang-rung-phan-theo-dia-phuong-va-vung-2008-2024",
     "title": "Hiện trạng rừng phân theo địa phương và vùng giai đoạn 2008-2024",
     "description": "Bộ dữ liệu cung cấp thông tin về diện tích rừng tổng diện tích, rừng tự nhiên, rừng trồng, diện tích trồng mới) và tỷ lệ che phủ rừng của Việt Nam, tính đến 31/12 hằng năm, phân theo tỉnh, vùng địa lý và cấp quốc gia, từ năm 2008 đến 2024.",
