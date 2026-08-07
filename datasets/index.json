@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung",
+    "title": "Diện tích rừng trồng mới tập trung phân theo loại rừng",
+    "description": "Dữ liệu về diện tích rừng trồng mới tập trung trên cả nước, phân loại theo mục đích sử dụng rừng (sản xuất, phòng hộ, đặc dụng) và tổng cộng, từ năm 2005 đến 2024. Bao gồm cả giá trị tuyệt đối (nghìn ha) và chỉ số tăng trưởng so với năm trước.",
+    "category": "moi-truong",
+    "tags": [
+      "rung",
+      "lam-nghiep",
+      "moi-truong",
+      "dien-tich"
+    ],
+    "uploaded_at": "2026-08-07T05:40:33.820Z",
+    "uploaded_by": "ninh",
+    "row_count": 160,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê",
+    "source_url": "https://www.nso.gov.vn/px-web-2/?pxid=V0652&theme=Nông%2C%20lâm%20nghiệp%20và%20thủy%20sản",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "cd5e3786-f536-4bf4-88b3-68031dfb9c3f/Ru__ng_tro__ng_mo__i_ta__p_trung_ca__nu_o__c.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "san-luong-khai-thac-go-theo-dia-phuong-tai-viet-nam",
     "title": "Sản lượng khai thác gỗ theo địa phương tại Việt Nam",
     "description": "Dataset này cung cấp dữ liệu về sản lượng gỗ khai thác (tính bằng nghìn mét khối) theo từng tỉnh/thành phố và các vùng kinh tế - xã hội của Việt Nam, từ năm 1995 đến 2024.",
