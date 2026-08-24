@@ -4,15 +4,17 @@
 
 **Created**: 2026-08-24
 
-**Status**: DELIVERED — retro-documented
+**Status**: DELIVERED — retro-documented (+ FR-032–034 mới, đã cài đặt 2026-08-24)
 
 **Input**: Retro-spec cho code đã ship và đang chạy production. Phạm vi: ai được
 làm gì trong kho, và làm sao truy được dấu vết của mọi thay đổi cùng mọi lần sử
 dụng — đăng nhập, gán người thực hiện, lịch sử chỉnh sửa, liên kết bài báo, đếm
 lượt tải.
 
-> **Ghi chú về retro-spec**: Tài liệu này mô tả năng lực **đã tồn tại**. Không
-> chạy `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` cho spec này.
+> **Ghi chú về retro-spec**: Phần lớn tài liệu này mô tả năng lực **đã tồn tại**.
+> Ngoại lệ: FR-032–FR-034 (gỡ liên kết bài báo) là **năng lực mới**, quyết ngày
+> 2026-08-24 và đã cài đặt cùng ngày — nên spec này không thuần retro.
+> Không chạy `/speckit-plan` → `/speckit-tasks` → `/speckit-implement`.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -223,12 +225,14 @@ trang danh sách.
 - **Bản ghi câu hỏi**: Một lượt hỏi đáp — người hỏi, câu hỏi, tóm tắt trả lời,
   dataset được trích, thời điểm.
 
-**Quyết định còn mở**
+**Gỡ liên kết sai** *(chốt 2026-08-24)*
 
-- **FR-032**: Liên kết bài báo hiện chỉ **thêm được**, không sửa và không gỡ
-  được. Dán nhầm đường dẫn thì bản ghi sai nằm lại vĩnh viễn.
-  [NEEDS CLARIFICATION: bổ sung năng lực gỡ liên kết sai, hay chấp nhận và xử lý
-  thủ công khi cần?]
+- **FR-032**: Người đã đăng nhập MUST gỡ được một liên kết bài báo khỏi dataset.
+  Provenance sai còn tệ hơn không có provenance — dataset gắn nhầm bài sẽ nói dối
+  về nơi nó đã được dùng.
+- **FR-033**: Thao tác gỡ MUST ghi vào lịch sử chỉnh sửa: ai gỡ, lúc nào, bài nào.
+- **FR-034**: Sau khi gỡ, danh sách MUST cập nhật ngay; nếu máy chủ từ chối,
+  danh sách MUST khôi phục về trạng thái cũ và nêu lý do.
 
 ## Success Criteria *(mandatory)*
 

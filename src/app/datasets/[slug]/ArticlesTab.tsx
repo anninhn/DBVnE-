@@ -16,7 +16,7 @@
 
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { FileText, Plus, X } from "lucide-react";
+import { FileText, Loader2, Plus, X } from "lucide-react";
 import type { ArticleEntry } from "@/lib/types/dataset";
 
 interface Props {
@@ -28,6 +28,7 @@ export default function ArticlesTab({ slug, initialArticles }: Props) {
   const { status } = useSession();
   const [articles, setArticles] = useState<ArticleEntry[]>(initialArticles);
   const [showAdd, setShowAdd] = useState(false);
+  const [removeError, setRemoveError] = useState<string | null>(null);
 
   function handleArticleAdded(article: ArticleEntry) {
     setArticles((prev) => [...prev, article]);
@@ -35,6 +36,33 @@ export default function ArticlesTab({ slug, initialArticles }: Props) {
   }
 
   const isLoggedIn = status === "authenticated";
+
+  /**
+   * Gỡ liên kết bài báo (spec 003 FR-032).
+   * Optimistic: bỏ khỏi danh sách ngay, khôi phục nếu server từ chối — cùng
+   * pattern với thao tác thêm, để người dùng không phải chờ round-trip git.
+   */
+  async function handleRemove(url: string) {
+    const snapshot = articles;
+    setArticles((prev) => prev.filter((a) => a.url !== url));
+    setRemoveError(null);
+    try {
+      const res = await fetch("/api/dataset/articles", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, url }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "Không gỡ được liên kết bài báo.");
+      }
+    } catch (err) {
+      setArticles(snapshot);
+      setRemoveError(
+        err instanceof Error ? err.message : "Không gỡ được liên kết bài báo."
+      );
+    }
+  }
 
   return (
     <div className="p-6">
@@ -86,6 +114,22 @@ export default function ArticlesTab({ slug, initialArticles }: Props) {
         </div>
       )}
 
+      {/* Lỗi khi gỡ liên kết — dùng lại pattern khối đỏ của các form khác */}
+      {removeError && (
+        <div className="mb-3 flex items-start gap-2 rounded-md border border-hf-red/30 bg-red-50 px-3 py-2 text-[13px] text-hf-red">
+          <span className="flex-1">
+            <strong>Lỗi:</strong> {removeError}
+          </span>
+          <button
+            type="button"
+            onClick={() => setRemoveError(null)}
+            className="shrink-0 underline hover:no-underline"
+          >
+            Đóng
+          </button>
+        </div>
+      )}
+
       {/* Quick add (URL paste → auto-save) */}
       {showAdd && isLoggedIn && (
         <QuickAddArticle
@@ -99,7 +143,11 @@ export default function ArticlesTab({ slug, initialArticles }: Props) {
       {articles.length > 0 && (
         <div className="flex flex-col">
           {articles.map((article) => (
-            <ArticleCard key={article.url} article={article} />
+            <ArticleCard
+              key={article.url}
+              article={article}
+              onRemove={isLoggedIn ? handleRemove : undefined}
+            />
           ))}
         </div>
       )}
@@ -111,7 +159,15 @@ export default function ArticlesTab({ slug, initialArticles }: Props) {
 // ArticleCard
 // ──────────────────────────────────────────────────────────────────────────────
 
-function ArticleCard({ article }: { article: ArticleEntry }) {
+function ArticleCard({
+  article,
+  onRemove,
+}: {
+  article: ArticleEntry;
+  /** Chỉ truyền khi user đã đăng nhập — không có thì card không hiện nút gỡ. */
+  onRemove?: (url: string) => void;
+}) {
+  const [removing, setRemoving] = useState(false);
   const published = article.published_at
     ? new Date(article.published_at).toLocaleDateString("vi-VN", {
         day: "2-digit",
@@ -128,11 +184,31 @@ function ArticleCard({ article }: { article: ArticleEntry }) {
   });
 
   return (
+    <div className="group relative flex gap-4 py-4 border-b border-hf-border last:border-b-0 transition">
+      {onRemove && (
+        <button
+          type="button"
+          disabled={removing}
+          onClick={() => {
+            setRemoving(true);
+            onRemove(article.url);
+          }}
+          title="Gỡ liên kết bài báo này"
+          aria-label="Gỡ liên kết bài báo này"
+          className="absolute top-3 right-0 z-10 p-1 rounded text-hf-text-faint opacity-0 group-hover:opacity-100 focus:opacity-100 hover:text-hf-red hover:bg-red-50 transition disabled:opacity-50"
+        >
+          {removing ? (
+            <Loader2 className="w-3.5 h-3.5 animate-spin" aria-hidden />
+          ) : (
+            <X className="w-3.5 h-3.5" aria-hidden />
+          )}
+        </button>
+      )}
     <a
       href={article.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex gap-4 py-4 border-b border-hf-border last:border-b-0 transition"
+      className="contents"
     >
       {/* Thumbnail — VnExpress small-thumb style: 5:3 aspect ratio.
           Bulletproof: relative container + absolute img → không bao giờ tràn. */}
@@ -184,6 +260,7 @@ function ArticleCard({ article }: { article: ArticleEntry }) {
         </div>
       </div>
     </a>
+    </div>
   );
 }
 

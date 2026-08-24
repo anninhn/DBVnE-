@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain — **1 còn lại** (FR-032)
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,14 +31,18 @@
 
 ## Notes
 
-**Một marker `[NEEDS CLARIFICATION]` còn lại — FR-032, gỡ liên kết bài báo sai.**
+**Trạng thái: PASS 16/16.** Marker ở FR-032 đã được Ninh quyết ngày 2026-08-24:
+**bổ sung năng lực gỡ liên kết bài báo.**
 
-Liên kết bài báo hiện chỉ **thêm được**. Không có đường sửa, không có đường gỡ.
-Dán nhầm đường dẫn thì bản ghi sai nằm lại vĩnh viễn (trừ khi sửa metadata bằng
-git thủ công).
+Khác ba retro-spec trước (chỉ ghi lại thứ đã có), đây là **năng lực mới** — spec
+`003` vì vậy không còn thuần retro. Đã cài đặt cùng ngày:
 
-Đây là mâu thuẫn nhỏ với chính mục đích của tính năng: liên kết bài báo tồn tại
-để **truy nguồn**, mà provenance sai còn tệ hơn không có provenance.
+- Đường gỡ ở tầng API, so khớp bằng cùng dạng chuẩn hoá mà thao tác thêm dùng
+  để phát hiện trùng — nên URL thêm vào kiểu nào cũng gỡ được kiểu đó
+- Nút gỡ hiện khi rê chuột lên từng bài, chỉ với người đã đăng nhập
+- Cập nhật lạc quan: bỏ khỏi danh sách ngay, khôi phục nếu máy chủ từ chối
+- Ghi vào lịch sử chỉnh sửa như mọi thay đổi metadata khác
+- Làm mới cache ngay, cùng chuẩn với ba route ghi còn lại
 
 ## Hai vấn đề đã sửa cùng ngày
 

@@ -27,6 +27,22 @@
  *
  * Auth: requireUserOr401. Permission: mọi user đã login được add vào bất kỳ dataset nào.
  * Audit: append edits[] với summary "Thêm bài báo: <title>".
+ *
+ * ---
+ *
+ * DELETE /api/dataset/articles
+ *
+ * Gỡ 1 liên kết bài báo khỏi dataset. Spec 003 FR-032 (chốt 2026-08-24).
+ *
+ * Body: { slug: string, url: string }
+ *
+ * Vì sao cần: tính năng này tồn tại để TRUY NGUỒN, mà provenance sai còn tệ hơn
+ * không có provenance — dataset gắn nhầm bài sẽ nói dối về nơi nó đã được dùng.
+ * Trước 2026-08-24 chỉ có POST, dán nhầm là bản ghi sai nằm lại vĩnh viễn.
+ *
+ * Response:
+ *   200: { success, slug, url, commitSha, commitUrl, message }
+ *   400/401/404/500 như POST
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -199,6 +215,104 @@ export async function POST(req: NextRequest) {
     console.error("[articles] Git commit thất bại:", err);
     return NextResponse.json(
       { error: "Không thể lưu. Vui lòng thử lại." },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  const authCheck = await requireUserOr401();
+  if (!authCheck.ok) return authCheck.response;
+  const user = authCheck.user;
+
+  let body: { slug?: string; url?: string };
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Body phải là JSON hợp lệ" },
+      { status: 400 }
+    );
+  }
+
+  const slug = body.slug?.trim();
+  const targetUrl = body.url?.trim();
+  if (!slug || !targetUrl) {
+    return NextResponse.json(
+      { error: "Thiếu slug hoặc url" },
+      { status: 400 }
+    );
+  }
+
+  let existingYamlText: string | null;
+  try {
+    existingYamlText = await getMetadataYamlRaw(slug);
+  } catch (err) {
+    console.error("[articles] Fetch existing YAML thất bại:", err);
+    return NextResponse.json(
+      { error: "Không đọc được dataset. Vui lòng thử lại." },
+      { status: 500 }
+    );
+  }
+  if (!existingYamlText) {
+    return NextResponse.json(
+      { error: `Dataset "${slug}" không tồn tại` },
+      { status: 404 }
+    );
+  }
+
+  const meta = parseYaml(existingYamlText) as MetadataYaml;
+  const articles = Array.isArray(meta.articles) ? meta.articles : [];
+
+  // So khớp bằng canonical form — cùng hàm POST dùng để phát hiện trùng, nên
+  // URL thêm vào kiểu nào cũng gỡ được kiểu đó.
+  const canonicalTarget = canonicalizeUrl(targetUrl);
+  const removed = articles.find(
+    (a) => canonicalizeUrl(a.url) === canonicalTarget
+  );
+  if (!removed) {
+    return NextResponse.json(
+      { error: "Không tìm thấy liên kết bài báo này trong dataset." },
+      { status: 404 }
+    );
+  }
+
+  const remaining = articles.filter(
+    (a) => canonicalizeUrl(a.url) !== canonicalTarget
+  );
+  // Rỗng thì bỏ hẳn field thay vì để mảng rỗng — khớp cách renderer xử lý.
+  if (remaining.length > 0) meta.articles = remaining;
+  else delete meta.articles;
+
+  const title = removed.title ?? targetUrl;
+  const summary = `Gỡ bài báo: ${title.slice(0, 60)}${title.length > 60 ? "…" : ""}`;
+  const yamlWithAudit = injectEdited(
+    stringifyYaml(meta),
+    user.username,
+    summary
+  );
+
+  try {
+    const result = await commitMetadataYamlOnly(
+      slug,
+      yamlWithAudit,
+      `Remove article from dataset ${slug}: ${title.slice(0, 80)}`
+    );
+
+    revalidateTag("datasets", { expire: 0 });
+
+    return NextResponse.json({
+      success: true,
+      slug,
+      url: removed.url,
+      commitSha: result.commitSha,
+      commitUrl: result.commitUrl,
+      message: `Đã gỡ liên kết bài báo khỏi dataset "${slug}".`,
+    });
+  } catch (err) {
+    console.error("[articles] Git commit thất bại:", err);
+    return NextResponse.json(
+      { error: "Không lưu được thay đổi. Vui lòng thử lại." },
       { status: 500 }
     );
   }
