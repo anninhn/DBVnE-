@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain — **2 còn lại** (FR-026, FR-027)
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,21 +31,24 @@
 
 ## Notes
 
-**Hai marker `[NEEDS CLARIFICATION]` còn lại là quyết định sản phẩm thật, không
-phải thiếu thông tin.** Cả hai là hành vi hiện tại đã được xác minh trong code,
-nhưng chưa rõ nên giữ hay sửa:
+**Trạng thái: PASS 16/16.** Hai marker `[NEEDS CLARIFICATION]` ban đầu đã được
+Ninh quyết ngày 2026-08-24:
 
-- **FR-026** — nhóm kích thước lớn nhất gộp mọi dataset ≥10.000 dòng vào cùng
-  một nhãn. Dataset 5 triệu dòng và dataset 12.000 dòng mang cùng nhãn.
-- **FR-027** — hai lựa chọn sắp xếp "được quan tâm" và "được tải nhiều" cho kết
-  quả giống hệt nhau vì chưa có tín hiệu quan tâm nào ngoài lượt tải.
+| | Quyết định | Hành động |
+|---|---|---|
+| FR-026 | Tách bộ lọc kích thước thành **5 bậc** | ✅ đã sửa code cùng ngày |
+| FR-027 | **Bỏ** lựa chọn sắp xếp trùng lặp | ✅ đã sửa code cùng ngày |
 
-Vì đây là **retro-spec** (`Status: DELIVERED — retro-documented`), hai marker
-này KHÔNG chặn việc dùng spec làm tài liệu đối chiếu. Chúng chặn việc coi spec
-là "đã chốt hoàn toàn".
+Cả hai là hành vi **lệch** phát hiện trong lúc viết spec, không phải thiếu thông
+tin. Đã sửa code ngay thay vì chỉ ghi vào spec — nếu để spec mô tả một đằng, code
+chạy một nẻo thì tạo ra đúng loại drift mà `specs/_archive/README.md` muc 4 vừa
+ghi lại.
 
-**Không chạy** `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` cho
-spec này — sẽ build lại năng lực đang phục vụ người dùng thật.
+Xác minh sau khi sửa: 2 dataset từng bị dán nhãn sai (6.443.905 dòng và 114.001
+dòng, cả hai đều hiện là "10K–100K") giờ nằm đúng bậc "> 1M" và "100K–1M".
+
+**Không chạy** `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` cho spec
+này — sẽ build lại năng lực đang phục vụ người dùng thật.
 
 ## Kiểm tra đối chiếu Constitution
 

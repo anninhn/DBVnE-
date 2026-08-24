@@ -195,16 +195,20 @@ người đưa lên, thời điểm, và lịch sử chỉnh sửa.
   Preview, Download).
 - **FR-025**: Thương hiệu MUST viết là "VnExpress".
 
-**Quyết định còn mở**
+**Trung thực trong nhãn và lựa chọn** *(chốt 2026-08-24)*
 
-- **FR-026**: Nhóm kích thước lớn nhất hiện gộp mọi dataset từ 10.000 dòng trở
-  lên vào cùng một nhãn — dataset 5 triệu dòng và dataset 12.000 dòng mang cùng
-  nhãn. [NEEDS CLARIFICATION: giữ nguyên nhãn gộp, hay tách thêm bậc cho dataset
-  rất lớn?]
-- **FR-027**: Hai lựa chọn sắp xếp "được quan tâm" và "được tải nhiều" hiện cho
-  kết quả giống hệt nhau vì chưa có tín hiệu quan tâm nào ngoài lượt tải.
-  [NEEDS CLARIFICATION: gộp thành một lựa chọn, hay giữ hai và bổ sung tín hiệu
-  riêng cho "được quan tâm"?]
+- **FR-026**: Bộ lọc kích thước MUST chia thành **năm bậc** — dưới 1 nghìn,
+  1–10 nghìn, 10–100 nghìn, 100 nghìn–1 triệu, và trên 1 triệu dòng. Nhãn của
+  mỗi bậc MUST mô tả đúng khoảng giá trị nó nhận; KHÔNG được có bậc mang nhãn
+  hẹp nhưng nhận mọi giá trị lớn hơn.
+- **FR-027**: Danh sách lựa chọn sắp xếp MUST không chứa hai lựa chọn cho ra
+  cùng một thứ tự. Mỗi lựa chọn hiển thị cho người dùng PHẢI dựa trên một tín
+  hiệu khác biệt và có thật.
+
+*Ghi chú*: cả hai yêu cầu này sinh ra từ hành vi lệch phát hiện khi viết spec —
+bậc kích thước lớn nhất từng dán nhãn "10K–100K" cho cả dataset 6,4 triệu dòng,
+và lựa chọn "được quan tâm" từng cho kết quả trùng khít "được tải nhiều". Đã
+sửa cùng ngày.
 
 ### Key Entities
 

@@ -4,16 +4,16 @@ import { memo, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Category, Dataset } from "@/lib/types/dataset";
 import { ALL_CATEGORIES, CATEGORY_LABELS } from "@/lib/types/dataset";
+import { SIZE_BUCKETS } from "@/lib/search/simple-filter";
 import { createSearchAdapter } from "@/lib/search";
 import type { SearchAdapter } from "@/lib/search";
 import { formatCompactNumber } from "@/lib/format";
 import { Database, Table2, MapPin, FileText } from "lucide-react";
 import CatalogNav from "@/components/CatalogNav";
 
-type SortKey = "trending" | "recent" | "downloaded";
+type SortKey = "recent" | "downloaded";
 
 const SORT_LABELS: Record<SortKey, string> = {
-  trending: "Trending",
   recent: "Recently updated",
   downloaded: "Most downloaded",
 };
@@ -39,7 +39,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const [activeSizes, setActiveSizes] = useState<Set<string>>(new Set());
   const [activeFormats, setActiveFormats] = useState<Set<string>>(new Set());
   const [showAllTags, setShowAllTags] = useState(false);
-  const [sort, setSort] = useState<SortKey>("trending");
+  const [sort, setSort] = useState<SortKey>("downloaded");
   const [page, setPage] = useState(0);
 
   // Search adapter — tạo 1 lần. Index ngay trong results useMemo (O(1) assignment,
@@ -107,11 +107,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
         arr.sort((a, b) => +new Date(b.uploaded_at) - +new Date(a.uploaded_at));
         break;
       case "downloaded":
-        arr.sort((a, b) => b.downloads - a.downloads);
-        break;
-      case "trending":
       default:
-        // Trending = downloads only (likes ẩn tạm do chưa có backend)
         arr.sort((a, b) => b.downloads - a.downloads);
         break;
     }
@@ -193,7 +189,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
           </FilterGroup>
 
           <FilterGroup title="Size (rows)">
-            {["< 1K", "1K–10K", "10K–100K"].map((s) => (
+            {SIZE_BUCKETS.map((s) => (
               <FilterCheckbox
                 key={s}
                 label={s}
