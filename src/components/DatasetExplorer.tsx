@@ -3,7 +3,7 @@
 import { memo, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Category, Dataset } from "@/lib/types/dataset";
-import { CATEGORY_LABELS } from "@/lib/types/dataset";
+import { ALL_CATEGORIES, CATEGORY_LABELS } from "@/lib/types/dataset";
 import { createSearchAdapter } from "@/lib/search";
 import type { SearchAdapter } from "@/lib/search";
 import { formatCompactNumber } from "@/lib/format";
@@ -18,7 +18,6 @@ const SORT_LABELS: Record<SortKey, string> = {
   downloaded: "Most downloaded",
 };
 
-const ALL_CATEGORIES: Category[] = ["kinh-te", "xa-hoi", "chinh-tri", "khi-hau", "ha-tang", "giao-duc"];
 
 /** Số dataset hiển thị mỗi trang — HF standard */
 const PAGE_SIZE = 20;

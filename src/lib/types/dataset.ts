@@ -17,11 +17,15 @@ export type FileType = "csv" | "xlsx" | "pdf" | "mp3" | "geojson" | "json";
 
 export type Category =
   | "kinh-te"
+  | "dan-so"
   | "xa-hoi"
+  | "giao-duc"
+  | "y-te"
+  | "moi-truong"
   | "chinh-tri"
   | "khi-hau"
   | "ha-tang"
-  | "giao-duc";
+  | "khac";
 
 /**
  * Edit history entry — mirror MetadataYaml.edits[] (spec D2).
@@ -138,14 +142,31 @@ export interface Dataset {
   articles?: ArticleEntry[];
 }
 
+/**
+ * NGUỒN SỰ THẬT DUY NHẤT cho category.
+ *
+ * Trước 2026-08-24: MetadataEditor cho chọn 9 giá trị, DatasetExplorer lọc theo 6.
+ * Hệ quả: dataset lưu với `moi-truong`/`dan-so`/`y-te`/`khac` KHÔNG BAO GIỜ hiện
+ * trong filter Category. Đo thực tế lúc phát hiện: 8/17 dataset (nguyên bộ Rừng VN)
+ * vô hình. Ngược lại `xa-hoi` có trong filter nhưng không chọn được lúc upload.
+ *
+ * Mọi nơi (upload form, filter sidebar, type union) PHẢI đọc từ hằng số này.
+ */
 export const CATEGORY_LABELS: Record<Category, string> = {
   "kinh-te": "Kinh tế",
+  "dan-so": "Dân số",
   "xa-hoi": "Xã hội",
+  "giao-duc": "Giáo dục",
+  "y-te": "Y tế",
+  "moi-truong": "Môi trường",
   "chinh-tri": "Chính trị",
   "khi-hau": "Khí hậu",
   "ha-tang": "Hạ tầng",
-  "giao-duc": "Giáo dục",
+  khac: "Khác",
 };
+
+/** Thứ tự hiển thị trong filter sidebar + dropdown upload. */
+export const ALL_CATEGORIES = Object.keys(CATEGORY_LABELS) as Category[];
 
 export const RESOURCE_TYPE_LABELS: Record<ResourceType, string> = {
   data: "Dữ liệu",

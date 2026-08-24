@@ -6,6 +6,7 @@
  * Bbox + geometryType cũng cap ở STATS_FEATURE_CAP.
  */
 
+import type { NumberSchema } from "@/lib/parse/number";
 import {
   parseGeoJson,
   computeBbox,
@@ -58,11 +59,16 @@ export function inspectGeoJson(
   const columnInspections = columns.map((col) => inspectColumn(col, allRows));
 
   const typeMap = new Map<string, string>();
-  columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
+  const schemaMap = new Map<string, NumberSchema | undefined>();
+  columnInspections.forEach((c) => {
+    typeMap.set(c.name, c.inferredType);
+    schemaMap.set(c.name, c.decimalSchema);
+  });
   const columnStats = computeStatsFromRows(
     allRows as Record<string, unknown>[],
     columns,
     typeMap,
+    schemaMap,
   );
 
   // Sample rows: first 5 features.properties (cho AI context)

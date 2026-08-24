@@ -67,7 +67,12 @@ export async function POST(req: NextRequest) {
   const authCheck = await requireUserOr401();
   if (!authCheck.ok) return authCheck.response;
   const user = authCheck.user;
-  const userEmail = user.email ?? "unknown";
+  // Khoá rate-limit + attribution log. PHẢI là `username`, không phải `email`:
+  // authorize() chỉ trả {id, username, displayName, role} và không callback nào
+  // set email → `user.email ?? "unknown"` khiến MỌI user rơi vào cùng khoá
+  // "unknown". Hệ quả: hạn mức 100/ngày thành hạn mức chung cho cả toà soạn,
+  // và chat log mất hoàn toàn dấu vết ai hỏi gì.
+  const userKey = user.username || user.email || "unknown";
 
   // 2. Parse body
   let body: DiscoveryRequest;
@@ -99,7 +104,7 @@ export async function POST(req: NextRequest) {
 
   // 3. Rate limit — per-user + global (Gemini free tier guard)
   const [userCount, globalQuota] = await Promise.all([
-    getUserDailyCount(userEmail),
+    getUserDailyCount(userKey),
     getDailyQuota(),
   ]);
   if (userCount >= RATE_LIMIT_PER_USER_PER_DAY) {
@@ -217,7 +222,7 @@ export async function POST(req: NextRequest) {
 
         await appendChatLog({
           id: chatId,
-          user_email: userEmail,
+          user_email: userKey,
           query,
           answer_summary: answerSummary,
           datasets_cited: datasetsCited,

@@ -124,6 +124,13 @@ export default function EditDatasetForm({
         // Spec 2026-07-24-article-linking: truyền articles để giữ khi edit metadata.
         // Nếu không truyền → renderMetadataYaml build YAML mới không có articles → data loss.
         articles: initialMetadata.articles,
+        // Cùng lý do, cho nhóm field GeoJSON. Trước đây thiếu → mỗi lần edit
+        // dataset geojson là mất sạch feature_count/geometry_type/bbox/crs.
+        // Đã xảy ra thật với `ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam`.
+        feature_count: initialMetadata.feature_count,
+        geometry_type: initialMetadata.geometry_type,
+        bbox: initialMetadata.bbox as [number, number, number, number] | undefined,
+        crs: initialMetadata.crs,
       }
     );
     const markdownContent = renderDictionaryMarkdown(dictionary);

@@ -10,6 +10,7 @@
 
 import type { ColumnStats } from "@/lib/types/dataset";
 import { parseCSVHead, forEachCSVRow } from "@/lib/parse/csv";
+import { parseNumberWithSchema, type NumberSchema } from "@/lib/parse/number";
 import type { FileInspection } from "./column";
 import {
   MAX_SAMPLE_ROWS_FOR_AI,
@@ -31,6 +32,13 @@ function computeCSVStats(
   text: string,
   columnNames: string[],
   typeMap: Map<string, string>,
+  /**
+   * Schema thập phân mỗi cột (từ `inspectColumn().decimalSchema`).
+   * CSV là format phổ biến nhất → thiếu cái này thì cột số kiểu Việt Nam
+   * (`1.234,56`) parse ra NaN và biến mất khỏi `column_stats` trong metadata.yaml,
+   * mâu thuẫn chính quyết định Frictionless của dự án.
+   */
+  schemaMap?: Map<string, NumberSchema | undefined>,
 ): Record<string, ColumnStats> {
   // Map column name → index trong row array
   const colIndex = new Map<string, number>();
@@ -60,7 +68,7 @@ function computeCSVStats(
       const idx = colIndex.get(col)!;
       const raw = fields[idx];
       if (!raw) continue;
-      const val = Number(raw);
+      const val = parseNumberWithSchema(raw, schemaMap?.get(col)) ?? NaN;
       if (!Number.isNaN(val)) numericValues.get(col)!.push(val);
     }
 
@@ -158,7 +166,9 @@ export function inspectCsv(buffer: Buffer, filename: string): FileInspection {
   // Giai đoạn 2: full-dataset stats (streaming, không store rows)
   const typeMap = new Map<string, string>();
   columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
-  const columnStats = computeCSVStats(text, columns, typeMap);
+  const schemaMap = new Map<string, NumberSchema | undefined>();
+  columnInspections.forEach((c) => schemaMap.set(c.name, c.decimalSchema));
+  const columnStats = computeCSVStats(text, columns, typeMap, schemaMap);
 
   return {
     format: "csv",

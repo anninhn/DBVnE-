@@ -6,6 +6,7 @@
 
 import * as XLSX from "xlsx";
 import type { FileInspection } from "./column";
+import type { NumberSchema } from "@/lib/parse/number";
 import {
   MAX_SAMPLE_ROWS_FOR_AI,
   MAX_ROWS_FOR_INSPECTION,
@@ -40,8 +41,13 @@ export function inspectXlsx(buffer: Buffer, filename: string): FileInspection {
 
   // Full-dataset stats (XLSX nhỏ → safe compute từ allRows)
   const typeMap = new Map<string, string>();
-  columnInspections.forEach((c) => typeMap.set(c.name, c.inferredType));
-  const columnStats = computeStatsFromRows(allRows, columns, typeMap);
+  const schemaMap = new Map<string, NumberSchema | undefined>();
+  columnInspections.forEach((c) => {
+    typeMap.set(c.name, c.inferredType);
+    // Không truyền schemaMap → cột số kiểu Việt (1.234,56) parse ra NaN và biến mất khỏi stats
+    schemaMap.set(c.name, c.decimalSchema);
+  });
+  const columnStats = computeStatsFromRows(allRows, columns, typeMap, schemaMap);
 
   return {
     format: "xlsx",

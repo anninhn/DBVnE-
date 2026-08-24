@@ -16,6 +16,7 @@ import {
   detectDecimalFormat,
   type DecimalFormat,
 } from "@/lib/parse/decimal-detect";
+import { parseNumberWithSchema, type NumberSchema } from "@/lib/parse/number";
 import type { GeoJsonGeometryType } from "@/lib/parse/geojson";
 
 // ──────────────────────────────────────────────────────────────────────────────
@@ -181,6 +182,13 @@ export function computeStatsFromRows(
   allRows: Record<string, unknown>[],
   columnNames: string[],
   typeMap: Map<string, string>,
+  /**
+   * Schema thập phân mỗi cột (từ `inspectColumn().decimalSchema`).
+   * BẮT BUỘC truyền cho cột số kiểu Việt Nam: `Number("1.234,56")` → NaN → giá trị
+   * bị loại khỏi `column_stats` lưu trong metadata.yaml, mâu thuẫn chính quyết định
+   * Frictionless của dự án. Bỏ trống = hành vi cũ (parse kiểu Anh).
+   */
+  schemaMap?: Map<string, NumberSchema | undefined>,
 ): Record<string, ColumnStats> {
   const result: Record<string, ColumnStats> = {};
   const BINS = 8;
@@ -189,12 +197,17 @@ export function computeStatsFromRows(
     const isNumeric = typeMap.get(col) === "number";
 
     if (isNumeric) {
+      const schema = schemaMap?.get(col);
       const values: number[] = [];
       for (const row of allRows) {
         const raw = row[col];
         if (raw == null || raw === "") continue;
-        const val = typeof raw === "number" ? raw : Number(raw);
-        if (!Number.isNaN(val)) values.push(val);
+        if (typeof raw === "number") {
+          if (!Number.isNaN(raw)) values.push(raw);
+          continue;
+        }
+        const parsed = parseNumberWithSchema(String(raw), schema);
+        if (parsed !== null) values.push(parsed);
       }
       if (values.length === 0) continue;
       let min = Infinity;
