@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain — **2 còn lại** (FR-027, FR-028)
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -35,7 +35,7 @@
 
 | Chỉ số | Giá trị | Nghĩa là |
 |---|---|---|
-| Số câu hỏi chuẩn | **8** | *(không phải 26 như một tài liệu khác ghi)* |
+| Số câu hỏi chuẩn | **8** | |
 | Tỷ lệ trả lời thành công | 87,5% | 7/8 câu trả về được kết quả |
 | **Độ chính xác** | **100%** | Nhắc tới dataset nào là đúng dataset đó |
 | **Tỷ lệ tìm hết** | **42,9%** | **Bỏ sót hơn một nửa** dataset lẽ ra phải tìm được |
@@ -48,14 +48,19 @@ nên không ai nghĩ là còn thiếu. Phóng viên tưởng kho chỉ có bấy
 
 Số đo chạy ngày 2026-07-24 khi kho có **8 dataset**. Kho hiện có **17**. Chưa đo lại.
 
-### Hai marker `[NEEDS CLARIFICATION]` còn lại
+### Hai marker đã chốt 2026-08-24 — PASS 16/16
 
-- **FR-027** — ngưỡng tỷ lệ tìm hết tối thiểu chấp nhận được là bao nhiêu, và có
-  cần đo lại sau khi kho tăng gấp đôi không?
-- **FR-028** — lời mời nhập câu hỏi dùng văn phong suồng sã, một câu nêu đích danh
-  đồng nghiệp và chuyện chi phí nội bộ. Giữ hay chuyển trung tính?
+- **FR-027** → **không đặt ngưỡng, theo dõi xu hướng.** Bộ câu hỏi chuẩn 8 câu là
+  mẫu quá nhỏ để một con số ngưỡng có ý nghĩa; đặt ngưỡng trên đó tạo mục tiêu
+  giả. Thay bằng yêu cầu lưu kết quả mỗi lần đo kèm ngày và số dataset, để **so
+  sánh giữa các lần**. Đánh đổi đã ghi rõ trong spec: mất tín hiệu tự động, bù
+  bằng tín hiệu xu hướng có ý nghĩa hơn.
+- **FR-028** → **giữ văn phong hiện tại.** Quyết định có chủ đích cho công cụ nội
+  bộ của nhóm nhỏ đã biết nhau. Spec ghi kèm **điều kiện xem lại**: khi sản phẩm
+  mở rộng ra ngoài nhóm ban đầu.
 
-Cả hai đều là **quyết định sản phẩm**, không phải thiếu thông tin.
+Cả hai đều không cần đổi code — spec ghi lại quyết định để người sau không tưởng
+là sơ suất rồi tự đi "sửa".
 
 ### Ranh giới quan trọng nhất của spec này
 
@@ -78,8 +83,16 @@ vấn đã dùng) — thuộc spec `007`.
 
 Ràng buộc kỹ thuật liên quan: #7 Vietnamese-first (FR-006) · #4 mọi thay đổi qua API.
 
-## Ghi nhận sai lệch tài liệu
+## Sai lệch tài liệu đã sửa
 
-`docs/phase-2.md` ghi bộ câu hỏi chuẩn có **26 câu**. File thật `eval/gold-questions.json`
-có **8 câu**, và báo cáo `eval/reports/2026-07-24.json` cũng ghi `total: 8`. Cần
-sửa `docs/phase-2.md`.
+Hai chỗ trong `docs/phase-2.md`, sửa cùng ngày:
+
+1. **Số câu hỏi chuẩn** — ghi "26 gold questions" ở hai chỗ; file thật có **8 câu**
+   (`eval/gold-questions.json` và `eval/reports/2026-07-24.json` đều xác nhận).
+2. **Báo cáo eval thiếu chỉ số bất lợi** — dòng tổng kết liệt kê ba số đẹp
+   (87,5% success · 100% accuracy · 100% Vietnamese) và **bỏ qua recall 42,9%** —
+   đúng con số duy nhất cho thấy điểm yếu. Đã bổ sung kèm giải thích vì sao cặp
+   số 100%/42,9% quan trọng, và ghi rõ số đo chạy khi kho có 8 dataset, hiện 17.
+
+Chỗ thứ hai đáng ngại hơn chỗ thứ nhất: một tài liệu wrap-up chọn lọc chỉ số có
+lợi khiến người đọc tin sản phẩm tốt hơn thực tế.

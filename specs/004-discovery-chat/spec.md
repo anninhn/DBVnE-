@@ -172,18 +172,28 @@ thêm vài chữ vì sao. Dữ liệu này dùng để biết chỗ nào hệ th
 - **FR-026**: Bộ đo MUST theo dõi tối thiểu: tỷ lệ trả lời thành công, độ chính
   xác của dataset được nhắc tới, và **tỷ lệ tìm ra hết** dataset lẽ ra phải tìm được.
 
-**Quyết định còn mở**
+**Theo dõi chất lượng và văn phong** *(chốt 2026-08-24)*
 
-- **FR-027**: Đo ngày 2026-07-24 cho thấy khi hệ thống nhắc tới một dataset thì
-  **luôn đúng** (độ chính xác 100%), nhưng nó **bỏ sót hơn một nửa** số dataset
-  lẽ ra phải tìm được (tỷ lệ tìm hết 42,9%). Người dùng nhận về câu trả lời trông
-  đáng tin nhưng thiếu.
-  [NEEDS CLARIFICATION: ngưỡng tỷ lệ tìm hết tối thiểu chấp nhận được là bao
-  nhiêu, và có cần đo lại sau khi kho tăng từ 8 lên 17 dataset không?]
-- **FR-028**: Lời mời nhập câu hỏi hiện dùng văn phong suồng sã, trong đó một câu
-  nêu đích danh một đồng nghiệp và chuyện chi phí nội bộ.
-  [NEEDS CLARIFICATION: giữ văn phong hiện tại, hay chuyển sang trung tính khi
-  sản phẩm mở rộng ra ngoài nhóm nhỏ ban đầu?]
+- **FR-027**: Hệ thống MUST **theo dõi tỷ lệ tìm hết theo thời gian**, KHÔNG đặt
+  ngưỡng tối thiểu cố định. Mỗi lần chạy bộ đo MUST lưu lại kết quả kèm ngày và
+  số dataset trong kho tại thời điểm đó, để so sánh được giữa các lần.
+
+  *Lý do không đặt ngưỡng*: bộ câu hỏi chuẩn hiện chỉ 8 câu — mẫu quá nhỏ để một
+  con số ngưỡng có ý nghĩa thống kê. Đặt ngưỡng trên mẫu đó tạo ra mục tiêu giả:
+  đạt được cũng không chứng minh điều gì, không đạt cũng không rõ vì sao.
+
+  *Đánh đổi đã biết*: không có ngưỡng thì không có tín hiệu tự động báo "đã đến
+  lúc phải sửa". Bù lại bằng việc **so sánh giữa các lần đo** — tỷ lệ giảm rõ khi
+  kho lớn lên là tín hiệu phải hành động, và đó là tín hiệu có ý nghĩa hơn một
+  con số tuyệt đối.
+
+- **FR-028**: Lời mời nhập câu hỏi MUST giữ văn phong thân mật hiện tại. Đây là
+  **quyết định có chủ đích** cho công cụ nội bộ của một nhóm nhỏ đã biết nhau,
+  không phải sơ suất.
+
+  *Điều kiện xem lại*: khi sản phẩm mở rộng ra ngoài nhóm ban đầu, hoặc khi có
+  người dùng ngoài tòa soạn, phần văn phong này PHẢI được xem lại — đặc biệt câu
+  nêu đích danh đồng nghiệp và câu nhắc chi phí vận hành.
 
 ### Key Entities
 
