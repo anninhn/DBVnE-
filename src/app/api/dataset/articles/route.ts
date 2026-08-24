@@ -30,6 +30,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { revalidateTag } from "next/cache";
 
 export const maxDuration = 30;
 
@@ -179,6 +180,12 @@ export async function POST(req: NextRequest) {
       yamlWithAudit,
       `Add article to dataset ${slug}: ${title.slice(0, 80)}`
     );
+
+    // Spec 003 FR-023 — bài báo mới phải hiện NGAY ở mọi nơi hiển thị dataset.
+    // Đây là route ghi duy nhất trước đây thiếu bước này (3 route còn lại —
+    // upload/commit, dataset/edit, dataset/delete — đều có), nên bài vừa thêm
+    // không xuất hiện cho tới khi cache 60s hết hạn.
+    revalidateTag("datasets", { expire: 0 });
 
     return NextResponse.json({
       success: true,
