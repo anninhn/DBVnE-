@@ -9,3 +9,7 @@ node_modules/
 .next/
 AGENTS.md
 tsconfig.tsbuildinfo
+
+# Claude Code local state — không commit (worktrees là embedded git repo)
+.claude/worktrees/
+.claude/settings.local.json
