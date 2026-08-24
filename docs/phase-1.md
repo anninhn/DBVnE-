@@ -43,7 +43,7 @@ Recap đầy đủ: `constitution/mission.md`, `constitution/tech-stack.md`, `co
 | 2 | **Upload Wizard (AI-assisted)** | `src/app/upload/page.tsx`, `src/components/upload/*`, `src/app/api/upload/{presign,analyze,commit}/route.ts` | 4 bước: drop → R2 presign PUT → AI inspect (metadata + dictionary) → review → commit GitHub Contents API |
 | 3 | **Data Preview + File Viewer** | `src/app/datasets/[slug]/{DatasetViewer,R2FileViewer,FilesTabContent,DatasetCardTabs}.tsx`, `src/lib/parse/{csv,geojson,number,decimal-detect}.ts` | CSV HTTP Range 1MB chunk (153MB/1.58M rows → 2.3s), XLSX qua `xlsx` pkg, GeoJSON Leaflet toggle Map/Table, DataDictionary decouple khỏi preview data |
 | 4 | **Search Adapter (forward-compatible)** | `src/lib/search/{types,simple-filter,index}.ts`, `src/components/search/SearchBox.tsx`, `src/components/CatalogNav.tsx` | `SimpleFilterAdapter` token-AND + diacritics-insensitive. `SearchAdapter` interface cho Phase 2 swap (Flexsearch/Pagefind) |
-| 5 | **Edit / Delete Dataset** | `src/components/dataset/{EditDatasetForm,DeleteDatasetButton}.tsx`, `src/app/api/dataset/{edit,delete}/route.ts`, `src/lib/dataset-commit.ts`, `src/lib/dataset-render.ts` | Metadata-only edit (no file replace). Hard delete **dev-only** (`NODE_ENV !== 'production'` guard) |
+| 5 | **Edit / Delete Dataset** | `src/components/dataset/{EditDatasetForm,DeleteDatasetButton}.tsx`, `src/app/api/dataset/{edit,delete}/route.ts`, `src/lib/dataset-commit.ts`, `src/lib/dataset-render.ts` | Metadata-only edit (no file replace). **Soft** delete (`status: deleted` + audit log, raw file giữ nguyên), **dev-only** — guard `NODE_ENV` ở cả UI lẫn API (spec `002` FR-034, chốt 2026-08-24) |
 | 6 | **GeoJSON Upload + Preview** | `src/lib/parse/geojson.ts`, `src/components/geo/*`, `src/app/datasets/[slug]/DatasetCardTabs.tsx` | Native parser (RFC 7946 validate, reject CRS khác WGS84). Leaflet ~40KB, CartoDB Positron grayscale. Deferred init bằng rAF tránh Canvas crash |
 | 7 | **Frictionless Data Table Schema** | `src/lib/parse/{number,decimal-detect}.ts`, `src/lib/viz/column-stats.ts`, `src/components/upload/DictionaryEditor.tsx` | `decimal_char` + `group_char` per dictionary field. Storage giữ raw, parser đọc schema. Display convention: cell UI = raw, stats UI = vi-VN format |
 | 8 | **Auth nhẹ + Provenance** | `src/proxy.ts`, `src/auth.config.ts`, `src/lib/auth/*`, `src/components/auth/*` | NextAuth v5 credentials + JSON user store. Actor tracking vào `metadata.yaml`: `created_by`, `last_edited_by`, `edits[]` timeline (reverse-chrono) |
@@ -76,7 +76,8 @@ Recap đầy đủ: `constitution/mission.md`, `constitution/tech-stack.md`, `co
 | Gap | Workaround | Spec đề xuất |
 |-----|-----------|--------------|
 | File replacement (re-upload đè R2 object) | Delete + upload lại (mất slug history, tốn AI analyze call lại) | `specs/2026-07-1X-replace-file/` (chưa tạo) |
-| Soft delete / restore UI | Hard delete dev-only. Prod muốn xóa = git CLI + R2 SDK manual | Defer, rare operation |
+| Restore UI cho dataset đã soft-delete | Chưa có. Muốn khôi phục = sửa `status` trong metadata.yaml qua git | Defer, rare operation |
+| Xóa dataset ở production | Không hỗ trợ có chủ đích (spec `002` FR-034). Muốn dọn kho = chạy dev, hoặc `tools/cleanup-orphans.mjs --include-deleted` cho hard delete | Quyết định 2026-08-24 |
 | R2 Object Versioning chưa GA (2026-07) | `sha256` (ChecksumMode=ENABLED) làm atomic reference thay `version_id` | Re-evaluate khi Cloudflare GA |
 | TSV format | Drop 2026-07-23 (`parseCSV` hardcode comma delimiter). CSV/XLSX/XLS + GeoJSON only | Upgrade parser nếu có demand thực tế |
 | Edit article (sửa/xóa sau khi add) | MVP: add + display only, không edit/delete | Defer |

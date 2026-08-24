@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain — **1 còn lại** (FR-033)
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -31,20 +31,29 @@
 
 ## Notes
 
-**Một marker `[NEEDS CLARIFICATION]` còn lại — FR-033, năng lực gỡ dataset.**
+**Trạng thái: PASS 16/16.** Marker `[NEEDS CLARIFICATION]` ở FR-033 đã được Ninh
+quyết ngày 2026-08-24: **khoá API lại, chỉ cho gỡ ở môi trường dev.**
 
-Đây là **mâu thuẫn thật giữa giao diện và API**, phát hiện khi hai agent review
-đưa ra kết luận ngược nhau và tôi phải kiểm chứng:
+Bối cảnh mâu thuẫn, phát hiện khi hai agent review kết luận ngược nhau:
 
-| | Trạng thái thật |
+| | Trạng thái trước khi sửa |
 |---|---|
-| API gỡ dataset | Đã bỏ guard môi trường — **chạy được ở production** |
-| Bằng chứng đã dùng thật | Git log có 3 lần gỡ dataset trên nhánh chính |
-| Nút trên giao diện | **Vẫn ẩn ở production** |
+| API gỡ dataset | Đã bỏ guard môi trường — chạy được ở production |
+| Đã dùng thật | 5 lần gỡ dataset trên nhánh chính |
+| Nút trên giao diện | Vẫn ẩn ở production |
 
-Khác với hai marker của spec `001` (nhãn sai, lựa chọn trùng — sửa được ngay),
-cái này là **quyết định mở một năng lực có tính phá huỷ** cho 7 người dùng thật.
-Không tự quyết.
+Nguồn gốc: spec `_archive/2026-07-24-auth-light` chỉ đạo bỏ guard, nhưng chỉ sửa
+ở route và quên component. Mâu thuẫn sống suốt một tháng.
+
+Lý do chọn hướng khoá thay vì mở: gỡ dataset là thao tác **dọn kho có chủ đích**,
+không phải năng lực thường ngày của 7 người dùng. Nút UI vốn đã ẩn ở production
+nên khoá API là làm hai bên khớp nhau mà không đổi trải nghiệm ai đang có.
+
+Đã sửa cùng ngày: thêm lại guard môi trường vào route, kèm thông báo nêu rõ hai
+cách thay thế (chạy dev, hoặc dùng công cụ hard delete cho quản trị).
+
+**Không chạy** `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` cho spec
+này — sẽ build lại năng lực đang phục vụ người dùng thật.
 
 ## Sai lệch tài liệu đã phát hiện
 

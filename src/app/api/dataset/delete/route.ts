@@ -17,18 +17,36 @@ interface DeleteRequest {
 }
 
 /**
- * API soft-delete dataset.
+ * API soft-delete dataset — CHỈ chạy ở môi trường dev.
  *
- * Spec D3 — xóa NODE_ENV guard (prod có delete capability khi login).
  * Soft delete: set `status: deleted` + `deleted_by/at` trong metadata.yaml.
  * Raw file R2 + folder GitHub KHÔNG xóa — recovery cho đến khi hard delete.
  *
  * Hard delete = manual admin qua tools/cleanup-orphans.mjs --include-deleted.
  *
  * Audit log: append line vào datasets/_audit/delete.log (race window — spec D4).
+ *
+ * VỀ GUARD MÔI TRƯỜNG (spec 002 FR-033, chốt 2026-08-24):
+ * Spec `_archive/2026-07-24-auth-light` chỉ đạo bỏ guard này và chỉ sửa ở route,
+ * quên `DeleteDatasetButton` — thành ra API cho gỡ ở production nhưng nút bị ẩn.
+ * Mâu thuẫn tồn tại tới 2026-08-24, trong thời gian đó có 5 lần gỡ thật trên
+ * nhánh chính (gọi API trực tiếp hoặc chạy dev).
+ * Ninh chốt giải theo hướng KHOÁ: gỡ dataset là thao tác dọn kho có chủ đích,
+ * không phải năng lực thường ngày của 7 người dùng. Muốn gỡ thì chạy dev.
+ * Nút UI đã ẩn sẵn ở production nên hai bên giờ khớp nhau.
  */
 export async function POST(req: NextRequest) {
-  // Auth check — thay NODE_ENV guard cũ
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json(
+      {
+        error:
+          "Xóa dataset chỉ dùng được ở môi trường dev. Chạy local để dọn kho, " +
+          "hoặc dùng tools/cleanup-orphans.mjs cho hard delete.",
+      },
+      { status: 403 }
+    );
+  }
+
   const authCheck = await requireUserOr401();
   if (!authCheck.ok) return authCheck.response;
   const user = authCheck.user;

@@ -234,8 +234,10 @@ tìm được dấu vết trong nhật ký.
 - **FR-032**: Xoá mềm MUST không xoá file thô; xoá hẳn là thao tác quản trị riêng.
 - **FR-033**: Năng lực gỡ dataset MUST nhất quán giữa giao diện và API — không
   được để trường hợp API cho phép mà giao diện ẩn nút, hoặc ngược lại.
-  [NEEDS CLARIFICATION: hiện API cho gỡ ở production và đã được dùng thật, nhưng
-  nút trên giao diện bị ẩn ở production — nên mở nút, hay khoá luôn API?]
+- **FR-034**: Gỡ dataset MUST chỉ dùng được ở môi trường phát triển, KHÔNG dùng
+  được ở môi trường production. *(chốt 2026-08-24)* Gỡ dataset là thao tác dọn
+  kho có chủ đích, không phải năng lực thường ngày. Khi bị từ chối, hệ thống
+  MUST nêu rõ cách thay thế thay vì chỉ báo lỗi.
 
 ### Key Entities
 
