@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-truong-hop-tu-vong-duoc-dang-ky-khai-tu-phan-theo-dia-phu",
+    "title": "Số trường hợp tử vong được đăng ký khai tử phân theo địa phương và thời hạn",
+    "description": "Dataset thống kê số trường hợp tử vong được đăng ký khai tử tại Việt Nam, phân loại theo tỉnh, thành phố, vùng kinh tế và toàn quốc, từ năm 2018 đến 2024. Dữ liệu bao gồm tổng số trường hợp, số trường hợp đăng ký đúng hạn và số trường hợp đăng ký quá hạn.",
+    "category": "dan-so",
+    "tags": [
+      "tu-vong",
+      "khai-tu",
+      "dan-so",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-27T08:11:57.808Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b62d7970-c266-40bb-9dfd-90f32c716827/so-truong-hop-tu-vong-duoc-dang-ky-khai-tu-phan-theo-dia-phu.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-cuoc-ket-hon-phan-theo-dia-phuong",
     "title": "Số cuộc kết hôn phân theo địa phương và số lần kết hôn",
     "description": "Dataset thống kê tổng số cuộc kết hôn, số cuộc kết hôn lần đầu và số cuộc kết hôn từ lần thứ hai trở lên tại các địa phương và vùng kinh tế - xã hội của Việt Nam, bao gồm cả số liệu toàn quốc, từ năm 2018 đến 2024.",
