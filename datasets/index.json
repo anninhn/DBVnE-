@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-ty-suat-sinh-phan-theo-dia-phuong",
+    "title": "Tổng tỷ suất sinh phân theo địa phương",
+    "description": "Dữ liệu về tổng tỷ suất sinh (TFR) của Việt Nam, được phân loại theo các địa phương (tỉnh, thành phố, vùng kinh tế) và theo từng năm từ 2005 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "ty-suat-sinh",
+      "sinh-san",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-27T08:12:31.114Z",
+    "uploaded_by": "ninh",
+    "row_count": 1349,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6ae899fc-f796-4b4c-9580-eebf161bed3c/tong-ty-suat-sinh-phan-theo-dia-phuong.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "so-vu-ly-hon-da-xet-xu-phan-theo-dia-phuong-va-phan-theo-cap",
     "title": "Số vụ ly hôn đã xét xử phân theo địa phương và cấp tòa án",
     "description": "Dữ liệu thống kê số vụ ly hôn đã được tòa án các cấp (tỉnh, huyện) xét xử tại các tỉnh, thành phố và khu vực trên cả nước, giai đoạn từ năm 2013 đến 2022.",
