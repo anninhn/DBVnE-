@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-cuoc-ket-hon-phan-theo-dia-phuong",
+    "title": "Số cuộc kết hôn phân theo địa phương và số lần kết hôn",
+    "description": "Dataset thống kê tổng số cuộc kết hôn, số cuộc kết hôn lần đầu và số cuộc kết hôn từ lần thứ hai trở lên tại các địa phương và vùng kinh tế - xã hội của Việt Nam, bao gồm cả số liệu toàn quốc, từ năm 2018 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "ket-hon",
+      "hon-nhan",
+      "dia-phuong",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-27T08:11:41.159Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "47b19985-fe63-4b53-b0ce-d6bb70f187aa/so-cuoc-ket-hon-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "dan-so-trung-binh-phan-theo-gioi-tinh-va-thanh-thi-nong-thon",
     "title": "Dân số trung bình phân theo giới tính và thành thị - nông thôn",
     "description": "Dataset cung cấp dữ liệu dân số trung bình của Việt Nam, phân loại theo giới tính (nam, nữ) và khu vực sinh sống (thành thị, nông thôn) từ năm 1990 đến 2024. Dữ liệu bao gồm tổng số dân, tỷ lệ tăng trưởng và cơ cấu phần trăm.",
