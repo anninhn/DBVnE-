@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua-2",
+    "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của Việt Nam",
+    "description": "Dữ liệu thống kê về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số Việt Nam, phân loại theo tổng số, thành thị và nông thôn, từ năm 2001 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "sinh-san",
+      "tu-vong",
+      "ty-le-tang-tu-nhien",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-27T08:17:43.903Z",
+    "uploaded_by": "ninh",
+    "row_count": 72,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "922b3661-267f-43ab-8418-4b9819db00f1/ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua",
     "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số",
     "description": "Dataset này cung cấp số liệu về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số cho các địa phương và toàn quốc, từ năm 2005 đến 2024.",
