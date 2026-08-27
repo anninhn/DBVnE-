@@ -5,8 +5,8 @@
 This project uses Spec-Driven Development. Read these files before implementing any feature:
 
 - `constitution/mission.md` — Why: data platform cho tòa soạn VNExpress, motivation, personas, 3 phases
-- `constitution/tech-stack.md` — How: dataset-centric architecture, Supabase, R2, API, data model
-- `constitution/roadmap.md` — When: Phase 1 (Dataset Hub) ✅ → Phase 2 (Discovery Chat) → Phase 3 (Intelligence). Wrap-up Phase 1: `docs/phase-1.md`
+- `constitution/tech-stack.md` — How: dataset-centric architecture, R2 + GitHub metadata, API, data model *(Supabase/PostgreSQL đã drop 2026-07-09)*
+- `constitution/roadmap.md` — When: Phase 1 (Dataset Hub) ✅ → Phase 2 (Discovery Chat) ✅ → Phase 3 (Intelligence). Wrap-up: `docs/phase-1.md`, `docs/phase-2.md`
 
 ## Architecture Principle
 
@@ -31,11 +31,11 @@ This project uses Spec-Driven Development. Read these files before implementing 
 
 - Văn phong tiếng Việt trong code comments và UI text
 - Không thêm feature ngoài yêu cầu
-- Dữ liệu thô (CSV, Excel) → xử lý bằng Python script (`data/scripts/parse_*.py`) → upload qua API → PostgreSQL + R2
-- File vật lý (PDF, MP3, XLSX) → Object Storage (R2), database chỉ lưu URL
-- JSONB keys phải khớp `data_dictionary` — không tự do đặt tên
-- Tags chọn từ controlled vocabulary (`tags` table) — không gõ tự do
-- Mỗi con số phải trace được nguồn (provenance qua `upload_log`)
+- Dữ liệu thô (CSV, Excel) → xử lý bằng Python script (`data/scripts/`) → upload qua API → R2 + GitHub metadata
+- File vật lý (PDF, MP3, XLSX) → Object Storage (R2), metadata chỉ lưu URL
+- Column names trong `dictionary.md` phải khớp header file thật — không tự do đặt tên
+- Tags chọn từ controlled vocabulary hardcoded ở `src/lib/tags.ts` — không gõ tự do
+- Mỗi con số phải trace được nguồn (provenance qua git history + field `source` trong `metadata.yaml`)
 
 ## Skills
 

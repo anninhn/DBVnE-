@@ -17,7 +17,9 @@ Recap đầy đủ: `constitution/mission.md`, `constitution/tech-stack.md`, `co
 ## Trạng thái
 
 - **Production**: Vercel auto-deploy từ `main`, dynamic SSR
-- **Eval baseline** (2026-07-24): 87.5% success rate, 100% accuracy on cited slugs, 100% Vietnamese compliance
+- **Eval baseline** (2026-07-24, 8 gold questions): 87.5% success rate · 100% accuracy on cited slugs · **42.9% recall** · 100% Vietnamese compliance
+  - ⚠️ Cặp **accuracy 100% / recall 42.9%** là đặc điểm quan trọng nhất: hệ thống KHÔNG bịa dataset, nhưng BỎ SÓT hơn một nửa dataset lẽ ra phải tìm được. Với người dùng đây là kiểu sai khó nhận ra nhất — câu trả lời trông đáng tin nên không ai nghĩ là còn thiếu.
+  - Đo khi catalog có 8 dataset; hiện có 17 → **số đã cũ, cần chạy lại**. Xem `specs/004-discovery-chat/` FR-027.
 - **Milestone**: CHANGELOG.md entry 2026-07-24, PR #2 merged a9b38ab
 - **Model**: Gemini 2.5 Flash free tier (1500 RPD, 1M tokens/day) qua OpenAI-compatible endpoint
 
@@ -32,7 +34,7 @@ Recap đầy đủ: `constitution/mission.md`, `constitution/tech-stack.md`, `co
 | Output schema | `{ answer, datasets[], follow_ups[] }` — JSON structured, parse + render HTML incremental |
 | Logging | R2 JSON append-only `logs/chat/<YYYY-MM-DD>.json` (reuse Phase 1 counter pattern) |
 | Feedback | `POST /api/chat/feedback` — 👍/👎 + text, append vào entry log |
-| Eval | `scripts/eval-chat.mjs` + `eval/gold-questions.json` (26 câu) → `eval/reports/<date>.json` |
+| Eval | `scripts/eval-chat.mjs` + `eval/gold-questions.json` (8 câu) → `eval/reports/<date>.json` |
 | Quota | Per-user ~100 queries/day + global hard limit 1200/day (80% của 1500 RPD Gemini) |
 
 **Data plane**: GitHub fetch metadata (flatten) → LLM call streaming → JSON parse → UI render + R2 log append.
@@ -49,7 +51,7 @@ Recap đầy đủ: `constitution/mission.md`, `constitution/tech-stack.md`, `co
 | 4 | **R2 Chat Log + Feedback Endpoint** | `src/lib/r2/chat-log.ts`, `src/app/api/chat/feedback/route.ts` | Append-only array per day. Schema: `{ id, timestamp, user_email, query, answer_summary, datasets_cited[], thumbs, feedback_text, latency_ms }` |
 | 5 | **Cross-linking CTA** | `src/app/datasets/[slug]/MetadataSidebar.tsx` | "Hỏi về dataset này" → `/hoi-du-lieu?prefill=<title>` — pre-fill input, KHÔNG auto-submit (user agency) |
 | 6 | **Nav Link + Beta Badge** | `src/components/CatalogNav.tsx` | Header "Hỏi dữ liệu" + beta badge (thay Coming soon placeholder) |
-| 7 | **Eval Suite** | `scripts/eval-chat.mjs`, `eval/gold-questions.json`, `eval/reports/2026-07-24.json` | 26 gold questions. Run `npm run eval:chat`. Baseline: 87.5% success, 100% Vietnamese compliance |
+| 7 | **Eval Suite** | `scripts/eval-chat.mjs`, `eval/gold-questions.json`, `eval/reports/2026-07-24.json` | 8 gold questions. Run `npm run eval:chat`. Baseline: 87.5% success, 100% accuracy, **42.9% recall**, 100% Vietnamese |
 
 ### Internal
 

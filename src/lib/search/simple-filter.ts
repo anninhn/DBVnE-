@@ -15,12 +15,27 @@ import type { SearchAdapter, SearchCapabilities, SearchQuery, SearchResult } fro
 
 /**
  * Nhóm quy mô dataset theo số dòng — dùng cho filter facet "Quy mô".
- * Phải khớp với sizeBucket() trong DatasetExplorer (sẽ refactor共用).
+ * NGUỒN SỰ THẬT DUY NHẤT cho nhóm kích thước — sidebar import `SIZE_BUCKETS`
+ * thay vì hardcode nhãn riêng.
+ *
+ * Trước 2026-08-24 chỉ có 3 bậc, bậc cuối ghi nhãn "10K–100K" nhưng nhận MỌI
+ * dataset ≥10.000 dòng — `diem-thi-tot-nghiep` 6.443.905 dòng vẫn mang nhãn đó.
+ * Spec 001 FR-026 chốt tách thành 5 bậc để nhãn nói đúng nội dung.
  */
+export const SIZE_BUCKETS = [
+  "< 1K",
+  "1K–10K",
+  "10K–100K",
+  "100K–1M",
+  "> 1M",
+] as const;
+
 function sizeBucket(rowCount: number): string {
-  if (rowCount < 1000) return "< 1K";
-  if (rowCount < 10000) return "1K–10K";
-  return "10K–100K";
+  if (rowCount < 1_000) return "< 1K";
+  if (rowCount < 10_000) return "1K–10K";
+  if (rowCount < 100_000) return "10K–100K";
+  if (rowCount < 1_000_000) return "100K–1M";
+  return "> 1M";
 }
 
 /**

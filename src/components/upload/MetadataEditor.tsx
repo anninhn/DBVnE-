@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { AIProposal } from "./UploadWizard";
 import { slugify, isValidSlug } from "@/lib/slugify";
+import { ALL_CATEGORIES, CATEGORY_LABELS } from "@/lib/types/dataset";
 
 interface Props {
   initial: AIProposal["metadata"];
@@ -17,17 +18,10 @@ interface Props {
   slugReadOnly?: boolean;
 }
 
-const CATEGORIES = [
-  { value: "kinh-te", label: "Kinh tế" },
-  { value: "dan-so", label: "Dân số" },
-  { value: "giao-duc", label: "Giáo dục" },
-  { value: "y-te", label: "Y tế" },
-  { value: "moi-truong", label: "Môi trường" },
-  { value: "chinh-tri", label: "Chính trị" },
-  { value: "khi-hau", label: "Khí hậu" },
-  { value: "ha-tang", label: "Hạ tầng" },
-  { value: "khac", label: "Khác" },
-];
+// Sinh từ CATEGORY_LABELS — nguồn sự thật duy nhất (src/lib/types/dataset.ts).
+// Trước đây hardcode 9 giá trị lệch với filter sidebar 6 giá trị → 8/17 dataset
+// không bao giờ hiện khi lọc Category.
+const CATEGORIES = ALL_CATEGORIES.map((value) => ({ value, label: CATEGORY_LABELS[value] }));
 
 const CONFIDENCE_STYLES = {
   high: "bg-blue-100 text-blue-800",
