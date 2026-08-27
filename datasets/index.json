@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha",
+    "title": "Tuổi thọ trung bình tính từ lúc sinh phân theo giới tính, thành thị, nông thôn và vùng kinh tế - xã hội",
+    "description": "Dataset cung cấp số liệu về tuổi thọ trung bình tính từ lúc sinh của Việt Nam, được phân loại theo giới tính (Nam, Nữ), khu vực sinh sống (thành thị, nông thôn) và các vùng kinh tế - xã hội, qua các năm từ 2005 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "tuoi-tho",
+      "dan-so",
+      "gioi-tinh",
+      "thanh-thi",
+      "nong-thon"
+    ],
+    "uploaded_at": "2026-08-27T08:13:52.390Z",
+    "uploaded_by": "ninh",
+    "row_count": 187,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5f3af2e4-7a29-4815-9b5e-3c00d65122cd/tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-dia-phuong",
     "title": "Tuổi thọ trung bình tính từ lúc sinh phân theo địa phương",
     "description": "Dataset cung cấp thông tin về tuổi thọ trung bình của người Việt Nam tính từ lúc sinh, được phân loại theo tỉnh/thành phố, vùng kinh tế - xã hội và cấp quốc gia (CẢ NƯỚC) trong giai đoạn từ năm 2018 đến 2024.",
