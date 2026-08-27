@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tong-ty-suat-sinh-phan-theo-thanh-thi-nong-thon",
+    "title": "Tổng tỷ suất sinh phân theo thành thị và nông thôn",
+    "description": "Dataset cung cấp dữ liệu về tổng tỷ suất sinh của Việt Nam, phân tách theo khu vực thành thị và nông thôn, từ năm 2001 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "ty-suat-sinh",
+      "thanh-thi",
+      "nong-thon",
+      "sinh-san"
+    ],
+    "uploaded_at": "2026-08-27T08:12:45.927Z",
+    "uploaded_by": "ninh",
+    "row_count": 24,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e9b937de-b161-4ca5-a190-269c5d1120fb/tong-ty-suat-sinh-phan-theo-thanh-thi-nong-thon.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "tong-ty-suat-sinh-phan-theo-dia-phuong",
     "title": "Tổng tỷ suất sinh phân theo địa phương",
     "description": "Dữ liệu về tổng tỷ suất sinh (TFR) của Việt Nam, được phân loại theo các địa phương (tỉnh, thành phố, vùng kinh tế) và theo từng năm từ 2005 đến 2024.",
