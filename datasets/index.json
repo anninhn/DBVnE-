@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dan-so-trung-binh-phan-theo-gioi-tinh-va-thanh-thi-nong-thon",
+    "title": "Dân số trung bình phân theo giới tính và thành thị, nông thôn",
+    "description": "Dataset thống kê dân số trung bình của Việt Nam từ năm 1990 đến 2023, được phân loại theo giới tính (Nam, Nữ) và khu vực sinh sống (Thành thị, Nông thôn). Dữ liệu bao gồm tổng số (nghìn người), tỷ lệ tăng (%) và cơ cấu (%).",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "gioi-tinh",
+      "thanh-thi",
+      "nong-thon",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-27T07:18:48.102Z",
+    "uploaded_by": "ninh",
+    "row_count": 525,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8df8d8f3-bfe0-47c8-9e0e-0b8d1de64420/dan-so-trung-binh-phan-theo-gioi-tinh-va-thanh-thi-nong-thon.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th",
     "title": "Dân số trung bình phân theo địa phương và năm",
     "description": "Dữ liệu về dân số trung bình hàng năm của Việt Nam, bao gồm tổng số cả nước, các vùng kinh tế và các tỉnh/thành phố trực thuộc trung ương từ năm 1995 đến 2024. Một số giá trị là số liệu sơ bộ.",
