@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-dan-so-tu-15-tuoi-tro-len-biet-chu-phan-theo-gioi-tinh",
+    "title": "Tỷ lệ dân số từ 15 tuổi trở lên biết chữ phân theo giới tính và khu vực",
+    "description": "Dataset thống kê tỷ lệ dân số Việt Nam từ 15 tuổi trở lên biết chữ, phân loại theo giới tính (nam, nữ) và khu vực (thành thị, nông thôn) trong giai đoạn 2006-2024.",
+    "category": "giao-duc",
+    "tags": [
+      "dan-so",
+      "giao-duc",
+      "biet-chu",
+      "gioi-tinh",
+      "khu-vuc",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-27T08:14:33.468Z",
+    "uploaded_by": "ninh",
+    "row_count": 19,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8f0d8b6d-7028-493a-9c8d-71cf427fc09b/ty-le-dan-so-tu-15-tuoi-tro-len-biet-chu-phan-theo-gioi-tinh.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-dan-so-tu-15-tuoi-tro-len-biet-chu-phan-theo-dia-phuon",
     "title": "Tỷ lệ dân số từ 15 tuổi trở lên biết chữ phân theo địa phương",
     "description": "Dataset thống kê tỷ lệ phần trăm dân số từ 15 tuổi trở lên biết chữ tại Việt Nam, phân loại theo các địa phương và vùng kinh tế xã hội, bao gồm cả số liệu toàn quốc. Dữ liệu được thu thập từ năm 2006 đến 2024.",
