@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-dia-phuong",
+    "title": "Tuổi thọ trung bình tính từ lúc sinh phân theo địa phương",
+    "description": "Dataset cung cấp thông tin về tuổi thọ trung bình của người Việt Nam tính từ lúc sinh, được phân loại theo tỉnh/thành phố, vùng kinh tế - xã hội và cấp quốc gia (CẢ NƯỚC) trong giai đoạn từ năm 2018 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "tuoi-tho",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-27T08:13:35.199Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d7de9079-21db-49af-8f20-224a21b7d69f/tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tuoi-ket-hon-trung-binh-lan-dau-phan-theo-gioi-tinh-va-theo",
     "title": "Tuổi kết hôn trung bình lần đầu phân theo giới tính và khu vực (2005-2024)",
     "description": "Dữ liệu thống kê tuổi kết hôn trung bình lần đầu của người Việt Nam từ năm 2005 đến 2024, được phân loại theo giới tính (nam, nữ) và khu vực sinh sống (thành thị, nông thôn).",
