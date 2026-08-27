@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-suat-nhap-cu-xuat-cu-va-di-cu-thuan-phan-theo-dia-phuong",
+    "title": "Tỷ suất nhập cư, xuất cư và di cư thuần phân theo địa phương",
+    "description": "Dataset cung cấp thông tin về tỷ suất nhập cư và xuất cư cho các tỉnh, thành phố, vùng kinh tế và toàn quốc tại Việt Nam, từ năm 2005 đến 2024. Dữ liệu này phản ánh tình hình di chuyển dân số giữa các khu vực.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "nhap-cu",
+      "xuat-cu",
+      "di-cu",
+      "ty-suat"
+    ],
+    "uploaded_at": "2026-08-27T08:17:08.250Z",
+    "uploaded_by": "ninh",
+    "row_count": 1349,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "58dc95b8-e52b-495b-9c97-76a6bf2b92ac/ty-suat-nhap-cu-xuat-cu-va-di-cu-thuan-phan-theo-dia-phuong.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-chet-cua-tre-em-phan-theo-gioi-tinh-va-theo-thanh-th",
     "title": "Tỷ suất chết của trẻ em phân theo giới tính và khu vực (2001-2024)",
     "description": "Dataset cung cấp tỷ suất chết của trẻ em dưới một tuổi và dưới năm tuổi tại Việt Nam, được phân loại theo giới tính (Nam, Nữ) và khu vực sinh sống (Thành thị, Nông thôn) từ năm 2001 đến năm 2024.",
