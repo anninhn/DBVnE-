@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tuoi-ket-hon-trung-binh-lan-dau-phan-theo-gioi-tinh-va-theo",
+    "title": "Tuổi kết hôn trung bình lần đầu phân theo giới tính và khu vực (2005-2024)",
+    "description": "Dữ liệu thống kê tuổi kết hôn trung bình lần đầu của người Việt Nam từ năm 2005 đến 2024, được phân loại theo giới tính (nam, nữ) và khu vực sinh sống (thành thị, nông thôn).",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "ket-hon",
+      "tuoi-trung-binh",
+      "gioi-tinh",
+      "thanh-thi-nong-thon"
+    ],
+    "uploaded_at": "2026-08-27T08:13:18.477Z",
+    "uploaded_by": "ninh",
+    "row_count": 20,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "14fbc40d-68b7-426f-a164-2f75820ea23f/tuoi-ket-hon-trung-binh-lan-dau-phan-theo-gioi-tinh-va-theo.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "tuoi-ket-hon-trung-binh-lan-dau-phan-theo-dia-phuong",
     "title": "Tuổi kết hôn trung bình lần đầu phân theo địa phương và năm",
     "description": "Dataset này cung cấp thông tin về tuổi trung bình của người kết hôn lần đầu tại Việt Nam, được phân loại theo các tỉnh, thành phố trực thuộc trung ương, các vùng kinh tế - xã hội và toàn quốc. Dữ liệu bao gồm các năm từ 2010 đến 2024.",
