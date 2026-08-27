@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tuoi-ket-hon-trung-binh-lan-dau-phan-theo-dia-phuong",
+    "title": "Tuổi kết hôn trung bình lần đầu phân theo địa phương và năm",
+    "description": "Dataset này cung cấp thông tin về tuổi trung bình của người kết hôn lần đầu tại Việt Nam, được phân loại theo các tỉnh, thành phố trực thuộc trung ương, các vùng kinh tế - xã hội và toàn quốc. Dữ liệu bao gồm các năm từ 2010 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "ket-hon",
+      "tuoi",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-27T08:13:00.637Z",
+    "uploaded_by": "ninh",
+    "row_count": 910,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "38b4b56c-bcd9-48b5-9f53-634f5c1dde6c/tuoi-ket-hon-trung-binh-lan-dau-phan-theo-dia-phuong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "tong-ty-suat-sinh-phan-theo-thanh-thi-nong-thon",
     "title": "Tổng tỷ suất sinh phân theo thành thị và nông thôn",
     "description": "Dataset cung cấp dữ liệu về tổng tỷ suất sinh của Việt Nam, phân tách theo khu vực thành thị và nông thôn, từ năm 2001 đến 2024.",
