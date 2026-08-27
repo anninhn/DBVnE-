@@ -106,37 +106,6 @@ Vector embedding **không phải default** — là opt-in khi trigger criteria m
 
 ---
 
-## Phase 2.5 — Nguồn thống kê + Chat con số (chốt 2026-08-24)
-
-> **Design**: `docs/product-design-proposal.md` v3.2. Branch spike: `nso-indicator-spike`.
-> **Không phải Phase 3** — Phase 3 vẫn là RAG/document/audio. Đây là hoàn thiện lời hứa gốc của Phase 2 (`mission.md`: "phóng viên hỏi → platform trả lời ngay") mà Discovery Chat metadata-only chưa làm được.
-
-**Vì sao có phase này**: Phase 2 ship Discovery Chat trả về *dataset card*, không trả về *con số*. Persona trung tâm (Hoa — phóng viên fact-check) chưa từng được phục vụ.
-
-**G0 — Đo demand ✅ PASS 2026-08-24**: đa số phóng viên cần **con số**; chỉ phóng viên dữ liệu cần **raw data**. Xác nhận model ba lớp, và nâng độ chính xác từ "thuộc tính chất lượng" thành **điều kiện tồn tại**.
-
-### Thứ tự (chốt): NSO toàn bộ → Chat con số → bộ nguồn khác
-
-| Gate | Nội dung | Trạng thái |
-|---|---|---|
-| **G1** | **NSO toàn bộ** ~500 bảng / 12 database. 1a: hoàn tất `Dân số và lao động` (spike có ~50-60% theo công sức) · 1b: 11 database còn lại (7/12 cần postback fallback) | spike xong phần fetch/normalize |
-| **G2** | **Discovery Chat con số** — `get_schema` + `get_series` qua HTTP, wire chat, retrieval C1-C3, display contract, **gate V1–V6 chống số sai** | chưa |
-| **G3** | **World Bank** — bộ thứ hai, đo kill-switch thật + cầu alias Việt↔Anh | chưa |
-| **G4** | Surface (tách Curated/Thống kê, facet, trang nhóm chỉ tiêu) + MCP adapter | chưa |
-
-**Exit G1**: toàn bộ bảng NSO trên catalog — tìm theo nhóm chỉ tiêu, preview, tải, provenance đầy đủ (footnote + vintage + updated). Chưa gồm chat trả con số.
-
-**Exit G2 (gate cứng)**: exact-match con số **100%** · cảnh báo khi số sơ bộ **100%** · hiện truy vấn đã dùng **100%**. Ba cơ chế này tất định — không đạt nghĩa là cài sai chỗ, không phải model yếu. **Không đạt thì không mở cho phóng viên.**
-
-### Quyết định kiến trúc đã chốt
-
-- **Grain**: bảng = dataset, chỉ tiêu = nhóm hiển thị/search (provenance nằm ở cấp bảng)
-- **Không cap số connector** — thay bằng luật không-trộn + kill-switch có số + tripwire từ bộ thứ 4
-- **Chính sách revision**: changelog cấp cell (key đủ chiều, không ghi đè) × Article Linking → báo tác giả khi nguồn sửa số. 4,96% dòng NSO là sơ bộ và sẽ đổi
-- **Không build**: bảng gộp · ontology chỉ tiêu · hợp nhất địa giới · semantic layer · PostgreSQL · fine-tune text-to-SQL
-
----
-
 ## Phase 3 — Intelligence Platform (Tháng 11–12+, research direction)
 
 **Mục tiêu**: AI-powered platform cho 300 phóng viên. RAG trên mọi loại data, multi-source reasoning, story detection.
@@ -217,7 +186,7 @@ Triggers cụ thể để cân nhắc bổ sung:
 - User authentication và role-based access
 - Public-facing data portal
 - Visualization embed widgets cho bài báo
-- ~~Automated data fetching từ GSO, World Bank, etc.~~ → **promoted lên Phase 2.5 (2026-08-24)** — đây giờ là luồng ingest chính, không còn post-phase
+- Automated data fetching từ GSO, World Bank, etc.
 - Mobile app
 - Real-time data feeds
 
@@ -237,5 +206,4 @@ Triggers cụ thể để cân nhắc bổ sung:
 | 2026-07-23 | **Phase 2/3 scope adjustment sau brainstorm Intelligence** | Phase 2 thu hẹp: chỉ **Discovery Chat** (LLM routing zero-infra, Claude thấy metadata tất cả datasets → trả top-3 cards + lý do). Bỏ chart builder + SQL panel + query templates + dataset promotion + text-to-SQL. Phase 3 thêm **3e Structured Data Q&A** (NL→SQL bằng schema-aware prompting với Claude tool-use + DuckDB query R2 trực tiếp, KHÔNG semantic layer default). Phase 3 thêm **3f Optional extensions** với triggers cụ thể: vector DB/RAG khi catalog >100 + fuzzy intent; semantic layer khi multi-surface; AI auto-suggest wizard chỉ enrich metadata tự nhiên. Lý do: (1) Vector DB over-engineering cho 10-100 datasets — LLM routing đủ; (2) Semantic layer (Cube/dbt) là enterprise pattern cho multi-surface consistency, không fit newsroom 1 surface; (3) Fine-tune text-to-SQL overkill — zero-shot + rich context đủ; (4) Phóng viên không hiểu metrics/dimensions — UX phải giấu concepts. Reference: SOTA research 2026 (Spider2/BIRD broken, Cube semantic layer trend, Vanna RAG, Anthropic tool use). |
 | 2026-07-23 | **Phase 1 format scope — tabular + GeoJSON, defer PDF/MP3 sang Phase 3** | Cũ: #1A multi-format gồm pdf/mp3/geojson/zip. Mới: #1A chỉ còn **GeoJSON** (geospatial = data). PDF + MP3 defer Phase 3 — cả 2 luồng (wizard + add-file) và 2 loại PDF (text-based `pdf-parse` extract + scanned OCR/AI vision). Lý do: giữ tinh thần "dataset = tabular" cho MVP, hạn chế phức tạp. PDF/MP3 = document/audio, thuộc Phase 3 RAG infrastructure (3a Document RAG pickup upload flow, 3b Audio RAG pickup upload flow) chứ không phải Phase 1 dataset. Phase 1 `detectFormat` accept CSV/XLSX/XLS + GeoJSON (native `JSON.parse`, không library ngoài). Dictionary reuse cho GeoJSON (columns = feature.properties.keys()). Preview GeoJSON: render table từ features.properties, defer map (Leaflet/MapLibre) cho sau. **TSV cũng bỏ cùng ngày** — `parseCSV` hardcode comma delimiter, TSV file upload sẽ parse sai (1 cột duy nhất); ưu tiên sửa sau nếu có demand thực tế thay vì quảng cáo sai. |
 | 2026-07-24 | **Phase 1 wrap-up** | Đóng gói chính thức Phase 1 (Dataset Hub). CHANGELOG promote `[Unreleased]` → `[Phase 1] - 2026-07-24`. Wrap-up doc mới `docs/phase-1.md` — feature map (11 nhóm: catalog/upload/preview/search/edit-delete/geojson/frictionless/auth/articles/downloads/perf), architecture snapshot, source-of-truth, known gaps + workarounds, Phase 2 entry point. Ngoài plan gốc 2026-07-09 (4 features: search/pagination/viewer/edit-delete), Phase 1 còn ship các enhancement: GeoJSON upload, Frictionless Data Table Schema, Auth nhẹ + edit history timeline, Article Linking (reverse provenance), Download counter, listing render perf. Roadmap Phase 1 mark DELIVERED. |
-| 2026-08-24 | **Phase 2.5 — Nguồn thống kê + Chat con số** | Cũ: `mission.md` ghi "không re-host raw data của GSO/World Bank — chỉ link", metric "30-50 datasets", "automated fetching" nằm ở Deferred/Post-Phase 3. Mới: **re-host nguồn thống kê có cấu trúc là luồng ingest chính**, mục tiêu toàn bộ NSO ~500 bảng. Lý do (5): (1) Chỉ link thì phóng viên vẫn phải tự vào PxWeb tự un-pivot — đúng ma sát platform sinh ra để xoá; (2) Bản gốc NSO là pivot 2 tầng header, không mô tả được bằng Frictionless schema, không preview/query được; (3) Không giữ bản sao thì không có `vintage`/footnote/`updated` — tức không có provenance của **con số**, vi phạm nguyên tắc 1; (4) **G0 PASS**: đo demand thật cho thấy đa số phóng viên cần con số, chỉ data journalist cần raw — persona trung tâm Hoa chưa từng được phục vụ sau Phase 1+2; (5) Spike đo được chi phí thật: fetch+normalize 63 bảng = 30 giây, chi phí nằm ở **mỗi nguồn** (~1 ngày) chứ không phải mỗi bảng. Luật chống treadmill: **bộ nguồn không trộn** (chi phí thật nằm ở lời hứa hợp nhất, không ở số nguồn) + kill-switch "lát đầu > 2 tuần thì dừng" + tripwire từ bộ thứ 4. Thêm **§8b V1–V6 chống số sai** làm gate cứng của Chat con số — hậu kiểm bằng code, không bằng prompt. Xem `docs/product-design-proposal.md` v3.2. |
 | 2026-07-24 | **Phase 2 DELIVERED + Inter-phase refactor mở** | Phase 2 Discovery Chat merge `origin/main` qua PR #2 (`a9b38ab`). Mở `refactor-pre-launch` branch cho inter-phase pre-launch refactor (KHÔNG phải Phase 3 — không mở rộng feature, chỉ harden + cleanup). Spec `specs/2026-07-24-pre-launch-refactor/`. Scope 4 bundles: security (xlsx CVE + global rate limit + R2-exist check), code health (GitHub helper DRY + type dedup + split god files), UX/onboarding (README + .env.example + loading.tsx commit), docs/phase-2.md wrap-up. Audience: internal newsroom (7 user). Phase 3 Intelligence còn defer cho sau khi Phase 2 có traffic data. |

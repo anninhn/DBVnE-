@@ -5,13 +5,10 @@
 Dataset catalog + query + intelligence platform cho tòa soạn VNExpress, xây dựng incremental qua 3 phases. **Re-architected 2026-07-02**: Phase 1 chuyển từ PostgreSQL-centric sang file-based + AI-assisted upload trên UI.
 
 ```
-Phase 1:   Next.js (catalog + upload) + Cloudflare R2 (file storage) + GitHub repo (metadata) + AI upload assist
-Phase 2:   + Discovery Chat (LLM routing trên metadata) — trả dataset card
-Phase 2.5: + Connector per bộ nguồn (NSO, WB) + lớp Chuỗi tidy + tool layer HTTP → trả CON SỐ
-Phase 3:   + RAG Pipeline (pgvector hoặc separate vector store) cho document/audio
+Phase 1: Next.js (catalog static + upload dynamic) + Cloudflare R2 (file storage) + GitHub repo (metadata) + Claude API (upload AI assist)
+Phase 2: + DuckDB (query parquet from R2 directly) → Promote popular to PostgreSQL (optional)
+Phase 3: + RAG Pipeline (pgvector hoặc separate vector store) + Claude API
 ```
-
-**Luật kiến trúc trung tâm (2026-08-24)**: chi phí nằm ở **lời hứa hợp nhất nguồn**, không nằm ở số nguồn. Mỗi nguồn là một **bộ riêng** — giữ nguyên nhãn/đơn vị/cảnh báo/địa giới của nguồn đó, **không bao giờ merge hai bộ**. So sánh xảy ra lúc trả lời, trước mắt người hỏi, chứ không lúc lưu trữ nơi khác biệt bị giấu đi.
 
 **Tool nội bộ, không public**: không ưu tiên SEO, không cần auth phức tạp, không cần scale massively.
 
@@ -408,87 +405,6 @@ Phase 1 (files)              Phase 2 (light)              Phase 2 (heavy, option
 2. Tabular với data dictionary đầy đủ
 3. Update frequency justify structured investment
 
-## Phase 2.5 Stack — Connector + lớp Chuỗi (chốt 2026-08-24)
-
-> Design đầy đủ + bằng chứng đo: `docs/product-design-proposal.md` v3.2.
-
-### Ba lớp lưu trữ
-
-```
-L2  Tool layer (HTTP) — 6 tool, KHÔNG đổi khi thêm nguồn
-      search_datasets · get_schema · get_series ⭐ · get_file
-      get_provenance · upload_dataset          (MCP adapter = vỏ mỏng, sau)
-              ↑
-L1  Object store (R2 + git)        Chuỗi tidy per bộ nguồn
-    = NGUỒN SỰ THẬT                 = DẪN XUẤT, regenerate/xoá được
-              ↑                                ↑
-L0  Upload wizard (luồng B)        Connector per bộ (luồng A)
-    KHÔNG chuẩn hoá                 NSO · World Bank · …
-```
-
-**Bất biến**: file là sự thật, chuỗi là dẫn xuất. Mọi chuỗi phải regenerate được từ connector. Không có chuỗi nào là dữ liệu gốc.
-
-### Khuôn dữ liệu lớp Chuỗi
-
-```
-geo | geo_level | year | vintage | time_label | <các chiều của bảng> | <measure>
-```
-
-| Cột | Bắt buộc vì |
-|---|---|
-| `geo_level` (`national`/`region`/`province`) | nguồn trộn 3 cấp trong một chiều; thiếu cột này thì `SUM()` đếm 3 lần |
-| `vintage` (`chinh_thuc`/`so_bo`/`uoc_tinh`) | NSO nhúng trạng thái vào nhãn năm (`"Sơ bộ 2024"`); parse thành `int` là âm thầm biến số sơ bộ thành chính thức. **4,96% dòng NSO là sơ bộ** |
-| `time_label` | giữ nhãn gốc để trace |
-| chiều bất kỳ | **40/63 bảng NSO không có chiều tỉnh**; khuôn cố định `chỉ_số\|tỉnh\|năm\|giá trị` chỉ chứa 25% |
-
-Chiều mà **giá trị của nó mang đơn vị** (`Cách tính` = `['Tổng số (Nghìn người)', 'Cơ cấu - %']`) là **danh sách measure trá hình** → phải pivot thành cột riêng, không giữ làm dimension. Nhận diện theo **giá trị**, không theo tên chiều (nguồn đặt tên tuỳ tiện: `Chỉ tiêu`/`Cách tính`/`Phân tổ`/`Tỷ suất`).
-
-### Connector — pattern chung
-
-```
-API nguồn (json/csv)  +  metadata nguồn (đơn vị, footnote)
-        ↓  chuẩn hoá: unpivot · vintage · alias chiều · geo_level
-   tidy long CSV  +  metadata.yaml  +  dictionary.md
-        ↓  bulk endpoint → gọi commit API hiện có
-   R2 + git    (giữ bất biến CLAUDE.md: mọi thay đổi qua API)
-```
-
-| | Wizard (luồng B) | Connector (luồng A) |
-|---|---|---|
-| dictionary | AI đoán | **deterministic** — nguồn cho sẵn giá trị hợp lệ của chiều |
-| đơn vị | AI đoán | từ metadata nguồn |
-| AI reviewer | cần | **không cần** (người xác nhận đơn vị ~13% nhóm) |
-
-**Kill-switch**: bộ nguồn mới mà "lát đầu" (≥1 chỉ tiêu trả số đúng qua `get_series`) tốn **≤1 tuần** → tiếp tục; **>2 tuần** → dừng, nghĩ lại kiến trúc.
-
-### Chống số sai (V1–V6) — gate của Chat con số
-
-Giá trị không hallucinate được (đến từ tool call), nhưng mọi thứ quanh nó thì có:
-
-| Luật | Nội dung |
-|---|---|
-| **V1** | Trích không sinh — mọi token số phải là bản sao từ tool response. **Hậu kiểm bằng code**, không bằng prompt |
-| **V2** | LLM không làm số học — tăng trưởng/chênh lệch/xếp hạng do tool tính hoặc từ chối |
-| **V3** | Cảnh báo (vintage/đơn vị/footnote) do **UI render từ tool response**, không do LLM viết |
-| **V4** | Hiện truy vấn đã dùng — thứ duy nhất bắt được lỗi "tra đúng ô nhưng sai câu hỏi" |
-| **V5** | Mỗi số một link kiểm chứng tới bảng gốc |
-| **V6** | Không có thì nói không có — không lấy ô gần nhất, không nội suy |
-
-### Query engine
-
-Không PostgreSQL, không DuckDB server. ~300K dòng/bộ → đọc CSV/parquet lúc cần. DuckDB-WASM chỉ khi cần query phức tạp phía client.
-
-### API bổ sung
-
-| Method | Path | Mô tả |
-|---|---|---|
-| GET | `/api/indicators` | list nhóm chỉ tiêu (card gọn cho LLM context) |
-| GET | `/api/indicators/[id]` | `get_schema` — cột + role + đơn vị + **giá trị hợp lệ của chiều** (chống hallucinate filter) |
-| GET | `/api/indicators/[id]/series` | `get_series` — giá trị + provenance + vintage + warnings |
-| POST | `/api/upload/bulk` | bulk headless ingest cho connector (chưa build) |
-
----
-
 ## Phase 3 Stack (research direction)
 
 | Layer | Technology | Rationale |
@@ -670,16 +586,4 @@ Không PostgreSQL, không DuckDB server. ~300K dòng/bộ → đọc CSV/parquet
 - Tags chọn từ `datasets/tags.yaml` controlled vocabulary — không gõ tự do
 - Mỗi con số phải trace được nguồn (provenance qua git history + `source` field trong metadata + R2 object versioning)
 - Phase 2/3: dùng LLM API (Claude), không lock-in platform
-- **Không thêm PostgreSQL/Supabase cho Phase 1** — chỉ khi Phase 2 promotion thực sự cần *(note: Supabase đã drop hoàn toàn 2026-07-09 sau khi tags chuyển sang hardcoded. 2026-08-24: vẫn không cần — ~300K dòng/bộ nguồn, đọc file lúc cần là đủ)*
-
-### Constraints bổ sung — Phase 2.5 (2026-08-24)
-
-- **Bộ nguồn không trộn** — không merge hai nguồn thành một hệ số liệu chung, kể cả khi cùng khái niệm
-- **Cả bộ hoặc không** — không chuẩn hoá nhỏ giọt trong một bộ nguồn
-- **Không chuẩn hoá file upload** — bề mặt bẫy không giới hạn; upload = lớp Object
-- **Không hợp nhất địa giới** — 63 tỉnh và 34 tỉnh là hai hệ; chặn so sánh xuyên thời đại. 17/25 measure theo tỉnh là tỷ lệ, **không cộng được** khi gộp tỉnh
-- **LLM không được sinh hoặc tính con số** — V1/V2; hậu kiểm bằng code
-- **Cảnh báo không do LLM viết** — V3; UI render từ tool response
-- **Refresh không được ghi đè vô điều kiện** — phải sinh changelog cấp cell (key **đủ chiều**, không phải `geo+year`) để join Article Linking báo tác giả khi nguồn sửa số
-- **Kill-switch**: "lát đầu" của bộ nguồn mới > 2 tuần → dừng, nghĩ lại kiến trúc
-- **Tripwire**: bộ nguồn thứ 4 trở đi phải viết lý do vào design doc trước khi bắt đầu
+- **Không thêm PostgreSQL/Supabase cho Phase 1** — chỉ khi Phase 2 promotion thực sự cần *(note: Supabase đã drop hoàn toàn 2026-07-09 sau khi tags chuyển sang hardcoded)*
