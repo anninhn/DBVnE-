@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-suat-chet-cua-tre-em-phan-theo-gioi-tinh-va-theo-thanh-th",
+    "title": "Tỷ suất chết của trẻ em phân theo giới tính và khu vực (2001-2024)",
+    "description": "Dataset cung cấp tỷ suất chết của trẻ em dưới một tuổi và dưới năm tuổi tại Việt Nam, được phân loại theo giới tính (Nam, Nữ) và khu vực sinh sống (Thành thị, Nông thôn) từ năm 2001 đến năm 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "y-te",
+      "tre-em",
+      "ty-suat-chet",
+      "gioi-tinh",
+      "thanh-thi-nong-thon"
+    ],
+    "uploaded_at": "2026-08-27T08:16:51.751Z",
+    "uploaded_by": "ninh",
+    "row_count": 120,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e0ca34e3-d1a4-43e9-b6dd-0d4c9e7fec4a/ty-suat-chet-cua-tre-em-phan-theo-gioi-tinh-va-theo-thanh-th.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-chet-cua-tre-em-duoi-nam-tuoi-phan-theo-dia-phuong",
     "title": "Tỷ suất chết của trẻ em dưới năm tuổi phân theo địa phương và năm",
     "description": "Dataset thống kê tỷ suất chết của trẻ em dưới 5 tuổi tại Việt Nam, phân theo các tỉnh/thành phố, vùng địa lý và toàn quốc, từ năm 2010 đến 2024.",
