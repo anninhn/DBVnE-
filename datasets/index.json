@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th",
+    "title": "Dân số trung bình phân theo địa phương và năm",
+    "description": "Dữ liệu về dân số trung bình hàng năm của Việt Nam, bao gồm tổng số cả nước, các vùng kinh tế và các tỉnh/thành phố trực thuộc trung ương từ năm 1995 đến 2024. Một số giá trị là số liệu sơ bộ.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "dia-phuong",
+      "thoi-gian",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-27T07:18:21.779Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.09,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1d763b3b-1ece-4bc4-a524-47cfeda9db51/dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th.csv",
+        "size_mb": 0.09
+      }
+    ]
+  },
+  {
     "slug": "du-lieu-mat-rung-tai-lam-dong-theo-toa-do-va-thoi-gian-2005",
     "title": "Dữ liệu mất rừng tại Lâm Đồng theo tọa độ và thời gian (2005-2013)",
     "description": "Bộ dữ liệu ghi nhận các điểm tọa độ (kinh độ, vĩ độ) cùng với năm và thời gian quan sát, có thể liên quan đến các sự kiện tổn thất (ví dụ: mất rừng) tại tỉnh Lâm Đồng từ năm 2005 đến 2013.",
