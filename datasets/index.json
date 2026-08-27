@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-tang-dan-so-phan-theo-dia-phuong",
+    "title": "Tỷ lệ tăng dân số phân theo địa phương",
+    "description": "Dataset thống kê tỷ lệ tăng dân số của Việt Nam, phân theo các tỉnh/thành phố, vùng kinh tế - xã hội và toàn quốc, trong giai đoạn từ năm 2005 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "tang-truong",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-27T08:14:50.132Z",
+    "uploaded_by": "ninh",
+    "row_count": 1349,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c6f05c5f-8671-4680-923e-1272b8956224/ty-le-tang-dan-so-phan-theo-dia-phuong.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "ty-le-dan-so-tu-15-tuoi-tro-len-biet-chu-phan-theo-gioi-tinh",
     "title": "Tỷ lệ dân số từ 15 tuổi trở lên biết chữ phân theo giới tính và khu vực",
     "description": "Dataset thống kê tỷ lệ dân số Việt Nam từ 15 tuổi trở lên biết chữ, phân loại theo giới tính (nam, nữ) và khu vực (thành thị, nông thôn) trong giai đoạn 2006-2024.",
