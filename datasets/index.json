@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua",
+    "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số",
+    "description": "Dataset này cung cấp số liệu về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số cho các địa phương và toàn quốc, từ năm 2005 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "ty-suat-sinh",
+      "ty-suat-chet",
+      "tang-tu-nhien"
+    ],
+    "uploaded_at": "2026-08-27T08:17:26.075Z",
+    "uploaded_by": "ninh",
+    "row_count": 1349,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9f4eadba-aab7-43d8-bfd2-f7a1489a456f/ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-nhap-cu-xuat-cu-va-di-cu-thuan-phan-theo-dia-phuong",
     "title": "Tỷ suất nhập cư, xuất cư và di cư thuần phân theo địa phương",
     "description": "Dataset cung cấp thông tin về tỷ suất nhập cư và xuất cư cho các tỉnh, thành phố, vùng kinh tế và toàn quốc tại Việt Nam, từ năm 2005 đến 2024. Dữ liệu này phản ánh tình hình di chuyển dân số giữa các khu vực.",
