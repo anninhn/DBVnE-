@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-suat-chet-cua-tre-em-duoi-nam-tuoi-phan-theo-dia-phuong",
+    "title": "Tỷ suất chết của trẻ em dưới năm tuổi phân theo địa phương và năm",
+    "description": "Dataset thống kê tỷ suất chết của trẻ em dưới 5 tuổi tại Việt Nam, phân theo các tỉnh/thành phố, vùng địa lý và toàn quốc, từ năm 2010 đến 2024.",
+    "category": "y-te",
+    "tags": [
+      "ty-suat-chet",
+      "tre-em",
+      "tu-vong",
+      "y-te",
+      "dan-so",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-27T08:16:33.223Z",
+    "uploaded_by": "ninh",
+    "row_count": 980,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "58380846-eab8-4722-b132-9bc9d2a9904d/ty-suat-chet-cua-tre-em-duoi-nam-tuoi-phan-theo-dia-phuong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-chet-cua-tre-em-duoi-mot-tuoi-phan-theo-dia-phuong",
     "title": "Tỷ suất chết của trẻ em dưới một tuổi phân theo địa phương và năm",
     "description": "Bộ dữ liệu thống kê tỷ suất chết của trẻ em dưới một tuổi tại Việt Nam, phân loại theo các địa phương, vùng kinh tế xã hội và tổng hợp toàn quốc. Dữ liệu được thu thập từ năm 2005 đến 2024.",
