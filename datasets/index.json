@@ -1,5 +1,33 @@
 [
   {
+    "slug": "luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-nhom-tuoi",
+    "title": "Lực lượng lao động từ 15 tuổi trở lên phân theo nhóm tuổi",
+    "description": "Dữ liệu về lực lượng lao động Việt Nam từ 15 tuổi trở lên, được phân loại theo các nhóm tuổi khác nhau, từ năm 2000 đến 2024. Bao gồm tổng số người và cơ cấu phần trăm theo từng nhóm tuổi.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "dan-so",
+      "nhom-tuoi",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:01:32.229Z",
+    "uploaded_by": "ninh",
+    "row_count": 100,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b473289f-f245-47e3-9fac-f48f47c2ad14/luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-nhom-tuoi.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-gioi-tinh-va",
     "title": "Lực lượng lao động từ 15 tuổi trở lên phân theo giới tính và khu vực",
     "description": "Dataset thống kê lực lượng lao động từ 15 tuổi trở lên tại Việt Nam, phân loại theo giới tính (Nam, Nữ) và khu vực (Thành thị, Nông thôn) từ năm 2000 đến 2024. Dữ liệu bao gồm tổng số người (nghìn người) và cơ cấu phần trăm tương ứng.",
