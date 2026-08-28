@@ -1,5 +1,33 @@
 [
   {
+    "slug": "muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac",
+    "title": "Mực nước biển trung bình tại các trạm quan trắc ven biển Việt Nam",
+    "description": "Dataset thống kê mực nước biển trung bình hàng năm tại 16 trạm quan trắc ven biển Việt Nam, từ năm 2013 đến 2024.",
+    "category": "moi-truong",
+    "tags": [
+      "muc-nuoc-bien",
+      "bien-doi-khi-hau",
+      "moi-truong",
+      "quan-trac"
+    ],
+    "uploaded_at": "2026-08-28T12:03:46.971Z",
+    "uploaded_by": "ninh",
+    "row_count": 192,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "163a21f2-7c23-43d5-b999-fc1f3def1a65/muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "luu-luong-nuoc-mot-so-song-chinh",
     "title": "Lưu lượng nước một số sông chính tại Việt Nam",
     "description": "Bộ dữ liệu ghi nhận lưu lượng nước cao nhất và thấp nhất hàng năm tại 10 trạm thủy văn trên các sông chính của Việt Nam, từ năm 2010 đến 2024.",
