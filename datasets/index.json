@@ -1,5 +1,33 @@
 [
   {
+    "slug": "doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-loai",
+    "title": "Doanh thu du lịch lữ hành theo giá hiện hành phân theo thành phần kinh tế",
+    "description": "Dataset thống kê doanh thu từ hoạt động du lịch lữ hành theo giá hiện hành và cơ cấu phần trăm của doanh thu này, phân loại theo các thành phần kinh tế (nhà nước, ngoài nhà nước, FDI...) từ năm 2001 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "doanh-thu",
+      "kinh-te",
+      "thanh-phan-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:17:39.410Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d963e988-910b-420c-80ee-7dc34dd2b890/doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-loai.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-dia-p",
     "title": "Doanh thu du lịch lữ hành theo giá hiện hành phân theo địa phương",
     "description": "Dataset thống kê doanh thu từ hoạt động du lịch và lữ hành của Việt Nam, bao gồm số liệu tổng hợp toàn quốc, theo vùng kinh tế và từng tỉnh, thành phố, được tính theo giá hiện hành từ năm 2010 đến 2024.",
