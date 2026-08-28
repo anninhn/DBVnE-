@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-dan-so-dung-ho-xi-hop-ve-sinh-phan-theo-thanh-thi-nong",
+    "title": "Tỷ lệ dân số sử dụng hố xí hợp vệ sinh phân theo thành thị, nông thôn và vùng",
+    "description": "Dữ liệu thể hiện tỷ lệ phần trăm dân số Việt Nam sử dụng hố xí hợp vệ sinh, được phân loại theo khu vực thành thị, nông thôn và các vùng kinh tế - xã hội, từ năm 2018 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "dan-so",
+      "ve-sinh",
+      "moi-truong",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:51:07.631Z",
+    "uploaded_by": "ninh",
+    "row_count": 63,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b47164f3-fc16-4404-ae3f-bc4828a25c49/ty-le-dan-so-dung-ho-xi-hop-ve-sinh-phan-theo-thanh-thi-nong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-dan-so-dung-ho-xi-hop-ve-sinh-phan-theo-dia-phuong",
     "title": "Tỷ lệ dân số sử dụng hố xí hợp vệ sinh phân theo địa phương",
     "description": "Bộ dữ liệu thống kê tỷ lệ phần trăm dân số sử dụng hố xí hợp vệ sinh tại Việt Nam, phân theo các địa phương và vùng kinh tế - xã hội, từ năm 2018 đến 2024.",
