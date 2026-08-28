@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-tho",
+    "title": "Số liệu trường học, lớp học, giáo viên và học sinh mẫu giáo",
+    "description": "Dataset thống kê số lượng trường học, lớp học, giáo viên, học sinh mẫu giáo và các chỉ số liên quan (như số học sinh bình quân một lớp/giáo viên) qua 29 năm học, từ 1995-1996 đến 2023-2024. Dữ liệu cũng bao gồm chỉ số phát triển của các yếu tố này so với năm học trước.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "mau-giao",
+      "hoc-sinh",
+      "giao-vien",
+      "truong-hoc"
+    ],
+    "uploaded_at": "2026-08-28T11:23:14.091Z",
+    "uploaded_by": "ninh",
+    "row_count": 174,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "0eb13fa4-ef78-4d0e-8bb6-282d0d4157ed/so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-tho.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-sinh-vien-cac-truong-dai-hoc-phan-theo-dia-phuong",
     "title": "Số sinh viên các trường đại học phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng sinh viên đang theo học tại các trường đại học, phân loại theo địa phương (tỉnh/thành phố, vùng kinh tế) và theo từng năm từ 2015 đến 2023. Dữ liệu bao gồm tổng số sinh viên trên cả nước và chi tiết cho 57 địa phương/vùng khác.",
