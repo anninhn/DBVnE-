@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-co-so-kham-chua-benh",
+    "title": "Số lượng và chỉ số phát triển cơ sở khám chữa bệnh theo loại và năm",
+    "description": "Dữ liệu thống kê số lượng các loại cơ sở khám chữa bệnh (bệnh viện, trạm y tế, v.v.) và chỉ số phát triển của chúng theo từng năm, từ 1995 đến 2017.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "benh-vien",
+      "co-so-y-te",
+      "suc-khoe",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T11:35:37.001Z",
+    "uploaded_by": "ninh",
+    "row_count": 161,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e8ebcaf9-a6f3-4ddd-9b7f-2324b8e0ebd5/so-co-so-kham-chua-benh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-bac-si-phan-theo-dia-phuong",
     "title": "Số bác sĩ phân theo địa phương",
     "description": "Dữ liệu thống kê số lượng bác sĩ phân theo địa phương (tỉnh/thành phố, vùng kinh tế - xã hội) và tổng cả nước từ năm 2018 đến 2022. Số liệu năm 2022 là sơ bộ.",
