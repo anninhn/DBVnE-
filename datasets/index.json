@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-don-vi-hanh-chinh-co-den-31-12-hang-nam-phan-theo-dia-phu",
+    "title": "Số đơn vị hành chính theo địa phương và năm",
+    "description": "Dataset thống kê số lượng các đơn vị hành chính cấp tỉnh (thành phố trực thuộc tỉnh, thị xã, huyện) và cấp xã (phường, thị trấn, xã) của Việt Nam, phân theo địa phương và theo từng năm từ 2009 đến 2013.",
+    "category": "chinh-tri",
+    "tags": [
+      "hanh-chinh",
+      "dia-phuong",
+      "don-vi",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T12:06:05.238Z",
+    "uploaded_by": "ninh",
+    "row_count": 350,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7fbe536f-de99-41a7-bbfa-53a69f2d4948/so-don-vi-hanh-chinh-co-den-31-12-hang-nam-phan-theo-dia-phu.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "nhiet-do-khong-khi-trung-binh-tai-mot-so-tram-quan-trac",
     "title": "Nhiệt độ không khí trung bình tại một số trạm quan trắc",
     "description": "Dataset này cung cấp dữ liệu nhiệt độ không khí trung bình hàng năm được ghi nhận tại 15 tỉnh, thành phố hoặc trạm quan trắc trên khắp Việt Nam, trong giai đoạn từ năm 2006 đến năm 2024.",
