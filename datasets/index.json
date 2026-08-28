@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-giao-vien-giao-duc-nghe-nghiep-phan-theo-trinh-do-chuyen",
+    "title": "Số giáo viên giáo dục nghề nghiệp phân theo trình độ chuyên môn và loại hình trường",
+    "description": "Dữ liệu thống kê số lượng giáo viên giáo dục nghề nghiệp tại Việt Nam, phân loại theo trình độ chuyên môn (Tổng số, Trên đại học, Đại học-cao đẳng, Trình độ khác) và loại hình trường (Công lập, Ngoài công lập, Tổng số) qua các năm từ 2016 đến 2023.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "giao-vien",
+      "day-nghe",
+      "trinh-do"
+    ],
+    "uploaded_at": "2026-08-28T11:16:45.640Z",
+    "uploaded_by": "ninh",
+    "row_count": 96,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3fcde323-9031-43dc-8aab-03a928119c05/so-giao-vien-giao-duc-nghe-nghiep-phan-theo-trinh-do-chuyen.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-giang-vien-cac-truong-dai-hoc-va-cao-dang-phan-theo-trinh",
     "title": "Số lượng giảng viên các trường đại học và cao đẳng phân theo trình độ và loại hình",
     "description": "Dataset thống kê số lượng giảng viên tại các trường đại học và cao đẳng ở Việt Nam, phân loại theo trình độ học vấn của giảng viên (trên đại học, đại học, cao đẳng, trình độ khác) và loại hình trường (công lập, ngoài công lập). Dữ liệu được thu thập hàng năm từ 2000 đến 2023, kèm theo chỉ số phát triển so với năm trước.",
