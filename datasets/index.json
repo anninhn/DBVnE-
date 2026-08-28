@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-nam-2024",
+    "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép năm 2024",
+    "description": "Dữ liệu về số lượng dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) được cấp phép tại Việt Nam trong năm 2024, phân theo tỉnh, thành phố và các vùng kinh tế.",
+    "category": "kinh-te",
+    "tags": [
+      "dau-tu-nuoc-ngoai",
+      "fdi",
+      "kinh-te",
+      "viet-nam",
+      2024
+    ],
+    "uploaded_at": "2026-08-28T08:14:55.313Z",
+    "uploaded_by": "ninh",
+    "row_count": 65,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e75a0d26-5672-44c0-a440-f9b5ba42a580/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-nam-2024.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "mot-so-san-pham-cong-nghiep-chu-yeu-phan-theo-loai-hinh-kinh",
     "title": "Sản lượng một số sản phẩm công nghiệp chủ yếu phân theo loại hình kinh tế",
     "description": "Dataset thống kê sản lượng của 10 sản phẩm công nghiệp chủ yếu tại Việt Nam, phân loại theo 4 thành phần kinh tế (Tổng số, Nhà nước, Ngoài Nhà nước, ĐTNN) từ năm 2005 đến 2024.",
