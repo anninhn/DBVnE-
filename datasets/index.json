@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-vi-the-v",
+    "title": "Số lao động có việc làm phân theo vị thế việc làm",
+    "description": "Dữ liệu thống kê số lao động có việc làm trong nền kinh tế Việt Nam, phân loại theo các vị thế việc làm khác nhau (ví dụ: làm công ăn lương, chủ cơ sở sản xuất kinh doanh, tự làm), từ năm 2009 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "kinh-te",
+      "dan-so"
+    ],
+    "uploaded_at": "2026-08-28T08:04:21.992Z",
+    "uploaded_by": "ninh",
+    "row_count": 112,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "add34018-1ebd-4a08-8edd-996ac585227e/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-vi-the-v.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-nhom-tuo",
     "title": "Số lao động có việc làm trong nền kinh tế phân theo nhóm tuổi và năm",
     "description": "Dữ liệu thống kê số lượng lao động có việc làm trong nền kinh tế Việt Nam, được phân loại theo các nhóm tuổi khác nhau qua từng năm từ 2009 đến 2024.",
