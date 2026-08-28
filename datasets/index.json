@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-giang-vien-cac-truong-dai-hoc-va-cao-dang-phan-theo-trinh",
+    "title": "Số lượng giảng viên các trường đại học và cao đẳng phân theo trình độ và loại hình",
+    "description": "Dataset thống kê số lượng giảng viên tại các trường đại học và cao đẳng ở Việt Nam, phân loại theo trình độ học vấn của giảng viên (trên đại học, đại học, cao đẳng, trình độ khác) và loại hình trường (công lập, ngoài công lập). Dữ liệu được thu thập hàng năm từ 2000 đến 2023, kèm theo chỉ số phát triển so với năm trước.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "giang-vien",
+      "dai-hoc",
+      "cao-dang",
+      "trinh-do"
+    ],
+    "uploaded_at": "2026-08-28T11:16:29.479Z",
+    "uploaded_by": "ninh",
+    "row_count": 288,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "af1099c0-67ac-41e2-9ee2-929b3f1f3382/so-giang-vien-cac-truong-dai-hoc-va-cao-dang-phan-theo-trinh.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-giang-vien-cac-truong-dai-hoc-phan-theo-dia-phuong",
     "title": "Số giảng viên các trường đại học phân theo địa phương và năm",
     "description": "Dữ liệu thống kê số lượng giảng viên tại các trường đại học trên toàn quốc, phân loại theo từng địa phương và vùng kinh tế, từ năm 2015 đến 2023.",
