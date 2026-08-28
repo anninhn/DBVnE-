@@ -1,5 +1,33 @@
 [
   {
+    "slug": "luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac",
+    "title": "Lượng mưa hàng tháng tại các trạm quan trắc ở Việt Nam",
+    "description": "Dữ liệu thống kê lượng mưa hàng tháng tại 17 tỉnh/thành phố và trạm quan trắc trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
+    "category": "khi-hau",
+    "tags": [
+      "luong-mua",
+      "khi-hau",
+      "thoi-tiet",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T12:03:05.888Z",
+    "uploaded_by": "ninh",
+    "row_count": 4692,
+    "file_count": 1,
+    "total_size_mb": 0.11,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "385d18ef-796a-49ea-851b-7f01f6739112/luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac.csv",
+        "size_mb": 0.11
+      }
+    ]
+  },
+  {
     "slug": "hien-trang-su-dung-dat-phan-theo-dia-phuong",
     "title": "Hiện trạng sử dụng đất phân theo địa phương",
     "description": "Dataset thống kê hiện trạng sử dụng đất theo các loại hình (tổng diện tích, đất nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) phân theo địa phương và khu vực hành chính trên toàn quốc, từ năm 2018 đến 2023.",
