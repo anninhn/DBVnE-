@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-3",
+    "title": "Vốn sản xuất kinh doanh bình quân hàng năm của doanh nghiệp theo ngành kinh tế",
+    "description": "Dữ liệu thống kê vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế, từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "von-kinh-doanh",
+      "doanh-nghiep",
+      "nganh-kinh-te",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:38:24.585Z",
+    "uploaded_by": "ninh",
+    "row_count": 1000,
+    "file_count": 1,
+    "total_size_mb": 0.07,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c85b44e1-6272-4dc3-93d8-7cc79daf9c84/von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-3.csv",
+        "size_mb": 0.07
+      }
+    ]
+  },
+  {
     "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-2",
     "title": "Vốn sản xuất kinh doanh bình quân hàng năm của các loại hình doanh nghiệp",
     "description": "Dữ liệu thống kê vốn sản xuất kinh doanh bình quân hàng năm của các loại hình doanh nghiệp tại Việt Nam, phân loại theo các nhóm doanh nghiệp nhà nước, ngoài nhà nước và có vốn đầu tư nước ngoài, từ năm 2010 đến 2023. Bao gồm giá trị tuyệt đối (nghìn tỷ đồng) và cơ cấu phần trăm.",
