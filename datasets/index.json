@@ -1,5 +1,35 @@
 [
   {
+    "slug": "hien-trang-su-dung-dat",
+    "title": "Hiện trạng sử dụng đất theo loại và đối tượng quản lý, sử dụng tại Việt Nam",
+    "description": "Dữ liệu thống kê hiện trạng sử dụng đất của Việt Nam theo các loại đất khác nhau và phân chia diện tích đất đã giao cho các đối tượng sử dụng hoặc quản lý, được cập nhật qua các năm.",
+    "category": "moi-truong",
+    "tags": [
+      "dat-dai",
+      "su-dung-dat",
+      "moi-truong",
+      "nong-nghiep",
+      "lam-nghiep",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T12:02:26.840Z",
+    "uploaded_by": "ninh",
+    "row_count": 155,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5b6d268a-97ad-49e8-a9f0-b01861d3de34/hien-trang-su-dung-dat.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "do-am-khong-khi-trung-binh-tai-mot-so-tram-quan-trac",
     "title": "Độ ẩm không khí trung bình tại các trạm quan trắc ở Việt Nam",
     "description": "Dataset này cung cấp dữ liệu về độ ẩm không khí trung bình hàng năm tại 15 tỉnh, thành phố và trạm quan trắc trên khắp Việt Nam, từ năm 2006 đến 2024.",
