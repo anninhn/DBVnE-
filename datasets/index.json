@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010-phan-theo-khu",
+    "title": "Tổng sản phẩm trong nước (GDP) theo khu vực kinh tế, giá so sánh 2010",
+    "description": "Dataset cung cấp số liệu Tổng sản phẩm trong nước (GDP) của Việt Nam phân theo các khu vực kinh tế chính (nông, lâm nghiệp và thủy sản; công nghiệp và xây dựng; dịch vụ; thuế sản phẩm trừ trợ cấp sản phẩm) từ năm 2005 đến 2024. Các giá trị được tính theo giá so sánh năm 2010 và kèm theo chỉ số phát triển so với năm trước.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gdp",
+      "tong-san-pham-trong-nuoc",
+      "khu-vuc-kinh-te",
+      "gia-so-sanh"
+    ],
+    "uploaded_at": "2026-08-28T11:09:27.199Z",
+    "uploaded_by": "ninh",
+    "row_count": 100,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "23b72359-25f3-40de-ba59-99c574de4c5c/tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010-phan-theo-khu.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tong-san-pham-trong-nuoc-theo-gia-hien-hanh-phan-theo-loai-h",
     "title": "Tổng sản phẩm trong nước (GDP) theo giá hiện hành phân theo loại hình kinh tế",
     "description": "Bộ dữ liệu này cung cấp thông tin về Tổng sản phẩm trong nước (GDP) của Việt Nam theo giá hiện hành, được phân loại chi tiết theo các thành phần kinh tế và ngành kinh tế. Dữ liệu bao gồm các năm từ 2005 đến 2024.",
