@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-thu-vien-do-dia-phuong-quan-ly-phan-theo-dia-phuong",
+    "title": "Số thư viện và sách do địa phương quản lý phân theo địa phương và năm",
+    "description": "Dữ liệu thống kê số lượng thư viện và số lượng sách trong thư viện do các địa phương và vùng kinh tế trên cả nước quản lý, từ năm 2004 đến 2017.",
+    "category": "xa-hoi",
+    "tags": [
+      "thu-vien",
+      "sach",
+      "van-hoa",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:42:50.172Z",
+    "uploaded_by": "ninh",
+    "row_count": 923,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "219e2356-82f6-4dd5-a339-bd0ed9b54942/so-thu-vien-do-dia-phuong-quan-ly-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-nhan-luc-y-te-phan-theo-cap-quan-ly",
     "title": "Số lượng nhân lực y tế phân theo cấp quản lý",
     "description": "Dataset thống kê số lượng cán bộ y tế và dược sĩ (bác sĩ, y sĩ, y tá, hộ sinh, dược sĩ) phân theo cấp quản lý (Bộ Y tế, Sở Y tế, các ngành khác) và tổng số, cùng với chỉ số phát triển qua các năm từ 2005 đến 2014.",
