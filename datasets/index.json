@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-ngan-sach-nha-nuoc",
+    "title": "Chi ngân sách nhà nước Việt Nam theo loại chi và năm",
+    "description": "Dữ liệu thống kê các khoản chi ngân sách nhà nước Việt Nam từ năm 2005 đến 2023, phân loại theo các nhóm chi khác nhau. Bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm của từng loại chi.",
+    "category": "kinh-te",
+    "tags": [
+      "ngan-sach",
+      "chi-ngan-sach",
+      "kinh-te",
+      "chinh-phu"
+    ],
+    "uploaded_at": "2026-08-28T11:11:24.756Z",
+    "uploaded_by": "ninh",
+    "row_count": 209,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2163618d-ff45-4800-87ae-c70cde6c3933/chi-ngan-sach-nha-nuoc.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "can-can-thanh-toan-quoc-te",
     "title": "Cán cân thanh toán quốc tế của Việt Nam giai đoạn 2015-2024",
     "description": "Dữ liệu về các thành phần của cán cân thanh toán quốc tế của Việt Nam, bao gồm cán cân vãng lai, cán cân hàng hóa, dịch vụ, thu nhập và chuyển giao vãng lai. Dữ liệu được thu thập từ năm 2015 đến 2024.",
