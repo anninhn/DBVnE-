@@ -1,5 +1,33 @@
 [
   {
+    "slug": "san-luong-mot-so-cay-lau-nam-chu-yeu",
+    "title": "Sản lượng và chỉ số phát triển một số cây lâu năm chủ yếu",
+    "description": "Dataset thống kê sản lượng (nghìn tấn) và chỉ số phát triển (so với năm trước) của một số loại cây lâu năm chủ yếu tại Việt Nam, bao gồm các loại cây ăn quả và cây công nghiệp, trong giai đoạn từ năm 2005 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "nong-nghiep",
+      "san-luong",
+      "cay-trong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:54:37.660Z",
+    "uploaded_by": "ninh",
+    "row_count": 285,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "751d40d5-2d8e-49f1-8e56-bf20641e8785/san-luong-mot-so-cay-lau-nam-chu-yeu.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "san-luong-mia-phan-theo-dia-phuong",
     "title": "Sản lượng mía phân theo địa phương",
     "description": "Dữ liệu về sản lượng mía của Việt Nam từ năm 2018 đến 2024, được phân loại theo từng tỉnh, thành phố và các vùng kinh tế-xã hội, bao gồm cả số liệu tổng hợp toàn quốc.",
