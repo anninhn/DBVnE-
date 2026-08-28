@@ -1,5 +1,33 @@
 [
   {
+    "slug": "trat-tu-va-an-toan-xa-hoi",
+    "title": "Tình hình trật tự và an toàn xã hội Việt Nam",
+    "description": "Dataset thống kê các chỉ số về trật tự và an toàn xã hội tại Việt Nam từ năm 2012 đến 2024, bao gồm số vụ tai nạn giao thông, số người chết/bị thương do tai nạn giao thông, số vụ cháy nổ, số người chết/bị thương do cháy nổ và tổng giá trị tài sản thiệt hại ước tính do cháy nổ.",
+    "category": "xa-hoi",
+    "tags": [
+      "an-toan-xa-hoi",
+      "tai-nan-giao-thong",
+      "chay-no",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:49:36.089Z",
+    "uploaded_by": "ninh",
+    "row_count": 117,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1f27569a-6073-40b7-a528-79c7872ca7d5/trat-tu-va-an-toan-xa-hoi.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tieu-dung-nang-luong-binh-quan-dau-nguoi-phan-theo-loai-nang",
     "title": "Tiêu dùng năng lượng bình quân đầu người phân theo loại năng lượng tại Việt Nam",
     "description": "Dataset thống kê tiêu dùng năng lượng bình quân đầu người tại Việt Nam từ năm 2018 đến 2024, được phân loại theo các nguồn năng lượng khác nhau như điện, than đá, xăng, dầu, khí thiên nhiên và củi.",
