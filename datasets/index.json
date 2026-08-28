@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-lao-dong-co-viec-lam-trong-nen-kinh-te-da-qua-dao-tao",
+    "title": "Tỷ lệ lao động có việc làm trong nền kinh tế đã qua đào tạo",
+    "description": "Dataset thống kê tỷ lệ phần trăm lao động có việc làm đã qua đào tạo trong nền kinh tế, phân loại theo các ngành kinh tế khác nhau và theo từng năm. Dữ liệu bao gồm 22 ngành kinh tế và kéo dài từ năm 2009 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "dao-tao",
+      "viec-lam",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:06:41.937Z",
+    "uploaded_by": "ninh",
+    "row_count": 352,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4593b815-fce2-46fe-bdbe-bb8c583fe2a7/ty-le-lao-dong-co-viec-lam-trong-nen-kinh-te-da-qua-dao-tao.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-trinh-do",
     "title": "Tỷ lệ lao động có việc làm phi chính thức phân theo trình độ chuyên môn kỹ thuật",
     "description": "Dữ liệu thống kê tỷ lệ lao động có việc làm phi chính thức tại Việt Nam, phân loại theo các trình độ chuyên môn kỹ thuật khác nhau, từ năm 2018 đến 2024.",
