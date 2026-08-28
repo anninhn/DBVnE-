@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-giuong-benh-phan-theo-dia-phuong",
+    "title": "Số giường bệnh phân theo địa phương và loại hình",
+    "description": "Dataset này cung cấp số liệu về tổng số giường bệnh, giường bệnh công lập và ngoài công lập tại Việt Nam, phân theo địa phương và các năm từ 2021 đến 2023. Dữ liệu bao gồm cả cấp quốc gia, vùng kinh tế - xã hội và các tỉnh/thành phố trực thuộc trung ương.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "giuong-benh",
+      "benh-vien",
+      "dia-phuong",
+      "cong-lap",
+      "ngoai-cong-lap"
+    ],
+    "uploaded_at": "2026-08-28T11:39:06.682Z",
+    "uploaded_by": "ninh",
+    "row_count": 210,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "cbb208c8-2441-4d49-8294-b4ef872dfaff/so-giuong-benh-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-giuong-benh-phan-theo-cap-quan-ly",
     "title": "Số giường bệnh phân theo loại cơ sở và cấp quản lý",
     "description": "Dataset thống kê số lượng giường bệnh tại Việt Nam, phân loại theo loại hình cơ sở y tế (bệnh viện, trạm y tế, v.v.) và cấp quản lý (Bộ Y tế, Sở Y tế, các ngành khác) trong giai đoạn 2005-2012.",
