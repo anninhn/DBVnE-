@@ -1,5 +1,34 @@
 [
   {
+    "slug": "van-tai-hang-khong",
+    "title": "Dữ liệu vận tải hàng không Việt Nam theo hình thức và năm",
+    "description": "Dataset thống kê các chỉ số về vận tải hàng không tại Việt Nam, bao gồm vận chuyển và luân chuyển hành khách, hàng hóa (trong nước và quốc tế), từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "van-tai",
+      "hang-khong",
+      "hanh-khach",
+      "hang-hoa",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:06:28.415Z",
+    "uploaded_by": "ninh",
+    "row_count": 360,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "965e8d32-182e-4e0f-bf73-722db6e779cf/van-tai-hang-khong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "tri-gia-xuat-khau-hang-hoa-theo-bang-phan-loai-tieu-chuan-ng",
     "title": "Trị giá xuất khẩu hàng hóa theo phân loại tiêu chuẩn ngoại thương",
     "description": "Dataset thống kê trị giá xuất khẩu hàng hóa của Việt Nam theo các nhóm phân loại tiêu chuẩn ngoại thương, từ năm 1995 đến năm 2024.",
