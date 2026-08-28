@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-ra-nuoc-ngoai-duoc-cap-giay-phep-thoi-ky-19",
+    "title": "Đầu tư trực tiếp của Việt Nam ra nước ngoài được cấp giấy phép (1989-2024)",
+    "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các hoạt động đầu tư trực tiếp của Việt Nam ra nước ngoài, được cấp giấy phép trong giai đoạn từ năm 1989 đến 2024. Dataset bao gồm một dòng tổng cộng cho toàn bộ thời kỳ.",
+    "category": "kinh-te",
+    "tags": [
+      "dau-tu-truc-tiep",
+      "fdi",
+      "ra-nuoc-ngoai",
+      "von-dau-tu",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:17:21.549Z",
+    "uploaded_by": "ninh",
+    "row_count": 34,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "17b8515d-2eaa-4908-b1e6-422c60363478/dau-tu-truc-tiep-ra-nuoc-ngoai-duoc-cap-giay-phep-thoi-ky-19.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dau-tu-truc-tiep-ra-nuoc-ngoai-duoc-cap-giay-phep-phan-theo",
     "title": "Đầu tư trực tiếp ra nước ngoài được cấp giấy phép phân theo đối tác đầu tư",
     "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các hoạt động đầu tư trực tiếp của Việt Nam ra nước ngoài, phân loại theo quốc gia hoặc vùng lãnh thổ đối tác nhận đầu tư.",
