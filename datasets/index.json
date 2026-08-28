@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-t-2",
+    "title": "Số lao động có việc làm trong nền kinh tế phân theo giới tính và khu vực",
+    "description": "Dataset thống kê số lượng và tỷ lệ lao động có việc làm trong nền kinh tế Việt Nam từ năm 2005 đến 2024. Dữ liệu được phân loại theo tổng số, giới tính (nam, nữ) và khu vực (thành thị, nông thôn).",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "dan-so",
+      "gioi-tinh",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:34:35.105Z",
+    "uploaded_by": "ninh",
+    "row_count": 100,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5701a2a6-15f4-49c6-8e4a-a0c1a95203d6/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-t-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-c-2",
     "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của Việt Nam",
     "description": "Dataset cung cấp số liệu về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số Việt Nam, phân loại theo khu vực thành thị, nông thôn và tổng số toàn quốc, từ năm 2001 đến 2024.",
