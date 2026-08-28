@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-so-gia-san-xuat-cong-nghiep-nam-truoc-100",
+    "title": "Chỉ số giá sản xuất công nghiệp theo nhóm hàng và năm (Năm trước = 100)",
+    "description": "Dataset này cung cấp chỉ số giá sản xuất công nghiệp cho các nhóm hàng khác nhau tại Việt Nam, được tính toán dựa trên phương pháp so sánh với năm trước đó (năm trước = 100). Dữ liệu bao gồm các năm từ 2005 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "cong-nghiep",
+      "chi-so-gia",
+      "san-xuat"
+    ],
+    "uploaded_at": "2026-08-28T10:03:47.274Z",
+    "uploaded_by": "ninh",
+    "row_count": 493,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6de5b4f9-8b5e-4219-9cd2-1f653d3c814b/chi-so-gia-san-xuat-cong-nghiep-nam-truoc-100.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-san-xuat-cong-nghiep-nam-2010-100",
     "title": "Chỉ số giá sản xuất công nghiệp Việt Nam",
     "description": "Dataset cung cấp chỉ số giá sản xuất công nghiệp (PPI) của Việt Nam theo các nhóm hàng khác nhau, lấy năm 2010 làm gốc (100). Dữ liệu bao gồm giai đoạn từ năm 2005 đến năm 2024.",
