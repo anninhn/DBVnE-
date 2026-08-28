@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2",
+    "title": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng",
+    "description": "Dataset thống kê tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng của Việt Nam, phân loại theo các nhóm chính như bán lẻ, dịch vụ lưu trú, ăn uống, và dịch vụ du lịch. Dữ liệu bao gồm giá trị tuyệt đối và cơ cấu phần trăm qua các năm từ 1990 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "ban-le",
+      "dich-vu",
+      "tieu-dung",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:03:19.236Z",
+    "uploaded_by": "ninh",
+    "row_count": 140,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2825a40f-c606-4261-a780-f03d64ac929f/tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-theo",
     "title": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng theo tỉnh, thành phố và vùng",
     "description": "Dataset cung cấp số liệu về tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng của Việt Nam, phân loại theo từng tỉnh, thành phố, các vùng kinh tế và toàn quốc, từ năm 1995 đến 2024.",
