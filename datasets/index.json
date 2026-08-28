@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-thu-hoach-thuy-san",
+    "title": "Diện tích nuôi trồng và thu hoạch thủy sản Việt Nam",
+    "description": "Dataset thống kê diện tích nuôi trồng và thu hoạch thủy sản tại Việt Nam theo từng loại hình (tổng số, thủy sản biển, thủy sản nội địa) và theo năm, từ 2000 đến 2024. Dữ liệu bao gồm các loại hình nuôi cá, tôm và các loại thủy sản khác.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "nuoi-trong",
+      "dien-tich",
+      "nong-nghiep",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:43:52.823Z",
+    "uploaded_by": "ninh",
+    "row_count": 250,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b643bd1a-4284-4e75-b281-859a3d3ca77c/dien-tich-thu-hoach-thuy-san.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung",
     "title": "Diện tích rừng trồng mới tập trung phân theo loại rừng",
     "description": "Dataset thống kê diện tích rừng trồng mới tập trung và chỉ số phát triển của diện tích này theo từng loại rừng (sản xuất, phòng hộ, đặc dụng) và tổng số, từ năm 2005 đến 2024.",
