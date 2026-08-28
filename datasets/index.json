@@ -1,5 +1,33 @@
 [
   {
+    "slug": "trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-ng-2",
+    "title": "Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp theo loại hình",
+    "description": "Dữ liệu thống kê về giá trị tài sản cố định bình quân được trang bị cho mỗi lao động của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo các loại hình doanh nghiệp từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "tai-san",
+      "lao-dong"
+    ],
+    "uploaded_at": "2026-08-28T09:47:48.129Z",
+    "uploaded_by": "ninh",
+    "row_count": 40,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f24b0390-20c1-451d-b343-0776f3b764cb/trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-ng-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-h-3",
     "title": "Tổng thu nhập của người lao động trong doanh nghiệp theo ngành kinh tế",
     "description": "Dữ liệu thống kê tổng thu nhập của người lao động trong các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế và theo năm từ 2010 đến 2023.",
