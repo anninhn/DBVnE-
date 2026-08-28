@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-hoc-sinh-pho-thong-thuoc-cac-dan-toc-thieu-so-tai-thoi-di",
+    "title": "Số học sinh phổ thông dân tộc thiểu số theo cấp học và địa phương",
+    "description": "Bộ dữ liệu thống kê số lượng học sinh phổ thông thuộc các dân tộc thiểu số tại Việt Nam, phân loại theo cấp học (tiểu học, THCS, THPT), địa phương (tỉnh/thành phố, vùng, cả nước) và theo năm từ 2004 đến 2011.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "dan-toc-thieu-so",
+      "hoc-sinh",
+      "pho-thong",
+      "dia-phuong",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T11:19:46.286Z",
+    "uploaded_by": "ninh",
+    "row_count": 576,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "efbe08e3-de9c-4a6c-9dd1-c6b069e5ac45/so-hoc-sinh-pho-thong-thuoc-cac-dan-toc-thieu-so-tai-thoi-di.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "so-hoc-sinh-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuon",
     "title": "Số học sinh phổ thông phân theo địa phương và cấp học, 2002-2009",
     "description": "Dataset thống kê số lượng học sinh phổ thông (tổng số, tiểu học, trung học cơ sở, trung học phổ thông) tại thời điểm 30/9 hàng năm, phân theo các địa phương và vùng kinh tế của Việt Nam từ năm 2002 đến 2009.",
