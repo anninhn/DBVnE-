@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-phong-hoc-kien-co-phan-theo-loai-hinh-va-phan-theo-cap",
+    "title": "Tỷ lệ phòng học kiên cố phân theo loại hình và cấp học",
+    "description": "Dataset này cung cấp tỷ lệ phòng học kiên cố tại Việt Nam, được phân loại theo cấp học (Tiểu học, THCS, THPT) và loại hình cơ sở giáo dục (Ngoài công lập), qua các năm học từ 1995-1996 đến sơ bộ 2024. Dữ liệu cho thấy sự thay đổi về cơ sở vật chất giáo dục theo thời gian.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "phong-hoc",
+      "kien-co",
+      "cap-hoc",
+      "nam-hoc"
+    ],
+    "uploaded_at": "2026-08-28T11:26:10.772Z",
+    "uploaded_by": "ninh",
+    "row_count": 4,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7b24df2b-b048-49d5-84dc-33e997cf625c/ty-le-phong-hoc-kien-co-phan-theo-loai-hinh-va-phan-theo-cap.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-phong-hoc-kien-co-phan-theo-dia-phuong",
     "title": "Tỷ lệ phòng học kiên cố phân theo địa phương",
     "description": "Dataset này cung cấp tỷ lệ phần trăm phòng học kiên cố của các địa phương và vùng kinh tế trên cả nước, bao gồm cả số liệu tổng hợp cho toàn quốc, trong năm học 2024-2025.",
