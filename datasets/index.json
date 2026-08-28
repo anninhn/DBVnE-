@@ -1,5 +1,33 @@
 [
   {
+    "slug": "can-can-thanh-toan-quoc-te",
+    "title": "Cán cân thanh toán quốc tế của Việt Nam giai đoạn 2015-2024",
+    "description": "Dữ liệu về các thành phần của cán cân thanh toán quốc tế của Việt Nam, bao gồm cán cân vãng lai, cán cân hàng hóa, dịch vụ, thu nhập và chuyển giao vãng lai. Dữ liệu được thu thập từ năm 2015 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "can-can-thanh-toan",
+      "xuat-nhap-khau",
+      "dau-tu-quoc-te"
+    ],
+    "uploaded_at": "2026-08-28T11:11:05.340Z",
+    "uploaded_by": "ninh",
+    "row_count": 330,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8507043e-fd4b-4ba0-a7a4-30a05b35d3e1/can-can-thanh-toan-quoc-te.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "bao-hiem-xa-hoi-bao-hiem-y-te-va-bao-hiem-that-nghiep",
     "title": "Dữ liệu về bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp",
     "description": "Dataset tổng hợp các chỉ tiêu chính về tình hình tham gia, hưởng chế độ và thu chi của bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp tại Việt Nam từ năm 2010 đến 2024.",
