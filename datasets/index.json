@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-loai-h",
+    "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo loại hình kinh tế",
+    "description": "Dataset thống kê tỷ lệ thiếu việc làm của lực lượng lao động trong độ tuổi, phân theo các thành phần kinh tế (Tổng số, Kinh tế Nhà nước, Kinh tế ngoài Nhà nước, Khu vực có vốn đầu tư nước ngoài) từ năm 2010 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thieu-viec-lam",
+      "lao-dong",
+      "kinh-te",
+      "viec-lam"
+    ],
+    "uploaded_at": "2026-08-28T08:10:39.518Z",
+    "uploaded_by": "ninh",
+    "row_count": 60,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5c54c3a4-6be8-4e67-9b74-bbfc9d2c3efe/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-loai-h.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-khu-vu",
     "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo khu vực kinh tế",
     "description": "Dữ liệu thống kê tỷ lệ thiếu việc làm của lao động trong độ tuổi, phân loại theo các khu vực kinh tế chính (Tổng số, Nông, lâm nghiệp và thủy sản, Công nghiệp - Xây dựng, Dịch vụ) từ năm 2010 đến 2024.",
