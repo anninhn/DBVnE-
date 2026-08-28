@@ -1,5 +1,35 @@
 [
   {
+    "slug": "dien-tich-gieo-trong-ngo-phan-theo-dia-phuong",
+    "title": "Diện tích gieo trồng ngô phân theo địa phương",
+    "description": "Dataset thống kê diện tích gieo trồng ngô của Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "dien-tich",
+      "gieo-trong",
+      "ngo",
+      "nong-nghiep",
+      "kinh-te",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T08:41:20.035Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2e789e77-6a56-49e6-b87d-404f281c3430/dien-tich-gieo-trong-ngo-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-gieo-trong-mia-phan-theo-dia-phuong",
     "title": "Diện tích gieo trồng mía phân theo địa phương và năm",
     "description": "Dữ liệu thống kê diện tích gieo trồng mía của Việt Nam, phân loại theo từng tỉnh, thành phố, vùng kinh tế và tổng cả nước, từ năm 2018 đến 2024.",
