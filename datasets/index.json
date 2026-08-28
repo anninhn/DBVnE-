@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-cum-cong-nghiep-dang-hoat-dong-co-he-thong-xu-ly-nuoc",
+    "title": "Tỷ lệ cụm công nghiệp có hệ thống xử lý nước thải đạt chuẩn môi trường",
+    "description": "Dữ liệu thống kê tổng số cụm công nghiệp đang hoạt động, số lượng và tỷ lệ các cụm có hệ thống xử lý nước thải tập trung đạt tiêu chuẩn môi trường tại Việt Nam, phân theo tỉnh/thành phố và vùng kinh tế, từ năm 2022 đến 2024.",
+    "category": "moi-truong",
+    "tags": [
+      "moi-truong",
+      "cong-nghiep",
+      "nuoc-thai",
+      "xu-ly-nuoc",
+      "cum-cong-nghiep"
+    ],
+    "uploaded_at": "2026-08-28T11:50:15.041Z",
+    "uploaded_by": "ninh",
+    "row_count": 210,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b961fb60-2d37-4a39-94f7-7dcc0ce8fcf3/ty-le-cum-cong-nghiep-dang-hoat-dong-co-he-thong-xu-ly-nuoc.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-chat-thai-nguy-hai-duoc-thu-gom-xu-ly-phan-theo-vung-v",
     "title": "Tỷ lệ chất thải nguy hại được thu gom, xử lý phân theo vùng và tỉnh",
     "description": "Dữ liệu thống kê tổng lượng chất thải nguy hại phát sinh, được thu gom, xử lý và tỷ lệ thu gom, xử lý tại các tỉnh/thành phố và vùng kinh tế - xã hội của Việt Nam trong năm 2023. Bao gồm số liệu cho cả nước, các vùng và một số tỉnh cụ thể.",
