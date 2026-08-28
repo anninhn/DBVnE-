@@ -1,5 +1,35 @@
 [
   {
+    "slug": "giao-duc-nghe-nghiep",
+    "title": "Thống kê các chỉ tiêu về giáo dục nghề nghiệp tại Việt Nam",
+    "description": "Dataset cung cấp dữ liệu về các chỉ tiêu liên quan đến giáo dục nghề nghiệp tại Việt Nam, bao gồm số lượng cơ sở, giáo viên và học sinh, sinh viên tốt nghiệp, được phân loại theo công lập/ngoài công lập và giới tính, từ năm 2016 đến 2023.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "day-nghe",
+      "co-so-dao-tao",
+      "giao-vien",
+      "hoc-sinh",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T11:15:32.761Z",
+    "uploaded_by": "ninh",
+    "row_count": 136,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e3b78657-a02e-49ad-b60a-c6c463a45db0/giao-duc-nghe-nghiep.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "giao-duc-dai-hoc-va-cao-dang",
     "title": "Chỉ số phát triển giáo dục đại học và cao đẳng Việt Nam",
     "description": "Dataset thống kê các chỉ số phát triển về trường học, giảng viên và sinh viên trong hệ thống giáo dục đại học và cao đẳng tại Việt Nam từ năm 1995 đến 2023, bao gồm tổng số và chỉ số tăng trưởng so với năm trước.",
