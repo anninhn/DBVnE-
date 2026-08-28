@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-4",
+    "title": "Chi tiêu bình quân một lượt khách du lịch nội địa",
+    "description": "Dữ liệu thể hiện chi tiêu bình quân của một lượt khách du lịch nội địa Việt Nam, phân loại theo mục đích chuyến đi hoặc phương tiện di chuyển, từ năm 2019 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "chi-tieu",
+      "noi-dia",
+      "khach-du-lich"
+    ],
+    "uploaded_at": "2026-08-28T10:14:19.793Z",
+    "uploaded_by": "ninh",
+    "row_count": 56,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7c82c2a1-15a7-4270-bc7d-6118a24f6076/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-4.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-3",
     "title": "Chi tiêu bình quân một lượt khách du lịch nội địa theo loại hình lưu trú",
     "description": "Dataset này thống kê chi tiêu bình quân của một lượt khách du lịch nội địa, được phân loại theo các loại hình cơ sở lưu trú khác nhau và theo từng năm từ 2017 đến 2024. Dữ liệu cung cấp cái nhìn về xu hướng chi tiêu của khách du lịch trong nước.",
