@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-binh-quan-nam-khu-vuc-nong-thon-nam-tru",
+    "title": "Chỉ số giá tiêu dùng bình quân năm khu vực nông thôn theo nhóm hàng",
+    "description": "Dữ liệu thống kê chỉ số giá tiêu dùng (CPI) bình quân năm tại khu vực nông thôn Việt Nam, phân loại theo các nhóm hàng hóa và dịch vụ chính, giai đoạn từ năm 2018 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "cpi",
+      "chi-so-gia-tieu-dung",
+      "nong-thon",
+      "gia-ca",
+      "lam-phat"
+    ],
+    "uploaded_at": "2026-08-28T10:06:10.609Z",
+    "uploaded_by": "ninh",
+    "row_count": 102,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a4d1ffa6-2396-4218-8a3d-85ea58901d5d/chi-so-gia-tieu-dung-binh-quan-nam-khu-vuc-nong-thon-nam-tru.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-phan-theo-nho",
     "title": "Chỉ số giá sinh hoạt theo không gian phân theo vùng và nhóm hàng",
     "description": "Dataset cung cấp chỉ số giá sinh hoạt theo không gian của các vùng kinh tế - xã hội Việt Nam, phân loại theo các nhóm hàng hóa và dịch vụ chính. Dữ liệu được tính toán so với vùng Đồng bằng sông Hồng (lấy 100 điểm) và bao gồm các năm từ 2015 đến 2024.",
