@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-so-sanh-2010-phan",
+    "title": "Vốn đầu tư thực hiện toàn xã hội theo phân tổ và giá so sánh 2010",
+    "description": "Dataset thống kê vốn đầu tư thực hiện của toàn xã hội, được phân loại theo các hình thức đầu tư chính, từ năm 2010 đến 2023. Các giá trị được tính theo giá so sánh năm 2010.",
+    "category": "kinh-te",
+    "tags": [
+      "von-dau-tu",
+      "kinh-te",
+      "dau-tu-xa-hoi",
+      "gia-so-sanh"
+    ],
+    "uploaded_at": "2026-08-28T08:21:13.821Z",
+    "uploaded_by": "ninh",
+    "row_count": 90,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "89b620e1-3973-4715-ba20-4c7c4e59e73b/von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-so-sanh-2010-phan.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-hien-hanh-phan-the-2",
     "title": "Vốn đầu tư thực hiện toàn xã hội theo ngành kinh tế và năm",
     "description": "Dữ liệu thống kê vốn đầu tư thực hiện của toàn xã hội theo giá hiện hành, phân loại theo các ngành kinh tế khác nhau và theo từng năm từ 2010 đến 2024. Một số dữ liệu được ghi chú là 'Sơ bộ'.",
