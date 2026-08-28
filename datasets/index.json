@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-pha-2",
+    "title": "Chi tiêu bình quân của khách quốc tế đến Việt Nam theo quốc tịch và năm",
+    "description": "Dataset thống kê chi tiêu bình quân của một lượt khách quốc tế đến Việt Nam, phân loại theo quốc tịch và năm, từ 2017 đến 2024. Dữ liệu bao gồm thông tin về các quốc tịch cụ thể và tổng bình quân chung.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "khach-quoc-te",
+      "chi-tieu",
+      "kinh-te",
+      "tourism"
+    ],
+    "uploaded_at": "2026-08-28T10:14:59.231Z",
+    "uploaded_by": "ninh",
+    "row_count": 112,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "682eb093-a50a-46e3-acf4-630e6048a5d2/chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-pha-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-phan",
     "title": "Chi tiêu bình quân của khách quốc tế đến Việt Nam theo mục đích",
     "description": "Dataset thống kê chi tiêu bình quân của một lượt khách quốc tế đến Việt Nam, phân loại theo các mục đích chi tiêu (thuê phòng, ăn uống, đi lại, mua sắm, v.v.) và tổng chi tiêu bình quân. Dữ liệu được thu thập từ năm 2017 đến 2024.",
