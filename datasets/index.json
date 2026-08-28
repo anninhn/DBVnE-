@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-dia-phuong",
+    "title": "Tỷ lệ hộ gia đình có kết nối internet phân theo địa phương năm 2024",
+    "description": "Dữ liệu thống kê tỷ lệ phần trăm hộ gia đình có kết nối internet tại các tỉnh, thành phố, vùng kinh tế và cả nước trong năm 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "internet",
+      "ho-gia-dinh",
+      "ket-noi",
+      "dia-phuong",
+      "xa-hoi",
+      "cong-nghe"
+    ],
+    "uploaded_at": "2026-08-28T11:54:13.087Z",
+    "uploaded_by": "ninh",
+    "row_count": 70,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c242cfdc-6e2b-482b-890f-28a0300f3277/ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-dung-dien-sinh-hoat-phan-theo-thanh-thi-nong-thon-v",
     "title": "Tỷ lệ hộ dùng điện sinh hoạt phân theo khu vực và vùng kinh tế - xã hội",
     "description": "Dữ liệu thống kê tỷ lệ hộ gia đình sử dụng điện cho mục đích sinh hoạt tại Việt Nam, phân loại theo khu vực (thành thị, nông thôn) và các vùng kinh tế - xã hội, từ năm 2002 đến 2024.",
