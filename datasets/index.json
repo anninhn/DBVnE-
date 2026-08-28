@@ -1,5 +1,33 @@
 [
   {
+    "slug": "su-dung-tong-san-pham-trong-nuoc-theo-gia-hien-hanh",
+    "title": "Sử dụng Tổng sản phẩm trong nước (GDP) theo giá hiện hành",
+    "description": "Dataset thống kê các thành phần sử dụng Tổng sản phẩm trong nước (GDP) của Việt Nam theo giá hiện hành, bao gồm tiêu dùng cuối cùng, tích lũy tài sản và chênh lệch xuất nhập khẩu, từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gdp",
+      "su-dung-gdp",
+      "gia-hien-hanh"
+    ],
+    "uploaded_at": "2026-08-28T11:07:45.043Z",
+    "uploaded_by": "ninh",
+    "row_count": 300,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5993c98f-450f-4de6-8e01-10771221533d/su-dung-tong-san-pham-trong-nuoc-theo-gia-hien-hanh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "mot-so-chi-tieu-chu-yeu-ve-tai-khoan-quoc-gia",
     "title": "Một số chỉ tiêu chủ yếu về tài khoản quốc gia Việt Nam",
     "description": "Dataset cung cấp các chỉ tiêu kinh tế vĩ mô quan trọng về tài khoản quốc gia của Việt Nam, bao gồm GDP, GNI, tiêu dùng, tích lũy tài sản, xuất nhập khẩu, và các chỉ số bình quân đầu người, tốc độ tăng trưởng từ năm 2000 đến 2024.",
