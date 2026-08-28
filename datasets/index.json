@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-so-gia-do-la-my-phan-theo-vung-cac-thang-so-voi-thang-tr",
+    "title": "Chỉ số giá đô la Mỹ phân theo vùng và tháng",
+    "description": "Dataset cung cấp chỉ số giá đô la Mỹ theo tháng, phân loại theo các vùng địa lý của Việt Nam và chỉ số chung, trong giai đoạn từ năm 2022 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gia-ca",
+      "do-la",
+      "chi-so"
+    ],
+    "uploaded_at": "2026-08-28T10:02:03.357Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9b54f6c9-d6ec-46f1-8f8b-c79be2d703b9/chi-so-gia-do-la-my-phan-theo-vung-cac-thang-so-voi-thang-tr.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tong-cong-suat-cac-tau-khai-thac-thuy-san-bien-tu-90-cv-tro",
     "title": "Tổng công suất các tàu khai thác thủy sản biển từ 90 CV trở lên theo tỉnh, thành phố và năm",
     "description": "Dataset thống kê tổng công suất của các tàu khai thác thủy sản hoạt động trên biển có công suất từ 90 mã lực trở lên, phân loại theo tỉnh, thành phố/vùng kinh tế và theo năm. Dữ liệu bao gồm các tỉnh ven biển Việt Nam và số liệu tổng hợp cho cả nước, từ năm 2010 đến 2024.",
