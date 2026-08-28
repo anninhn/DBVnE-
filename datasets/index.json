@@ -1,5 +1,33 @@
 [
   {
+    "slug": "san-luong-mia-phan-theo-dia-phuong",
+    "title": "Sản lượng mía phân theo địa phương",
+    "description": "Dữ liệu về sản lượng mía của Việt Nam từ năm 2018 đến 2024, được phân loại theo từng tỉnh, thành phố và các vùng kinh tế-xã hội, bao gồm cả số liệu tổng hợp toàn quốc.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "mia",
+      "nong-nghiep",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T09:54:18.242Z",
+    "uploaded_by": "ninh",
+    "row_count": 483,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c2d23b74-71c8-482b-bfde-d1eac7187627/san-luong-mia-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "san-luong-luong-thuc-co-hat-phan-theo-dia-phuong",
     "title": "Sản lượng lương thực có hạt phân theo địa phương và năm",
     "description": "Dataset thống kê sản lượng lương thực có hạt của Việt Nam, phân theo các tỉnh, thành phố, vùng kinh tế và tổng cả nước, từ năm 1995 đến 2024. Dữ liệu cung cấp cái nhìn tổng quan về tình hình sản xuất lương thực.",
