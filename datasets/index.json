@@ -1,5 +1,34 @@
 [
   {
+    "slug": "mot-so-chi-tieu-ve-vu-chay-no-phan-theo-dia-phuong",
+    "title": "Một số chỉ tiêu về vụ cháy, nổ phân theo địa phương",
+    "description": "Dữ liệu thống kê số vụ cháy, nổ, số người chết, số người bị thương và tổng thiệt hại về tài sản do cháy, nổ gây ra tại Việt Nam, phân theo từng địa phương và vùng kinh tế - xã hội, từ năm 2022 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "chay-no",
+      "thiet-hai",
+      "tai-nan",
+      "dia-phuong",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:33:08.675Z",
+    "uploaded_by": "ninh",
+    "row_count": 213,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "54b7c520-ee9c-4e91-96d0-02840643faec/mot-so-chi-tieu-ve-vu-chay-no-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-loai-duong-v",
     "title": "Thống kê tai nạn giao thông phân theo loại hình và vùng địa lý",
     "description": "Dữ liệu thống kê về số vụ tai nạn giao thông, số người chết và số người bị thương tại Việt Nam từ năm 2022 đến 2024. Các chỉ số được phân loại theo loại hình giao thông (đường bộ, đường sắt, đường thủy, đường hàng hải) và theo các vùng địa lý.",
