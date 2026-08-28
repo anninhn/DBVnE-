@@ -1,5 +1,34 @@
 [
   {
+    "slug": "su-dung-tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010",
+    "title": "Sử dụng Tổng sản phẩm trong nước (GDP) theo giá so sánh năm 2010",
+    "description": "Dữ liệu thống kê các thành phần sử dụng Tổng sản phẩm trong nước (GDP) của Việt Nam từ năm 2005 đến 2024, tính theo giá so sánh năm 2010. Bao gồm giá trị tuyệt đối và chỉ số phát triển so với năm trước.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gdp",
+      "su-dung-gdp",
+      "gia-so-sanh",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T11:08:05.129Z",
+    "uploaded_by": "ninh",
+    "row_count": 180,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "47378ffb-ecea-4869-8633-fde12ba624e3/su-dung-tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "su-dung-tong-san-pham-trong-nuoc-theo-gia-hien-hanh",
     "title": "Sử dụng Tổng sản phẩm trong nước (GDP) theo giá hiện hành",
     "description": "Dataset thống kê các thành phần sử dụng Tổng sản phẩm trong nước (GDP) của Việt Nam theo giá hiện hành, bao gồm tiêu dùng cuối cùng, tích lũy tài sản và chênh lệch xuất nhập khẩu, từ năm 1995 đến 2024.",
