@@ -1,5 +1,33 @@
 [
   {
+    "slug": "doanh-thu-ban-le-hang-hoa-phan-theo-nhom-hang",
+    "title": "Doanh thu bán lẻ hàng hóa phân theo nhóm hàng",
+    "description": "Dataset thống kê doanh thu bán lẻ hàng hóa tại Việt Nam, được phân loại theo các nhóm hàng cụ thể, trong giai đoạn từ năm 2020 đến 2024. Dữ liệu bao gồm tổng số và chi tiết các nhóm hàng như lương thực, thực phẩm, hàng may mặc, xăng dầu, v.v.",
+    "category": "kinh-te",
+    "tags": [
+      "doanh-thu",
+      "ban-le",
+      "hang-hoa",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:16:42.004Z",
+    "uploaded_by": "ninh",
+    "row_count": 50,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f194d2c8-9b17-4c67-acd2-ae1c2498d510/doanh-thu-ban-le-hang-hoa-phan-theo-nhom-hang.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "co-cau-tri-gia-xuat-khau-hang-hoa-theo-bang-phan-loai-tieu-c",
     "title": "Cơ cấu trị giá xuất khẩu hàng hóa theo phân loại tiêu chuẩn ngoại thương",
     "description": "Dữ liệu thể hiện cơ cấu (tỷ trọng phần trăm) trị giá xuất khẩu hàng hóa của Việt Nam theo các nhóm phân loại tiêu chuẩn ngoại thương (SITC) qua các năm từ 2005 đến 2024.",
