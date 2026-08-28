@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dan-toc-c",
+    "title": "Tỷ lệ hộ nghèo theo chuẩn nghèo đa chiều phân theo dân tộc và vùng",
+    "description": "Bộ dữ liệu này thể hiện tỷ lệ hộ nghèo của Việt Nam từ năm 2016 đến 2024, được phân loại theo chuẩn nghèo đa chiều. Các số liệu được chia nhỏ theo nhóm dân tộc (Kinh/Hoa, dân tộc khác), khu vực thành thị/nông thôn và các vùng kinh tế - xã hội trên cả nước.",
+    "category": "xa-hoi",
+    "tags": [
+      "ho-ngheo",
+      "ngheo-da-chieu",
+      "dan-toc",
+      "vung-kinh-te",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:55:42.473Z",
+    "uploaded_by": "ninh",
+    "row_count": 11,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "87c38a1b-1d1d-4bae-a0ec-f6cc1a6a90ba/ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dan-toc-c.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-ngheo-phan-theo-thanh-thi-nong-thon-va-theo-vung",
     "title": "Tỷ lệ hộ nghèo phân theo thành thị, nông thôn và vùng kinh tế - xã hội Việt Nam",
     "description": "Dataset này cung cấp dữ liệu về tỷ lệ hộ nghèo của Việt Nam từ năm 1998 đến 2024. Số liệu được phân loại theo khu vực thành thị, nông thôn và 6 vùng kinh tế - xã hội, cùng với tổng thể cả nước.",
