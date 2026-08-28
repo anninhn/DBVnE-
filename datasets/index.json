@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-phat-trien-tong-san-pham-trong-nuoc-theo-gia-so-sanh",
+    "title": "Chỉ số phát triển tổng sản phẩm trong nước (GRDP) theo giá so sánh của các tỉnh, thành phố và vùng kinh tế",
+    "description": "Dataset này cung cấp chỉ số phát triển tổng sản phẩm trong nước (GRDP) theo giá so sánh cho các tỉnh, thành phố trực thuộc trung ương và các vùng kinh tế - xã hội của Việt Nam, từ năm 2018 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "grdp",
+      "phat-trien",
+      "dia-phuong",
+      "chi-so"
+    ],
+    "uploaded_at": "2026-08-28T11:07:05.112Z",
+    "uploaded_by": "ninh",
+    "row_count": 483,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f2264b17-dfc1-49b6-9308-1411fb01c8f1/chi-so-phat-trien-tong-san-pham-trong-nuoc-theo-gia-so-sanh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "xuat-khau-nhap-khau-dich-vu",
     "title": "Giá trị xuất khẩu và nhập khẩu dịch vụ của Việt Nam theo loại hình và năm",
     "description": "Dataset thống kê giá trị xuất khẩu và nhập khẩu dịch vụ của Việt Nam, phân loại theo các loại hình dịch vụ chính, từ năm 2005 đến 2024.",
