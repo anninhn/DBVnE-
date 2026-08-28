@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-hoc-sinh-pho-thong-binh-quan-mot-lop-hoc-va-so-hoc-sinh-2",
+    "title": "Số học sinh phổ thông bình quân một lớp học và một giáo viên theo cấp học",
+    "description": "Dataset thống kê số học sinh phổ thông bình quân trên một lớp học và trên một giáo viên, phân loại theo các cấp học (Tổng số, Tiểu học, THCS, THPT) qua các năm học từ 2010-2011 đến 2023-2024.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "hoc-sinh",
+      "giao-vien",
+      "lop-hoc",
+      "cap-hoc"
+    ],
+    "uploaded_at": "2026-08-28T11:19:04.202Z",
+    "uploaded_by": "ninh",
+    "row_count": 104,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b17cb3c6-dee0-45ca-82f3-79449cd61939/so-hoc-sinh-pho-thong-binh-quan-mot-lop-hoc-va-so-hoc-sinh-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-hoc-sinh-pho-thong-binh-quan-mot-lop-hoc-va-so-hoc-sinh-p",
     "title": "Số học sinh phổ thông bình quân một lớp học và một giáo viên theo cấp học và loại hình trường",
     "description": "Dataset cung cấp số liệu về số học sinh phổ thông bình quân trên một lớp học và trên một giáo viên, phân loại theo cấp học (Tổng số, Tiểu học, THCS, THPT) và loại hình trường (công lập, ngoài công lập) qua các năm học từ 2020-2021 đến 2024-2025.",
