@@ -1,5 +1,36 @@
 [
   {
+    "slug": "so-giao-vien-hoc-sinh-sinh-vien-giao-duc-nghe-nghiep-nam-202",
+    "title": "Số liệu giáo viên, học sinh, sinh viên giáo dục nghề nghiệp theo địa phương",
+    "description": "Dữ liệu thống kê về số lượng giáo viên, giáo viên công lập và học sinh, sinh viên được tuyển mới vào các cấp học nghề (trung cấp, cao đẳng) trên phạm vi toàn quốc, phân loại theo từng tỉnh/thành phố và vùng kinh tế.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "day-nghe",
+      "giao-vien",
+      "hoc-sinh",
+      "sinh-vien",
+      "tuyen-sinh",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:17:06.387Z",
+    "uploaded_by": "ninh",
+    "row_count": 70,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "68aeb65d-1ddd-44ff-98ad-35fd17c2f86a/so-giao-vien-hoc-sinh-sinh-vien-giao-duc-nghe-nghiep-nam-202.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-giao-vien-giao-duc-nghe-nghiep-phan-theo-trinh-do-chuyen",
     "title": "Số giáo viên giáo dục nghề nghiệp phân theo trình độ chuyên môn và loại hình trường",
     "description": "Dữ liệu thống kê số lượng giáo viên giáo dục nghề nghiệp tại Việt Nam, phân loại theo trình độ chuyên môn (Tổng số, Trên đại học, Đại học-cao đẳng, Trình độ khác) và loại hình trường (Công lập, Ngoài công lập, Tổng số) qua các năm từ 2016 đến 2023.",
