@@ -1,5 +1,35 @@
 [
   {
+    "slug": "san-luong-san-pham-chan-nuoi-chu-yeu",
+    "title": "Sản lượng sản phẩm chăn nuôi chủ yếu của Việt Nam",
+    "description": "Dataset thống kê sản lượng các sản phẩm chăn nuôi chủ yếu của Việt Nam theo từng năm, bao gồm thịt trâu, bò, lợn, gia cầm, sữa tươi, trứng gia cầm, mật ong và kén tằm từ năm 2000 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "chan-nuoi",
+      "nong-nghiep",
+      "thit",
+      "sua",
+      "trung"
+    ],
+    "uploaded_at": "2026-08-28T09:55:13.003Z",
+    "uploaded_by": "ninh",
+    "row_count": 25,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "bba729c3-5843-49fb-97da-8a2d21b04010/san-luong-san-pham-chan-nuoi-chu-yeu.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "san-luong-ngo-phan-theo-dia-phuong",
     "title": "Sản lượng ngô phân theo địa phương và thời gian",
     "description": "Dữ liệu thống kê sản lượng ngô hàng năm của Việt Nam, được phân loại theo các tỉnh, thành phố, vùng kinh tế và tổng cả nước, trong giai đoạn từ năm 1995 đến 2024.",
