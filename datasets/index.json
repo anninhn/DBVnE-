@@ -1,5 +1,33 @@
 [
   {
+    "slug": "loi-nhuan-truoc-thue-cua-doanh-nghiep-dang-hoat-dong-co-ke-3",
+    "title": "Lợi nhuận trước thuế của doanh nghiệp theo loại hình giai đoạn 2010-2023",
+    "description": "Dữ liệu thống kê lợi nhuận trước thuế của các doanh nghiệp đang hoạt động tại Việt Nam, phân loại theo các loại hình doanh nghiệp chính, từ năm 2010 đến 2023. Bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm.",
+    "category": "kinh-te",
+    "tags": [
+      "loi-nhuan",
+      "doanh-nghiep",
+      "kinh-te",
+      "thue"
+    ],
+    "uploaded_at": "2026-08-28T09:40:29.416Z",
+    "uploaded_by": "ninh",
+    "row_count": 130,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4f650078-1f35-49e9-8888-f4770bfa4220/loi-nhuan-truoc-thue-cua-doanh-nghiep-dang-hoat-dong-co-ke-3.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "loi-nhuan-truoc-thue-cua-doanh-nghiep-dang-hoat-dong-co-ke-2",
     "title": "Lợi nhuận trước thuế của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh",
     "description": "Dữ liệu thống kê lợi nhuận trước thuế của các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân theo tỉnh/thành phố, vùng kinh tế và tổng hợp cả nước, từ năm 2010 đến 2023.",
