@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-luong-sieu-thi-co-den-31-12-hang-nam-phan-theo-dia-phuong",
+    "title": "Số lượng siêu thị phân theo địa phương và năm",
+    "description": "Dataset thống kê số lượng siêu thị có mặt tại Việt Nam, phân loại theo tỉnh, thành phố và các vùng kinh tế, từ năm 2005 đến 2024. Dữ liệu bao gồm cả tổng số toàn quốc.",
+    "category": "kinh-te",
+    "tags": [
+      "sieu-thi",
+      "thuong-mai",
+      "ban-le",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:58:32.360Z",
+    "uploaded_by": "ninh",
+    "row_count": 910,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "eec5cc4a-95f1-487d-88a7-b7867922e390/so-luong-sieu-thi-co-den-31-12-hang-nam-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-luong-cho-co-den-31-12-hang-nam-phan-theo-hang-va-theo-di",
     "title": "Số lượng chợ phân theo hạng và địa điểm đến 31/12 hàng năm",
     "description": "Dataset thống kê tổng số lượng chợ hiện có tại Việt Nam tính đến ngày 31 tháng 12 hàng năm, phân loại theo hạng chợ (Hạng 1, 2, 3) và theo địa điểm (cả nước, vùng kinh tế, tỉnh/thành phố) từ năm 2008 đến 2024.",
