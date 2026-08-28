@@ -1,5 +1,34 @@
 [
   {
+    "slug": "nang-suat-gieo-trong-lua-mua-phan-theo-dia-phuong",
+    "title": "Năng suất gieo trồng lúa mùa phân theo địa phương và năm",
+    "description": "Dataset này cung cấp dữ liệu về năng suất gieo trồng lúa mùa của Việt Nam, được phân loại theo từng tỉnh, thành phố, vùng kinh tế và cả nước. Dữ liệu được thu thập hàng năm từ 1995 đến 2024, cho phép theo dõi xu hướng năng suất lúa theo thời gian và địa điểm.",
+    "category": "kinh-te",
+    "tags": [
+      "nong-nghiep",
+      "lua",
+      "nang-suat",
+      "gieo-trong",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T08:45:49.185Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8bd62bd8-118d-4c24-b812-78bff770870b/nang-suat-gieo-trong-lua-mua-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "nang-suat-gieo-trong-lua-he-thu-va-thu-dong-phan-theo-dia-ph",
     "title": "Năng suất gieo trồng lúa hè thu và thu đông theo địa phương và năm",
     "description": "Bộ dữ liệu thống kê năng suất gieo trồng lúa trong vụ hè thu và thu đông tại các tỉnh, thành phố và vùng kinh tế của Việt Nam từ năm 1995 đến 2024.",
