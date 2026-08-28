@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-dia-phuo",
+    "title": "Tỷ lệ lao động có việc làm phi chính thức phân theo địa phương và thời gian",
+    "description": "Dữ liệu thống kê tỷ lệ lao động có việc làm phi chính thức của Việt Nam, phân theo các tỉnh/thành phố, vùng kinh tế và tổng hợp cả nước, từ năm 2018 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "phi-chinh-thuc",
+      "dia-phuong",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T08:04:56.088Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f22a4e84-3cc2-45b3-aee6-25b3b2da2e9e/ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-dia-phuo.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-lao-dong-co-viec-lam-va-co-cau-lao-dong-co-viec-lam-trong",
     "title": "Số lao động có việc làm và cơ cấu lao động có việc làm theo ngành kinh tế",
     "description": "Dataset thống kê số lượng và cơ cấu lao động có việc làm phân theo các ngành kinh tế của Việt Nam từ năm 2005 đến năm 2024. Dữ liệu bao gồm tổng số lao động (nghìn người) và tỷ lệ phần trăm cơ cấu của từng ngành.",
