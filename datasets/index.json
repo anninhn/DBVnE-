@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-3",
+    "title": "Tỷ suất lợi nhuận của doanh nghiệp theo ngành kinh tế và năm",
+    "description": "Dữ liệu thống kê tỷ suất lợi nhuận của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo các ngành kinh tế và theo năm từ 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "loi-nhuan",
+      "nganh-kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:37:29.669Z",
+    "uploaded_by": "ninh",
+    "row_count": 1000,
+    "file_count": 1,
+    "total_size_mb": 0.07,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "25ee16de-9851-4799-848d-f420e4316290/ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-3.csv",
+        "size_mb": 0.07
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-2",
     "title": "Tỷ suất lợi nhuận của doanh nghiệp theo loại hình và năm",
     "description": "Dataset thống kê tỷ suất lợi nhuận của các loại hình doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, giai đoạn từ năm 2010 đến 2023.",
