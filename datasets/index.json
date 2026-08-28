@@ -1,5 +1,34 @@
 [
   {
+    "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini-phan",
+    "title": "Hệ số GINI về bất bình đẳng thu nhập theo địa phương và năm",
+    "description": "Bộ dữ liệu này cung cấp hệ số GINI, một chỉ số đo lường mức độ bất bình đẳng trong phân phối thu nhập, cho các địa phương và vùng kinh tế của Việt Nam từ năm 2018 đến 2024. Dữ liệu bao gồm tổng số toàn quốc, các vùng và các tỉnh/thành phố.",
+    "category": "xa-hoi",
+    "tags": [
+      "gini",
+      "bat-binh-dang",
+      "thu-nhap",
+      "xa-hoi",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T11:30:54.922Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f5c439f9-2921-4073-a30c-379ef398b490/he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini-phan.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini",
     "title": "Hệ số GINI về bất bình đẳng thu nhập tại Việt Nam",
     "description": "Dữ liệu về hệ số GINI, một chỉ số đo lường mức độ bất bình đẳng trong phân phối thu nhập, của Việt Nam từ năm 2002 đến 2024, được phân loại theo cả nước, thành thị, nông thôn và các vùng kinh tế-xã hội.",
