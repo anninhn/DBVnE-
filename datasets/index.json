@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-luong-thuc-co-hat-phan-theo-dia-phuong",
+    "title": "Sản lượng lương thực có hạt phân theo địa phương và năm",
+    "description": "Dataset thống kê sản lượng lương thực có hạt của Việt Nam, phân theo các tỉnh, thành phố, vùng kinh tế và tổng cả nước, từ năm 1995 đến 2024. Dữ liệu cung cấp cái nhìn tổng quan về tình hình sản xuất lương thực.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "luong-thuc",
+      "nong-nghiep",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:54:00.064Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d2b67e3e-8b49-4189-9905-bc23e8387f57/san-luong-luong-thuc-co-hat-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "san-luong-luong-thuc-co-hat-binh-quan-dau-nguoi-phan-theo-di",
     "title": "Sản lượng lương thực có hạt bình quân đầu người phân theo địa phương và năm",
     "description": "Dataset cung cấp số liệu về sản lượng lương thực có hạt bình quân đầu người của Việt Nam, phân theo các tỉnh, thành phố, vùng kinh tế và tổng hợp cả nước, từ năm 1995 đến 2024.",
