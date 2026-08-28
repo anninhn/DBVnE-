@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-tau-khai-thac-thuy-san-bien-co-cong-suat-tu-90-cv-tro-len",
+    "title": "Số lượng tàu khai thác thủy sản biển công suất từ 90 CV trở lên",
+    "description": "Dataset thống kê số lượng tàu khai thác thủy sản biển có công suất từ 90 CV trở lên của các tỉnh, thành phố, vùng kinh tế và cả nước, giai đoạn 2010-2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "tau-ca",
+      "khai-thac-bien",
+      "kinh-te-bien"
+    ],
+    "uploaded_at": "2026-08-28T10:01:31.282Z",
+    "uploaded_by": "ninh",
+    "row_count": 510,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e31eff31-bda0-4d54-a53e-509b99038df8/so-tau-khai-thac-thuy-san-bien-co-cong-suat-tu-90-cv-tro-len.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-luong-trau-phan-theo-dia-phuong",
     "title": "Số lượng trâu phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng trâu tại Việt Nam, phân loại theo từng tỉnh, thành phố, vùng kinh tế và toàn quốc, trong giai đoạn từ năm 1995 đến 2024.",
