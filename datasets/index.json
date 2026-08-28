@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-luot-hanh-khach-van-chuyen-phan-theo-dia-phuong",
+    "title": "Số lượt hành khách vận chuyển phân theo địa phương và năm",
+    "description": "Dữ liệu thống kê số lượt hành khách được vận chuyển phân theo các địa phương và vùng kinh tế của Việt Nam, từ năm 2000 đến năm 2024. Các số liệu được tính theo đơn vị nghìn lượt hành khách.",
+    "category": "kinh-te",
+    "tags": [
+      "hanh-khach",
+      "van-tai",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:00:54.190Z",
+    "uploaded_by": "ninh",
+    "row_count": 1775,
+    "file_count": 1,
+    "total_size_mb": 0.05,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "080f191d-12d7-4882-8284-1efde9ac0ad0/so-luot-hanh-khach-van-chuyen-phan-theo-dia-phuong.csv",
+        "size_mb": 0.05
+      }
+    ]
+  },
+  {
     "slug": "so-luot-hanh-khach-van-chuyen-bang-duong-bo-phan-theo-dia-ph",
     "title": "Số lượt hành khách vận chuyển bằng đường bộ phân theo địa phương",
     "description": "Dataset thống kê tổng số lượt hành khách được vận chuyển bằng đường bộ tại Việt Nam, phân chia theo từng tỉnh, thành phố, vùng kinh tế và tổng cả nước, từ năm 2000 đến năm 2024.",
