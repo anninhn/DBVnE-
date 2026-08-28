@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-dan-so-do-thi-duoc-cung-cap-nuoc-sach-qua-he-thong-cap",
+    "title": "Tỷ lệ dân số đô thị được cung cấp nước sạch qua hệ thống cấp nước tập trung",
+    "description": "Dữ liệu thống kê tỷ lệ phần trăm dân số đô thị được cung cấp nước sạch thông qua hệ thống cấp nước tập trung tại Việt Nam, bao gồm cấp quốc gia, cấp vùng và các tỉnh/thành phố, từ năm 2016 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "nuoc-sach",
+      "do-thi",
+      "dan-so",
+      "ha-tang"
+    ],
+    "uploaded_at": "2026-08-28T11:50:33.607Z",
+    "uploaded_by": "ninh",
+    "row_count": 630,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3f0918c5-7155-4035-b1bd-f0bf6ecb111c/ty-le-dan-so-do-thi-duoc-cung-cap-nuoc-sach-qua-he-thong-cap.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-cum-cong-nghiep-dang-hoat-dong-co-he-thong-xu-ly-nuoc",
     "title": "Tỷ lệ cụm công nghiệp có hệ thống xử lý nước thải đạt chuẩn môi trường",
     "description": "Dữ liệu thống kê tổng số cụm công nghiệp đang hoạt động, số lượng và tỷ lệ các cụm có hệ thống xử lý nước thải tập trung đạt tiêu chuẩn môi trường tại Việt Nam, phân theo tỉnh/thành phố và vùng kinh tế, từ năm 2022 đến 2024.",
