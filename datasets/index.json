@@ -1,5 +1,34 @@
 [
   {
+    "slug": "nhiet-do-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so",
+    "title": "Nhiệt độ không khí trung bình hàng tháng tại một số trạm quan trắc ở Việt Nam",
+    "description": "Dataset cung cấp dữ liệu nhiệt độ không khí trung bình hàng tháng được ghi nhận tại 17 trạm quan trắc trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
+    "category": "khi-hau",
+    "tags": [
+      "nhiet-do",
+      "khi-hau",
+      "thoi-tiet",
+      "viet-nam",
+      "quan-trac"
+    ],
+    "uploaded_at": "2026-08-28T12:05:16.608Z",
+    "uploaded_by": "ninh",
+    "row_count": 4692,
+    "file_count": 1,
+    "total_size_mb": 0.11,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1a93837d-b831-4567-8353-1fcbe31798c7/nhiet-do-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so.csv",
+        "size_mb": 0.11
+      }
+    ]
+  },
+  {
     "slug": "muc-thay-doi-luong-mua-tai-mot-so-tram-quan-trac",
     "title": "Mức thay đổi lượng mưa tại một số trạm quan trắc ở Việt Nam",
     "description": "Dataset thống kê mức thay đổi lượng mưa hàng năm (so với năm liền trước) tại 15 tỉnh, thành phố hoặc trạm quan trắc khí tượng trên khắp Việt Nam, từ năm 2009 đến năm 2024.",
