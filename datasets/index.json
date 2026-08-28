@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-ngay-cua-khach-du-lich-noi-dia",
+    "title": "Chi tiêu bình quân một ngày của khách du lịch nội địa",
+    "description": "Dữ liệu thống kê chi tiêu bình quân một ngày của khách du lịch nội địa tại Việt Nam, phân loại theo các hạng mục chi tiêu chính như ăn uống, đi lại, thuê phòng, mua sắm và các chi phí khác, qua các năm từ 2005 đến 2020.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-tieu",
+      "du-lich",
+      "khach-noi-dia",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:15:17.673Z",
+    "uploaded_by": "ninh",
+    "row_count": 56,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b47c07e2-8cee-492f-85bf-e24f4d172cd6/chi-tieu-binh-quan-mot-ngay-cua-khach-du-lich-noi-dia.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-pha-2",
     "title": "Chi tiêu bình quân của khách quốc tế đến Việt Nam theo quốc tịch và năm",
     "description": "Dataset thống kê chi tiêu bình quân của một lượt khách quốc tế đến Việt Nam, phân loại theo quốc tịch và năm, từ 2017 đến 2024. Dữ liệu bao gồm thông tin về các quốc tịch cụ thể và tổng bình quân chung.",
