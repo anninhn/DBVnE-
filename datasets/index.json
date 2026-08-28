@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-dia-ph",
+    "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo địa phương",
+    "description": "Dataset thống kê tỷ lệ thiếu việc làm của người trong độ tuổi lao động, phân chia theo từng tỉnh/thành phố, vùng kinh tế và tổng hợp cả nước, từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "ty-le-thieu-viec-lam",
+      "lao-dong",
+      "viec-lam",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:10:04.056Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6109a70b-5435-4f43-a32e-9539064c5721/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-dia-ph.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-that-nghiep-va-thieu-viec-lam-trong-do-tuoi-lao-dong-p",
     "title": "Tỷ lệ thất nghiệp và thiếu việc làm trong độ tuổi lao động phân theo vùng và giới tính",
     "description": "Dataset này cung cấp dữ liệu về tỷ lệ thất nghiệp và thiếu việc làm của dân số trong độ tuổi lao động, được phân loại theo vùng địa lý và giới tính trên toàn quốc Việt Nam, từ năm 2010 đến 2024.",
