@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-phan",
+    "title": "Chi tiêu bình quân của khách quốc tế đến Việt Nam theo mục đích",
+    "description": "Dataset thống kê chi tiêu bình quân của một lượt khách quốc tế đến Việt Nam, phân loại theo các mục đích chi tiêu (thuê phòng, ăn uống, đi lại, mua sắm, v.v.) và tổng chi tiêu bình quân. Dữ liệu được thu thập từ năm 2017 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "chi-tieu",
+      "khach-quoc-te",
+      "kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T10:14:39.061Z",
+    "uploaded_by": "ninh",
+    "row_count": 32,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2ba678fa-79e6-45aa-8d65-b04b7f98b9f7/chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-phan.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-4",
     "title": "Chi tiêu bình quân một lượt khách du lịch nội địa",
     "description": "Dữ liệu thể hiện chi tiêu bình quân của một lượt khách du lịch nội địa Việt Nam, phân loại theo mục đích chuyến đi hoặc phương tiện di chuyển, từ năm 2019 đến năm 2024.",
