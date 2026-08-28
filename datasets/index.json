@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-luong-gia-suc-va-gia-cam",
+    "title": "Số lượng và chỉ số phát triển gia súc, gia cầm tại Việt Nam",
+    "description": "Dataset thống kê số lượng và chỉ số phát triển của các loại gia súc (trâu, bò, ngựa, dê, cừu, lợn) và gia cầm tại Việt Nam từ năm 1990 đến 2024. Chỉ số phát triển được tính theo năm trước bằng 100%.",
+    "category": "kinh-te",
+    "tags": [
+      "gia-suc",
+      "gia-cam",
+      "chan-nuoi",
+      "nong-nghiep",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:59:59.807Z",
+    "uploaded_by": "ninh",
+    "row_count": 210,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6be347cc-367e-43b2-aea6-e33c2982df89/so-luong-gia-suc-va-gia-cam.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-luong-gia-cam-phan-theo-dia-phuong",
     "title": "Số lượng gia cầm phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng gia cầm tại các tỉnh, thành phố và vùng kinh tế trên cả nước, từ năm 2000 đến 2024. Dữ liệu bao gồm cả tổng số liệu cho toàn quốc.",
