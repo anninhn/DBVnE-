@@ -1,5 +1,34 @@
 [
   {
+    "slug": "doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan-2",
+    "title": "Doanh thu thuần sản xuất kinh doanh của các loại hình doanh nghiệp",
+    "description": "Dữ liệu thể hiện doanh thu thuần từ hoạt động sản xuất kinh doanh của các loại hình doanh nghiệp tại Việt Nam, bao gồm cả doanh nghiệp nhà nước, ngoài nhà nước và có vốn đầu tư nước ngoài, theo từng năm từ 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "doanh-thu",
+      "doanh-nghiep",
+      "kinh-doanh",
+      "viet-nam",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:22:14.122Z",
+    "uploaded_by": "ninh",
+    "row_count": 130,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2a19803e-92c3-4817-9d40-809af0ce0f12/doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan",
     "title": "Doanh thu thuần sản xuất kinh doanh của doanh nghiệp theo tỉnh/thành phố và năm",
     "description": "Dataset thống kê doanh thu thuần từ hoạt động sản xuất kinh doanh của các doanh nghiệp đang hoạt động và có kết quả kinh doanh, được tổng hợp theo từng tỉnh/thành phố và khu vực kinh tế trên cả nước, từ năm 2010 đến 2023.",
