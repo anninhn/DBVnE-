@@ -1,5 +1,34 @@
 [
   {
+    "slug": "thu-nhap-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-5",
+    "title": "Thu nhập bình quân đầu người một tháng theo giá hiện hành",
+    "description": "Dataset thống kê thu nhập bình quân đầu người một tháng theo giá hiện hành của Việt Nam, phân loại theo khu vực (thành thị, nông thôn) và các vùng kinh tế-xã hội, từ năm 1999 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thu-nhap",
+      "binh-quan-dau-nguoi",
+      "kinh-te",
+      "dan-so",
+      "vung-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:47:30.269Z",
+    "uploaded_by": "ninh",
+    "row_count": 144,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "79f1840e-382a-4af4-a9d6-233263c212e9/thu-nhap-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-5.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "thu-nhap-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-4",
     "title": "Thu nhập bình quân đầu người một tháng theo giá hiện hành",
     "description": "Dataset này cung cấp thông tin về thu nhập bình quân đầu người một tháng theo giá hiện hành của Việt Nam, phân loại theo các nhóm dân cư (thành thị, nông thôn, giới tính chủ hộ) và vùng kinh tế-xã hội. Dữ liệu bao gồm tổng thu nhập và các nguồn thu nhập chính từ năm 2010 đến 2019.",
