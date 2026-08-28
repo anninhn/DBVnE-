@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-cho-nghien-cuu-va-phat-trien-khoa-hoc-cong-nghe",
+    "title": "Chi cho nghiên cứu và phát triển khoa học công nghệ",
+    "description": "Dữ liệu thống kê chi phí cho hoạt động nghiên cứu và phát triển khoa học công nghệ tại Việt Nam từ năm 2015 đến 2023, phân loại theo nguồn ngân sách, lĩnh vực nghiên cứu và khu vực hoạt động.",
+    "category": "kinh-te",
+    "tags": [
+      "khoa-hoc-cong-nghe",
+      "nghien-cuu-phat-trien",
+      "chi-tieu",
+      "ngan-sach"
+    ],
+    "uploaded_at": "2026-08-28T11:14:53.397Z",
+    "uploaded_by": "ninh",
+    "row_count": 80,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "97dfaeb2-5c74-4d89-867f-2e4a35e48402/chi-cho-nghien-cuu-va-phat-trien-khoa-hoc-cong-nghe.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
     "title": "Tỷ lệ thu ngân sách nhà nước so với tổng sản phẩm trong nước",
     "description": "Dataset thống kê tỷ lệ các khoản thu ngân sách nhà nước so với tổng sản phẩm trong nước (GDP) của Việt Nam theo từng loại thu, giai đoạn từ 2018 đến 2023.",
