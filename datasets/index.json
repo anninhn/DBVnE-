@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-san-pham-trong-nuoc-theo-gia-hien-hanh-phan-theo-loai-h",
+    "title": "Tổng sản phẩm trong nước (GDP) theo giá hiện hành phân theo loại hình kinh tế",
+    "description": "Bộ dữ liệu này cung cấp thông tin về Tổng sản phẩm trong nước (GDP) của Việt Nam theo giá hiện hành, được phân loại chi tiết theo các thành phần kinh tế và ngành kinh tế. Dữ liệu bao gồm các năm từ 2005 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "gdp",
+      "kinh-te",
+      "gia-hien-hanh",
+      "co-cau"
+    ],
+    "uploaded_at": "2026-08-28T11:09:06.322Z",
+    "uploaded_by": "ninh",
+    "row_count": 580,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "ee9adfbc-f25e-4b5a-b3be-4abc690a47ba/tong-san-pham-trong-nuoc-theo-gia-hien-hanh-phan-theo-loai-h.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "tong-san-pham-trong-nuoc-theo-gia-hien-hanh-phan-theo-khu-vu",
     "title": "Tổng sản phẩm trong nước (GDP) phân theo khu vực kinh tế theo giá hiện hành",
     "description": "Dữ liệu về Tổng sản phẩm trong nước (GDP) của Việt Nam, phân chia theo các khu vực kinh tế chính và tính theo giá hiện hành, giai đoạn từ năm 1986 đến 2024. Bao gồm cả giá trị tuyệt đối và cơ cấu phần trăm đóng góp.",
