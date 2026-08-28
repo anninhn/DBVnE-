@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the",
+    "title": "Tỷ lệ người dân biết kỹ năng công nghệ thông tin phân theo đặc điểm",
+    "description": "Dữ liệu thể hiện tỷ lệ phần trăm người dân biết các kỹ năng về công nghệ thông tin, được phân loại theo giới tính, khu vực sống và nhóm tuổi tại Việt Nam.",
+    "category": "xa-hoi",
+    "tags": [
+      "cong-nghe-thong-tin",
+      "ky-nang-so",
+      "dan-so",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:56:41.879Z",
+    "uploaded_by": "ninh",
+    "row_count": 25,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "0858d1de-52b2-424b-9802-f6e8f4492a2c/ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-khu-cong-nghiep-khu-che-xuat-da-di-vao-hoat-dong-co-nh",
     "title": "Tỷ lệ khu công nghiệp, khu chế xuất có nhà máy xử lý nước thải đạt chuẩn môi trường",
     "description": "Dữ liệu thống kê tổng số, số lượng và tỷ lệ các khu công nghiệp, khu chế xuất đã đi vào hoạt động có nhà máy xử lý nước thải tập trung đạt tiêu chuẩn môi trường tại Việt Nam, phân theo tỉnh/thành phố và các năm từ 2020 đến 2024.",
