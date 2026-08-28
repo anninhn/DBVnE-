@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-khoai-lang-phan-theo-dia-phuong",
+    "title": "Sản lượng khoai lang phân theo địa phương",
+    "description": "Dataset thống kê sản lượng khoai lang hàng năm của Việt Nam, phân chia theo các tỉnh, thành phố và vùng địa lý, từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "khoai-lang",
+      "nong-nghiep",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:51:40.941Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b5ea81db-1e55-428b-8b9e-42c94ccbd45a/san-luong-khoai-lang-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "san-luong-go-phan-theo-loai-hinh-kinh-te",
     "title": "Sản lượng gỗ phân theo loại hình kinh tế tại Việt Nam",
     "description": "Dataset thống kê sản lượng gỗ khai thác và chỉ số phát triển sản lượng theo năm, phân loại theo các loại hình kinh tế (nhà nước, ngoài nhà nước, FDI, v.v.) trên toàn quốc từ năm 2010 đến 2023.",
