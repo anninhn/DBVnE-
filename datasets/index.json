@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-co-so-kham-chua-benh-truc-thuoc-so-y-te-phan-theo-dia-phu",
+    "title": "Số cơ sở khám chữa bệnh trực thuộc Sở Y tế phân theo địa phương và loại hình",
+    "description": "Dataset thống kê số lượng các cơ sở khám chữa bệnh trực thuộc Sở Y tế, được phân loại theo địa phương (tỉnh/thành phố, vùng kinh tế) và loại hình cơ sở (bệnh viện, phòng khám, trạm y tế). Dữ liệu bao gồm giai đoạn từ năm 2005 đến 2010 trên phạm vi toàn quốc.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "benh-vien",
+      "phong-kham",
+      "tram-y-te",
+      "co-so-y-te"
+    ],
+    "uploaded_at": "2026-08-28T11:37:02.041Z",
+    "uploaded_by": "ninh",
+    "row_count": 426,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1f7330d5-c1b4-4d47-b2cc-5f472c01ff5b/so-co-so-kham-chua-benh-truc-thuoc-so-y-te-phan-theo-dia-phu.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-co-so-kham-chua-benh-phan-theo-loai-co-so-va-phan-theo-ca",
     "title": "Số cơ sở khám chữa bệnh phân theo loại và cơ quan quản lý tại Việt Nam",
     "description": "Dataset thống kê số lượng cơ sở khám chữa bệnh tại Việt Nam, phân loại theo loại hình cơ sở (bệnh viện, trạm y tế,...) và theo cơ quan quản lý (Bộ Y tế, Sở Y tế, các ngành khác) qua các năm từ 2010 đến 2017.",
