@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-lao-dong-tu-15-tuoi-tro-len-da-qua-dao-tao-phan-theo-n",
+    "title": "Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo phân theo nhóm tuổi và năm",
+    "description": "Dataset thống kê tỷ lệ phần trăm lực lượng lao động từ 15 tuổi trở lên đã qua đào tạo chuyên môn, kỹ thuật. Dữ liệu được phân loại theo các nhóm tuổi và thu thập hàng năm từ 2009 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "lao-dong",
+      "dao-tao",
+      "nhom-tuoi",
+      "ty-le",
+      "viec-lam"
+    ],
+    "uploaded_at": "2026-08-28T08:07:38.154Z",
+    "uploaded_by": "ninh",
+    "row_count": 144,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "81f75043-d24c-4159-99df-055fc7aa0f21/ty-le-lao-dong-tu-15-tuoi-tro-len-da-qua-dao-tao-phan-theo-n.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-lao-dong-tu-15-tuoi-tro-len-da-qua-dao-tao-phan-theo-d",
     "title": "Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo phân theo địa phương và năm",
     "description": "Dataset thống kê tỷ lệ phần trăm lao động từ 15 tuổi trở lên đã qua đào tạo chuyên môn, kỹ thuật tại Việt Nam. Dữ liệu được phân loại theo địa phương (bao gồm toàn quốc, các vùng và tỉnh/thành phố) và theo từng năm từ 2008 đến 2024.",
