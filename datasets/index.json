@@ -1,5 +1,34 @@
 [
   {
+    "slug": "von-dau-tu-thuc-hien-toan-xa-hoi-so-voi-tong-san-pham-trong",
+    "title": "Vốn đầu tư thực hiện toàn xã hội và hệ số ICOR",
+    "description": "Dữ liệu thống kê tỷ lệ vốn đầu tư thực hiện toàn xã hội so với Tổng sản phẩm trong nước (GDP) và hệ số ICOR của Việt Nam giai đoạn 2010-2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "dau-tu",
+      "gdp",
+      "icor",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:20:20.968Z",
+    "uploaded_by": "ninh",
+    "row_count": 15,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7b4805cb-d426-4335-acb1-c7be79a1559f/von-dau-tu-thuc-hien-toan-xa-hoi-so-voi-tong-san-pham-trong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "von-dau-tu-thuc-hien-toan-xa-hoi-phan-theo-loai-hinh-kinh-te",
     "title": "Vốn đầu tư thực hiện toàn xã hội phân theo loại hình kinh tế",
     "description": "Dữ liệu về vốn đầu tư thực hiện toàn xã hội của Việt Nam, được phân loại theo các thành phần kinh tế (Nhà nước, ngoài Nhà nước, FDI) qua các năm từ 2010 đến 2024. Bao gồm giá trị thực tế, giá so sánh, cơ cấu và chỉ số phát triển.",
