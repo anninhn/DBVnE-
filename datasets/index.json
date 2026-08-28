@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-2",
+    "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép phân theo đối tác đầu tư",
+    "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) được cấp phép tại Việt Nam, phân loại theo quốc gia hoặc vùng lãnh thổ của đối tác đầu tư.",
+    "category": "kinh-te",
+    "tags": [
+      "dau-tu-nuoc-ngoai",
+      "fdi",
+      "kinh-te",
+      "von-dau-tu",
+      "du-an"
+    ],
+    "uploaded_at": "2026-08-28T08:15:37.857Z",
+    "uploaded_by": "ninh",
+    "row_count": 65,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "43d85a5b-f78b-4afe-bdd4-199da842115a/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo",
     "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép phân theo tỉnh, thành phố",
     "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) đã được cấp giấy phép, phân loại theo từng tỉnh, thành phố và các vùng kinh tế trên cả nước.",
