@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-nghe-ngh",
+    "title": "Số lao động có việc làm trong nền kinh tế phân theo nghề nghiệp",
+    "description": "Số liệu về lao động có việc làm trong nền kinh tế Việt Nam, phân loại theo các nhóm nghề nghiệp chính, từ năm 2009 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "nghe-nghiep",
+      "dan-so"
+    ],
+    "uploaded_at": "2026-08-28T08:03:44.403Z",
+    "uploaded_by": "ninh",
+    "row_count": 176,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "107d6a7e-15c8-4c25-8c7e-3e82cfd0ba97/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-nghe-ngh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-loai-hin",
     "title": "Số lao động có việc làm trong nền kinh tế phân theo loại hình",
     "description": "Dataset thống kê số lượng và cơ cấu lao động có việc làm trong nền kinh tế Việt Nam, phân loại theo các thành phần kinh tế (Nhà nước, ngoài Nhà nước, FDI) qua các năm từ 2000 đến 2024.",
