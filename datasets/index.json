@@ -1,5 +1,33 @@
 [
   {
+    "slug": "lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan",
+    "title": "Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp",
+    "description": "Dữ liệu thống kê số lượng lao động trong các cơ sở kinh tế cá thể hoạt động trong lĩnh vực phi nông nghiệp, phân theo tỉnh/thành phố và vùng kinh tế trên cả nước, từ năm 2015 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "kinh-te-ca-the",
+      "phi-nong-nghiep",
+      "dan-so"
+    ],
+    "uploaded_at": "2026-08-28T08:23:41.402Z",
+    "uploaded_by": "ninh",
+    "row_count": 700,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "38ca4f58-cc16-4d64-901e-d53a0b53c8a9/lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "gia-tri-tai-san-co-dinh-va-dau-tu-tai-chinh-dai-han-cua-cac",
     "title": "Giá trị tài sản cố định và đầu tư tài chính dài hạn của doanh nghiệp",
     "description": "Dữ liệu thống kê giá trị tài sản cố định và các khoản đầu tư tài chính dài hạn của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm, được tổng hợp theo tỉnh/thành phố, vùng kinh tế và cả nước, từ năm 2010 đến 2023.",
