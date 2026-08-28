@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tri-gia-nhap-khau-hang-hoa-phan-theo-nganh-kinh-te",
+    "title": "Trị giá nhập khẩu hàng hóa phân theo ngành kinh tế",
+    "description": "Dữ liệu thống kê trị giá nhập khẩu hàng hóa của Việt Nam, phân loại theo các ngành kinh tế, từ năm 2010 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "nhap-khau",
+      "kinh-te",
+      "thuong-mai",
+      "nganh-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:04:37.059Z",
+    "uploaded_by": "ninh",
+    "row_count": 132,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2c773410-b142-401f-bc75-32d137622e47/tri-gia-nhap-khau-hang-hoa-phan-theo-nganh-kinh-te.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tri-gia-nhap-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-theo",
     "title": "Giá trị nhập khẩu hàng hóa phân theo khu vực kinh tế và loại hàng",
     "description": "Dữ liệu thống kê giá trị nhập khẩu hàng hóa của Việt Nam từ năm 1995 đến 2024, được phân loại theo khu vực kinh tế (trong nước, FDI) và theo nhóm hàng hóa (tư liệu sản xuất, hàng tiêu dùng, v.v.).",
