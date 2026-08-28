@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-so-san-xuat-cong-nghiep-phan-theo-nganh-cong-nghiep",
+    "title": "Chỉ số sản xuất công nghiệp phân theo ngành công nghiệp",
+    "description": "Dataset cung cấp chỉ số sản xuất công nghiệp (IPI) của Việt Nam, được phân loại theo các ngành công nghiệp chi tiết qua các năm từ 2012 đến 2024. Dữ liệu giúp theo dõi tốc độ tăng trưởng của từng ngành công nghiệp.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "cong-nghiep",
+      "chi-so-san-xuat",
+      "ipi"
+    ],
+    "uploaded_at": "2026-08-28T08:12:48.288Z",
+    "uploaded_by": "ninh",
+    "row_count": 468,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d7df900d-577c-4354-8ea3-8570e9ce8dce/chi-so-san-xuat-cong-nghiep-phan-theo-nganh-cong-nghiep.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "chi-so-san-xuat-cong-nghiep-phan-theo-dia-phuong",
     "title": "Chỉ số sản xuất công nghiệp phân theo địa phương và cả nước",
     "description": "Dataset cung cấp chỉ số sản xuất công nghiệp (IIP) hàng năm cho các tỉnh, thành phố, các vùng kinh tế và tổng hợp cả nước từ năm 2012 đến 2024.",
