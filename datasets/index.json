@@ -1,5 +1,37 @@
 [
   {
+    "slug": "so-nhan-luc-nganh-y-truc-thuoc-so-y-te-phan-theo-dia-phuong",
+    "title": "Số lượng nhân lực ngành y tế trực thuộc Sở Y tế phân theo địa phương và năm",
+    "description": "Dataset thống kê số lượng nhân lực ngành y tế (bao gồm bác sĩ, y sĩ, y tá, hộ sinh) trực thuộc Sở Y tế tại Việt Nam, phân theo từng địa phương và vùng kinh tế, từ năm 2002 đến 2009.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "nhan-luc",
+      "bac-si",
+      "y-si",
+      "y-ta",
+      "ho-sinh",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T11:41:22.203Z",
+    "uploaded_by": "ninh",
+    "row_count": 568,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8e4f2d18-2917-4721-8b58-578cbab3e33b/so-nhan-luc-nganh-y-truc-thuoc-so-y-te-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-nguoi-nhiem-hiv-aids-va-so-nguoi-chet-do-hiv-aids-phan-th",
     "title": "Số người nhiễm HIV/AIDS và tử vong do HIV/AIDS phân theo địa phương và năm",
     "description": "Dataset thống kê số liệu về tình hình nhiễm HIV, bệnh nhân AIDS mới phát hiện, số người nhiễm/bệnh nhân còn sống lũy kế, và số người tử vong do HIV/AIDS tại Việt Nam, phân theo địa phương và vùng, từ năm 2011 đến 2014.",
