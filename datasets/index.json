@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-4",
+    "title": "Đầu tư trực tiếp nước ngoài (FDI) phân theo ngành kinh tế",
+    "description": "Dữ liệu thống kê số dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) tại Việt Nam, phân loại theo các ngành kinh tế khác nhau.",
+    "category": "kinh-te",
+    "tags": [
+      "dau-tu-nuoc-ngoai",
+      "fdi",
+      "nganh-kinh-te",
+      "von-dau-tu"
+    ],
+    "uploaded_at": "2026-08-28T08:16:16.543Z",
+    "uploaded_by": "ninh",
+    "row_count": 19,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fcc876a9-9a3a-4ef7-a696-a990c77983c2/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-4.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-3",
     "title": "Đầu tư trực tiếp nước ngoài được cấp phép phân theo ngành kinh tế và năm",
     "description": "Dữ liệu thống kê số dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép tại Việt Nam, phân loại theo các ngành kinh tế và theo từng năm từ 2015 đến 2024.",
