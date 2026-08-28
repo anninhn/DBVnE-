@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-doanh-nghiep-dang-hoat-dong-tai-thoi-diem-31-12-hang-na-3",
+    "title": "Số doanh nghiệp đang hoạt động phân theo ngành kinh tế và năm",
+    "description": "Dữ liệu thống kê số lượng doanh nghiệp đang hoạt động tại Việt Nam vào thời điểm 31/12 hàng năm, phân loại theo các ngành kinh tế chính, từ năm 2017 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "doanh-nghiep",
+      "kinh-te",
+      "nganh",
+      "hoat-dong"
+    ],
+    "uploaded_at": "2026-08-28T09:44:49.590Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "21cdb9df-6688-42d3-bb17-989731b35114/so-doanh-nghiep-dang-hoat-dong-tai-thoi-diem-31-12-hang-na-3.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-doanh-nghiep-dang-hoat-dong-tai-thoi-diem-31-12-hang-na-2",
     "title": "Số doanh nghiệp đang hoạt động tại Việt Nam",
     "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động tại thời điểm 31/12 hàng năm, phân theo tỉnh/thành phố và các vùng kinh tế trên cả nước, từ năm 2017 đến 2024.",
