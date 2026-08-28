@@ -1,5 +1,34 @@
 [
   {
+    "slug": "hien-trang-rung-co-den-31-12-phan-theo-dia-phuong",
+    "title": "Hiện trạng rừng và tỷ lệ che phủ rừng phân theo địa phương",
+    "description": "Dữ liệu thống kê diện tích rừng (tổng diện tích, rừng tự nhiên, rừng trồng, mới trồng) và tỷ lệ che phủ rừng của Việt Nam, phân theo tỉnh/thành phố và vùng kinh tế, từ năm 2008 đến 2013.",
+    "category": "moi-truong",
+    "tags": [
+      "rung",
+      "moi-truong",
+      "lam-nghiep",
+      "dien-tich-rung",
+      "ty-le-che-phu"
+    ],
+    "uploaded_at": "2026-08-28T08:44:29.031Z",
+    "uploaded_by": "ninh",
+    "row_count": 402,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "01dfd59a-eb8a-4ca0-af66-104ed700d0ab/hien-trang-rung-co-den-31-12-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-thu-hoach-thuy-san-phan-theo-dia-phuong",
     "title": "Diện tích thu hoạch thủy sản phân theo địa phương",
     "description": "Dataset thống kê diện tích thu hoạch thủy sản theo từng tỉnh, thành phố và các vùng kinh tế trên cả nước, từ năm 1988 đến 2024. Dữ liệu bao gồm các cấp độ tổng hợp như 'CẢ NƯỚC' và các vùng.",
