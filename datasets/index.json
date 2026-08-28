@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tong-san-pham-trong-nuoc-theo-gia-hien-hanh-phan-theo-khu-vu",
+    "title": "Tổng sản phẩm trong nước (GDP) phân theo khu vực kinh tế theo giá hiện hành",
+    "description": "Dữ liệu về Tổng sản phẩm trong nước (GDP) của Việt Nam, phân chia theo các khu vực kinh tế chính và tính theo giá hiện hành, giai đoạn từ năm 1986 đến 2024. Bao gồm cả giá trị tuyệt đối và cơ cấu phần trăm đóng góp.",
+    "category": "kinh-te",
+    "tags": [
+      "gdp",
+      "kinh-te",
+      "khu-vuc-kinh-te",
+      "gia-hien-hanh",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T11:08:45.960Z",
+    "uploaded_by": "ninh",
+    "row_count": 195,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "34e6ff63-c794-4379-84d0-ac25053e0d1a/tong-san-pham-trong-nuoc-theo-gia-hien-hanh-phan-theo-khu-vu.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tong-san-pham-tren-dia-ban-binh-quan-dau-nguoi-phan-theo-dia",
     "title": "Tổng sản phẩm trên địa bàn bình quân đầu người phân theo tỉnh, thành phố và vùng kinh tế",
     "description": "Dataset này cung cấp dữ liệu về Tổng sản phẩm trên địa bàn (GRDP) bình quân đầu người cho các tỉnh, thành phố trực thuộc trung ương và các vùng kinh tế của Việt Nam, giai đoạn từ năm 2018 đến 2024.",
