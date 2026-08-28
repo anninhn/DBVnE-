@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-thu-hoach-thuy-san-phan-theo-dia-phuong",
+    "title": "Diện tích thu hoạch thủy sản phân theo địa phương",
+    "description": "Dataset thống kê diện tích thu hoạch thủy sản theo từng tỉnh, thành phố và các vùng kinh tế trên cả nước, từ năm 1988 đến 2024. Dữ liệu bao gồm các cấp độ tổng hợp như 'CẢ NƯỚC' và các vùng.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "dien-tich",
+      "nong-nghiep",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:44:09.790Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c1ec526c-28db-49bf-852f-fa2424f0166c/dien-tich-thu-hoach-thuy-san-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-thu-hoach-thuy-san",
     "title": "Diện tích nuôi trồng và thu hoạch thủy sản Việt Nam",
     "description": "Dataset thống kê diện tích nuôi trồng và thu hoạch thủy sản tại Việt Nam theo từng loại hình (tổng số, thủy sản biển, thủy sản nội địa) và theo năm, từ 2000 đến 2024. Dữ liệu bao gồm các loại hình nuôi cá, tôm và các loại thủy sản khác.",
