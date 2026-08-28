@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-the-2",
+    "title": "Vốn đầu tư thực hiện của khu vực kinh tế nhà nước phân theo nguồn vốn",
+    "description": "Dữ liệu về vốn đầu tư thực hiện của khu vực kinh tế nhà nước tại Việt Nam từ năm 2010 đến 2024, được phân loại theo các nguồn vốn chính. Bao gồm giá trị theo giá hiện hành, giá so sánh năm 2010, cơ cấu phần trăm và chỉ số phát triển.",
+    "category": "kinh-te",
+    "tags": [
+      "von-dau-tu",
+      "kinh-te-nha-nuoc",
+      "dau-tu-cong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:37:38.585Z",
+    "uploaded_by": "ninh",
+    "row_count": 45,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "66352efe-b0fb-4c08-aec6-528a81012485/von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-the-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-san-xay-dung-nha-tu-xay-tu-o-hoan-thanh-trong-na-2",
     "title": "Diện tích sàn xây dựng nhà tự xây, tự ở hoàn thành của hộ dân cư",
     "description": "Dataset thống kê diện tích sàn xây dựng nhà ở do hộ dân cư tự xây, tự ở đã hoàn thành trong năm, được phân loại theo các loại nhà khác nhau và theo từng năm từ 2010 đến 2023.",
