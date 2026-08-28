@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-ho-co-nha-o-phan-theo-loai-nha-theo-thanh-thi-nong-tho",
+    "title": "Tỷ lệ hộ có nhà ở phân theo loại nhà, thành thị/nông thôn và các phân tổ khác",
+    "description": "Dataset thống kê tỷ lệ hộ có nhà ở phân theo 4 loại hình (kiên cố, bán kiên cố, thiếu kiên cố, đơn sơ) tại Việt Nam từ năm 2014 đến 2024. Dữ liệu được phân loại theo cả nước, thành thị, nông thôn, các vùng kinh tế-xã hội và nhóm thu nhập.",
+    "category": "xa-hoi",
+    "tags": [
+      "nha-o",
+      "dan-cu",
+      "thanh-thi",
+      "nong-thon",
+      "loai-nha"
+    ],
+    "uploaded_at": "2026-08-28T11:52:59.891Z",
+    "uploaded_by": "ninh",
+    "row_count": 84,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6a9cffd8-37c4-44a2-9ac2-6120490b4e25/ty-le-ho-co-nha-o-phan-theo-loai-nha-theo-thanh-thi-nong-tho.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-co-may-tinh-phan-theo-thanh-thi-nong-thon-va-phan-t",
     "title": "Tỷ lệ hộ gia đình có máy tính phân theo khu vực và nhóm thu nhập",
     "description": "Dataset thống kê tỷ lệ hộ gia đình sở hữu máy tính tại Việt Nam, phân loại theo khu vực thành thị/nông thôn, các vùng kinh tế - xã hội và nhóm thu nhập, từ năm 2019 đến năm 2024 (số liệu sơ bộ).",
