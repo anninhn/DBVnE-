@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-ho-co-may-tinh-phan-theo-thanh-thi-nong-thon-va-phan-t",
+    "title": "Tỷ lệ hộ gia đình có máy tính phân theo khu vực và nhóm thu nhập",
+    "description": "Dataset thống kê tỷ lệ hộ gia đình sở hữu máy tính tại Việt Nam, phân loại theo khu vực thành thị/nông thôn, các vùng kinh tế - xã hội và nhóm thu nhập, từ năm 2019 đến năm 2024 (số liệu sơ bộ).",
+    "category": "xa-hoi",
+    "tags": [
+      "ho-gia-dinh",
+      "may-tinh",
+      "cong-nghe",
+      "phan-tram",
+      "khu-vuc",
+      "thu-nhap"
+    ],
+    "uploaded_at": "2026-08-28T11:52:40.959Z",
+    "uploaded_by": "ninh",
+    "row_count": 14,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "ceb0b20f-4414-450f-8e2a-40308bc52b73/ty-le-ho-co-may-tinh-phan-theo-thanh-thi-nong-thon-va-phan-t.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-co-may-tinh-phan-theo-dia-phuong",
     "title": "Tỷ lệ hộ gia đình có máy tính phân theo địa phương giai đoạn 2019-2024",
     "description": "Dữ liệu thể hiện tỷ lệ phần trăm hộ gia đình sở hữu máy tính tại 63 tỉnh/thành phố và tổng thể cả nước, từ năm 2019 đến năm 2024 (số liệu sơ bộ).",
