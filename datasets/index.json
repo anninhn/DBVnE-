@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-cac-thang-s",
+    "title": "Chỉ số giá tiêu dùng, giá vàng và đô la Mỹ hàng tháng",
+    "description": "Dataset cung cấp dữ liệu hàng tháng về chỉ số giá tiêu dùng (CPI) theo các nhóm hàng, chỉ số giá vàng và chỉ số giá đô la Mỹ, được tính so với cùng kỳ năm trước. Dữ liệu bao gồm giai đoạn từ năm 2010 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "cpi",
+      "gia-vang",
+      "usd",
+      "lam-phat",
+      "gia"
+    ],
+    "uploaded_at": "2026-08-28T10:07:29.913Z",
+    "uploaded_by": "ninh",
+    "row_count": 3420,
+    "file_count": 1,
+    "total_size_mb": 0.14,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e33bb16c-56a2-4583-98d2-9da597e80928/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-cac-thang-s.csv",
+        "size_mb": 0.14
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-chi-so-gia-vang-chi-so-gia-do-la-my-va",
     "title": "Chỉ số giá tiêu dùng, vàng, đô la Mỹ và lạm phát cơ bản bình quân năm",
     "description": "Dữ liệu thống kê các chỉ số giá tiêu dùng (CPI) theo nhóm hàng, chỉ số giá vàng, chỉ số giá đô la Mỹ và lạm phát cơ bản bình quân năm của Việt Nam từ năm 2000 đến 2024, so với năm trước đó (năm trước = 100).",
