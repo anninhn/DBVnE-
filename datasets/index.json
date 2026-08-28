@@ -1,5 +1,35 @@
 [
   {
+    "slug": "dien-tich-gieo-trong-lac-phan-theo-dia-phuong",
+    "title": "Diện tích gieo trồng lạc phân theo địa phương và năm",
+    "description": "Bộ dữ liệu thống kê diện tích gieo trồng cây lạc (đậu phộng) trên cả nước và từng tỉnh, thành phố từ năm 2018 đến 2024. Dữ liệu bao gồm cả tổng hợp cho toàn quốc và các vùng kinh tế.",
+    "category": "kinh-te",
+    "tags": [
+      "dien-tich",
+      "gieo-trong",
+      "lac",
+      "dau-phong",
+      "nong-nghiep",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T08:39:46.279Z",
+    "uploaded_by": "ninh",
+    "row_count": 469,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d2989666-9d0f-42ca-9608-c98590b978a7/dien-tich-gieo-trong-lac-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-gieo-trong-khoai-lang-phan-theo-dia-phuong",
     "title": "Diện tích gieo trồng khoai lang phân theo địa phương và năm",
     "description": "Dataset thống kê diện tích gieo trồng khoai lang tại Việt Nam, phân chia theo các tỉnh, thành phố và vùng kinh tế, từ năm 1995 đến 2024.",
