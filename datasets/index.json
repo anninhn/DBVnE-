@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-theo",
+    "title": "Chi tiêu bình quân của khách du lịch nội địa theo tiêu chí phân loại và năm",
+    "description": "Dữ liệu thống kê chi tiêu bình quân của một lượt khách du lịch nội địa tại Việt Nam, được phân loại theo các tiêu chí như giới tính và nghề nghiệp, qua các năm từ 2019 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "chi-tieu",
+      "noi-dia",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:13:24.374Z",
+    "uploaded_by": "ninh",
+    "row_count": 92,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "491116b2-f4c7-4cc1-9104-4ec0a1e23b73/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-theo.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-gia-thuong-mai-hang-hoa-nam-truoc-100",
     "title": "Tỷ giá thương mại hàng hóa theo nhóm hàng và năm",
     "description": "Dataset thống kê tỷ giá thương mại hàng hóa của Việt Nam theo các nhóm hàng cụ thể và tổng thể, được tính theo chỉ số so với năm trước (năm trước = 100%). Dữ liệu bao gồm giai đoạn từ năm 2011 đến 2024.",
