@@ -1,5 +1,33 @@
 [
   {
+    "slug": "luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-dia-phuong",
+    "title": "Lực lượng lao động từ 15 tuổi trở lên phân theo địa phương",
+    "description": "Dataset thống kê lực lượng lao động từ 15 tuổi trở lên của Việt Nam, phân theo các địa phương (tỉnh, thành phố, vùng kinh tế) và toàn quốc. Dữ liệu bao gồm giai đoạn từ năm 2005 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "dan-so",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:00:55.486Z",
+    "uploaded_by": "ninh",
+    "row_count": 1349,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c50de2e2-6ad4-42d0-975a-6a379a689ea0/luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-dia-phuong.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua-2",
     "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của Việt Nam",
     "description": "Dữ liệu thống kê về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số Việt Nam, phân loại theo tổng số, thành thị và nông thôn, từ năm 2001 đến 2024.",
