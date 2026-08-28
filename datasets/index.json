@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-trinh",
+    "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo trình độ chuyên môn kỹ thuật",
+    "description": "Dataset thống kê tỷ lệ thiếu việc làm của người lao động trong độ tuổi, phân loại theo trình độ chuyên môn kỹ thuật, từ năm 2018 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "thieu-viec-lam",
+      "trinh-do"
+    ],
+    "uploaded_at": "2026-08-28T08:11:14.046Z",
+    "uploaded_by": "ninh",
+    "row_count": 42,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c1a2d62f-f7a9-4d3a-9568-382918f0977c/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-trinh.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-nhom-t",
     "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo nhóm tuổi",
     "description": "Dữ liệu thống kê tỷ lệ thiếu việc làm của dân số trong độ tuổi lao động, được phân loại theo các nhóm tuổi khác nhau, từ năm 2018 đến 2024.",
