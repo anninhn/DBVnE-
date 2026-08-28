@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-so-gia-vang-phan-theo-vung-cac-thang-so-voi-thang-truoc",
+    "title": "Chỉ số giá vàng phân theo vùng và tháng so với tháng trước",
+    "description": "Dataset cung cấp chỉ số giá vàng hàng tháng của Việt Nam, phân loại theo các vùng địa lý và chỉ số chung, trong giai đoạn từ năm 2022 đến 2023. Chỉ số này thể hiện mức độ biến động giá vàng của tháng hiện tại so với tháng trước đó.",
+    "category": "kinh-te",
+    "tags": [
+      "gia-vang",
+      "chi-so",
+      "kinh-te",
+      "vung"
+    ],
+    "uploaded_at": "2026-08-28T10:11:54.908Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "0ea33970-7d87-4756-be1a-107b5ff34d6d/chi-so-gia-vang-phan-theo-vung-cac-thang-so-voi-thang-truoc.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-phan-theo-vung-cac-thang-so-voi-thang-t",
     "title": "Chỉ số giá tiêu dùng (CPI) phân theo vùng và tháng",
     "description": "Bộ dữ liệu cung cấp chỉ số giá tiêu dùng (CPI) hàng tháng cho các vùng kinh tế - xã hội của Việt Nam trong giai đoạn 2022-2023. Dữ liệu bao gồm chỉ số chung cho cả nước và chỉ số riêng cho 6 vùng địa lý.",
