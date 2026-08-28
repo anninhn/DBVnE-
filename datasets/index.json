@@ -1,5 +1,35 @@
 [
   {
+    "slug": "bang-can-doi-nang-luong-viet-nam",
+    "title": "Bảng cân đối năng lượng Việt Nam",
+    "description": "Dataset cung cấp dữ liệu về cân đối năng lượng của Việt Nam từ năm 2018 đến 2021, bao gồm các nguồn cung cấp và các loại năng lượng khác nhau.",
+    "category": "kinh-te",
+    "tags": [
+      "nang-luong",
+      "kinh-te",
+      "than",
+      "dau-khi",
+      "dien",
+      "can-doi-nang-luong"
+    ],
+    "uploaded_at": "2026-08-28T08:12:09.865Z",
+    "uploaded_by": "ninh",
+    "row_count": 960,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "daa590e1-1e8c-4341-9b90-34f9b3b1dcae/bang-can-doi-nang-luong-viet-nam.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v-2",
     "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo vùng và thành thị, nông thôn",
     "description": "Dataset thống kê tỷ lệ thiếu việc làm của dân số trong độ tuổi lao động, được phân loại theo khu vực thành thị, nông thôn và các vùng địa lý của Việt Nam, từ năm 2010 đến 2024.",
