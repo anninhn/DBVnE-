@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-luong-bo-phan-theo-dia-phuong",
+    "title": "Số lượng bò phân theo địa phương và năm",
+    "description": "Dataset thống kê số lượng bò (nghìn con) của Việt Nam, bao gồm dữ liệu cho Cả nước, các vùng kinh tế và các tỉnh, thành phố trực thuộc trung ương, từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "chan-nuoi",
+      "bo",
+      "nong-nghiep",
+      "dia-phuong",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T09:59:20.705Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b646a563-ff3b-492d-acbd-130b93db4b8a/so-luong-bo-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "san-luong-tom-nuoi-phan-theo-dia-phuong",
     "title": "Sản lượng tôm nuôi phân theo địa phương và năm",
     "description": "Dataset thống kê sản lượng tôm nuôi hàng năm của các tỉnh, thành phố và vùng kinh tế trên cả nước Việt Nam, từ năm 1995 đến 2024.",
