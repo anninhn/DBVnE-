@@ -1,5 +1,33 @@
 [
   {
+    "slug": "muc-tieu-dung-mot-so-mat-hang-chu-yeu-binh-quan-dau-nguoi-2",
+    "title": "Mức tiêu dùng bình quân đầu người một số mặt hàng chủ yếu theo tháng",
+    "description": "Dataset thống kê mức tiêu dùng bình quân đầu người hàng tháng của một số mặt hàng thiết yếu như gạo, thịt, cá, trứng, đồ uống... tại Việt Nam, giai đoạn từ năm 2002 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "tieu-dung",
+      "binh-quan-dau-nguoi",
+      "mat-hang",
+      "thuc-pham"
+    ],
+    "uploaded_at": "2026-08-28T11:34:29.894Z",
+    "uploaded_by": "ninh",
+    "row_count": 192,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9b0b11d9-d90c-403a-b6c7-0bc8ca2e7990/muc-tieu-dung-mot-so-mat-hang-chu-yeu-binh-quan-dau-nguoi-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "muc-tieu-dung-mot-so-mat-hang-chu-yeu-binh-quan-dau-nguoi-mo",
     "title": "Mức tiêu dùng bình quân đầu người một số mặt hàng chủ yếu tại Việt Nam",
     "description": "Dữ liệu thống kê mức tiêu dùng bình quân đầu người của các mặt hàng thiết yếu tại Việt Nam từ năm 2010 đến 2018, được phân loại theo các nhóm đối tượng khác nhau (Nhóm 1-5) và bình quân chung.",
