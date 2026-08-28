@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-dau-tu-thuc-hien-toan-xa-hoi-phan-theo-loai-hinh-kinh-te",
+    "title": "Vốn đầu tư thực hiện toàn xã hội phân theo loại hình kinh tế",
+    "description": "Dữ liệu về vốn đầu tư thực hiện toàn xã hội của Việt Nam, được phân loại theo các thành phần kinh tế (Nhà nước, ngoài Nhà nước, FDI) qua các năm từ 2010 đến 2024. Bao gồm giá trị thực tế, giá so sánh, cơ cấu và chỉ số phát triển.",
+    "category": "kinh-te",
+    "tags": [
+      "von-dau-tu",
+      "dau-tu-xa-hoi",
+      "thanh-phan-kinh-te",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:20:03.624Z",
+    "uploaded_by": "ninh",
+    "row_count": 60,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "82fdbbfc-f59b-4775-b842-9512186c1033/von-dau-tu-thuc-hien-toan-xa-hoi-phan-theo-loai-hinh-kinh-te.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-theo-gia-s",
     "title": "Vốn đầu tư thực hiện của khu vực kinh tế Nhà nước theo ngành kinh tế",
     "description": "Dataset thống kê vốn đầu tư thực hiện của khu vực kinh tế Nhà nước, phân loại theo các ngành kinh tế, từ năm 2010 đến 2024.",
