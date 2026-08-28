@@ -1,5 +1,33 @@
 [
   {
+    "slug": "muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac-phan-theo",
+    "title": "Mức nước biển trung bình tại các trạm quan trắc ven biển Việt Nam",
+    "description": "Dữ liệu thống kê mức nước biển trung bình hàng tháng tại 16 trạm quan trắc ven biển Việt Nam, từ năm 2014 đến năm 2024.",
+    "category": "khi-hau",
+    "tags": [
+      "muc-nuoc-bien",
+      "bien-doi-khi-hau",
+      "quan-trac",
+      "moi-truong"
+    ],
+    "uploaded_at": "2026-08-28T12:04:05.153Z",
+    "uploaded_by": "ninh",
+    "row_count": 2112,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f0aade7d-eeff-493e-acfd-3aea5042c60f/muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac-phan-theo.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac",
     "title": "Mực nước biển trung bình tại các trạm quan trắc ven biển Việt Nam",
     "description": "Dataset thống kê mực nước biển trung bình hàng năm tại 16 trạm quan trắc ven biển Việt Nam, từ năm 2013 đến 2024.",
