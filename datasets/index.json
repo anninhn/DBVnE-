@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-di-tich-lich-su-van-hoa-danh-lam-thang-canh",
+    "title": "Số lượng di tích lịch sử, văn hóa và danh lam thắng cảnh tại Việt Nam",
+    "description": "Dataset thống kê số lượng các loại hình di tích lịch sử, văn hóa và danh lam thắng cảnh được công nhận (quốc gia, quốc gia đặc biệt, UNESCO) theo từng năm từ 2018 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "di-tich",
+      "van-hoa",
+      "lich-su",
+      "du-lich",
+      "danh-lam-thang-canh"
+    ],
+    "uploaded_at": "2026-08-28T11:37:52.426Z",
+    "uploaded_by": "ninh",
+    "row_count": 126,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1c165477-2cfc-4db4-b978-764e7834fa55/so-di-tich-lich-su-van-hoa-danh-lam-thang-canh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-di-san-van-hoa-cap-quoc-gia-phan-theo-dia-phuong",
     "title": "Số di sản văn hóa cấp quốc gia phân theo địa phương",
     "description": "Dataset thống kê số lượng di sản văn hóa cấp quốc gia, phân loại theo các đơn vị địa lý như quốc gia, vùng, tỉnh/thành phố. Dữ liệu có thể liên quan đến năm 2023.",
