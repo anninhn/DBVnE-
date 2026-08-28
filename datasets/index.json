@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh",
+    "title": "Vốn sản xuất kinh doanh bình quân hàng năm của doanh nghiệp theo tỉnh/thành phố",
+    "description": "Dataset này cung cấp thông tin về vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo tỉnh/thành phố và vùng kinh tế của Việt Nam, từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "von",
+      "san-xuat-kinh-doanh"
+    ],
+    "uploaded_at": "2026-08-28T08:37:49.211Z",
+    "uploaded_by": "ninh",
+    "row_count": 710,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a99965bf-bc06-436d-b056-0ccbc0a9bcc5/von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-3",
     "title": "Tỷ suất lợi nhuận của doanh nghiệp theo ngành kinh tế và năm",
     "description": "Dữ liệu thống kê tỷ suất lợi nhuận của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo các ngành kinh tế và theo năm từ 2010 đến 2023.",
