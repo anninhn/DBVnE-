@@ -1,5 +1,34 @@
 [
   {
+    "slug": "nang-suat-ngo-phan-theo-dia-phuong",
+    "title": "Năng suất ngô phân theo địa phương và năm",
+    "description": "Dataset này cung cấp dữ liệu về năng suất ngô của Việt Nam, được phân loại theo các tỉnh, thành phố, vùng kinh tế và tổng thể cả nước, từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "nong-nghiep",
+      "nang-suat",
+      "ngo",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:49:29.462Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "386e9695-f625-47c1-819a-e59d4cf27342/nang-suat-ngo-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-n-3",
     "title": "Vốn sản xuất kinh doanh bình quân hàng năm của doanh nghiệp theo ngành kinh tế",
     "description": "Dataset thống kê vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo các ngành kinh tế từ năm 2010 đến 2023.",
