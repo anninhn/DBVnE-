@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-nguoi-tham-gia-bao-hiem-y-te-phan-theo-dia-phuong",
+    "title": "Tỷ lệ người tham gia bảo hiểm y tế phân theo địa phương",
+    "description": "Dataset thống kê tỷ lệ người dân tham gia bảo hiểm y tế của Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 2015 đến 2024.",
+    "category": "y-te",
+    "tags": [
+      "bao-hiem-y-te",
+      "y-te",
+      "dan-so",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:14:18.605Z",
+    "uploaded_by": "ninh",
+    "row_count": 700,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "71b0d88f-f7a9-4c21-b2ac-d353a002bb74/ty-le-nguoi-tham-gia-bao-hiem-y-te-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-tham-gia-bao-hiem-xa-hoi-phan-theo-dia-phuong",
     "title": "Tỷ lệ người tham gia bảo hiểm xã hội phân theo địa phương",
     "description": "Dataset thống kê tỷ lệ phần trăm người dân tham gia bảo hiểm xã hội tại Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, cũng như số liệu tổng hợp cho cả nước. Dữ liệu được thu thập hàng năm từ 2015 đến 2024.",
