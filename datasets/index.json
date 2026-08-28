@@ -1,5 +1,33 @@
 [
   {
+    "slug": "doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan",
+    "title": "Doanh thu thuần sản xuất kinh doanh của doanh nghiệp theo tỉnh/thành phố và năm",
+    "description": "Dataset thống kê doanh thu thuần từ hoạt động sản xuất kinh doanh của các doanh nghiệp đang hoạt động và có kết quả kinh doanh, được tổng hợp theo từng tỉnh/thành phố và khu vực kinh tế trên cả nước, từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "doanh-thu",
+      "tinh-thanh"
+    ],
+    "uploaded_at": "2026-08-28T08:21:56.826Z",
+    "uploaded_by": "ninh",
+    "row_count": 710,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4aa5dd0a-67d9-4ca8-920e-e20697133769/doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "doanh-thu-thuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-s",
     "title": "Doanh thu thuần của doanh nghiệp theo trình độ công nghệ",
     "description": "Dữ liệu thống kê doanh thu thuần và cơ cấu doanh thu thuần của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo trình độ công nghệ (cao, trung bình, thấp và tổng số) từ năm 2010 đến 2023.",
