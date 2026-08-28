@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-di-san-van-hoa-cap-quoc-gia-phan-theo-dia-phuong",
+    "title": "Số di sản văn hóa cấp quốc gia phân theo địa phương",
+    "description": "Dataset thống kê số lượng di sản văn hóa cấp quốc gia, phân loại theo các đơn vị địa lý như quốc gia, vùng, tỉnh/thành phố. Dữ liệu có thể liên quan đến năm 2023.",
+    "category": "xa-hoi",
+    "tags": [
+      "di-san-van-hoa",
+      "van-hoa",
+      "dia-phuong",
+      "quoc-gia"
+    ],
+    "uploaded_at": "2026-08-28T11:37:27.999Z",
+    "uploaded_by": "ninh",
+    "row_count": 980,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "632f300d-3de8-4e8b-993c-d6d6a170cb36/so-di-san-van-hoa-cap-quoc-gia-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-co-so-kham-chua-benh-truc-thuoc-so-y-te-phan-theo-dia-phu",
     "title": "Số cơ sở khám chữa bệnh trực thuộc Sở Y tế phân theo địa phương và loại hình",
     "description": "Dataset thống kê số lượng các cơ sở khám chữa bệnh trực thuộc Sở Y tế, được phân loại theo địa phương (tỉnh/thành phố, vùng kinh tế) và loại hình cơ sở (bệnh viện, phòng khám, trạm y tế). Dữ liệu bao gồm giai đoạn từ năm 2005 đến 2010 trên phạm vi toàn quốc.",
