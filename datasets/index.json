@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-ho-co-do-dung-lau-ben-phan-theo-thanh-thi-nong-thon-th",
+    "title": "Tỷ lệ hộ gia đình có đồ dùng lâu bền phân theo khu vực và nhóm thu nhập",
+    "description": "Dataset thống kê tỷ lệ hộ gia đình sở hữu các đồ dùng lâu bền tại Việt Nam, được phân loại theo các tiêu chí như toàn quốc, thành thị, nông thôn, các vùng kinh tế-xã hội và các nhóm thu nhập, trong giai đoạn từ năm 2002 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "ty-le-ho-gia-dinh",
+      "do-dung-lau-ben",
+      "muc-song",
+      "xa-hoi",
+      "thanh-thi-nong-thon"
+    ],
+    "uploaded_at": "2026-08-28T11:51:59.553Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "02f1da36-9f1a-4312-8593-3c4757b7dc4e/ty-le-ho-co-do-dung-lau-ben-phan-theo-thanh-thi-nong-thon-th.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-dan-so-duoc-su-dung-nguon-nuoc-hop-ve-sinh-phan-theo-d",
     "title": "Tỷ lệ dân số sử dụng nguồn nước hợp vệ sinh phân theo địa phương và năm",
     "description": "Dataset thống kê tỷ lệ phần trăm dân số được sử dụng nguồn nước hợp vệ sinh tại Việt Nam, phân theo các địa phương (tỉnh/thành phố, vùng kinh tế) và cấp quốc gia. Dữ liệu được thu thập từ năm 2018 đến 2024.",
