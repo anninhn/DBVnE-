@@ -1,5 +1,34 @@
 [
   {
+    "slug": "gia-tri-tai-san-co-dinh-va-dau-tu-tai-chinh-dai-han-cua-cac",
+    "title": "Giá trị tài sản cố định và đầu tư tài chính dài hạn của doanh nghiệp",
+    "description": "Dữ liệu thống kê giá trị tài sản cố định và các khoản đầu tư tài chính dài hạn của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm, được tổng hợp theo tỉnh/thành phố, vùng kinh tế và cả nước, từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "tai-san",
+      "dau-tu",
+      "tai-chinh"
+    ],
+    "uploaded_at": "2026-08-28T08:23:02.895Z",
+    "uploaded_by": "ninh",
+    "row_count": 710,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "ad084eea-1bdd-4211-9d8a-6f196e1c20f7/gia-tri-tai-san-co-dinh-va-dau-tu-tai-chinh-dai-han-cua-cac.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "gia-tri-tscd-va-dau-tu-dai-han-cua-doanh-nghiep-dang-hoat-do",
     "title": "Giá trị tài sản cố định và đầu tư dài hạn của doanh nghiệp theo trình độ công nghệ",
     "description": "Dataset thống kê giá trị tài sản cố định và đầu tư dài hạn của các doanh nghiệp đang hoạt động tại Việt Nam, phân loại theo trình độ công nghệ (cao, trung bình, thấp) và tổng số, từ năm 2010 đến 2023.",
