@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-so-voi-cung",
+    "title": "Chỉ số giá tiêu dùng khu vực nông thôn Việt Nam các tháng so với cùng kỳ",
+    "description": "Dữ liệu về chỉ số giá tiêu dùng (CPI) tại khu vực nông thôn Việt Nam, được phân loại theo các nhóm hàng hóa và dịch vụ. Chỉ số này so sánh giá của từng tháng với cùng tháng của năm trước, trong giai đoạn 2022-2023.",
+    "category": "kinh-te",
+    "tags": [
+      "cpi",
+      "chi-so-gia-tieu-dung",
+      "nong-thon",
+      "gia-ca",
+      "lam-phat",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T10:10:28.906Z",
+    "uploaded_by": "ninh",
+    "row_count": 408,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "ee82286b-44e6-46e7-82ce-d534fe1c2803/chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-so-voi-cung.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-thang-12-so",
     "title": "Chỉ số giá tiêu dùng, giá vàng và đô la Mỹ tháng 12 hàng năm",
     "description": "Dữ liệu tổng hợp chỉ số giá tiêu dùng (CPI) theo các nhóm hàng hóa, dịch vụ, cùng với chỉ số giá vàng và đô la Mỹ, được tính vào tháng 12 hàng năm so với cùng kỳ năm trước. Dữ liệu bao gồm giai đoạn từ năm 2005 đến 2024.",
