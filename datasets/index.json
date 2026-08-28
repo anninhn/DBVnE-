@@ -1,5 +1,35 @@
 [
   {
+    "slug": "giao-duc-dai-hoc-va-cao-dang",
+    "title": "Chỉ số phát triển giáo dục đại học và cao đẳng Việt Nam",
+    "description": "Dataset thống kê các chỉ số phát triển về trường học, giảng viên và sinh viên trong hệ thống giáo dục đại học và cao đẳng tại Việt Nam từ năm 1995 đến 2023, bao gồm tổng số và chỉ số tăng trưởng so với năm trước.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "dai-hoc",
+      "cao-dang",
+      "sinh-vien",
+      "giang-vien",
+      "truong-hoc"
+    ],
+    "uploaded_at": "2026-08-28T11:15:12.881Z",
+    "uploaded_by": "ninh",
+    "row_count": 580,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4912da56-8801-425d-9df7-35d6cbbd7907/giao-duc-dai-hoc-va-cao-dang.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "chi-cho-nghien-cuu-va-phat-trien-khoa-hoc-cong-nghe",
     "title": "Chi cho nghiên cứu và phát triển khoa học công nghệ",
     "description": "Dữ liệu thống kê chi phí cho hoạt động nghiên cứu và phát triển khoa học công nghệ tại Việt Nam từ năm 2015 đến 2023, phân loại theo nguồn ngân sách, lĩnh vực nghiên cứu và khu vực hoạt động.",
