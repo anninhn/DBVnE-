@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-lac-phan-theo-dia-phuong",
+    "title": "Sản lượng lạc phân theo địa phương và năm",
+    "description": "Dataset thống kê tổng sản lượng lạc thu hoạch được hàng năm của Việt Nam, phân chia theo từng tỉnh, thành phố và các vùng kinh tế, trong giai đoạn từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "lac",
+      "nong-nghiep",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:52:04.616Z",
+    "uploaded_by": "ninh",
+    "row_count": 469,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b62119e3-821f-41b5-993c-db059e2eab9f/san-luong-lac-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "san-luong-khoai-lang-phan-theo-dia-phuong",
     "title": "Sản lượng khoai lang phân theo địa phương",
     "description": "Dataset thống kê sản lượng khoai lang hàng năm của Việt Nam, phân chia theo các tỉnh, thành phố và vùng địa lý, từ năm 1995 đến 2024.",
