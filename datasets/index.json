@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-nghe-ngh",
+    "title": "Tỷ lệ lao động có việc làm phi chính thức phân theo nghề nghiệp",
+    "description": "Dataset thống kê tỷ lệ lao động có việc làm phi chính thức tại Việt Nam, phân loại theo các nhóm nghề nghiệp chính, từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "phi-chinh-thuc",
+      "nghe-nghiep"
+    ],
+    "uploaded_at": "2026-08-28T08:05:49.530Z",
+    "uploaded_by": "ninh",
+    "row_count": 77,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b21f33a2-6704-4cba-bfaf-bcaa78e60ca6/ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-nghe-ngh.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-khu-vuc",
     "title": "Tỷ lệ lao động có việc làm phi chính thức phân theo khu vực kinh tế",
     "description": "Dataset thống kê tỷ lệ lao động có việc làm phi chính thức tại Việt Nam, phân loại theo các khu vực kinh tế chính (nông, lâm nghiệp và thủy sản; công nghiệp - xây dựng; dịch vụ) và tổng số, từ năm 2013 đến 2024.",
