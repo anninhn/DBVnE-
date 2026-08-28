@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-dia-phuo",
+    "title": "Số lao động có việc làm trong nền kinh tế phân theo địa phương",
+    "description": "Bộ dữ liệu thống kê số lượng lao động có việc làm trong nền kinh tế Việt Nam, phân loại theo tỉnh/thành phố và vùng kinh tế - xã hội, từ năm 2018 đến 2024. Dữ liệu bao gồm cả tổng số liệu toàn quốc.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "kinh-te",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T08:02:31.321Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "bd0c57a7-c85a-427a-bebf-5cd5ffd7a57c/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-dia-phuo.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "nang-suat-lao-dong-xa-hoi-phan-theo-nganh-kinh-te",
     "title": "Năng suất lao động xã hội phân theo ngành kinh tế",
     "description": "Dataset thống kê năng suất lao động xã hội của Việt Nam, phân loại theo các ngành kinh tế chính, trong giai đoạn từ năm 2005 đến năm 2024. Dữ liệu bao gồm tổng số và chi tiết cho 20 ngành kinh tế khác nhau.",
