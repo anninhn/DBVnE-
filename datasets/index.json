@@ -1,5 +1,33 @@
 [
   {
+    "slug": "nang-suat-lao-dong-xa-hoi-phan-theo-nganh-kinh-te",
+    "title": "Năng suất lao động xã hội phân theo ngành kinh tế",
+    "description": "Dataset thống kê năng suất lao động xã hội của Việt Nam, phân loại theo các ngành kinh tế chính, trong giai đoạn từ năm 2005 đến năm 2024. Dữ liệu bao gồm tổng số và chi tiết cho 20 ngành kinh tế khác nhau.",
+    "category": "kinh-te",
+    "tags": [
+      "nang-suat-lao-dong",
+      "kinh-te",
+      "nganh-kinh-te",
+      "lao-dong"
+    ],
+    "uploaded_at": "2026-08-28T08:02:11.515Z",
+    "uploaded_by": "ninh",
+    "row_count": 399,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c89d7a0e-2dec-4b30-b5aa-98ac9efc1e45/nang-suat-lao-dong-xa-hoi-phan-theo-nganh-kinh-te.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "nang-suat-lao-dong-phan-theo-dia-phuong",
     "title": "Năng suất lao động phân theo địa phương",
     "description": "Dataset thống kê năng suất lao động của Việt Nam, bao gồm số liệu cho cả nước, các vùng kinh tế và từng tỉnh, thành phố trực thuộc trung ương trong giai đoạn từ năm 2018 đến 2024.",
