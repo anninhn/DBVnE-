@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-ho-co-may-tinh-phan-theo-dia-phuong",
+    "title": "Tỷ lệ hộ gia đình có máy tính phân theo địa phương giai đoạn 2019-2024",
+    "description": "Dữ liệu thể hiện tỷ lệ phần trăm hộ gia đình sở hữu máy tính tại 63 tỉnh/thành phố và tổng thể cả nước, từ năm 2019 đến năm 2024 (số liệu sơ bộ).",
+    "category": "xa-hoi",
+    "tags": [
+      "may-tinh",
+      "ho-gia-dinh",
+      "cong-nghe",
+      "dia-phuong",
+      "ty-le",
+      "thong-tin-truyen-thong"
+    ],
+    "uploaded_at": "2026-08-28T11:52:21.166Z",
+    "uploaded_by": "ninh",
+    "row_count": 64,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "24b6515e-ee47-47a2-addb-d92850d58722/ty-le-ho-co-may-tinh-phan-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-co-do-dung-lau-ben-phan-theo-thanh-thi-nong-thon-th",
     "title": "Tỷ lệ hộ gia đình có đồ dùng lâu bền phân theo khu vực và nhóm thu nhập",
     "description": "Dataset thống kê tỷ lệ hộ gia đình sở hữu các đồ dùng lâu bền tại Việt Nam, được phân loại theo các tiêu chí như toàn quốc, thành thị, nông thôn, các vùng kinh tế-xã hội và các nhóm thu nhập, trong giai đoạn từ năm 2002 đến 2024.",
