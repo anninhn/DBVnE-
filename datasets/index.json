@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-doanh-nghiep-dang-ky-thanh-lap-moi-phan-theo-nganh-kinh-t",
+    "title": "Số doanh nghiệp đăng ký thành lập mới phân theo ngành kinh tế",
+    "description": "Dataset thống kê số lượng doanh nghiệp đăng ký thành lập mới tại Việt Nam, được phân loại theo các ngành kinh tế khác nhau, trong giai đoạn từ năm 2016 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "doanh-nghiep",
+      "kinh-te",
+      "thanh-lap-moi",
+      "nganh-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:31:28.065Z",
+    "uploaded_by": "ninh",
+    "row_count": 189,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6f0d1a60-865b-4d90-be2e-6e7fc27f8ad5/so-doanh-nghiep-dang-ky-thanh-lap-moi-phan-theo-nganh-kinh-t.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-doanh-nghiep-dang-ky-thanh-lap-moi-phan-theo-dia-phuong",
     "title": "Số doanh nghiệp đăng ký thành lập mới phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng doanh nghiệp đăng ký thành lập mới tại Việt Nam, phân theo tỉnh/thành phố và vùng kinh tế, từ năm 2016 đến 2024.",
