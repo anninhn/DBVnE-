@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-t-3",
+    "title": "Số liệu trường học, lớp học, giáo viên và học sinh mẫu giáo theo năm học và loại hình",
+    "description": "Bộ dữ liệu thống kê về số lượng trường học, lớp học, giáo viên và học sinh ở cấp mẫu giáo, cùng với các chỉ số bình quân, được phân loại theo năm học và loại hình công lập/ngoài công lập.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "mam-non",
+      "mau-giao",
+      "truong-hoc",
+      "hoc-sinh",
+      "giao-vien"
+    ],
+    "uploaded_at": "2026-08-28T11:23:57.123Z",
+    "uploaded_by": "ninh",
+    "row_count": 36,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f64615fe-5e01-4c1a-ac6f-19840f351bf4/so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-t-3.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-t-2",
     "title": "Thống kê giáo dục mầm non theo địa phương và năm (2002-2007)",
     "description": "Dataset này cung cấp số liệu về trường học, lớp học, giáo viên và học sinh mẫu giáo tại các địa phương trên toàn quốc Việt Nam, được thống kê vào thời điểm 30/9 hàng năm từ 2002 đến 2007.",
