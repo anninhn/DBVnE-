@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-theo-gia-h",
+    "title": "Vốn đầu tư thực hiện của khu vực kinh tế Nhà nước theo ngành kinh tế",
+    "description": "Dữ liệu thống kê vốn đầu tư thực hiện của khu vực kinh tế Nhà nước tại Việt Nam, phân loại theo các ngành kinh tế từ năm 2010 đến năm 2024. Các giá trị được tính theo giá hiện hành.",
+    "category": "kinh-te",
+    "tags": [
+      "von-dau-tu",
+      "kinh-te-nha-nuoc",
+      "dau-tu-cong",
+      "ngan-sach"
+    ],
+    "uploaded_at": "2026-08-28T08:19:27.092Z",
+    "uploaded_by": "ninh",
+    "row_count": 300,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "89f071a0-1056-4eaa-8000-dc3cc2ce3509/von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-theo-gia-h.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-theo",
     "title": "Vốn đầu tư thực hiện của khu vực kinh tế nhà nước phân theo cấp quản lý",
     "description": "Dataset thống kê vốn đầu tư thực hiện của khu vực kinh tế nhà nước tại Việt Nam từ năm 2010 đến 2024, phân loại theo cấp quản lý (Trung ương và Địa phương). Dữ liệu bao gồm giá trị theo giá hiện hành, giá so sánh năm 2010, cơ cấu phần trăm và chỉ số phát triển so với năm trước.",
