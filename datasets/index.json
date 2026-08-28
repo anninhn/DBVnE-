@@ -1,5 +1,34 @@
 [
   {
+    "slug": "thiet-hai-do-thien-tai",
+    "title": "Thiệt hại do thiên tai tại Việt Nam",
+    "description": "Bộ dữ liệu thống kê các loại thiệt hại do thiên tai gây ra tại Việt Nam từ năm 2011 đến năm 2024. Các loại thiệt hại bao gồm thiệt hại về người, nhà ở, nông nghiệp và tổng giá trị thiệt hại.",
+    "category": "moi-truong",
+    "tags": [
+      "thien-tai",
+      "thiet-hai",
+      "moi-truong",
+      "viet-nam",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T11:45:27.110Z",
+    "uploaded_by": "ninh",
+    "row_count": 98,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1cbba545-fed3-4724-81e0-013f2c131f11/thiet-hai-do-thien-tai.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-vu-an-va-so-bi-can-da-bi-truy-to-nam-2024-phan-theo-toi-d",
     "title": "Số vụ án và số bị can đã bị truy tố năm 2024 phân theo tội danh",
     "description": "Dữ liệu thống kê số lượng vụ án và số bị can đã bị khởi tố trong năm 2024, phân loại theo các tội danh cụ thể và điều luật tương ứng trên phạm vi cả nước.",
