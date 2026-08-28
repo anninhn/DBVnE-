@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chenh-lech-thu-nhap-binh-quan-dau-nguoi-mot-thang-giua-nho-2",
+    "title": "Chênh lệch thu nhập bình quân đầu người một tháng giữa các nhóm thu nhập",
+    "description": "Dữ liệu thống kê thu nhập bình quân đầu người một tháng của nhóm thu nhập thấp nhất và cao nhất, cùng với tỷ lệ chênh lệch giữa hai nhóm này. Dữ liệu được phân loại theo năm, vùng địa lý và giới tính chủ hộ từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "thu-nhap",
+      "bat-binh-dang",
+      "kinh-te",
+      "dan-so",
+      "vung-mien",
+      "gioi-tinh"
+    ],
+    "uploaded_at": "2026-08-28T11:27:39.429Z",
+    "uploaded_by": "ninh",
+    "row_count": 110,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "0112eadd-49d3-4bbf-a426-f2a5ff1f611a/chenh-lech-thu-nhap-binh-quan-dau-nguoi-mot-thang-giua-nho-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "chenh-lech-thu-nhap-binh-quan-dau-nguoi-mot-thang-giua-nhom",
     "title": "Chênh lệch thu nhập bình quân đầu người một tháng giữa các nhóm",
     "description": "Bộ dữ liệu thống kê thu nhập bình quân đầu người một tháng của nhóm dân cư có thu nhập thấp nhất và cao nhất, cùng với tỷ lệ chênh lệch giữa hai nhóm này, theo địa phương và năm từ 2010 đến 2023. Dữ liệu bao gồm tổng số toàn quốc, các vùng kinh tế - xã hội và 63 tỉnh/thành phố.",
