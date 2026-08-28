@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-toa-soan-bao-tap-chi-phan-theo-dia-phuong",
+    "title": "Số tòa soạn báo, tạp chí phân theo địa phương và năm",
+    "description": "Dữ liệu thống kê số lượng tòa soạn báo và tạp chí hoạt động tại các địa phương và vùng kinh tế của Việt Nam qua các năm, từ 2005 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "bao-chi",
+      "truyen-thong",
+      "toa-soan",
+      "dia-phuong",
+      "nam"
+    ],
+    "uploaded_at": "2026-08-28T11:43:08.261Z",
+    "uploaded_by": "ninh",
+    "row_count": 1190,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "63d09525-25f3-4682-8bfc-a07036d2571d/so-toa-soan-bao-tap-chi-phan-theo-dia-phuong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "so-thu-vien-do-dia-phuong-quan-ly-phan-theo-dia-phuong",
     "title": "Số thư viện và sách do địa phương quản lý phân theo địa phương và năm",
     "description": "Dữ liệu thống kê số lượng thư viện và số lượng sách trong thư viện do các địa phương và vùng kinh tế trên cả nước quản lý, từ năm 2004 đến 2017.",
