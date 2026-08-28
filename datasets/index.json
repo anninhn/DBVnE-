@@ -1,5 +1,33 @@
 [
   {
+    "slug": "thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-ngan",
+    "title": "Thu nhập bình quân một lao động đang làm việc phân theo ngành",
+    "description": "Dữ liệu thống kê thu nhập bình quân của một lao động đang làm việc, được phân loại theo các ngành kinh tế khác nhau tại Việt Nam, từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thu-nhap",
+      "lao-dong",
+      "nganh-kinh-te",
+      "viec-lam"
+    ],
+    "uploaded_at": "2026-08-28T11:48:34.598Z",
+    "uploaded_by": "ninh",
+    "row_count": 154,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1487224a-17eb-49a6-97b3-a954f6280302/thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-ngan.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-gioi",
     "title": "Thu nhập bình quân của lao động theo giới tính và khu vực",
     "description": "Dataset này cung cấp dữ liệu về thu nhập bình quân tháng của một lao động đang làm việc tại Việt Nam, phân loại theo giới tính (nam, nữ) và khu vực sinh sống (thành thị, nông thôn) trong giai đoạn từ năm 2015 đến 2024.",
