@@ -1,5 +1,34 @@
 [
   {
+    "slug": "mot-so-chi-tieu-ve-vu-chay-no-phan-theo-loai-chay-no-va-vung",
+    "title": "Thống kê một số chỉ tiêu về vụ cháy nổ phân theo loại và vùng tại Việt Nam",
+    "description": "Bộ dữ liệu thống kê các chỉ tiêu về tình hình cháy nổ tại Việt Nam từ năm 2022 đến 2024. Các chỉ tiêu bao gồm số vụ, số người chết, số người bị thương và thiệt hại về tài sản, được phân loại theo loại hình sự cố (cháy, nổ) và các vùng địa lý.",
+    "category": "xa-hoi",
+    "tags": [
+      "chay-no",
+      "thiet-hai",
+      "tai-nan",
+      "an-toan",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:33:32.182Z",
+    "uploaded_by": "ninh",
+    "row_count": 27,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e6482bcd-15e0-4c9b-80ec-226679c62515/mot-so-chi-tieu-ve-vu-chay-no-phan-theo-loai-chay-no-va-vung.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "mot-so-chi-tieu-ve-vu-chay-no-phan-theo-dia-phuong",
     "title": "Một số chỉ tiêu về vụ cháy, nổ phân theo địa phương",
     "description": "Dữ liệu thống kê số vụ cháy, nổ, số người chết, số người bị thương và tổng thiệt hại về tài sản do cháy, nổ gây ra tại Việt Nam, phân theo từng địa phương và vùng kinh tế - xã hội, từ năm 2022 đến 2024.",
