@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-phuong",
+    "title": "Số lượt người nước ngoài nhập cảnh Việt Nam phân theo phương tiện đến",
+    "description": "Dữ liệu thống kê số lượt người nước ngoài nhập cảnh Việt Nam từ năm 1995 đến 2024, phân loại theo phương tiện di chuyển chính (đường bộ, đường hàng không, đường thủy).",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "nhap-canh",
+      "nguoi-nuoc-ngoai",
+      "phuong-tien-giao-thong"
+    ],
+    "uploaded_at": "2026-08-28T11:02:17.000Z",
+    "uploaded_by": "ninh",
+    "row_count": 120,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4d31ccf8-eb6f-4b92-aa32-8915d0014d48/so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-mot-so",
     "title": "Số lượt người nước ngoài nhập cảnh Việt Nam phân theo quốc tịch",
     "description": "Dữ liệu thống kê số lượt người nước ngoài nhập cảnh Việt Nam hàng năm, được phân loại theo quốc tịch của du khách. Dữ liệu bao gồm giai đoạn từ năm 2010 đến 2024 và nhiều quốc tịch khác nhau.",
