@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-phan-theo-vung-cac-thang-so-voi-thang-t",
+    "title": "Chỉ số giá tiêu dùng (CPI) phân theo vùng và tháng",
+    "description": "Bộ dữ liệu cung cấp chỉ số giá tiêu dùng (CPI) hàng tháng cho các vùng kinh tế - xã hội của Việt Nam trong giai đoạn 2022-2023. Dữ liệu bao gồm chỉ số chung cho cả nước và chỉ số riêng cho 6 vùng địa lý.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "chi-so-gia-tieu-dung",
+      "cpi",
+      "lam-phat",
+      "vung"
+    ],
+    "uploaded_at": "2026-08-28T10:11:38.963Z",
+    "uploaded_by": "ninh",
+    "row_count": 168,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "63d1a606-9fd9-4469-a19f-a6bb36ddd2be/chi-so-gia-tieu-dung-phan-theo-vung-cac-thang-so-voi-thang-t.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-trong-nam-2",
     "title": "Chỉ số giá tiêu dùng khu vực nông thôn các tháng trong năm",
     "description": "Dataset này cung cấp chỉ số giá tiêu dùng (CPI) hàng tháng cho khu vực nông thôn, được phân loại theo các nhóm hàng hóa và dịch vụ chính, trong giai đoạn từ năm 2022 đến 2024. Chỉ số được tính so với tháng trước đó.",
