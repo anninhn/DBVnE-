@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-giang-vien-cac-truong-dai-hoc-phan-theo-dia-phuong",
+    "title": "Số giảng viên các trường đại học phân theo địa phương và năm",
+    "description": "Dữ liệu thống kê số lượng giảng viên tại các trường đại học trên toàn quốc, phân loại theo từng địa phương và vùng kinh tế, từ năm 2015 đến 2023.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "giang-vien",
+      "dai-hoc",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:16:13.605Z",
+    "uploaded_by": "ninh",
+    "row_count": 522,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e5faa1aa-4d9e-464a-9cb6-6dd28337786b/so-giang-vien-cac-truong-dai-hoc-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-bang-sang-che-duoc-cap-van-bang-bao-ho",
     "title": "Số bằng sáng chế được cấp văn bằng bảo hộ theo phân loại và quốc tịch",
     "description": "Dữ liệu về số lượng bằng sáng chế được cấp văn bằng bảo hộ tại Việt Nam, phân loại theo các nhóm sáng chế (có thể là mã IPC) và theo quốc tịch (trong nước/ngoài nước) từ năm 2015 đến 2024.",
