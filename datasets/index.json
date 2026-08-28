@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-san-xuat-nong-nghiep-lam-nghiep-va-thuy-san-nam-2",
+    "title": "Chỉ số giá sản xuất nông nghiệp, lâm nghiệp và thủy sản Việt Nam theo nhóm hàng (2005-2024)",
+    "description": "Dataset cung cấp chỉ số giá sản xuất (PPI) cho các ngành nông nghiệp, lâm nghiệp và thủy sản tại Việt Nam, phân loại theo nhóm hàng, từ năm 2005 đến 2024, với năm gốc 2010 = 100.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gia",
+      "nong-nghiep",
+      "lam-nghiep",
+      "thuy-san",
+      "chi-so-gia"
+    ],
+    "uploaded_at": "2026-08-28T10:04:36.010Z",
+    "uploaded_by": "ninh",
+    "row_count": 238,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "71fe527a-3b3a-42c4-bd6a-407984e25785/chi-so-gia-san-xuat-nong-nghiep-lam-nghiep-va-thuy-san-nam-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-san-xuat-dich-vu-nam-truoc-100",
     "title": "Chỉ số giá sản xuất dịch vụ Việt Nam (Năm trước = 100)",
     "description": "Dataset này cung cấp chỉ số giá sản xuất dịch vụ (PPI-S) cho các nhóm ngành dịch vụ khác nhau tại Việt Nam, được tính toán với năm trước đó làm gốc 100%. Dữ liệu bao gồm giai đoạn từ năm 2012 đến 2024.",
