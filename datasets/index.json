@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tri-gia-xuat-khau-hang-hoa-theo-bang-phan-loai-tieu-chuan-ng",
+    "title": "Trị giá xuất khẩu hàng hóa theo phân loại tiêu chuẩn ngoại thương",
+    "description": "Dataset thống kê trị giá xuất khẩu hàng hóa của Việt Nam theo các nhóm phân loại tiêu chuẩn ngoại thương, từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "xuat-nhap-khau",
+      "kinh-te",
+      "thuong-mai",
+      "hang-hoa"
+    ],
+    "uploaded_at": "2026-08-28T11:06:08.721Z",
+    "uploaded_by": "ninh",
+    "row_count": 390,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9a92139c-590f-4cd9-af14-576b14cecf7a/tri-gia-xuat-khau-hang-hoa-theo-bang-phan-loai-tieu-chuan-ng.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "tri-gia-xuat-khau-hang-hoa-phan-theo-nganh-kinh-te",
     "title": "Trị giá xuất khẩu hàng hóa phân theo ngành kinh tế",
     "description": "Dataset thống kê trị giá xuất khẩu hàng hóa của Việt Nam phân theo các ngành kinh tế chính từ năm 2010 đến 2024. Dữ liệu bao gồm tổng số và chi tiết các ngành như nông nghiệp, lâm nghiệp, thủy sản, khai khoáng, công nghiệp chế biến, v.v.",
