@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-thuy-san-nuoi-trong-phan-theo-dia-phuong",
+    "title": "Sản lượng thủy sản nuôi trồng phân theo địa phương và năm",
+    "description": "Dataset thống kê sản lượng thủy sản nuôi trồng của Việt Nam, phân theo tỉnh, thành phố và các vùng kinh tế, từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "nuoi-trong",
+      "san-luong",
+      "dia-phuong",
+      "nong-nghiep"
+    ],
+    "uploaded_at": "2026-08-28T09:58:29.218Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "444c2d63-82e6-4a59-b1d8-8110038298ff/san-luong-thuy-san-nuoi-trong-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "san-luong-thuy-san-nuoi-trong",
     "title": "Sản lượng thủy sản nuôi trồng và chỉ số phát triển theo năm",
     "description": "Dataset cung cấp dữ liệu về sản lượng thủy sản nuôi trồng (tổng số, cá, tôm) và chỉ số phát triển của chúng so với năm trước, từ năm 1990 đến 2024.",
