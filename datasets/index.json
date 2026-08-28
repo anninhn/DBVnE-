@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-tre-em-duoi-5-tuoi-bi-suy-dinh-duong-phan-theo-dia-phu",
+    "title": "Tỷ lệ trẻ em dưới 5 tuổi bị suy dinh dưỡng phân theo địa phương và năm",
+    "description": "Dataset này cung cấp tỷ lệ trẻ em dưới 5 tuổi bị suy dinh dưỡng theo các chỉ số cân nặng theo tuổi, chiều cao theo tuổi và cân nặng theo chiều cao, được thống kê cho các địa phương và vùng miền trên cả nước từ năm 2021 đến 2024.",
+    "category": "y-te",
+    "tags": [
+      "suy-dinh-duong",
+      "tre-em",
+      "y-te",
+      "dan-so"
+    ],
+    "uploaded_at": "2026-08-28T11:58:55.882Z",
+    "uploaded_by": "ninh",
+    "row_count": 280,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2d638ca1-51bf-461d-9922-47deb840c369/ty-le-tre-em-duoi-5-tuoi-bi-suy-dinh-duong-phan-theo-dia-phu.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-su-dung-internet-phan-theo-dia-phuong",
     "title": "Tỷ lệ người sử dụng internet phân theo địa phương",
     "description": "Bộ dữ liệu thống kê tỷ lệ phần trăm người dân sử dụng internet tại các địa phương và vùng kinh tế trên cả nước trong năm 2024.",
