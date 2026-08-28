@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2",
+    "title": "Chi tiêu bình quân một lượt khách du lịch nội địa theo hạng mục",
+    "description": "Dữ liệu thống kê chi tiêu bình quân của một lượt khách du lịch nội địa, phân loại theo các hạng mục chi tiêu chính như thuê phòng, ăn uống, đi lại, mua sắm, v.v., cùng với cơ cấu phần trăm của từng hạng mục qua các năm từ 2019 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "chi-tieu",
+      "noi-dia",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:13:42.363Z",
+    "uploaded_by": "ninh",
+    "row_count": 36,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "80b05ede-0977-4d51-8b3c-f9984c173d7b/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-theo",
     "title": "Chi tiêu bình quân của khách du lịch nội địa theo tiêu chí phân loại và năm",
     "description": "Dữ liệu thống kê chi tiêu bình quân của một lượt khách du lịch nội địa tại Việt Nam, được phân loại theo các tiêu chí như giới tính và nghề nghiệp, qua các năm từ 2019 đến 2024.",
