@@ -1,5 +1,33 @@
 [
   {
+    "slug": "san-luong-thuy-san",
+    "title": "Sản lượng và chỉ số phát triển thủy sản Việt Nam",
+    "description": "Dữ liệu thống kê sản lượng (nghìn tấn) và chỉ số phát triển thủy sản (tổng số, khai thác, nuôi trồng) của Việt Nam từ năm 1990 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "san-luong",
+      "nong-nghiep",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:57:17.091Z",
+    "uploaded_by": "ninh",
+    "row_count": 105,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "dafd416d-0495-452a-87a2-c92f52dadacf/san-luong-thuy-san.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "san-luong-thit-trau-hoi-xuat-chuong-phan-theo-dia-phuong",
     "title": "Sản lượng thịt trâu hơi xuất chuồng phân theo địa phương và năm",
     "description": "Dữ liệu thống kê sản lượng thịt trâu hơi xuất chuồng tại Việt Nam, phân loại theo tỉnh, thành phố, vùng kinh tế và tổng cả nước. Dữ liệu được thu thập từ năm 2018 đến 2024.",
