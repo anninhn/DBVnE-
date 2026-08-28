@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-sinh-hoat-theo-khong-gian-theo-dia-phuong-ha-noi",
+    "title": "Chỉ số giá sinh hoạt theo không gian của các tỉnh, thành phố Việt Nam",
+    "description": "Dữ liệu về chỉ số giá sinh hoạt theo không gian (SCOLI) của 63 tỉnh, thành phố Việt Nam từ năm 2011 đến 2024. Chỉ số này phản ánh mức giá tương đối giữa các địa phương, thường lấy Hà Nội làm gốc (100%).",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia",
+      "gia-sinh-hoat",
+      "scoli",
+      "kinh-te",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T10:05:10.658Z",
+    "uploaded_by": "ninh",
+    "row_count": 882,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c5e00a00-0ed0-4f02-9e22-ac3a64d97b57/chi-so-gia-sinh-hoat-theo-khong-gian-theo-dia-phuong-ha-noi.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-san-xuat-nong-nghiep-lam-nghiep-va-thuy-san-nam-t",
     "title": "Chỉ số giá sản xuất nông nghiệp, lâm nghiệp và thủy sản",
     "description": "Dataset cung cấp chỉ số giá sản xuất của các ngành nông nghiệp, lâm nghiệp và thủy sản, được phân loại theo từng ngành cụ thể. Dữ liệu bao gồm các năm từ 2005 đến 2024, với chỉ số được tính theo gốc năm trước bằng 100%.",
