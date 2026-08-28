@@ -1,5 +1,32 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-2",
+    "title": "Đầu tư trực tiếp nước ngoài được cấp giấy phép phân theo đối tác",
+    "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép tại Việt Nam, phân loại theo quốc gia/vùng lãnh thổ đối tác đầu tư.",
+    "category": "kinh-te",
+    "tags": [
+      "dau-tu-nuoc-ngoai",
+      "fdi",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:35:47.065Z",
+    "uploaded_by": "ninh",
+    "row_count": 65,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "19d0bf2d-7d0b-436e-8387-b34f7eeb922c/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-nam-202-2",
     "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép theo đối tác đầu tư năm 2022",
     "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép tại Việt Nam, phân loại theo quốc gia/vùng lãnh thổ của đối tác đầu tư trong năm 2022.",
