@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-luot-nguoi-da-duoc-tro-giup-phap-ly-phan-theo-doi-tuong-d",
+    "title": "Số lượt người được trợ giúp pháp lý phân theo đối tượng",
+    "description": "Dữ liệu thống kê số lượt người đã được trợ giúp pháp lý trên cả nước trong năm 2024, phân loại theo các đối tượng thụ hưởng khác nhau như người có công, người thuộc hộ nghèo, trẻ em, v.v.",
+    "category": "xa-hoi",
+    "tags": [
+      "tro-giup-phap-ly",
+      "xa-hoi",
+      "doi-tuong-uu-tien",
+      "phap-luat"
+    ],
+    "uploaded_at": "2026-08-28T11:40:32.726Z",
+    "uploaded_by": "ninh",
+    "row_count": 23,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "12f40a39-6f33-4b5e-94db-eac125fe3121/so-luot-nguoi-da-duoc-tro-giup-phap-ly-phan-theo-doi-tuong-d.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-huy-chuong-the-thao-quoc-te-dat-duoc",
     "title": "Số huy chương thể thao quốc tế đạt được của Việt Nam",
     "description": "Dữ liệu thống kê số lượng huy chương Vàng, Bạc, Đồng mà Việt Nam đạt được tại các giải đấu thể thao quốc tế ở cấp độ Thế giới, Châu Á và Đông Nam Á, từ năm 2002 đến 2024.",
