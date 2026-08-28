@@ -1,5 +1,33 @@
 [
   {
+    "slug": "san-luong-che-bup-phan-theo-dia-phuong",
+    "title": "Sản lượng chè búp phân theo địa phương và năm",
+    "description": "Dataset thống kê sản lượng chè búp của Việt Nam từ năm 2010 đến 2024, phân chia theo các tỉnh thành và tổng hợp cả nước. Dữ liệu bao gồm các tỉnh trọng điểm về chè và tổng sản lượng toàn quốc.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "che",
+      "nong-nghiep",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T09:50:42.192Z",
+    "uploaded_by": "ninh",
+    "row_count": 195,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5b312904-a0a2-4735-9ed8-2ca4e3c510c0/san-luong-che-bup-phan-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "san-luong-cam-phan-theo-dia-phuong",
     "title": "Sản lượng cam phân theo địa phương và năm",
     "description": "Dataset thống kê sản lượng cam thu hoạch hàng năm của Việt Nam, phân chia theo các tỉnh, thành phố và tổng cả nước. Dữ liệu bao gồm giai đoạn từ năm 2018 đến 2024.",
