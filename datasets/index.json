@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-trinh-do",
+    "title": "Tỷ lệ thất nghiệp trong độ tuổi lao động phân theo trình độ chuyên môn kỹ thuật",
+    "description": "Dữ liệu thống kê tỷ lệ thất nghiệp của Việt Nam trong độ tuổi lao động, được phân loại theo trình độ chuyên môn kỹ thuật từ năm 2018 đến 2024. Một số dữ liệu có thể là sơ bộ.",
+    "category": "kinh-te",
+    "tags": [
+      "that-nghiep",
+      "lao-dong",
+      "trinh-do",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:08:54.456Z",
+    "uploaded_by": "ninh",
+    "row_count": 42,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "bffe39ac-9ab2-4166-9c06-cf5730cdfb94/ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-trinh-do.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-nhom-tuoi",
     "title": "Tỷ lệ thất nghiệp trong độ tuổi lao động phân theo nhóm tuổi",
     "description": "Dataset thống kê tỷ lệ thất nghiệp của Việt Nam trong độ tuổi lao động, được phân loại theo các nhóm tuổi khác nhau, từ năm 2018 đến 2024. Dữ liệu cung cấp cái nhìn về tình hình thị trường lao động theo thời gian và từng phân khúc dân số.",
