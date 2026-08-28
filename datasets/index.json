@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-n-3",
+    "title": "Vốn sản xuất kinh doanh bình quân hàng năm của doanh nghiệp theo ngành kinh tế",
+    "description": "Dataset thống kê vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo các ngành kinh tế từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "von-kinh-doanh",
+      "doanh-nghiep",
+      "nganh-kinh-te",
+      "kinh-te-viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:49:10.103Z",
+    "uploaded_by": "ninh",
+    "row_count": 1000,
+    "file_count": 1,
+    "total_size_mb": 0.07,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4b12ba81-027f-4027-a8a1-0a76f3bedeb3/von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-n-3.csv",
+        "size_mb": 0.07
+      }
+    ]
+  },
+  {
     "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-n-2",
     "title": "Vốn sản xuất kinh doanh bình quân hàng năm của các loại hình doanh nghiệp",
     "description": "Dataset thống kê vốn sản xuất kinh doanh bình quân hàng năm của các loại hình doanh nghiệp tại Việt Nam từ năm 2010 đến 2023, bao gồm cả giá trị tuyệt đối (nghìn tỷ đồng) và cơ cấu phần trăm.",
