@@ -1,5 +1,33 @@
 [
   {
+    "slug": "lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-2",
+    "title": "Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp",
+    "description": "Dữ liệu thống kê số lượng lao động làm việc trong các cơ sở kinh tế cá thể phi nông nghiệp tại Việt Nam, phân loại theo ngành kinh tế và theo năm từ 2015 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "kinh-te-ca-the",
+      "phi-nong-nghiep",
+      "nganh-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:24:03.832Z",
+    "uploaded_by": "ninh",
+    "row_count": 200,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "499f8068-4dda-41e2-b4f8-f67a16320eff/lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan",
     "title": "Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp",
     "description": "Dữ liệu thống kê số lượng lao động trong các cơ sở kinh tế cá thể hoạt động trong lĩnh vực phi nông nghiệp, phân theo tỉnh/thành phố và vùng kinh tế trên cả nước, từ năm 2015 đến 2024.",
