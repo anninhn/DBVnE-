@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-chat-thai-nguy-hai-duoc-thu-gom-xu-ly-phan-theo-vung-v",
+    "title": "Tỷ lệ chất thải nguy hại được thu gom, xử lý phân theo vùng và tỉnh",
+    "description": "Dữ liệu thống kê tổng lượng chất thải nguy hại phát sinh, được thu gom, xử lý và tỷ lệ thu gom, xử lý tại các tỉnh/thành phố và vùng kinh tế - xã hội của Việt Nam trong năm 2023. Bao gồm số liệu cho cả nước, các vùng và một số tỉnh cụ thể.",
+    "category": "moi-truong",
+    "tags": [
+      "chat-thai",
+      "moi-truong",
+      "xu-ly-rac",
+      "vung",
+      "tinh"
+    ],
+    "uploaded_at": "2026-08-28T11:49:53.828Z",
+    "uploaded_by": "ninh",
+    "row_count": 30,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "172bb25b-a12c-4722-952e-74def4bf24cb/ty-le-chat-thai-nguy-hai-duoc-thu-gom-xu-ly-phan-theo-vung-v.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "trat-tu-va-an-toan-xa-hoi",
     "title": "Tình hình trật tự và an toàn xã hội Việt Nam",
     "description": "Dataset thống kê các chỉ số về trật tự và an toàn xã hội tại Việt Nam từ năm 2012 đến 2024, bao gồm số vụ tai nạn giao thông, số người chết/bị thương do tai nạn giao thông, số vụ cháy nổ, số người chết/bị thương do cháy nổ và tổng giá trị tài sản thiệt hại ước tính do cháy nổ.",
