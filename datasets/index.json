@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-doanh-nghiep-dang-ky-thanh-lap-moi-phan-theo-dia-phuong",
+    "title": "Số doanh nghiệp đăng ký thành lập mới phân theo địa phương và năm",
+    "description": "Dataset thống kê số lượng doanh nghiệp đăng ký thành lập mới tại Việt Nam, phân theo tỉnh/thành phố và vùng kinh tế, từ năm 2016 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "doanh-nghiep",
+      "thanh-lap-moi",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:31:03.763Z",
+    "uploaded_by": "ninh",
+    "row_count": 630,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a534458a-7523-47bb-ac75-b2892c31e18d/so-doanh-nghiep-dang-ky-thanh-lap-moi-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-doanh-nghiep-dang-hoat-dong-tai-thoi-diem-31-12-hang-nam",
     "title": "Số doanh nghiệp đang hoạt động bình quân trên 1000 dân",
     "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động tính đến ngày 31/12 hàng năm, bình quân trên 1000 dân, cho các tỉnh/thành phố của Việt Nam, các vùng kinh tế và toàn quốc, trong giai đoạn từ năm 2017 đến 2024.",
