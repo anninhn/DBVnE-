@@ -1,5 +1,35 @@
 [
   {
+    "slug": "dien-tich-nha-o-binh-quan-dau-nguoi-phan-theo-thanh-thi-nong",
+    "title": "Diện tích nhà ở bình quân đầu người phân theo thành thị, nông thôn và vùng kinh tế - xã hội Việt Nam",
+    "description": "Dataset thống kê diện tích nhà ở bình quân đầu người tại Việt Nam từ năm 2004 đến 2024. Dữ liệu được phân loại theo khu vực (thành thị, nông thôn), các vùng kinh tế - xã hội và nhóm thu nhập.",
+    "category": "xa-hoi",
+    "tags": [
+      "dien-tich-nha-o",
+      "nha-o",
+      "dan-cu",
+      "xa-hoi",
+      "vung-kinh-te",
+      "thu-nhap"
+    ],
+    "uploaded_at": "2026-08-28T11:30:16.492Z",
+    "uploaded_by": "ninh",
+    "row_count": 154,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e664a962-332e-4c59-8d5f-cbd5f98ae5bd/dien-tich-nha-o-binh-quan-dau-nguoi-phan-theo-thanh-thi-nong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-nha-o-binh-quan-dau-nguoi-phan-theo-loai-nha-va-ph",
     "title": "Diện tích nhà ở bình quân đầu người phân theo loại nhà và địa phương",
     "description": "Dataset thống kê diện tích nhà ở bình quân đầu người theo các loại nhà (chung, kiên cố, bán kiên cố, thiếu kiên cố, đơn sơ) cho 63 tỉnh/thành phố, các vùng kinh tế - xã hội và tổng số cả nước, từ năm 2014 đến 2024.",
