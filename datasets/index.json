@@ -1,5 +1,34 @@
 [
   {
+    "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-dia-phuong",
+    "title": "Khối lượng hàng hóa vận chuyển phân theo địa phương",
+    "description": "Dataset thống kê khối lượng hàng hóa vận chuyển theo từng tỉnh, thành phố, vùng kinh tế và cả nước, từ năm 2000 đến 2024. Dữ liệu bao gồm các ghi chú về tính chất của số liệu.",
+    "category": "kinh-te",
+    "tags": [
+      "van-tai",
+      "hang-hoa",
+      "kinh-te",
+      "dia-phuong",
+      "giao-thong"
+    ],
+    "uploaded_at": "2026-08-28T10:21:01.531Z",
+    "uploaded_by": "ninh",
+    "row_count": 1775,
+    "file_count": 1,
+    "total_size_mb": 0.05,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b6bd1489-fdb7-4aee-9911-9b7d77d3d452/khoi-luong-hang-hoa-van-chuyen-phan-theo-dia-phuong.csv",
+        "size_mb": 0.05
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-van-chuyen-bang-duong-thuy-phan-theo-dia",
     "title": "Khối lượng hàng hóa vận chuyển bằng đường thủy phân theo địa phương và năm",
     "description": "Dataset thống kê khối lượng hàng hóa vận chuyển bằng đường thủy tại Việt Nam, phân loại theo tỉnh, thành phố, vùng kinh tế và tổng hợp toàn quốc, từ năm 2000 đến 2024.",
