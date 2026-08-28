@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-ho-ngheo-phan-theo-dia-phuong",
+    "title": "Tỷ lệ hộ nghèo phân theo địa phương và năm",
+    "description": "Dataset thống kê tỷ lệ hộ nghèo của các tỉnh/thành phố, vùng kinh tế và tổng số cả nước qua các năm từ 2006 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "ho-ngheo",
+      "ngheo-doi",
+      "xa-hoi",
+      "dia-phuong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:55:03.115Z",
+    "uploaded_by": "ninh",
+    "row_count": 923,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b1166788-7d28-4848-acaa-e0e8a9487724/ty-le-ho-ngheo-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no",
     "title": "Tỷ lệ hộ gia đình có kết nối Internet phân theo khu vực, giới tính và vùng kinh tế",
     "description": "Dataset thống kê tỷ lệ hộ gia đình có kết nối Internet tại Việt Nam, phân loại theo khu vực (thành thị, nông thôn), giới tính và các vùng kinh tế-xã hội.",
