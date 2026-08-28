@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-theo-dia-phuong",
+    "title": "Số cơ sở kinh tế cá thể phi nông nghiệp phân theo địa phương",
+    "description": "Dataset thống kê số lượng cơ sở kinh tế cá thể hoạt động trong các ngành phi nông nghiệp tại Việt Nam, phân loại theo tỉnh/thành phố và vùng kinh tế, từ năm 2015 đến 2024. Dữ liệu bao gồm cả tổng số toàn quốc.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "co-so-kinh-doanh",
+      "phi-nong-nghiep"
+    ],
+    "uploaded_at": "2026-08-28T08:25:22.870Z",
+    "uploaded_by": "ninh",
+    "row_count": 700,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "678fc6bd-456c-4d84-abb3-8802a77c7bd9/so-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "nguon-von-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xua",
     "title": "Nguồn vốn của doanh nghiệp đang hoạt động theo trình độ công nghệ",
     "description": "Dữ liệu thống kê nguồn vốn của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo trình độ công nghệ (cao, trung bình, thấp) và tổng số, qua các năm từ 2010 đến 2023.",
