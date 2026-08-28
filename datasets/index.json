@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xu-2",
+    "title": "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất",
+    "description": "Dữ liệu thống kê chỉ số giá nguyên liệu, nhiên liệu và vật liệu dùng cho sản xuất tại Việt Nam, phân loại theo mục đích sử dụng hoặc loại sản phẩm, từ năm 2012 đến 2024. Chỉ số được tính theo phương pháp năm trước bằng 100%.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia",
+      "nguyen-lieu",
+      "nhien-lieu",
+      "vat-lieu",
+      "san-xuat",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:02:42.148Z",
+    "uploaded_by": "ninh",
+    "row_count": 455,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "07af6a14-c587-4d69-8ce5-3b3946c6076d/chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xu-2.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xuat",
     "title": "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất tại Việt Nam",
     "description": "Dataset cung cấp chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất tại Việt Nam theo các mục đích sử dụng và loại sản phẩm khác nhau, được tính toán với năm gốc 2014 = 100. Dữ liệu bao gồm các năm từ 2015 đến 2024.",
