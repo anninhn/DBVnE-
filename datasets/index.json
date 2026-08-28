@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v-2",
+    "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo vùng và thành thị, nông thôn",
+    "description": "Dataset thống kê tỷ lệ thiếu việc làm của dân số trong độ tuổi lao động, được phân loại theo khu vực thành thị, nông thôn và các vùng địa lý của Việt Nam, từ năm 2010 đến 2024.",
+    "category": "lao-dong",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "that-nghiep",
+      "vung",
+      "thanh-thi",
+      "nong-thon"
+    ],
+    "uploaded_at": "2026-08-28T08:11:48.918Z",
+    "uploaded_by": "ninh",
+    "row_count": 315,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3f89e907-79da-4393-8501-6bcc3b4865f9/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v-2.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v",
     "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo vùng và giới tính",
     "description": "Dữ liệu thống kê tỷ lệ thiếu việc làm của người trong độ tuổi lao động tại Việt Nam, được phân loại theo vùng địa lý và giới tính, từ năm 2018 đến 2024.",
