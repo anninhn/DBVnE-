@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-lao-dong-nu-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-3",
+    "title": "Số lao động nữ trong các doanh nghiệp theo ngành kinh tế giai đoạn 2010-2023",
+    "description": "Dữ liệu thống kê số lượng lao động nữ làm việc trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo ngành kinh tế và theo từng năm từ 2010 đến 2023.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "nu",
+      "doanh-nghiep",
+      "nganh-kinh-te",
+      "viec-lam",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:45:33.601Z",
+    "uploaded_by": "ninh",
+    "row_count": 1000,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "59ccd367-f761-40a1-b624-b68dc6b5855e/so-lao-dong-nu-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-3.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "so-lao-dong-nu-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-2",
     "title": "Số lượng và cơ cấu lao động nữ trong các loại hình doanh nghiệp",
     "description": "Bộ dữ liệu thống kê số lượng và cơ cấu lao động nữ trong các loại hình doanh nghiệp đang hoạt động tại Việt Nam, theo từng năm từ 2010 đến 2023.",
