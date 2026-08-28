@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-nhan-luc-nganh-duoc-truc-thuoc-so-y-te-phan-theo-dia-phuo",
+    "title": "Số lượng nhân lực ngành dược trực thuộc Sở Y tế phân theo địa phương",
+    "description": "Dataset thống kê số lượng dược sĩ (cao cấp, trung cấp) và dược tá trực thuộc các Sở Y tế, được phân loại theo địa phương và năm. Dữ liệu bao gồm các tỉnh thành và vùng kinh tế trên cả nước từ năm 2002 đến 2011.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "duoc-si",
+      "nhan-luc",
+      "dia-phuong",
+      "so-y-te"
+    ],
+    "uploaded_at": "2026-08-28T11:41:45.761Z",
+    "uploaded_by": "ninh",
+    "row_count": 710,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8d620813-9d33-4d68-8db6-dc0892c1b212/so-nhan-luc-nganh-duoc-truc-thuoc-so-y-te-phan-theo-dia-phuo.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-nhan-luc-nganh-y-truc-thuoc-so-y-te-phan-theo-dia-phuong",
     "title": "Số lượng nhân lực ngành y tế trực thuộc Sở Y tế phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng nhân lực ngành y tế (bao gồm bác sĩ, y sĩ, y tá, hộ sinh) trực thuộc Sở Y tế tại Việt Nam, phân theo từng địa phương và vùng kinh tế, từ năm 2002 đến 2009.",
