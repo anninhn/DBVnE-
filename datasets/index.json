@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-trinh-do",
+    "title": "Tỷ lệ lao động có việc làm phi chính thức phân theo trình độ chuyên môn kỹ thuật",
+    "description": "Dữ liệu thống kê tỷ lệ lao động có việc làm phi chính thức tại Việt Nam, phân loại theo các trình độ chuyên môn kỹ thuật khác nhau, từ năm 2018 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "phi-chinh-thuc",
+      "trinh-do",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:06:27.294Z",
+    "uploaded_by": "ninh",
+    "row_count": 42,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e3abbf79-7309-45b3-92da-f186bb9d206c/ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-trinh-do.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-nhom-tuo",
     "title": "Tỷ lệ lao động có việc làm phi chính thức phân theo nhóm tuổi",
     "description": "Dữ liệu thống kê tỷ lệ lao động có việc làm phi chính thức tại Việt Nam, phân loại theo các nhóm tuổi khác nhau từ năm 2018 đến 2024.",
