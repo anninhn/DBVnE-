@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-gieo-trong-san-phan-theo-dia-phuong",
+    "title": "Diện tích gieo trồng sắn theo tỉnh, thành phố và năm",
+    "description": "Dữ liệu thống kê diện tích gieo trồng cây sắn của Việt Nam, được phân loại theo từng tỉnh, thành phố và tổng cả nước, từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "dien-tich",
+      "gieo-trong",
+      "san",
+      "nong-nghiep",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T08:41:35.950Z",
+    "uploaded_by": "ninh",
+    "row_count": 1230,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2e3ceaa8-314c-43c0-b364-b2767c4d5fa2/dien-tich-gieo-trong-san-phan-theo-dia-phuong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-gieo-trong-ngo-phan-theo-dia-phuong",
     "title": "Diện tích gieo trồng ngô phân theo địa phương",
     "description": "Dataset thống kê diện tích gieo trồng ngô của Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 1995 đến 2024.",
