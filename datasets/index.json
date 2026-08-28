@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-chi-so-gia-vang-chi-so-gia-do-la-my-bin",
+    "title": "Chỉ số giá tiêu dùng, giá vàng, giá đô la Mỹ bình quân năm khu vực thành thị",
+    "description": "Dataset cung cấp chỉ số giá tiêu dùng (CPI), chỉ số giá vàng và chỉ số giá đô la Mỹ bình quân năm cho khu vực thành thị tại Việt Nam, giai đoạn 2018-2023. Các chỉ số được tính theo phương pháp so sánh với năm trước đó (năm trước = 100%).",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia",
+      "cpi",
+      "gia-vang",
+      "gia-usd",
+      "lam-phat"
+    ],
+    "uploaded_at": "2026-08-28T10:06:47.992Z",
+    "uploaded_by": "ninh",
+    "row_count": 114,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a39ce02b-17ad-4c9b-814f-a13c9d17eb42/chi-so-gia-tieu-dung-chi-so-gia-vang-chi-so-gia-do-la-my-bin.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-cac-thang-trong-nam",
     "title": "Chỉ số giá tiêu dùng (CPI) các tháng trong năm",
     "description": "Dataset cung cấp chỉ số giá tiêu dùng (CPI) của Việt Nam theo từng tháng, từ năm 1995 đến 2024. Chỉ số này được tính toán dựa trên tháng trước đó làm gốc (100).",
