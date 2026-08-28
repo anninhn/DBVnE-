@@ -1,5 +1,33 @@
 [
   {
+    "slug": "nguon-von-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xua",
+    "title": "Nguồn vốn của doanh nghiệp đang hoạt động theo trình độ công nghệ",
+    "description": "Dữ liệu thống kê nguồn vốn của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo trình độ công nghệ (cao, trung bình, thấp) và tổng số, qua các năm từ 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "nguon-von",
+      "cong-nghe"
+    ],
+    "uploaded_at": "2026-08-28T08:25:05.030Z",
+    "uploaded_by": "ninh",
+    "row_count": 40,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "63551eac-65d8-4567-8eac-21bce8e9152f/nguon-von-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xua.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "loi-nhuan-truoc-thue-cua-doanh-nghiep-dang-hoat-dong-co-ket",
     "title": "Lợi nhuận trước thuế của doanh nghiệp theo trình độ công nghệ",
     "description": "Dữ liệu thống kê lợi nhuận trước thuế của các doanh nghiệp đang hoạt động tại Việt Nam, phân loại theo trình độ công nghệ (cao, trung bình, thấp) qua các năm từ 2010 đến 2023. Dữ liệu cũng bao gồm cơ cấu tỷ trọng lợi nhuận của từng nhóm.",
