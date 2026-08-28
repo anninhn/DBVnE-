@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-lua-ca-nam-phan-theo-dia-phuong",
+    "title": "Sản lượng lúa cả năm phân theo địa phương và thời gian",
+    "description": "Dataset thống kê sản lượng lúa thu hoạch cả năm của Việt Nam, phân loại theo tỉnh, thành phố và vùng kinh tế, từ năm 1995 đến 2024. Dữ liệu bao gồm cả số liệu tổng hợp cho toàn quốc và các địa phương.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "lua",
+      "nong-nghiep",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:52:26.058Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "404b2988-5355-4575-acc5-0f3de92559f0/san-luong-lua-ca-nam-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "san-luong-lac-phan-theo-dia-phuong",
     "title": "Sản lượng lạc phân theo địa phương và năm",
     "description": "Dataset thống kê tổng sản lượng lạc thu hoạch được hàng năm của Việt Nam, phân chia theo từng tỉnh, thành phố và các vùng kinh tế, trong giai đoạn từ năm 2018 đến 2024.",
