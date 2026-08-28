@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-2",
+    "title": "Chi tiêu bình quân đầu người một tháng theo giá hiện hành",
+    "description": "Dataset này thống kê chi tiêu bình quân đầu người một tháng theo giá hiện hành, được phân loại theo các vùng địa lý và kinh tế - xã hội của Việt Nam. Dữ liệu bao gồm giai đoạn từ năm 2002 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-tieu",
+      "binh-quan-dau-nguoi",
+      "gia-hien-hanh",
+      "kinh-te-ho-gia-dinh"
+    ],
+    "uploaded_at": "2026-08-28T11:28:42.443Z",
+    "uploaded_by": "ninh",
+    "row_count": 108,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "aee7b751-0f3e-4b42-930b-bc0887438a0b/chi-tieu-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-tieu-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-ph",
     "title": "Chi tiêu bình quân đầu người một tháng theo giá hiện hành phân theo vùng và khu vực",
     "description": "Dữ liệu thống kê chi tiêu bình quân đầu người một tháng, tính theo giá hiện hành, được phân loại theo các vùng kinh tế - xã hội và khu vực (thành thị, nông thôn) của Việt Nam từ năm 2010 đến 2020.",
