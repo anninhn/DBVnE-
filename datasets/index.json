@@ -1,5 +1,34 @@
 [
   {
+    "slug": "mot-so-san-pham-cong-nghiep-chu-yeu-phan-theo-loai-hinh-kinh",
+    "title": "Sản lượng một số sản phẩm công nghiệp chủ yếu phân theo loại hình kinh tế",
+    "description": "Dataset thống kê sản lượng của 10 sản phẩm công nghiệp chủ yếu tại Việt Nam, phân loại theo 4 thành phần kinh tế (Tổng số, Nhà nước, Ngoài Nhà nước, ĐTNN) từ năm 2005 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "cong-nghiep",
+      "san-pham",
+      "kinh-te",
+      "khai-khoang",
+      "nang-luong"
+    ],
+    "uploaded_at": "2026-08-28T08:14:39.022Z",
+    "uploaded_by": "ninh",
+    "row_count": 680,
+    "file_count": 1,
+    "total_size_mb": 0.04,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9ad6f5a5-e5fc-49b1-836e-9dcc29807150/mot-so-san-pham-cong-nghiep-chu-yeu-phan-theo-loai-hinh-kinh.csv",
+        "size_mb": 0.04
+      }
+    ]
+  },
+  {
     "slug": "mot-so-san-pham-cong-nghiep-chu-yeu-binh-quan-dau-nguoi",
     "title": "Sản lượng một số sản phẩm công nghiệp chủ yếu bình quân đầu người",
     "description": "Dataset thống kê sản lượng bình quân đầu người của 18 loại sản phẩm công nghiệp chủ yếu tại Việt Nam, bao gồm các mặt hàng tiêu dùng như bia, nước khoáng, muối, đường, sữa, vải, quần áo... Dữ liệu được thu thập hàng năm từ 2010 đến 2024.",
