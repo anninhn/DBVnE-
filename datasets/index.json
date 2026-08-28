@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ket-qua-thi-hanh-an-dan-su-phan-theo-dia-phuong",
+    "title": "Kết quả thi hành án dân sự phân theo địa phương năm 2024",
+    "description": "Dữ liệu thống kê về kết quả thi hành án dân sự tại các địa phương và vùng kinh tế - xã hội của Việt Nam trong năm 2024.",
+    "category": "chinh-tri",
+    "tags": [
+      "thi-hanh-an",
+      "dan-su",
+      "phap-luat",
+      "dia-phuong",
+      2024
+    ],
+    "uploaded_at": "2026-08-28T11:31:42.167Z",
+    "uploaded_by": "ninh",
+    "row_count": 70,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fe9b327f-24b3-4670-a44c-fedaf4a3cfcc/ket-qua-thi-hanh-an-dan-su-phan-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "hoat-dong-tu-phap",
     "title": "Thống kê hoạt động tư pháp Việt Nam giai đoạn 2011-2024",
     "description": "Dữ liệu thống kê các hoạt động tư pháp tại Việt Nam, bao gồm số vụ án được khởi tố, truy tố, xét xử, số bị can, bị cáo, số lượt người được trợ giúp pháp lý và tỷ lệ thi hành án dân sự, giai đoạn từ năm 2011 đến 2024.",
