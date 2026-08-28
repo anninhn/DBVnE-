@@ -1,5 +1,33 @@
 [
   {
+    "slug": "thu-nhap-binh-quan-mot-thang-cua-nguoi-lao-dong-trong-doan-2",
+    "title": "Thu nhập bình quân tháng của người lao động theo loại hình doanh nghiệp",
+    "description": "Dữ liệu thống kê thu nhập bình quân một tháng của người lao động trong các loại hình doanh nghiệp khác nhau tại Việt Nam, giai đoạn từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "thu-nhap",
+      "lao-dong",
+      "doanh-nghiep",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:45:52.406Z",
+    "uploaded_by": "ninh",
+    "row_count": 130,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "02180cd8-f051-4ddd-89d9-fee6f63197ed/thu-nhap-binh-quan-mot-thang-cua-nguoi-lao-dong-trong-doan-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-lao-dong-nu-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-3",
     "title": "Số lao động nữ trong các doanh nghiệp theo ngành kinh tế giai đoạn 2010-2023",
     "description": "Dữ liệu thống kê số lượng lao động nữ làm việc trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo ngành kinh tế và theo từng năm từ 2010 đến 2023.",
