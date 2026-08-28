@@ -1,5 +1,34 @@
 [
   {
+    "slug": "mot-so-san-pham-cong-nghiep-chu-yeu-binh-quan-dau-nguoi",
+    "title": "Sản lượng một số sản phẩm công nghiệp chủ yếu bình quân đầu người",
+    "description": "Dataset thống kê sản lượng bình quân đầu người của 18 loại sản phẩm công nghiệp chủ yếu tại Việt Nam, bao gồm các mặt hàng tiêu dùng như bia, nước khoáng, muối, đường, sữa, vải, quần áo... Dữ liệu được thu thập hàng năm từ 2010 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "san-pham-cong-nghiep",
+      "binh-quan-dau-nguoi",
+      "tieu-dung",
+      "cong-nghiep",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:14:18.343Z",
+    "uploaded_by": "ninh",
+    "row_count": 270,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "badcba79-6b44-4200-9150-4d228a300231/mot-so-san-pham-cong-nghiep-chu-yeu-binh-quan-dau-nguoi.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "mot-so-san-pham-cong-nghiep-chu-yeu",
     "title": "Sản lượng một số sản phẩm công nghiệp chủ yếu",
     "description": "Dataset thống kê sản lượng của 83 loại sản phẩm công nghiệp chủ yếu tại Việt Nam, bao gồm các sản phẩm khai khoáng, năng lượng và vật liệu, trong giai đoạn từ năm 1995 đến 2024.",
