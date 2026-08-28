@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-sinh-vien-cac-truong-dai-hoc-phan-theo-dia-phuong",
+    "title": "Số sinh viên các trường đại học phân theo địa phương và năm",
+    "description": "Dataset thống kê số lượng sinh viên đang theo học tại các trường đại học, phân loại theo địa phương (tỉnh/thành phố, vùng kinh tế) và theo từng năm từ 2015 đến 2023. Dữ liệu bao gồm tổng số sinh viên trên cả nước và chi tiết cho 57 địa phương/vùng khác.",
+    "category": "giao-duc",
+    "tags": [
+      "sinh-vien",
+      "dai-hoc",
+      "giao-duc",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:22:50.554Z",
+    "uploaded_by": "ninh",
+    "row_count": 522,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "44262fd3-c545-4744-b7d4-9712e55b4e11/so-sinh-vien-cac-truong-dai-hoc-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-nu-hoc-sinh-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-ph",
     "title": "Số nữ học sinh phổ thông phân theo địa phương và cấp học",
     "description": "Dataset thống kê số lượng nữ học sinh ở các cấp Tiểu học, Trung học cơ sở và Trung học phổ thông trên toàn quốc, phân theo từng địa phương và vùng kinh tế - xã hội, tại thời điểm 30/9 hàng năm từ 2004 đến 2011.",
