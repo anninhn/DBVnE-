@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-gieo-trong-cay-luong-thuc-co-hat-phan-theo-dia-phu",
+    "title": "Diện tích gieo trồng cây lương thực có hạt phân theo địa phương và năm",
+    "description": "Dữ liệu thống kê diện tích gieo trồng các loại cây lương thực có hạt (như lúa, ngô) của Việt Nam, phân theo các tỉnh, thành phố, vùng kinh tế và cả nước, từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "dien-tich",
+      "cay-luong-thuc",
+      "nong-nghiep",
+      "viet-nam",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T08:39:05.065Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c42b1190-7db0-46a8-80e3-8cd78afe7444/dien-tich-gieo-trong-cay-luong-thuc-co-hat-phan-theo-dia-phu.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-cho-san-pham-mot-so-cay-lau-nam-chu-yeu",
     "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu",
     "description": "Dataset cung cấp thông tin về diện tích và chỉ số phát triển (so với năm trước) của các loại cây lâu năm chủ yếu tại Việt Nam, bao gồm cây ăn quả và cây công nghiệp, từ năm 2005 đến 2024.",
