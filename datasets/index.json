@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-vung-dong-ban",
+    "title": "Chỉ số giá sinh hoạt theo không gian theo vùng",
+    "description": "Dataset cung cấp chỉ số giá sinh hoạt (COLI) của 6 vùng kinh tế - xã hội của Việt Nam từ năm 2010 đến 2024. Chỉ số này phản ánh sự chênh lệch về mức giá sinh hoạt giữa các vùng.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia-sinh-hoat",
+      "coli",
+      "vung",
+      "gia-ca",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:05:28.789Z",
+    "uploaded_by": "ninh",
+    "row_count": 84,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "da26b5cf-55ff-4bc9-b931-ff544f01ccb6/chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-vung-dong-ban.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-sinh-hoat-theo-khong-gian-theo-dia-phuong-ha-noi",
     "title": "Chỉ số giá sinh hoạt theo không gian của các tỉnh, thành phố Việt Nam",
     "description": "Dữ liệu về chỉ số giá sinh hoạt theo không gian (SCOLI) của 63 tỉnh, thành phố Việt Nam từ năm 2011 đến 2024. Chỉ số này phản ánh mức giá tương đối giữa các địa phương, thường lấy Hà Nội làm gốc (100%).",
