@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-nguoi-tham-gia-bao-hiem-that-nghiep-phan-theo-dia-phuo",
+    "title": "Tỷ lệ người tham gia bảo hiểm thất nghiệp phân theo địa phương",
+    "description": "Dữ liệu thống kê tỷ lệ người tham gia bảo hiểm thất nghiệp của Việt Nam, được phân loại theo tỉnh, thành phố và các vùng kinh tế, từ năm 2015 đến năm 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "bao-hiem",
+      "that-nghiep",
+      "lao-dong",
+      "xa-hoi",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:13:44.100Z",
+    "uploaded_by": "ninh",
+    "row_count": 700,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "49600c68-8efa-49e7-803b-7769152c6eae/ty-le-nguoi-tham-gia-bao-hiem-that-nghiep-phan-theo-dia-phuo.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-chi-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
     "title": "Tỷ lệ chi ngân sách nhà nước so với Tổng sản phẩm trong nước (GDP)",
     "description": "Dữ liệu thể hiện tỷ lệ phần trăm của các loại chi ngân sách nhà nước so với Tổng sản phẩm trong nước (GDP) của Việt Nam từ năm 2018 đến 2023.",
