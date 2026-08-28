@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non",
+    "title": "Tỷ lệ người dân tham gia mạng xã hội phân theo thành thị, nông thôn, giới tính và nhóm tuổi",
+    "description": "Dataset này thể hiện tỷ lệ phần trăm người dân Việt Nam tham gia mạng xã hội, được phân loại theo khu vực (thành thị, nông thôn), giới tính và các nhóm tuổi khác nhau.",
+    "category": "xa-hoi",
+    "tags": [
+      "mang-xa-hoi",
+      "internet",
+      "dan-so",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:57:00.218Z",
+    "uploaded_by": "ninh",
+    "row_count": 25,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "707b1d43-33d8-46fc-aa0d-3904a944000d/ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the",
     "title": "Tỷ lệ người dân biết kỹ năng công nghệ thông tin phân theo đặc điểm",
     "description": "Dữ liệu thể hiện tỷ lệ phần trăm người dân biết các kỹ năng về công nghệ thông tin, được phân loại theo giới tính, khu vực sống và nhóm tuổi tại Việt Nam.",
