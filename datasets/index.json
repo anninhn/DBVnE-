@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-2",
+    "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo vùng",
+    "description": "Dataset thống kê tỷ lệ thiếu việc làm của người trong độ tuổi lao động tại Việt Nam, phân loại theo khu vực thành thị/nông thôn và 6 vùng kinh tế - xã hội, từ năm 2010 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "viec-lam",
+      "ty-le",
+      "vung",
+      "thanh-thi",
+      "nong-thon"
+    ],
+    "uploaded_at": "2026-08-28T09:35:09.547Z",
+    "uploaded_by": "ninh",
+    "row_count": 315,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "c2a51714-2fc5-42fe-8ae2-f5ea9804a091/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-2.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-vung-va-2",
     "title": "Tỷ lệ thất nghiệp trong độ tuổi lao động phân theo vùng và thành thị, nông thôn",
     "description": "Dữ liệu thống kê tỷ lệ thất nghiệp của Việt Nam trong độ tuổi lao động, được phân loại theo khu vực thành thị, nông thôn và 6 vùng kinh tế - xã hội. Dữ liệu bao gồm các năm từ 2010 đến 2024.",
