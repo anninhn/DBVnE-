@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-mot-so",
+    "title": "Số lượt người nước ngoài nhập cảnh Việt Nam phân theo quốc tịch",
+    "description": "Dữ liệu thống kê số lượt người nước ngoài nhập cảnh Việt Nam hàng năm, được phân loại theo quốc tịch của du khách. Dữ liệu bao gồm giai đoạn từ năm 2010 đến 2024 và nhiều quốc tịch khác nhau.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "nhap-canh",
+      "quoc-tich",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T11:01:56.307Z",
+    "uploaded_by": "ninh",
+    "row_count": 420,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "372c78ec-8fa9-4d9e-9ee0-f77ce91880e4/so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-mot-so.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai",
     "title": "Số lượt hành khách vận chuyển phân theo ngành vận tải tại Việt Nam",
     "description": "Dữ liệu thống kê số lượt hành khách vận chuyển và chỉ số phát triển theo năm, phân loại theo các ngành vận tải chính (đường bộ, đường sắt, đường sông, đường hàng không) tại Việt Nam từ năm 1995 đến 2024.",
