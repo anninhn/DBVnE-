@@ -1,5 +1,33 @@
 [
   {
+    "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini",
+    "title": "Hệ số GINI về bất bình đẳng thu nhập tại Việt Nam",
+    "description": "Dữ liệu về hệ số GINI, một chỉ số đo lường mức độ bất bình đẳng trong phân phối thu nhập, của Việt Nam từ năm 2002 đến 2024, được phân loại theo cả nước, thành thị, nông thôn và các vùng kinh tế-xã hội.",
+    "category": "xa-hoi",
+    "tags": [
+      "gini",
+      "bat-binh-dang",
+      "thu-nhap",
+      "xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T11:30:35.170Z",
+    "uploaded_by": "ninh",
+    "row_count": 135,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3cb0ff0b-842b-4b8d-9128-62370082b681/he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-nha-o-binh-quan-dau-nguoi-phan-theo-thanh-thi-nong",
     "title": "Diện tích nhà ở bình quân đầu người phân theo thành thị, nông thôn và vùng kinh tế - xã hội Việt Nam",
     "description": "Dataset thống kê diện tích nhà ở bình quân đầu người tại Việt Nam từ năm 2004 đến 2024. Dữ liệu được phân loại theo khu vực (thành thị, nông thôn), các vùng kinh tế - xã hội và nhóm thu nhập.",
