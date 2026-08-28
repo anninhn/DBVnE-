@@ -1,5 +1,35 @@
 [
   {
+    "slug": "mot-so-chi-tieu-chu-yeu-ve-tai-khoan-quoc-gia",
+    "title": "Một số chỉ tiêu chủ yếu về tài khoản quốc gia Việt Nam",
+    "description": "Dataset cung cấp các chỉ tiêu kinh tế vĩ mô quan trọng về tài khoản quốc gia của Việt Nam, bao gồm GDP, GNI, tiêu dùng, tích lũy tài sản, xuất nhập khẩu, và các chỉ số bình quân đầu người, tốc độ tăng trưởng từ năm 2000 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gdp",
+      "gni",
+      "tai-khoan-quoc-gia",
+      "dau-tu",
+      "tieu-dung"
+    ],
+    "uploaded_at": "2026-08-28T11:07:26.297Z",
+    "uploaded_by": "ninh",
+    "row_count": 304,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "21649215-173c-4c34-ad5e-79f319fc7ce2/mot-so-chi-tieu-chu-yeu-ve-tai-khoan-quoc-gia.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "chi-so-phat-trien-tong-san-pham-trong-nuoc-theo-gia-so-sanh",
     "title": "Chỉ số phát triển tổng sản phẩm trong nước (GRDP) theo giá so sánh của các tỉnh, thành phố và vùng kinh tế",
     "description": "Dataset này cung cấp chỉ số phát triển tổng sản phẩm trong nước (GRDP) theo giá so sánh cho các tỉnh, thành phố trực thuộc trung ương và các vùng kinh tế - xã hội của Việt Nam, từ năm 2018 đến năm 2024.",
