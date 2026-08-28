@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-tieu-thu-nganh-cong-nghiep-che-bien-che-tao-phan-theo",
+    "title": "Chỉ số tiêu thụ ngành công nghiệp chế biến, chế tạo phân theo ngành",
+    "description": "Dataset thống kê chỉ số tiêu thụ của các ngành công nghiệp chế biến, chế tạo tại Việt Nam, được thu thập từ năm 2012 đến 2024. Dữ liệu cung cấp cái nhìn tổng quan về mức độ tiêu thụ sản phẩm của từng ngành.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "cong-nghiep",
+      "che-bien",
+      "che-tao",
+      "chi-so-tieu-thu"
+    ],
+    "uploaded_at": "2026-08-28T08:13:06.374Z",
+    "uploaded_by": "ninh",
+    "row_count": 312,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fe0faf70-67ac-49eb-ae9c-987265d2a2a1/chi-so-tieu-thu-nganh-cong-nghiep-che-bien-che-tao-phan-theo.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-san-xuat-cong-nghiep-phan-theo-nganh-cong-nghiep",
     "title": "Chỉ số sản xuất công nghiệp phân theo ngành công nghiệp",
     "description": "Dataset cung cấp chỉ số sản xuất công nghiệp (IPI) của Việt Nam, được phân loại theo các ngành công nghiệp chi tiết qua các năm từ 2012 đến 2024. Dữ liệu giúp theo dõi tốc độ tăng trưởng của từng ngành công nghiệp.",
