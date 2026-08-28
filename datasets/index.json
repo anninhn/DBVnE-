@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-lua-ca-nam-phan-theo-dia-phuong",
+    "title": "Diện tích lúa cả năm phân theo địa phương và thời gian",
+    "description": "Dữ liệu thống kê diện tích trồng lúa hàng năm trên phạm vi toàn quốc, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "dien-tich-lua",
+      "nong-nghiep",
+      "dia-phuong",
+      "san-xuat-lua",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T08:42:35.888Z",
+    "uploaded_by": "ninh",
+    "row_count": 2130,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a9c223c0-4a01-4b05-b4fa-dde4121f52d2/dien-tich-lua-ca-nam-phan-theo-dia-phuong.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-hien-co-mot-so-cay-lau-nam-chu-yeu",
     "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu",
     "description": "Dataset thống kê diện tích và chỉ số phát triển (so với năm trước) của một số loại cây lâu năm chủ yếu tại Việt Nam từ năm 2005 đến 2024. Dữ liệu bao gồm các loại cây ăn quả và cây công nghiệp.",
