@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-nhan-luc-y-te",
+    "title": "Số lượng nhân lực y tế và dược sĩ Việt Nam",
+    "description": "Dataset thống kê số lượng các loại hình cán bộ y tế và dược sĩ tại Việt Nam từ năm 1995 đến 2022, bao gồm tổng số lượng và chỉ số phát triển so với năm trước.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "nhan-luc",
+      "can-bo",
+      "bac-si",
+      "duoc-si"
+    ],
+    "uploaded_at": "2026-08-28T11:42:02.731Z",
+    "uploaded_by": "ninh",
+    "row_count": 224,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a5409a78-d366-437c-83f9-7286e66225d8/so-nhan-luc-y-te.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-nhan-luc-nganh-duoc-truc-thuoc-so-y-te-phan-theo-dia-phuo",
     "title": "Số lượng nhân lực ngành dược trực thuộc Sở Y tế phân theo địa phương",
     "description": "Dataset thống kê số lượng dược sĩ (cao cấp, trung cấp) và dược tá trực thuộc các Sở Y tế, được phân loại theo địa phương và năm. Dữ liệu bao gồm các tỉnh thành và vùng kinh tế trên cả nước từ năm 2002 đến 2011.",
