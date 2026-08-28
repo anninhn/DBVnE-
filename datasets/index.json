@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-dia-phuon",
+    "title": "Tỷ lệ thất nghiệp trong độ tuổi lao động phân theo địa phương",
+    "description": "Bộ dữ liệu cung cấp thông tin về tỷ lệ thất nghiệp trong độ tuổi lao động của Việt Nam, phân loại theo cấp độ quốc gia, vùng kinh tế và từng tỉnh/thành phố, từ năm 2018 đến 2024. Một số dữ liệu có thể là sơ bộ.",
+    "category": "lao-dong",
+    "tags": [
+      "that-nghiep",
+      "lao-dong",
+      "dia-phuong",
+      "kinh-te-xa-hoi"
+    ],
+    "uploaded_at": "2026-08-28T08:08:20.760Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "666211fa-7475-4b7e-bbc8-23c5958a1926/ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-dia-phuon.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-lao-dong-tu-15-tuoi-tro-len-da-qua-dao-tao-phan-theo-t",
     "title": "Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo phân theo trình độ chuyên môn kỹ thuật",
     "description": "Dataset thống kê tỷ lệ phần trăm lao động từ 15 tuổi trở lên đã qua đào tạo chuyên môn kỹ thuật, phân loại theo các cấp độ (sơ cấp, trung cấp, cao đẳng, đại học trở lên) qua các năm từ 2009 đến 2024 tại Việt Nam.",
