@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-luong-trung-tam-thuong-mai-co-den-31-12-hang-nam-phan-the",
+    "title": "Số lượng trung tâm thương mại có đến 31/12 hàng năm phân theo tỉnh, thành phố và vùng kinh tế",
+    "description": "Dataset thống kê số lượng trung tâm thương mại hiện có tính đến ngày 31 tháng 12 hàng năm, phân loại theo tỉnh, thành phố, vùng kinh tế và tổng cả nước, từ năm 2008 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "trung-tam-thuong-mai",
+      "ban-le",
+      "kinh-te",
+      "ha-tang"
+    ],
+    "uploaded_at": "2026-08-28T10:58:51.831Z",
+    "uploaded_by": "ninh",
+    "row_count": 1139,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "925c7df0-2fb6-48d7-a6b2-f67c3f559949/so-luong-trung-tam-thuong-mai-co-den-31-12-hang-nam-phan-the.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-luong-sieu-thi-co-den-31-12-hang-nam-phan-theo-dia-phuong",
     "title": "Số lượng siêu thị phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng siêu thị có mặt tại Việt Nam, phân loại theo tỉnh, thành phố và các vùng kinh tế, từ năm 2005 đến 2024. Dữ liệu bao gồm cả tổng số toàn quốc.",
