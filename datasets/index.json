@@ -1,5 +1,36 @@
 [
   {
+    "slug": "so-luot-hanh-khach-luan-chuyen-phan-theo-nganh-van-tai",
+    "title": "Lượt hành khách luân chuyển phân theo ngành vận tải tại Việt Nam",
+    "description": "Dataset thống kê tổng số lượt hành khách luân chuyển (triệu lượt người.km) và chỉ số phát triển so với năm trước của các ngành vận tải (đường sắt, đường bộ, đường sông, đường hàng không) tại Việt Nam từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "hanh-khach",
+      "van-tai",
+      "giao-thong",
+      "duong-bo",
+      "duong-sat",
+      "duong-song",
+      "hang-khong"
+    ],
+    "uploaded_at": "2026-08-28T11:00:08.484Z",
+    "uploaded_by": "ninh",
+    "row_count": 150,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8f040e89-54bb-40db-81bb-836fd369b9b2/so-luot-hanh-khach-luan-chuyen-phan-theo-nganh-van-tai.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-luot-hanh-khach-luan-chuyen-phan-theo-loai-hinh-kinh-te",
     "title": "Số lượt hành khách luân chuyển phân theo loại hình kinh tế",
     "description": "Dataset thống kê số lượt hành khách luân chuyển theo các thành phần kinh tế (Tổng số, Nhà nước, Ngoài Nhà nước, Khu vực có vốn đầu tư nước ngoài) từ năm 2000 đến 2024, kèm theo chỉ số phát triển so với năm trước.",
