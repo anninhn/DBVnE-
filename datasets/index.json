@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-giuong-benh",
+    "title": "Số giường bệnh và chỉ số phát triển theo loại cơ sở y tế tại Việt Nam",
+    "description": "Dataset thống kê số lượng giường bệnh theo các loại cơ sở y tế tại Việt Nam từ năm 1995 đến 2017, kèm theo chỉ số phát triển so với năm trước đó. Dữ liệu bao gồm tổng số giường bệnh, giường bệnh tại bệnh viện, trạm y tế và các cơ sở khác.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "giuong-benh",
+      "co-so-y-te",
+      "suc-khoe"
+    ],
+    "uploaded_at": "2026-08-28T11:38:10.754Z",
+    "uploaded_by": "ninh",
+    "row_count": 184,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3a3db549-565f-4920-bb03-f5ed1e0fbcd8/so-giuong-benh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-di-tich-lich-su-van-hoa-danh-lam-thang-canh",
     "title": "Số lượng di tích lịch sử, văn hóa và danh lam thắng cảnh tại Việt Nam",
     "description": "Dataset thống kê số lượng các loại hình di tích lịch sử, văn hóa và danh lam thắng cảnh được công nhận (quốc gia, quốc gia đặc biệt, UNESCO) theo từng năm từ 2018 đến 2024.",
