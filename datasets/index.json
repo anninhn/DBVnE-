@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-lop-hoc-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuong",
+    "title": "Số lớp học phổ thông phân theo địa phương và cấp học",
+    "description": "Dữ liệu thống kê số lượng lớp học ở các cấp tiểu học, trung học cơ sở và trung học phổ thông trên toàn quốc, phân theo từng địa phương và vùng, từ năm 2002 đến 2009. Dữ liệu được ghi nhận tại thời điểm 30/9 hàng năm.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "lop-hoc",
+      "pho-thong",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:21:08.822Z",
+    "uploaded_by": "ninh",
+    "row_count": 576,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b548276e-0c39-4ccd-b127-b615b0203b13/so-lop-hoc-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9-ph",
     "title": "Số liệu về lớp học, giáo viên và học sinh phổ thông theo năm học",
     "description": "Dataset thống kê số lượng lớp học, giáo viên và học sinh ở các cấp học phổ thông (Tiểu học, THCS, THPT) theo loại hình (công lập, ngoài công lập) và năm học, kèm theo chỉ số phát triển so với năm trước.",
