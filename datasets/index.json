@@ -1,5 +1,33 @@
 [
   {
+    "slug": "thu-ngan-sach-nha-nuoc",
+    "title": "Thu ngân sách nhà nước Việt Nam giai đoạn 2000-2023",
+    "description": "Dữ liệu thống kê các khoản thu ngân sách nhà nước của Việt Nam từ năm 2000 đến năm 2023, bao gồm giá trị thu theo từng loại và cơ cấu tỷ trọng của chúng trong tổng thu.",
+    "category": "kinh-te",
+    "tags": [
+      "ngan-sach",
+      "thu-ngan-sach",
+      "kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T11:12:44.747Z",
+    "uploaded_by": "ninh",
+    "row_count": 528,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "39147283-361b-45fa-9827-65554d00e9fb/thu-ngan-sach-nha-nuoc.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "lai-suat-ty-gia-trung-tam",
     "title": "Lãi suất tiền gửi bình quân và tỷ giá trung tâm",
     "description": "Bộ dữ liệu này cung cấp thông tin về lãi suất tiền gửi bình quân bằng đồng Việt Nam và đô la Mỹ theo các kỳ hạn khác nhau, cùng với tỷ giá trung tâm, được thu thập từ năm 2015 đến 2024.",
