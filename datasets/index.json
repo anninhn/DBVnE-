@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo",
+    "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép phân theo tỉnh, thành phố",
+    "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) đã được cấp giấy phép, phân loại theo từng tỉnh, thành phố và các vùng kinh tế trên cả nước.",
+    "category": "kinh-te",
+    "tags": [
+      "dau-tu-nuoc-ngoai",
+      "fdi",
+      "kinh-te",
+      "tinh-thanh"
+    ],
+    "uploaded_at": "2026-08-28T08:15:18.984Z",
+    "uploaded_by": "ninh",
+    "row_count": 71,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "501ffd64-f448-45ea-8ffa-198a6497f603/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-nam-2024",
     "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép năm 2024",
     "description": "Dữ liệu về số lượng dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) được cấp phép tại Việt Nam trong năm 2024, phân theo tỉnh, thành phố và các vùng kinh tế.",
