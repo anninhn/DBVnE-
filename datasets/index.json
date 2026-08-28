@@ -1,5 +1,33 @@
 [
   {
+    "slug": "mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-dia-phuong",
+    "title": "Số liệu tai nạn giao thông phân theo địa phương và năm",
+    "description": "Dataset này cung cấp các chỉ số về tai nạn giao thông tại Việt Nam, bao gồm số vụ tai nạn, số người chết và số người bị thương, được phân loại theo địa phương (tỉnh/thành phố và vùng kinh tế - xã hội) và theo từng năm từ 2022 đến 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "tai-nan-giao-thong",
+      "dia-phuong",
+      "so-lieu",
+      "an-toan-giao-thong"
+    ],
+    "uploaded_at": "2026-08-28T11:32:22.036Z",
+    "uploaded_by": "ninh",
+    "row_count": 213,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "beb24016-f638-422e-a4a9-c36d6061a45a/mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ket-qua-thi-hanh-an-dan-su-phan-theo-dia-phuong-2",
     "title": "Kết quả thi hành án dân sự phân theo địa phương",
     "description": "Dữ liệu thống kê kết quả thi hành án dân sự tại Việt Nam, bao gồm số lượng việc, số tiền đã thi hành xong và tỷ lệ hoàn thành, được phân loại theo địa phương và theo năm từ 2022 đến 2024.",
