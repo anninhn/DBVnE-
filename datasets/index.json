@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-vu-an-va-so-bi-can-da-bi-truy-to-nam-2024-phan-theo-toi-d",
+    "title": "Số vụ án và số bị can đã bị truy tố năm 2024 phân theo tội danh",
+    "description": "Dữ liệu thống kê số lượng vụ án và số bị can đã bị khởi tố trong năm 2024, phân loại theo các tội danh cụ thể và điều luật tương ứng trên phạm vi cả nước.",
+    "category": "xa-hoi",
+    "tags": [
+      "toi-pham",
+      "vu-an",
+      "bi-can",
+      "truy-to",
+      "phap-luat",
+      "nam-2024"
+    ],
+    "uploaded_at": "2026-08-28T11:45:06.085Z",
+    "uploaded_by": "ninh",
+    "row_count": 104,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "19c308cb-20ad-4a67-900d-bbfa188ba3f2/so-vu-an-va-so-bi-can-da-bi-truy-to-nam-2024-phan-theo-toi-d.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-mot-so-toi-dan",
     "title": "Số vụ án đã bị khởi tố phân theo điều luật",
     "description": "Dữ liệu thống kê số vụ án đã bị khởi tố trên phạm vi cả nước, phân loại theo các điều luật cụ thể trong Bộ luật Hình sự. Dataset này có thể là một phần của dữ liệu lớn hơn về số bị can.",
