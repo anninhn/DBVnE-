@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-cam-phan-theo-dia-phuong",
+    "title": "Sản lượng cam phân theo địa phương và năm",
+    "description": "Dataset thống kê sản lượng cam thu hoạch hàng năm của Việt Nam, phân chia theo các tỉnh, thành phố và tổng cả nước. Dữ liệu bao gồm giai đoạn từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "cam",
+      "nong-nghiep",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:50:24.648Z",
+    "uploaded_by": "ninh",
+    "row_count": 147,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "19bae838-f886-42b1-8664-71da1faf2e3d/san-luong-cam-phan-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "san-luong-ca-nuoi-phan-theo-dia-phuong",
     "title": "Sản lượng cá nuôi phân theo địa phương và thời gian",
     "description": "Dataset thống kê sản lượng cá nuôi hàng năm theo từng tỉnh, thành phố và các vùng kinh tế trên cả nước, từ năm 1995 đến 2024. Dữ liệu bao gồm cả tổng sản lượng toàn quốc.",
