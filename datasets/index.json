@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-dia-phuong",
+    "title": "Tỷ lệ người sử dụng điện thoại di động phân theo địa phương năm 2024",
+    "description": "Dataset thống kê tỷ lệ phần trăm người dân sử dụng điện thoại di động tại Việt Nam, phân chia theo các địa phương và vùng kinh tế trong năm 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "dien-thoai",
+      "di-dong",
+      "xa-hoi",
+      "dia-phuong",
+      "cong-nghe"
+    ],
+    "uploaded_at": "2026-08-28T11:57:41.384Z",
+    "uploaded_by": "ninh",
+    "row_count": 70,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4efd7809-1246-4f0f-8832-58ea96a9ebe0/ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-theo-dia-phuong",
     "title": "Tỷ lệ người dân tham gia mạng xã hội theo địa phương và năm",
     "description": "Dataset thống kê tỷ lệ phần trăm người dân tham gia mạng xã hội trên toàn quốc, theo các vùng kinh tế và từng tỉnh/thành phố, trong các năm 2010 và 2024.",
