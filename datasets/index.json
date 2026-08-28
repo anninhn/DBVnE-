@@ -1,5 +1,35 @@
 [
   {
+    "slug": "tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa",
+    "title": "Tổng thu nhập của người lao động trong doanh nghiệp theo tỉnh/thành phố và năm",
+    "description": "Dữ liệu thống kê tổng thu nhập của người lao động trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân theo tỉnh/thành phố, vùng kinh tế và tổng hợp toàn quốc, từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "thu-nhap",
+      "lao-dong",
+      "doanh-nghiep",
+      "kinh-te",
+      "tinh-thanh",
+      "vung-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T08:35:16.986Z",
+    "uploaded_by": "ninh",
+    "row_count": 710,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "eba3c870-b68b-476e-8e64-3dac80477b9b/tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-3",
     "title": "Tổng số lao động trong các doanh nghiệp theo ngành kinh tế",
     "description": "Dữ liệu thống kê tổng số lao động trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế, từ năm 2010 đến 2023.",
