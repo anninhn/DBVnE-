@@ -1,5 +1,35 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-khu-vuc-tha",
+    "title": "Chỉ số giá tiêu dùng, giá vàng và đô la Mỹ khu vực thành thị",
+    "description": "Dữ liệu cung cấp chỉ số giá tiêu dùng (CPI) theo các nhóm hàng, chỉ số giá vàng và chỉ số giá đô la Mỹ tại khu vực thành thị, được tính theo tháng so với cùng kỳ năm trước. Dữ liệu bao gồm các năm 2022 và 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "chi-so-gia",
+      "cpi",
+      "vang",
+      "usd",
+      "lam-phat"
+    ],
+    "uploaded_at": "2026-08-28T10:08:50.212Z",
+    "uploaded_by": "ninh",
+    "row_count": 456,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6240a3e3-bf51-4c4b-91f2-06e51ca4caa7/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-khu-vuc-tha.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-cac-thang-3",
     "title": "Chỉ số giá tiêu dùng (CPI), chỉ số giá vàng và đô la Mỹ theo tháng",
     "description": "Dữ liệu chỉ số giá tiêu dùng (CPI) tổng hợp và theo các nhóm hàng, cùng với chỉ số giá vàng và đô la Mỹ, được tính theo tháng so với tháng trước. Dữ liệu bao gồm giai đoạn từ năm 2002 đến 2024.",
