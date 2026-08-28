@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tong-thu-nhap-quoc-gia-theo-gia-hien-hanh",
+    "title": "Tổng thu nhập quốc gia và tổng sản phẩm trong nước theo giá hiện hành",
+    "description": "Dữ liệu thống kê về Tổng thu nhập quốc gia (GNI), Tổng sản phẩm trong nước (GDP), Thu nhập thuần túy từ nước ngoài và tỷ lệ GNI so với GDP của Việt Nam từ năm 1990 đến 2024, tính theo giá hiện hành.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "gni",
+      "gdp",
+      "thu-nhap-quoc-gia",
+      "tong-san-pham-trong-nuoc"
+    ],
+    "uploaded_at": "2026-08-28T11:10:08.775Z",
+    "uploaded_by": "ninh",
+    "row_count": 35,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7bb66c99-9cb3-4abd-8259-b5ee7b5a9730/tong-thu-nhap-quoc-gia-theo-gia-hien-hanh.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010-phan-theo-loa",
     "title": "Tổng sản phẩm trong nước (GDP) theo giá so sánh 2010 phân theo thành phần kinh tế và ngành",
     "description": "Dataset cung cấp dữ liệu về Tổng sản phẩm trong nước (GDP) của Việt Nam theo giá so sánh năm 2010, được phân loại theo các thành phần kinh tế và ngành kinh tế. Dữ liệu bao gồm giá trị GDP và chỉ số phát triển qua các năm từ 2005 đến 2024.",
