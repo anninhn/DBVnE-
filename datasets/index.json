@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-gia-san-xuat-dich-vu-nam-truoc-100",
+    "title": "Chỉ số giá sản xuất dịch vụ Việt Nam (Năm trước = 100)",
+    "description": "Dataset này cung cấp chỉ số giá sản xuất dịch vụ (PPI-S) cho các nhóm ngành dịch vụ khác nhau tại Việt Nam, được tính toán với năm trước đó làm gốc 100%. Dữ liệu bao gồm giai đoạn từ năm 2012 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia",
+      "san-xuat",
+      "dich-vu",
+      "kinh-te",
+      "lam-phat"
+    ],
+    "uploaded_at": "2026-08-28T10:04:20.673Z",
+    "uploaded_by": "ninh",
+    "row_count": 195,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2fe2c45a-6eea-471f-a763-502f7f181e9d/chi-so-gia-san-xuat-dich-vu-nam-truoc-100.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-san-xuat-dich-vu-nam-2010-100",
     "title": "Chỉ số giá sản xuất dịch vụ theo ngành (Năm 2010 = 100)",
     "description": "Dataset cung cấp chỉ số giá sản xuất dịch vụ (SPPI) cho các ngành dịch vụ khác nhau tại Việt Nam, lấy năm 2010 làm gốc (100). Dữ liệu bao gồm các năm từ 2012 đến 2024.",
