@@ -1,5 +1,34 @@
 [
   {
+    "slug": "tong-san-pham-tren-dia-ban-binh-quan-dau-nguoi-phan-theo-dia",
+    "title": "Tổng sản phẩm trên địa bàn bình quân đầu người phân theo tỉnh, thành phố và vùng kinh tế",
+    "description": "Dataset này cung cấp dữ liệu về Tổng sản phẩm trên địa bàn (GRDP) bình quân đầu người cho các tỉnh, thành phố trực thuộc trung ương và các vùng kinh tế của Việt Nam, giai đoạn từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "grdp",
+      "binh-quan-dau-nguoi",
+      "tinh-thanh-pho",
+      "vung-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:08:24.467Z",
+    "uploaded_by": "ninh",
+    "row_count": 483,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d6722eea-837f-4af4-a661-bb0e97238343/tong-san-pham-tren-dia-ban-binh-quan-dau-nguoi-phan-theo-dia.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "su-dung-tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010",
     "title": "Sử dụng Tổng sản phẩm trong nước (GDP) theo giá so sánh năm 2010",
     "description": "Dữ liệu thống kê các thành phần sử dụng Tổng sản phẩm trong nước (GDP) của Việt Nam từ năm 2005 đến 2024, tính theo giá so sánh năm 2010. Bao gồm giá trị tuyệt đối và chỉ số phát triển so với năm trước.",
