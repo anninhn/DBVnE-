@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-c-2",
+    "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của Việt Nam",
+    "description": "Dataset cung cấp số liệu về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số Việt Nam, phân loại theo khu vực thành thị, nông thôn và tổng số toàn quốc, từ năm 2001 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "dan-so",
+      "sinh-san",
+      "tu-vong",
+      "ty-suat",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T09:34:18.173Z",
+    "uploaded_by": "ninh",
+    "row_count": 72,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "14746abf-6f1c-428a-bf7f-5acc0dbfd5e8/ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-c-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "nang-suat-gieo-trong-lua-mua-phan-theo-dia-phuong",
     "title": "Năng suất gieo trồng lúa mùa phân theo địa phương và năm",
     "description": "Dataset này cung cấp dữ liệu về năng suất gieo trồng lúa mùa của Việt Nam, được phân loại theo từng tỉnh, thành phố, vùng kinh tế và cả nước. Dữ liệu được thu thập hàng năm từ 1995 đến 2024, cho phép theo dõi xu hướng năng suất lúa theo thời gian và địa điểm.",
