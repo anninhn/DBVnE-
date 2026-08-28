@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-mot-so-toi-dan",
+    "title": "Số vụ án đã bị khởi tố phân theo điều luật",
+    "description": "Dữ liệu thống kê số vụ án đã bị khởi tố trên phạm vi cả nước, phân loại theo các điều luật cụ thể trong Bộ luật Hình sự. Dataset này có thể là một phần của dữ liệu lớn hơn về số bị can.",
+    "category": "xa-hoi",
+    "tags": [
+      "vu-an",
+      "toi-pham",
+      "phap-luat",
+      "khoi-to",
+      "ca-nuoc"
+    ],
+    "uploaded_at": "2026-08-28T11:44:44.425Z",
+    "uploaded_by": "ninh",
+    "row_count": 980,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4ffb513c-c31e-4a8f-9aee-2be0fd814b65/so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-mot-so-toi-dan.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-dia-phuong",
     "title": "Số vụ án và số bị can đã bị khởi tố phân theo địa phương",
     "description": "Dữ liệu thống kê số lượng vụ án và số bị can đã bị khởi tố theo từng địa phương (bao gồm các vùng kinh tế và tỉnh/thành phố) và theo năm, từ 2022 đến 2024.",
