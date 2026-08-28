@@ -667,63 +667,6 @@
     ]
   },
   {
-    "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-3",
-    "title": "Vốn sản xuất kinh doanh bình quân hàng năm của doanh nghiệp theo ngành kinh tế",
-    "description": "Dữ liệu thống kê vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế, từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "von-kinh-doanh",
-      "doanh-nghiep",
-      "nganh-kinh-te",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:38:24.585Z",
-    "uploaded_by": "ninh",
-    "row_count": 1000,
-    "file_count": 1,
-    "total_size_mb": 0.07,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "c85b44e1-6272-4dc3-93d8-7cc79daf9c84/von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-3.csv",
-        "size_mb": 0.07
-      }
-    ]
-  },
-  {
-    "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-2",
-    "title": "Vốn sản xuất kinh doanh bình quân hàng năm của các loại hình doanh nghiệp",
-    "description": "Dữ liệu thống kê vốn sản xuất kinh doanh bình quân hàng năm của các loại hình doanh nghiệp tại Việt Nam, phân loại theo các nhóm doanh nghiệp nhà nước, ngoài nhà nước và có vốn đầu tư nước ngoài, từ năm 2010 đến 2023. Bao gồm giá trị tuyệt đối (nghìn tỷ đồng) và cơ cấu phần trăm.",
-    "category": "kinh-te",
-    "tags": [
-      "von-dau-tu",
-      "doanh-nghiep",
-      "kinh-doanh",
-      "san-xuat",
-      "von"
-    ],
-    "uploaded_at": "2026-08-28T08:38:05.637Z",
-    "uploaded_by": "ninh",
-    "row_count": 130,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "c6d20074-83fd-4e1d-930f-3ad8663113d3/von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh-2.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "von-san-xuat-kinh-doanh-binh-quan-hang-nam-cua-cac-doanh-ngh",
     "title": "Vốn sản xuất kinh doanh bình quân hàng năm của doanh nghiệp theo tỉnh/thành phố",
     "description": "Dataset này cung cấp thông tin về vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo tỉnh/thành phố và vùng kinh tế của Việt Nam, từ năm 2010 đến 2023.",
@@ -752,63 +695,6 @@
     ]
   },
   {
-    "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-3",
-    "title": "Tỷ suất lợi nhuận của doanh nghiệp theo ngành kinh tế và năm",
-    "description": "Dữ liệu thống kê tỷ suất lợi nhuận của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo các ngành kinh tế và theo năm từ 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "doanh-nghiep",
-      "loi-nhuan",
-      "nganh-kinh-te",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:37:29.669Z",
-    "uploaded_by": "ninh",
-    "row_count": 1000,
-    "file_count": 1,
-    "total_size_mb": 0.07,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "25ee16de-9851-4799-848d-f420e4316290/ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-3.csv",
-        "size_mb": 0.07
-      }
-    ]
-  },
-  {
-    "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-2",
-    "title": "Tỷ suất lợi nhuận của doanh nghiệp theo loại hình và năm",
-    "description": "Dataset thống kê tỷ suất lợi nhuận của các loại hình doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, giai đoạn từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "doanh-nghiep",
-      "loi-nhuan",
-      "ty-suat"
-    ],
-    "uploaded_at": "2026-08-28T08:37:09.893Z",
-    "uploaded_by": "ninh",
-    "row_count": 130,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "006ae7ff-df54-4c0f-83b6-53a79cfd4185/ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-2.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua",
     "title": "Tỷ suất lợi nhuận của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh",
     "description": "Dataset thống kê tỷ suất lợi nhuận của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh trên phạm vi cả nước, các vùng kinh tế và từng tỉnh/thành phố, giai đoạn từ năm 2010 đến 2023.",
@@ -833,62 +719,6 @@
         "type": "csv",
         "r2_key": "54012258-b115-449b-93a9-39fd6dc44781/ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua.csv",
         "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-nghi-3",
-    "title": "Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp theo ngành kinh tế",
-    "description": "Dữ liệu thống kê về giá trị tài sản cố định bình quân trên một lao động của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế và theo năm.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "tai-san",
-      "doanh-nghiep",
-      "lao-dong"
-    ],
-    "uploaded_at": "2026-08-28T08:36:40.675Z",
-    "uploaded_by": "ninh",
-    "row_count": 190,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "da69134a-1c34-45a8-9fca-7091e6e54a84/trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-nghi-3.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-nghi-2",
-    "title": "Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp theo loại hình",
-    "description": "Dữ liệu thống kê về giá trị tài sản cố định bình quân trên mỗi lao động của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo loại hình doanh nghiệp (Tổng số, Nhà nước, Ngoài Nhà nước, FDI) từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "tai-san-co-dinh",
-      "lao-dong",
-      "doanh-nghiep",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:36:25.886Z",
-    "uploaded_by": "ninh",
-    "row_count": 40,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "7b3edcb0-7894-4ff2-b145-2015102e895c/trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-nghi-2.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -922,63 +752,6 @@
     ]
   },
   {
-    "slug": "tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa-3",
-    "title": "Tổng thu nhập của người lao động trong doanh nghiệp theo ngành kinh tế",
-    "description": "Dataset thống kê tổng thu nhập của người lao động làm việc trong các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế, từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "thu-nhap",
-      "lao-dong",
-      "doanh-nghiep",
-      "kinh-te",
-      "nganh-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:35:50.988Z",
-    "uploaded_by": "ninh",
-    "row_count": 1000,
-    "file_count": 1,
-    "total_size_mb": 0.07,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "76aae22e-1bb0-4ef3-aef0-2fb67ea89162/tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa-3.csv",
-        "size_mb": 0.07
-      }
-    ]
-  },
-  {
-    "slug": "tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa-2",
-    "title": "Tổng thu nhập của người lao động trong doanh nghiệp theo loại hình",
-    "description": "Dataset thống kê tổng thu nhập của người lao động trong các loại hình doanh nghiệp tại Việt Nam từ năm 2010 đến 2023. Dữ liệu bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm theo từng loại hình doanh nghiệp.",
-    "category": "kinh-te",
-    "tags": [
-      "thu-nhap",
-      "lao-dong",
-      "doanh-nghiep",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:35:35.665Z",
-    "uploaded_by": "ninh",
-    "row_count": 130,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "dfbe0c55-7334-4caa-b4e1-deb665fb60a8/tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa-2.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa",
     "title": "Tổng thu nhập của người lao động trong doanh nghiệp theo tỉnh/thành phố và năm",
     "description": "Dữ liệu thống kê tổng thu nhập của người lao động trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân theo tỉnh/thành phố, vùng kinh tế và tổng hợp toàn quốc, từ năm 2010 đến 2023.",
@@ -1005,62 +778,6 @@
         "type": "csv",
         "r2_key": "eba3c870-b68b-476e-8e64-3dac80477b9b/tong-thu-nhap-cua-nguoi-lao-dong-trong-doanh-nghiep-dang-hoa.csv",
         "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-3",
-    "title": "Tổng số lao động trong các doanh nghiệp theo ngành kinh tế",
-    "description": "Dữ liệu thống kê tổng số lao động trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế, từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "lao-dong",
-      "doanh-nghiep",
-      "nganh-kinh-te",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:35:01.061Z",
-    "uploaded_by": "ninh",
-    "row_count": 1000,
-    "file_count": 1,
-    "total_size_mb": 0.07,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "11225be5-c9c4-4662-80e6-de07b059591f/tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-3.csv",
-        "size_mb": 0.07
-      }
-    ]
-  },
-  {
-    "slug": "tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-2",
-    "title": "Tổng số lao động trong các doanh nghiệp đang hoạt động theo loại hình",
-    "description": "Dữ liệu thống kê về tổng số lao động và cơ cấu lao động trong các loại hình doanh nghiệp đang hoạt động tại Việt Nam, giai đoạn từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "lao-dong",
-      "doanh-nghiep",
-      "kinh-te",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:34:31.824Z",
-    "uploaded_by": "ninh",
-    "row_count": 130,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "d0082c17-72f6-4ab9-94ce-d0aabfe6e287/tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke-2.csv",
-        "size_mb": 0.01
       }
     ]
   },
@@ -1320,261 +1037,6 @@
     ]
   },
   {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-10",
-    "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh phân theo ngành và quy mô doanh thu",
-    "description": "Dữ liệu thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo ngành kinh tế và các nhóm quy mô doanh thu khác nhau, từ năm 2021 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-doanh",
-      "nganh-kinh-te",
-      "doanh-thu",
-      "quy-mo"
-    ],
-    "uploaded_at": "2026-08-28T08:30:01.387Z",
-    "uploaded_by": "ninh",
-    "row_count": 300,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "941044b8-7b5c-4be0-a353-35d867a023d1/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-10.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-9",
-    "title": "Số lượng doanh nghiệp đang hoạt động theo loại hình và quy mô vốn",
-    "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, được phân loại theo loại hình doanh nghiệp và quy mô vốn, cùng với cơ cấu phần trăm tương ứng qua các năm từ 2021 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-te",
-      "von",
-      "co-cau"
-    ],
-    "uploaded_at": "2026-08-28T08:29:30.222Z",
-    "uploaded_by": "ninh",
-    "row_count": 351,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "019930af-f84b-436e-a653-95321af91dbe/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-9.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-8",
-    "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh phân theo quy mô doanh thu và địa phương, giai đoạn 2021-2023",
-    "description": "Dữ liệu thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo quy mô doanh thu (tỷ đồng) và địa phương (tỉnh/thành phố, vùng kinh tế), từ năm 2021 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "doanh-thu",
-      "kinh-te",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:29:11.045Z",
-    "uploaded_by": "ninh",
-    "row_count": 213,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "992d82c8-8271-4c05-8bd7-1f4c962f430c/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-8.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-7",
-    "title": "Số lượng doanh nghiệp đang hoạt động theo ngành kinh tế và quy mô lao động",
-    "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo ngành kinh tế và quy mô số lượng lao động, trong giai đoạn từ năm 2021 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-te",
-      "lao-dong",
-      "nganh-nghe"
-    ],
-    "uploaded_at": "2026-08-28T08:28:31.602Z",
-    "uploaded_by": "ninh",
-    "row_count": 300,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "6b93eb78-ac93-42ea-b4b1-442e7b9cee68/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-7.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-6",
-    "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh theo loại hình và quy mô lao động",
-    "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam từ năm 2021 đến 2023, phân loại theo loại hình doanh nghiệp và quy mô lao động. Dữ liệu cũng bao gồm cơ cấu phần trăm của từng nhóm.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-doanh",
-      "lao-dong",
-      "quy-mo",
-      "co-cau"
-    ],
-    "uploaded_at": "2026-08-28T08:28:07.783Z",
-    "uploaded_by": "ninh",
-    "row_count": 390,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "a9382a19-18b2-4452-948a-b18ae7ecb36b/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-6.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-5",
-    "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh theo quy mô lao động",
-    "description": "Dữ liệu thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo quy mô số lượng lao động, từ năm 2021 đến 2023, theo từng tỉnh/thành phố, vùng kinh tế và tổng cả nước.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-doanh",
-      "lao-dong",
-      "quy-mo",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:27:43.362Z",
-    "uploaded_by": "ninh",
-    "row_count": 213,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "981fb24c-3850-4495-95ce-25accc59dcc8/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-5.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-4",
-    "title": "Số doanh nghiệp đang hoạt động theo ngành kinh tế và năm",
-    "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo ngành kinh tế và theo từng năm từ 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-te",
-      "nganh-kinh-te",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:27:20.322Z",
-    "uploaded_by": "ninh",
-    "row_count": 1000,
-    "file_count": 1,
-    "total_size_mb": 0.06,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "1f8fe115-f925-4910-96e1-c32952b52a43/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-4.csv",
-        "size_mb": 0.06
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-3",
-    "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh theo loại hình",
-    "description": "Dữ liệu thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo các loại hình doanh nghiệp khác nhau, từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-doanh",
-      "co-cau",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:26:59.342Z",
-    "uploaded_by": "ninh",
-    "row_count": 130,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "f3a490fd-2130-4b48-9acc-635ca49a5396/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-3.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-2",
-    "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh",
-    "description": "Dữ liệu thống kê số lượng doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh tại Việt Nam, bao gồm cấp quốc gia, các vùng kinh tế và các tỉnh/thành phố trực thuộc trung ương, từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-nghiep",
-      "kinh-doanh",
-      "san-xuat",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:26:41.499Z",
-    "uploaded_by": "ninh",
-    "row_count": 710,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "ff37b2ab-fb30-4350-ad56-dba93803cbfe/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-2.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
     "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan",
     "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh phân theo trình độ công nghệ",
     "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo trình độ công nghệ (cao, trung bình, thấp) và tổng số, từ năm 2010 đến 2023. Dữ liệu bao gồm cả cơ cấu phần trăm của từng nhóm.",
@@ -1717,34 +1179,6 @@
     ]
   },
   {
-    "slug": "lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-2",
-    "title": "Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp",
-    "description": "Dữ liệu thống kê số lượng lao động làm việc trong các cơ sở kinh tế cá thể phi nông nghiệp tại Việt Nam, phân loại theo ngành kinh tế và theo năm từ 2015 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "lao-dong",
-      "kinh-te-ca-the",
-      "phi-nong-nghiep",
-      "nganh-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:24:03.832Z",
-    "uploaded_by": "ninh",
-    "row_count": 200,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "499f8068-4dda-41e2-b4f8-f67a16320eff/lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-2.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-phan",
     "title": "Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp",
     "description": "Dữ liệu thống kê số lượng lao động trong các cơ sở kinh tế cá thể hoạt động trong lĩnh vực phi nông nghiệp, phân theo tỉnh/thành phố và vùng kinh tế trên cả nước, từ năm 2015 đến 2024.",
@@ -1831,63 +1265,6 @@
     ]
   },
   {
-    "slug": "doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan-3",
-    "title": "Doanh thu thuần sản xuất kinh doanh của các doanh nghiệp theo ngành kinh tế",
-    "description": "Dữ liệu thống kê doanh thu thuần từ hoạt động sản xuất kinh doanh của các doanh nghiệp đang hoạt động và có kết quả kinh doanh, phân loại theo các ngành kinh tế khác nhau từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-thu",
-      "kinh-doanh",
-      "doanh-nghiep",
-      "nganh-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:22:29.303Z",
-    "uploaded_by": "ninh",
-    "row_count": 1000,
-    "file_count": 1,
-    "total_size_mb": 0.07,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "8bc99844-33ef-40c3-bb35-60514de20401/doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan-3.csv",
-        "size_mb": 0.07
-      }
-    ]
-  },
-  {
-    "slug": "doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan-2",
-    "title": "Doanh thu thuần sản xuất kinh doanh của các loại hình doanh nghiệp",
-    "description": "Dữ liệu thể hiện doanh thu thuần từ hoạt động sản xuất kinh doanh của các loại hình doanh nghiệp tại Việt Nam, bao gồm cả doanh nghiệp nhà nước, ngoài nhà nước và có vốn đầu tư nước ngoài, theo từng năm từ 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-thu",
-      "doanh-nghiep",
-      "kinh-doanh",
-      "viet-nam",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:22:14.122Z",
-    "uploaded_by": "ninh",
-    "row_count": 130,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "2a19803e-92c3-4817-9d40-809af0ce0f12/doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan-2.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "doanh-thu-thuan-san-xuat-kinh-doanh-cua-cac-doanh-nghiep-dan",
     "title": "Doanh thu thuần sản xuất kinh doanh của doanh nghiệp theo tỉnh/thành phố và năm",
     "description": "Dataset thống kê doanh thu thuần từ hoạt động sản xuất kinh doanh của các doanh nghiệp đang hoạt động và có kết quả kinh doanh, được tổng hợp theo từng tỉnh/thành phố và khu vực kinh tế trên cả nước, từ năm 2010 đến 2023.",
@@ -1968,33 +1345,6 @@
         "type": "csv",
         "r2_key": "89b620e1-3973-4715-ba20-4c7c4e59e73b/von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-so-sanh-2010-phan.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-hien-hanh-phan-the-2",
-    "title": "Vốn đầu tư thực hiện toàn xã hội theo ngành kinh tế và năm",
-    "description": "Dữ liệu thống kê vốn đầu tư thực hiện của toàn xã hội theo giá hiện hành, phân loại theo các ngành kinh tế khác nhau và theo từng năm từ 2010 đến 2024. Một số dữ liệu được ghi chú là 'Sơ bộ'.",
-    "category": "kinh-te",
-    "tags": [
-      "von-dau-tu",
-      "kinh-te",
-      "dau-tu-xa-hoi"
-    ],
-    "uploaded_at": "2026-08-28T08:20:58.735Z",
-    "uploaded_by": "ninh",
-    "row_count": 300,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "45de85c6-f151-4c4a-96fb-1e4821db94fc/von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-hien-hanh-phan-the-2.csv",
-        "size_mb": 0.02
       }
     ]
   },
@@ -2340,92 +1690,6 @@
     ]
   },
   {
-    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-4",
-    "title": "Đầu tư trực tiếp nước ngoài (FDI) phân theo ngành kinh tế",
-    "description": "Dữ liệu thống kê số dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) tại Việt Nam, phân loại theo các ngành kinh tế khác nhau.",
-    "category": "kinh-te",
-    "tags": [
-      "dau-tu-nuoc-ngoai",
-      "fdi",
-      "nganh-kinh-te",
-      "von-dau-tu"
-    ],
-    "uploaded_at": "2026-08-28T08:16:16.543Z",
-    "uploaded_by": "ninh",
-    "row_count": 19,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "fcc876a9-9a3a-4ef7-a696-a990c77983c2/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-4.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-3",
-    "title": "Đầu tư trực tiếp nước ngoài được cấp phép phân theo ngành kinh tế và năm",
-    "description": "Dữ liệu thống kê số dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép tại Việt Nam, phân loại theo các ngành kinh tế và theo từng năm từ 2015 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "dau-tu-nuoc-ngoai",
-      "fdi",
-      "kinh-te",
-      "du-an",
-      "von-dang-ky"
-    ],
-    "uploaded_at": "2026-08-28T08:15:56.878Z",
-    "uploaded_by": "ninh",
-    "row_count": 190,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "3ab80de6-e2c8-495c-9609-89898c620175/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-3.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-2",
-    "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép phân theo đối tác đầu tư",
-    "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) được cấp phép tại Việt Nam, phân loại theo quốc gia hoặc vùng lãnh thổ của đối tác đầu tư.",
-    "category": "kinh-te",
-    "tags": [
-      "dau-tu-nuoc-ngoai",
-      "fdi",
-      "kinh-te",
-      "von-dau-tu",
-      "du-an"
-    ],
-    "uploaded_at": "2026-08-28T08:15:37.857Z",
-    "uploaded_by": "ninh",
-    "row_count": 65,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "43d85a5b-f78b-4afe-bdd4-199da842115a/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo-2.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-theo",
     "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép phân theo tỉnh, thành phố",
     "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) đã được cấp giấy phép, phân loại theo từng tỉnh, thành phố và các vùng kinh tế trên cả nước.",
@@ -2744,36 +2008,6 @@
     ]
   },
   {
-    "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v-2",
-    "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo vùng và thành thị, nông thôn",
-    "description": "Dataset thống kê tỷ lệ thiếu việc làm của dân số trong độ tuổi lao động, được phân loại theo khu vực thành thị, nông thôn và các vùng địa lý của Việt Nam, từ năm 2010 đến 2024.",
-    "category": "lao-dong",
-    "tags": [
-      "lao-dong",
-      "viec-lam",
-      "that-nghiep",
-      "vung",
-      "thanh-thi",
-      "nong-thon"
-    ],
-    "uploaded_at": "2026-08-28T08:11:48.918Z",
-    "uploaded_by": "ninh",
-    "row_count": 315,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "3f89e907-79da-4393-8501-6bcc3b4865f9/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v-2.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
     "slug": "ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-vung-v",
     "title": "Tỷ lệ thiếu việc làm trong độ tuổi lao động phân theo vùng và giới tính",
     "description": "Dữ liệu thống kê tỷ lệ thiếu việc làm của người trong độ tuổi lao động tại Việt Nam, được phân loại theo vùng địa lý và giới tính, từ năm 2018 đến 2024.",
@@ -2968,35 +2202,6 @@
       {
         "type": "csv",
         "r2_key": "2174fb08-f47f-48cc-a449-9855417b669a/ty-le-that-nghiep-va-thieu-viec-lam-trong-do-tuoi-lao-dong-p.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-vung-va-t-2",
-    "title": "Tỷ lệ thất nghiệp trong độ tuổi lao động phân theo vùng và thành thị, nông thôn",
-    "description": "Dataset này cung cấp tỷ lệ thất nghiệp của dân số trong độ tuổi lao động, được phân loại theo khu vực thành thị, nông thôn và các vùng địa lý của Việt Nam, từ năm 2010 đến 2024.",
-    "category": "dan-so",
-    "tags": [
-      "ty-le-that-nghiep",
-      "lao-dong",
-      "dan-so",
-      "vung",
-      "thanh-thi-nong-thon"
-    ],
-    "uploaded_at": "2026-08-28T08:09:29.056Z",
-    "uploaded_by": "ninh",
-    "row_count": 315,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "dceb5321-76cc-4913-976f-3250eada91cc/ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-vung-va-t-2.csv",
         "size_mb": 0.02
       }
     ]
@@ -3575,35 +2780,6 @@
     ]
   },
   {
-    "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-tin-2",
-    "title": "Số lao động có việc làm phân theo giới tính và khu vực",
-    "description": "Dữ liệu thống kê số lượng và tỷ lệ lao động có việc làm trong nền kinh tế Việt Nam, phân loại theo giới tính (nam, nữ) và khu vực (thành thị, nông thôn) từ năm 2005 đến 2024.",
-    "category": "dan-so",
-    "tags": [
-      "lao-dong",
-      "viec-lam",
-      "gioi-tinh",
-      "dan-so",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T08:03:10.636Z",
-    "uploaded_by": "ninh",
-    "row_count": 100,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "0b5cea2e-c868-4174-b8da-b31f28cac282/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-tin-2.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-tin",
     "title": "Số lao động có việc làm trong nền kinh tế phân theo giới tính giai đoạn 2010-2024",
     "description": "Dữ liệu thống kê số lượng lao động có việc làm trong nền kinh tế Việt Nam, được phân loại theo giới tính (Tổng số, Nam, Nữ) qua các năm từ 2010 đến 2024.",
@@ -3799,35 +2975,6 @@
         "type": "csv",
         "r2_key": "c50de2e2-6ad4-42d0-975a-6a379a689ea0/luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-dia-phuong.csv",
         "size_mb": 0.04
-      }
-    ]
-  },
-  {
-    "slug": "ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua-2",
-    "title": "Tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của Việt Nam",
-    "description": "Dữ liệu thống kê về tỷ suất sinh thô, tỷ suất chết thô và tỷ lệ tăng tự nhiên của dân số Việt Nam, phân loại theo tổng số, thành thị và nông thôn, từ năm 2001 đến 2024.",
-    "category": "dan-so",
-    "tags": [
-      "dan-so",
-      "sinh-san",
-      "tu-vong",
-      "ty-le-tang-tu-nhien",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-27T08:17:43.903Z",
-    "uploaded_by": "ninh",
-    "row_count": 72,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "922b3661-267f-43ab-8418-4b9819db00f1/ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua-2.csv",
-        "size_mb": 0
       }
     ]
   },
