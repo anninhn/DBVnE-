@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-phan-theo-nho",
+    "title": "Chỉ số giá sinh hoạt theo không gian phân theo vùng và nhóm hàng",
+    "description": "Dataset cung cấp chỉ số giá sinh hoạt theo không gian của các vùng kinh tế - xã hội Việt Nam, phân loại theo các nhóm hàng hóa và dịch vụ chính. Dữ liệu được tính toán so với vùng Đồng bằng sông Hồng (lấy 100 điểm) và bao gồm các năm từ 2015 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia",
+      "gia-sinh-hoat",
+      "vung-kinh-te",
+      "kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T10:05:51.894Z",
+    "uploaded_by": "ninh",
+    "row_count": 120,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e862d531-3b88-4f6f-92b6-d6f75ea3c2ba/chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-phan-theo-nho.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-vung-dong-ban",
     "title": "Chỉ số giá sinh hoạt theo không gian theo vùng",
     "description": "Dataset cung cấp chỉ số giá sinh hoạt (COLI) của 6 vùng kinh tế - xã hội của Việt Nam từ năm 2010 đến 2024. Chỉ số này phản ánh sự chênh lệch về mức giá sinh hoạt giữa các vùng.",
