@@ -1,5 +1,33 @@
 [
   {
+    "slug": "von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-theo",
+    "title": "Vốn đầu tư thực hiện của khu vực kinh tế nhà nước phân theo cấp quản lý",
+    "description": "Dataset thống kê vốn đầu tư thực hiện của khu vực kinh tế nhà nước tại Việt Nam từ năm 2010 đến 2024, phân loại theo cấp quản lý (Trung ương và Địa phương). Dữ liệu bao gồm giá trị theo giá hiện hành, giá so sánh năm 2010, cơ cấu phần trăm và chỉ số phát triển so với năm trước.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "dau-tu",
+      "nha-nuoc",
+      "von-dau-tu"
+    ],
+    "uploaded_at": "2026-08-28T08:18:59.067Z",
+    "uploaded_by": "ninh",
+    "row_count": 45,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "546f9f5d-eabc-4f62-8eb1-753c953f82f3/von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-theo.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-can-ho-va-dien-tich-san-nha-o-xa-hoi-hoan-thanh-nam-2019",
     "title": "Số căn hộ và diện tích sàn nhà ở xã hội hoàn thành năm 2019",
     "description": "Dataset thống kê số lượng căn hộ/nhà ở và tổng diện tích sàn nhà ở xã hội đã hoàn thành trong năm 2019, phân loại theo vùng địa lý và loại hình nhà ở (chung cư, nhà ở riêng lẻ). Dữ liệu bao gồm tổng số liệu cho cả nước và các vùng kinh tế - xã hội.",
