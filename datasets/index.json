@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-thit-lon-hoi-xuat-chuong-phan-theo-dia-phuong",
+    "title": "Sản lượng thịt lợn hơi xuất chuồng phân theo địa phương",
+    "description": "Dữ liệu thống kê sản lượng thịt lợn hơi xuất chuồng của Việt Nam, phân theo tỉnh, thành phố và các vùng kinh tế, từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "nong-nghiep",
+      "chan-nuoi",
+      "thit-lon",
+      "san-luong"
+    ],
+    "uploaded_at": "2026-08-28T09:56:26.031Z",
+    "uploaded_by": "ninh",
+    "row_count": 490,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "cd622962-6fbf-4e7b-8510-d61827f39225/san-luong-thit-lon-hoi-xuat-chuong-phan-theo-dia-phuong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "san-luong-thit-gia-cam-hoi-xuat-chuong-phan-theo-dia-phuong",
     "title": "Sản lượng thịt gia cầm hơi xuất chuồng phân theo địa phương",
     "description": "Dataset thống kê sản lượng thịt gia cầm hơi xuất chuồng của Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 2018 đến 2024. Dữ liệu bao gồm cả tổng sản lượng toàn quốc.",
