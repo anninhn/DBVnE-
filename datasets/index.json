@@ -1,5 +1,33 @@
 [
   {
+    "slug": "mot-so-mat-hang-nhap-khau-chu-yeu",
+    "title": "Giá trị nhập khẩu một số mặt hàng chủ yếu của Việt Nam",
+    "description": "Dataset thống kê giá trị nhập khẩu của 56 mặt hàng chủ yếu của Việt Nam theo từng năm, từ 1995 đến 2024. Các giá trị được tính bằng triệu đô la Mỹ.",
+    "category": "kinh-te",
+    "tags": [
+      "nhap-khau",
+      "thuong-mai",
+      "san-pham",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:57:24.504Z",
+    "uploaded_by": "ninh",
+    "row_count": 1680,
+    "file_count": 1,
+    "total_size_mb": 0.09,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "480fa0b6-fa71-4230-a35c-0edb9942c2fb/mot-so-mat-hang-nhap-khau-chu-yeu.csv",
+        "size_mb": 0.09
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-nganh-van-tai",
     "title": "Khối lượng hàng hóa vận chuyển phân theo ngành vận tải",
     "description": "Dataset thống kê khối lượng hàng hóa vận chuyển và chỉ số phát triển theo từng ngành vận tải (đường sắt, đường bộ, đường sông, đường biển, đường hàng không) trên toàn quốc từ năm 1995 đến 2024.",
