@@ -1,5 +1,33 @@
 [
   {
+    "slug": "xuat-khau-nhap-khau-dich-vu",
+    "title": "Giá trị xuất khẩu và nhập khẩu dịch vụ của Việt Nam theo loại hình và năm",
+    "description": "Dataset thống kê giá trị xuất khẩu và nhập khẩu dịch vụ của Việt Nam, phân loại theo các loại hình dịch vụ chính, từ năm 2005 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "xuat-nhap-khau",
+      "dich-vu",
+      "kinh-te",
+      "thuong-mai"
+    ],
+    "uploaded_at": "2026-08-28T11:06:47.299Z",
+    "uploaded_by": "ninh",
+    "row_count": 320,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a08bfc3f-841e-4b2e-8b3b-885f3d5b4fb7/xuat-khau-nhap-khau-dich-vu.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "van-tai-hang-khong",
     "title": "Dữ liệu vận tải hàng không Việt Nam theo hình thức và năm",
     "description": "Dataset thống kê các chỉ số về vận tải hàng không tại Việt Nam, bao gồm vận chuyển và luân chuyển hành khách, hàng hóa (trong nước và quốc tế), từ năm 1995 đến 2024.",
