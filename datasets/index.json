@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-lao-dong-trong-hop-tac-xa-dang-hoat-dong-co-ket-qua-san-x",
+    "title": "Số lao động trong hợp tác xã đang hoạt động có kết quả sản xuất kinh doanh",
+    "description": "Dataset thống kê số lượng lao động trong các hợp tác xã đang hoạt động và có kết quả sản xuất kinh doanh tại Việt Nam, được tổng hợp hàng năm từ 2010 đến 2023. Dữ liệu bao gồm cấp độ toàn quốc, vùng kinh tế và từng tỉnh/thành phố.",
+    "category": "kinh-te",
+    "tags": [
+      "lao-dong",
+      "hop-tac-xa",
+      "kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-08-28T08:33:11.575Z",
+    "uploaded_by": "ninh",
+    "row_count": 700,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "17ec6a9f-4bbd-4c33-a9f7-44edc843d899/so-lao-dong-trong-hop-tac-xa-dang-hoat-dong-co-ket-qua-san-x.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-lao-dong-nu-trong-cac-doanh-nghiep-dang-hoat-dong-co-ket",
     "title": "Số lao động nữ trong các doanh nghiệp đang hoạt động",
     "description": "Dữ liệu thống kê số lượng lao động nữ trong các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm, từ năm 2010 đến 2023, trên phạm vi toàn quốc, các vùng kinh tế và từng tỉnh/thành phố.",
