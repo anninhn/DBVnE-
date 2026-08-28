@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-hoc-vien-duoc-dao-tao-sau-dai-hoc-va-chuyen-khoa-y",
+    "title": "Số lượng học viên được đào tạo và tốt nghiệp sau đại học, chuyên khoa Y",
+    "description": "Dữ liệu thống kê số lượng học viên được đào tạo và tốt nghiệp các loại hình sau đại học và chuyên khoa Y tại Việt Nam từ năm 2005 đến 2023.",
+    "category": "y-te",
+    "tags": [
+      "y-te",
+      "giao-duc",
+      "dao-tao",
+      "sau-dai-hoc",
+      "chuyen-khoa-y"
+    ],
+    "uploaded_at": "2026-08-28T11:20:05.686Z",
+    "uploaded_by": "ninh",
+    "row_count": 180,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "489cb841-c37f-4ea0-a0d3-7d10d6afbab8/so-hoc-vien-duoc-dao-tao-sau-dai-hoc-va-chuyen-khoa-y.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-hoc-sinh-pho-thong-thuoc-cac-dan-toc-thieu-so-tai-thoi-di",
     "title": "Số học sinh phổ thông dân tộc thiểu số theo cấp học và địa phương",
     "description": "Bộ dữ liệu thống kê số lượng học sinh phổ thông thuộc các dân tộc thiểu số tại Việt Nam, phân loại theo cấp học (tiểu học, THCS, THPT), địa phương (tỉnh/thành phố, vùng, cả nước) và theo năm từ 2004 đến 2011.",
