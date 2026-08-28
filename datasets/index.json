@@ -1,5 +1,36 @@
 [
   {
+    "slug": "so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai",
+    "title": "Số lượt hành khách vận chuyển phân theo ngành vận tải tại Việt Nam",
+    "description": "Dữ liệu thống kê số lượt hành khách vận chuyển và chỉ số phát triển theo năm, phân loại theo các ngành vận tải chính (đường bộ, đường sắt, đường sông, đường hàng không) tại Việt Nam từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "hanh-khach",
+      "van-tai",
+      "giao-thong",
+      "duong-bo",
+      "duong-sat",
+      "duong-hang-khong",
+      "duong-song"
+    ],
+    "uploaded_at": "2026-08-28T11:01:35.501Z",
+    "uploaded_by": "ninh",
+    "row_count": 150,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "0728c79c-6031-49ee-bac8-2e9b1445d6d0/so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-luot-hanh-khach-van-chuyen-phan-theo-loai-hinh-kinh-te",
     "title": "Số lượt hành khách vận chuyển phân theo loại hình kinh tế",
     "description": "Dữ liệu thống kê số lượt hành khách được vận chuyển và chỉ số phát triển theo từng thành phần kinh tế tại Việt Nam, giai đoạn 2000-2024.",
