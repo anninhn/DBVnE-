@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-q-2",
+    "title": "Tỷ suất lợi nhuận của doanh nghiệp theo loại hình",
+    "description": "Dataset thống kê tỷ suất lợi nhuận của các loại hình doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, giai đoạn từ năm 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "doanh-nghiep",
+      "loi-nhuan",
+      "ty-suat"
+    ],
+    "uploaded_at": "2026-08-28T09:48:20.341Z",
+    "uploaded_by": "ninh",
+    "row_count": 130,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "0db5b516-6723-4363-90c0-4099ef75efc1/ty-suat-loi-nhuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-q-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-ng-3",
     "title": "Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp theo ngành kinh tế",
     "description": "Dữ liệu thống kê về giá trị tài sản cố định bình quân trên mỗi lao động của các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh, phân loại theo ngành kinh tế và theo năm từ 2010 đến 2023.",
