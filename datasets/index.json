@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
+    "title": "Tỷ lệ thu ngân sách nhà nước so với tổng sản phẩm trong nước",
+    "description": "Dataset thống kê tỷ lệ các khoản thu ngân sách nhà nước so với tổng sản phẩm trong nước (GDP) của Việt Nam theo từng loại thu, giai đoạn từ 2018 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "ngan-sach",
+      "kinh-te",
+      "gdp",
+      "thu-ngan-sach"
+    ],
+    "uploaded_at": "2026-08-28T11:14:35.766Z",
+    "uploaded_by": "ninh",
+    "row_count": 147,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3d05af83-cdad-4826-8885-7fbf90ae84e0/ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-tham-gia-bao-hiem-y-te-phan-theo-dia-phuong",
     "title": "Tỷ lệ người tham gia bảo hiểm y tế phân theo địa phương",
     "description": "Dataset thống kê tỷ lệ người dân tham gia bảo hiểm y tế của Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 2015 đến 2024.",
