@@ -1,5 +1,34 @@
 [
   {
+    "slug": "chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-so-voi-ky-g",
+    "title": "Chỉ số giá tiêu dùng khu vực nông thôn các tháng so với kỳ gốc 2019",
+    "description": "Dữ liệu chỉ số giá tiêu dùng (CPI) tại khu vực nông thôn Việt Nam, phân loại theo các nhóm hàng hóa và dịch vụ, được thu thập hàng tháng từ năm 2022 đến 2023. Các chỉ số được tính toán so với kỳ gốc năm 2019.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia-tieu-dung",
+      "cpi",
+      "nong-thon",
+      "gia-ca",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T10:10:43.773Z",
+    "uploaded_by": "ninh",
+    "row_count": 408,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "05704e78-cc09-4618-a2fa-16c572bec2d3/chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-so-voi-ky-g.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-so-voi-cung",
     "title": "Chỉ số giá tiêu dùng khu vực nông thôn Việt Nam các tháng so với cùng kỳ",
     "description": "Dữ liệu về chỉ số giá tiêu dùng (CPI) tại khu vực nông thôn Việt Nam, được phân loại theo các nhóm hàng hóa và dịch vụ. Chỉ số này so sánh giá của từng tháng với cùng tháng của năm trước, trong giai đoạn 2022-2023.",
