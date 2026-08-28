@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-luong-mua-tai-mot-so-tram-quan-trac",
+    "title": "Tổng lượng mưa hàng năm tại một số trạm quan trắc ở Việt Nam",
+    "description": "Dữ liệu thống kê tổng lượng mưa hàng năm tại 15 tỉnh, thành phố trên cả nước, được ghi nhận từ các trạm quan trắc trong giai đoạn từ năm 2006 đến 2024.",
+    "category": "khi-hau",
+    "tags": [
+      "luong-mua",
+      "khi-hau",
+      "thoi-tiet",
+      "quan-trac"
+    ],
+    "uploaded_at": "2026-08-28T12:06:40.522Z",
+    "uploaded_by": "ninh",
+    "row_count": 285,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "3074ea6b-6583-48da-95b4-89a94bd89151/tong-luong-mua-tai-mot-so-tram-quan-trac.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-gio-nang-cac-thang-trong-nam-tai-mot-so-tram-quan-trac",
     "title": "Số giờ nắng các tháng tại các trạm quan trắc ở Việt Nam",
     "description": "Dataset thống kê số giờ nắng trung bình hàng tháng tại một số trạm quan trắc khí tượng trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
