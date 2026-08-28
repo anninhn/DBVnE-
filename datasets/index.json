@@ -1,5 +1,33 @@
 [
   {
+    "slug": "san-luong-lua-he-thu-va-thu-dong-phan-theo-dia-phuong",
+    "title": "Sản lượng lúa hè thu và thu đông phân theo địa phương",
+    "description": "Dataset thống kê sản lượng lúa vụ hè thu và thu đông của Việt Nam, phân loại theo từng tỉnh, thành phố và các vùng kinh tế, bao gồm cả số liệu tổng hợp cho cả nước. Dữ liệu được thu thập từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "nong-nghiep",
+      "lua",
+      "san-luong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T09:53:02.270Z",
+    "uploaded_by": "ninh",
+    "row_count": 1110,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d6cf8fa9-952c-4842-829c-95644641f065/san-luong-lua-he-thu-va-thu-dong-phan-theo-dia-phuong.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "san-luong-lua-dong-xuan-phan-theo-dia-phuong",
     "title": "Sản lượng lúa đông xuân phân theo địa phương và năm",
     "description": "Bộ dữ liệu thống kê sản lượng lúa vụ đông xuân của Việt Nam, phân loại theo tỉnh, thành phố, vùng kinh tế và tổng cả nước, từ năm 1995 đến 2024.",
