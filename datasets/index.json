@@ -1,5 +1,36 @@
 [
   {
+    "slug": "chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xuat",
+    "title": "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất tại Việt Nam",
+    "description": "Dataset cung cấp chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất tại Việt Nam theo các mục đích sử dụng và loại sản phẩm khác nhau, được tính toán với năm gốc 2014 = 100. Dữ liệu bao gồm các năm từ 2015 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "chi-so-gia",
+      "nguyen-lieu",
+      "nhien-lieu",
+      "vat-lieu",
+      "san-xuat",
+      "kinh-te",
+      "gia-ca"
+    ],
+    "uploaded_at": "2026-08-28T10:02:21.186Z",
+    "uploaded_by": "ninh",
+    "row_count": 350,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "e65a55f6-a54e-4bf6-9af2-0776ae0e38f6/chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xuat.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-do-la-my-phan-theo-vung-cac-thang-so-voi-thang-tr",
     "title": "Chỉ số giá đô la Mỹ phân theo vùng và tháng",
     "description": "Dataset cung cấp chỉ số giá đô la Mỹ theo tháng, phân loại theo các vùng địa lý của Việt Nam và chỉ số chung, trong giai đoạn từ năm 2022 đến 2023.",
