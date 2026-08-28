@@ -1,5 +1,35 @@
 [
   {
+    "slug": "dien-tich-gieo-trong-va-san-luong-lua-ca-nam",
+    "title": "Diện tích gieo trồng và sản lượng lúa các vụ trong năm của Việt Nam",
+    "description": "Bộ dữ liệu tổng hợp diện tích gieo trồng và sản lượng lúa theo từng vụ (đông xuân, hè thu, mùa) và tổng cộng hàng năm trên toàn quốc. Dữ liệu bao gồm cả giá trị tuyệt đối và chỉ số phát triển so với năm trước, từ năm 1990 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "lua",
+      "nong-nghiep",
+      "dien-tich",
+      "san-luong",
+      "viet-nam",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T08:41:57.004Z",
+    "uploaded_by": "ninh",
+    "row_count": 70,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b6cbbe87-c5a2-48b7-907b-75d7dd159a02/dien-tich-gieo-trong-va-san-luong-lua-ca-nam.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-gieo-trong-san-phan-theo-dia-phuong",
     "title": "Diện tích gieo trồng sắn theo tỉnh, thành phố và năm",
     "description": "Dữ liệu thống kê diện tích gieo trồng cây sắn của Việt Nam, được phân loại theo từng tỉnh, thành phố và tổng cả nước, từ năm 1995 đến năm 2024.",
