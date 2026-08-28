@@ -1,5 +1,33 @@
 [
   {
+    "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-theo-dia-phuong",
+    "title": "Tỷ lệ người dân tham gia mạng xã hội theo địa phương và năm",
+    "description": "Dataset thống kê tỷ lệ phần trăm người dân tham gia mạng xã hội trên toàn quốc, theo các vùng kinh tế và từng tỉnh/thành phố, trong các năm 2010 và 2024.",
+    "category": "xa-hoi",
+    "tags": [
+      "mang-xa-hoi",
+      "internet",
+      "dan-so",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-08-28T11:57:26.310Z",
+    "uploaded_by": "ninh",
+    "row_count": 140,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6f33c8c9-b1f6-4f64-a95a-7c4a9fea1ad7/ty-le-nguoi-dan-tham-gia-mang-xa-hoi-theo-dia-phuong.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non",
     "title": "Tỷ lệ người dân tham gia mạng xã hội phân theo thành thị, nông thôn, giới tính và nhóm tuổi",
     "description": "Dataset này thể hiện tỷ lệ phần trăm người dân Việt Nam tham gia mạng xã hội, được phân loại theo khu vực (thành thị, nông thôn), giới tính và các nhóm tuổi khác nhau.",
