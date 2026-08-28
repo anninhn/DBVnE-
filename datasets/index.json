@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no",
+    "title": "Tỷ lệ hộ gia đình có kết nối Internet phân theo khu vực, giới tính và vùng kinh tế",
+    "description": "Dataset thống kê tỷ lệ hộ gia đình có kết nối Internet tại Việt Nam, phân loại theo khu vực (thành thị, nông thôn), giới tính và các vùng kinh tế-xã hội.",
+    "category": "xa-hoi",
+    "tags": [
+      "internet",
+      "ho-gia-dinh",
+      "thanh-thi",
+      "nong-thon",
+      "vung-kinh-te"
+    ],
+    "uploaded_at": "2026-08-28T11:54:46.242Z",
+    "uploaded_by": "ninh",
+    "row_count": 11,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7a54555d-5c7f-4296-b04a-e3502a8b28d5/ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-dia-phuong-2",
     "title": "Tỷ lệ hộ gia đình có kết nối internet phân theo địa phương",
     "description": "Dataset thống kê tỷ lệ phần trăm hộ gia đình có kết nối internet tại Việt Nam trong năm 2024, phân loại theo cấp quốc gia, các vùng kinh tế - xã hội và từng tỉnh/thành phố trực thuộc trung ương.",
