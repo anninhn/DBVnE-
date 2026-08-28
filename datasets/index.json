@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-7",
+    "title": "Số lượng doanh nghiệp đang hoạt động theo ngành kinh tế và quy mô lao động",
+    "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam, phân loại theo ngành kinh tế và quy mô số lượng lao động, trong giai đoạn từ năm 2021 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "doanh-nghiep",
+      "kinh-te",
+      "lao-dong",
+      "nganh-nghe"
+    ],
+    "uploaded_at": "2026-08-28T08:28:31.602Z",
+    "uploaded_by": "ninh",
+    "row_count": 300,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6b93eb78-ac93-42ea-b4b1-442e7b9cee68/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-7.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan-6",
     "title": "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh theo loại hình và quy mô lao động",
     "description": "Dataset thống kê số lượng doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại Việt Nam từ năm 2021 đến 2023, phân loại theo loại hình doanh nghiệp và quy mô lao động. Dữ liệu cũng bao gồm cơ cấu phần trăm của từng nhóm.",
