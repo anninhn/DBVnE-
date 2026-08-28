@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9",
+    "title": "Số lớp, giáo viên và học sinh phổ thông tại Việt Nam",
+    "description": "Dữ liệu thống kê số lượng lớp học, giáo viên và học sinh ở các cấp học phổ thông (Tiểu học, THCS, THPT) trên toàn quốc, được thu thập tại thời điểm 30/9 hàng năm, từ năm học 1995-1996 đến 2024-2025 (30 năm). Kèm theo là chỉ số phát triển so với năm trước.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "hoc-sinh",
+      "giao-vien",
+      "lop-hoc",
+      "pho-thong",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-08-28T11:20:27.709Z",
+    "uploaded_by": "ninh",
+    "row_count": 360,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9a212ed4-de18-45f8-a8da-f524e94bbf07/so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "so-hoc-vien-duoc-dao-tao-sau-dai-hoc-va-chuyen-khoa-y",
     "title": "Số lượng học viên được đào tạo và tốt nghiệp sau đại học, chuyên khoa Y",
     "description": "Dữ liệu thống kê số lượng học viên được đào tạo và tốt nghiệp các loại hình sau đại học và chuyên khoa Y tại Việt Nam từ năm 2005 đến 2023.",
