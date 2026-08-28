@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-cong-suat-cac-tau-khai-thac-thuy-san-bien-tu-90-cv-tro",
+    "title": "Tổng công suất các tàu khai thác thủy sản biển từ 90 CV trở lên theo tỉnh, thành phố và năm",
+    "description": "Dataset thống kê tổng công suất của các tàu khai thác thủy sản hoạt động trên biển có công suất từ 90 mã lực trở lên, phân loại theo tỉnh, thành phố/vùng kinh tế và theo năm. Dữ liệu bao gồm các tỉnh ven biển Việt Nam và số liệu tổng hợp cho cả nước, từ năm 2010 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "tau-ca",
+      "cong-suat",
+      "kinh-te-bien"
+    ],
+    "uploaded_at": "2026-08-28T10:01:48.080Z",
+    "uploaded_by": "ninh",
+    "row_count": 510,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8d61e7a8-55f6-4b1b-9fb3-358e9361ff69/tong-cong-suat-cac-tau-khai-thac-thuy-san-bien-tu-90-cv-tro.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-tau-khai-thac-thuy-san-bien-co-cong-suat-tu-90-cv-tro-len",
     "title": "Số lượng tàu khai thác thủy sản biển công suất từ 90 CV trở lên",
     "description": "Dataset thống kê số lượng tàu khai thác thủy sản biển có công suất từ 90 CV trở lên của các tỉnh, thành phố, vùng kinh tế và cả nước, giai đoạn 2010-2024.",
