@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke",
+    "title": "Tổng số lao động trong các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh",
+    "description": "Dataset thống kê tổng số lao động trong các doanh nghiệp đang hoạt động và có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm, theo tỉnh/thành phố và toàn quốc, từ năm 2010 đến 2023.",
+    "category": "dan-so",
+    "tags": [
+      "lao-dong",
+      "doanh-nghiep",
+      "kinh-te",
+      "dan-so"
+    ],
+    "uploaded_at": "2026-08-28T08:34:13.873Z",
+    "uploaded_by": "ninh",
+    "row_count": 710,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "26aef9ab-5cc9-47f6-82ed-f9723933e064/tong-so-lao-dong-trong-cac-doanh-nghiep-dang-hoat-dong-co-ke.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "thu-nhap-binh-quan-mot-thang-cua-nguoi-lao-dong-trong-doanh",
     "title": "Thu nhập bình quân một tháng của người lao động trong doanh nghiệp tại Việt Nam",
     "description": "Dữ liệu thống kê thu nhập bình quân một tháng của người lao động làm việc trong các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh, phân theo tỉnh/thành phố, vùng kinh tế và cả nước, giai đoạn từ năm 2010 đến 2023.",
