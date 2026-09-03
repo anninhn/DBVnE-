@@ -56,36 +56,6 @@
     ]
   },
   {
-    "slug": "so-gio-nang-cac-thang-trong-nam-tai-mot-so-tram-quan-trac",
-    "title": "Số giờ nắng các tháng tại các trạm quan trắc ở Việt Nam",
-    "description": "Dataset thống kê số giờ nắng trung bình hàng tháng tại một số trạm quan trắc khí tượng trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
-    "category": "khi-hau",
-    "tags": [
-      "khi-hau",
-      "thoi-tiet",
-      "nang",
-      "gio-nang",
-      "viet-nam",
-      "quan-trac"
-    ],
-    "uploaded_at": "2026-08-28T12:06:24.156Z",
-    "uploaded_by": "ninh",
-    "row_count": 4140,
-    "file_count": 1,
-    "total_size_mb": 0.1,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "9fb80412-77b7-4e0c-9602-ada0260722e6/so-gio-nang-cac-thang-trong-nam-tai-mot-so-tram-quan-trac.csv",
-        "size_mb": 0.1
-      }
-    ]
-  },
-  {
     "slug": "so-don-vi-hanh-chinh-co-den-31-12-hang-nam-phan-theo-dia-phu",
     "title": "Số đơn vị hành chính theo địa phương và năm",
     "description": "Dataset thống kê số lượng các đơn vị hành chính cấp tỉnh (thành phố trực thuộc tỉnh, thị xã, huyện) và cấp xã (phường, thị trấn, xã) của Việt Nam, phân theo địa phương và theo từng năm từ 2009 đến 2013.",
@@ -138,37 +108,6 @@
         "type": "csv",
         "r2_key": "172992ad-c8fb-48a4-8782-55c3d423260c/nhiet-do-khong-khi-trung-binh-tai-mot-so-tram-quan-trac.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "nhiet-do-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so",
-    "title": "Nhiệt độ không khí trung bình hàng tháng tại một số trạm quan trắc ở Việt Nam",
-    "description": "Dataset cung cấp dữ liệu nhiệt độ không khí trung bình hàng tháng được ghi nhận tại 17 trạm quan trắc trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
-    "category": "khi-hau",
-    "tags": [
-      "nhiet-do",
-      "khi-hau",
-      "thoi-tiet",
-      "viet-nam",
-      "quan-trac"
-    ],
-    "uploaded_at": "2026-08-28T12:05:16.608Z",
-    "uploaded_by": "ninh",
-    "last_edited_by": "ninh",
-    "last_edited_at": "2026-09-03T03:35:52.673Z",
-    "row_count": 4692,
-    "file_count": 1,
-    "total_size_mb": 0.11,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "1a93837d-b831-4567-8353-1fcbe31798c7/nhiet-do-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so.csv",
-        "size_mb": 0.11
       }
     ]
   },
@@ -316,34 +255,6 @@
     ]
   },
   {
-    "slug": "luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac",
-    "title": "Lượng mưa hàng tháng tại các trạm quan trắc ở Việt Nam",
-    "description": "Dữ liệu thống kê lượng mưa hàng tháng tại 17 tỉnh/thành phố và trạm quan trắc trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
-    "category": "khi-hau",
-    "tags": [
-      "luong-mua",
-      "khi-hau",
-      "thoi-tiet",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T12:03:05.888Z",
-    "uploaded_by": "ninh",
-    "row_count": 4692,
-    "file_count": 1,
-    "total_size_mb": 0.11,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "385d18ef-796a-49ea-851b-7f01f6739112/luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac.csv",
-        "size_mb": 0.11
-      }
-    ]
-  },
-  {
     "slug": "hien-trang-su-dung-dat-phan-theo-dia-phuong",
     "title": "Hiện trạng sử dụng đất phân theo địa phương",
     "description": "Dataset thống kê hiện trạng sử dụng đất theo các loại hình (tổng diện tích, đất nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) phân theo địa phương và khu vực hành chính trên toàn quốc, từ năm 2018 đến 2023.",
@@ -429,35 +340,6 @@
         "type": "csv",
         "r2_key": "831aa6c6-2e4f-4ede-81fe-a50680e1d78c/do-am-khong-khi-trung-binh-tai-mot-so-tram-quan-trac.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "do-am-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so-tr",
-    "title": "Độ ẩm không khí trung bình hàng tháng tại các trạm quan trắc ở Việt Nam",
-    "description": "Dữ liệu thống kê độ ẩm không khí trung bình hàng tháng tại 17 trạm quan trắc trên khắp Việt Nam, từ năm 2002 đến 2024.",
-    "category": "khi-hau",
-    "tags": [
-      "do-am",
-      "khong-khi",
-      "khi-hau",
-      "thoi-tiet",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T12:01:45.761Z",
-    "uploaded_by": "ninh",
-    "row_count": 4692,
-    "file_count": 1,
-    "total_size_mb": 0.09,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "912201e4-629e-481a-b78a-ba3c4639f2d5/do-am-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so-tr.csv",
-        "size_mb": 0.09
       }
     ]
   },
@@ -574,35 +456,6 @@
         "type": "csv",
         "r2_key": "668019a0-5447-42ad-bc8f-49bd8ece6586/xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-do-thi.csv",
         "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-cong-nghiep",
-    "title": "Thống kê xử lý chất thải tại các khu công nghiệp Việt Nam",
-    "description": "Dữ liệu thống kê về số lượng và tỷ lệ các khu công nghiệp có hệ thống xử lý chất thải đạt tiêu chuẩn quy định tại Việt Nam, phân loại theo vùng và loại hình khu công nghiệp, từ năm 2015 đến 2017.",
-    "category": "moi-truong",
-    "tags": [
-      "khu-cong-nghiep",
-      "moi-truong",
-      "chat-thai",
-      "nuoc-thai",
-      "xu-ly-chat-thai"
-    ],
-    "uploaded_at": "2026-08-28T11:59:57.037Z",
-    "uploaded_by": "ninh",
-    "row_count": 105,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "9b374c7c-2d1a-482c-b9db-5b71ad4f55b7/xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-cong-nghiep.csv",
-        "size_mb": 0.01
       }
     ]
   },
@@ -3412,36 +3265,6 @@
     ]
   },
   {
-    "slug": "so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-loai-hinh",
-    "title": "Số trường phổ thông phân theo cấp học và loại hình từ năm học 2020-2021 đến 2024-2025",
-    "description": "Dữ liệu thống kê số lượng trường phổ thông tại Việt Nam, được phân loại theo các cấp học (tiểu học, THCS, THPT, v.v.) và loại hình (công lập, ngoài công lập) qua các năm học từ 2020-2021 đến 2024-2025. Dataset cũng bao gồm chỉ số phát triển số trường so với năm trước.",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "truong-hoc",
-      "pho-thong",
-      "cap-hoc",
-      "loai-hinh",
-      "thong-ke"
-    ],
-    "uploaded_at": "2026-08-28T11:25:04.112Z",
-    "uploaded_by": "ninh",
-    "row_count": 90,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "ca43be0a-665a-4278-9fe3-eecc3c053fd1/so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-loai-hinh.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuong",
     "title": "Số lượng trường phổ thông phân theo địa phương và cấp học",
     "description": "Dữ liệu thống kê số lượng trường phổ thông các cấp (tiểu học, THCS, THPT) tại Việt Nam, phân theo địa phương (tỉnh/thành phố, vùng, hoặc cả nước) từ năm 2002 đến 2005, tại thời điểm 30/9 hàng năm.",
@@ -3467,65 +3290,6 @@
         "type": "csv",
         "r2_key": "2c439a47-6d74-411c-a663-884b78ddd6c5/so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuong.csv",
         "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "so-truong-pho-thong-tai-thoi-diem-30-9",
-    "title": "Số lượng trường phổ thông và chỉ số phát triển theo cấp học",
-    "description": "Dataset thống kê số lượng trường phổ thông và chỉ số phát triển của số trường (năm trước = 100%) theo từng cấp học và tổng số, trải dài qua các năm học từ 1995-1996 đến 2024-2025 (dựa trên số lượng năm học duy nhất).",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "truong-hoc",
-      "pho-thong",
-      "cap-hoc",
-      "thong-ke"
-    ],
-    "uploaded_at": "2026-08-28T11:24:19.591Z",
-    "uploaded_by": "ninh",
-    "row_count": 270,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "7e1e2efb-4120-4ea8-88b8-e6abc6f17f44/so-truong-pho-thong-tai-thoi-diem-30-9.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-t-3",
-    "title": "Số liệu trường học, lớp học, giáo viên và học sinh mẫu giáo theo năm học và loại hình",
-    "description": "Bộ dữ liệu thống kê về số lượng trường học, lớp học, giáo viên và học sinh ở cấp mẫu giáo, cùng với các chỉ số bình quân, được phân loại theo năm học và loại hình công lập/ngoài công lập.",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "mam-non",
-      "mau-giao",
-      "truong-hoc",
-      "hoc-sinh",
-      "giao-vien"
-    ],
-    "uploaded_at": "2026-08-28T11:23:57.123Z",
-    "uploaded_by": "ninh",
-    "row_count": 36,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "f64615fe-5e01-4c1a-ac6f-19840f351bf4/so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-t-3.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -3645,35 +3409,6 @@
     ]
   },
   {
-    "slug": "so-nu-giao-vien-va-nu-hoc-sinh-trong-cac-truong-pho-thong-ta",
-    "title": "Số nữ giáo viên và học sinh trong các trường phổ thông",
-    "description": "Dữ liệu thống kê số lượng nữ giáo viên và học sinh nữ theo từng cấp học (tiểu học, trung học cơ sở, trung học phổ thông và tổng số) cùng với chỉ số phát triển so với năm trước. Dữ liệu bao gồm 25 năm học, từ 2000-2001 đến khoảng 2024-2025.",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "giao-vien",
-      "hoc-sinh",
-      "nu",
-      "pho-thong"
-    ],
-    "uploaded_at": "2026-08-28T11:22:12.226Z",
-    "uploaded_by": "ninh",
-    "row_count": 200,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "32fc6fb3-f4aa-4b6c-a74f-ff67b6574c61/so-nu-giao-vien-va-nu-hoc-sinh-trong-cac-truong-pho-thong-ta.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "so-nu-giao-vien-pho-thong-truc-tiep-giang-day-tai-thoi-diem",
     "title": "Số nữ giáo viên phổ thông trực tiếp giảng dạy theo địa phương và cấp học",
     "description": "Dữ liệu thống kê số lượng nữ giáo viên trực tiếp giảng dạy ở các cấp học (tiểu học, THCS, THPT) trên toàn quốc và theo từng địa phương, vùng kinh tế, giai đoạn từ năm 2004 đến 2011.",
@@ -3703,35 +3438,6 @@
     ]
   },
   {
-    "slug": "so-nguoi-hoat-dong-nghien-cuu-khoa-hoc-va-phat-trien-cong-ng",
-    "title": "Số người hoạt động nghiên cứu khoa học và phát triển công nghệ",
-    "description": "Dataset thống kê số lượng người hoạt động nghiên cứu khoa học và phát triển công nghệ tại Việt Nam, phân loại theo giới tính, lĩnh vực hoạt động, lĩnh vực khoa học công nghệ và trình độ, trong giai đoạn từ năm 2015 đến 2023.",
-    "category": "xa-hoi",
-    "tags": [
-      "khoa-hoc",
-      "cong-nghe",
-      "nghien-cuu",
-      "nhan-luc",
-      "lao-dong"
-    ],
-    "uploaded_at": "2026-08-28T11:21:32.532Z",
-    "uploaded_by": "ninh",
-    "row_count": 85,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "7a7204fd-a69a-4b43-b60c-60cd5ba0ffd5/so-nguoi-hoat-dong-nghien-cuu-khoa-hoc-va-phat-trien-cong-ng.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "so-lop-hoc-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuong",
     "title": "Số lớp học phổ thông phân theo địa phương và cấp học",
     "description": "Dữ liệu thống kê số lượng lớp học ở các cấp tiểu học, trung học cơ sở và trung học phổ thông trên toàn quốc, phân theo từng địa phương và vùng, từ năm 2002 đến 2009. Dữ liệu được ghi nhận tại thời điểm 30/9 hàng năm.",
@@ -3756,65 +3462,6 @@
         "type": "csv",
         "r2_key": "b548276e-0c39-4ccd-b127-b615b0203b13/so-lop-hoc-pho-thong-tai-thoi-diem-30-9-phan-theo-dia-phuong.csv",
         "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9-ph",
-    "title": "Số liệu về lớp học, giáo viên và học sinh phổ thông theo năm học",
-    "description": "Dataset thống kê số lượng lớp học, giáo viên và học sinh ở các cấp học phổ thông (Tiểu học, THCS, THPT) theo loại hình (công lập, ngoài công lập) và năm học, kèm theo chỉ số phát triển so với năm trước.",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "hoc-sinh",
-      "giao-vien",
-      "lop-hoc",
-      "pho-thong"
-    ],
-    "uploaded_at": "2026-08-28T11:20:50.911Z",
-    "uploaded_by": "ninh",
-    "row_count": 120,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "ea75ca17-a2c9-4650-9dca-79e569c89e6b/so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9-ph.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9",
-    "title": "Số lớp, giáo viên và học sinh phổ thông tại Việt Nam",
-    "description": "Dữ liệu thống kê số lượng lớp học, giáo viên và học sinh ở các cấp học phổ thông (Tiểu học, THCS, THPT) trên toàn quốc, được thu thập tại thời điểm 30/9 hàng năm, từ năm học 1995-1996 đến 2024-2025 (30 năm). Kèm theo là chỉ số phát triển so với năm trước.",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "hoc-sinh",
-      "giao-vien",
-      "lop-hoc",
-      "pho-thong",
-      "thong-ke"
-    ],
-    "uploaded_at": "2026-08-28T11:20:27.709Z",
-    "uploaded_by": "ninh",
-    "row_count": 360,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "9a212ed4-de18-45f8-a8da-f524e94bbf07/so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9.csv",
-        "size_mb": 0.02
       }
     ]
   },
@@ -4251,36 +3898,6 @@
         "type": "csv",
         "r2_key": "e3b78657-a02e-49ad-b60a-c6c463a45db0/giao-duc-nghe-nghiep.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "giao-duc-dai-hoc-va-cao-dang",
-    "title": "Chỉ số phát triển giáo dục đại học và cao đẳng Việt Nam",
-    "description": "Dataset thống kê các chỉ số phát triển về trường học, giảng viên và sinh viên trong hệ thống giáo dục đại học và cao đẳng tại Việt Nam từ năm 1995 đến 2023, bao gồm tổng số và chỉ số tăng trưởng so với năm trước.",
-    "category": "giao-duc",
-    "tags": [
-      "giao-duc",
-      "dai-hoc",
-      "cao-dang",
-      "sinh-vien",
-      "giang-vien",
-      "truong-hoc"
-    ],
-    "uploaded_at": "2026-08-28T11:15:12.881Z",
-    "uploaded_by": "ninh",
-    "row_count": 580,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "4912da56-8801-425d-9df7-35d6cbbd7907/giao-duc-dai-hoc-va-cao-dang.csv",
-        "size_mb": 0.03
       }
     ]
   },
@@ -5115,62 +4732,6 @@
     ]
   },
   {
-    "slug": "tri-gia-xuat-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-phan",
-    "title": "Trị giá và cơ cấu xuất khẩu hàng hóa phân theo khu vực kinh tế và nhóm hàng",
-    "description": "Dữ liệu thống kê trị giá xuất khẩu hàng hóa của Việt Nam và cơ cấu phần trăm theo các khu vực kinh tế (trong nước, FDI) và các nhóm hàng hóa chính (nhiên liệu, công nghiệp chế biến, nông sản, thủy sản...) từ năm 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "xuat-khau",
-      "xuat-nhap-khau",
-      "kinh-te",
-      "tri-gia"
-    ],
-    "uploaded_at": "2026-08-28T11:05:32.573Z",
-    "uploaded_by": "ninh",
-    "row_count": 270,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "72bc70d6-04d3-4c18-b6cb-59fa39638330/tri-gia-xuat-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-phan.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "tri-gia-xuat-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo",
-    "title": "Trị giá xuất khẩu hàng hóa phân theo khối nước và quốc gia",
-    "description": "Dữ liệu thống kê trị giá xuất khẩu hàng hóa của Việt Nam phân theo các khối nước và từng quốc gia, giai đoạn từ năm 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "xuat-nhap-khau",
-      "kinh-te",
-      "thuong-mai",
-      "xuat-khau"
-    ],
-    "uploaded_at": "2026-08-28T11:05:13.740Z",
-    "uploaded_by": "ninh",
-    "row_count": 2130,
-    "file_count": 1,
-    "total_size_mb": 0.05,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "f9e44d85-80a6-4fe6-9e18-3d342c2f6d2e/tri-gia-xuat-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo.csv",
-        "size_mb": 0.05
-      }
-    ]
-  },
-  {
     "slug": "tri-gia-nhap-khau-hang-hoa-theo-bang-phan-loai-tieu-chuan-ng",
     "title": "Trị giá nhập khẩu hàng hóa theo phân loại tiêu chuẩn ngoại thương của Việt Nam",
     "description": "Dataset thống kê trị giá nhập khẩu hàng hóa của Việt Nam, được phân loại theo tiêu chuẩn ngoại thương, từ năm 1995 đến 2024. Dữ liệu bao gồm tổng trị giá và cơ cấu phần trăm của từng nhóm hàng.",
@@ -5227,119 +4788,6 @@
     ]
   },
   {
-    "slug": "tri-gia-nhap-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-theo",
-    "title": "Giá trị nhập khẩu hàng hóa phân theo khu vực kinh tế và loại hàng",
-    "description": "Dữ liệu thống kê giá trị nhập khẩu hàng hóa của Việt Nam từ năm 1995 đến 2024, được phân loại theo khu vực kinh tế (trong nước, FDI) và theo nhóm hàng hóa (tư liệu sản xuất, hàng tiêu dùng, v.v.).",
-    "category": "kinh-te",
-    "tags": [
-      "nhap-khau",
-      "thuong-mai",
-      "kinh-te",
-      "hang-hoa"
-    ],
-    "uploaded_at": "2026-08-28T11:04:17.881Z",
-    "uploaded_by": "ninh",
-    "row_count": 360,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "5c8da729-0a2c-4c34-8f7a-7868e9d71e6f/tri-gia-nhap-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-theo.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "tri-gia-nhap-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo",
-    "title": "Trị giá nhập khẩu hàng hóa phân theo khối nước và quốc gia",
-    "description": "Dữ liệu thống kê trị giá nhập khẩu hàng hóa của Việt Nam, phân loại theo các khối nước và quốc gia, từ năm 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "xuat-nhap-khau",
-      "nhap-khau",
-      "thuong-mai",
-      "quoc-te"
-    ],
-    "uploaded_at": "2026-08-28T11:03:57.542Z",
-    "uploaded_by": "ninh",
-    "row_count": 1950,
-    "file_count": 1,
-    "total_size_mb": 0.05,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "1f200462-9610-411c-b310-3442213b38fa/tri-gia-nhap-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo.csv",
-        "size_mb": 0.05
-      }
-    ]
-  },
-  {
-    "slug": "tong-muc-luu-chuyen-hang-hoa-xuat-nhap-khau",
-    "title": "Tổng kim ngạch xuất nhập khẩu và cán cân thương mại Việt Nam",
-    "description": "Dữ liệu thống kê tổng kim ngạch xuất khẩu, nhập khẩu và cán cân thương mại của Việt Nam hàng năm, bao gồm giá trị tuyệt đối và chỉ số phát triển so với năm trước.",
-    "category": "kinh-te",
-    "tags": [
-      "xuat-nhap-khau",
-      "thuong-mai",
-      "can-can-thuong-mai",
-      "kim-ngach"
-    ],
-    "uploaded_at": "2026-08-28T11:03:38.655Z",
-    "uploaded_by": "ninh",
-    "row_count": 140,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "ec576cd9-7ed6-417f-9f38-e9f13f990ea7/tong-muc-luu-chuyen-hang-hoa-xuat-nhap-khau.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2",
-    "title": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng",
-    "description": "Dataset thống kê tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng của Việt Nam, phân loại theo các nhóm chính như bán lẻ, dịch vụ lưu trú, ăn uống, và dịch vụ du lịch. Dữ liệu bao gồm giá trị tuyệt đối và cơ cấu phần trăm qua các năm từ 1990 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "ban-le",
-      "dich-vu",
-      "tieu-dung",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T11:03:19.236Z",
-    "uploaded_by": "ninh",
-    "row_count": 140,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "2825a40f-c606-4261-a780-f03d64ac929f/tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-theo",
     "title": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng theo tỉnh, thành phố và vùng",
     "description": "Dataset cung cấp số liệu về tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng của Việt Nam, phân loại theo từng tỉnh, thành phố, các vùng kinh tế và toàn quốc, từ năm 1995 đến 2024.",
@@ -5365,35 +4813,6 @@
         "type": "csv",
         "r2_key": "35bf9b61-9f69-478a-956e-9e33ea500850/tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-theo.csv",
         "size_mb": 0.07
-      }
-    ]
-  },
-  {
-    "slug": "so-thue-bao-dien-thoai-va-internet",
-    "title": "Số thuê bao điện thoại và internet tại Việt Nam",
-    "description": "Dữ liệu thống kê số lượng thuê bao điện thoại (bao gồm di động) và internet băng rộng cố định (ADSL) tại Việt Nam từ năm 2005 đến 2024, kèm theo chỉ số phát triển so với năm trước.",
-    "category": "kinh-te",
-    "tags": [
-      "vien-thong",
-      "thue-bao",
-      "dien-thoai",
-      "internet",
-      "phat-trien"
-    ],
-    "uploaded_at": "2026-08-28T11:02:38.019Z",
-    "uploaded_by": "ninh",
-    "row_count": 60,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "1e650ce6-0a88-46f7-9537-55ed7cce22a9/so-thue-bao-dien-thoai-va-internet.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -5449,37 +4868,6 @@
       {
         "type": "csv",
         "r2_key": "372c78ec-8fa9-4d9e-9ee0-f77ce91880e4/so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-mot-so.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai",
-    "title": "Số lượt hành khách vận chuyển phân theo ngành vận tải tại Việt Nam",
-    "description": "Dữ liệu thống kê số lượt hành khách vận chuyển và chỉ số phát triển theo năm, phân loại theo các ngành vận tải chính (đường bộ, đường sắt, đường sông, đường hàng không) tại Việt Nam từ năm 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "hanh-khach",
-      "van-tai",
-      "giao-thong",
-      "duong-bo",
-      "duong-sat",
-      "duong-hang-khong",
-      "duong-song"
-    ],
-    "uploaded_at": "2026-08-28T11:01:35.501Z",
-    "uploaded_by": "ninh",
-    "row_count": 150,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "0728c79c-6031-49ee-bac8-2e9b1445d6d0/so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai.csv",
         "size_mb": 0.01
       }
     ]
@@ -5745,35 +5133,6 @@
     ]
   },
   {
-    "slug": "so-luong-cho-co-den-31-12-hang-nam-phan-theo-hang-va-theo-di",
-    "title": "Số lượng chợ phân theo hạng và địa điểm đến 31/12 hàng năm",
-    "description": "Dataset thống kê tổng số lượng chợ hiện có tại Việt Nam tính đến ngày 31 tháng 12 hàng năm, phân loại theo hạng chợ (Hạng 1, 2, 3) và theo địa điểm (cả nước, vùng kinh tế, tỉnh/thành phố) từ năm 2008 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "cho",
-      "thuong-mai",
-      "kinh-te",
-      "dia-diem",
-      "phan-loai"
-    ],
-    "uploaded_at": "2026-08-28T10:58:13.479Z",
-    "uploaded_by": "ninh",
-    "row_count": 1241,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "b13601b5-1e5d-4936-9cec-c285f0516cb9/so-luong-cho-co-den-31-12-hang-nam-phan-theo-hang-va-theo-di.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
     "slug": "mot-so-mat-hang-xuat-khau-chu-yeu",
     "title": "Giá trị xuất khẩu một số mặt hàng chủ yếu của Việt Nam",
     "description": "Dữ liệu thống kê giá trị xuất khẩu của các mặt hàng chủ yếu của Việt Nam từ năm 1995 đến 2024, được tính bằng triệu đô la Mỹ.",
@@ -5854,62 +5213,6 @@
         "type": "csv",
         "r2_key": "9b1be9fd-8e0f-4856-9c34-4d152ebb1480/khoi-luong-hang-hoa-van-chuyen-phan-theo-nganh-van-tai.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-loai-hinh-kinh-te",
-    "title": "Khối lượng hàng hóa vận chuyển phân theo loại hình kinh tế",
-    "description": "Dataset thống kê khối lượng hàng hóa vận chuyển và chỉ số phát triển của khối lượng này, phân loại theo các loại hình kinh tế (Tổng số, Kinh tế Nhà nước, Kinh tế ngoài Nhà nước, Khu vực có vốn đầu tư nước ngoài) tại Việt Nam từ năm 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "van-tai",
-      "hang-hoa",
-      "loai-hinh-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:21:39.670Z",
-    "uploaded_by": "ninh",
-    "row_count": 120,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "4ce4ebe6-1e57-46cf-bc6c-0dfcf0a48dfa/khoi-luong-hang-hoa-van-chuyen-phan-theo-loai-hinh-kinh-te.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-khu-vuc-van-tai",
-    "title": "Khối lượng hàng hóa vận chuyển phân theo khu vực vận tải",
-    "description": "Dataset thống kê khối lượng hàng hóa vận chuyển (tổng số, trong nước, ngoài nước) và chỉ số phát triển của khối lượng này qua các năm từ 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "van-tai",
-      "hang-hoa",
-      "xuat-nhap-khau"
-    ],
-    "uploaded_at": "2026-08-28T10:21:21.638Z",
-    "uploaded_by": "ninh",
-    "row_count": 90,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "b031450b-8729-4899-b5d0-0e16e6cee74a/khoi-luong-hang-hoa-van-chuyen-phan-theo-khu-vuc-van-tai.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -6001,120 +5304,6 @@
     ]
   },
   {
-    "slug": "khoi-luong-hang-hoa-thong-qua-cang-bien-cang-thuy-noi-dia-va",
-    "title": "Khối lượng hàng hóa thông qua các loại hình cảng tại Việt Nam",
-    "description": "Dữ liệu thống kê khối lượng hàng hóa vận chuyển qua cảng biển, cảng thủy nội địa và cảng hàng không tại Việt Nam từ năm 2015 đến 2024, được phân loại theo loại hàng hóa và loại hình cảng.",
-    "category": "kinh-te",
-    "tags": [
-      "hang-hoa",
-      "van-tai",
-      "cang-bien",
-      "cang-thuy-noi-dia",
-      "cang-hang-khong"
-    ],
-    "uploaded_at": "2026-08-28T10:19:50.333Z",
-    "uploaded_by": "ninh",
-    "row_count": 80,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "cda0a7f8-5e1f-4dca-a5af-04e70ddc3189/khoi-luong-hang-hoa-thong-qua-cang-bien-cang-thuy-noi-dia-va.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-thanh-phan-kinh-te",
-    "title": "Khối lượng hàng hóa luân chuyển phân theo thành phần kinh tế",
-    "description": "Dataset thống kê khối lượng hàng hóa luân chuyển và chỉ số phát triển của nó theo các thành phần kinh tế (Tổng số, Kinh tế Nhà nước, Kinh tế ngoài Nhà nước, Khu vực có vốn đầu tư nước ngoài) tại Việt Nam, từ năm 1995 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "giao-thong",
-      "hang-hoa",
-      "van-tai",
-      "thanh-phan-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:19:31.379Z",
-    "uploaded_by": "ninh",
-    "row_count": 120,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "ad92fda8-85e6-4f2a-be57-742a7f01f9dd/khoi-luong-hang-hoa-luan-chuyen-phan-theo-thanh-phan-kinh-te.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-nganh-van-tai",
-    "title": "Khối lượng hàng hóa luân chuyển phân theo ngành vận tải",
-    "description": "Dataset này cung cấp thông tin về khối lượng hàng hóa luân chuyển và chỉ số phát triển của nó theo từng ngành vận tải (đường sắt, đường bộ, đường sông, đường biển, đường hàng không) tại Việt Nam, từ năm 1995 đến 2024.",
-    "category": "ha-tang",
-    "tags": [
-      "van-tai",
-      "hang-hoa",
-      "giao-thong",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:19:11.422Z",
-    "uploaded_by": "ninh",
-    "row_count": 180,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "9265a38c-ccbe-4bdc-aa61-67ea7ed08fe8/khoi-luong-hang-hoa-luan-chuyen-phan-theo-nganh-van-tai.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-khu-vuc-van-tai",
-    "title": "Khối lượng hàng hóa luân chuyển phân theo khu vực vận tải",
-    "description": "Dữ liệu thống kê khối lượng hàng hóa luân chuyển tại Việt Nam, phân loại theo tổng số, trong nước và ngoài nước, từ năm 1995 đến 2024. Kèm theo là chỉ số phát triển so với năm trước.",
-    "category": "kinh-te",
-    "tags": [
-      "van-tai",
-      "hang-hoa",
-      "kinh-te",
-      "giao-thong"
-    ],
-    "uploaded_at": "2026-08-28T10:18:52.785Z",
-    "uploaded_by": "ninh",
-    "row_count": 90,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "8b83c33d-31b3-473c-a2b4-fa80945e3be9/khoi-luong-hang-hoa-luan-chuyen-phan-theo-khu-vuc-van-tai.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-dia-phuong",
     "title": "Khối lượng hàng hóa luân chuyển phân theo địa phương",
     "description": "Dataset thống kê khối lượng hàng hóa luân chuyển theo các tỉnh, thành phố, vùng kinh tế và cả nước, từ năm 2000 đến 2024. Dữ liệu này phản ánh hoạt động vận tải và lưu thông hàng hóa trên toàn quốc.",
@@ -6202,34 +5391,6 @@
     ]
   },
   {
-    "slug": "doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-loai",
-    "title": "Doanh thu du lịch lữ hành theo giá hiện hành phân theo thành phần kinh tế",
-    "description": "Dataset thống kê doanh thu từ hoạt động du lịch lữ hành theo giá hiện hành và cơ cấu phần trăm của doanh thu này, phân loại theo các thành phần kinh tế (nhà nước, ngoài nhà nước, FDI...) từ năm 2001 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "du-lich",
-      "doanh-thu",
-      "kinh-te",
-      "thanh-phan-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:17:39.410Z",
-    "uploaded_by": "ninh",
-    "row_count": 168,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "d963e988-910b-420c-80ee-7dc34dd2b890/doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-loai.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-dia-p",
     "title": "Doanh thu du lịch lữ hành theo giá hiện hành phân theo địa phương",
     "description": "Dataset thống kê doanh thu từ hoạt động du lịch và lữ hành của Việt Nam, bao gồm số liệu tổng hợp toàn quốc, theo vùng kinh tế và từng tỉnh, thành phố, được tính theo giá hiện hành từ năm 2010 đến 2024.",
@@ -6255,35 +5416,6 @@
         "type": "csv",
         "r2_key": "8f9dc79c-fc0c-4711-b098-eadd1b8b7051/doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-dia-p.csv",
         "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "doanh-thu-buu-chinh-chuyen-phat-va-vien-thong",
-    "title": "Doanh thu bưu chính, chuyển phát và viễn thông Việt Nam",
-    "description": "Dữ liệu thống kê doanh thu và chỉ số phát triển của ngành bưu chính, chuyển phát và viễn thông tại Việt Nam từ năm 2007 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "doanh-thu",
-      "buu-chinh",
-      "vien-thong",
-      "chuyen-phat",
-      "kinh-te-so"
-    ],
-    "uploaded_at": "2026-08-28T10:17:00.222Z",
-    "uploaded_by": "ninh",
-    "row_count": 54,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "f8bef722-a4bb-4dd9-89df-ced7de45a571/doanh-thu-buu-chinh-chuyen-phat-va-vien-thong.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -6431,34 +5563,6 @@
     ]
   },
   {
-    "slug": "chi-tieu-binh-quan-mot-ngay-cua-khach-du-lich-noi-dia",
-    "title": "Chi tiêu bình quân một ngày của khách du lịch nội địa",
-    "description": "Dữ liệu thống kê chi tiêu bình quân một ngày của khách du lịch nội địa tại Việt Nam, phân loại theo các hạng mục chi tiêu chính như ăn uống, đi lại, thuê phòng, mua sắm và các chi phí khác, qua các năm từ 2005 đến 2020.",
-    "category": "kinh-te",
-    "tags": [
-      "chi-tieu",
-      "du-lich",
-      "khach-noi-dia",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:15:17.673Z",
-    "uploaded_by": "ninh",
-    "row_count": 56,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "b47c07e2-8cee-492f-85bf-e24f4d172cd6/chi-tieu-binh-quan-mot-ngay-cua-khach-du-lich-noi-dia.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-pha-2",
     "title": "Chi tiêu bình quân của khách quốc tế đến Việt Nam theo quốc tịch và năm",
     "description": "Dataset thống kê chi tiêu bình quân của một lượt khách quốc tế đến Việt Nam, phân loại theo quốc tịch và năm, từ 2017 đến 2024. Dữ liệu bao gồm thông tin về các quốc tịch cụ thể và tổng bình quân chung.",
@@ -6569,34 +5673,6 @@
       {
         "type": "csv",
         "r2_key": "5d632d5f-3cbd-4846-8f29-a7534f052594/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-3.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2",
-    "title": "Chi tiêu bình quân một lượt khách du lịch nội địa theo hạng mục",
-    "description": "Dữ liệu thống kê chi tiêu bình quân của một lượt khách du lịch nội địa, phân loại theo các hạng mục chi tiêu chính như thuê phòng, ăn uống, đi lại, mua sắm, v.v., cùng với cơ cấu phần trăm của từng hạng mục qua các năm từ 2019 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "du-lich",
-      "chi-tieu",
-      "noi-dia",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:13:42.363Z",
-    "uploaded_by": "ninh",
-    "row_count": 36,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "80b05ede-0977-4d51-8b3c-f9984c173d7b/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2.csv",
         "size_mb": 0
       }
     ]
@@ -7622,67 +6698,6 @@
     ]
   },
   {
-    "slug": "chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xu-2",
-    "title": "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất",
-    "description": "Dữ liệu thống kê chỉ số giá nguyên liệu, nhiên liệu và vật liệu dùng cho sản xuất tại Việt Nam, phân loại theo mục đích sử dụng hoặc loại sản phẩm, từ năm 2012 đến 2024. Chỉ số được tính theo phương pháp năm trước bằng 100%.",
-    "category": "kinh-te",
-    "tags": [
-      "chi-so-gia",
-      "nguyen-lieu",
-      "nhien-lieu",
-      "vat-lieu",
-      "san-xuat",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T10:02:42.148Z",
-    "uploaded_by": "ninh",
-    "row_count": 455,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "07af6a14-c587-4d69-8ce5-3b3946c6076d/chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xu-2.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xuat",
-    "title": "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất tại Việt Nam",
-    "description": "Dataset cung cấp chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất tại Việt Nam theo các mục đích sử dụng và loại sản phẩm khác nhau, được tính toán với năm gốc 2014 = 100. Dữ liệu bao gồm các năm từ 2015 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "chi-so-gia",
-      "nguyen-lieu",
-      "nhien-lieu",
-      "vat-lieu",
-      "san-xuat",
-      "kinh-te",
-      "gia-ca"
-    ],
-    "uploaded_at": "2026-08-28T10:02:21.186Z",
-    "uploaded_by": "ninh",
-    "row_count": 350,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "e65a55f6-a54e-4bf6-9af2-0776ae0e38f6/chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xuat.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
     "slug": "chi-so-gia-do-la-my-phan-theo-vung-cac-thang-so-voi-thang-tr",
     "title": "Chỉ số giá đô la Mỹ phân theo vùng và tháng",
     "description": "Dataset cung cấp chỉ số giá đô la Mỹ theo tháng, phân loại theo các vùng địa lý của Việt Nam và chỉ số chung, trong giai đoạn từ năm 2022 đến 2023.",
@@ -7854,35 +6869,6 @@
     ]
   },
   {
-    "slug": "so-luong-gia-suc-va-gia-cam",
-    "title": "Số lượng và chỉ số phát triển gia súc, gia cầm tại Việt Nam",
-    "description": "Dataset thống kê số lượng và chỉ số phát triển của các loại gia súc (trâu, bò, ngựa, dê, cừu, lợn) và gia cầm tại Việt Nam từ năm 1990 đến 2024. Chỉ số phát triển được tính theo năm trước bằng 100%.",
-    "category": "kinh-te",
-    "tags": [
-      "gia-suc",
-      "gia-cam",
-      "chan-nuoi",
-      "nong-nghiep",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T09:59:59.807Z",
-    "uploaded_by": "ninh",
-    "row_count": 210,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "6be347cc-367e-43b2-aea6-e33c2982df89/so-luong-gia-suc-va-gia-cam.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "so-luong-gia-cam-phan-theo-dia-phuong",
     "title": "Số lượng gia cầm phân theo địa phương và năm",
     "description": "Dataset thống kê số lượng gia cầm tại các tỉnh, thành phố và vùng kinh tế trên cả nước, từ năm 2000 đến 2024. Dữ liệu bao gồm cả tổng số liệu cho toàn quốc.",
@@ -8028,64 +7014,6 @@
     ]
   },
   {
-    "slug": "san-luong-thuy-san-nuoi-trong",
-    "title": "Sản lượng thủy sản nuôi trồng và chỉ số phát triển theo năm",
-    "description": "Dataset cung cấp dữ liệu về sản lượng thủy sản nuôi trồng (tổng số, cá, tôm) và chỉ số phát triển của chúng so với năm trước, từ năm 1990 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "thuy-san",
-      "nuoi-trong",
-      "san-luong",
-      "kinh-te",
-      "nong-nghiep"
-    ],
-    "uploaded_at": "2026-08-28T09:58:11.086Z",
-    "uploaded_by": "ninh",
-    "row_count": 105,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "2984c7aa-511d-4d33-8a1c-d2c5946d2201/san-luong-thuy-san-nuoi-trong.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "san-luong-thuy-san-khai-thac-phan-theo-nganh-hoat-dong",
-    "title": "Sản lượng và chỉ số phát triển thủy sản khai thác phân theo ngành hoạt động",
-    "description": "Dataset cung cấp dữ liệu hàng năm về sản lượng thủy sản khai thác và chỉ số phát triển của ngành, được phân loại theo các hoạt động khai thác chính (tổng số, khai thác biển, cá biển, khai thác nội địa) từ năm 1990 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "thuy-san",
-      "san-luong",
-      "khai-thac",
-      "nong-nghiep",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T09:57:52.804Z",
-    "uploaded_by": "ninh",
-    "row_count": 140,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "5104f247-e646-4ab5-ad58-057dbdcbca29/san-luong-thuy-san-khai-thac-phan-theo-nganh-hoat-dong.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "san-luong-thuy-san-khai-thac-phan-theo-dia-phuong",
     "title": "Sản lượng thủy sản khai thác phân theo địa phương và năm tại Việt Nam",
     "description": "Dữ liệu thống kê sản lượng thủy sản khai thác của Việt Nam, được phân loại theo các tỉnh, thành phố và vùng kinh tế, từ năm 1995 đến năm 2024.",
@@ -8111,34 +7039,6 @@
         "type": "csv",
         "r2_key": "f55a6e5f-f568-45ac-85d6-01b6b29fd0ef/san-luong-thuy-san-khai-thac-phan-theo-dia-phuong.csv",
         "size_mb": 0.06
-      }
-    ]
-  },
-  {
-    "slug": "san-luong-thuy-san",
-    "title": "Sản lượng và chỉ số phát triển thủy sản Việt Nam",
-    "description": "Dữ liệu thống kê sản lượng (nghìn tấn) và chỉ số phát triển thủy sản (tổng số, khai thác, nuôi trồng) của Việt Nam từ năm 1990 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "thuy-san",
-      "san-luong",
-      "nong-nghiep",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T09:57:17.091Z",
-    "uploaded_by": "ninh",
-    "row_count": 105,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "dafd416d-0495-452a-87a2-c92f52dadacf/san-luong-thuy-san.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -8343,34 +7243,6 @@
         "type": "csv",
         "r2_key": "727dc5c9-0430-4f89-a42f-b62954b44a3d/san-luong-ngo-phan-theo-dia-phuong.csv",
         "size_mb": 0.06
-      }
-    ]
-  },
-  {
-    "slug": "san-luong-mot-so-cay-lau-nam-chu-yeu",
-    "title": "Sản lượng và chỉ số phát triển một số cây lâu năm chủ yếu",
-    "description": "Dataset thống kê sản lượng (nghìn tấn) và chỉ số phát triển (so với năm trước) của một số loại cây lâu năm chủ yếu tại Việt Nam, bao gồm các loại cây ăn quả và cây công nghiệp, trong giai đoạn từ năm 2005 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "nong-nghiep",
-      "san-luong",
-      "cay-trong",
-      "kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T09:54:37.660Z",
-    "uploaded_by": "ninh",
-    "row_count": 285,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "751d40d5-2d8e-49f1-8e56-bf20641e8785/san-luong-mot-so-cay-lau-nam-chu-yeu.csv",
-        "size_mb": 0.01
       }
     ]
   },
@@ -8629,35 +7501,6 @@
         "type": "csv",
         "r2_key": "b5ea81db-1e55-428b-8b9e-42c94ccbd45a/san-luong-khoai-lang-phan-theo-dia-phuong.csv",
         "size_mb": 0.06
-      }
-    ]
-  },
-  {
-    "slug": "san-luong-go-phan-theo-loai-hinh-kinh-te",
-    "title": "Sản lượng gỗ phân theo loại hình kinh tế tại Việt Nam",
-    "description": "Dataset thống kê sản lượng gỗ khai thác và chỉ số phát triển sản lượng theo năm, phân loại theo các loại hình kinh tế (nhà nước, ngoài nhà nước, FDI, v.v.) trên toàn quốc từ năm 2010 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "san-luong",
-      "go",
-      "lam-nghiep",
-      "kinh-te",
-      "loai-hinh-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T09:51:22.280Z",
-    "uploaded_by": "ninh",
-    "row_count": 98,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "1dc578bb-44a8-40c0-99b0-1e42ea2644a2/san-luong-go-phan-theo-loai-hinh-kinh-te.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -9971,35 +8814,6 @@
     ]
   },
   {
-    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-3",
-    "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép theo ngành kinh tế tại Việt Nam",
-    "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép tại Việt Nam, phân loại theo ngành kinh tế và theo năm từ 2015 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "dau-tu-nuoc-ngoai",
-      "fdi",
-      "kinh-te",
-      "nganh-kinh-te",
-      "von-dau-tu"
-    ],
-    "uploaded_at": "2026-08-28T09:36:04.009Z",
-    "uploaded_by": "ninh",
-    "row_count": 190,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "6f988d4d-5c50-4ae5-8ac5-537a5a429db1/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-3.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-2",
     "title": "Đầu tư trực tiếp nước ngoài được cấp giấy phép phân theo đối tác",
     "description": "Dữ liệu thống kê số lượng dự án và tổng vốn đăng ký của đầu tư trực tiếp nước ngoài (FDI) được cấp giấy phép tại Việt Nam, phân loại theo quốc gia/vùng lãnh thổ đối tác đầu tư.",
@@ -10375,63 +9189,6 @@
     ]
   },
   {
-    "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung",
-    "title": "Diện tích rừng trồng mới tập trung phân theo loại rừng",
-    "description": "Dataset thống kê diện tích rừng trồng mới tập trung và chỉ số phát triển của diện tích này theo từng loại rừng (sản xuất, phòng hộ, đặc dụng) và tổng số, từ năm 2005 đến 2024.",
-    "category": "moi-truong",
-    "tags": [
-      "rung",
-      "lam-nghiep",
-      "dien-tich",
-      "moi-truong"
-    ],
-    "uploaded_at": "2026-08-28T08:43:33.400Z",
-    "uploaded_by": "ninh",
-    "row_count": 80,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "5a28bd50-1bf0-41fc-88c8-b233eeaaac5d/dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-hinh-kinh",
-    "title": "Sản lượng gỗ rừng trồng tập trung và chỉ số phát triển theo loại hình kinh tế",
-    "description": "Dataset thống kê sản lượng gỗ khai thác từ rừng trồng tập trung và chỉ số phát triển của sản lượng này theo từng loại hình kinh tế (nhà nước, ngoài nhà nước, FDI) trong giai đoạn 2018-2023.",
-    "category": "kinh-te",
-    "tags": [
-      "san-luong",
-      "rung-trong",
-      "kinh-te",
-      "chi-so-phat-trien",
-      "lam-nghiep"
-    ],
-    "uploaded_at": "2026-08-28T08:43:16.840Z",
-    "uploaded_by": "ninh",
-    "row_count": 42,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "5c2dd346-9245-4b36-a8c6-54dc7587c596/dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-hinh-kinh.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-dia-phuong",
     "title": "Diện tích rừng trồng mới tập trung phân theo địa phương và năm",
     "description": "Dataset thống kê diện tích rừng được trồng mới tập trung hàng năm tại Việt Nam, phân loại theo từng tỉnh, thành phố, vùng kinh tế và tổng hợp cả nước, từ năm 1995 đến 2024.",
@@ -10486,35 +9243,6 @@
         "type": "csv",
         "r2_key": "a9c223c0-4a01-4b05-b4fa-dde4121f52d2/dien-tich-lua-ca-nam-phan-theo-dia-phuong.csv",
         "size_mb": 0.06
-      }
-    ]
-  },
-  {
-    "slug": "dien-tich-hien-co-mot-so-cay-lau-nam-chu-yeu",
-    "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu",
-    "description": "Dataset thống kê diện tích và chỉ số phát triển (so với năm trước) của một số loại cây lâu năm chủ yếu tại Việt Nam từ năm 2005 đến 2024. Dữ liệu bao gồm các loại cây ăn quả và cây công nghiệp.",
-    "category": "kinh-te",
-    "tags": [
-      "nong-nghiep",
-      "cay-lau-nam",
-      "dien-tich",
-      "chi-so-phat-trien",
-      "san-xuat-nong-nghiep"
-    ],
-    "uploaded_at": "2026-08-28T08:42:16.238Z",
-    "uploaded_by": "ninh",
-    "row_count": 285,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "2415b8d7-e989-4643-84cc-f03b04093ca6/dien-tich-hien-co-mot-so-cay-lau-nam-chu-yeu.csv",
-        "size_mb": 0.01
       }
     ]
   },
@@ -10807,35 +9535,6 @@
         "type": "csv",
         "r2_key": "c42b1190-7db0-46a8-80e3-8cd78afe7444/dien-tich-gieo-trong-cay-luong-thuc-co-hat-phan-theo-dia-phu.csv",
         "size_mb": 0.06
-      }
-    ]
-  },
-  {
-    "slug": "dien-tich-cho-san-pham-mot-so-cay-lau-nam-chu-yeu",
-    "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu",
-    "description": "Dataset cung cấp thông tin về diện tích và chỉ số phát triển (so với năm trước) của các loại cây lâu năm chủ yếu tại Việt Nam, bao gồm cây ăn quả và cây công nghiệp, từ năm 2005 đến 2024.",
-    "category": "kinh-te",
-    "tags": [
-      "nong-nghiep",
-      "cay-trong",
-      "dien-tich",
-      "chi-so-phat-trien",
-      "cay-lau-nam"
-    ],
-    "uploaded_at": "2026-08-28T08:38:44.593Z",
-    "uploaded_by": "ninh",
-    "row_count": 285,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "4e7098f0-fda7-4aa4-a0b2-dd76b870e31f/dien-tich-cho-san-pham-mot-so-cay-lau-nam-chu-yeu.csv",
-        "size_mb": 0.01
       }
     ]
   },
@@ -11691,36 +10390,6 @@
     ]
   },
   {
-    "slug": "so-can-ho-va-dien-tich-san-nha-o-xa-hoi-hoan-thanh-nam-2019",
-    "title": "Số căn hộ và diện tích sàn nhà ở xã hội hoàn thành năm 2019",
-    "description": "Dataset thống kê số lượng căn hộ/nhà ở và tổng diện tích sàn nhà ở xã hội đã hoàn thành trong năm 2019, phân loại theo vùng địa lý và loại hình nhà ở (chung cư, nhà ở riêng lẻ). Dữ liệu bao gồm tổng số liệu cho cả nước và các vùng kinh tế - xã hội.",
-    "category": "ha-tang",
-    "tags": [
-      "nha-o",
-      "nha-o-xa-hoi",
-      "dien-tich",
-      "can-ho",
-      "vung",
-      2019
-    ],
-    "uploaded_at": "2026-08-28T08:18:37.602Z",
-    "uploaded_by": "ninh",
-    "row_count": 18,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "c9d67a74-48fc-49eb-842e-e214d071a85c/so-can-ho-va-dien-tich-san-nha-o-xa-hoi-hoan-thanh-nam-2019.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "dien-tich-san-xay-dung-nha-tu-xay-tu-o-hoan-thanh-trong-nam",
     "title": "Diện tích sàn xây dựng nhà tự xây, tự ở hoàn thành trong năm",
     "description": "Dữ liệu thống kê tổng diện tích sàn xây dựng của các căn nhà do hộ dân cư tự xây dựng và hoàn thành trong năm, phân theo tỉnh/thành phố và vùng kinh tế, từ năm 2010 đến 2023.",
@@ -12147,36 +10816,6 @@
         "type": "csv",
         "r2_key": "34854ff8-22e4-4b61-b4b4-cac7fbc69b28/chi-so-san-xuat-cong-nghiep-phan-theo-dia-phuong.csv",
         "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "bang-can-doi-nang-luong-viet-nam",
-    "title": "Bảng cân đối năng lượng Việt Nam",
-    "description": "Dataset cung cấp dữ liệu về cân đối năng lượng của Việt Nam từ năm 2018 đến 2021, bao gồm các nguồn cung cấp và các loại năng lượng khác nhau.",
-    "category": "kinh-te",
-    "tags": [
-      "nang-luong",
-      "kinh-te",
-      "than",
-      "dau-khi",
-      "dien",
-      "can-doi-nang-luong"
-    ],
-    "uploaded_at": "2026-08-28T08:12:09.865Z",
-    "uploaded_by": "ninh",
-    "row_count": 960,
-    "file_count": 1,
-    "total_size_mb": 0.06,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "daa590e1-1e8c-4341-9b90-34f9b3b1dcae/bang-can-doi-nang-luong-viet-nam.csv",
-        "size_mb": 0.06
       }
     ]
   },
@@ -13356,35 +11995,6 @@
     ]
   },
   {
-    "slug": "ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-g",
-    "title": "Tỷ lệ trẻ em dưới 05 tuổi được đăng ký khai sinh phân theo giới tính và vùng",
-    "description": "Dataset thống kê tỷ lệ trẻ em dưới 5 tuổi đã được đăng ký khai sinh tại Việt Nam, phân loại theo giới tính (Nam, Nữ, Cả nước) và các vùng kinh tế-xã hội, từ năm 2019 đến 2024.",
-    "category": "dan-so",
-    "tags": [
-      "dan-so",
-      "tre-em",
-      "khai-sinh",
-      "gioi-tinh",
-      "vung-kinh-te"
-    ],
-    "uploaded_at": "2026-08-27T08:15:24.216Z",
-    "uploaded_by": "ninh",
-    "row_count": 54,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "bfd3019a-8826-448a-b776-f2322227fd83/ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-g.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-d",
     "title": "Tỷ lệ trẻ em dưới 5 tuổi được đăng ký khai sinh phân theo tỉnh/thành phố và năm",
     "description": "Dữ liệu thống kê tỷ lệ trẻ em dưới 5 tuổi đã được đăng ký khai sinh tại Việt Nam, phân theo tỉnh/thành phố, vùng kinh tế - xã hội và toàn quốc, từ năm 2019 đến 2024.",
@@ -13497,35 +12107,6 @@
         "type": "csv",
         "r2_key": "4e927694-751e-4838-ad4a-34f8f356b3d8/ty-le-dan-so-tu-15-tuoi-tro-len-biet-chu-phan-theo-dia-phuon.csv",
         "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha",
-    "title": "Tuổi thọ trung bình tính từ lúc sinh phân theo giới tính, thành thị, nông thôn và vùng kinh tế - xã hội",
-    "description": "Dataset cung cấp số liệu về tuổi thọ trung bình tính từ lúc sinh của Việt Nam, được phân loại theo giới tính (Nam, Nữ), khu vực sinh sống (thành thị, nông thôn) và các vùng kinh tế - xã hội, qua các năm từ 2005 đến 2024.",
-    "category": "dan-so",
-    "tags": [
-      "tuoi-tho",
-      "dan-so",
-      "gioi-tinh",
-      "thanh-thi",
-      "nong-thon"
-    ],
-    "uploaded_at": "2026-08-27T08:13:52.390Z",
-    "uploaded_by": "ninh",
-    "row_count": 187,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "5f3af2e4-7a29-4815-9b5e-3c00d65122cd/tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha.csv",
-        "size_mb": 0.01
       }
     ]
   },
