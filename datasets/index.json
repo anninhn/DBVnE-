@@ -1,5 +1,33 @@
 [
   {
+    "slug": "so-luong-cho-co-den-31-12-hang-nam-phan-theo-hang-va-theo-di",
+    "title": "Số lượng chợ theo hạng và địa phương tại Việt Nam",
+    "description": "Dataset thống kê số lượng chợ hiện có đến ngày 31/12 hàng năm, phân loại theo hạng chợ (Hạng 1, 2, 3) và theo địa phương (cả nước, các vùng kinh tế, các tỉnh/thành phố) từ năm 2008 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "cho",
+      "thuong-mai",
+      "kinh-te",
+      "dia-phuong"
+    ],
+    "uploaded_at": "2026-09-03T04:07:52.435Z",
+    "uploaded_by": "ninh",
+    "row_count": 1241,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1d71b057-fdf7-46d0-a1db-465fea178a15/so-luong-cho-co-den-31-12-hang-nam-phan-theo-hang-va-theo-di.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-loai-hinh-kinh-te",
     "title": "Khối lượng hàng hóa vận chuyển phân theo loại hình kinh tế",
     "description": "Dataset thống kê khối lượng hàng hóa vận chuyển và chỉ số phát triển theo từng loại hình kinh tế (Nhà nước, ngoài Nhà nước, FDI) từ năm 1995 đến 2024.",
