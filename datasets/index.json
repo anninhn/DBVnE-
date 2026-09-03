@@ -1,5 +1,34 @@
 [
   {
+    "slug": "bang-can-doi-nang-luong-viet-nam",
+    "title": "Bảng cân đối năng lượng Việt Nam",
+    "description": "Dataset thống kê chi tiết bảng cân đối năng lượng của Việt Nam, bao gồm các hoạt động cung cấp, tiêu thụ và các nguồn năng lượng chính trong giai đoạn từ năm 2018 đến 2021.",
+    "category": "kinh-te",
+    "tags": [
+      "nang-luong",
+      "kinh-te",
+      "viet-nam",
+      "tieu-thu",
+      "san-xuat"
+    ],
+    "uploaded_at": "2026-09-03T03:53:49.270Z",
+    "uploaded_by": "ninh",
+    "row_count": 960,
+    "file_count": 1,
+    "total_size_mb": 0.06,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "f4835970-9faf-463b-9b84-4410a7e98386/bang-can-doi-nang-luong-viet-nam.csv",
+        "size_mb": 0.06
+      }
+    ]
+  },
+  {
     "slug": "ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-g",
     "title": "Tỷ lệ trẻ em dưới 5 tuổi được đăng ký khai sinh phân theo giới tính và vùng",
     "description": "Dataset thống kê tỷ lệ phần trăm trẻ em dưới 5 tuổi đã được đăng ký khai sinh, phân loại theo giới tính và các vùng địa lý của Việt Nam, từ năm 2019 đến 2024.",
