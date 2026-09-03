@@ -213,6 +213,19 @@ export async function analyzeDataset(
     response_format: { type: "json_object" },
   });
 
+  // Log token để theo được mức tiêu thụ khi chạy lô lớn (bulk upload hàng trăm
+  // dataset trên key trả tiền). Không có số này thì chỉ biết chi phí qua
+  // dashboard sau khi đã tiêu.
+  // Log dạng chuỗi phẳng, KHÔNG truyền object: logger của `next dev` serialize
+  // object thành `{}` nên số token biến mất khỏi log.
+  const usage = response.usage;
+  if (usage) {
+    console.info(
+      `[analyze] token: prompt=${usage.prompt_tokens} completion=${usage.completion_tokens} ` +
+        `total=${usage.total_tokens} file=${inspection.filename}`
+    );
+  }
+
   const content = response.choices[0]?.message?.content;
   if (!content) {
     throw new Error("AI trả response rỗng");

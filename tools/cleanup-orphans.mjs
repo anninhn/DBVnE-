@@ -5,6 +5,9 @@
  *   - GitHub orphan: metadata.yaml có r2_key nhưng object không tồn tại trong R2
  *   - R2 orphan: object tồn tại trong R2 nhưng không có metadata nào reference
  *
+ * KHÔNG đụng vào các prefix trong PROTECTED_PREFIXES (log chat, counter download)
+ * — chúng không được metadata nào tham chiếu nên nếu không loại trừ sẽ bị xoá nhầm.
+ *
  * Optional --include-deleted (spec D3 hard delete):
  *   Scan dataset có `status: deleted` trong metadata.yaml → hard delete GitHub
  *   folder + R2 objects. Log vào datasets/_audit/purge.log.
@@ -56,6 +59,24 @@ if (missing.length > 0) {
 
 const APPLY = process.argv.includes("--apply");
 const INCLUDE_DELETED = process.argv.includes("--include-deleted");
+
+/**
+ * Prefix trong R2 KHÔNG phải file dataset — không metadata.yaml nào tham chiếu
+ * tới chúng, nên logic "object không được reference = rác" sẽ xoá nhầm.
+ *
+ * Đo thực tế 2026-08-27: dry-run xếp 16 file log Discovery Chat vào diện orphan.
+ * Chạy `--apply` lúc đó là mất sạch lịch sử hội thoại + bộ đếm quota.
+ *
+ *   logs/chat/<ngày>.json          — src/lib/r2/chat-log.ts
+ *   logs/chat/_quota/<ngày>.json   — bộ đếm quota theo ngày
+ *   _counters/<slug>.json          — đếm lượt download
+ *
+ * Thêm tính năng nào ghi thẳng vào R2 thì phải khai prefix ở đây.
+ */
+const PROTECTED_PREFIXES = ["logs/", "_counters/"];
+
+const isProtectedKey = (key) =>
+  PROTECTED_PREFIXES.some((prefix) => key.startsWith(prefix));
 
 // AWS SDK v3 mặc định thêm checksum → R2 reject. Tắt đi.
 const r2 = new S3Client({
@@ -194,14 +215,22 @@ for (const [slug, { keys, title }] of slugToMeta) {
 }
 
 const r2Orphans = []; // R2 exists, no metadata
+const protectedKeys = []; // R2 exists, không phải file dataset → KHÔNG đụng vào
 for (const key of r2Keys) {
-  if (!githubR2Keys.has(key)) {
-    r2Orphans.push(key);
+  if (githubR2Keys.has(key)) continue;
+  if (isProtectedKey(key)) {
+    protectedKeys.push(key);
+    continue;
   }
+  r2Orphans.push(key);
 }
 
 // 4. Report
 console.log("═══ REPORT ═══\n");
+
+if (protectedKeys.length > 0) {
+  console.log(`Bỏ qua ${protectedKeys.length} object không phải file dataset (prefix: ${PROTECTED_PREFIXES.join(", ")})\n`);
+}
 
 if (githubOrphans.length === 0 && r2Orphans.length === 0) {
   console.log("✅ No orphans. GitHub + R2 synced.\n");

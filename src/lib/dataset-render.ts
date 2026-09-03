@@ -136,9 +136,13 @@ export function renderMetadataYaml(
   }
 ): string {
   const today = new Date().toISOString().slice(0, 10);
+  // Tag PHẢI bọc nháy: tag toàn chữ số (`2024`) render trần thành `- 2024` sẽ được
+  // YAML parse thành number, rồi `normalize()` trong search gọi `.toLowerCase()` trên
+  // number → TypeError làm sập cả trang chủ. Đo thực tế 2026-08-27: 2 dataset có tag
+  // `2024` do AI đề xuất, click vào ô search là trắng trang.
   const tagsYaml =
     meta.tags.length > 0
-      ? `\n${meta.tags.map((t) => `  - ${t}`).join("\n")}`
+      ? `\n${meta.tags.map((t) => `  - "${escYaml(String(t))}"`).join("\n")}`
       : " []";
 
   // row_count + columns_count — provenance từ analyze (inspection). Chỉ render khi có.
@@ -275,6 +279,20 @@ function renderArticlesYaml(articles: ArticleForRender[]): string {
  * Bao gồm 2 cột Frictionless schema: `Dec` (decimal_char) + `Group` (group_char).
  * Default `-` khi không có — backward compat với dictionary cũ.
  */
+/**
+ * Escape ký tự phá vỡ ô của bảng markdown.
+ *
+ * Mọi field trong dictionary đều là free-text do AI đề xuất hoặc user gõ. Một
+ * dấu `|` là thêm một ô, đẩy lệch toàn bộ cột còn lại của dòng đó. Đo thực tế
+ * 2026-08-27: AI trả `unit: "Nghìn người | %"` cho dataset dân số → dòng có 7 ô
+ * thay vì 6, cột Description hiển thị sai chỗ.
+ *
+ * Newline cũng phải xử lý: `\n` giữa dòng sẽ cắt bảng làm hai.
+ */
+function escMdCell(value: string): string {
+  return value.replace(/\|/g, "\\|").replace(/\r?\n/g, " ").trim();
+}
+
 export function renderDictionaryMarkdown(
   entries: DictionaryForRender[]
 ): string {
@@ -287,7 +305,7 @@ export function renderDictionaryMarkdown(
   const rows = entries
     .map(
       (e) =>
-        `| \`${e.column}\` | ${e.type} | ${e.decimal_char ?? "-"} | ${e.group_char ?? "-"} | ${e.unit || "-"} | ${e.description || ""} |`
+        `| \`${escMdCell(e.column)}\` | ${escMdCell(e.type)} | ${e.decimal_char ?? "-"} | ${e.group_char ?? "-"} | ${escMdCell(e.unit) || "-"} | ${escMdCell(e.description ?? "")} |`
     )
     .join("\n");
 
