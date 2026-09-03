@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-g",
+    "title": "Tỷ lệ trẻ em dưới 5 tuổi được đăng ký khai sinh phân theo giới tính và vùng",
+    "description": "Dataset thống kê tỷ lệ phần trăm trẻ em dưới 5 tuổi đã được đăng ký khai sinh, phân loại theo giới tính và các vùng địa lý của Việt Nam, từ năm 2019 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "tre-em",
+      "khai-sinh",
+      "dan-so",
+      "gioi-tinh",
+      "vung"
+    ],
+    "uploaded_at": "2026-09-03T03:53:29.868Z",
+    "uploaded_by": "ninh",
+    "row_count": 54,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "86e307d5-a043-4086-9365-47930712e2e0/ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-g.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha",
     "title": "Tuổi thọ trung bình tính từ lúc sinh phân theo giới tính, thành thị, nông thôn và vùng",
     "description": "Dataset thống kê tuổi thọ trung bình của người Việt Nam tính từ lúc sinh, được phân loại theo giới tính, khu vực thành thị/nông thôn và các vùng địa lý, từ năm 2005 đến 2024.",
