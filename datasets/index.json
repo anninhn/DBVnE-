@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-3",
+    "title": "Đầu tư trực tiếp nước ngoài (FDI) được cấp phép theo ngành kinh tế tại Việt Nam",
+    "description": "Dữ liệu về số lượng dự án và tổng vốn đăng ký của các dự án đầu tư trực tiếp nước ngoài (FDI) được cấp phép tại Việt Nam, phân loại theo ngành kinh tế qua các năm từ 2015 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "fdi",
+      "dau-tu",
+      "kinh-te",
+      "nganh-kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T03:54:06.894Z",
+    "uploaded_by": "ninh",
+    "row_count": 190,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "814fe1df-89db-4e55-8599-0d519125acaf/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-3.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "bang-can-doi-nang-luong-viet-nam",
     "title": "Bảng cân đối năng lượng Việt Nam",
     "description": "Dataset thống kê chi tiết bảng cân đối năng lượng của Việt Nam, bao gồm các hoạt động cung cấp, tiêu thụ và các nguồn năng lượng chính trong giai đoạn từ năm 2018 đến 2021.",
