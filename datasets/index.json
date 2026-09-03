@@ -1,5 +1,35 @@
 [
   {
+    "slug": "khoi-luong-hang-hoa-thong-qua-cang-bien-cang-thuy-noi-dia-va",
+    "title": "Khối lượng hàng hóa thông qua các loại cảng tại Việt Nam",
+    "description": "Dữ liệu thống kê khối lượng hàng hóa được vận chuyển qua cảng biển, cảng thủy nội địa và cảng hàng không tại Việt Nam, phân loại theo loại hàng hóa hoặc loại cảng, từ năm 2015 đến 2024.",
+    "category": "ha-tang",
+    "tags": [
+      "khoi-luong-hang-hoa",
+      "cang-bien",
+      "cang-thuy-noi-dia",
+      "cang-hang-khong",
+      "giao-thong",
+      "logistics"
+    ],
+    "uploaded_at": "2026-09-03T04:06:54.641Z",
+    "uploaded_by": "ninh",
+    "row_count": 80,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "dd0fc67a-0cf9-4b9f-bf7e-e14778f301fa/khoi-luong-hang-hoa-thong-qua-cang-bien-cang-thuy-noi-dia-va.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-thanh-phan-kinh-te",
     "title": "Khối lượng hàng hóa luân chuyển phân theo thành phần kinh tế",
     "description": "Bộ dữ liệu thống kê khối lượng hàng hóa luân chuyển và chỉ số phát triển của hoạt động này tại Việt Nam, phân loại theo các thành phần kinh tế (Tổng số, Kinh tế Nhà nước, Kinh tế ngoài Nhà nước, Khu vực có vốn đầu tư nước ngoài) từ năm 1995 đến 2024.",
