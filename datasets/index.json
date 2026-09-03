@@ -1,5 +1,33 @@
 [
   {
+    "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-nganh-van-tai",
+    "title": "Khối lượng hàng hóa luân chuyển phân theo ngành vận tải tại Việt Nam",
+    "description": "Dataset thống kê khối lượng hàng hóa luân chuyển và chỉ số phát triển của các ngành vận tải (đường sắt, đường bộ, đường sông, đường biển, đường hàng không) tại Việt Nam từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "van-tai",
+      "hang-hoa",
+      "giao-thong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T04:06:05.627Z",
+    "uploaded_by": "ninh",
+    "row_count": 180,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5c3fe455-4d2d-41f0-a660-9866c27c5807/khoi-luong-hang-hoa-luan-chuyen-phan-theo-nganh-van-tai.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-khu-vuc-van-tai",
     "title": "Khối lượng hàng hóa luân chuyển phân theo khu vực vận tải",
     "description": "Dữ liệu thống kê khối lượng hàng hóa luân chuyển và chỉ số phát triển của khối lượng này theo các khu vực (tổng số, trong nước, ngoài nước) từ năm 1995 đến 2024.",
