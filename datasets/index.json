@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-hinh-kinh",
+    "title": "Sản lượng và chỉ số phát triển theo loại hình kinh tế",
+    "description": "Dữ liệu thống kê sản lượng (Nghìn m3) và chỉ số phát triển (năm trước = 100) của một hoạt động kinh tế, phân loại theo các loại hình kinh tế khác nhau từ năm 2018 đến 2023. Tên file gốc có thể gây nhầm lẫn về nội dung.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "chi-so-phat-trien",
+      "loai-hinh-kinh-te",
+      "lam-nghiep"
+    ],
+    "uploaded_at": "2026-09-03T03:55:27.608Z",
+    "uploaded_by": "ninh",
+    "row_count": 42,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "caf5ce68-a1fd-442d-a605-d744941d828a/dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-hinh-kinh.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-hien-co-mot-so-cay-lau-nam-chu-yeu",
     "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu tại Việt Nam",
     "description": "Dataset cung cấp thông tin về diện tích hiện có và chỉ số phát triển (so với năm trước) của các loại cây lâu năm chủ yếu, bao gồm cây ăn quả và cây công nghiệp, trong giai đoạn từ năm 2005 đến 2024.",
