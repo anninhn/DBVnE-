@@ -1,5 +1,33 @@
 [
   {
+    "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-loai-hinh-kinh-te",
+    "title": "Khối lượng hàng hóa vận chuyển phân theo loại hình kinh tế",
+    "description": "Dataset thống kê khối lượng hàng hóa vận chuyển và chỉ số phát triển theo từng loại hình kinh tế (Nhà nước, ngoài Nhà nước, FDI) từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "van-tai",
+      "hang-hoa",
+      "giao-thong"
+    ],
+    "uploaded_at": "2026-09-03T04:07:30.728Z",
+    "uploaded_by": "ninh",
+    "row_count": 120,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8cd22214-5eed-4068-9b62-a47a019b7d42/khoi-luong-hang-hoa-van-chuyen-phan-theo-loai-hinh-kinh-te.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-khu-vuc-van-tai",
     "title": "Khối lượng hàng hóa vận chuyển phân theo khu vực vận tải",
     "description": "Dataset thống kê khối lượng hàng hóa vận chuyển và chỉ số phát triển theo từng năm (1995-2024), phân loại theo khu vực vận tải (tổng số, trong nước, ngoài nước).",
