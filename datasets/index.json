@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9",
+    "title": "Số liệu về lớp học, giáo viên và học sinh phổ thông theo cấp học",
+    "description": "Dataset cung cấp số liệu về số lượng lớp học, giáo viên và học sinh ở các cấp học phổ thông (Tiểu học, THCS, THPT) qua các năm học. Dữ liệu bao gồm cả chỉ số phát triển so với năm học trước.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "hoc-sinh",
+      "giao-vien",
+      "lop-hoc",
+      "pho-thong",
+      "thong-ke"
+    ],
+    "uploaded_at": "2026-09-03T04:11:00.881Z",
+    "uploaded_by": "ninh",
+    "row_count": 360,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "8935f13c-51d9-4a4c-9ce4-42a611888edd/so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "giao-duc-dai-hoc-va-cao-dang",
     "title": "Số liệu giáo dục đại học và cao đẳng Việt Nam",
     "description": "Dataset thống kê các chỉ số về giáo dục đại học và cao đẳng tại Việt Nam từ năm 1995 đến 2023. Dữ liệu bao gồm số lượng trường học, giảng viên, và sinh viên, được phân loại theo loại hình (công lập, ngoài công lập) và giới tính, cùng với chỉ số phát triển theo năm.",
