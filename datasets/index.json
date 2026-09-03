@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2",
+    "title": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng",
+    "description": "Dữ liệu thống kê tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng tại Việt Nam, phân loại theo ngành kinh doanh, từ năm 1990 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "ban-le",
+      "dich-vu",
+      "tieu-dung"
+    ],
+    "uploaded_at": "2026-09-03T04:08:46.899Z",
+    "uploaded_by": "ninh",
+    "row_count": 140,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9f5d2322-5733-4fac-af29-41f5979b6646/tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-thue-bao-dien-thoai-va-internet",
     "title": "Số thuê bao điện thoại và internet tại Việt Nam",
     "description": "Dataset cung cấp dữ liệu về số lượng thuê bao điện thoại (cố định, di động) và internet băng rộng cố định (ADSL) tại Việt Nam hàng năm, cùng với chỉ số phát triển so với năm trước, giai đoạn 2005-2024.",
