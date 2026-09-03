@@ -1,5 +1,34 @@
 [
   {
+    "slug": "xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-cong-nghiep",
+    "title": "Thống kê xử lý chất thải rắn và nước thải của các khu công nghiệp",
+    "description": "Dữ liệu thống kê về tổng số khu công nghiệp, số khu công nghiệp có hệ thống xử lý chất thải đạt tiêu chuẩn quy định và tỷ lệ tương ứng, phân theo vùng và loại khu công nghiệp từ năm 2015 đến 2017.",
+    "category": "moi-truong",
+    "tags": [
+      "moi-truong",
+      "khu-cong-nghiep",
+      "chat-thai",
+      "nuoc-thai",
+      "xu-ly-moi-truong"
+    ],
+    "uploaded_at": "2026-09-03T04:13:31.356Z",
+    "uploaded_by": "ninh",
+    "row_count": 105,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "bbfc56e7-9a38-4e16-99ad-04af6c5b1014/xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-cong-nghiep.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-loai-hinh",
     "title": "Số trường phổ thông phân theo cấp học và loại hình tại Việt Nam",
     "description": "Dữ liệu thống kê số lượng trường phổ thông các cấp (từ tiểu học đến trung học phổ thông) phân loại theo hình thức công lập và ngoài công lập tại Việt Nam. Dữ liệu được thu thập tại thời điểm 30/9 hàng năm, từ năm học 2020-2021 đến 2024-2025.",
