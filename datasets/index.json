@@ -1,5 +1,34 @@
 [
   {
+    "slug": "san-luong-thuy-san-khai-thac-phan-theo-nganh-hoat-dong",
+    "title": "Sản lượng thủy sản khai thác phân theo ngành hoạt động tại Việt Nam",
+    "description": "Dataset cung cấp số liệu về sản lượng thủy sản khai thác (nghìn tấn) và chỉ số phát triển (%) phân theo các ngành hoạt động chính (tổng số, khai thác biển, cá khai thác biển, khai thác nội địa) của Việt Nam từ năm 1990 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thuy-san",
+      "san-luong",
+      "khai-thac",
+      "nong-nghiep",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T03:57:04.334Z",
+    "uploaded_by": "ninh",
+    "row_count": 140,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "2565facf-e295-40d2-9111-f0ce86640651/san-luong-thuy-san-khai-thac-phan-theo-nganh-hoat-dong.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "san-luong-thuy-san",
     "title": "Sản lượng và chỉ số phát triển thủy sản Việt Nam",
     "description": "Dữ liệu thống kê sản lượng thủy sản của Việt Nam, bao gồm sản lượng khai thác, nuôi trồng và tổng số, cùng với chỉ số phát triển qua các năm từ 1990 đến 2023.",
