@@ -1,5 +1,34 @@
 [
   {
+    "slug": "giao-duc-dai-hoc-va-cao-dang",
+    "title": "Số liệu giáo dục đại học và cao đẳng Việt Nam",
+    "description": "Dataset thống kê các chỉ số về giáo dục đại học và cao đẳng tại Việt Nam từ năm 1995 đến 2023. Dữ liệu bao gồm số lượng trường học, giảng viên, và sinh viên, được phân loại theo loại hình (công lập, ngoài công lập) và giới tính, cùng với chỉ số phát triển theo năm.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "dai-hoc",
+      "cao-dang",
+      "sinh-vien",
+      "giang-vien"
+    ],
+    "uploaded_at": "2026-09-03T04:10:40.519Z",
+    "uploaded_by": "ninh",
+    "row_count": 580,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a2f19be8-832d-4710-8857-13c271424fa5/giao-duc-dai-hoc-va-cao-dang.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "tri-gia-xuat-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-phan",
     "title": "Trị giá xuất khẩu hàng hóa phân theo khu vực kinh tế và nhóm hàng",
     "description": "Dataset thống kê trị giá xuất khẩu hàng hóa của Việt Nam, phân loại theo các khu vực kinh tế (trong nước, có vốn đầu tư nước ngoài) và các nhóm hàng hóa chính (nhiên liệu, công nghiệp chế biến, nông sản, v.v.). Dữ liệu bao gồm trị giá tuyệt đối (triệu USD) và cơ cấu phần trăm, được thu thập từ năm 1995 đến 2024.",
