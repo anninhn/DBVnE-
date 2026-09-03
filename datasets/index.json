@@ -1,5 +1,35 @@
 [
   {
+    "slug": "tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha",
+    "title": "Tuổi thọ trung bình tính từ lúc sinh phân theo giới tính, thành thị, nông thôn và vùng",
+    "description": "Dataset thống kê tuổi thọ trung bình của người Việt Nam tính từ lúc sinh, được phân loại theo giới tính, khu vực thành thị/nông thôn và các vùng địa lý, từ năm 2005 đến 2024.",
+    "category": "dan-so",
+    "tags": [
+      "tuoi-tho",
+      "dan-so",
+      "gioi-tinh",
+      "vung",
+      "thanh-thi",
+      "nong-thon"
+    ],
+    "uploaded_at": "2026-09-03T03:53:12.265Z",
+    "uploaded_by": "ninh",
+    "row_count": 187,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "a488d831-e4f7-4e8f-8872-9850f508650a/tuoi-tho-trung-binh-tinh-tu-luc-sinh-phan-theo-gioi-tinh-tha.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "tong-so-gio-nang-tai-mot-so-tram-quan-trac",
     "title": "Tổng số giờ nắng tại một số trạm quan trắc ở Việt Nam",
     "description": "Dữ liệu về tổng số giờ nắng được ghi nhận hàng năm tại 15 trạm quan trắc khí tượng thuộc các tỉnh, thành phố của Việt Nam, giai đoạn từ năm 2006 đến năm 2024.",
