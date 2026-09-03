@@ -1,7 +1,7 @@
 # Đề xuất: AMA ở quy mô 500+ dataset
 
-**Trạng thái**: chờ quyết định
-**Ngày**: 2026-09-03
+**Trạng thái**: đã chốt 4/6 quyết định (xem §9) — sẵn sàng viết spec
+**Ngày**: 2026-09-03, cập nhật cùng ngày sau khi chốt kế hoạch dữ liệu
 **Bối cảnh**: kho vừa tăng từ 17 lên 495 dataset sau khi đưa 481 dataset Cục Thống kê vào
 
 ---
@@ -135,9 +135,8 @@ Hiện tại một bước: nạp hết → hỏi. Đề xuất hai bước:
 Câu hỏi
    │
    ├─ TẦNG 1: CHỌN ────────────────────────────────
-   │    đọc datasets/index.json  (1 GitHub call)
-   │    catalog gọn: slug + title + category + description
-   │    → AI chọn ~20 slug liên quan
+   │    hybrid: embed câu hỏi + khớp từ khoá  (§4.1b)
+   │    → ~20 slug liên quan nhất
    │
    └─ TẦNG 2: TRẢ LỜI ────────────────────────────
         nạp full metadata + dictionary + giá trị cột
@@ -145,32 +144,64 @@ Câu hỏi
         → AI trả lời + cite
 ```
 
-Đo bằng `countTokens` cho tầng 1:
+### 4.1b Tầng 1 làm bằng gì — quyết định 2026-09-03: **hybrid retrieval**
 
-| Nội dung tầng 1 | tok/dataset | 495 dataset | Đổi schema? |
-|---|---:|---:|---|
-| slug + title | 45 | 22.436 | không |
-| **+ category + description** | **108** | **53.237** | **không** |
-| + tên cột | 139 | 68.694 | có |
+Có hai cách làm tầng 1. Bản đầu của tài liệu này chọn cách 1; **quyết định cuối là
+cách 2**, vì kế hoạch dữ liệu là "sắp đổ thêm vài nghìn dataset".
 
-Chọn mức giữa. `description` đã có sẵn 495/495 trong index.json nên **không cần đổi
-schema**, mà nó chính là chỗ mang tín hiệu cột dưới dạng văn xuôi — AI viết
-description có liệt kê nội dung ("…bao gồm tên cảng, vị trí địa lý, quy mô, công suất
-thiết kế…").
+**Cách 1 — AI đọc catalog rút gọn rồi tự chọn.** Đo bằng `countTokens`:
 
-Không chọn mức thêm tên cột: đo trên mẫu 40 dataset thì **71% tên cột không thêm từ
-nào mới** so với title + description, và 28% còn lại đa số là cột kỹ thuật
-(`Cơ cấu (%)`, `Giá so sánh 2010`) — không phải từ để tìm chủ đề.
+| Nội dung tầng 1 | tok/dataset | 495 | 2.000 | 5.000 |
+|---|---:|---:|---:|---:|
+| slug + title | 45 | 22.436 | 90.000 | 225.000 |
+| + category + description | 108 | 53.237 | **216.000** | 540.000 |
 
-**Kết quả:**
+Chi phí tầng 1 **tăng tuyến tính theo số dataset**. Ở 2.000 dataset thì 216.000 token
+— **tệ hơn cả cách hiện tại là 202.876**. Cách này chỉ đúng nếu kho dừng quanh 1.000.
 
-| | Hiện tại | Hai tầng |
-|---|---:|---:|
-| Token/câu | 202.876 | ~61.000 |
-| Chi phí/câu | $0,061 | ~$0,018 |
-| GitHub call/câu | 1.001 | ~21 |
-| Số lần gọi AI | 1 | 2 |
-| Độ trễ thêm | — | ~1-2 giây |
+**Cách 2 — hybrid retrieval.** Chi phí prompt **không phụ thuộc số dataset**:
+
+| | |
+|---|---|
+| Nhánh dense | embed câu hỏi → cosine với vector của từng dataset → top-K |
+| Nhánh keyword | khớp chính xác tên riêng, mã số, tên tỉnh — chỗ mà embedding hay trượt |
+| Trộn hai nhánh | rồi lấy ~20 dataset cho tầng 2 |
+
+Vì sao phải cả hai nhánh: vector mất từ chính xác (`Đà Nẵng`, mã ngành), keyword mất
+từ đồng nghĩa (hỏi "lạm phát" mà dataset tên "Chỉ số giá tiêu dùng"). Mỗi nhánh bù
+điểm yếu của nhánh kia — đây là mặc định trong production RAG, không phải chọn một.
+
+| | Hiện tại | Cách 1 (495 ds) | Cách 1 (2.000 ds) | **Cách 2 (mọi quy mô)** |
+|---|---:|---:|---:|---:|
+| Token/câu | 202.876 | ~61.000 | ~224.000 | **~9.000** |
+| Chi phí/câu | $0,061 | ~$0,018 | ~$0,068 | **~$0,006** |
+| GitHub call/câu | 1.001 | ~21 | ~21 | ~21 |
+| Số lần gọi AI | 1 | 2 | 2 | 1 + 1 embed |
+
+**Hạ tầng cần thêm** — và đây mới là phần tốn công, không phải việc tìm kiếm:
+
+- **Model**: `gemini-embedding-001` (giới hạn 2.048 token input) hoặc
+  `gemini-embedding-2` (8.192) — cả hai đã dùng được trên key hiện tại. Text embed
+  mỗi dataset ~139 token nên dư sức
+- **Chi phí embed**: $0,15/1M token (`embedding-001`) hoặc $0,20/1M (`embedding-2`).
+  2.000 dataset × 140 token = 280K token → **$0,04 một lần**. Không đáng kể
+- **Lưu vector**: 1 file trong R2, không cần vector database. 2.000 × 768 chiều
+  float32 ≈ 6 MB. Load vào memory, cosine 2.000 vector là vài chục ms
+- **Quy trình cập nhật**: embed lại khi upload/sửa/xoá dataset. **Đây là phần thật
+  sự phải thiết kế** — vector cũ mà metadata mới thì tìm ra kết quả sai lặng lẽ
+
+### 4.1c Chỉ mục giá trị cho câu hỏi thực thể
+
+Riêng loại "dataset nào chứa Đà Nẵng" thì cả LLM lẫn embedding đều **kém hơn** một
+chỉ mục nghịch đảo `giá trị → danh sách slug`, dựng lúc upload:
+
+- Chính xác tuyệt đối, đúng/sai rõ ràng — không phải chuyện tương đồng ngữ nghĩa
+- 0 token AI
+- Với dữ liệu thống kê Việt Nam thì tra theo thực thể địa lý là loại câu hỏi phổ
+  biến nhất
+
+Phụ thuộc §4.2 (lưu đủ giá trị cột) — không có danh sách giá trị thì không dựng được
+chỉ mục.
 
 ### 4.2 Lưu đủ giá trị cột (giải U2, U4)
 
@@ -270,23 +301,27 @@ Thà nói không còn hơn đưa con số suy từ 5 dòng.
 | Phương án | Vì sao loại |
 |---|---|
 | **Lọc từ khoá** (`SimpleFilterAdapter` chọn top 30) | Rẻ nhất (~12K token) nhưng chết vì từ đồng nghĩa: hỏi "lạm phát" mà dataset tên "Chỉ số giá tiêu dùng", hỏi "thất nghiệp" mà dataset là "Tỷ lệ thiếu việc làm". Thêm nữa `search()` dùng AND semantics — câu hỏi tự nhiên 8 token gồm cả "có", "nào", "không" thì không dataset nào khớp đủ → trả rỗng |
-| **Embedding / RAG ngay** | Đúng hướng nhưng chưa cần. Phải xây quy trình cập nhật vector mỗi lần upload/sửa dataset — đó mới là phần tốn công, không phải việc tìm kiếm. Ở 495 dataset thì tầng 1 giá 53K token vẫn chấp nhận được |
+| **AI đọc catalog rút gọn rồi tự chọn** (§4.1b cách 1) | Đủ cho 495–1.000 dataset và không cần hạ tầng mới. Nhưng chi phí tầng 1 tăng tuyến tính: ở 2.000 dataset là 216K token, **tệ hơn cách hiện tại**. Kế hoạch dữ liệu là "sắp đổ thêm vài nghìn" → làm cách này rồi vài tháng sau đập đi làm embedding là làm hai lần |
 | **Giữ nguyên, chỉ tăng cache TTL** | Giảm số lần cache miss nhưng không giảm token/câu, và làm câu trả lời cũ đi sau khi upload |
 | **Cắt bớt dataset đưa vào prompt theo category** | Người dùng phải tự chọn category trước khi hỏi — trái mục đích của AMA là hỏi tự nhiên |
 
-### Ngưỡng chuyển sang embedding
+### Thứ khác cũng gãy ở "vài nghìn dataset"
 
-Chi phí tầng 1 tăng tuyến tính. Điểm gãy rõ ràng:
+Không chỉ AMA. `index.json` là **một file duy nhất** mà `listDatasets()` fetch mỗi lần
+cache miss cho **trang chủ**:
 
-| Số dataset | Tầng 1 | |
-|---|---:|---|
-| 495 hôm nay | 53K | ổn |
-| 1.000 | 108K | vẫn ổn |
-| 2.000 | 216K | tệ hơn cách hiện tại |
+| Số dataset | index.json |
+|---|---:|
+| 500 hôm nay | 521 KB |
+| 2.000 | ~2,0 MB |
+| 5.000 | ~5,1 MB |
 
-**Chốt ngưỡng: ~1.500 dataset**, hoặc sớm hơn nếu eval cho thấy recall không cải thiện.
-Khi đó 495 dataset × 768 chiều ≈ 1,5 MB JSON — nhét R2, load vào memory, **không cần
-vector database**.
+Fetch + parse 5 MB JSON mỗi cache miss sẽ xoá sạch phần tối ưu SSR đã làm
+(trang chủ 2,8s → 13ms nhờ chính index.json này).
+
+Việc này **ngoài phạm vi spec AMA**, ghi lại để không bị bất ngờ: khi kho lên vài
+nghìn thì cần index phân trang hoặc tách theo category, và đó là việc của luồng
+catalog chứ không phải luồng chat.
 
 ---
 
@@ -299,7 +334,7 @@ vector database**.
 
 | # | Tiêu chí | Cách đo |
 |---|---|---|
-| A1 | Token input/câu ≤ 70.000 ở 495 dataset | log `usage.prompt_tokens` |
+| A1 | Token input/câu ≤ 15.000, **không tăng theo số dataset** | log `usage.prompt_tokens`, đo ở 495 và sau khi thêm dữ liệu |
 | A2 | GitHub API call/câu ≤ 30 | đếm trong log |
 | A3 | success_rate ≥ 87,5% (không tệ hơn baseline) | eval suite |
 | A4 | avg_accuracy ≥ 95% (dataset được cite phải đúng) | eval suite |
@@ -308,7 +343,10 @@ vector database**.
 | A7 | Hỏi 3 lượt liên tiếp, lượt 3 hiểu được tham chiếu ở lượt 1 | thêm gold case đa lượt |
 | A8 | Không hồi quy: trang chủ vẫn load bình thường khi AMA đang chạy | thử đồng thời |
 | A9 | Câu hỏi tính toán ("so sánh tăng trưởng Đà Nẵng vs Hà Nội") MUST **không** trả về con số nào, mà chỉ chỉ đường tới dataset | thêm gold question loại này, kiểm không có chữ số trong câu trả lời |
-| A10 | Attach dataset rồi hỏi tính toán cũng **không** ra số suy từ 5 dòng mẫu | gold question có `attachedSlug` |
+| A10 | Attach dataset rồi hỏi tính toán cũng **không** ra số suy từ dữ liệu trong context | gold question có `attachedSlug` |
+| A11 | Upload dataset mới → tìm được nó qua AMA trong vòng 1 lần cache | thêm dataset test rồi hỏi ngay |
+| A12 | Sửa/xoá dataset → AMA không còn cite bản cũ | sửa title rồi hỏi lại |
+| A13 | Câu hỏi thực thể ("dataset nào có Đà Nẵng") trả về **đầy đủ**, không phải mẫu | so với chỉ mục giá trị |
 
 ### Nên có
 
@@ -333,22 +371,28 @@ giải pháp có hiệu quả.
 | # | Việc | Giải quyết | Rủi ro | Phụ thuộc |
 |---|---|---|---|---|
 | 1 | Curate gold set ≥ 25 câu, điền `expected_dataset_slugs` | thước đo cho A3-A7 | thấp | — |
-| 2 | Hai tầng: catalog gọn từ index.json + flatten theo slug | 2.1, 2.2 | trung bình | 1 |
+| 2 | **Hybrid retrieval**: embed 495 dataset → vector file R2, nhánh keyword, trộn, flatten top-20 | 2.1, 2.2 | **cao** | 1 |
+| 2b | Quy trình cập nhật vector khi upload/sửa/xoá | A11, A12 | **cao** | 2 |
+| 2c | Chỉ mục nghịch đảo `giá trị → slug` | A13, U2 | thấp | 3 |
 | 3 | Nâng luật cắt `column_stats` + script backfill 495 dataset | 2.4, U2, U4 | thấp | — |
 | 4 | Điền `year_range` lúc upload + backfill | U5 | thấp | — |
-| 5 | Lịch sử hội thoại + viết lại câu hỏi | 2.3, U3 | trung bình | 2 |
+| 5 | Lịch sử hội thoại + viết lại câu hỏi (**đã chốt: trong phạm vi đợt này**) | 2.3, U3 | trung bình | 2 |
 | 6 | Nới trần 100 câu/ngày sau khi chi phí giảm | U6 | thấp | 2 |
 | 7 | **Phân loại ý định + cảnh báo 5 dòng mẫu** | 2.5, A9, A10 | thấp | — |
 
 Chunk 7 nhỏ nhất nhưng nên làm **sớm nhất**: nó chặn việc đưa con số sai vào bài báo,
 và độc lập hoàn toàn với các chunk khác (chỉ sửa prompt + FOCUS block).
 
-Chunk 2 gói trong `src/lib/chat/flatten-metadata.ts` và
-`src/app/api/chat/discovery/route.ts` — **không đụng UI, không thêm dependency**.
+Chunk 2 **không** còn gói gọn trong 2 file như bản đầu của tài liệu này: hybrid
+retrieval cần thêm chỗ lưu vector, hàm embed, và quan trọng nhất là **quy trình giữ
+vector đồng bộ với metadata** (chunk 2b). Vector cũ mà metadata mới thì tìm ra kết
+quả sai một cách lặng lẽ — không có triệu chứng nào để phát hiện.
 
-Chunk 3 và 4 độc lập với chunk 2, làm song song được.
+Chunk 3 và 4 độc lập, làm song song được. Chunk 2c phụ thuộc chunk 3.
 
 Chunk 5 cần đổi cả `ChatBox.tsx` (giữ lịch sử phía client) và route.
+
+Chunk 7 vẫn nên ship trước tất cả — nó độc lập và chặn con số sai vào bài báo.
 
 ---
 
@@ -382,27 +426,26 @@ trường mà cả chuẩn metadata lẫn tầng query đều cần.
 Hai thứ mà chuẩn ngành **không** nói mà dữ liệu này bắt buộc phải xử lý: định dạng số
 Việt Nam và cột trộn cấp hành chính (§4.5, bẫy 1 và 2).
 
-## 9. Cần quyết
+## 9. Quyết định
 
-1. **Làm chunk 1 trước hay bỏ qua?** Curate 25 câu gold là việc tay mất vài giờ.
-   Bỏ qua thì làm nhanh hơn nhưng không chứng minh được recall có cải thiện —
-   mà recall chính là thứ đang yếu nhất.
+### Đã chốt 2026-09-03
 
-2. **Chunk 5 (đa lượt) có nằm trong đợt này không?** Nó là tính năng mới, không
-   phải sửa lỗi. Bỏ ra thì đợt này thuần "làm AMA chạy đúng ở quy mô 500";
-   đưa vào thì phạm vi rộng hơn nhưng giải được U3 vốn là thiếu sót rõ.
+| # | Quyết định | Hệ quả |
+|---|---|---|
+| 1 | **Curate gold set ≥ 25 câu trước khi sửa** | Chunk 1 là việc đầu tiên. A5 (recall ≥ 70%) dùng được làm cổng nghiệm thu |
+| 2 | **Hội thoại đa lượt nằm trong đợt này** | Chunk 5 vào phạm vi spec 005 |
+| 3 | **Bỏ 5 dòng mẫu, thay bằng danh sách giá trị cột** | Chunk 3 thành điều kiện tiên quyết cho chunk 7 |
+| 4 | **Kho sắp lên vài nghìn dataset** | Tầng 1 làm **hybrid retrieval** ngay, không làm "AI đọc catalog rút gọn" rồi đập đi (§4.1b) |
 
-3. **Trần câu hỏi/ngày**: sau khi chi phí giảm 3,4 lần, nới 100 → bao nhiêu?
+Quyết định 4 là cái đổi nhiều nhất: nó biến chunk 2 từ "sửa 2 file" thành hạng mục có
+hạ tầng riêng (vector store + quy trình đồng bộ), và thêm chunk 2b, 2c.
 
-4. **Ngưỡng chuyển embedding 1.500 dataset** có hợp lý với kế hoạch dữ liệu của
-   bạn không? Nếu sắp đổ thêm vài nghìn dataset thì nên làm embedding luôn thay vì
-   làm hai tầng rồi làm lại.
+### Còn mở
 
-5. **5 dòng mẫu trong FOCUS block: giữ kèm cảnh báo, hay bỏ hẳn?** Giữ thì giúp AI
-   hiểu hình dạng dữ liệu (định dạng số, kiểu giá trị), nhưng vẫn còn đường để nó
-   kết luận sai về toàn bộ file. Bỏ thì an toàn hơn nhưng AI mô tả dataset kém đi.
+5. **Trần câu hỏi/ngày**: chi phí giảm từ $0,061 xuống ~$0,006 mỗi câu — nới 100
+   câu/người/ngày lên bao nhiêu? Trần hệ thống 1.200/ngày lên bao nhiêu?
 
 6. **Phase 3e khi nào khởi động?** U7 là thứ phóng viên sẽ hỏi ngay khi thấy kho có
    500 dataset. Chunk 7 chỉ *từ chối cho tử tế* — nó mua thời gian, không giải quyết.
-   Nếu 3e còn xa thì nên tính xem đường tạm là gì: hướng dẫn tải về, hay tab Preview
-   có sẵn phép so sánh đơn giản.
+   Nếu 3e còn xa thì đường tạm là gì: hướng dẫn tải về, hay tab Preview có sẵn phép
+   so sánh đơn giản?
