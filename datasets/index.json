@@ -1,5 +1,35 @@
 [
   {
+    "slug": "so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-loai-hinh",
+    "title": "Số trường phổ thông phân theo cấp học và loại hình tại Việt Nam",
+    "description": "Dữ liệu thống kê số lượng trường phổ thông các cấp (từ tiểu học đến trung học phổ thông) phân loại theo hình thức công lập và ngoài công lập tại Việt Nam. Dữ liệu được thu thập tại thời điểm 30/9 hàng năm, từ năm học 2020-2021 đến 2024-2025.",
+    "category": "giao-duc",
+    "tags": [
+      "giao-duc",
+      "truong-hoc",
+      "pho-thong",
+      "cap-hoc",
+      "cong-lap",
+      "ngoai-cong-lap"
+    ],
+    "uploaded_at": "2026-09-03T04:13:10.744Z",
+    "uploaded_by": "ninh",
+    "row_count": 90,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "cb77bfac-7206-4d70-8367-62ca811de468/so-truong-pho-thong-tai-thoi-diem-30-9-phan-theo-loai-hinh.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "so-truong-pho-thong-tai-thoi-diem-30-9",
     "title": "Số trường phổ thông theo cấp học và năm học tại Việt Nam",
     "description": "Dữ liệu thống kê số lượng trường phổ thông tại Việt Nam, phân loại theo các cấp học (tiểu học, THCS, THPT và tổng số) qua các năm học. Dataset bao gồm số lượng trường và chỉ số phát triển so với năm học trước.",
