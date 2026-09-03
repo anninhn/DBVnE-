@@ -1,5 +1,33 @@
 [
   {
+    "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung",
+    "title": "Diện tích rừng trồng mới tập trung phân theo loại rừng",
+    "description": "Dataset cung cấp thông tin về diện tích rừng trồng mới tập trung, được phân loại theo mục đích sử dụng (tổng số, rừng sản xuất, rừng phòng hộ, rừng đặc dụng) cùng với chỉ số phát triển theo từng năm, giai đoạn 2005-2024.",
+    "category": "moi-truong",
+    "tags": [
+      "rung",
+      "moi-truong",
+      "lam-nghiep",
+      "dien-tich"
+    ],
+    "uploaded_at": "2026-09-03T03:55:46.360Z",
+    "uploaded_by": "ninh",
+    "row_count": 80,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "4e42230d-a664-4a7c-a5db-4cb772da1113/dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-hinh-kinh",
     "title": "Sản lượng và chỉ số phát triển theo loại hình kinh tế",
     "description": "Dữ liệu thống kê sản lượng (Nghìn m3) và chỉ số phát triển (năm trước = 100) của một hoạt động kinh tế, phân loại theo các loại hình kinh tế khác nhau từ năm 2018 đến 2023. Tên file gốc có thể gây nhầm lẫn về nội dung.",
