@@ -1,5 +1,33 @@
 [
   {
+    "slug": "khoi-luong-hang-hoa-van-chuyen-phan-theo-khu-vuc-van-tai",
+    "title": "Khối lượng hàng hóa vận chuyển phân theo khu vực vận tải",
+    "description": "Dataset thống kê khối lượng hàng hóa vận chuyển và chỉ số phát triển theo từng năm (1995-2024), phân loại theo khu vực vận tải (tổng số, trong nước, ngoài nước).",
+    "category": "kinh-te",
+    "tags": [
+      "van-tai",
+      "hang-hoa",
+      "khoi-luong",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T04:07:12.404Z",
+    "uploaded_by": "ninh",
+    "row_count": 90,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "ae468399-ef98-41fc-a328-8f52fbaf9b78/khoi-luong-hang-hoa-van-chuyen-phan-theo-khu-vuc-van-tai.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "khoi-luong-hang-hoa-thong-qua-cang-bien-cang-thuy-noi-dia-va",
     "title": "Khối lượng hàng hóa thông qua các loại cảng tại Việt Nam",
     "description": "Dữ liệu thống kê khối lượng hàng hóa được vận chuyển qua cảng biển, cảng thủy nội địa và cảng hàng không tại Việt Nam, phân loại theo loại hàng hóa hoặc loại cảng, từ năm 2015 đến 2024.",
