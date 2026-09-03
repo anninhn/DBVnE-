@@ -1,5 +1,33 @@
 [
   {
+    "slug": "chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2",
+    "title": "Chi tiêu bình quân một lượt khách du lịch nội địa phân theo mục đích",
+    "description": "Dữ liệu thống kê chi tiêu bình quân của một lượt khách du lịch nội địa, phân loại theo các mục đích chi tiêu khác nhau như thuê phòng, ăn uống, đi lại, v.v. trong giai đoạn từ năm 2019 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "du-lich",
+      "chi-tieu",
+      "noi-dia",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T03:59:46.487Z",
+    "uploaded_by": "ninh",
+    "row_count": 36,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "00690b93-a570-4fc8-a750-a251ad0f66fa/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xu-2",
     "title": "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất",
     "description": "Dataset này cung cấp chỉ số giá nguyên liệu, nhiên liệu và vật liệu dùng cho sản xuất theo các mục đích và ngành sản phẩm khác nhau tại Việt Nam, với năm trước làm gốc (100%). Dữ liệu bao gồm giai đoạn từ năm 2012 đến 2024.",
