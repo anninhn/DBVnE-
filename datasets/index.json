@@ -1,5 +1,34 @@
 [
   {
+    "slug": "dien-tich-hien-co-mot-so-cay-lau-nam-chu-yeu",
+    "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu tại Việt Nam",
+    "description": "Dataset cung cấp thông tin về diện tích hiện có và chỉ số phát triển (so với năm trước) của các loại cây lâu năm chủ yếu, bao gồm cây ăn quả và cây công nghiệp, trong giai đoạn từ năm 2005 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "nong-nghiep",
+      "cay-lau-nam",
+      "dien-tich",
+      "chi-so-phat-trien",
+      "cay-an-qua"
+    ],
+    "uploaded_at": "2026-09-03T03:55:07.146Z",
+    "uploaded_by": "ninh",
+    "row_count": 285,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "5d4cca68-52fe-4c05-8d98-2adc2b176176/dien-tich-hien-co-mot-so-cay-lau-nam-chu-yeu.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-cho-san-pham-mot-so-cay-lau-nam-chu-yeu",
     "title": "Diện tích và chỉ số phát triển một số cây lâu năm chủ yếu",
     "description": "Dataset cung cấp thông tin về diện tích và chỉ số phát triển (so với năm trước) của các loại cây lâu năm chủ yếu tại Việt Nam, bao gồm cả cây ăn quả và cây công nghiệp, từ năm 2005 đến 2024.",
