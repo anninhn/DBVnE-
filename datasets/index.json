@@ -1,5 +1,33 @@
 [
   {
+    "slug": "san-luong-go-phan-theo-loai-hinh-kinh-te",
+    "title": "Sản lượng gỗ phân theo loại hình kinh tế tại Việt Nam",
+    "description": "Dataset thống kê sản lượng gỗ và chỉ số phát triển sản lượng gỗ phân theo các loại hình kinh tế (Nhà nước, Ngoài Nhà nước, FDI) qua các năm từ 2010 đến 2023.",
+    "category": "kinh-te",
+    "tags": [
+      "san-luong",
+      "go",
+      "lam-nghiep",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T03:56:05.070Z",
+    "uploaded_by": "ninh",
+    "row_count": 98,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "aa5368d1-a335-4827-b16b-9215d4fb06e3/san-luong-go-phan-theo-loai-hinh-kinh-te.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-rung",
     "title": "Diện tích rừng trồng mới tập trung phân theo loại rừng",
     "description": "Dataset cung cấp thông tin về diện tích rừng trồng mới tập trung, được phân loại theo mục đích sử dụng (tổng số, rừng sản xuất, rừng phòng hộ, rừng đặc dụng) cùng với chỉ số phát triển theo từng năm, giai đoạn 2005-2024.",
