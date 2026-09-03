@@ -1,5 +1,33 @@
 [
   {
+    "slug": "khoi-luong-hang-hoa-luan-chuyen-phan-theo-khu-vuc-van-tai",
+    "title": "Khối lượng hàng hóa luân chuyển phân theo khu vực vận tải",
+    "description": "Dữ liệu thống kê khối lượng hàng hóa luân chuyển và chỉ số phát triển của khối lượng này theo các khu vực (tổng số, trong nước, ngoài nước) từ năm 1995 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "khoi-luong-hang-hoa",
+      "luan-chuyen",
+      "van-tai",
+      "kinh-te"
+    ],
+    "uploaded_at": "2026-09-03T04:05:46.007Z",
+    "uploaded_by": "ninh",
+    "row_count": 90,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fda745d7-a3c0-4df5-8da9-7684b8a779b6/khoi-luong-hang-hoa-luan-chuyen-phan-theo-khu-vuc-van-tai.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "doanh-thu-du-lich-lu-hanh-theo-gia-hien-hanh-phan-theo-loai",
     "title": "Doanh thu du lịch lữ hành theo thành phần kinh tế và năm",
     "description": "Dữ liệu thống kê doanh thu từ hoạt động du lịch lữ hành tại Việt Nam, phân loại theo các thành phần kinh tế (nhà nước, ngoài nhà nước, FDI...) và theo từng năm từ 2001 đến 2024. Bao gồm cả cơ cấu phần trăm của từng thành phần.",
