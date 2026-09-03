@@ -1,5 +1,34 @@
 [
   {
+    "slug": "so-thue-bao-dien-thoai-va-internet",
+    "title": "Số thuê bao điện thoại và internet tại Việt Nam",
+    "description": "Dataset cung cấp dữ liệu về số lượng thuê bao điện thoại (cố định, di động) và internet băng rộng cố định (ADSL) tại Việt Nam hàng năm, cùng với chỉ số phát triển so với năm trước, giai đoạn 2005-2024.",
+    "category": "kinh-te",
+    "tags": [
+      "thue-bao",
+      "dien-thoai",
+      "internet",
+      "vien-thong",
+      "phat-trien"
+    ],
+    "uploaded_at": "2026-09-03T04:08:32.797Z",
+    "uploaded_by": "ninh",
+    "row_count": 60,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "1330e162-53db-4ca4-b30f-f1e7b6bcc7ae/so-thue-bao-dien-thoai-va-internet.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai",
     "title": "Số lượt hành khách vận chuyển phân theo ngành vận tải tại Việt Nam",
     "description": "Dataset thống kê số lượt hành khách được vận chuyển và chỉ số phát triển theo từng ngành vận tải (đường sắt, đường bộ, đường sông, đường hàng không) từ năm 1995 đến 2024.",
