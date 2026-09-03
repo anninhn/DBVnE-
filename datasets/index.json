@@ -1,5 +1,33 @@
 [
   {
+    "slug": "luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac",
+    "title": "Lượng mưa hàng tháng tại các trạm quan trắc Việt Nam",
+    "description": "Dữ liệu lượng mưa hàng tháng tại 17 tỉnh, thành phố và trạm quan trắc trên khắp Việt Nam, thu thập từ năm 2002 đến năm 2024.",
+    "category": "khi-hau",
+    "tags": [
+      "luong-mua",
+      "khi-hau",
+      "thoi-tiet",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-09-03T04:14:07.528Z",
+    "uploaded_by": "ninh",
+    "row_count": 4692,
+    "file_count": 1,
+    "total_size_mb": 0.11,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "30fc8eb1-0c79-4286-b484-559083837eb7/luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac.csv",
+        "size_mb": 0.11
+      }
+    ]
+  },
+  {
     "slug": "do-am-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so-tr",
     "title": "Độ ẩm không khí trung bình hàng tháng tại các trạm quan trắc ở Việt Nam",
     "description": "Dataset này cung cấp dữ liệu về độ ẩm không khí trung bình hàng tháng được ghi nhận tại 17 trạm quan trắc trên khắp Việt Nam, từ năm 2002 đến năm 2024.",
