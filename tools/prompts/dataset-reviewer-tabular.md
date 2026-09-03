@@ -24,7 +24,7 @@ Input có 2 nguồn dữ liệu:
 - Tất cả output **tiếng Việt** (trừ field name kỹ thuật như `title`, `description`...).
 - `description` ghi bằng tiếng Việt tự nhiên, 1-3 câu.
 - `tags` lowercase, không dấu, dùng gạch nối (vd: `kinh-te`, `grdp`, `dan-so`).
-- `category` chọn 1 trong: `kinh-te`, `dan-so`, `giao-duc`, `y-te`, `moi-truong`, `chinh-tri`, `khi-hau`, `ha-tang`, `khac`.
+- `category` chọn 1 trong 10 giá trị: `kinh-te`, `dan-so`, `xa-hoi`, `giao-duc`, `y-te`, `moi-truong`, `chinh-tri`, `khi-hau`, `ha-tang`, `khac`. Danh sách này phải khớp `CATEGORY_LABELS` (src/lib/types/dataset.ts) — sửa một bên thì sửa cả hai.
 - `confidence`: `high` (rõ ràng, source biết), `medium` (phải guess), `low` (nhiều guess).
 
 ## Rules
@@ -62,7 +62,7 @@ Trả về **đúng** JSON schema sau, không markdown wrapper, không giải th
   "metadata": {
     "title": "string — tên dataset tiếng Việt, ngắn gọn, descriptive",
     "description": "string — 1-3 câu tóm tắt nội dung file",
-    "category": "kinh-te | dan-so | giao-duc | y-te | moi-truong | chinh-tri | khi-hau | ha-tang | khac",
+    "category": "kinh-te | dan-so | xa-hoi | giao-duc | y-te | moi-truong | chinh-tri | khi-hau | ha-tang | khac",
     "tags": ["array of 1-5 lowercase kebab-case tags"],
     "source": "string — tên nguồn (vd: 'Tổng cục Thống kê (GSO)') hoặc 'unknown'",
     "source_url": "string — URL nếu biết, ngược lại empty string",

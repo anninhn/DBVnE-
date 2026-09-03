@@ -41,9 +41,15 @@ function sizeBucket(rowCount: number): string {
 /**
  * Normalize text cho search: lowercase + strip diacritics + đ→d.
  * "Thủ tục" → "thu tuc". Slug đã normalize sẵn nhưng gọi lại cho safe.
+ *
+ * Nhận `unknown` chứ không phải `string`: dữ liệu đến từ YAML do người/AI ghi,
+ * kiểu không đảm bảo. Tag toàn chữ số (`- 2024`) parse ra number, gọi thẳng
+ * `.toLowerCase()` là TypeError — mà lỗi này ném trong render nên sập cả trang
+ * chủ, không chỉ hỏng một kết quả. Ép kiểu ở đây để một dataset lỗi không kéo
+ * đổ toàn bộ listing.
  */
-function normalize(s: string): string {
-  return s
+function normalize(s: unknown): string {
+  return String(s ?? "")
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
