@@ -1,5 +1,33 @@
 [
   {
+    "slug": "tri-gia-nhap-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo",
+    "title": "Trị giá nhập khẩu hàng hóa phân theo khối nước, nước, vùng lãnh thổ chủ yếu",
+    "description": "Dataset thống kê trị giá nhập khẩu hàng hóa của Việt Nam, phân loại theo các khối nước, quốc gia và vùng lãnh thổ chủ yếu, từ năm 1995 đến năm 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "nhap-khau",
+      "thuong-mai",
+      "kinh-te",
+      "quoc-te"
+    ],
+    "uploaded_at": "2026-09-03T04:09:24.095Z",
+    "uploaded_by": "ninh",
+    "row_count": 1950,
+    "file_count": 1,
+    "total_size_mb": 0.05,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "b1aa6e55-8769-403c-9a54-d5b96245d5e1/tri-gia-nhap-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo.csv",
+        "size_mb": 0.05
+      }
+    ]
+  },
+  {
     "slug": "tong-muc-luu-chuyen-hang-hoa-xuat-nhap-khau",
     "title": "Tổng mức lưu chuyển hàng hóa xuất nhập khẩu của Việt Nam",
     "description": "Dataset cung cấp thông tin về tổng kim ngạch xuất khẩu, nhập khẩu và cán cân thương mại của Việt Nam từ năm 1990 đến 2024, bao gồm cả giá trị tuyệt đối (triệu USD) và chỉ số phát triển so với năm trước.",
