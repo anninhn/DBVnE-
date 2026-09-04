@@ -27,41 +27,50 @@ files:
     r2_key: "831aa6c6-2e4f-4ede-81fe-a50680e1d78c/do-am-khong-khi-trung-binh-tai-mot-so-tram-quan-trac.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2006
         max: 2024
-        histogram: [45, 30, 30, 30, 45, 30, 30, 45]
-      "Độ ẩm không khí trung bình tại một số trạm quan trắc":
+        histogram: [ 45, 30, 30, 30, 45, 30, 30, 45 ]
+      Độ ẩm không khí trung bình tại một số trạm quan trắc:
         kind: numeric
         min: 73.9
         max: 88.4
-        histogram: [10, 20, 53, 69, 67, 36, 19, 11]
-      "Tỉnh, thành phố":
+        histogram: [ 10, 20, 53, 69, 67, 36, 19, 11 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 15
         segments:
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 19
-          - label: "Sơn La"
+          - label: Sơn La
             count: 19
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 19
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 19
-          - label: "Bãi Cháy"
+          - label: Bãi Cháy
             count: 19
-          - label: "Nam Định"
+          - label: Nam Định
             count: 19
-          - label: "Vinh"
+          - label: Vinh
             count: 19
-          - label: "Huế"
+          - label: Huế
             count: 19
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 19
-          - label: "Qui Nhơn"
+          - label: Qui Nhơn
             count: 19
-          - label: "Pleiku"
+          - label: Pleiku
             count: 19
-          - label: "Đà Lạt"
+          - label: Đà Lạt
             count: 19
+          - label: Nha Trang
+            count: 19
+          - label: Vũng Tàu
+            count: 19
+          - label: Cà Mau
+            count: 19
+        complete: true
+coverage:
+  temporal: [ 2006, 2024 ]
