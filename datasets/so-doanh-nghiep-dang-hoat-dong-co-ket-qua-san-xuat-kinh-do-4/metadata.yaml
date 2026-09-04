@@ -27,41 +27,220 @@ files:
     r2_key: "7c599323-2a4b-4626-822c-b99c708e8c51/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-do-4.csv"
     size_mb: 0.06
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [100, 0, 0, 200, 200, 100, 200, 200]
-      "Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm":
+        histogram: [ 100, 0, 0, 200, 200, 100, 200, 200 ]
+      Số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm:
         kind: numeric
         min: 0
         max: 995
-        histogram: [815, 46, 29, 12, 31, 28, 25, 14]
-      "Ngành kinh tế":
+        histogram: [ 815, 46, 29, 12, 31, 28, 25, 14 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 100
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nông nghiệp, lâm nghiệp và thuỷ sản"
+          - label: Nông nghiệp, lâm nghiệp và thuỷ sản
             count: 10
-          - label: "Nông nghiệp và hoạt động dịch vụ có liên quan"
+          - label: Nông nghiệp và hoạt động dịch vụ có liên quan
             count: 10
-          - label: "Lâm nghiệp và hoạt động dịch vụ có liên quan"
+          - label: Lâm nghiệp và hoạt động dịch vụ có liên quan
             count: 10
-          - label: "Khai thác, nuôi trồng thuỷ sản"
+          - label: Khai thác, nuôi trồng thuỷ sản
             count: 10
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 10
-          - label: "Khai thác than cứng và than non"
+          - label: Khai thác than cứng và than non
             count: 10
-          - label: "Khai thác dầu thô và khí đốt tự nhiên"
+          - label: Khai thác dầu thô và khí đốt tự nhiên
             count: 10
-          - label: "Khai thác quặng kim loại"
+          - label: Khai thác quặng kim loại
             count: 10
-          - label: "Khai khoáng khác"
+          - label: Khai khoáng khác
             count: 10
-          - label: "Hoạt động dịch vụ hỗ trợ khai thác mỏ và quặng"
+          - label: Hoạt động dịch vụ hỗ trợ khai thác mỏ và quặng
             count: 10
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 10
+          - label: Sản xuất, chế biến thực phẩm
+            count: 10
+          - label: Sản xuất đồ uống
+            count: 10
+          - label: Sản xuất sản phẩm thuốc lá
+            count: 10
+          - label: Dệt
+            count: 10
+          - label: Sản xuất trang phục
+            count: 10
+          - label: Sản xuất da và các sản phẩm có liên quan
+            count: 10
+          - label: Chế biến gỗ và sản xuất sản phẩm từ gỗ, tre, nứa (trừ giường, tủ, bàn, ghế)
+            count: 10
+          - label: Sản xuất giấy và sản phẩm từ giấy
+            count: 10
+          - label: In, sao chép bản ghi các loại
+            count: 10
+          - label: Sản xuất than cốc, sản phẩm dầu mỏ tinh chế
+            count: 10
+          - label: Sản xuất hóa chất và sản phẩm hóa chất
+            count: 10
+          - label: Sản xuất thuốc, hóa dược và dược liệu
+            count: 10
+          - label: Sản xuất sản phẩm từ cao su và plastic
+            count: 10
+          - label: Sản xuất sản phẩm từ khoáng phi kim loại khác
+            count: 10
+          - label: Sản xuất kim loại
+            count: 10
+          - label: Sản xuất sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)
+            count: 10
+          - label: Sản xuất sản phẩm điện tử, máy vi tính và sản phẩm quang học
+            count: 10
+          - label: Sản xuất thiết bị điện
+            count: 10
+          - label: Sản xuất máy móc, thiết bị chưa được phân vào đâu
+            count: 10
+          - label: Sản xuất xe có động cơ, rơ moóc
+            count: 10
+          - label: Sản xuất phương tiện vận tải khác
+            count: 10
+          - label: Sản xuất giường, tủ, bàn, ghế
+            count: 10
+          - label: Công nghiệp chế biến, chế tạo khác
+            count: 10
+          - label: Sửa chữa, bảo dưỡng và lắp đặt máy móc và thiết bị
+            count: 10
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
+            count: 10
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
+            count: 10
+          - label: Khai thác, xử lý và cung cấp nước
+            count: 10
+          - label: Thoát nước và xử lý nước thải
+            count: 10
+          - label: Hoạt động thu gom, xử lý và tiêu huỷ rác thải; tái chế phế liệu
+            count: 10
+          - label: Xử lý ô nhiễm và hoạt động quản lý chất thải khác
+            count: 10
+          - label: Xây dựng
+            count: 10
+          - label: Xây dựng nhà các loại
+            count: 10
+          - label: Xây dựng công trình kỹ thuật dân dụng
+            count: 10
+          - label: Hoạt động xây dựng chuyên dụng
+            count: 10
+          - label: Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
+            count: 10
+          - label: Bán, sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
+            count: 10
+          - label: Bán buôn (trừ ô tô, mô tô, xe máy và xe có động cơ khác)
+            count: 10
+          - label: Bán lẻ (trừ ô tô, mô tô, xe máy và xe có động cơ khác)
+            count: 10
+          - label: Vận tải, kho bãi
+            count: 10
+          - label: Vận tải đường sắt, đường bộ và vận tải đường ống
+            count: 10
+          - label: Vận tải đường thủy
+            count: 10
+          - label: Vận tải hàng không
+            count: 10
+          - label: Kho bãi và các hoạt động hỗ trợ cho vận tải
+            count: 10
+          - label: Bưu chính và chuyển phát
+            count: 10
+          - label: Dịch vụ lưu trú và ăn uống
+            count: 10
+          - label: Dịch vụ lưu trú
+            count: 10
+          - label: Dịch vụ ăn uống
+            count: 10
+          - label: Thông tin và truyền thông
+            count: 10
+          - label: Hoạt động xuất bản
+            count: 10
+          - label: Hoạt động điện ảnh, sản xuất chương trình truyền hình, ghi âm và xuất bản âm nhạc
+            count: 10
+          - label: Hoạt động phát thanh, truyền hình
+            count: 10
+          - label: Viễn thông
+            count: 10
+          - label: Lập trình máy vi tính, dịch vụ tư vấn và các hoạt động khác liên quan đến máy vi tính
+            count: 10
+          - label: Hoạt động dịch vụ thông tin
+            count: 10
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
+            count: 10
+          - label: Hoạt động dịch vụ tài chính (trừ bảo hiểm và bảo hiểm xã hội)
+            count: 10
+          - label: Bảo hiểm, tái bảo hiểm và bảo hiểm xã hội (trừ bảo đảm xã hội bắt buộc)
+            count: 10
+          - label: Hoạt động tài chính khác
+            count: 10
+          - label: Hoạt động kinh doanh bất động sản
+            count: 10
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 10
+          - label: Hoạt động pháp luật, kế toán và kiểm toán
+            count: 10
+          - label: Hoạt động của trụ sở văn phòng; hoạt động tư vấn quản lý
+            count: 10
+          - label: Hoạt động kiến trúc; kiểm tra và phân tích kỹ thuật
+            count: 10
+          - label: Nghiên cứu khoa học và phát triển
+            count: 10
+          - label: Quảng cáo và nghiên cứu thị trường
+            count: 10
+          - label: Hoạt động chuyên môn, khoa học và công nghệ khác
+            count: 10
+          - label: Hoạt động thú y
+            count: 10
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 10
+          - label: Cho thuê máy móc, thiết bị (không kèm người điều khiển); cho thuê đồ dùng cá nhân và gia đình; cho thuê tài sản vô hình phi tài chính
+            count: 10
+          - label: Hoạt động dịch vụ lao động và việc làm
+            count: 10
+          - label: Hoạt động của các đại lý du lịch, kinh doanh tua du lịch và các dịch vụ hỗ trợ khác
+            count: 10
+          - label: Hoạt động điều tra bảo đảm an toàn
+            count: 10
+          - label: Hoạt động dịch vụ vệ sinh nhà cửa, công trình và cảnh quan
+            count: 10
+          - label: Hoạt động hành chính, hỗ trợ văn phòng và các hoạt động hỗ trợ kinh doanh khác
+            count: 10
+          - label: Giáo dục và đào tạo
+            count: 10
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 10
+          - label: Hoạt động y tế
+            count: 10
+          - label: Hoạt động chăm sóc, điều dưỡng tập trung
+            count: 10
+          - label: Hoạt động trợ giúp xã hội không tập trung
+            count: 10
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 10
+          - label: Hoạt động sáng tác, nghệ thuật và giải trí
+            count: 10
+          - label: Hoạt động của thư viện, lưu trữ, bảo tàng và các hoạt động văn hóa khác
+            count: 10
+          - label: Hoạt động xổ số, cá cược và đánh bạc
+            count: 10
+          - label: Hoạt động thể thao, vui chơi và giải trí
+            count: 10
+          - label: Hoạt động dịch vụ khác
+            count: 10
+          - label: Hoạt động của các hiệp hội, tổ chức khác
+            count: 10
+          - label: Sửa chữa máy vi tính, đồ dùng cá nhân và gia đình
+            count: 10
+          - label: Hoạt động dịch vụ phục vụ cá nhân khác
+            count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
