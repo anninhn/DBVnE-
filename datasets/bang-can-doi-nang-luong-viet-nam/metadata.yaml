@@ -27,69 +27,114 @@ files:
     r2_key: "f4835970-9faf-463b-9b84-4410a7e98386/bang-can-doi-nang-luong-viet-nam.csv"
     size_mb: 0.06
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2021
-        histogram: [288, 0, 288, 0, 0, 288, 0, 96]
-      "Bảng cân đối năng lượng Việt Nam":
+        histogram: [ 288, 0, 288, 0, 0, 288, 0, 96 ]
+      Bảng cân đối năng lượng Việt Nam:
         kind: numeric
         min: -33205.76
         max: 100640.88
-        histogram: [6, 80, 206, 21, 9, 8, 3, 3]
-      "Nguồn cung, tiêu thụ":
+        histogram: [ 6, 80, 206, 21, 9, 8, 3, 3 ]
+      Nguồn cung, tiêu thụ:
         kind: categorical
         distinct: 32
         segments:
-          - label: "Khai thác, sản xuất trong nước"
+          - label: Khai thác, sản xuất trong nước
             count: 30
-          - label: "Nhập khẩu"
+          - label: Nhập khẩu
             count: 30
-          - label: "Xuất khẩu"
+          - label: Xuất khẩu
             count: 30
-          - label: "Chênh lệch tồn kho"
+          - label: Chênh lệch tồn kho
             count: 30
-          - label: "Tổng năng lượng hiện có"
+          - label: Tổng năng lượng hiện có
             count: 30
-          - label: "Hàng không quốc tế"
+          - label: Hàng không quốc tế
             count: 30
-          - label: "Hàng hải quốc tế"
+          - label: Hàng hải quốc tế
             count: 30
-          - label: "Tổng cung năng lượng sơ cấp"
+          - label: Tổng cung năng lượng sơ cấp
             count: 30
-          - label: "Năng lượng chuyển đổi"
+          - label: Năng lượng chuyển đổi
             count: 30
-          - label: "Nhà máy lọc dầu"
+          - label: Nhà máy lọc dầu
             count: 30
-          - label: "Nhà máy chế biến khí"
+          - label: Nhà máy chế biến khí
             count: 30
-          - label: "Nhà máy điện"
+          - label: Nhà máy điện
             count: 30
-      "Các nguồn năng lượng":
+          - label: Năng lượng thu được (từ chuyển đổi)
+            count: 30
+          - label: Nhà máy lọc dầu.
+            count: 30
+          - label: Nhà máy chế biến khí.
+            count: 30
+          - label: Nhà máy điện.
+            count: 30
+          - label: Tự dùng
+            count: 30
+          - label: Tổn thất
+            count: 30
+          - label: Tổng tiêu thụ năng lượng cuối cùng
+            count: 30
+          - label: Sai số thống kê
+            count: 30
+          - label: Tiêu thụ phi năng lượng cuối cùng
+            count: 30
+          - label: Tiêu thụ năng lượng cuối cùng
+            count: 30
+          - label: Công nghiệp và xây dựng
+            count: 30
+          - label: Khai khoáng
+            count: 30
+          - label: Chế biến, chế tạo
+            count: 30
+          - label: Các ngành công nghiệp khác
+            count: 30
+          - label: Xây dựng
+            count: 30
+          - label: Nông, lâm nghiệp và thủy sản
+            count: 30
+          - label: Vận tải
+            count: 30
+          - label: Thương mại và dịch vụ khác
+            count: 30
+          - label: Dân dụng
+            count: 30
+          - label: Tiêu dùng phi năng lượng
+            count: 30
+        complete: true
+      Các nguồn năng lượng:
         kind: categorical
         distinct: 9
         segments:
-          - label: "Tổng các nguồn năng lượng"
+          - label: Tổng các nguồn năng lượng
             count: 128
-          - label: "Than"
+          - label: Than
             count: 128
-          - label: "Dầu thô"
+          - label: Dầu thô
             count: 128
-          - label: "Xăng, dầu và các sản phẩm dầu khác(**)"
+          - label: Xăng, dầu và các sản phẩm dầu khác(**)
             count: 96
-          - label: "Khí thiên nhiên"
+          - label: Khí thiên nhiên
             count: 96
-          - label: "Nhiên liệu sinh học (***)"
+          - label: Nhiên liệu sinh học (***)
             count: 96
-          - label: "Điện"
+          - label: Điện
             count: 96
-          - label: "Nhiên liệu sinh học(***)"
+          - label: Nhiên liệu sinh học(***)
             count: 96
-          - label: "Điện(****)"
+          - label: Điện(****)
             count: 96
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "(*)"
+          - label: (*)
             count: 576
+        complete: true
+coverage:
+  temporal: [ 2018, 2021 ]
