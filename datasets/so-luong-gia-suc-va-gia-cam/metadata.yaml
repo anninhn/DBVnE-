@@ -27,40 +27,44 @@ files:
     r2_key: "e7f06830-faf2-4a05-8882-6e929094ad8d/so-luong-gia-suc-va-gia-cam.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [30, 24, 24, 24, 30, 24, 24, 30]
-      "Số lượng (Nghìn con)":
+        histogram: [ 30, 24, 24, 24, 30, 24, 24, 30 ]
+      Số lượng (Nghìn con):
         kind: numeric
         min: 87.3
         max: 30863.9
-        histogram: [127, 26, 0, 4, 6, 5, 9, 11]
-      "Chỉ số phát triển (Năm trước =100) (%)":
+        histogram: [ 127, 26, 0, 4, 6, 5, 9, 11 ]
+      Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 67.7
         max: 131.1
-        histogram: [1, 2, 6, 44, 102, 21, 8, 4]
-      "Gia súc, gia cầm":
+        histogram: [ 1, 2, 6, 44, 102, 21, 8, 4 ]
+      Gia súc, gia cầm:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Trâu"
+          - label: Trâu
             count: 35
-          - label: "Bò"
+          - label: Bò
             count: 35
-          - label: "Ngựa"
+          - label: Ngựa
             count: 35
-          - label: "Dê, cừu"
+          - label: Dê, cừu
             count: 35
-          - label: "Lợn (*)"
+          - label: Lợn (*)
             count: 35
-          - label: "Gia cầm (**) (Triệu con)"
+          - label: Gia cầm (**) (Triệu con)
             count: 35
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 6
+        complete: true
+coverage:
+  temporal: [ 1990, 2024 ]
