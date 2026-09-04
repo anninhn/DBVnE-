@@ -27,46 +27,50 @@ files:
     r2_key: "2174fb08-f47f-48cc-a449-9855417b669a/ty-le-that-nghiep-va-thieu-viec-lam-trong-do-tuoi-lao-dong-p.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [42, 42, 42, 21, 42, 42, 42, 42]
-      "Tỷ lệ thất nghiệp":
+        histogram: [ 42, 42, 42, 21, 42, 42, 42, 42 ]
+      Tỷ lệ thất nghiệp:
         kind: numeric
         min: 0.51
         max: 5.16
-        histogram: [42, 37, 79, 97, 40, 8, 7, 5]
-      "Tỷ lệ thiếu việc làm":
+        histogram: [ 42, 37, 79, 97, 40, 8, 7, 5 ]
+      Tỷ lệ thiếu việc làm:
         kind: numeric
         min: 0.41
         max: 5.56
-        histogram: [41, 49, 72, 64, 49, 18, 13, 9]
-      "Vùng":
+        histogram: [ 41, 49, 72, 64, 49, 18, 13, 9 ]
+      Vùng:
         kind: categorical
         distinct: 7
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 45
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 45
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 45
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 45
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 45
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 45
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 45
-      "Giới tính":
+        complete: true
+      Giới tính:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Chung"
+          - label: Chung
             count: 105
-          - label: "Nam"
+          - label: Nam
             count: 105
-          - label: "Nữ"
+          - label: Nữ
             count: 105
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
