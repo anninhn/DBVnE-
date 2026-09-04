@@ -26,41 +26,50 @@ files:
     r2_key: "b5d148d4-68aa-4006-b17b-a3fa620474ff/ty-gia-thuong-mai-hang-hoa-nam-truoc-100.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [30, 30, 15, 30, 30, 15, 30, 30]
-      "Tỷ giá thương mại hàng hóa (Năm trước = 100)":
+        histogram: [ 30, 30, 15, 30, 30, 15, 30, 30 ]
+      Tỷ giá thương mại hàng hóa (Năm trước = 100):
         kind: numeric
         min: 80.51
         max: 128.42
-        histogram: [7, 14, 57, 91, 33, 6, 1, 1]
-      "Nhóm hàng":
+        histogram: [ 7, 14, 57, 91, 33, 6, 1, 1 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 15
         segments:
-          - label: "Tỷ giá thương mại hàng hóa"
+          - label: Tỷ giá thương mại hàng hóa
             count: 14
-          - label: "Hàng thủy sản"
+          - label: Hàng thủy sản
             count: 14
-          - label: "Hàng rau quả"
+          - label: Hàng rau quả
             count: 14
-          - label: "Gỗ và sản phẩm từ gỗ"
+          - label: Gỗ và sản phẩm từ gỗ
             count: 14
-          - label: "Bánh kẹo và các sản phẩm từ ngũ cốc"
+          - label: Bánh kẹo và các sản phẩm từ ngũ cốc
             count: 14
-          - label: "Xăng dầu các loại"
+          - label: Xăng dầu các loại
             count: 14
-          - label: "Sắt, thép"
+          - label: Sắt, thép
             count: 14
-          - label: "Sản phẩm từ sắt thép"
+          - label: Sản phẩm từ sắt thép
             count: 14
-          - label: "Chất dẻo nguyên liệu"
+          - label: Chất dẻo nguyên liệu
             count: 14
-          - label: "Sản phẩm chất dẻo"
+          - label: Sản phẩm chất dẻo
             count: 14
-          - label: "Hoá chất"
+          - label: Hoá chất
             count: 14
-          - label: "Sản phẩm hoá chất"
+          - label: Sản phẩm hoá chất
             count: 14
+          - label: Đá quý, kim loại quý & sản phẩm
+            count: 14
+          - label: Máy móc, thiết bị, dụng cụ & phụ tùng khác
+            count: 14
+          - label: Dây điện & dây cáp điện
+            count: 14
+        complete: true
+coverage:
+  temporal: [ 2011, 2024 ]
