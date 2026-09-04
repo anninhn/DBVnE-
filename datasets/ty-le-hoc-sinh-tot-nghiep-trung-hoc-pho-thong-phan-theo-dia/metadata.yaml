@@ -27,64 +27,194 @@ files:
     r2_key: "d8bb23df-1acb-48c1-a44b-0838b47e95e4/ty-le-hoc-sinh-tot-nghiep-trung-hoc-pho-thong-phan-theo-dia.csv"
     size_mb: 0.03
     column_stats:
-      "Tỷ lệ học sinh tốt nghiệp trung học phổ thông":
+      Tỷ lệ học sinh tốt nghiệp trung học phổ thông:
         kind: numeric
         min: 38.57
         max: 99.98
-        histogram: [3, 3, 5, 26, 62, 135, 238, 619]
-      "Địa phương":
+        histogram: [ 3, 3, 5, 26, 62, 135, 238, 619 ]
+      Địa phương:
         kind: categorical
         distinct: 71
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 16
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 16
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 16
-          - label: "Hà Tây"
+          - label: Hà Tây
             count: 16
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 16
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 16
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 16
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 16
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 16
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 16
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 16
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 16
-      "Năm học":
+          - label: Nam Định
+            count: 16
+          - label: Ninh Bình
+            count: 16
+          - label: Trung du và miền núi phía Bắc
+            count: 16
+          - label: Hà Giang
+            count: 16
+          - label: Cao Bằng
+            count: 16
+          - label: Bắc Kạn
+            count: 16
+          - label: Tuyên Quang
+            count: 16
+          - label: Lào Cai
+            count: 16
+          - label: Yên Bái
+            count: 16
+          - label: Thái Nguyên
+            count: 16
+          - label: Lạng Sơn
+            count: 16
+          - label: Bắc Giang
+            count: 16
+          - label: Phú Thọ
+            count: 16
+          - label: Điện Biên
+            count: 16
+          - label: Lai Châu
+            count: 16
+          - label: Sơn La
+            count: 16
+          - label: Hoà Bình
+            count: 16
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 16
+          - label: Thanh Hoá
+            count: 16
+          - label: Nghệ An
+            count: 16
+          - label: Hà Tĩnh
+            count: 16
+          - label: Quảng Bình
+            count: 16
+          - label: Quảng Trị
+            count: 16
+          - label: Thừa Thiên Huế
+            count: 16
+          - label: Đà Nẵng
+            count: 16
+          - label: Quảng Nam
+            count: 16
+          - label: Quảng Ngãi
+            count: 16
+          - label: Bình Định
+            count: 16
+          - label: Phú Yên
+            count: 16
+          - label: Khánh Hoà
+            count: 16
+          - label: Ninh Thuận
+            count: 16
+          - label: Bình Thuận
+            count: 16
+          - label: Tây Nguyên
+            count: 16
+          - label: Kon Tum
+            count: 16
+          - label: Gia Lai
+            count: 16
+          - label: Đắk Lắk
+            count: 16
+          - label: Đắk Nông
+            count: 16
+          - label: Lâm Đồng
+            count: 16
+          - label: Đông Nam Bộ
+            count: 16
+          - label: Bình Phước
+            count: 16
+          - label: Tây Ninh
+            count: 16
+          - label: Bình Dương
+            count: 16
+          - label: Đồng Nai
+            count: 16
+          - label: Bà Rịa - Vũng Tàu
+            count: 16
+          - label: TP.Hồ Chí Minh
+            count: 16
+          - label: Đồng bằng sông Cửu Long
+            count: 16
+          - label: Long An
+            count: 16
+          - label: Tiền Giang
+            count: 16
+          - label: Bến Tre
+            count: 16
+          - label: Trà Vinh
+            count: 16
+          - label: Vĩnh Long
+            count: 16
+          - label: Đồng Tháp
+            count: 16
+          - label: An Giang
+            count: 16
+          - label: Kiên Giang
+            count: 16
+          - label: Cần Thơ
+            count: 16
+          - label: Hậu Giang
+            count: 16
+          - label: Sóc Trăng
+            count: 16
+          - label: Bạc Liêu
+            count: 16
+          - label: Cà Mau
+            count: 16
+        complete: true
+      Năm học:
         kind: categorical
         distinct: 16
         segments:
-          - label: "2001-2002"
+          - label: 2001-2002
             count: 71
-          - label: "2002-2003"
+          - label: 2002-2003
             count: 71
-          - label: "2003-2004"
+          - label: 2003-2004
             count: 71
-          - label: "2004-2005"
+          - label: 2004-2005
             count: 71
-          - label: "2005-2006"
+          - label: 2005-2006
             count: 71
-          - label: "2006-2007"
+          - label: 2006-2007
             count: 71
-          - label: "2007-2008"
+          - label: 2007-2008
             count: 71
-          - label: "2008-2009"
+          - label: 2008-2009
             count: 71
-          - label: "2009-2010"
+          - label: 2009-2010
             count: 71
-          - label: "2010-2011"
+          - label: 2010-2011
             count: 71
-          - label: "2011-2012"
+          - label: 2011-2012
             count: 71
-          - label: "2012-2013"
+          - label: 2012-2013
             count: 71
+          - label: 2013-2014
+            count: 71
+          - label: 2014-2015
+            count: 71
+          - label: 2015-2016
+            count: 71
+          - label: 2016-2017
+            count: 71
+        complete: true
+coverage:
+  temporal: [ 2001, 2017 ]
