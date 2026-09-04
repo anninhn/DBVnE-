@@ -28,51 +28,132 @@ files:
     r2_key: "19c308cb-20ad-4a67-900d-bbfa188ba3f2/so-vu-an-va-so-bi-can-da-bi-truy-to-nam-2024-phan-theo-toi-d.csv"
     size_mb: 0.01
     column_stats:
-      "CẢ NƯỚC":
+      CẢ NƯỚC:
         kind: numeric
         min: 81440
         max: 156746
-        histogram: [52, 0, 0, 0, 0, 0, 0, 52]
-      "Điều luật Article of Law":
+        histogram: [ 52, 0, 0, 0, 0, 0, 0, 52 ]
+      Điều luật Article of Law:
         kind: numeric
         min: 123
         max: 356
-        histogram: [7, 9, 5, 1, 7, 1, 5, 8]
-      "Số vụ án đã bị khởi tố (Vụ)":
+        histogram: [ 7, 9, 5, 1, 7, 1, 5, 8 ]
+      Số vụ án đã bị khởi tố (Vụ):
         kind: numeric
         min: 1.009
         max: 919
-        histogram: [24, 11, 5, 3, 2, 0, 1, 4]
-      "Số bị can đã bị khởi tố (Người)":
+        histogram: [ 24, 11, 5, 3, 2, 0, 1, 4 ]
+      Số bị can đã bị khởi tố (Người):
         kind: numeric
         min: 1.008
         max: 937
-        histogram: [30, 3, 5, 3, 3, 2, 1, 3]
-      "Phân theo một số tội danh":
+        histogram: [ 30, 3, 5, 3, 3, 2, 1, 3 ]
+      Phân theo một số tội danh:
         kind: categorical
         distinct: 52
         segments:
-          - label: "Tội tàng trữ trái phép chất ma túy"
+          - label: Tội tàng trữ trái phép chất ma túy
             count: 2
-          - label: "Tội trộm cắp tài sản"
+          - label: Tội trộm cắp tài sản
             count: 2
-          - label: "Tội mua bán trái phép chất ma túy"
+          - label: Tội mua bán trái phép chất ma túy
             count: 2
-          - label: "Tội cố ý gây thương tích hoặc gây tổn hại cho sức khỏe của người khác"
+          - label: Tội cố ý gây thương tích hoặc gây tổn hại cho sức khỏe của người khác
             count: 2
-          - label: "Tội đánh bạc"
+          - label: Tội đánh bạc
             count: 2
-          - label: "Tội vi phạm quy định về tham gia giao thông đường bộ"
+          - label: Tội vi phạm quy định về tham gia giao thông đường bộ
             count: 2
-          - label: "Tội lừa đảo chiếm đoạt tài sản"
+          - label: Tội lừa đảo chiếm đoạt tài sản
             count: 2
-          - label: "Tội tổ chức sử dụng trái phép chất ma túy"
+          - label: Tội tổ chức sử dụng trái phép chất ma túy
             count: 2
-          - label: "Tội gây rối trật tự công cộng"
+          - label: Tội gây rối trật tự công cộng
             count: 2
-          - label: "Tội giết người"
+          - label: Tội giết người
             count: 2
-          - label: "Tội cướp giật tài sản"
+          - label: Tội cướp giật tài sản
             count: 2
-          - label: "Tội cho vay lãi nặng trong giao dịch dân sự"
+          - label: Tội cho vay lãi nặng trong giao dịch dân sự
             count: 2
+          - label: Tội giao cấu hoặc thực hiện hành vi quan hệ tình dục khác với người từ đủ 13 tuổi đến dưới 16 tuổi
+            count: 2
+          - label: Tội lạm dụng tín nhiệm chiếm đoạt tài sản
+            count: 2
+          - label: Tội hủy hoại hoặc cố ý làm hư hỏng tài sản
+            count: 2
+          - label: Tội làm giả con dấu, tài liệu của cơ quan, tổ chức; tội sử dụng con dấu hoặc tài liệu giả của cơ quan, tổ chức
+            count: 2
+          - label: Tội cướp tài sản
+            count: 2
+          - label: Tội tàng trữ, vận chuyển hàng cấm
+            count: 2
+          - label: Tội hiếp dâm người dưới 16 tuổi
+            count: 2
+          - label: Tội sản xuất, buôn bán hàng cấm
+            count: 2
+          - label: Tội tổ chức đánh bạc hoặc gá bạc
+            count: 2
+          - label: Tội tham ô tài sản
+            count: 2
+          - label: Tội cưỡng đoạt tài sản
+            count: 2
+          - label: Tội chế tạo, tàng trữ, vận chuyển, sử dụng, mua bán trái phép hoặc chiếm đoạt vũ khí quân dụng, phương tiện kỹ thuật quân sự
+            count: 2
+          - label: Tội chống người thi hành công vụ
+            count: 2
+          - label: Tội vận chuyển trái phép chất ma túy
+            count: 2
+          - label: Tội dâm ô đối với người dưới 16 tuổi
+            count: 2
+          - label: Tội vi phạm quy định về bảo vệ động vật nguy cấp, quý, hiếm
+            count: 2
+          - label: Tội môi giới mại dâm
+            count: 2
+          - label: Tội chứa mại dâm
+            count: 2
+          - label: Tội bắt, giữ hoặc giam người trái pháp luật
+            count: 2
+          - label: Tội tổ chức, môi giới cho người khác xuất cảnh, nhập cảnh hoặc ở lại Việt Nam trái phép
+            count: 2
+          - label: Tội hiếp dâm
+            count: 2
+          - label: Tội hủy hoại rừng
+            count: 2
+          - label: Tội in, phát hành, mua bán trái phép hóa đơn, chứng từ thu nộp ngân sách nhà nước
+            count: 2
+          - label: Tội nhận hối lộ
+            count: 2
+          - label: Tội lợi dụng chức vụ, quyền hạn trong khi thi hành công vụ
+            count: 2
+          - label: Tội vô ý làm chết người
+            count: 2
+          - label: Tội trốn thuế
+            count: 2
+          - label: Tội sử dụng mạng máy tính, mạng viễn thông, phương tiện điện tử thực hiện hành vi chiếm đoạt tài sản
+            count: 2
+          - label: Tội chứa chấp hoặc tiêu thụ tài sản do người khác phạm tội mà có
+            count: 2
+          - label: Tội vi phạm quy định về khai thác, bảo vệ rừng và lâm sản
+            count: 2
+          - label: Tội làm nhục người khác
+            count: 2
+          - label: Phân theo vùng
+            count: 2
+          - label: Đồng bằng sông Hồng
+            count: 2
+          - label: Trung du và miền núi phía Bắc
+            count: 2
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 2
+          - label: Tây Nguyên
+            count: 2
+          - label: Đông Nam Bộ
+            count: 2
+          - label: Đồng bằng sông Cửu Long
+            count: 2
+          - label: Khác
+            count: 2
+          - label: A
+            count: 2
+        complete: true
