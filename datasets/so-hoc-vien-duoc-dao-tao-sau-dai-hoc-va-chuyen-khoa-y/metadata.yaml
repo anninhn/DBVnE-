@@ -27,37 +27,41 @@ files:
     r2_key: "489cb841-c37f-4ea0-a0d3-7d10d6afbab8/so-hoc-vien-duoc-dao-tao-sau-dai-hoc-va-chuyen-khoa-y.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2023
-        histogram: [12, 0, 24, 24, 36, 24, 24, 36]
-      "Số học viên được đào tạo sau đại học và chuyên khoa Y":
+        histogram: [ 12, 0, 24, 24, 36, 24, 24, 36 ]
+      Số học viên được đào tạo sau đại học và chuyên khoa Y:
         kind: numeric
         min: 242
         max: 121586
-        histogram: [84, 13, 10, 0, 4, 3, 13, 8]
-      "Số học viên":
+        histogram: [ 84, 13, 10, 0, 4, 3, 13, 8 ]
+      Số học viên:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Số học viên được đào"
+          - label: Số học viên được đào
             count: 90
-          - label: "Số học viên tốt nghiệp"
+          - label: Số học viên tốt nghiệp
             count: 90
-      "Loại hình đào tạo":
+        complete: true
+      Loại hình đào tạo:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Sau đại học"
+          - label: Sau đại học
             count: 30
-          - label: "Nghiên cứu sinh"
+          - label: Nghiên cứu sinh
             count: 30
-          - label: "Cao học"
+          - label: Cao học
             count: 30
-          - label: "Chuyên khoa y"
+          - label: Chuyên khoa y
             count: 30
-          - label: "Chuyên khoa y cấp 1"
+          - label: Chuyên khoa y cấp 1
             count: 30
-          - label: "Chuyên khoa y cấp 2"
+          - label: Chuyên khoa y cấp 2
             count: 30
+        complete: true
+coverage:
+  temporal: [ 2005, 2023 ]
