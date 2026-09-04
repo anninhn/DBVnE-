@@ -6,6 +6,7 @@ export const maxDuration = 30;
 
 import { getObjectMetadata } from "@/lib/r2/get";
 import { getMetadataYaml } from "@/lib/datasets/read";
+import { detectTemporalRange } from "@/lib/datasets/temporal";
 import { slugify, isValidSlug } from "@/lib/slugify";
 import {
   commitMetadata,
@@ -154,6 +155,10 @@ export async function POST(req: NextRequest) {
       row_count: metadata.row_count,
       columns_count: metadata.columns_count,
       column_stats: column_stats,
+      // Khoảng thời gian suy từ chính dữ liệu (FR-047). Không suy từ tiêu đề:
+      // tiêu đề ghi "2005-2024" mà dữ liệu chỉ tới 2013 thì bộ lọc theo năm sẽ
+      // trả về dataset không có năm người dùng cần, và họ không có cách nào biết.
+      coverage_temporal: detectTemporalRange(column_stats ?? {}) ?? undefined,
       // GeoJSON-only fields — undefined cho tabular, render helper tự skip
       feature_count: metadata.feature_count,
       geometry_type: metadata.geometry_type,

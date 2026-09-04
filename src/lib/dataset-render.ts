@@ -146,6 +146,12 @@ export function renderMetadataYaml(
     crs?: string;
     /** Articles (spec 2026-07-24) — pass-through từ existing YAML khi edit */
     articles?: ArticleForRender[];
+    /**
+     * Khoảng thời gian `[năm đầu, năm cuối]` suy từ DỮ LIỆU (spec 005, FR-047).
+     * Bỏ trống khi dataset không có chiều thời gian — không suy khoảng giả
+     * (FR-048). `index.json` đọc trường này ra `year_range` cho bộ lọc.
+     */
+    coverage_temporal?: [number, number];
   }
 ): string {
   const today = new Date().toISOString().slice(0, 10);
@@ -183,6 +189,13 @@ export function renderMetadataYaml(
       : "";
   const crsLine =
     isGeoJson && options?.crs ? `\ncrs: "${options.crs}"` : "";
+
+  // `coverage` PHẢI được render ở đây, không chỉ được ghi bởi script backfill:
+  // form sửa dataset dựng lại YAML từ đầu bằng chính hàm này, nên trường nào hàm
+  // này không biết render thì lần sửa metadata đầu tiên sẽ xoá mất nó.
+  const coverageBlock = options?.coverage_temporal
+    ? `\ncoverage:\n  temporal: [${options.coverage_temporal.join(", ")}]`
+    : "";
 
   // Nếu có files[] sẵn (edit mode) → giữ nguyên
   let filesSection: string;
@@ -249,7 +262,7 @@ license: internal
 format: ${format}${rowLine}${colLine}${featureLine}${geomLine}${bboxLine}${crsLine}
 confidence: ${meta.confidence}
 uploaded_by: ${uploadedBy}
-uploaded_at: "${uploadedAt}"${articlesSection}
+uploaded_at: "${uploadedAt}"${coverageBlock}${articlesSection}
 files:
 ${filesSection}
 `;

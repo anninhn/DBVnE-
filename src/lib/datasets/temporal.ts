@@ -11,7 +11,7 @@
  *     chúng một khoảng năm làm bộ lọc thời gian thành vô nghĩa.
  */
 
-import type { FileInspection } from "@/lib/ai/inspect";
+import type { ColumnStats } from "@/lib/types/dataset";
 import { normalize } from "@/lib/retrieval/normalize";
 
 /** Ngoài khoảng này thì con số đó là mã số/dân số/tiền, không phải năm. */
@@ -79,14 +79,22 @@ interface ColumnYears {
 }
 
 /**
+ * Bảng thống kê từng cột — tính trên TOÀN BỘ file lúc inspect.
+ *
+ * Nhận `column_stats` chứ không nhận cả `FileInspection`: chỉ cần đúng phần này,
+ * và nhận hẹp thì luồng commit (chỉ có `column_stats` gửi lên từ bước phân tích)
+ * dùng lại được mà không phải đọc lại file.
+ */
+export type ColumnStatsMap = Record<string, ColumnStats>;
+
+/**
  * Quét mọi cột, trả về những cột **trông như cột năm** kèm các năm đọc được.
  *
- * Đọc từ `columnStats` chứ không từ `sampleRows`: stats tính trên TOÀN BỘ file
- * (streaming), còn sample chỉ 5 dòng đầu — lấy khoảng năm từ 5 dòng đầu thì mọi
- * dataset đều ra "khoảng" bằng đúng năm đầu tiên.
+ * Cố ý KHÔNG đọc từ dữ liệu mẫu: mẫu chỉ là 5 dòng đầu, mà dữ liệu thống kê sắp
+ * theo thời gian — lấy khoảng năm từ 5 dòng đầu thì mọi dataset đều ra "khoảng"
+ * bằng đúng năm đầu tiên.
  */
-function scanColumns(inspection: FileInspection): ColumnYears[] {
-  const stats = inspection.columnStats ?? {};
+function scanColumns(stats: ColumnStatsMap): ColumnYears[] {
   const found: ColumnYears[] = [];
 
   for (const [column, stat] of Object.entries(stats)) {
@@ -129,8 +137,8 @@ function scanColumns(inspection: FileInspection): ColumnYears[] {
  * Cố ý KHÔNG gộp năm của mọi cột lại: gộp nhầm một cột vào là khoảng thời gian
  * rộng ra một cách âm thầm, không ai phát hiện.
  */
-function pickTemporalColumn(inspection: FileInspection): ColumnYears | null {
-  const candidates = scanColumns(inspection);
+function pickTemporalColumn(stats: ColumnStatsMap): ColumnYears | null {
+  const candidates = scanColumns(stats);
   if (candidates.length === 0) return null;
 
   // Mọi ứng viên đều đã có tên chỉ thời gian, nên chỉ còn xếp theo tỉ lệ ô đọc
@@ -151,8 +159,8 @@ const HEADER_YEAR_RATIO = 0.5;
 const HEADER_YEAR_MIN_COLUMNS = 2;
 
 /** Khoảng năm suy từ TÊN CỘT, cho bảng ngang. `null` nếu không phải dạng đó. */
-function rangeFromHeaders(inspection: FileInspection): [number, number] | null {
-  const names = Object.keys(inspection.columnStats ?? {});
+function rangeFromHeaders(stats: ColumnStatsMap): [number, number] | null {
+  const names = Object.keys(stats);
   if (names.length === 0) return null;
 
   const years: number[] = [];
@@ -172,12 +180,12 @@ function rangeFromHeaders(inspection: FileInspection): [number, number] | null {
 
 /** Trả `[năm đầu, năm cuối]`, hoặc `null` khi dataset không có chiều thời gian. */
 export function detectTemporalRange(
-  inspection: FileInspection,
+  stats: ColumnStatsMap,
 ): [number, number] | null {
-  const picked = pickTemporalColumn(inspection);
+  const picked = pickTemporalColumn(stats);
   // Cột năm thật trong dữ liệu thắng tên cột: nó là dữ liệu, tên cột là nhãn.
   if (picked) return [Math.min(...picked.years), Math.max(...picked.years)];
-  return rangeFromHeaders(inspection);
+  return rangeFromHeaders(stats);
 }
 
 /**
@@ -185,9 +193,9 @@ export function detectTemporalRange(
  * chạy soi. Nhận nhầm cột nào chỉ nhìn ra khi biết nó chọn cột nào.
  */
 export function detectTemporalColumn(
-  inspection: FileInspection,
+  stats: ColumnStatsMap,
 ): string | null {
-  const picked = pickTemporalColumn(inspection);
+  const picked = pickTemporalColumn(stats);
   if (picked) return picked.column;
-  return rangeFromHeaders(inspection) ? "(tên cột)" : null;
+  return rangeFromHeaders(stats) ? "(tên cột)" : null;
 }

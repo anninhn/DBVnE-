@@ -67,6 +67,12 @@ export function mergeAuthFields(
   const client = parseYaml(clientYaml) as MetadataYaml;
   const existing = parseYaml(existingYaml) as MetadataYaml;
 
+  // `coverage` do bước phân tích/backfill suy ra từ dữ liệu, form sửa metadata
+  // không biết tới nó và không gửi lên. Không giữ lại thì lần sửa tiêu đề đầu
+  // tiên sẽ xoá mất khoảng thời gian của dataset, và bộ lọc theo năm âm thầm bỏ
+  // sót nó — không có triệu chứng nào ngoài việc dataset "biến mất" khỏi bộ lọc.
+  client.coverage = existing.coverage;
+
   client.edits = existing.edits;
   client.last_edited_by = existing.last_edited_by;
   client.last_edited_at = existing.last_edited_at;

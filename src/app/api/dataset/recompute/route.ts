@@ -168,8 +168,8 @@ export async function POST(req: NextRequest) {
   }
 
   const temporalBefore = meta.coverage?.temporal ?? null;
-  const temporalAfter = detectTemporalRange(inspection);
-  const temporalColumn = detectTemporalColumn(inspection);
+  const temporalAfter = detectTemporalRange(newStats);
+  const temporalColumn = detectTemporalColumn(newStats);
 
   const report: ChangeReport = {
     slug,

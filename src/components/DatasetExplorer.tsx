@@ -38,6 +38,10 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   const [activeTags, setActiveTags] = useState<Set<string>>(new Set());
   const [activeSizes, setActiveSizes] = useState<Set<string>>(new Set());
   const [activeFormats, setActiveFormats] = useState<Set<string>>(new Set());
+  // Khoảng năm giữ dạng chuỗi để ô nhập trống được — ép về số ngay lúc gõ thì
+  // xoá ký tự cuối sẽ nhảy về 0 và lọc mất sạch kết quả.
+  const [yearFrom, setYearFrom] = useState("");
+  const [yearTo, setYearTo] = useState("");
   const [showAllTags, setShowAllTags] = useState(false);
   const [sort, setSort] = useState<SortKey>("downloaded");
   const [page, setPage] = useState(0);
@@ -91,13 +95,46 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     const mapped = searchResults.map((r) => r.dataset);
     // Format filter — post-search client-side (adapter chưa support format).
     // Dataset match nếu CÓ ÍT NHẤT 1 resource có file_type nằm trong activeFormats.
-    if (activeFormats.size === 0) return mapped;
-    return mapped.filter((d) =>
-      d.resources.some(
-        (r) => r.file_type != null && activeFormats.has(r.file_type),
-      ),
-    );
-  }, [adapter, datasets, query, activeCategories, activeTags, activeSizes, activeFormats]);
+    const byFormat =
+      activeFormats.size === 0
+        ? mapped
+        : mapped.filter((d) =>
+            d.resources.some(
+              (r) => r.file_type != null && activeFormats.has(r.file_type),
+            ),
+          );
+
+    // Lọc theo khoảng năm — giữ dataset có phạm vi GIAO với khoảng người dùng
+    // nhập, không phải nằm trọn trong đó: hỏi "2020-2022" thì một dataset
+    // 1995-2024 vẫn trả lời được câu đó.
+    const from = Number(yearFrom);
+    const to = Number(yearTo);
+    const hasFrom = yearFrom !== "" && Number.isFinite(from);
+    const hasTo = yearTo !== "" && Number.isFinite(to);
+    if (!hasFrom && !hasTo) return byFormat;
+
+    return byFormat.filter((d) => {
+      const years = d.year_range ?? [];
+      // Dataset chưa biết phạm vi thời gian thì KHÔNG được nhận là khớp. Nhận
+      // bừa nghĩa là hứa nó có dữ liệu năm đó, mà không ai kiểm được.
+      if (years.length === 0) return false;
+      const dsFrom = Math.min(...years);
+      const dsTo = Math.max(...years);
+      if (hasFrom && dsTo < from) return false;
+      if (hasTo && dsFrom > to) return false;
+      return true;
+    });
+  }, [
+    adapter,
+    datasets,
+    query,
+    activeCategories,
+    activeTags,
+    activeSizes,
+    activeFormats,
+    yearFrom,
+    yearTo,
+  ]);
 
   // Sort kết quả search — tách riêng khỏi adapter (sort không phải search concern)
   const sorted = useMemo(() => {
@@ -124,7 +161,16 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
   // Reset page về 1 khi search/filter/sort thay đổi
   useEffect(() => {
     setPage(0);
-  }, [query, activeCategories, activeTags, activeSizes, activeFormats, sort]);
+  }, [
+    query,
+    activeCategories,
+    activeTags,
+    activeSizes,
+    activeFormats,
+    yearFrom,
+    yearTo,
+    sort,
+  ]);
 
   // Pagination — slice kết quả đã sort
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
@@ -158,6 +204,8 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     setActiveTags(new Set());
     setActiveSizes(new Set());
     setActiveFormats(new Set());
+    setYearFrom("");
+    setYearTo("");
     setQuery("");
   };
 
@@ -166,7 +214,9 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
     activeCategories.size > 0 ||
     activeTags.size > 0 ||
     activeSizes.size > 0 ||
-    activeFormats.size > 0;
+    activeFormats.size > 0 ||
+    yearFrom !== "" ||
+    yearTo !== "";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -209,6 +259,33 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
                 onChange={() => toggleFormat(f)}
               />
             ))}
+          </FilterGroup>
+
+          <FilterGroup title="Năm">
+            <div className="flex items-center gap-2 ml-5">
+              <input
+                type="number"
+                inputMode="numeric"
+                placeholder="từ"
+                value={yearFrom}
+                onChange={(e) => setYearFrom(e.target.value)}
+                className="w-16 px-1.5 py-1 text-xs border border-hf-border rounded bg-white text-hf-text"
+              />
+              <span className="text-xs text-hf-text-faint">–</span>
+              <input
+                type="number"
+                inputMode="numeric"
+                placeholder="đến"
+                value={yearTo}
+                onChange={(e) => setYearTo(e.target.value)}
+                className="w-16 px-1.5 py-1 text-xs border border-hf-border rounded bg-white text-hf-text"
+              />
+            </div>
+            {(yearFrom !== "" || yearTo !== "") && (
+              <p className="text-[11px] text-hf-text-faint mt-1.5 ml-5 leading-snug">
+                Chỉ hiện dataset đã biết phạm vi thời gian.
+              </p>
+            )}
           </FilterGroup>
 
           <FilterGroup title="Tags">
