@@ -26,47 +26,55 @@ files:
     r2_key: "7c82c2a1-15a7-4270-bc7d-6118a24f6076/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-4.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2019
         max: 2024
-        histogram: [14, 14, 0, 0, 0, 0, 14, 14]
-      "Trị giá (Nghìn đồng)":
+        histogram: [ 14, 14, 0, 0, 0, 0, 14, 14 ]
+      Trị giá (Nghìn đồng):
         kind: numeric
         min: 915.6
         max: 8316.3
-        histogram: [4, 8, 18, 8, 6, 1, 2, 3]
-      "Mục đích":
+        histogram: [ 4, 8, 18, 8, 6, 1, 2, 3 ]
+      Mục đích:
         kind: categorical
         distinct: 14
         segments:
-          - label: "Phân theo phương tiện"
+          - label: Phân theo phương tiện
             count: 4
-          - label: "Máy bay"
+          - label: Máy bay
             count: 4
-          - label: "Ô tô"
+          - label: Ô tô
             count: 4
-          - label: "Tàu thuỷ"
+          - label: Tàu thuỷ
             count: 4
-          - label: "Tàu hỏa"
+          - label: Tàu hỏa
             count: 4
-          - label: "Phương tiện khác"
+          - label: Phương tiện khác
             count: 4
-          - label: "Phân theo mục đích"
+          - label: Phân theo mục đích
             count: 4
-          - label: "Du lịch, nghỉ ngơi"
+          - label: Du lịch, nghỉ ngơi
             count: 4
-          - label: "Thông tin báo chí (*)"
+          - label: Thông tin báo chí (*)
             count: 4
-          - label: "Hội nghị, hội thảo (*)"
+          - label: Hội nghị, hội thảo (*)
             count: 4
-          - label: "Thăm họ hàng, bạn bè"
+          - label: Thăm họ hàng, bạn bè
             count: 4
-          - label: "Thương mại"
+          - label: Thương mại
             count: 4
-      "Ghi chú":
+          - label: Chữa bệnh
+            count: 4
+          - label: Các mục đích khác
+            count: 4
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 14
+        complete: true
+coverage:
+  temporal: [ 2019, 2024 ]
