@@ -26,47 +26,99 @@ files:
     r2_key: "d7df900d-577c-4354-8ea3-8570e9ce8dce/chi-so-san-xuat-cong-nghiep-phan-theo-nganh-cong-nghiep.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [72, 36, 72, 36, 72, 36, 72, 72]
-      "Chỉ số sản xuất công nghiệp":
+        histogram: [ 72, 36, 72, 36, 72, 36, 72, 72 ]
+      Chỉ số sản xuất công nghiệp:
         kind: numeric
         min: 66.03
         max: 171.4
-        histogram: [2, 16, 160, 225, 19, 3, 1, 2]
-      "Ngành công nghiệp":
+        histogram: [ 2, 16, 160, 225, 19, 3, 1, 2 ]
+      Ngành công nghiệp:
         kind: categorical
         distinct: 36
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 13
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 13
-          - label: "Khai thác than cứng và than non"
+          - label: Khai thác than cứng và than non
             count: 13
-          - label: "Khai thác dầu thô và khí đốt tự nhiên"
+          - label: Khai thác dầu thô và khí đốt tự nhiên
             count: 13
-          - label: "Khai thác quặng kim loại"
+          - label: Khai thác quặng kim loại
             count: 13
-          - label: "Khai khoáng khác"
+          - label: Khai khoáng khác
             count: 13
-          - label: "Hoạt động dịch vụ hỗ trợ khai thác mỏ và quặng"
+          - label: Hoạt động dịch vụ hỗ trợ khai thác mỏ và quặng
             count: 13
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 13
-          - label: "Sản xuất, chế biến thực phẩm"
+          - label: Sản xuất, chế biến thực phẩm
             count: 13
-          - label: "Sản xuất đồ uống"
+          - label: Sản xuất đồ uống
             count: 13
-          - label: "Sản xuất sản phẩm thuốc lá"
+          - label: Sản xuất sản phẩm thuốc lá
             count: 13
-          - label: "Dệt"
+          - label: Dệt
             count: 13
-      "Ghi chú":
+          - label: Sản xuất trang phục
+            count: 13
+          - label: Sản xuất da và các sản phẩm có liên quan
+            count: 13
+          - label: Chế biến gỗ và sản xuất sản phẩm từ gỗ, tre, nứa (trừ giường, tủ, bàn ghế); sản xuất sản phẩm từ rơm, rạ và vật liệu tết bện
+            count: 13
+          - label: Sản xuất giấy và sản phẩm từ giấy
+            count: 13
+          - label: In, sao chép bản ghi các loại
+            count: 13
+          - label: Sản xuất than cốc, sản phẩm dầu mỏ tinh chế
+            count: 13
+          - label: Sản xuất hoá chất và sản phẩm hoá chất
+            count: 13
+          - label: Sản xuất thuốc, hoá dược và dược liệu
+            count: 13
+          - label: Sản xuất sản phẩm từ cao su và plastic
+            count: 13
+          - label: Sản xuất sản phẩm từ khoáng phi kim loại khác
+            count: 13
+          - label: Sản xuất kim loại
+            count: 13
+          - label: Sản xuất sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)
+            count: 13
+          - label: Sản xuất sản phẩm điện tử, máy vi tính và sản phẩm quang học
+            count: 13
+          - label: Sản xuất thiết bị điện
+            count: 13
+          - label: Sản xuất máy móc, thiết bị chưa được phân vào đâu
+            count: 13
+          - label: Sản xuất xe có động cơ, rơ moóc
+            count: 13
+          - label: Sản xuất phương tiện vận tải khác
+            count: 13
+          - label: Sản xuất giường, tủ, bàn, ghế
+            count: 13
+          - label: Công nghiệp chế biến, chế tạo khác
+            count: 13
+          - label: Sửa chữa, bảo dưỡng và lắp đặt máy móc, thiết bị
+            count: 13
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí
+            count: 13
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
+            count: 13
+          - label: Khai thác, xử lý và cung cấp nước
+            count: 13
+          - label: Hoạt động thu gom, xử lý và tiêu huỷ rác thải; tái chế phế liệu
+            count: 13
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 36
+        complete: true
+coverage:
+  temporal: [ 2012, 2024 ]
