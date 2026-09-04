@@ -28,46 +28,63 @@ files:
     r2_key: "8299b820-c7a0-45d6-bd4a-ce466cfe3ea5/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-khu-vuc-t-2.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2022
         max: 2023
-        histogram: [228, 0, 0, 0, 0, 0, 0, 228]
-      "Tháng":
+        histogram: [ 228, 0, 0, 0, 0, 0, 0, 228 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [76, 38, 76, 38, 38, 76, 38, 76]
-      "Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ khu vực thành thị các tháng so với kỳ gốc 2019":
+        histogram: [ 76, 38, 76, 38, 38, 76, 38, 76 ]
+      Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ khu vực thành thị các tháng so với kỳ gốc 2019:
         kind: numeric
         min: 95.05
         max: 164.87
-        histogram: [99, 203, 114, 12, 4, 10, 12, 2]
-      "Nhóm hàng":
+        histogram: [ 99, 203, 114, 12, 4, 10, 12, 2 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 19
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 24
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 24
-          - label: "Lương thực"
+          - label: Lương thực
             count: 24
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 24
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 24
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 24
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 24
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 24
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 24
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 24
           - label: "Trong đó: Dịch vụ y tế"
             count: 24
-          - label: "Giao thông"
+          - label: Giao thông
             count: 24
+          - label: Bưu chính viễn thông
+            count: 24
+          - label: Giáo dục
+            count: 24
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 24
+          - label: Văn hóa, giải trí và du lịch
+            count: 24
+          - label: Hàng hoá và dịch vụ khác
+            count: 24
+          - label: Chỉ số giá vàng
+            count: 24
+          - label: Chỉ số đô la Mỹ
+            count: 24
+        complete: true
+coverage:
+  temporal: [ 2022, 2023 ]
