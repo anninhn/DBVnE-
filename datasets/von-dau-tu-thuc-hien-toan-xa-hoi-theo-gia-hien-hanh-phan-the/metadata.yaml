@@ -26,37 +26,41 @@ files:
     r2_key: "29037038-0767-44d9-bc4c-95fa6d7134ac/von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-hien-hanh-phan-the.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [14, 14, 14, 7, 14, 14, 14, 14]
-      "Vốn đầu tư thực hiện toàn xã hội":
+        histogram: [ 14, 14, 14, 7, 14, 14, 14, 14 ]
+      Vốn đầu tư thực hiện toàn xã hội:
         kind: numeric
         min: 16849
         max: 3692124
-        histogram: [54, 9, 8, 4, 5, 5, 3, 2]
-      "Phân tổ":
+        histogram: [ 54, 9, 8, 4, 5, 5, 3, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 7
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 15
-          - label: "Vốn đầu tư xây dựng cơ bản"
+          - label: Vốn đầu tư xây dựng cơ bản
             count: 15
-          - label: "Vốn mua sắm tài sản cố định dùng cho sản xuất"
+          - label: Vốn mua sắm tài sản cố định dùng cho sản xuất
             count: 15
-          - label: "Vốn sửa chữa, nâng cấp tài sản cố định"
+          - label: Vốn sửa chữa, nâng cấp tài sản cố định
             count: 15
-          - label: "Vốn bổ sung cho vốn lưu động bằng nguồn vốn tự có"
+          - label: Vốn bổ sung cho vốn lưu động bằng nguồn vốn tự có
             count: 15
-          - label: "Vốn đầu tư khác"
+          - label: Vốn đầu tư khác
             count: 15
           - label: "Đơn vị: Tỷ đồng"
             count: 15
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 7
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
