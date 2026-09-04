@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no",
+    "title": "Tỷ lệ hộ gia đình có kết nối internet phân theo thành thị, nông thôn, giới tính và vùng kinh tế - xã hội",
+    "description": "Dataset thể hiện tỷ lệ phần trăm hộ gia đình có kết nối internet, được phân loại theo các tiêu chí như thành thị/nông thôn, giới tính và các vùng kinh tế - xã hội của Việt Nam.",
+    "category": "xa-hoi",
+    "tags": [
+      "internet",
+      "ho-gia-dinh",
+      "ket-noi",
+      "xa-hoi",
+      "vung-mien"
+    ],
+    "uploaded_at": "2026-09-04T08:00:05.130Z",
+    "uploaded_by": "ninh",
+    "row_count": 11,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d5ff04f9-6b7b-4dc8-9ead-b04bd4d81ce1/ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-chi-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
     "title": "Tỷ lệ chi ngân sách nhà nước so với tổng sản phẩm trong nước (GDP)",
     "description": "Dataset này trình bày tỷ lệ phần trăm của các loại chi ngân sách nhà nước so với Tổng sản phẩm trong nước (GDP) của Việt Nam từ năm 2018 đến 2024. Dữ liệu bao gồm các khoản chi tổng thể và chi tiết theo từng lĩnh vực như đầu tư phát triển, giáo dục, y tế, khoa học công nghệ, an sinh xã hội, v.v. Một số dữ liệu trong năm gần nhất là ước tính.",
