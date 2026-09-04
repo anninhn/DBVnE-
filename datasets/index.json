@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the",
+    "title": "Tỷ lệ người dân Việt Nam có kỹ năng công nghệ thông tin theo các phân tổ",
+    "description": "Dataset thống kê tỷ lệ người dân Việt Nam có kỹ năng về công nghệ thông tin, được phân loại theo các tiêu chí như giới tính, khu vực sống (thành thị/nông thôn), nhóm tuổi, cấp độ kỹ năng và vùng kinh tế - xã hội.",
+    "category": "xa-hoi",
+    "tags": [
+      "cong-nghe-thong-tin",
+      "ky-nang-so",
+      "dan-so",
+      "gioi-tinh",
+      "vung-mien",
+      "tuoi"
+    ],
+    "uploaded_at": "2026-09-04T08:00:42.173Z",
+    "uploaded_by": "ninh",
+    "row_count": 25,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "14f2c8e7-e3fa-4a12-a38b-11df9e6c580b/ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no",
     "title": "Tỷ lệ hộ gia đình có kết nối internet phân theo thành thị, nông thôn, giới tính và vùng kinh tế - xã hội",
     "description": "Dataset thể hiện tỷ lệ phần trăm hộ gia đình có kết nối internet, được phân loại theo các tiêu chí như thành thị/nông thôn, giới tính và các vùng kinh tế - xã hội của Việt Nam.",
