@@ -26,47 +26,67 @@ files:
     r2_key: "781b243f-6887-4bca-a463-ae35baaef39a/von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-theo-gia-s.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [40, 40, 40, 20, 40, 40, 40, 40]
-      "Vốn đầu tư thực hiện của khu vực kinh tế Nhà nước":
+        histogram: [ 40, 40, 40, 20, 40, 40, 40, 40 ]
+      Vốn đầu tư thực hiện của khu vực kinh tế Nhà nước:
         kind: numeric
         min: 1.194
         max: 649.126
-        histogram: [274, 8, 1, 3, 3, 6, 3, 2]
-      "Ngành kinh tế":
+        histogram: [ 274, 8, 1, 3, 3, 6, 3, 2 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 20
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 15
-          - label: "Nông nghiệp, lâm nghiệp và thủy sản"
+          - label: Nông nghiệp, lâm nghiệp và thủy sản
             count: 15
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 15
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 15
-          - label: "Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí"
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí
             count: 15
-          - label: "Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
             count: 15
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 15
-          - label: "Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 15
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 15
-          - label: "Dịch vụ lưu trú và ăn uống"
+          - label: Dịch vụ lưu trú và ăn uống
             count: 15
-          - label: "Thông tin và truyền thông"
+          - label: Thông tin và truyền thông
             count: 15
-          - label: "Hoạt động tài chính, ngân hàng và bảo hiểm"
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
             count: 15
-      "Ghi chú":
+          - label: Hoạt động kinh doanh bất động sản
+            count: 15
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 15
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 15
+          - label: Hoạt động của Đảng Cộng sản, tổ chức chính trị - xã hội; quản lý Nhà nước, an ninh quốc phòng; đảm bảo xã hội bắt buộc
+            count: 15
+          - label: Giáo dục và đào tạo
+            count: 15
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 15
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 15
+          - label: Hoạt động khác
+            count: 15
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 20
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
