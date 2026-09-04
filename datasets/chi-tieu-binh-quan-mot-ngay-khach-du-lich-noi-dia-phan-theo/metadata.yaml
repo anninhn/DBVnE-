@@ -27,47 +27,51 @@ files:
     r2_key: "3b71710f-77b4-4adf-a0e0-263587cc6480/chi-tieu-binh-quan-mot-ngay-khach-du-lich-noi-dia-phan-theo.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [12, 12, 12, 12, 0, 24, 12, 24]
-      "Chi tiêu bình quân một ngày khách du lịch nội địa":
+        histogram: [ 12, 12, 12, 12, 0, 24, 12, 24 ]
+      Chi tiêu bình quân một ngày khách du lịch nội địa:
         kind: numeric
         min: 235.7
         max: 6224.6
-        histogram: [35, 43, 8, 9, 6, 4, 2, 1]
-      "Loại cơ sở lưu trú":
+        histogram: [ 35, 43, 8, 9, 6, 4, 2, 1 ]
+      Loại cơ sở lưu trú:
         kind: categorical
         distinct: 12
         segments:
-          - label: "BÌNH QUÂN CHUNG"
+          - label: BÌNH QUÂN CHUNG
             count: 9
-          - label: "Khách sạn 1 sao"
+          - label: Khách sạn 1 sao
             count: 9
-          - label: "Khách sạn 2 sao"
+          - label: Khách sạn 2 sao
             count: 9
-          - label: "Khách sạn 3 sao"
+          - label: Khách sạn 3 sao
             count: 9
-          - label: "Khách sạn 4 sao"
+          - label: Khách sạn 4 sao
             count: 9
-          - label: "Khách sạn 5 sao"
+          - label: Khách sạn 5 sao
             count: 9
-          - label: "Khách sạn chưa xếp sao"
+          - label: Khách sạn chưa xếp sao
             count: 9
-          - label: "Nhà nghỉ, nhà khách"
+          - label: Nhà nghỉ, nhà khách
             count: 9
-          - label: "Biệt thự kinh doanh du lịch"
+          - label: Biệt thự kinh doanh du lịch
             count: 9
-          - label: "Làng du lịch"
+          - label: Làng du lịch
             count: 9
-          - label: "Căn hộ kinh doanh du lịch"
+          - label: Căn hộ kinh doanh du lịch
             count: 9
-          - label: "Khác"
+          - label: Khác
             count: 9
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 12
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
