@@ -26,31 +26,35 @@ files:
     r2_key: "949d6f9b-3e18-42e1-8716-71b053e6dfdb/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-khu-vu.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [8, 8, 8, 4, 8, 8, 8, 8]
-      "Tổng số (%)":
+        histogram: [ 8, 8, 8, 4, 8, 8, 8, 8 ]
+      Tổng số (%):
         kind: numeric
         min: 0.43
         max: 6.04
-        histogram: [11, 19, 8, 6, 7, 6, 2, 1]
-      "Khu vực kinh tế":
+        histogram: [ 11, 19, 8, 6, 7, 6, 2, 1 ]
+      Khu vực kinh tế:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 15
-          - label: "Nông, lâm nghiệp và thủy sản"
+          - label: Nông, lâm nghiệp và thủy sản
             count: 15
-          - label: "Công nghiệp - Xây dựng"
+          - label: Công nghiệp - Xây dựng
             count: 15
-          - label: "Dịch vụ"
+          - label: Dịch vụ
             count: 15
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
