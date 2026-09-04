@@ -26,43 +26,47 @@ files:
     r2_key: "f194d2c8-9b17-4c67-acd2-ae1c2498d510/doanh-thu-ban-le-hang-hoa-phan-theo-nhom-hang.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2020
         max: 2024
-        histogram: [10, 0, 10, 0, 10, 0, 10, 10]
-      "Doanh thu (Tỷ đồng )":
+        histogram: [ 10, 0, 10, 0, 10, 0, 10, 10 ]
+      Doanh thu (Tỷ đồng ):
         kind: numeric
         min: 43433
         max: 4928680.94
-        histogram: [39, 2, 4, 0, 0, 1, 2, 2]
-      "Nhóm hàng":
+        histogram: [ 39, 2, 4, 0, 0, 1, 2, 2 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 10
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 5
-          - label: "Lương thực, thực phẩm"
+          - label: Lương thực, thực phẩm
             count: 5
-          - label: "Hàng may mặc, giầy dép"
+          - label: Hàng may mặc, giầy dép
             count: 5
-          - label: "Đồ dùng, dụng cụ trang thiết bị gia đình"
+          - label: Đồ dùng, dụng cụ trang thiết bị gia đình
             count: 5
-          - label: "Vật phẩm, văn hóa, giáo dục"
+          - label: Vật phẩm, văn hóa, giáo dục
             count: 5
-          - label: "Gỗ và vật liệu xây dựng"
+          - label: Gỗ và vật liệu xây dựng
             count: 5
-          - label: "Ô tô các loại và phương tiện đi lại (kể cả phụ tùng)"
+          - label: Ô tô các loại và phương tiện đi lại (kể cả phụ tùng)
             count: 5
-          - label: "Xăng dầu các loại và nhiên liệu khác"
+          - label: Xăng dầu các loại và nhiên liệu khác
             count: 5
-          - label: "Sửa chữa ô tô, xe máy và xe có động cơ khác"
+          - label: Sửa chữa ô tô, xe máy và xe có động cơ khác
             count: 5
-          - label: "Hàng hóa khác"
+          - label: Hàng hóa khác
             count: 5
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2020, 2024 ]
