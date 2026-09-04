@@ -27,38 +27,42 @@ files:
     r2_key: "fd65b63b-ad38-4ec2-a5ac-6cd46c8a8e94/so-luot-hanh-khach-van-chuyen-phan-theo-nganh-van-tai.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [20, 20, 15, 20, 20, 15, 20, 20]
-      "Lượt hành khách (Triệu lượt người)":
+        histogram: [ 20, 20, 15, 20, 20, 15, 20, 20 ]
+      Lượt hành khách (Triệu lượt người):
         kind: numeric
         min: 1.38
         max: 5481.85
-        histogram: [100, 13, 7, 9, 7, 7, 4, 3]
-      "Chỉ số phát triển (Năm trước =100) (%)":
+        histogram: [ 100, 13, 7, 9, 7, 7, 4, 3 ]
+      Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 37.36
         max: 379.7
-        histogram: [9, 123, 14, 1, 0, 0, 2, 1]
-      "Ngành":
+        histogram: [ 9, 123, 14, 1, 0, 0, 2, 1 ]
+      Ngành:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 30
-          - label: "Đường sắt"
+          - label: Đường sắt
             count: 30
-          - label: "Đường bộ"
+          - label: Đường bộ
             count: 30
-          - label: "Đường sông"
+          - label: Đường sông
             count: 30
-          - label: "Đường hàng không"
+          - label: Đường hàng không
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
