@@ -28,47 +28,59 @@ files:
     r2_key: "21649215-173c-4c34-ad5e-79f319fc7ce2/mot-so-chi-tieu-chu-yeu-ve-tai-khoan-quoc-gia.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [48, 0, 0, 48, 48, 48, 48, 64]
-      "Một số chỉ tiêu chủ yếu về tài khoản quốc gia":
+        histogram: [ 48, 0, 0, 48, 48, 48, 48, 64 ]
+      Một số chỉ tiêu chủ yếu về tài khoản quốc gia:
         kind: numeric
         min: 2.6
         max: 11510328.9
-        histogram: [193, 24, 26, 20, 14, 9, 7, 4]
-      "Chỉ tiêu":
+        histogram: [ 193, 24, 26, 20, 14, 9, 7, 4 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Tổng sản phẩm trong nước theo giá hiện hành - Tỷ đồng"
+          - label: Tổng sản phẩm trong nước theo giá hiện hành - Tỷ đồng
             count: 19
-          - label: "Tổng sản phẩm trong nước bình quân đầu người theo giá hiện hành - Nội tệ - Triệu đồng"
+          - label: Tổng sản phẩm trong nước bình quân đầu người theo giá hiện hành - Nội tệ - Triệu đồng
             count: 19
-          - label: "Tổng sản phẩm trong nước bình quân đầu người theo giá hiện hành - Ngoại tệ (theo tỷ giá TTBQ liên NH) - USD"
+          - label: Tổng sản phẩm trong nước bình quân đầu người theo giá hiện hành - Ngoại tệ (theo tỷ giá TTBQ liên NH) - USD
             count: 19
-          - label: "Tích luỹ tài sản theo giá hiện hành - Tỷ đồng"
+          - label: Tích luỹ tài sản theo giá hiện hành - Tỷ đồng
             count: 19
-          - label: "Tiêu dùng cuối cùng theo giá hiện hành - Tỷ đồng"
+          - label: Tiêu dùng cuối cùng theo giá hiện hành - Tỷ đồng
             count: 19
-          - label: "Xuất khẩu hàng hoá và dịch vụ theo giá hiện hành - Tỷ đồng"
+          - label: Xuất khẩu hàng hoá và dịch vụ theo giá hiện hành - Tỷ đồng
             count: 19
-          - label: "Nhập khẩu hàng hoá và dịch vụ theo giá hiện hành - Tỷ đồng"
+          - label: Nhập khẩu hàng hoá và dịch vụ theo giá hiện hành - Tỷ đồng
             count: 19
-          - label: "Tổng thu nhập quốc gia theo giá hiện hành - Tỷ đồng"
+          - label: Tổng thu nhập quốc gia theo giá hiện hành - Tỷ đồng
             count: 19
-          - label: "Tổng sản phẩm trong nước theo giá so sánh 2010 - Tỷ đồng"
+          - label: Tổng sản phẩm trong nước theo giá so sánh 2010 - Tỷ đồng
             count: 19
-          - label: "Tốc độ tăng tổng sản phẩm trong nước theo giá so sánh 2010 (Năm trước = 100) - %"
+          - label: Tốc độ tăng tổng sản phẩm trong nước theo giá so sánh 2010 (Năm trước = 100) - %
             count: 19
-          - label: "Tích luỹ tài sản so với GDP (Giá hiện hành) - %"
+          - label: Tích luỹ tài sản so với GDP (Giá hiện hành) - %
             count: 19
-          - label: "Tài sản cố định so với GDP (Giá hiện hành) - %"
+          - label: Tài sản cố định so với GDP (Giá hiện hành) - %
             count: 19
-      "Ghi chú":
+          - label: Tiêu dùng cuối cùng so với GDP (Giá hiện hành) - %
+            count: 19
+          - label: Xuất khẩu hàng hoá và dịch vụ so với GDP (Giá hiện hành) - %
+            count: 19
+          - label: Nhập khẩu hàng hoá và dịch vụ so với GDP (Giá hiện hành) - %
+            count: 19
+          - label: Tổng thu nhập quốc gia so với GDP (Giá hiện hành) - %
+            count: 19
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 16
+        complete: true
+coverage:
+  temporal: [ 2000, 2024 ]
