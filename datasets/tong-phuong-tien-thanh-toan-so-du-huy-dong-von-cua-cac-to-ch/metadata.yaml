@@ -28,57 +28,77 @@ files:
     r2_key: "e11b336f-f0e7-477a-a5f5-aac3724eb481/tong-phuong-tien-thanh-toan-so-du-huy-dong-von-cua-cac-to-ch.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [40, 20, 20, 20, 20, 20, 20, 40]
-      "Trị giá (Nghìn tỷ đồng)":
+        histogram: [ 40, 20, 20, 20, 20, 20, 20, 40 ]
+      Trị giá (Nghìn tỷ đồng):
         kind: numeric
         min: 0
         max: 17914.6
-        histogram: [100, 13, 19, 8, 7, 5, 3, 3]
-      "Tốc độ tăng so với 31 tháng 12 năm trước (%)":
+        histogram: [ 100, 13, 19, 8, 7, 5, 3, 3 ]
+      Tốc độ tăng so với 31 tháng 12 năm trước (%):
         kind: numeric
         min: -75.8
         max: 104.6
-        histogram: [2, 3, 7, 80, 53, 8, 2, 3]
-      "Tỷ lệ tổng phương tiện thanh toán so với GDP (%)":
+        histogram: [ 2, 3, 7, 80, 53, 8, 2, 3 ]
+      Tỷ lệ tổng phương tiện thanh toán so với GDP (%):
         kind: numeric
         min: 147.9
         max: 157.9
-        histogram: [1, 0, 1, 0, 0, 1, 1, 1]
-      "Chỉ tiêu chủ yếu":
+        histogram: [ 1, 0, 1, 0, 0, 1, 1, 1 ]
+      Chỉ tiêu chủ yếu:
         kind: categorical
         distinct: 20
         segments:
-          - label: "Số dư"
+          - label: Số dư
             count: 10
-          - label: "Tiền mặt lưu thông ngoài hệ thống ngân hàng"
+          - label: Tiền mặt lưu thông ngoài hệ thống ngân hàng
             count: 10
-          - label: "Số dư huy động vốn của các tổ chức tín dụng, chi nhánh ngân hàng nước ngoài tại thời điểm 31/12 hàng năm"
+          - label: Số dư huy động vốn của các tổ chức tín dụng, chi nhánh ngân hàng nước ngoài tại thời điểm 31/12 hàng năm
             count: 10
-          - label: "Tiền gửi bằng đồng Việt Nam"
+          - label: Tiền gửi bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi của các tổ chức kinh tế bằng đồng Việt Nam"
+          - label: Tiền gửi của các tổ chức kinh tế bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi của các tổ chức kinh tế không kỳ hạn bằng đồng Việt Nam"
+          - label: Tiền gửi của các tổ chức kinh tế không kỳ hạn bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi của các tổ chức kinh tế có kỳ hạn bằng đồng Việt Nam"
+          - label: Tiền gửi của các tổ chức kinh tế có kỳ hạn bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi tiết kiệm của dân cư bằng đồng Việt Nam"
+          - label: Tiền gửi tiết kiệm của dân cư bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi tiết kiệm của dân cư không kỳ hạn bằng đồng Việt Nam"
+          - label: Tiền gửi tiết kiệm của dân cư không kỳ hạn bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi tiết kiệm của dân cư có kỳ hạn bằng đồng Việt Nam"
+          - label: Tiền gửi tiết kiệm của dân cư có kỳ hạn bằng đồng Việt Nam
             count: 10
-          - label: "Tiền gửi bằng ngoại tệ"
+          - label: Tiền gửi bằng ngoại tệ
             count: 10
-          - label: "Tiền gửi của các tổ chức kinh tế bằng ngoại tệ"
+          - label: Tiền gửi của các tổ chức kinh tế bằng ngoại tệ
             count: 10
-      "Ghi chú":
+          - label: Tiền gửi của các tổ chức kinh tế không kỳ hạn bằng ngoại tệ
+            count: 10
+          - label: Tiền gửi của các tổ chức kinh tế có kỳ hạn bằng ngoại tệ
+            count: 10
+          - label: Tiền gửi tiết kiệm của dân cư bằng ngoại tệ
+            count: 10
+          - label: Tiền gửi tiết kiệm của dân cư không kỳ hạn bằng ngoại tệ
+            count: 10
+          - label: Tiền gửi tiết kiệm của dân cư có kỳ hạn bằng ngoại tệ
+            count: 10
+          - label: Phát hành giấy tờ có giá
+            count: 10
+          - label: Phát hành giấy tờ có giá bằng đồng Việt Nam
+            count: 10
+          - label: Phát hành giấy tờ có giá bằng ngoại tệ và vàng
+            count: 10
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 20
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
