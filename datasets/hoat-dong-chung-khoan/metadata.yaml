@@ -27,38 +27,40 @@ files:
     r2_key: "6884bfa1-43b0-4ccb-bf57-7cd7344dffb8/hoat-dong-chung-khoan.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [1, 1, 1, 0, 1, 1, 1, 1]
-      "Giá trị vốn hóa thị trường cổ phiếu (Tỷ đồng)":
+        histogram: [ 1, 1, 1, 0, 1, 1, 1, 1 ]
+      Giá trị vốn hóa thị trường cổ phiếu (Tỷ đồng):
         kind: numeric
         min: 3961457
         max: 7766606.6
-        histogram: [2, 0, 2, 0, 1, 0, 1, 1]
-      "Tốc độ tăng giá trị vốn hóa thị trường cổ phiếu (%)":
+        histogram: [ 2, 0, 2, 0, 1, 0, 1, 1 ]
+      Tốc độ tăng giá trị vốn hóa thị trường cổ phiếu (%):
         kind: numeric
         min: -32.7
         max: 46.7
-        histogram: [1, 0, 0, 0, 3, 2, 0, 1]
-      "Tỷ lệ vốn hóa thị trường cổ phiếu so với tổng sản phẩm trong nước (%)":
+        histogram: [ 1, 0, 0, 0, 3, 2, 0, 1 ]
+      Tỷ lệ vốn hóa thị trường cổ phiếu so với tổng sản phẩm trong nước (%):
         kind: numeric
         min: 54.3
         max: 91.5
-        histogram: [4, 1, 1, 0, 0, 0, 0, 1]
-      "Quy mô thị trường trái phiếu (Tỷ đồng)":
+        histogram: [ 4, 1, 1, 0, 0, 0, 0, 1 ]
+      Quy mô thị trường trái phiếu (Tỷ đồng):
         kind: numeric
         min: 1121307
         max: 2309558.7
-        histogram: [2, 1, 1, 0, 1, 0, 1, 1]
-      "Quy mô thị trường trái phiếu so với tổng sản phẩm trong nước (%)":
+        histogram: [ 2, 1, 1, 0, 1, 0, 1, 1 ]
+      Quy mô thị trường trái phiếu so với tổng sản phẩm trong nước (%):
         kind: numeric
         min: 15.4
         max: 20.1
-        histogram: [1, 1, 0, 1, 2, 0, 0, 2]
-      "Tốc độ tăng quy mô thị trường trái phiếu (%)":
+        histogram: [ 1, 1, 0, 1, 2, 0, 0, 2 ]
+      Tốc độ tăng quy mô thị trường trái phiếu (%):
         kind: numeric
         min: 6
         max: 16.5
-        histogram: [1, 0, 0, 1, 1, 2, 0, 2]
+        histogram: [ 1, 0, 0, 1, 1, 2, 0, 2 ]
+coverage:
+  temporal: [ 2018, 2024 ]
