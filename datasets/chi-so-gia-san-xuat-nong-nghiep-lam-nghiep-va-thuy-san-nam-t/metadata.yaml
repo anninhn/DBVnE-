@@ -27,41 +27,48 @@ files:
     r2_key: "1fa302bc-d2cf-4975-ad70-6237f0df386a/chi-so-gia-san-xuat-nong-nghiep-lam-nghiep-va-thuy-san-nam-t.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [14, 14, 42, 28, 28, 42, 28, 42]
-      "Chỉ số giá sản xuất nông nghiệp, lâm nghiệp và thuỷ sản (Năm trước = 100)":
+        histogram: [ 14, 14, 42, 28, 28, 42, 28, 42 ]
+      Chỉ số giá sản xuất nông nghiệp, lâm nghiệp và thuỷ sản (Năm trước = 100):
         kind: numeric
         min: 82.69
         max: 151.18
-        histogram: [2, 28, 145, 38, 3, 9, 2, 1]
-      "Ngành":
+        histogram: [ 2, 28, 145, 38, 3, 9, 2, 1 ]
+      Ngành:
         kind: categorical
         distinct: 14
         segments:
-          - label: "CHỈ SỐ CHUNG"
+          - label: CHỈ SỐ CHUNG
             count: 17
-          - label: "Nông nghiệp và dịch vụ có liên quan"
+          - label: Nông nghiệp và dịch vụ có liên quan
             count: 17
-          - label: "Sản phẩm từ cây hàng năm"
+          - label: Sản phẩm từ cây hàng năm
             count: 17
-          - label: "Sản phẩm từ cây lâu năm"
+          - label: Sản phẩm từ cây lâu năm
             count: 17
-          - label: "Sản phẩm từ chăn nuôi"
+          - label: Sản phẩm từ chăn nuôi
             count: 17
-          - label: "Dịch vụ nông nghiệp"
+          - label: Dịch vụ nông nghiệp
             count: 17
-          - label: "Lâm nghiệp và dịch vụ có liên quan"
+          - label: Lâm nghiệp và dịch vụ có liên quan
             count: 17
-          - label: "Trồng rừng và chăm sóc rừng"
+          - label: Trồng rừng và chăm sóc rừng
             count: 17
-          - label: "Lâm sản khai thác"
+          - label: Lâm sản khai thác
             count: 17
-          - label: "Lâm sản thu nhặt"
+          - label: Lâm sản thu nhặt
             count: 17
-          - label: "Dịch vụ lâm nghiệp"
+          - label: Dịch vụ lâm nghiệp
             count: 17
-          - label: "Thủy sản khai thác, nuôi trồng"
+          - label: Thủy sản khai thác, nuôi trồng
             count: 17
+          - label: Thủy sản khai thác
+            count: 17
+          - label: Thủy sản nuôi trồng
+            count: 17
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
