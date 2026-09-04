@@ -1,5 +1,36 @@
 [
   {
+    "slug": "chi-ngan-sach-nha-nuoc",
+    "title": "Chi ngân sách nhà nước Việt Nam giai đoạn 2005-2024",
+    "description": "Dữ liệu chi ngân sách nhà nước Việt Nam theo các loại chi chính từ năm 2005 đến năm 2024. Bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm của từng loại chi.",
+    "category": "kinh-te",
+    "tags": [
+      "ngan-sach",
+      "chi-ngan-sach",
+      "kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-09-04T07:57:13.422Z",
+    "uploaded_by": "ninh",
+    "row_count": 209,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2005,
+      2024
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "31817765-b931-40e4-aaec-dbe87a28deaf/chi-ngan-sach-nha-nuoc.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "doanh-thu-buu-chinh-chuyen-phat-va-vien-thong",
     "title": "Doanh thu ngành bưu chính, chuyển phát và viễn thông",
     "description": "Dữ liệu thống kê doanh thu và chỉ số phát triển của các ngành bưu chính, chuyển phát và viễn thông tại Việt Nam từ năm 2007 đến 2024.",
