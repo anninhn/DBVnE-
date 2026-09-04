@@ -26,36 +26,40 @@ files:
     r2_key: "e8a66981-079a-4025-bc4a-b28161d92545/tong-muc-luu-chuyen-hang-hoa-xuat-nhap-khau.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [20, 16, 16, 16, 20, 16, 16, 20]
-      "Giá trị (Triệu đô la Mỹ)":
+        histogram: [ 20, 16, 16, 16, 20, 16, 16, 20 ]
+      Giá trị (Triệu đô la Mỹ):
         kind: numeric
         min: -18028.7
         max: 786926
-        histogram: [92, 18, 11, 10, 3, 2, 2, 2]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 92, 18, 11, 10, 3, 2, 2, 2 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 84.9
         max: 154.4
-        histogram: [8, 5, 20, 24, 23, 16, 4, 2]
-      "Xuất, nhập khẩu":
+        histogram: [ 8, 5, 20, 24, 23, 16, 4, 2 ]
+      Xuất, nhập khẩu:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 35
-          - label: "Xuất khẩu"
+          - label: Xuất khẩu
             count: 35
-          - label: "Nhập khẩu"
+          - label: Nhập khẩu
             count: 35
-          - label: "Cân đối (*)"
+          - label: Cân đối (*)
             count: 35
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 1990, 2024 ]
