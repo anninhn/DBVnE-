@@ -26,38 +26,41 @@ files:
     r2_key: "d390a1f8-7277-4857-a666-246aafeb0363/chi-tieu-binh-quan-mot-ngay-cua-khach-quoc-te-den-viet-nam-p.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2019
-        histogram: [8, 0, 8, 8, 8, 0, 8, 8]
-      "Trị giá (Đô la Mỹ)":
+        histogram: [ 8, 0, 8, 8, 8, 0, 8, 8 ]
+      Trị giá (Đô la Mỹ):
         kind: numeric
         min: 0.8
         max: 117.8
-        histogram: [26, 14, 2, 0, 0, 1, 3, 2]
-      "Cơ cấu (%)":
+        histogram: [ 26, 14, 2, 0, 0, 1, 3, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 0.9
         max: 100
-        histogram: [18, 19, 5, 0, 0, 0, 0, 6]
-      "Mục đích":
+        histogram: [ 18, 19, 5, 0, 0, 0, 0, 6 ]
+      Mục đích:
         kind: categorical
         distinct: 8
         segments:
-          - label: "Chi tiêu bình quân 1 ngày"
+          - label: Chi tiêu bình quân 1 ngày
             count: 6
-          - label: "Thuê phòng"
+          - label: Thuê phòng
             count: 6
-          - label: "Ăn uống"
+          - label: Ăn uống
             count: 6
-          - label: "Đi lại tại Việt Nam"
+          - label: Đi lại tại Việt Nam
             count: 6
-          - label: "Thăm quan"
+          - label: Thăm quan
             count: 6
-          - label: "Mua hàng hóa"
+          - label: Mua hàng hóa
             count: 6
-          - label: "Y tế"
+          - label: Y tế
             count: 6
-          - label: "Chi khác"
+          - label: Chi khác
             count: 6
+        complete: true
+coverage:
+  temporal: [ 2005, 2019 ]

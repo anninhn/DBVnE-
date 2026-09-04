@@ -7637,7 +7637,10 @@
     "format": "csv",
     "source": "Cục Thống kê (NSO)",
     "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
+    "year_range": [
+      2005,
+      2019
+    ],
     "resources": [
       {
         "type": "csv",
