@@ -28,41 +28,54 @@ files:
     r2_key: "e3b78657-a02e-49ad-b60a-c6c463a45db0/giao-duc-nghe-nghiep.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2016
         max: 2023
-        histogram: [17, 17, 17, 17, 17, 17, 17, 17]
-      "Giáo dục nghề nghiệp":
+        histogram: [ 17, 17, 17, 17, 17, 17, 17, 17 ]
+      Giáo dục nghề nghiệp:
         kind: numeric
         min: 19.8
         max: 3024
-        histogram: [40, 6, 5, 16, 7, 4, 1, 7]
-      "Chỉ tiêu":
+        histogram: [ 40, 6, 5, 16, 7, 4, 1, 7 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 17
         segments:
-          - label: "Số cơ sở giáo dục nghề nghiệp (Cơ sở)"
+          - label: Số cơ sở giáo dục nghề nghiệp (Cơ sở)
             count: 8
-          - label: "Số cơ sở giáo dục nghề nghiệp - Công lập (Cơ sở)"
+          - label: Số cơ sở giáo dục nghề nghiệp - Công lập (Cơ sở)
             count: 8
-          - label: "Số cơ sở giáo dục nghề nghiệp- Ngoài công lập (Cơ sở)"
+          - label: Số cơ sở giáo dục nghề nghiệp- Ngoài công lập (Cơ sở)
             count: 8
-          - label: "Số giáo viên (Nghìn người)"
+          - label: Số giáo viên (Nghìn người)
             count: 8
-          - label: "Số giáo viên - Công lập (Nghìn người)"
+          - label: Số giáo viên - Công lập (Nghìn người)
             count: 8
-          - label: "Số giáo viên - Ngoài công lập (Nghìn người)"
+          - label: Số giáo viên - Ngoài công lập (Nghìn người)
             count: 8
-          - label: "Số giáo viên - Nam (Nghìn người)"
+          - label: Số giáo viên - Nam (Nghìn người)
             count: 8
-          - label: "Số giáo viên - Nữ (Nghìn người)"
+          - label: Số giáo viên - Nữ (Nghìn người)
             count: 8
-          - label: "Số học sinh, sinh viên tốt nghiệp (Nghìn người)"
+          - label: Số học sinh, sinh viên tốt nghiệp (Nghìn người)
             count: 8
-          - label: "Phân theo loại hình"
+          - label: Phân theo loại hình
             count: 8
-          - label: "Số học sinh, sinh viên tốt nghiệp - Công lập (Nghìn người)"
+          - label: Số học sinh, sinh viên tốt nghiệp - Công lập (Nghìn người)
             count: 8
-          - label: "Số học sinh, sinh viên tốt nghiệp- Ngoài công lập (Nghìn người)"
+          - label: Số học sinh, sinh viên tốt nghiệp- Ngoài công lập (Nghìn người)
             count: 8
+          - label: Phân theo trình độ đào tạo
+            count: 8
+          - label: Số học sinh, sinh viên tốt nghiệp - Dưới 3 tháng (Nghìn người)
+            count: 8
+          - label: Số học sinh, sinh viên tốt nghiệp - Sơ cấp (Nghìn người)
+            count: 8
+          - label: Số học sinh, sinh viên tốt nghiệp - Trung cấp (Nghìn người)
+            count: 8
+          - label: Số học sinh, sinh viên tốt nghiệp - Cao đẳng (Nghìn người)
+            count: 8
+        complete: true
+coverage:
+  temporal: [ 2016, 2023 ]
