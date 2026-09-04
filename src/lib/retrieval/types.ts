@@ -149,10 +149,19 @@ export interface RetrievalIndex {
 }
 
 export interface ValueIndexEntry {
-  normalized: string;
   display: string;
   variants: string[];
-  datasets: { slug: string; column: string }[];
+  /**
+   * Cặp `[chỉ số slug, chỉ số tên cột]` trỏ vào `ValueIndex.slugs` và
+   * `ValueIndex.columns`.
+   *
+   * Không lưu thẳng chuỗi: một tỉnh xuất hiện ở hàng trăm dataset, và cùng một
+   * tên cột (`Tỉnh, thành phố`) lặp ở gần như mọi entry. Đo thực tế trên 495
+   * dataset: lưu thẳng chuỗi ra 2,75 MB, gộp vào bảng chung còn dưới một phần
+   * ba. Ở quy mô vài nghìn dataset mà spec nhắm tới thì đó là khác biệt giữa
+   * một file tải được và một file làm chậm mọi lần khởi động nguội.
+   */
+  refs: [number, number][];
 }
 
 export interface ValueIndex {
@@ -163,6 +172,10 @@ export interface ValueIndex {
    * dataset. Tra bảng này lúc trả kết quả.
    */
   titles: Record<string, string>;
+  /** Bảng slug dùng chung — `refs[0]` là chỉ số vào mảng này */
+  slugs: string[];
+  /** Bảng tên cột dùng chung — `refs[1]` là chỉ số vào mảng này */
+  columns: string[];
   /** Cột bị cắt vì quá nhiều giá trị — nguồn của `partialColumns` */
   partialColumns: { slug: string; column: string }[];
   builtAt: string;

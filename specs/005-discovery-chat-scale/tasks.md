@@ -92,12 +92,12 @@ Sáu task T008–T013 bỏ. Không đánh số lại các task sau để giữ t
 - [x] T016 [US3] Thêm cờ đánh dấu danh sách chưa đủ vào kiểu `ColumnStats` trong `src/lib/types/dataset.ts` (D5 — thiếu cờ này là nguồn của câu trả lời "không có Đà Nẵng" sai)
 - [x] T017 [US3] Sửa `src/lib/dataset-render.ts` để ghi cờ chưa đủ vào `metadata.yaml`
 - [ ] T018 [US3] Viết `tools/backfill-column-values.mjs` — đọc CSV từ R2, tính lại giá trị cột, cập nhật `metadata.yaml`; dry-run mặc định, **không gọi AI** (R10)
-- [~] T019 [US3] Chạy backfill cho 495 dataset đã có, kiểm không dataset nào mất `column_stats` cũ — **đang chạy**, dry-run đã xong (493 đổi / 0 lỗi / 2 bỏ qua)
+- [x] T019 [US3] Chạy backfill cho 495 dataset đã có, kiểm không dataset nào mất `column_stats` cũ — 493 dataset ghi xong, 0 chặn; chạy lại lần hai báo **toàn bộ "không đổi"** (bằng chứng ghi đúng một lần và không mất gì)
 - [x] T020 [US3] Viết `src/lib/retrieval/value-index.ts` — dựng chỉ mục nghịch đảo `giá trị đã chuẩn hoá → {slug, column}[]`, gom các cách viết khác nhau về một entry (R7, FR-057)
 - [x] T021 [US3] Cài `lookupValue` trong `src/lib/retrieval/index.ts` theo `contracts/lookup-value.md`, **phân biệt ba trạng thái** "không có" / "chưa tra hết" / "chưa biết"
 - [x] T022 [US3] Cài `getDataset` trong `src/lib/retrieval/index.ts` theo `contracts/get-dataset.md`, kèm danh sách giá trị cột và cờ `complete`
 - [x] T023 [US3] Sửa `tools/prompts/discovery-chat.md` — thêm quy tắc: dùng danh sách giá trị cột để trả lời câu hỏi theo giá trị, và **cấm** kết luận "không có" khi cờ `complete` là false
-- [ ] T024 [US3] Kiểm theo `quickstart.md` kịch bản 4 — Đà Nẵng có, Cần Thơ không, `Qui Nhơn` tìm ra (SC-008)
+- [x] T024 [US3] Kiểm theo `quickstart.md` kịch bản 4 — Đà Nẵng có, Cần Thơ không, `Qui Nhơn` tìm ra (SC-008). Đã kiểm ở **mức năng lực** qua `GET /api/retrieval/lookup`; bản qua trang hỏi đáp kiểm lại ở Phase 7 khi luồng chat gọi `lookupValue`
 
 **Checkpoint**: US3 ship được độc lập. Danh sách giá trị cột đã sẵn để US1 dùng thay dữ liệu mẫu.
 

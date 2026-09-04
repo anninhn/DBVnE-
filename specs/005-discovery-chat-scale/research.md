@@ -150,8 +150,15 @@ Chuẩn hoá khi dựng chỉ mục xử lý luôn việc cùng một đối tư
 (`Qui Nhơn` / `Quy Nhơn`, `Hà Nội` / `Hà Nội (Láng)`) — FR-057 đòi việc này làm bên
 trong năng lực.
 
-Kích thước: ước lượng vài trăm KB ở 2.000 dataset (giá trị phân loại phần lớn trùng
-nhau giữa các dataset — 63 tỉnh xuất hiện ở hàng trăm dataset nhưng chỉ lưu một lần).
+Kích thước — **đã đo, ước lượng ban đầu sai 10 lần**: dựng thật trên 495 dataset ra
+**2,75 MB**, không phải "vài trăm KB". Chỗ sai của ước lượng: giá trị thì trùng nhau và
+chỉ lưu một lần, nhưng *danh sách dataset chứa nó* thì không — `Đà Nẵng` xuất hiện ở 178
+chỗ, mỗi chỗ lưu cả slug (60 ký tự) và tên cột. Phần đó chiếm gần hết dung lượng.
+
+Sửa bằng cách gộp slug và tên cột vào hai bảng dùng chung, entry chỉ giữ cặp chỉ số →
+**797 KB** cho 495 dataset, tức khoảng **3 MB ở 2.000 dataset**. Vẫn tải được trong một
+lượt và parse dưới 100 ms. Nếu không sửa thì ở quy mô spec nhắm tới nó là ~11 MB, đủ để
+làm chậm mọi lần khởi động nguội.
 
 **Alternatives considered**:
 - Quét `column_stats` của từng dataset lúc hỏi — đúng nhưng phải đọc N metadata

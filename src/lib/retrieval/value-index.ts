@@ -137,35 +137,49 @@ export function buildValueIndex(sources: ValueSource[]): ValueIndex {
   const entries: Record<string, ValueIndexEntry> = {};
   const titles: Record<string, string> = {};
   const partialColumns: { slug: string; column: string }[] = [];
+
+  // Bảng chuỗi dùng chung — xem chú thích `refs` ở `ValueIndexEntry`.
+  const slugs: string[] = [];
+  const columns: string[] = [];
+  const slugIdx = new Map<string, number>();
+  const columnIdx = new Map<string, number>();
+  const intern = (
+    value: string,
+    table: string[],
+    lookup: Map<string, number>,
+  ): number => {
+    const existing = lookup.get(value);
+    if (existing !== undefined) return existing;
+    const i = table.push(value) - 1;
+    lookup.set(value, i);
+    return i;
+  };
+
   // Đếm cách viết để chọn dạng hiển thị: dạng gặp nhiều nhất là dạng người đọc
   // quen mắt nhất, không phải dạng gặp đầu tiên.
   const displayCounts = new Map<string, Map<string, number>>();
 
   for (const src of sources) {
     titles[src.slug] = src.title;
+    const si = intern(src.slug, slugs, slugIdx);
+
     for (const col of src.columns) {
       if (!col.complete) {
         partialColumns.push({ slug: src.slug, column: col.name });
         continue;
       }
-      for (const raw of col.values) {
-        const keys = valueKeys(raw);
-        if (keys.length === 0) continue;
+      const ci = intern(col.name, columns, columnIdx);
 
-        for (const key of keys) {
+      for (const raw of col.values) {
+        for (const key of valueKeys(raw)) {
           const entry = (entries[key] ??= {
-            normalized: key,
             display: raw,
             variants: [],
-            datasets: [],
+            refs: [],
           });
           if (!entry.variants.includes(raw)) entry.variants.push(raw);
-          if (
-            !entry.datasets.some(
-              (d) => d.slug === src.slug && d.column === col.name,
-            )
-          ) {
-            entry.datasets.push({ slug: src.slug, column: col.name });
+          if (!entry.refs.some(([s, c]) => s === si && c === ci)) {
+            entry.refs.push([si, ci]);
           }
 
           const counts = displayCounts.get(key) ?? new Map<string, number>();
@@ -193,6 +207,8 @@ export function buildValueIndex(sources: ValueSource[]): ValueIndex {
   return {
     entries,
     titles,
+    slugs,
+    columns,
     partialColumns,
     builtAt: new Date().toISOString(),
   };
