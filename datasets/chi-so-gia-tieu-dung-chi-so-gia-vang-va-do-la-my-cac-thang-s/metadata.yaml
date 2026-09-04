@@ -28,46 +28,63 @@ files:
     r2_key: "e33bb16c-56a2-4583-98d2-9da597e80928/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-cac-thang-s.csv"
     size_mb: 0.14
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [456, 456, 456, 228, 456, 456, 456, 456]
-      "Tháng":
+        histogram: [ 456, 456, 456, 228, 456, 456, 456, 456 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [570, 285, 570, 285, 285, 570, 285, 570]
-      "Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng so với cùng kỳ năm trước":
+        histogram: [ 570, 285, 570, 285, 285, 570, 285, 570 ]
+      Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng so với cùng kỳ năm trước:
         kind: numeric
         min: 75.57
         max: 162.63
-        histogram: [15, 120, 2304, 421, 88, 49, 14, 13]
-      "Nhóm hàng":
+        histogram: [ 15, 120, 2304, 421, 88, 49, 14, 13 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 19
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 180
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 180
-          - label: "Lương thực"
+          - label: Lương thực
             count: 180
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 180
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 180
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 180
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 180
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 180
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 180
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 180
           - label: "Trong đó: Dịch vụ y tế"
             count: 180
-          - label: "Giao thông"
+          - label: Giao thông
             count: 180
+          - label: Bưu chính viễn thông
+            count: 180
+          - label: Giáo dục
+            count: 180
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 180
+          - label: Văn hóa, giải trí và du lịch
+            count: 180
+          - label: Hàng hoá và dịch vụ khác
+            count: 180
+          - label: Chỉ số giá vàng
+            count: 180
+          - label: Chỉ số đô la Mỹ
+            count: 180
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
