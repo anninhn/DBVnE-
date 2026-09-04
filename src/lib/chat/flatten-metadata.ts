@@ -1,164 +1,88 @@
 /**
- * Flatten metadata + dictionary của tất cả datasets → 1 text block cho LLM context.
+ * Dựng khối mô tả dataset cho model đọc.
  *
- * Discovery Chat (Phase 2 spec 2026-07-24) gửi flatten text cho Gemini cùng câu hỏi
- * của user. LLM đọc metadata + dictionary → trả lời + cite dataset cụ thể.
+ * Trước spec 005, file này nạp **toàn bộ** kho vào mỗi câu hỏi: liệt kê thư mục
+ * `datasets/`, rồi đọc `metadata.yaml` + `dictionary.md` của từng slug — hơn 1.000
+ * lượt gọi GitHub API và ~200.000 token cho một câu hỏi ở 495 dataset. Chi phí đó
+ * tăng tuyến tính theo số dataset, nên nó không phải chuyện tối ưu mà là chuyện hệ
+ * thống ngừng hoạt động ở vài nghìn dataset (US2).
  *
- * Pattern: tái sửing GitHub Contents API fetch (list.ts + read.ts).
- * Output ~300-400 tokens/dataset — fits Gemini 2.5 Flash context (1M tokens/day free tier).
- *
- * In-memory cache 60s để tránh refetch trong burst (nhiều query liên tiếp).
- * Cache invalidate tự động — đủ fresh cho chat, cheap cho R2/GitHub.
+ * Nay chỉ dựng khối cho **danh sách dataset nhận vào** — do `searchDatasets` chọn
+ * ra. Đường nạp toàn bộ đã xoá hẳn, không để lại làm tuỳ chọn: còn để đó thì sớm
+ * muộn có chỗ gọi lại nó.
  */
 
-import { parse as parseYaml } from "yaml";
-import type { MetadataYaml } from "@/lib/datasets/types";
-import {
-  fetchFileContents,
-  listFolderEntries,
-} from "@/lib/github/contents-api";
-import { parseDictionaryMarkdown } from "@/lib/datasets/read";
-import type { DataDictionaryEntry, Dataset } from "@/lib/types/dataset";
-import type { DatasetColumn } from "@/lib/retrieval/types";
+import type { DatasetColumn, DatasetDetail } from "@/lib/retrieval/types";
+import type { Dataset } from "@/lib/types/dataset";
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Cache
-// ──────────────────────────────────────────────────────────────────────────────
+/** Cap số cột in ra, tránh dataset rất rộng chiếm hết chỗ của các dataset khác. */
+const MAX_COLUMNS = 30;
 
-const CACHE_TTL_MS = 60_000; // 1 phút
-let _cache: { text: string; at: number } | null = null;
-
-/** Clear cache — cho eval script refresh giữa các run */
-export function clearFlattenCache(): void {
-  _cache = null;
+function formatColumn(col: DatasetColumn): string {
+  const parts = [`  - \`${col.name}\``];
+  if (col.type) parts.push(`(${col.type})`);
+  if (col.unit && col.unit !== "-") parts.push(`[${col.unit}]`);
+  if (col.description) parts.push(`— ${col.description}`);
+  return parts.join(" ");
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Helpers
-// ──────────────────────────────────────────────────────────────────────────────
-
-async function listSlugs(): Promise<string[]> {
-  const entries = await listFolderEntries("datasets");
-  return entries.filter((e) => e.type === "dir").map((e) => e.name);
-}
-
-async function fetchRaw(path: string): Promise<string | null> {
-  return (await fetchFileContents(path))?.content ?? null;
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
-// Formatter — text compact, signal-rich cho LLM
-// ──────────────────────────────────────────────────────────────────────────────
-
-const MAX_COLUMNS = 30; // cap columns tránh token bloat cho dataset wide
-
-function formatDataset(
-  slug: string,
-  meta: MetadataYaml,
-  dict: DataDictionaryEntry[],
-): string {
+/** Một dataset ứng viên — mô tả gọn, đủ để model quyết định nó có hợp không. */
+function formatCandidate(d: DatasetDetail): string {
   const lines: string[] = [];
-  lines.push(`### ${meta.title}`);
-  lines.push(`slug: \`${slug}\``);
+  lines.push(`### ${d.title}`);
+  lines.push(`slug: \`${d.slug}\``);
+  if (d.description) lines.push(`Mô tả: ${d.description}`);
+  if (d.category) lines.push(`Danh mục: ${d.category}`);
+  if (d.rowCount) lines.push(`Số dòng: ${d.rowCount}`);
+  // Không có chiều thời gian thì KHÔNG in dòng nào — in "không rõ" cũng là một
+  // khẳng định, và model sẽ nhắc lại nó như thể đã kiểm (FR-048).
+  if (d.yearRange) {
+    lines.push(
+      d.yearRange.from === d.yearRange.to
+        ? `Phạm vi thời gian: ${d.yearRange.from}`
+        : `Phạm vi thời gian: ${d.yearRange.from}–${d.yearRange.to}`,
+    );
+  }
+  if (d.source) lines.push(`Nguồn: ${d.source}`);
 
-  if (meta.description) lines.push(`Mô tả: ${meta.description}`);
-  if (meta.category) lines.push(`Danh mục: ${meta.category}`);
-  if (meta.tags?.length) lines.push(`Tags: ${meta.tags.join(", ")}`);
-  if (meta.format) lines.push(`Định dạng: ${meta.format}`);
-  if (meta.row_count) lines.push(`Số dòng: ${meta.row_count}`);
-  if (meta.coverage?.temporal?.length) {
-    lines.push(`Phạm vi thời gian: ${meta.coverage.temporal.join(", ")}`);
-  }
-  if (meta.coverage?.geographic) {
-    lines.push(`Phạm vi địa lý: ${meta.coverage.geographic}`);
-  }
-  if (meta.feature_count) lines.push(`Số features: ${meta.feature_count}`);
-  if (meta.geometry_type) lines.push(`Geometry: ${meta.geometry_type}`);
-  if (meta.page_count) lines.push(`Số trang: ${meta.page_count}`);
-  if (meta.duration_seconds) {
-    lines.push(`Thời lượng: ${Math.round(meta.duration_seconds / 60)} phút`);
-  }
-  if (meta.key_findings) lines.push(`Tóm tắt: ${meta.key_findings}`);
-  if (meta.source) {
-    const src =
-      typeof meta.source === "string" ? meta.source : meta.source.name;
-    if (src) lines.push(`Nguồn: ${src}`);
-  }
-
-  // Dictionary entries — column signal quan trọng nhất cho LLM matching
-  // ("có data gì về dân số theo tỉnh" match `dan_so` column)
-  if (dict.length > 0) {
+  if (d.columns.length > 0) {
     lines.push("Các cột/trường dữ liệu:");
-    for (const entry of dict.slice(0, MAX_COLUMNS)) {
-      const parts = [`  - \`${entry.column_name}\``];
-      if (entry.data_type) parts.push(`(${entry.data_type})`);
-      if (entry.unit && entry.unit !== "-") parts.push(`[${entry.unit}]`);
-      if (entry.description) parts.push(`— ${entry.description}`);
-      lines.push(parts.join(" "));
-    }
-    if (dict.length > MAX_COLUMNS) {
-      lines.push(`  - (và ${dict.length - MAX_COLUMNS} cột khác)`);
+    for (const col of d.columns.slice(0, MAX_COLUMNS)) lines.push(formatColumn(col));
+    if (d.columns.length > MAX_COLUMNS) {
+      lines.push(`  - (và ${d.columns.length - MAX_COLUMNS} cột khác)`);
     }
   }
 
   return lines.join("\n");
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Public API
-// ──────────────────────────────────────────────────────────────────────────────
-
 /**
- * Flatten tất cả datasets (metadata + dictionary) thành 1 text block cho LLM.
+ * Khối ứng viên gửi cho model.
  *
- * Skip soft-deleted + datasets thiếu title. Cache 60s trong memory.
- * Trả text intro + blocks dataset cách nhau bởi `---`.
+ * Nói rõ đây là **ứng viên đã lọc**, không phải cả kho: model không được suy ra
+ * "kho chỉ có bấy nhiêu dataset" từ danh sách này, và cũng không được cho rằng
+ * dataset đầu bảng là câu trả lời chỉ vì nó đứng đầu.
  */
-export async function flattenAllDatasets(): Promise<string> {
-  if (_cache && Date.now() - _cache.at < CACHE_TTL_MS) {
-    return _cache.text;
+export function buildCandidateBlock(
+  datasets: DatasetDetail[],
+  opts?: { total?: number; weakRelevance?: boolean },
+): string {
+  if (datasets.length === 0) {
+    return "(Không tìm thấy dataset nào liên quan tới câu hỏi này trong kho.)";
   }
 
-  const slugs = await listSlugs();
-  if (slugs.length === 0) {
-    const empty = "(Hiện chưa có dataset nào trong kho.)";
-    _cache = { text: empty, at: Date.now() };
-    return empty;
-  }
+  const header =
+    `DATASET ỨNG VIÊN (${datasets.length} dataset liên quan nhất` +
+    (opts?.total && opts.total > datasets.length ? ` trong ${opts.total} dataset khớp` : "") +
+    `, xếp theo mức liên quan giảm dần — KHÔNG phải toàn bộ kho):`;
 
-  const results = await Promise.allSettled(
-    slugs.map(async (slug) => {
-      const [yamlText, dictText] = await Promise.all([
-        fetchRaw(`datasets/${slug}/metadata.yaml`),
-        fetchRaw(`datasets/${slug}/dictionary.md`),
-      ]);
-      if (!yamlText) return null;
-      let meta: MetadataYaml;
-      try {
-        meta = parseYaml(yamlText) as MetadataYaml;
-      } catch {
-        return null;
-      }
-      if (!meta?.title || meta.status === "deleted") return null;
-      const dict = dictText ? parseDictionaryMarkdown(dictText) : [];
-      return formatDataset(slug, meta, dict);
-    }),
-  );
+  const warning = opts?.weakRelevance
+    ? "\n\nCẢNH BÁO: mức liên quan của cả danh sách này đều THẤP. Nhiều khả năng " +
+      "kho chưa có dataset về chủ đề được hỏi. Hãy nói thẳng là chưa có, thay vì " +
+      "cố tìm lý do cho dataset đứng đầu."
+    : "";
 
-  const blocks = results
-    .filter(
-      (r): r is PromiseFulfilledResult<string | null> => r.status === "fulfilled",
-    )
-    .map((r) => r.value)
-    .filter((b): b is string => b !== null);
-
-  const text =
-    blocks.length > 0
-      ? `DANH SÁCH DATASET TRONG KHO VnExpress (${blocks.length} datasets):\n\n${blocks.join("\n\n---\n\n")}`
-      : "(Hiện chưa có dataset nào hợp lệ trong kho.)";
-
-  _cache = { text, at: Date.now() };
-  return text;
+  return `${header}${warning}\n\n${datasets.map(formatCandidate).join("\n\n---\n\n")}`;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

@@ -176,3 +176,13 @@ for (const t of live) {
 const pruned = await pruneIndex(new Set(live.map((t) => t.slug)));
 console.log(`index.json: đã bỏ ${pruned} entry`);
 console.log("\nXong. Slug đã được giải phóng, upload lại được cùng slug.");
+
+// Script này xoá thẳng GitHub + R2, KHÔNG đi qua `/api/dataset/delete` — nên nó
+// cũng không chạy `removeDatasetIndexes`. Chỉ mục tra cứu vì thế còn giữ entry của
+// dataset vừa xoá, và câu hỏi sau đó vẫn được chỉ tới một dataset không còn tồn
+// tại. Nhắc ra đây thay vì tự gọi: script chạy được cả khi app không bật (D6).
+console.log(
+  "\nCHƯA XONG một việc: chỉ mục tra cứu còn entry của các dataset vừa xoá.\n" +
+  "Chạy tiếp để dọn (script sẽ báo chúng ở mục \"không còn trong kho\"):\n" +
+  "  node --env-file=.env.local tools/build-retrieval-index.mjs --apply"
+);

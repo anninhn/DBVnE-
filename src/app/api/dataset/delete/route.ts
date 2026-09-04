@@ -9,6 +9,7 @@ import { injectDeleted } from "@/lib/auth/inject-actor";
 import { appendDeleteAudit } from "@/lib/auth/audit-log";
 import { fetchFileContents } from "@/lib/github/contents-api";
 import { buildIndexFileFromYaml } from "@/lib/datasets/index-json";
+import { removeDatasetIndexes } from "@/lib/retrieval/build";
 
 interface DeleteRequest {
   slug: string;
@@ -114,6 +115,11 @@ export async function POST(req: NextRequest) {
   // 4. Invalidate listing cache — homepage refresh ngay < 1s sau delete.
   // Next.js 16: profile={expire:0} cho route handler = expire immediately.
   revalidateTag("datasets", { expire: 0 });
+
+  // Bỏ dataset khỏi cả hai chỉ mục tra cứu (D6). Không bỏ thì nó vẫn hiện ra trong
+  // kết quả tìm kiếm sau khi đã xoá — người hỏi bấm vào và nhận 404, mà hệ thống
+  // vẫn khẳng định là có.
+  await removeDatasetIndexes(slug);
 
   // 5. Append audit log (best-effort, không fail request nếu log fail)
   try {

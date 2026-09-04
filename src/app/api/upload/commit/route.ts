@@ -7,6 +7,7 @@ export const maxDuration = 30;
 import { getObjectMetadata } from "@/lib/r2/get";
 import { getMetadataYaml } from "@/lib/datasets/read";
 import { detectTemporalRange } from "@/lib/datasets/temporal";
+import { syncDatasetIndexes } from "@/lib/retrieval/build";
 import { slugify, isValidSlug } from "@/lib/slugify";
 import {
   commitMetadata,
@@ -204,6 +205,11 @@ export async function POST(req: NextRequest) {
   // Invalidate listing cache — homepage refresh ngay < 1s sau upload.
   // Next.js 16: profile={expire:0} cho route handler = expire immediately.
   revalidateTag("datasets", { expire: 0 });
+
+  // Sinh vector + entry chỉ mục giá trị cho DUY NHẤT dataset vừa upload (FR-032).
+  // Phải sau `revalidateTag`: hàm này đọc lại metadata qua `getDatasetBySlug` (cache
+  // 60s) — không xoá cache trước thì nó đọc phải bản chưa có dataset này.
+  await syncDatasetIndexes(slug);
 
   return NextResponse.json({
     slug,

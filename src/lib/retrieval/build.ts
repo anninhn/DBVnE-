@@ -14,12 +14,19 @@
 import { fetchListingIndex } from "@/lib/datasets/index-json";
 import { getDatasetBySlug } from "@/lib/datasets/read";
 import type { Dataset } from "@/lib/types/dataset";
-import { buildValueIndex, isValueListComplete, type ValueSource } from "./value-index";
-import { saveValueIndex } from "./store";
+import {
+  buildValueIndex,
+  isValueListComplete,
+  valueKeys,
+  type ValueSource,
+} from "./value-index";
+import { loadValueIndex, saveValueIndex } from "./store";
 import {
   fingerprint,
   loadVectorIndex,
+  removeVectorEntry,
   saveVectorIndex,
+  upsertVectorEntry,
 } from "./vector-store";
 import { buildIndexText, embedDimensions, embedTexts } from "./embed";
 import { buildKeywords } from "./keyword";
@@ -291,4 +298,116 @@ export async function buildIndexes(apply: boolean): Promise<BuildResult> {
     ),
     builtAt: now,
   };
+}
+
+// ── Giữ chỉ mục đồng bộ với từng thay đổi ─────────────────────────────────────
+
+/**
+ * Thay toàn bộ phần của MỘT dataset trong chỉ mục giá trị.
+ *
+ * Không dựng lại cả chỉ mục: đọc 495 metadata cho một lần sửa tiêu đề là bắt người
+ * dùng chờ vài chục giây sau khi bấm Lưu.
+ *
+ * Bảng `slugs`/`columns` cố ý KHÔNG dọn phần tử không còn ai trỏ tới. Dọn thì mọi
+ * chỉ số phía sau bị dời, tức phải sửa lại toàn bộ `refs` của cả chỉ mục — nhiều
+ * việc và nhiều chỗ sai, để đổi lấy vài chục byte. Script dựng lại làm sạch.
+ */
+function replaceValueEntriesFor(
+  index: ValueIndex,
+  source: ValueSource,
+): ValueIndex {
+  const slugs = [...index.slugs];
+  const columns = [...index.columns];
+  let si = slugs.indexOf(source.slug);
+  if (si === -1) si = slugs.push(source.slug) - 1;
+
+  const entries: Record<string, typeof index.entries[string]> = {};
+  for (const [key, entry] of Object.entries(index.entries)) {
+    const refs = entry.refs.filter(([s]) => s !== si);
+    if (refs.length === 0) continue;
+    entries[key] = { ...entry, refs };
+  }
+
+  const columnIdx = new Map(columns.map((c, i) => [c, i] as const));
+  const intern = (name: string): number => {
+    const existing = columnIdx.get(name);
+    if (existing !== undefined) return existing;
+    const i = columns.push(name) - 1;
+    columnIdx.set(name, i);
+    return i;
+  };
+
+  for (const col of source.columns) {
+    if (!col.complete) continue;
+    const ci = intern(col.name);
+    for (const raw of col.values) {
+      for (const key of valueKeys(raw)) {
+        const entry = (entries[key] ??= { display: raw, variants: [], refs: [] });
+        if (!entry.variants.includes(raw)) entry.variants.push(raw);
+        entry.refs.push([si, ci]);
+      }
+    }
+  }
+
+  return {
+    entries,
+    titles: { ...index.titles, [source.slug]: source.title },
+    slugs,
+    columns,
+    partialColumns: [
+      ...index.partialColumns.filter((p) => p.slug !== source.slug),
+      ...source.columns
+        .filter((c) => !c.complete)
+        .map((c) => ({ slug: source.slug, column: c.name })),
+    ],
+    builtAt: new Date().toISOString(),
+  };
+}
+
+/**
+ * Ghi lại phần chỉ mục của một dataset sau khi upload hoặc sửa (FR-032, FR-033).
+ *
+ * **Best-effort có chủ ý**: caller đã commit metadata rồi, ném lỗi ở đây chỉ làm
+ * người dùng thấy "lưu thất bại" cho một thứ đã lưu xong. Chỉ mục lệch thì
+ * `tools/build-retrieval-index.mjs` phát hiện và chữa — đó là lý do dấu vết
+ * `source_fingerprint` tồn tại.
+ */
+export async function syncDatasetIndexes(slug: string): Promise<boolean> {
+  try {
+    const dataset = await getDatasetBySlug(slug);
+    if (!dataset) return false;
+    const { repo } = toRepoDataset(dataset);
+
+    const [vector] = await embedTexts([repo.indexText]);
+    await upsertVectorEntry({
+      slug: repo.slug,
+      vector,
+      text: repo.indexText,
+      keywords: repo.keywords,
+      sourceFingerprint: repo.fingerprint,
+      builtAt: new Date().toISOString(),
+    });
+
+    const valueIndex = await loadValueIndex();
+    await saveValueIndex(replaceValueEntriesFor(valueIndex, repo.valueSource));
+    return true;
+  } catch (err) {
+    console.warn(`[retrieval] cập nhật chỉ mục cho "${slug}" thất bại:`, err);
+    return false;
+  }
+}
+
+/** Bỏ dataset khỏi cả hai chỉ mục khi nó bị xoá (D6). Best-effort như trên. */
+export async function removeDatasetIndexes(slug: string): Promise<boolean> {
+  try {
+    await removeVectorEntry(slug);
+    const valueIndex = await loadValueIndex();
+    await saveValueIndex(
+      replaceValueEntriesFor(valueIndex, { slug, title: "", columns: [] }),
+    );
+    return true;
+  } catch (err) {
+    console.warn(`[retrieval] bỏ chỉ mục của "${slug}" thất bại:`, err);
+    return false;
+  }
 }

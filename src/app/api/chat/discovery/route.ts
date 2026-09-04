@@ -10,10 +10,14 @@
  *
  * Flow:
  *   1. Auth check (requireUserOr401)
- *   2. Rate limit check (per-user 100/day)
- *   3. Flatten metadata tất cả datasets (cache 60s)
- *   4. Stream Gemini response → forward về client
+ *   2. Rate limit check (per-user/ngày)
+ *   3. `searchDatasets` chọn top-K ứng viên → `getDataset` lấy mô tả của chúng
+ *   4. Stream AI response → forward về client
  *   5. On complete: parse JSON + append R2 log + increment quota
+ *
+ * Bước 3 là thay đổi của spec 005: trước đây nạp TOÀN BỘ kho vào mỗi câu hỏi
+ * (~200.000 token, hơn 1.000 lượt gọi GitHub API ở 495 dataset). Chi phí đó tăng
+ * tuyến tính theo số dataset — tức là hệ thống tự đặt hạn sử dụng cho chính nó.
  *
  * Streaming: OpenAI SDK v6 với stream:true trả async iterable ChatCompletionChunk.
  * Forward delta content về client qua ReadableStream. Client accumulate + parse JSON cuối.
@@ -28,10 +32,11 @@ import path from "path";
 import { randomUUID } from "crypto";
 import { requireUserOr401 } from "@/lib/auth";
 import { getAIClient } from "@/lib/ai/dataset-reviewer";
-import { flattenAllDatasets, buildFocusBlock } from "@/lib/chat/flatten-metadata";
+import { buildCandidateBlock, buildFocusBlock } from "@/lib/chat/flatten-metadata";
 import { extractDiscoveryJSON } from "@/lib/chat/extract-json";
 import { getDatasetBySlug } from "@/lib/datasets/read";
-import { getDataset } from "@/lib/retrieval";
+import { getDataset, searchDatasets, RetrievalIndexUnavailableError } from "@/lib/retrieval";
+import { WEAK_RELEVANCE_CEILING } from "@/lib/retrieval/fuse";
 import {
   appendChatLog,
   getDailyQuota,
@@ -45,7 +50,17 @@ import {
 // duplicate hằng số ở đây + comment sync.
 const AI_MODEL = "gemini-2.5-flash";
 
-export const maxDuration = 60; // AI stream có thể mất 10-30s với catalog lớn
+export const maxDuration = 60; // AI stream có thể mất 10-30s
+
+/**
+ * Số dataset ứng viên đưa vào ngữ cảnh.
+ *
+ * 20 theo quyết định đã chốt ở spec § Clarifications: gấp 2–3 lần số đáp án đúng
+ * thường gặp (2–8), và ~8.000 token nên vẫn dưới ngưỡng 15.000 của SC-001. Tăng số
+ * này là tăng chi phí mọi câu hỏi để đổi lấy những ứng viên mà chính tầng tra cứu
+ * đã xếp là kém liên quan nhất.
+ */
+const CANDIDATE_LIMIT = 20;
 
 interface DiscoveryRequest {
   query: string;
@@ -125,15 +140,39 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // 4. Flatten metadata + load system prompt + build FOCUS block (nếu attached)
-  let flattened: string;
+  // 4. Chọn ứng viên + load system prompt + build FOCUS block (nếu attached)
+  let candidateBlock: string;
   let systemPrompt: string;
   let focusBlock = "";
   try {
-    [flattened, systemPrompt] = await Promise.all([
-      flattenAllDatasets(),
+    const [search, prompt] = await Promise.all([
+      searchDatasets({ query, limit: CANDIDATE_LIMIT, caller: `chat:${userKey}` }),
       loadSystemPrompt(),
     ]);
+    systemPrompt = prompt;
+
+    const detail = await getDataset({
+      slugs: search.results.map((r) => r.slug),
+      // Danh sách giá trị cột chỉ nạp cho dataset đang được hỏi thẳng (khối FOCUS).
+      // Nạp cho cả 20 ứng viên là kéo hàng nghìn tên tỉnh vào ngữ cảnh, đúng thứ
+      // vừa cắt đi.
+      includeValues: false,
+      caller: `chat:${userKey}`,
+    });
+
+    // Thứ tự của `searchDatasets` là thứ tự mức liên quan — `getDataset` không giữ
+    // nó. Xếp lại theo slug, nếu không thì model đọc danh sách theo thứ tự ngẫu
+    // nhiên và "dataset đầu bảng" mất hết ý nghĩa.
+    const order = new Map(search.results.map((r, i) => [r.slug, i] as const));
+    const ordered = [...detail.datasets].sort(
+      (a, b) => (order.get(a.slug) ?? 0) - (order.get(b.slug) ?? 0),
+    );
+
+    const best = search.results[0]?.semanticScore ?? 0;
+    candidateBlock = buildCandidateBlock(ordered, {
+      total: search.total,
+      weakRelevance: search.results.length > 0 && best < WEAK_RELEVANCE_CEILING,
+    });
 
     // FOCUS block — metadata + dictionary + danh sách giá trị cột của dataset attach.
     // Dùng `getDatasetBySlug` chứ KHÔNG `getDatasetDetail`: bản detail tải cả file
@@ -152,6 +191,20 @@ export async function POST(req: NextRequest) {
       }
     }
   } catch (err) {
+    // Chỉ mục chưa dựng là chuyện KHÁC với "không tìm thấy dataset nào". Nói rõ ra
+    // và chỉ đúng cách chữa — trả lời "chưa có dataset phù hợp" lúc này là nói sai
+    // về cả kho dữ liệu.
+    if (err instanceof RetrievalIndexUnavailableError) {
+      console.error("[chat/discovery] chỉ mục tra cứu chưa sẵn sàng:", err);
+      return NextResponse.json(
+        {
+          error:
+            "Chỉ mục tìm kiếm chưa sẵn sàng nên chưa trả lời được. " +
+            "Người quản trị cần chạy tools/build-retrieval-index.mjs --apply.",
+        },
+        { status: 503 },
+      );
+    }
     console.error("[chat/discovery] context prep failed:", err);
     return NextResponse.json(
       { error: "Tạm không tải được danh sách dataset. Thử lại sau." },
@@ -162,6 +215,13 @@ export async function POST(req: NextRequest) {
   // 5. Stream response — generate chatId upfront để expose qua header
   const chatId = randomUUID();
   const encoder = new TextEncoder();
+
+  // Kích thước ngữ cảnh gửi cho model — thứ mà SC-001 đặt trần. Trả qua header để
+  // đo được mà không phải dựng thêm công cụ: chi phí mỗi câu hỏi là con số dễ trôi
+  // đi nhất khi sửa prompt, và trôi thì không ai thấy cho tới lúc hết hạn mức.
+  const userContent = focusBlock
+    ? `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n${focusBlock}\n\n${candidateBlock}`
+    : `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n${candidateBlock}`;
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       const startTime = Date.now();
@@ -174,9 +234,7 @@ export async function POST(req: NextRequest) {
             { role: "system", content: systemPrompt },
             {
               role: "user",
-              content: focusBlock
-                ? `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n${focusBlock}\n\nDANH SÁCH DATASET:\n${flattened}`
-                : `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n\nDANH SÁCH DATASET:\n${flattened}`,
+              content: userContent,
             },
           ],
           temperature: 0.3,
@@ -259,6 +317,7 @@ export async function POST(req: NextRequest) {
       "Content-Type": "text/plain; charset=utf-8",
       "Cache-Control": "no-cache, no-transform",
       "X-Chat-Id": chatId,
+      "X-Context-Chars": String(systemPrompt.length + userContent.length),
     },
   });
 }
