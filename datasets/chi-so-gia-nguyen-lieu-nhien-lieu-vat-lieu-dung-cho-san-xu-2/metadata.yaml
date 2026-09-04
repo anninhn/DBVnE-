@@ -27,41 +27,90 @@ files:
     r2_key: "49889ec0-27e8-4dba-b702-41faf99e88ea/chi-so-gia-nguyen-lieu-nhien-lieu-vat-lieu-dung-cho-san-xu-2.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [70, 35, 70, 35, 70, 35, 70, 70]
-      "Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất (Năm trước = 100)":
+        histogram: [ 70, 35, 70, 35, 70, 35, 70, 70 ]
+      Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất (Năm trước = 100):
         kind: numeric
         min: 80.77
         max: 127.61
-        histogram: [2, 3, 18, 274, 94, 9, 0, 1]
-      "Mục đích, ngành sản phẩm":
+        histogram: [ 2, 3, 18, 274, 94, 9, 0, 1 ]
+      Mục đích, ngành sản phẩm:
         kind: categorical
         distinct: 35
         segments:
-          - label: "CHỈ SỐ CHUNG"
+          - label: CHỈ SỐ CHUNG
             count: 13
-          - label: "Sử dụng cho sản xuất nông, lâm nghiệp và thủy sản"
+          - label: Sử dụng cho sản xuất nông, lâm nghiệp và thủy sản
             count: 13
-          - label: "Sử dụng cho sản xuất công nghiệp chế biến chế tạo"
+          - label: Sử dụng cho sản xuất công nghiệp chế biến chế tạo
             count: 13
-          - label: "Sử dụng cho xây dựng"
+          - label: Sử dụng cho xây dựng
             count: 13
-          - label: "Sản phẩm nông, lâm nghiệp và thủy sản"
+          - label: Sản phẩm nông, lâm nghiệp và thủy sản
             count: 13
-          - label: "Sản phẩm nông nghiệp và dịch vụ liên quan"
+          - label: Sản phẩm nông nghiệp và dịch vụ liên quan
             count: 13
-          - label: "Sản phẩm lâm nghiệp và dịch vụ liên quan"
+          - label: Sản phẩm lâm nghiệp và dịch vụ liên quan
             count: 13
-          - label: "Sản phẩm thủy sản khai thác, nuôi trồng"
+          - label: Sản phẩm thủy sản khai thác, nuôi trồng
             count: 13
-          - label: "Sản phẩm khai khoáng"
+          - label: Sản phẩm khai khoáng
             count: 13
-          - label: "Than cứng và than non"
+          - label: Than cứng và than non
             count: 13
-          - label: "Quặng kim loại"
+          - label: Quặng kim loại
             count: 13
-          - label: "Sản phẩm khai khoáng khác"
+          - label: Sản phẩm khai khoáng khác
             count: 13
+          - label: Sản phẩm công nghiệp chế biến, chế tạo
+            count: 13
+          - label: Sản phẩm chế biến lương thực, thực phẩm
+            count: 13
+          - label: Đồ uống, hút
+            count: 13
+          - label: Sản phẩm dệt, da
+            count: 13
+          - label: Sản phẩm từ gỗ
+            count: 13
+          - label: Giấy và các sản phẩm từ giấy
+            count: 13
+          - label: Than cốc, sản phẩm dầu mỏ tinh chế
+            count: 13
+          - label: Hóa chất và sản phẩm hóa chất
+            count: 13
+          - label: Thuốc và dược liệu
+            count: 13
+          - label: Sản phẩm từ cao su và plastic
+            count: 13
+          - label: Sản phẩm từ khoáng phi kim loại khác
+            count: 13
+          - label: Sản phẩm kim loại
+            count: 13
+          - label: Sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)
+            count: 13
+          - label: Sản phẩm điện tử, máy tính, quang học
+            count: 13
+          - label: Thiết bị điện
+            count: 13
+          - label: Máy móc thiết bị chưa được phân vào đâu
+            count: 13
+          - label: Xe có động cơ, rơ moóc
+            count: 13
+          - label: Phương tiện vận tải khác
+            count: 13
+          - label: Điện, khí đốt, hơi nước và điều hòa không khí
+            count: 13
+          - label: Nước tự nhiên khai thác; dịch vụ quản lý và xử lý rác thải. nước thải-
+            count: 13
+          - label: Nước tự nhiên khai thác
+            count: 13
+          - label: Dịch vụ xây dựng
+            count: 13
+          - label: Dịch vụ chuyên môn khoa học công nghệ
+            count: 13
+        complete: true
+coverage:
+  temporal: [ 2012, 2024 ]
