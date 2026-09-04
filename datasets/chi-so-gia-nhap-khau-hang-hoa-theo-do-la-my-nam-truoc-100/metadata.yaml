@@ -27,41 +27,106 @@ files:
     r2_key: "dd9ea3b7-19fc-4917-aa7f-ef39ecf4c55f/chi-so-gia-nhap-khau-hang-hoa-theo-do-la-my-nam-truoc-100.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [86, 86, 43, 86, 86, 43, 86, 86]
-      "Chỉ số giá nhập khẩu hàng hóa (Theo Đô la Mỹ, năm trước = 100)":
+        histogram: [ 86, 86, 43, 86, 86, 43, 86, 86 ]
+      Chỉ số giá nhập khẩu hàng hóa (Theo Đô la Mỹ, năm trước = 100):
         kind: numeric
         min: 57.65
         max: 144.88
-        histogram: [2, 3, 35, 301, 165, 47, 19, 5]
-      "Nhóm hàng":
+        histogram: [ 2, 3, 35, 301, 165, 47, 19, 5 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 43
         segments:
-          - label: "CHỈ SỐ GIÁ NHẬP KHẨU CHUNG"
+          - label: CHỈ SỐ GIÁ NHẬP KHẨU CHUNG
             count: 14
-          - label: "Hàng thuỷ sản"
+          - label: Hàng thuỷ sản
             count: 14
-          - label: "Hàng rau quả"
+          - label: Hàng rau quả
             count: 14
-          - label: "Sữa & sản phẩm từ sữa"
+          - label: Sữa & sản phẩm từ sữa
             count: 14
-          - label: "Lúa mỳ"
+          - label: Lúa mỳ
             count: 14
-          - label: "Dầu mỡ động thực vật"
+          - label: Dầu mỡ động thực vật
             count: 14
-          - label: "Nguyên phụ liệu thuốc lá"
+          - label: Nguyên phụ liệu thuốc lá
             count: 14
-          - label: "Nguyên phụ liệu dược phẩm"
+          - label: Nguyên phụ liệu dược phẩm
             count: 14
-          - label: "Dược phẩm"
+          - label: Dược phẩm
             count: 14
-          - label: "Cao su"
+          - label: Cao su
             count: 14
-          - label: "Bánh, kẹo & sản phẩm từ ngũ cốc"
+          - label: Bánh, kẹo & sản phẩm từ ngũ cốc
             count: 14
-          - label: "Clanhke"
+          - label: Clanhke
             count: 14
+          - label: Khí đốt hoá lỏng
+            count: 14
+          - label: Xăng dầu các loại
+            count: 14
+          - label: Thức ăn gia súc & nguyên liệu
+            count: 14
+          - label: Sản phẩm từ dầu mỏ khác
+            count: 14
+          - label: Hoá chất
+            count: 14
+          - label: Sản phẩm hóa chất
+            count: 14
+          - label: Phân bón các loại
+            count: 14
+          - label: Chất dẻo nguyên liệu
+            count: 14
+          - label: Sản phẩm từ chất dẻo
+            count: 14
+          - label: Sản phẩm từ cao su
+            count: 14
+          - label: Kim loại thường khác
+            count: 14
+          - label: Sản phẩm từ kim loại thường khác
+            count: 14
+          - label: Gỗ & sản phẩm gỗ
+            count: 14
+          - label: Giấy
+            count: 14
+          - label: Sản phẩm từ giấy
+            count: 14
+          - label: Thuốc trừ sâu & nguyên liệu
+            count: 14
+          - label: Xơ, sợi dệt
+            count: 14
+          - label: Vải may mặc các loại
+            count: 14
+          - label: Nguyên phụ liệu dệt, may, da, giày
+            count: 14
+          - label: Đá quý, kim loại quý & sản phẩm
+            count: 14
+          - label: Sắt, thép
+            count: 14
+          - label: Sản phẩm từ sắt thép
+            count: 14
+          - label: Máy vi tính, sản phẩm điện tử & linh kiện
+            count: 14
+          - label: Ô tô nguyên chiếc các loại
+            count: 14
+          - label: Máy móc, thiết bị, dụng cụ & phụ tùng
+            count: 14
+          - label: Dây điện & dây cáp điện
+            count: 14
+          - label: Phương tiện vận tải khác & phụ tùng
+            count: 14
+          - label: Linh kiện, phụ tùng ô tô
+            count: 14
+          - label: Xe máy nguyên chiếc
+            count: 14
+          - label: Linh kiện & phụ tùng xe máy
+            count: 14
+          - label: Hàng hóa khác
+            count: 14
+        complete: true
+coverage:
+  temporal: [ 2011, 2024 ]
