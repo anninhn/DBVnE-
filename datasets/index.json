@@ -1,5 +1,36 @@
 [
   {
+    "slug": "ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
+    "title": "Tỷ lệ thu ngân sách nhà nước so với Tổng sản phẩm trong nước",
+    "description": "Dataset thống kê tỷ lệ phần trăm của các khoản thu ngân sách nhà nước so với Tổng sản phẩm trong nước (GDP) theo từng loại thu, từ năm 2018 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "kinh-te",
+      "ngan-sach",
+      "gdp",
+      "thu-ngan-sach"
+    ],
+    "uploaded_at": "2026-09-04T08:03:12.137Z",
+    "uploaded_by": "ninh",
+    "row_count": 147,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2018,
+      2024
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "9106abc8-61e9-4a61-846b-49ce411e71bb/ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc.csv",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-n",
     "title": "Tỷ lệ người sử dụng điện thoại di động phân theo khu vực, giới tính, nhóm tuổi và vùng kinh tế",
     "description": "Dataset thống kê tỷ lệ phần trăm người dân sử dụng điện thoại di động tại Việt Nam, được phân loại chi tiết theo khu vực thành thị/nông thôn, giới tính, các nhóm tuổi và 6 vùng kinh tế - xã hội.",
