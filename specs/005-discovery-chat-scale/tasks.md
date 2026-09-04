@@ -92,7 +92,7 @@ Sáu task T008–T013 bỏ. Không đánh số lại các task sau để giữ t
 - [x] T016 [US3] Thêm cờ đánh dấu danh sách chưa đủ vào kiểu `ColumnStats` trong `src/lib/types/dataset.ts` (D5 — thiếu cờ này là nguồn của câu trả lời "không có Đà Nẵng" sai)
 - [x] T017 [US3] Sửa `src/lib/dataset-render.ts` để ghi cờ chưa đủ vào `metadata.yaml`
 - [ ] T018 [US3] Viết `tools/backfill-column-values.mjs` — đọc CSV từ R2, tính lại giá trị cột, cập nhật `metadata.yaml`; dry-run mặc định, **không gọi AI** (R10)
-- [ ] T019 [US3] Chạy backfill cho 495 dataset đã có, kiểm không dataset nào mất `column_stats` cũ
+- [~] T019 [US3] Chạy backfill cho 495 dataset đã có, kiểm không dataset nào mất `column_stats` cũ — **đang chạy**, dry-run đã xong (493 đổi / 0 lỗi / 2 bỏ qua)
 - [x] T020 [US3] Viết `src/lib/retrieval/value-index.ts` — dựng chỉ mục nghịch đảo `giá trị đã chuẩn hoá → {slug, column}[]`, gom các cách viết khác nhau về một entry (R7, FR-057)
 - [x] T021 [US3] Cài `lookupValue` trong `src/lib/retrieval/index.ts` theo `contracts/lookup-value.md`, **phân biệt ba trạng thái** "không có" / "chưa tra hết" / "chưa biết"
 - [x] T022 [US3] Cài `getDataset` trong `src/lib/retrieval/index.ts` theo `contracts/get-dataset.md`, kèm danh sách giá trị cột và cờ `complete`
@@ -130,11 +130,11 @@ sai vào bài báo, và các phase khác hỏng thì phóng viên thấy ngay c�
 
 Chạy **song song** với Phase 4 — không dùng chung file nào.
 
-- [ ] T032 [P] [US5] Suy phạm vi thời gian từ **cột năm của dữ liệu** (không từ tiêu đề) trong `src/lib/datasets/index-json.ts`, điền `year_range` (FR-047)
-- [ ] T033 [P] [US5] Để `year_range` trống cho dataset không có chiều thời gian, không suy khoảng giả (FR-048)
-- [ ] T034 [US5] Thêm điền `year_range` vào luồng commit tại `src/lib/dataset-commit.ts` để dataset upload sau này tự có
-- [ ] T035 [US5] Thêm bước điền `year_range` cho 495 dataset đã có vào `tools/backfill-column-values.mjs` (dùng chung một lượt đọc CSV, không đọc hai lần)
-- [ ] T036 [US5] Thêm lọc theo khoảng thời gian vào `src/components/DatasetExplorer.tsx`
+- [x] T032 [P] [US5] Suy phạm vi thời gian từ **cột năm của dữ liệu** (không từ tiêu đề) trong `src/lib/datasets/index-json.ts`, điền `year_range` (FR-047)
+- [x] T033 [P] [US5] Để `year_range` trống cho dataset không có chiều thời gian, không suy khoảng giả (FR-048)
+- [x] T034 [US5] Thêm điền `year_range` vào luồng commit tại `src/lib/dataset-commit.ts` để dataset upload sau này tự có
+- [x] T035 [US5] Thêm bước điền `year_range` cho 495 dataset đã có vào `tools/backfill-column-values.mjs` (dùng chung một lượt đọc CSV, không đọc hai lần)
+- [x] T036 [US5] Thêm lọc theo khoảng thời gian vào `src/components/DatasetExplorer.tsx`
 - [ ] T037 [US5] Kiểm theo `quickstart.md` kịch bản 7, gồm ca tiêu đề ghi khoảng dài hơn dữ liệu thật (SC-011)
 
 **Checkpoint**: US5 ship được độc lập.
