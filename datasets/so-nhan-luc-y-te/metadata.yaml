@@ -27,44 +27,48 @@ files:
     r2_key: "a5409a78-d366-437c-83f9-7286e66225d8/so-nhan-luc-y-te.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2022
-        histogram: [32, 24, 32, 24, 24, 32, 24, 32]
-      "Tổng số - Nghìn Người":
+        histogram: [ 32, 24, 32, 24, 24, 32, 24, 32 ]
+      Tổng số - Nghìn Người:
         kind: numeric
         min: 1.1
         max: 109.54
-        histogram: [94, 19, 13, 36, 13, 6, 5, 7]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 94, 19, 13, 36, 13, 6, 5, 7 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 22.7
         max: 177.6
-        histogram: [1, 0, 3, 43, 133, 2, 2, 1]
-      "Cán bộ":
+        histogram: [ 1, 0, 3, 43, 133, 2, 2, 1 ]
+      Cán bộ:
         kind: categorical
         distinct: 8
         segments:
-          - label: "Cán bộ ngành y - Bác sĩ (**)"
+          - label: Cán bộ ngành y - Bác sĩ (**)
             count: 28
-          - label: "Cán bộ ngành y - Y sĩ"
+          - label: Cán bộ ngành y - Y sĩ
             count: 28
-          - label: "Cán bộ ngành y - Y tá"
+          - label: Cán bộ ngành y - Y tá
             count: 28
-          - label: "Cán bộ ngành y - Hộ sinh"
+          - label: Cán bộ ngành y - Hộ sinh
             count: 28
-          - label: "Cán bộ ngành y - Bác sĩ tính bình quân cho 1 vạn dân (Người)"
+          - label: Cán bộ ngành y - Bác sĩ tính bình quân cho 1 vạn dân (Người)
             count: 28
-          - label: "Cán bộ ngành dược (***)- Dược sĩ cao cấp"
+          - label: Cán bộ ngành dược (***)- Dược sĩ cao cấp
             count: 28
-          - label: "Cán bộ ngành dược (***)- Dược sĩ trung cấp"
+          - label: Cán bộ ngành dược (***)- Dược sĩ trung cấp
             count: 28
-          - label: "Cán bộ ngành dược (***)- Dược tá"
+          - label: Cán bộ ngành dược (***)- Dược tá
             count: 28
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 8
+        complete: true
+coverage:
+  temporal: [ 1995, 2022 ]
