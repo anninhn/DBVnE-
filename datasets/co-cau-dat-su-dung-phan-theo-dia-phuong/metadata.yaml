@@ -31,66 +31,188 @@ files:
         kind: numeric
         min: 0
         max: 100
-        histogram: [150, 40, 21, 21, 25, 16, 9, 70]
-      "31/12/2018":
+        histogram: [ 150, 40, 21, 21, 25, 16, 9, 70 ]
+      31/12/2018:
         kind: numeric
         min: 0.3
         max: 100
-        histogram: [149, 41, 18, 22, 25, 15, 10, 71]
-      "31/12/2020":
+        histogram: [ 149, 41, 18, 22, 25, 15, 10, 71 ]
+      31/12/2020:
         kind: numeric
         min: 0
         max: 100
-        histogram: [148, 40, 21, 20, 27, 15, 9, 72]
-      "31/12/2021":
+        histogram: [ 148, 40, 21, 20, 27, 15, 9, 72 ]
+      31/12/2021:
         kind: numeric
         min: 0
         max: 100
-        histogram: [148, 40, 21, 20, 27, 15, 9, 72]
-      "31/12/2023":
+        histogram: [ 148, 40, 21, 20, 27, 15, 9, 72 ]
+      31/12/2023:
         kind: numeric
         min: 0
         max: 100
-        histogram: [147, 39, 22, 20, 25, 16, 9, 72]
-      "Phân theo địa phương":
+        histogram: [ 147, 39, 22, 20, 25, 16, 9, 72 ]
+      Phân theo địa phương:
         kind: categorical
         distinct: 71
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 5
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 5
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 5
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 5
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 5
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 5
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 5
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 5
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 5
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 5
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 5
-          - label: "Nam Định"
+          - label: Nam Định
             count: 5
-      "header1":
+          - label: Ninh Bình
+            count: 5
+          - label: Trung du và miền núi phía Bắc
+            count: 5
+          - label: Hà Giang
+            count: 5
+          - label: Cao Bằng
+            count: 5
+          - label: Bắc Kạn
+            count: 5
+          - label: Tuyên Quang
+            count: 5
+          - label: Lào Cai
+            count: 5
+          - label: Yên Bái
+            count: 5
+          - label: Thái Nguyên
+            count: 5
+          - label: Lạng Sơn
+            count: 5
+          - label: Bắc Giang
+            count: 5
+          - label: Phú Thọ
+            count: 5
+          - label: Điện Biên
+            count: 5
+          - label: Lai Châu
+            count: 5
+          - label: Sơn La
+            count: 5
+          - label: Hoà Bình
+            count: 5
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 5
+          - label: Thanh Hoá
+            count: 5
+          - label: Nghệ An
+            count: 5
+          - label: Hà Tĩnh
+            count: 5
+          - label: Quảng Bình
+            count: 5
+          - label: Quảng Trị
+            count: 5
+          - label: Thừa Thiên Huế
+            count: 5
+          - label: Đà Nẵng
+            count: 5
+          - label: Quảng Nam
+            count: 5
+          - label: Quảng Ngãi
+            count: 5
+          - label: Bình Định
+            count: 5
+          - label: Phú Yên
+            count: 5
+          - label: Khánh Hoà
+            count: 5
+          - label: Ninh Thuận
+            count: 5
+          - label: Bình Thuận
+            count: 5
+          - label: Tây Nguyên
+            count: 5
+          - label: Kon Tum
+            count: 5
+          - label: Gia Lai
+            count: 5
+          - label: Đắk Lắk
+            count: 5
+          - label: Đắk Nông
+            count: 5
+          - label: Lâm Đồng
+            count: 5
+          - label: Đông Nam Bộ
+            count: 5
+          - label: Bình Phước
+            count: 5
+          - label: Tây Ninh
+            count: 5
+          - label: Bình Dương
+            count: 5
+          - label: Đồng Nai
+            count: 5
+          - label: Bà Rịa - Vũng Tàu
+            count: 5
+          - label: TP.Hồ Chí Minh
+            count: 5
+          - label: Đồng bằng sông Cửu Long
+            count: 5
+          - label: Long An
+            count: 5
+          - label: Tiền Giang
+            count: 5
+          - label: Bến Tre
+            count: 5
+          - label: Trà Vinh
+            count: 5
+          - label: Vĩnh Long
+            count: 5
+          - label: Đồng Tháp
+            count: 5
+          - label: An Giang
+            count: 5
+          - label: Kiên Giang
+            count: 5
+          - label: Cần Thơ
+            count: 5
+          - label: Hậu Giang
+            count: 5
+          - label: Sóc Trăng
+            count: 5
+          - label: Bạc Liêu
+            count: 5
+          - label: Cà Mau
+            count: 5
+          - label: Không xác định
+            count: 5
+        complete: true
+      header1:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng diện tích"
+          - label: Tổng diện tích
             count: 71
-          - label: "Đất sản xuất nông nghiệp"
+          - label: Đất sản xuất nông nghiệp
             count: 71
-          - label: "Đất lâm nghiệp"
+          - label: Đất lâm nghiệp
             count: 71
-          - label: "Đất chuyên dùng"
+          - label: Đất chuyên dùng
             count: 71
-          - label: "Đất ở"
+          - label: Đất ở
             count: 71
+        complete: true
+coverage:
+  temporal: [ 2018, 2023 ]
