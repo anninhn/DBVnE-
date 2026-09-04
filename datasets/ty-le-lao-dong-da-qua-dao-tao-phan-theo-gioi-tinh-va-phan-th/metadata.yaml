@@ -27,47 +27,51 @@ files:
     r2_key: "2b50d8f3-9622-461b-bcde-8538c09cc597/ty-le-lao-dong-da-qua-dao-tao-phan-theo-gioi-tinh-va-phan-th.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [6, 6, 6, 6, 6, 6, 6, 8]
-      "Tổng số":
+        histogram: [ 6, 6, 6, 6, 6, 6, 6, 8 ]
+      Tổng số:
         kind: numeric
         min: 10.3
         max: 31.01
-        histogram: [6, 7, 6, 5, 6, 4, 4, 5]
-      "Nam":
+        histogram: [ 6, 7, 6, 5, 6, 4, 4, 5 ]
+      Nam:
         kind: numeric
         min: 11.8
         max: 33.62
-        histogram: [6, 9, 4, 4, 9, 2, 6, 3]
-      "Nữ":
+        histogram: [ 6, 9, 4, 4, 9, 2, 6, 3 ]
+      Nữ:
         kind: numeric
         min: 8.6
         max: 27.83
-        histogram: [6, 7, 6, 4, 6, 5, 5, 4]
-      "Thành thị":
+        histogram: [ 6, 7, 6, 4, 6, 5, 5, 4 ]
+      Thành thị:
         kind: numeric
         min: 24.2
         max: 44.92
-        histogram: [5, 2, 7, 6, 4, 9, 5, 5]
-      "Nông thôn":
+        histogram: [ 5, 2, 7, 6, 4, 9, 5, 5 ]
+      Nông thôn:
         kind: numeric
         min: 5.3
         max: 21.85
-        histogram: [5, 11, 5, 4, 6, 5, 5, 2]
-      "Tỷ lệ Lao động":
+        histogram: [ 5, 11, 5, 4, 6, 5, 5, 2 ]
+      Tỷ lệ Lao động:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo"
+          - label: Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo
             count: 25
-          - label: "Tỷ lệ lao động trong độ tuổi lao động đã qua đào tạo"
+          - label: Tỷ lệ lao động trong độ tuổi lao động đã qua đào tạo
             count: 25
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 2
+        complete: true
+coverage:
+  temporal: [ 2000, 2024 ]
