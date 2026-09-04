@@ -28,41 +28,54 @@ files:
     r2_key: "a4d1ffa6-2396-4218-8a3d-85ea58901d5d/chi-so-gia-tieu-dung-binh-quan-nam-khu-vuc-nong-thon-nam-tru.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2023
-        histogram: [17, 17, 0, 17, 17, 0, 17, 17]
-      "Chỉ số giá tiêu dùng bình quân năm khu vực nông thôn (Năm trước = 100)":
+        histogram: [ 17, 17, 0, 17, 17, 0, 17, 17 ]
+      Chỉ số giá tiêu dùng bình quân năm khu vực nông thôn (Năm trước = 100):
         kind: numeric
         min: 88.24
         max: 116.68
-        histogram: [1, 0, 4, 52, 34, 5, 3, 3]
-      "Nhóm hàng":
+        histogram: [ 1, 0, 4, 52, 34, 5, 3, 3 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 17
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 6
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 6
-          - label: "Lương thực"
+          - label: Lương thực
             count: 6
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 6
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 6
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 6
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 6
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 6
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 6
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 6
           - label: "Trong đó: Dịch vụ y tế"
             count: 6
-          - label: "Giao thông"
+          - label: Giao thông
             count: 6
+          - label: Bưu chính viễn thông
+            count: 6
+          - label: Giáo dục
+            count: 6
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 6
+          - label: Văn hóa, giải trí và du lịch
+            count: 6
+          - label: Hàng hoá và dịch vụ khác
+            count: 6
+        complete: true
+coverage:
+  temporal: [ 2018, 2023 ]
