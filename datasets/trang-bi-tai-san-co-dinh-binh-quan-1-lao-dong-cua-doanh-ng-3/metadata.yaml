@@ -27,41 +27,58 @@ files:
     r2_key: "bd5cc5fb-cba4-4d5d-8c80-a76e489ae6bd/trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-ng-3.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [19, 0, 0, 38, 38, 19, 38, 38]
-      "Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh":
+        histogram: [ 19, 0, 0, 38, 38, 19, 38, 38 ]
+      Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 47.6
         max: 8496.16
-        histogram: [172, 7, 1, 1, 1, 3, 1, 4]
-      "Ngành kinh tế":
+        histogram: [ 172, 7, 1, 1, 1, 3, 1, 4 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 19
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nông nghiệp, lâm nghiệp và thuỷ sản"
+          - label: Nông nghiệp, lâm nghiệp và thuỷ sản
             count: 10
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 10
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 10
-          - label: "Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí"
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
             count: 10
-          - label: "Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
             count: 10
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 10
-          - label: "Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 10
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 10
-          - label: "Dịch vụ lưu trú và ăn uống"
+          - label: Dịch vụ lưu trú và ăn uống
             count: 10
-          - label: "Thông tin và truyền thông"
+          - label: Thông tin và truyền thông
             count: 10
-          - label: "Hoạt động tài chính, ngân hàng và bảo hiểm"
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
             count: 10
+          - label: Hoạt động kinh doanh bất động sản
+            count: 10
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 10
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 10
+          - label: Giáo dục và đào tạo
+            count: 10
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 10
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 10
+          - label: Hoạt động dịch vụ khác
+            count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
