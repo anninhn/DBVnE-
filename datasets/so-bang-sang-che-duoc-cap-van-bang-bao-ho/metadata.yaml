@@ -27,39 +27,42 @@ files:
     r2_key: "ca8f7fe4-ab0d-46de-82f1-c93e915afc42/so-bang-sang-che-duoc-cap-van-bang-bao-ho.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [22, 11, 11, 11, 11, 11, 11, 22]
-      "Số bằng sáng chế được cấp văn bằng bảo hộ":
+        histogram: [ 22, 11, 11, 11, 11, 11, 11, 22 ]
+      Số bằng sáng chế được cấp văn bằng bảo hộ:
         kind: numeric
         min: 1.007
         max: 990
-        histogram: [50, 15, 10, 11, 4, 8, 4, 8]
-      "Phân loại sáng chế, quốc tịch":
+        histogram: [ 50, 15, 10, 11, 4, 8, 4, 8 ]
+      Phân loại sáng chế, quốc tịch:
         kind: categorical
         distinct: 11
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 10
-          - label: "Phần A"
+          - label: Phần A
             count: 10
-          - label: "Phần B"
+          - label: Phần B
             count: 10
-          - label: "Phần C"
+          - label: Phần C
             count: 10
-          - label: "Phần D"
+          - label: Phần D
             count: 10
-          - label: "Phần E"
+          - label: Phần E
             count: 10
-          - label: "Phần F"
+          - label: Phần F
             count: 10
-          - label: "Phần G"
+          - label: Phần G
             count: 10
-          - label: "Phần H"
+          - label: Phần H
             count: 10
-          - label: "Trong nước"
+          - label: Trong nước
             count: 10
-          - label: "Ngoài nước"
+          - label: Ngoài nước
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
