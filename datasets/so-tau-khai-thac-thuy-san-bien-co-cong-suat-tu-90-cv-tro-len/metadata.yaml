@@ -26,47 +26,95 @@ files:
     r2_key: "e31eff31-bda0-4d54-a53e-509b99038df8/so-tau-khai-thac-thuy-san-bien-co-cong-suat-tu-90-cv-tro-len.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [68, 68, 68, 34, 68, 68, 68, 68]
-      "Số tàu khai thác thủy sản biển có công suất từ 90 CV trở lên":
+        histogram: [ 68, 68, 68, 34, 68, 68, 68, 68 ]
+      Số tàu khai thác thủy sản biển có công suất từ 90 CV trở lên:
         kind: numeric
         min: 0
         max: 999
-        histogram: [281, 48, 59, 24, 21, 28, 29, 20]
-      "Tỉnh, thành phố":
+        histogram: [ 281, 48, 59, 24, 21, 28, 29, 20 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 34
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 15
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 15
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 15
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 15
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 15
-          - label: "Nam Định"
+          - label: Nam Định
             count: 15
-          - label: "Ninh Bình"
+          - label: Ninh Bình
             count: 15
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 15
-          - label: "Thanh Hóa"
+          - label: Thanh Hóa
             count: 15
-          - label: "Nghệ An"
+          - label: Nghệ An
             count: 15
-          - label: "Hà Tĩnh"
+          - label: Hà Tĩnh
             count: 15
-          - label: "Quảng Bình"
+          - label: Quảng Bình
             count: 15
-      "Ghi chú":
+          - label: Quảng Trị
+            count: 15
+          - label: Thừa Thiên - Huế
+            count: 15
+          - label: Đà Nẵng
+            count: 15
+          - label: Quảng Nam
+            count: 15
+          - label: Quảng Ngãi
+            count: 15
+          - label: Bình Định
+            count: 15
+          - label: Phú Yên
+            count: 15
+          - label: Khánh Hòa
+            count: 15
+          - label: Ninh Thuận
+            count: 15
+          - label: Bình Thuận
+            count: 15
+          - label: Đông Nam Bộ
+            count: 15
+          - label: Bà Rịa - Vũng Tàu
+            count: 15
+          - label: TP. Hồ Chí Minh
+            count: 15
+          - label: Đồng bằng sông Cửu Long
+            count: 15
+          - label: Long An
+            count: 15
+          - label: Tiền Giang
+            count: 15
+          - label: Bến Tre
+            count: 15
+          - label: Trà Vinh
+            count: 15
+          - label: Kiên Giang
+            count: 15
+          - label: Sóc Trăng
+            count: 15
+          - label: Bạc Liêu
+            count: 15
+          - label: Cà Mau
+            count: 15
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 34
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
