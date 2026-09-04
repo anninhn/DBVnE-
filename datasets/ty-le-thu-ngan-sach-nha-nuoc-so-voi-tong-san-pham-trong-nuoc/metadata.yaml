@@ -26,41 +26,60 @@ files:
     r2_key: "3d05af83-cdad-4826-8885-7fbf90ae84e0/ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc.csv"
     size_mb: 0.01
     column_stats:
-      "header0":
+      header0:
         kind: numeric
         min: 2018
         max: 2023
-        histogram: [21, 21, 0, 21, 21, 0, 21, 21]
-      "Tỷ lệ (%)":
+        histogram: [ 21, 21, 0, 21, 21, 0, 21, 21 ]
+      Tỷ lệ (%):
         kind: numeric
         min: -1.9
         max: 20.4
-        histogram: [43, 56, 6, 0, 0, 1, 7, 6]
-      "Loại thu":
+        histogram: [ 43, 56, 6, 0, 0, 1, 7, 6 ]
+      Loại thu:
         kind: categorical
         distinct: 21
         segments:
-          - label: "TỔNG THU (*)"
+          - label: TỔNG THU (*)
             count: 7
-          - label: "Thu trong nước (Không kể thu từ dầu thô)"
+          - label: Thu trong nước (Không kể thu từ dầu thô)
             count: 7
-          - label: "Thu từ doanh nghiệp Nhà nước (**)"
+          - label: Thu từ doanh nghiệp Nhà nước (**)
             count: 7
-          - label: "Thu từ doanh nghiệp có vốn đầu tư nước ngoài"
+          - label: Thu từ doanh nghiệp có vốn đầu tư nước ngoài
             count: 7
-          - label: "Thu từ khu vực công, thương nghiệp, dịch vụ ngoài quốc doanh"
+          - label: Thu từ khu vực công, thương nghiệp, dịch vụ ngoài quốc doanh
             count: 7
-          - label: "Thuế thu nhập cá nhân"
+          - label: Thuế thu nhập cá nhân
             count: 7
-          - label: "Thu xổ số kiến thiết"
+          - label: Thu xổ số kiến thiết
             count: 7
-          - label: "Thu phí xăng dầu"
+          - label: Thu phí xăng dầu
             count: 7
-          - label: "Thuế bảo vệ môi trường"
+          - label: Thuế bảo vệ môi trường
             count: 7
-          - label: "Thu phí, lệ phí"
+          - label: Thu phí, lệ phí
             count: 7
           - label: "Trong đó: Lệ phí trước bạ"
             count: 7
-          - label: "Các khoản thu về nhà đất"
+          - label: Các khoản thu về nhà đất
             count: 7
+          - label: Thuế sử dụng đất nông nghiệp
+            count: 7
+          - label: Các khoản thu khác
+            count: 7
+          - label: Thu từ dầu thô
+            count: 7
+          - label: Thu cân đối ngân sách từ hoạt động xuất nhập khẩu
+            count: 7
+          - label: Thuế xuất, nhập khẩu, thuế tiêu thụ đặc biệt hàng nhập khẩu; Thu chênh lệch giá hàng nhập khẩu
+            count: 7
+          - label: Thuế giá trị gia tăng hàng nhập khẩu
+            count: 7
+          - label: Tổng số thu từ hoạt động xuất, nhập khẩu
+            count: 7
+          - label: Hoàn thuế giá trị gia tăng
+            count: 7
+          - label: Thu viện trợ
+            count: 7
+        complete: true
