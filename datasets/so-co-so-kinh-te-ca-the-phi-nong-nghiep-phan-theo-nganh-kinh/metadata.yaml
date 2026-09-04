@@ -27,47 +27,67 @@ files:
     r2_key: "35f57fae-3ccc-4755-8abd-36017db21548/so-co-so-kinh-te-ca-the-phi-nong-nghiep-phan-theo-nganh-kinh.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [40, 20, 20, 20, 20, 20, 20, 40]
-      "Số cơ sở kinh tế cá thể phi nông nghiệp":
+        histogram: [ 40, 20, 20, 20, 20, 20, 20, 40 ]
+      Số cơ sở kinh tế cá thể phi nông nghiệp:
         kind: numeric
         min: 3.13
         max: 964.213
-        histogram: [110, 3, 23, 4, 0, 0, 16, 14]
-      "Ngành kinh tế":
+        histogram: [ 110, 3, 23, 4, 0, 0, 16, 14 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 20
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Công nghiệp và xây dựng"
+          - label: Công nghiệp và xây dựng
             count: 10
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 10
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 10
-          - label: "Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí"
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
             count: 10
-          - label: "Cung cấp nước; hoạt động quản lý và xử lý rác thải"
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải
             count: 10
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 10
-          - label: "Thương mại, dịch vụ"
+          - label: Thương mại, dịch vụ
             count: 10
-          - label: "Bán buôn; bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn; bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 10
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 10
-          - label: "Dịch vụ, lưu trú và ăn uống"
+          - label: Dịch vụ, lưu trú và ăn uống
             count: 10
-          - label: "Thông tin truyền thông"
+          - label: Thông tin truyền thông
             count: 10
-      "Ghi chú":
+          - label: Hoạt động tài chính, ngân hàng, bảo hiểm
+            count: 10
+          - label: Hoạt động kinh doanh bất động sản
+            count: 10
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 10
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 10
+          - label: Giáo dục và đào tạo
+            count: 10
+          - label: Y tế và hoạt động cứu trợ xã hội
+            count: 10
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 10
+          - label: Hoạt động dịch vụ khác
+            count: 10
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 20
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
