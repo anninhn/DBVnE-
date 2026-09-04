@@ -26,52 +26,62 @@ files:
     r2_key: "312c145b-0f31-4d1c-af5e-effbc6b8e252/dien-tich-cho-san-pham-mot-so-cay-lau-nam-chu-yeu.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [30, 30, 45, 30, 30, 45, 30, 45]
-      "Diện tích (Nghìn ha)":
+        histogram: [ 30, 30, 45, 30, 30, 45, 30, 45 ]
+      Diện tích (Nghìn ha):
         kind: numeric
         min: 0
         max: 752.4
-        histogram: [128, 46, 5, 15, 5, 8, 15, 9]
-      "Chỉ số phát triển (Năm trước =100) (%)":
+        histogram: [ 128, 46, 5, 15, 5, 8, 15, 9 ]
+      Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 75.7
         max: 125.5
-        histogram: [3, 3, 9, 75, 108, 21, 7, 3]
-      "Một số cây lâu năm":
+        histogram: [ 3, 3, 9, 75, 108, 21, 7, 3 ]
+      Một số cây lâu năm:
         kind: categorical
         distinct: 15
         segments:
           - label: "Cây ăn quả:"
             count: 19
-          - label: "Nho"
+          - label: Nho
             count: 19
-          - label: "Chuối"
+          - label: Chuối
             count: 19
-          - label: "Xoài"
+          - label: Xoài
             count: 19
-          - label: "Cam, quýt"
+          - label: Cam, quýt
             count: 19
-          - label: "Nhãn"
+          - label: Nhãn
             count: 19
-          - label: "Vải(*)"
+          - label: Vải(*)
             count: 19
-          - label: "Chôm chôm"
+          - label: Chôm chôm
             count: 19
-          - label: "Bưởi"
+          - label: Bưởi
             count: 19
           - label: "Cây công nghiệp lâu năm:"
             count: 19
-          - label: "Điều"
+          - label: Điều
             count: 19
-          - label: "Cao su"
+          - label: Cao su
             count: 19
-      "Ghi chú":
+          - label: Cà phê
+            count: 19
+          - label: Chè
+            count: 19
+          - label: Hồ tiêu
+            count: 19
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 15
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
