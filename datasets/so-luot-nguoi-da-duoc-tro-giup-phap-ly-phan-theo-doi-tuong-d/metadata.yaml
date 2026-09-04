@@ -26,46 +26,71 @@ files:
     r2_key: "12f40a39-6f33-4b5e-94db-eac125fe3121/so-luot-nguoi-da-duoc-tro-giup-phap-ly-phan-theo-doi-tuong-d.csv"
     size_mb: 0
     column_stats:
-      "Phân theo đối tượng được trợ giúp pháp lý":
+      Phân theo đối tượng được trợ giúp pháp lý:
         kind: numeric
         min: 38225
         max: 38225
-        histogram: [23, 0, 0, 0, 0, 0, 0, 0]
-      "Năm":
+        histogram: [ 23, 0, 0, 0, 0, 0, 0, 0 ]
+      Năm:
         kind: numeric
         min: 2024
         max: 2024
-        histogram: [23, 0, 0, 0, 0, 0, 0, 0]
-      "Số lượt người đã được trợ giúp pháp lý":
+        histogram: [ 23, 0, 0, 0, 0, 0, 0, 0 ]
+      Số lượt người đã được trợ giúp pháp lý:
         kind: numeric
         min: 1.195
         max: 251
-        histogram: [17, 0, 2, 1, 0, 0, 0, 1]
-      "CẢ NƯỚC":
+        histogram: [ 17, 0, 2, 1, 0, 0, 0, 1 ]
+      CẢ NƯỚC:
         kind: categorical
         distinct: 23
         segments:
-          - label: "Người có công với cách mạng"
+          - label: Người có công với cách mạng
             count: 1
-          - label: "Người thuộc hộ nghèo"
+          - label: Người thuộc hộ nghèo
             count: 1
-          - label: "Người dân tộc thiểu số"
+          - label: Người dân tộc thiểu số
             count: 1
-          - label: "Người vừa thuộc hộ nghèo, vừa là Người dân tộc thiểu số"
+          - label: Người vừa thuộc hộ nghèo, vừa là Người dân tộc thiểu số
             count: 1
-          - label: "Trẻ em"
+          - label: Trẻ em
             count: 1
-          - label: "Người bị buộc tội từ đủ 16 tuổi đến dưới 18 tuổi"
+          - label: Người bị buộc tội từ đủ 16 tuổi đến dưới 18 tuổi
             count: 1
-          - label: "Người bị buộc tội thuộc hộ cận nghèo"
+          - label: Người bị buộc tội thuộc hộ cận nghèo
             count: 1
-          - label: "Người có khó khăn về tài chính"
+          - label: Người có khó khăn về tài chính
             count: 1
-          - label: "Cha mẹ đẻ, vợ, chồng, con của liệt sĩ và người có công nuôi dưỡng khi liệt sĩ còn nhỏ"
+          - label: Cha mẹ đẻ, vợ, chồng, con của liệt sĩ và người có công nuôi dưỡng khi liệt sĩ còn nhỏ
             count: 1
-          - label: "Người nhiễm chất độc da cam"
+          - label: Người nhiễm chất độc da cam
             count: 1
-          - label: "Người cao tuổi"
+          - label: Người cao tuổi
             count: 1
-          - label: "Người khuyết tật"
+          - label: Người khuyết tật
             count: 1
+          - label: Người từ đủ 16 tuổi đến 18 tuổi là bị hại trong vụ án hình sự
+            count: 1
+          - label: Nạn nhân trong vụ việc bạo lực gia đình
+            count: 1
+          - label: Nạn nhân của hành vi mua bán người
+            count: 1
+          - label: Người nhiễm HIV
+            count: 1
+          - label: Phân theo vùng
+            count: 1
+          - label: Đồng bằng sông Hồng
+            count: 1
+          - label: Trung du và miền núi phía Bắc
+            count: 1
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 1
+          - label: Tây Nguyên
+            count: 1
+          - label: Đông Nam Bộ
+            count: 1
+          - label: Đồng bằng sông Cửu Long
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 2024, 2024 ]
