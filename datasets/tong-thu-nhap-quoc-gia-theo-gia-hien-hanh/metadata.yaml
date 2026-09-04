@@ -27,57 +27,107 @@ files:
     r2_key: "7bb66c99-9cb3-4abd-8259-b5ee7b5a9730/tong-thu-nhap-quoc-gia-theo-gia-hien-hanh.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [5, 4, 4, 4, 5, 4, 4, 5]
-      "Tổng thu nhập quốc gia (Tỷ đồng)":
+        histogram: [ 5, 4, 4, 4, 5, 4, 4, 5 ]
+      Tổng thu nhập quốc gia (Tỷ đồng):
         kind: numeric
         min: 39284
         max: 11131019.9
-        histogram: [18, 3, 2, 4, 2, 3, 1, 2]
-      "Tổng sản phẩm trong nước (Tỷ đồng)":
+        histogram: [ 18, 3, 2, 4, 2, 3, 1, 2 ]
+      Tổng sản phẩm trong nước (Tỷ đồng):
         kind: numeric
         min: 41955
         max: 11510328.9
-        histogram: [18, 3, 2, 4, 2, 3, 1, 2]
-      "Tỷ lệ tổng thu nhập quốc gia so với tổng sản phẩm trong nước (%)":
+        histogram: [ 18, 3, 2, 4, 2, 3, 1, 2 ]
+      Tỷ lệ tổng thu nhập quốc gia so với tổng sản phẩm trong nước (%):
         kind: numeric
         min: 93.6
         max: 99.9
-        histogram: [2, 7, 3, 5, 6, 5, 6, 1]
-      "Ghi chú":
+        histogram: [ 2, 7, 3, 5, 6, 5, 6, 1 ]
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 1
-      "Thu nhập thuần tuý từ nước ngoài (Tỷ đồng)":
+        complete: true
+      Thu nhập thuần tuý từ nước ngoài (Tỷ đồng):
         kind: categorical
         distinct: 35
         segments:
-          - label: "-2.671,0"
+          - label: -2.671,0
             count: 1
-          - label: "-4.087,0"
+          - label: -4.087,0
             count: 1
-          - label: "-3.775,0"
+          - label: -3.775,0
             count: 1
-          - label: "-5.345,0"
+          - label: -5.345,0
             count: 1
-          - label: "-4.517,0"
+          - label: -4.517,0
             count: 1
-          - label: "-215,0"
+          - label: -215,0
             count: 1
-          - label: "-2.382,0"
+          - label: -2.382,0
             count: 1
-          - label: "-5.023,0"
+          - label: -5.023,0
             count: 1
-          - label: "-8.181,0"
+          - label: -8.181,0
             count: 1
-          - label: "-7.249,0"
+          - label: -7.249,0
             count: 1
-          - label: "-6.327,0"
+          - label: -6.327,0
             count: 1
-          - label: "-6.440,0"
+          - label: -6.440,0
             count: 1
+          - label: -8.706,0
+            count: 1
+          - label: -9.755,0
+            count: 1
+          - label: -13.401,0
+            count: 1
+          - label: -16.779,0
+            count: 1
+          - label: -22.810,0
+            count: 1
+          - label: -34.963,0
+            count: 1
+          - label: -48.083,0
+            count: 1
+          - label: -77.928,0
+            count: 1
+          - label: -85.004,0
+            count: 1
+          - label: -99.141,3
+            count: 1
+          - label: -129.737,6
+            count: 1
+          - label: -153.584,3
+            count: 1
+          - label: -187.068,1
+            count: 1
+          - label: -263.440,1
+            count: 1
+          - label: -310.224,3
+            count: 1
+          - label: -380.235,5
+            count: 1
+          - label: -357.574,3
+            count: 1
+          - label: -387.194,8
+            count: 1
+          - label: -343.887,8
+            count: 1
+          - label: -434.226,8
+            count: 1
+          - label: -459.215,6
+            count: 1
+          - label: -534.561,9
+            count: 1
+          - label: -379.309,1
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 1990, 2024 ]
