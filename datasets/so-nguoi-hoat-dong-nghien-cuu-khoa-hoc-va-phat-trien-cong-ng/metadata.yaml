@@ -27,41 +27,54 @@ files:
     r2_key: "7da7a5c7-e440-4df8-a62d-392722014e65/so-nguoi-hoat-dong-nghien-cuu-khoa-hoc-va-phat-trien-cong-ng.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2023
-        histogram: [17, 0, 17, 0, 17, 0, 17, 17]
-      "Số người hoạt động nghiên cứu khoa học và phát triển công nghệ":
+        histogram: [ 17, 0, 17, 0, 17, 0, 17, 17 ]
+      Số người hoạt động nghiên cứu khoa học và phát triển công nghệ:
         kind: numeric
         min: 0
         max: 173.041
-        histogram: [40, 16, 15, 9, 0, 0, 3, 2]
-      "Giới tính, lĩnh vực hoạt động, lĩnh vực khoa học công nghệ, trình độ":
+        histogram: [ 40, 16, 15, 9, 0, 0, 3, 2 ]
+      Giới tính, lĩnh vực hoạt động, lĩnh vực khoa học công nghệ, trình độ:
         kind: categorical
         distinct: 17
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 5
-          - label: "Nữ"
+          - label: Nữ
             count: 5
-          - label: "Tổ chức nghiên cứu khoa học và phát triển công nghệ"
+          - label: Tổ chức nghiên cứu khoa học và phát triển công nghệ
             count: 5
-          - label: "Cơ sở giáo dục đại học, cao đẳng"
+          - label: Cơ sở giáo dục đại học, cao đẳng
             count: 5
-          - label: "Tổ chức dịch vụ KH&CN"
+          - label: Tổ chức dịch vụ KH&CN
             count: 5
-          - label: "Cơ quan hành chính, đơn vị sự nghiệp khác"
+          - label: Cơ quan hành chính, đơn vị sự nghiệp khác
             count: 5
-          - label: "Tổ chức ngoài nhà nước, doanh nghiệp"
+          - label: Tổ chức ngoài nhà nước, doanh nghiệp
             count: 5
-          - label: "Khoa học tự nhiên"
+          - label: Khoa học tự nhiên
             count: 5
-          - label: "Khoa học kỹ thuật và công nghệ"
+          - label: Khoa học kỹ thuật và công nghệ
             count: 5
-          - label: "Khoa học y dược"
+          - label: Khoa học y dược
             count: 5
-          - label: "Khoa học nông nghiệp"
+          - label: Khoa học nông nghiệp
             count: 5
-          - label: "Khoa học xã hội"
+          - label: Khoa học xã hội
             count: 5
+          - label: Khoa học nhân văn
+            count: 5
+          - label: Tiến sĩ
+            count: 5
+          - label: Thạc sĩ
+            count: 5
+          - label: Đại học
+            count: 5
+          - label: Cao đẳng
+            count: 5
+        complete: true
+coverage:
+  temporal: [ 2015, 2023 ]
