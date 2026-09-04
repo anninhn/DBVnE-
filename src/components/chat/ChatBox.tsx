@@ -541,8 +541,25 @@ function ResponseView({
         </div>
       )}
 
-      {/* Empty state khi không có dataset match */}
-      {!hasDatasets && <EmptyState onPrefill={onPrefill} disabled={disabled} />}
+      {/* Câu trả lời bị cắt vì chạm trần token — nói rõ, đừng để người đọc tưởng
+          phần nhận được là toàn bộ. */}
+      {response.truncated && (
+        <div className="flex items-start gap-2 text-[13px] text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+          <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" aria-hidden />
+          <p>
+            Câu trả lời bị cắt vì quá dài — phần trên là những gì đã nhận được.
+            Hỏi lại hẹp hơn để có câu trả lời đầy đủ.
+          </p>
+        </div>
+      )}
+
+      {/* Empty state khi không có dataset match.
+          KHÔNG hiện khi câu trả lời bị cắt: "không tìm thấy dataset phù hợp" và
+          "câu trả lời chưa hết" là hai chuyện khác nhau, và gộp lại thì người đọc
+          kết luận kho không có dữ liệu — trong khi câu trả lời vừa nói là có. */}
+      {!hasDatasets && !response.truncated && (
+        <EmptyState onPrefill={onPrefill} disabled={disabled} />
+      )}
 
       {/* Follow-ups */}
       {hasDatasets && response.follow_ups.length > 0 && (

@@ -18,6 +18,59 @@ import type { Dataset } from "@/lib/types/dataset";
 /** Cap số cột in ra, tránh dataset rất rộng chiếm hết chỗ của các dataset khác. */
 const MAX_COLUMNS = 30;
 
+/** Số chỗ chứa giá trị được liệt kê làm ví dụ. Con số TỔNG vẫn nói đầy đủ. */
+const VALUE_SAMPLE = 6;
+
+/**
+ * Khối giá trị tra được từ chỉ mục nghịch đảo.
+ *
+ * Đây là **dữ kiện**, không phải gợi ý: `Đà Nẵng` có ở 176 dataset là chuyện tra
+ * được đúng/sai, không phải chuyện tương đồng ngữ nghĩa. Khối này tồn tại vì tìm
+ * kiếm bằng vector KHÔNG trả lời được câu "có dữ liệu gì về Đà Nẵng" — đo thực
+ * tế cosine cao nhất chỉ 0,613, thấp hơn cả câu hỏi vô quan.
+ */
+export function buildValueBlock(
+  matches: {
+    display: string;
+    variants: string[];
+    datasetCount: number;
+    datasets: { slug: string; title: string; column: string }[];
+  }[],
+  partialColumnCount: number,
+): string {
+  if (matches.length === 0) return "";
+
+  const lines: string[] = [
+    "GIÁ TRỊ TRA ĐƯỢC TRONG DỮ LIỆU (tra chỉ mục, KHÔNG phải suy đoán):",
+  ];
+  for (const m of matches) {
+    const others = m.variants.filter((v) => v !== m.display);
+    lines.push(
+      `  - "${m.display}" — CÓ THẬT trong ${m.datasetCount} dataset ` +
+        `(${m.datasets.length} cột)` +
+        (others.length ? `. Cách viết khác trong dữ liệu: ${others.join(", ")}` : ""),
+    );
+    for (const d of m.datasets.slice(0, VALUE_SAMPLE)) {
+      lines.push(`      · ${d.title} (\`${d.slug}\`) — cột \`${d.column}\``);
+    }
+    if (m.datasets.length > VALUE_SAMPLE) {
+      lines.push(`      · … và ${m.datasets.length - VALUE_SAMPLE} chỗ khác`);
+    }
+  }
+  lines.push(
+    "TUYỆT ĐỐI KHÔNG nói kho chưa có dữ liệu về các giá trị trên — chúng đã được " +
+      "tra ra trong dữ liệu thật.",
+  );
+  if (partialColumnCount > 0) {
+    lines.push(
+      `Ngoài ra còn ${partialColumnCount} cột có quá nhiều giá trị nên chưa tra hết — ` +
+        "nếu người hỏi nêu một giá trị KHÔNG có trong khối trên thì nói \"chưa tra hết\", " +
+        "không nói \"không có\".",
+    );
+  }
+  return lines.join("\n");
+}
+
 function formatColumn(col: DatasetColumn): string {
   const parts = [`  - \`${col.name}\``];
   if (col.type) parts.push(`(${col.type})`);
@@ -65,7 +118,7 @@ function formatCandidate(d: DatasetDetail): string {
  */
 export function buildCandidateBlock(
   datasets: DatasetDetail[],
-  opts?: { total?: number; weakRelevance?: boolean },
+  opts?: { total?: number; valueSorted?: boolean },
 ): string {
   if (datasets.length === 0) {
     return "(Không tìm thấy dataset nào liên quan tới câu hỏi này trong kho.)";
@@ -76,13 +129,13 @@ export function buildCandidateBlock(
     (opts?.total && opts.total > datasets.length ? ` trong ${opts.total} dataset khớp` : "") +
     `, xếp theo mức liên quan giảm dần — KHÔNG phải toàn bộ kho):`;
 
-  const warning = opts?.weakRelevance
-    ? "\n\nCẢNH BÁO: mức liên quan của cả danh sách này đều THẤP. Nhiều khả năng " +
-      "kho chưa có dataset về chủ đề được hỏi. Hãy nói thẳng là chưa có, thay vì " +
-      "cố tìm lý do cho dataset đứng đầu."
+  // Nói rõ danh sách đã được xếp lại theo giá trị tra được — nếu không, model
+  // thấy thứ tự khác thứ tự "liên quan nhất" mà không hiểu vì sao.
+  const note = opts?.valueSorted
+    ? "\nDanh sách đã xếp lại: dataset CHỨA các giá trị tra được ở khối trên lên trước."
     : "";
 
-  return `${header}${warning}\n\n${datasets.map(formatCandidate).join("\n\n---\n\n")}`;
+  return `${header}${note}\n\n${datasets.map(formatCandidate).join("\n\n---\n\n")}`;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────

@@ -18,7 +18,7 @@ import { loadVectorIndex, rankByVector } from "./vector-store";
 import { rankByKeyword } from "./keyword";
 import { fuse } from "./fuse";
 import { embedQuery } from "./embed";
-import { tokenize } from "./normalize";
+import { normalize, tokenize } from "./normalize";
 import { isValueListComplete, valueKeys } from "./value-index";
 import { withAudit } from "./audit";
 import type {
@@ -197,6 +197,132 @@ export async function lookupValue(
         // có ở 3 dataset".
         partialColumns: index.partialColumns,
       };
+    },
+  );
+}
+
+// ── findValuesInQuery ─────────────────────────────────────────────────────────
+
+/**
+ * Số từ tối đa của một cụm đem đi tra. `Bắc Trung Bộ và Duyên hải miền Trung` là
+ * 8 từ, nhưng cụm dài thì hầu như không ai gõ nguyên văn trong câu hỏi; 4 phủ
+ * được mọi tên tỉnh/thành và phần lớn tên vùng.
+ */
+const MAX_NGRAM_WORDS = 4;
+
+/**
+ * Nhãn tổng hợp — bỏ qua khi tra.
+ *
+ * `TỔNG SỐ` / `CẢ NƯỚC` là **nhãn dòng tổng**, không phải một đối tượng người ta
+ * hỏi về. Câu "tổng số dân là bao nhiêu" không phải câu hỏi theo giá trị, mà tra
+ * ra `TỔNG SỐ` (có ở 173 dataset) rồi xếp 173 dataset đó lên đầu thì làm hỏng
+ * đúng phần xếp hạng theo chủ đề.
+ *
+ * Lọc bằng danh sách chứ không bằng tỉ lệ: đo thực tế, `CẢ NƯỚC` có ở 195/493
+ * dataset và `Đà Nẵng` ở 176/493 — tỉ lệ không tách được hai loại này.
+ */
+const AGGREGATE_LABELS = new Set([
+  "tong so", "tong", "tong cong", "ca nuoc", "chung", "toan bo", "toan quoc",
+]);
+
+/**
+ * Guard thưa cho những giá trị lọt danh sách trên mà vẫn có ở gần hết kho — xếp
+ * hạng theo một giá trị như thế thì không còn là xếp hạng.
+ */
+const TOO_COMMON_RATIO = 0.6;
+
+export interface QueryValueMatch {
+  /** Cách viết chuẩn để hiện cho người dùng */
+  display: string;
+  /** Các cách viết thật gặp trong dữ liệu */
+  variants: string[];
+  /** ĐẦY ĐỦ mọi chỗ chứa giá trị này */
+  datasets: ValueLocation[];
+  /** Số dataset khác nhau (một dataset có thể chứa giá trị ở nhiều cột) */
+  datasetCount: number;
+}
+
+export interface FindValuesResult {
+  matches: QueryValueMatch[];
+  /** Cột >200 giá trị nên không vào chỉ mục — chỗ chưa kết luận được */
+  partialColumns: { slug: string; column: string }[];
+}
+
+/**
+ * Tìm xem câu hỏi có nêu giá trị nào **thật sự có trong dữ liệu** hay không.
+ *
+ * Vì sao cần: câu "có dữ liệu gì về Đà Nẵng" cho cosine cao nhất chỉ **0,613** —
+ * thấp hơn cả câu hỏi hoàn toàn vô quan (tới 0,62). Một tên tỉnh đứng một mình
+ * không giống tiêu đề dataset nào về mặt ngữ nghĩa, nên tìm kiếm tương đồng
+ * KHÔNG trả lời được câu này. Trong khi chỉ mục nghịch đảo trả lời chính xác:
+ * `Đà Nẵng` có ở 178 chỗ.
+ *
+ * Không gọi model: sinh cụm từ câu hỏi rồi tra chỉ mục trong memory. 0 token.
+ */
+export async function findValuesInQuery(
+  query: string,
+  caller: string,
+): Promise<FindValuesResult> {
+  return withAudit(
+    "lookupValue",
+    caller,
+    query,
+    (r) => r.matches.length,
+    async () => {
+      const index = await loadValueIndex();
+      const words = query.split(/\s+/).filter(Boolean);
+      const total = Math.max(1, index.slugs.length);
+
+      // Quét cụm DÀI TRƯỚC: khớp được `Đà Nẵng` thì không xét `Nẵng` nữa. Xét cả
+      // hai thì cụm ngắn kéo theo những giá trị chẳng liên quan tới câu hỏi.
+      const taken = new Set<number>();
+      const seenEntry = new Set<string>();
+      const matches: QueryValueMatch[] = [];
+
+      for (let n = Math.min(MAX_NGRAM_WORDS, words.length); n >= 1; n--) {
+        for (let i = 0; i + n <= words.length; i++) {
+          if (Array.from({ length: n }, (_, k) => i + k).some((k) => taken.has(k))) continue;
+
+          const phrase = words.slice(i, i + n).join(" ");
+          const entry = valueKeys(phrase)
+            .map((k) => index.entries[k])
+            .find(Boolean);
+          if (!entry) continue;
+
+          // Cụm MỘT TỪ phải khớp đúng cả dấu. Chuẩn hoá bỏ dấu để gộp cách viết
+          // (`Qui Nhơn`/`Quy Nhơn`) là đúng cho cụm nhiều từ, nhưng với một từ
+          // ngắn thì nó gộp cả những từ chẳng liên quan: `cả` (trong "cả nước")
+          // bỏ dấu thành `ca` và khớp với giá trị `Cá`; `năm` khớp với `Nam`.
+          // Người dùng của kho này gõ tiếng Việt có dấu, nên đòi khớp đúng dấu
+          // cho một từ là siết đúng chỗ mà không mất trường hợp thật nào.
+          if (n === 1) {
+            const exact = phrase.toLowerCase();
+            if (!entry.variants.some((v) => v.toLowerCase() === exact)) continue;
+          }
+
+          if (AGGREGATE_LABELS.has(normalize(entry.display))) continue;
+          const slugs = new Set(entry.refs.map(([si]) => si));
+          if (slugs.size / total > TOO_COMMON_RATIO) continue;
+
+          for (let k = i; k < i + n; k++) taken.add(k);
+          // Hai cách viết của cùng một chỗ (`Qui Nhơn` và `Quy Nhơn` trong cùng
+          // câu hỏi) trỏ về cùng entry — kể hai lần là nói kho có hai đối tượng.
+          if (seenEntry.has(entry.display)) continue;
+          seenEntry.add(entry.display);
+          matches.push({
+            display: entry.display,
+            variants: entry.variants,
+            datasets: entry.refs.map(([si, ci]) => ({
+              slug: index.slugs[si],
+              title: index.titles[index.slugs[si]] ?? index.slugs[si],
+              column: index.columns[ci],
+            })),
+            datasetCount: slugs.size,
+          });
+        }
+      }
+
+      return { matches, partialColumns: index.partialColumns };
     },
   );
 }

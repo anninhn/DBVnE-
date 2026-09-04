@@ -108,16 +108,22 @@ export function fuse(
   return merged.sort((a, b) => b.score - a.score).slice(0, limit);
 }
 
-/**
- * Dưới mức này thì kết quả đầu bảng nằm trong **vùng nghi ngờ**.
+/*
+ * ĐÃ BỎ: `WEAK_RELEVANCE_CEILING = 0.65`.
  *
- * Đo trên kho 495 dataset: câu hỏi có dataset thật cho cosine cao nhất 0,66–0,77;
- * câu hỏi không có gì liên quan cho 0,46–0,62. Ranh giới 0,65 nằm giữa hai vùng đó.
+ * Nó từng được gửi cho model như tín hiệu "cả danh sách này liên quan thấp, hãy
+ * nói là chưa có". Đó là chính cái ngưỡng cắt mà chú thích của `MIN_SCORE` bên
+ * trên giải thích là KHÔNG dùng được — chỉ khác là nó đi qua model nên trông như
+ * model tự kết luận.
  *
- * Cố ý KHÔNG dùng làm ngưỡng cắt (xem `MIN_SCORE`): một tên riêng đứng một mình
- * cũng rơi xuống dưới mức này. Đây là **tín hiệu chuyển cho model**, để nó nói
- * "chưa có dataset về chủ đề này" thay vì cố tìm lý do cho cái đầu bảng.
+ * Hậu quả đo được: câu "có dữ liệu gì về Đà Nẵng" cho cosine cao nhất 0,613 <
+ * 0,65 → hệ thống trả lời "kho dữ liệu chưa có dataset về Đà Nẵng", trong khi
+ * `Đà Nẵng` có thật ở 176 dataset. Sai theo chiều tệ nhất, và phóng viên không
+ * có cách nào tự phát hiện.
+ *
+ * Thay bằng: `findValuesInQuery` tra chỉ mục nghịch đảo và đưa dữ kiện thật vào
+ * ngữ cảnh. Câu hỏi theo giá trị được trả lời bằng dữ liệu, không bằng một
+ * ngưỡng cosine.
  */
-const WEAK_RELEVANCE_CEILING = 0.65;
 
-export { MIN_SCORE, SEMANTIC_WEIGHT, KEYWORD_WEIGHT, WEAK_RELEVANCE_CEILING };
+export { MIN_SCORE, SEMANTIC_WEIGHT, KEYWORD_WEIGHT };

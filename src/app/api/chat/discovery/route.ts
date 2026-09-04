@@ -32,11 +32,19 @@ import path from "path";
 import { randomUUID } from "crypto";
 import { requireUserOr401 } from "@/lib/auth";
 import { getAIClient } from "@/lib/ai/dataset-reviewer";
-import { buildCandidateBlock, buildFocusBlock } from "@/lib/chat/flatten-metadata";
+import {
+  buildCandidateBlock,
+  buildFocusBlock,
+  buildValueBlock,
+} from "@/lib/chat/flatten-metadata";
 import { extractDiscoveryJSON } from "@/lib/chat/extract-json";
 import { getDatasetBySlug } from "@/lib/datasets/read";
-import { getDataset, searchDatasets, RetrievalIndexUnavailableError } from "@/lib/retrieval";
-import { WEAK_RELEVANCE_CEILING } from "@/lib/retrieval/fuse";
+import {
+  findValuesInQuery,
+  getDataset,
+  searchDatasets,
+  RetrievalIndexUnavailableError,
+} from "@/lib/retrieval";
 import {
   appendChatLog,
   getDailyQuota,
@@ -61,6 +69,17 @@ export const maxDuration = 60; // AI stream có thể mất 10-30s
  * đã xếp là kém liên quan nhất.
  */
 const CANDIDATE_LIMIT = 20;
+
+/**
+ * Số ứng viên lấy từ tầng tra cứu TRƯỚC khi xếp lại theo giá trị.
+ *
+ * Lớn hơn `CANDIDATE_LIMIT` để khi câu hỏi nêu một địa danh, ta còn chỗ chọn ra
+ * những dataset **vừa liên quan chủ đề vừa thật sự chứa địa danh đó**. Chỉ lấy 20
+ * rồi lọc thì có câu hỏi lọc xong còn 2 ứng viên. Bể này không tốn thêm lượt gọi
+ * mạng nào — `searchDatasets` xếp hạng trong memory, chỉ `getDataset` mới đọc
+ * GitHub và nó vẫn chỉ đọc 20.
+ */
+const CANDIDATE_POOL = 60;
 
 /** Một lượt đã xảy ra trong cuộc trò chuyện — client giữ và gửi lại. */
 interface HistoryTurn {
@@ -219,15 +238,39 @@ export async function POST(req: NextRequest) {
   let candidateBlock: string;
   let systemPrompt: string;
   let focusBlock = "";
+  let valueBlock = "";
   try {
-    const [search, prompt] = await Promise.all([
-      searchDatasets({ query: searchQuery, limit: CANDIDATE_LIMIT, caller: `chat:${userKey}` }),
+    const [search, valueHits, prompt] = await Promise.all([
+      searchDatasets({ query: searchQuery, limit: CANDIDATE_POOL, caller: `chat:${userKey}` }),
+      // Tra chỉ mục nghịch đảo xem câu hỏi có nêu giá trị nào thật có trong dữ
+      // liệu. Đây là chỗ chữa lỗi nặng nhất của luồng cũ: câu "có dữ liệu gì về
+      // Đà Nẵng" cho cosine cao nhất 0,613 nên tìm kiếm tương đồng coi như không
+      // liên quan, và hệ thống trả lời "kho chưa có" về một giá trị có ở 176
+      // dataset. Tra chỉ mục thì đúng/sai tuyệt đối, và 0 token.
+      findValuesInQuery(searchQuery, `chat:${userKey}`),
       loadSystemPrompt(),
     ]);
     systemPrompt = prompt;
 
+    // Xếp lại: dataset CHỨA giá trị tra được lên trước, giữ nguyên thứ tự liên
+    // quan trong từng nhóm. Không thay hẳn danh sách bằng dataset chứa giá trị —
+    // 176 dataset đều chứa "Đà Nẵng", nên nếu bỏ xếp hạng chủ đề thì câu "dữ liệu
+    // KINH TẾ của Đà Nẵng" trả về 20 dataset ngẫu nhiên có Đà Nẵng.
+    const valueSlugs = new Set(
+      valueHits.matches.flatMap((m) => m.datasets.map((d) => d.slug)),
+    );
+    const ranked =
+      valueSlugs.size > 0
+        ? [
+            ...search.results.filter((r) => valueSlugs.has(r.slug)),
+            ...search.results.filter((r) => !valueSlugs.has(r.slug)),
+          ]
+        : search.results;
+    const chosen = ranked.slice(0, CANDIDATE_LIMIT);
+    valueBlock = buildValueBlock(valueHits.matches, valueHits.partialColumns.length);
+
     const detail = await getDataset({
-      slugs: search.results.map((r) => r.slug),
+      slugs: chosen.map((r) => r.slug),
       // Danh sách giá trị cột chỉ nạp cho dataset đang được hỏi thẳng (khối FOCUS).
       // Nạp cho cả 20 ứng viên là kéo hàng nghìn tên tỉnh vào ngữ cảnh, đúng thứ
       // vừa cắt đi.
@@ -238,15 +281,14 @@ export async function POST(req: NextRequest) {
     // Thứ tự của `searchDatasets` là thứ tự mức liên quan — `getDataset` không giữ
     // nó. Xếp lại theo slug, nếu không thì model đọc danh sách theo thứ tự ngẫu
     // nhiên và "dataset đầu bảng" mất hết ý nghĩa.
-    const order = new Map(search.results.map((r, i) => [r.slug, i] as const));
+    const order = new Map(chosen.map((r, i) => [r.slug, i] as const));
     const ordered = [...detail.datasets].sort(
       (a, b) => (order.get(a.slug) ?? 0) - (order.get(b.slug) ?? 0),
     );
 
-    const best = search.results[0]?.semanticScore ?? 0;
     candidateBlock = buildCandidateBlock(ordered, {
       total: search.total,
-      weakRelevance: search.results.length > 0 && best < WEAK_RELEVANCE_CEILING,
+      valueSorted: valueSlugs.size > 0,
     });
 
     // FOCUS block — metadata + dictionary + danh sách giá trị cột của dataset attach.
@@ -294,9 +336,16 @@ export async function POST(req: NextRequest) {
   // Kích thước ngữ cảnh gửi cho model — thứ mà SC-001 đặt trần. Trả qua header để
   // đo được mà không phải dựng thêm công cụ: chi phí mỗi câu hỏi là con số dễ trôi
   // đi nhất khi sửa prompt, và trôi thì không ai thấy cho tới lúc hết hạn mức.
-  const userContent = focusBlock
-    ? `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n${focusBlock}\n\n${candidateBlock}`
-    : `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n${candidateBlock}`;
+  // Khối giá trị đặt TRƯỚC danh sách ứng viên: nó là dữ kiện đúng/sai, còn danh
+  // sách ứng viên là phỏng đoán theo mức liên quan. Model đọc tới đâu tin tới đó.
+  const userContent = [
+    `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}`,
+    focusBlock,
+    valueBlock,
+    candidateBlock,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
       const startTime = Date.now();
@@ -320,11 +369,18 @@ export async function POST(req: NextRequest) {
             },
           ],
           temperature: 0.3,
-          // 4000 tokens cho headroom khi LLM liệt kê 4+ datasets (bài Đà Nẵng
-          // cut tại entry #4 với max_tokens=2000 → JSON parse fail → EmptyState).
-          max_tokens: 4000,
+          // 4000 vẫn chạm trần: đo thực tế câu "có dữ liệu gì về Đà Nẵng" bị cắt
+          // giữa dòng. Nâng lên 8000 và siết prompt (answer 2–4 câu, tối đa 3
+          // dataset) để bớt chạm; kèm nhánh cứu JSON cắt ở `extract-json.ts` vì
+          // trần nào rồi cũng có câu chạm. Chỉ token ĐẦU RA mới tính tiền, và câu
+          // trả lời thường dùng ~1.000 nên nâng trần không làm tăng chi phí thật.
+          max_tokens: 8000,
           stream: true,
           // Ép JSON ở tầng API, không chỉ nhờ system prompt.
+          //
+          // Lưu ý: nó KHÔNG chặn hẳn được văn xuôi. Đo lúc kiểm nhánh cắt, model
+          // vẫn mở đầu bằng "Here is the JSON requested:\n```json" — nên
+          // `extract-json.ts` vẫn phải giữ nhánh xử lý preamble và markdown fence.
           //
           // Comment cũ ở đây ghi "Gemini OpenAI compat chưa ổn định với stream +
           // json_object". Kiểm lại 2026-09-04 với SDK và model hiện tại: chạy tốt.
@@ -352,8 +408,8 @@ export async function POST(req: NextRequest) {
         // → fallback datasets: [] → EmptyState dù LLM đã planned datasets.
         if (finishReason === "length") {
           console.warn(
-            "[chat/discovery] stream truncated (max_tokens=4000 hit). " +
-              "Answer likely incomplete — JSON parse may fail → EmptyState.",
+            "[chat/discovery] stream bị cắt (chạm trần 8000 token). Client sẽ cứu " +
+              "phần đọc được và hiện cảnh báo — không rơi về EmptyState nữa.",
           );
         }
 

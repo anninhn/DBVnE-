@@ -31,6 +31,11 @@ export interface DiscoveryResponse {
    * (R8). Thiếu thì coi là `"search"`, xem `normalizeIntent`.
    */
   intent: QuestionIntent;
+  /**
+   * `true` = JSON bị cắt giữa dòng (chạm trần token) và phần đọc được là phần cứu
+   * lại. Caller PHẢI nói cho người dùng biết câu trả lời chưa hết.
+   */
+  truncated?: boolean;
 }
 
 /**
@@ -64,7 +69,100 @@ export function extractDiscoveryJSON(text: string): DiscoveryResponse | null {
     if (parsed) return normalized(parsed);
   }
 
-  return null;
+  // Case 4: JSON bị CẮT giữa dòng — chạm trần token nên thiếu dấu đóng.
+  //
+  // Không có nhánh này thì một câu trả lời đã stream tới người dùng và đã đúng
+  // nội dung lại bị thay bằng màn hình trống "Không tìm thấy dataset phù hợp".
+  // Đó là cách hỏng tệ nhất: người đọc kết luận kho không có dữ liệu.
+  return salvageTruncated(trimmed);
+}
+
+/** Giải mã escape trong chuỗi JSON — chỉ những dạng JSON cho phép. */
+function unescape(text: string, i: number): [string, number] {
+  const c = text[i];
+  const simple: Record<string, string> = {
+    n: "\n", t: "\t", r: "\r", b: "\b", f: "\f", '"': '"', "\\": "\\", "/": "/",
+  };
+  if (c === "u") {
+    const hex = text.slice(i + 1, i + 5);
+    if (/^[0-9a-fA-F]{4}$/.test(hex)) return [String.fromCharCode(parseInt(hex, 16)), i + 5];
+    return ["", i + 1];
+  }
+  return [simple[c] ?? c, i + 1];
+}
+
+/** Đọc một chuỗi JSON từ vị trí sau dấu `"` mở, chấp nhận việc nó chưa đóng. */
+function readJsonString(text: string, start: number): { value: string; closed: boolean; end: number } {
+  let out = "";
+  let i = start;
+  for (; i < text.length; i++) {
+    const c = text[i];
+    if (c === "\\") {
+      const [ch, next] = unescape(text, i + 1);
+      out += ch;
+      i = next - 1;
+      continue;
+    }
+    if (c === '"') return { value: out, closed: true, end: i + 1 };
+    out += c;
+  }
+  return { value: out, closed: false, end: i };
+}
+
+/**
+ * Cứu phần đọc được từ một JSON bị cắt.
+ *
+ * Lấy `answer` (kể cả khi chuỗi chưa đóng) và những phần tử `datasets[]` đã hoàn
+ * chỉnh. Trả `truncated: true` để caller nói rõ là chưa hết — hiện phần cứu được
+ * mà không nói gì thì người đọc tưởng đó là toàn bộ câu trả lời.
+ */
+function salvageTruncated(text: string): DiscoveryResponse | null {
+  const m = /"answer"\s*:\s*"/.exec(text);
+  if (!m) return null;
+
+  const { value: answer } = readJsonString(text, m.index + m[0].length);
+  if (!answer.trim()) return null;
+
+  const datasets: DiscoveryDataset[] = [];
+  const dm = /"datasets"\s*:\s*\[/.exec(text);
+  if (dm) {
+    // Quét từng object cân dấu ngoặc; dừng ở object đầu tiên chưa hoàn chỉnh.
+    let i = dm.index + dm[0].length;
+    while (i < text.length) {
+      const open = text.indexOf("{", i);
+      if (open === -1) break;
+      let depth = 0;
+      let end = -1;
+      let inStr = false;
+      for (let j = open; j < text.length; j++) {
+        const c = text[j];
+        if (inStr) {
+          if (c === "\\") j++;
+          else if (c === '"') inStr = false;
+          continue;
+        }
+        if (c === '"') inStr = true;
+        else if (c === "{") depth++;
+        else if (c === "}") {
+          depth--;
+          if (depth === 0) { end = j + 1; break; }
+        }
+      }
+      if (end === -1) break;
+      const one = normalizeDataset(tryParse(text.slice(open, end)));
+      if (one) datasets.push(one);
+      i = end;
+    }
+  }
+
+  const im = /"intent"\s*:\s*"(search|compute|both)"/.exec(text);
+  return {
+    answer,
+    datasets,
+    follow_ups: [],
+    intent: normalizeIntent(im?.[1]),
+    truncated: true,
+  };
 }
 
 function tryParse(s: string): unknown | null {
