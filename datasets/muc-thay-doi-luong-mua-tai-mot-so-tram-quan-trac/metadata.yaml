@@ -27,244 +27,295 @@ files:
     r2_key: "eb0ff626-ca78-4d18-8630-84cf500a7cf0/muc-thay-doi-luong-mua-tai-mot-so-tram-quan-trac.csv"
     size_mb: 0
     column_stats:
-      "Năm 2010 so với năm 2009":
+      Năm 2010 so với năm 2009:
         kind: numeric
         min: -955.1
         max: 1307.3
-        histogram: [2, 0, 3, 0, 3, 0, 0, 2]
-      "Năm 2011 so với năm 2010":
+        histogram: [ 2, 0, 3, 0, 3, 0, 0, 2 ]
+      Năm 2011 so với năm 2010:
         kind: numeric
         min: -1330.3
         max: 1627
-        histogram: [2, 0, 1, 4, 5, 1, 0, 2]
-      "Năm 2012 so với năm 2011":
+        histogram: [ 2, 0, 1, 4, 5, 1, 0, 2 ]
+      Năm 2012 so với năm 2011:
         kind: numeric
         min: -2111
         max: 601
-        histogram: [2, 0, 0, 0, 0, 4, 4, 5]
-      "Năm 2013 so với năm 2012":
+        histogram: [ 2, 0, 0, 0, 0, 4, 4, 5 ]
+      Năm 2013 so với năm 2012:
         kind: numeric
         min: -346.6
         max: 620.6
-        histogram: [2, 1, 1, 5, 1, 1, 1, 3]
-      "Năm 2016 so với năm 2015":
+        histogram: [ 2, 1, 1, 5, 1, 1, 1, 3 ]
+      Năm 2016 so với năm 2015:
         kind: numeric
         min: -678.8
         max: 1593.2
-        histogram: [1, 2, 5, 2, 1, 2, 1, 1]
-      "Năm 2017 so với năm 2016":
+        histogram: [ 1, 2, 5, 2, 1, 2, 1, 1 ]
+      Năm 2017 so với năm 2016:
         kind: numeric
         min: -1011.1
         max: 992.7
-        histogram: [1, 0, 1, 3, 4, 3, 1, 2]
-      "Năm 2020 so với năm 2019":
+        histogram: [ 1, 0, 1, 3, 4, 3, 1, 2 ]
+      Năm 2020 so với năm 2019:
         kind: numeric
         min: -657.5
         max: 2828.2
-        histogram: [1, 6, 6, 1, 0, 0, 0, 1]
-      "Năm 2022 so với năm 2021":
+        histogram: [ 1, 6, 6, 1, 0, 0, 0, 1 ]
+      Năm 2022 so với năm 2021:
         kind: numeric
         min: -462.9
         max: 913.7
-        histogram: [1, 1, 2, 1, 3, 3, 1, 3]
-      "Năm 2024 so với năm 2023":
+        histogram: [ 1, 1, 2, 1, 3, 3, 1, 3 ]
+      Năm 2024 so với năm 2023:
         kind: numeric
         min: -1336.4
         max: 1741.6
-        histogram: [2, 0, 3, 3, 5, 1, 0, 1]
-      "Tỉnh, thành phố":
+        histogram: [ 2, 0, 3, 3, 5, 1, 0, 1 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 15
         segments:
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 1
-          - label: "Sơn La"
+          - label: Sơn La
             count: 1
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 1
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 1
-          - label: "Bãi Cháy"
+          - label: Bãi Cháy
             count: 1
-          - label: "Nam Định"
+          - label: Nam Định
             count: 1
-          - label: "Vinh"
+          - label: Vinh
             count: 1
-          - label: "Huế"
+          - label: Huế
             count: 1
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 1
-          - label: "Qui Nhơn"
+          - label: Qui Nhơn
             count: 1
-          - label: "Pleiku"
+          - label: Pleiku
             count: 1
-          - label: "Đà Lạt"
+          - label: Đà Lạt
             count: 1
-      "Năm 2014 so với năm 2013":
+          - label: Nha Trang
+            count: 1
+          - label: Vũng Tàu
+            count: 1
+          - label: Cà Mau
+            count: 1
+        complete: true
+      Năm 2014 so với năm 2013:
         kind: categorical
         distinct: 15
         segments:
-          - label: "-389,40"
+          - label: -389,40
             count: 1
-          - label: "-125,40"
+          - label: -125,40
             count: 1
-          - label: "-149,50"
+          - label: -149,50
             count: 1
-          - label: "-274,10"
+          - label: -274,10
             count: 1
-          - label: "-802,10"
+          - label: -802,10
             count: 1
-          - label: "-35,90"
+          - label: -35,90
             count: 1
-          - label: "-1.032,80"
+          - label: -1.032,80
             count: 1
-          - label: "-416,20"
+          - label: -416,20
             count: 1
-          - label: "-92,60"
+          - label: -92,60
             count: 1
-          - label: "-277,00"
+          - label: -277,00
             count: 1
-          - label: "213,90"
+          - label: 213,90
             count: 1
-          - label: "143,60"
+          - label: 143,60
             count: 1
-      "Năm 2015 so với năm 2014":
+          - label: -393,20
+            count: 1
+          - label: 10,80
+            count: 1
+          - label: 124,40
+            count: 1
+        complete: true
+      Năm 2015 so với năm 2014:
         kind: categorical
         distinct: 15
         segments:
-          - label: "27,90"
+          - label: 27,90
             count: 1
-          - label: "388,80"
+          - label: 388,80
             count: 1
-          - label: "674,50"
+          - label: 674,50
             count: 1
-          - label: "-140,60"
+          - label: -140,60
             count: 1
-          - label: "445,60"
+          - label: 445,60
             count: 1
-          - label: "-371,70"
+          - label: -371,70
             count: 1
-          - label: "-2,30"
+          - label: -2,30
             count: 1
-          - label: "-103,20"
+          - label: -103,20
             count: 1
-          - label: "-351,70"
+          - label: -351,70
             count: 1
-          - label: "-276,50"
+          - label: -276,50
             count: 1
-          - label: "-823,60"
+          - label: -823,60
             count: 1
-          - label: "-127,60"
+          - label: -127,60
             count: 1
-      "Năm 2018 so với năm 2017":
+          - label: 478,30
+            count: 1
+          - label: -97,90
+            count: 1
+          - label: 231,50
+            count: 1
+        complete: true
+      Năm 2018 so với năm 2017:
         kind: categorical
         distinct: 15
         segments:
-          - label: "-284,00"
+          - label: -284,00
             count: 1
-          - label: "157,60"
+          - label: 157,60
             count: 1
-          - label: "-838,50"
+          - label: -838,50
             count: 1
-          - label: "-163,90"
+          - label: -163,90
             count: 1
-          - label: "-334,10"
+          - label: -334,10
             count: 1
-          - label: "-518,20"
+          - label: -518,20
             count: 1
-          - label: "-416,00"
+          - label: -416,00
             count: 1
-          - label: "-1.588,10"
+          - label: -1.588,10
             count: 1
-          - label: "253,70"
+          - label: 253,70
             count: 1
-          - label: "-552,50"
+          - label: -552,50
             count: 1
-          - label: "442,00"
+          - label: 442,00
             count: 1
-          - label: "-175,60"
+          - label: -175,60
             count: 1
-      "Năm 2019 so với năm 2018":
+          - label: 388,70
+            count: 1
+          - label: -138,40
+            count: 1
+          - label: -167,40
+            count: 1
+        complete: true
+      Năm 2019 so với năm 2018:
         kind: categorical
         distinct: 15
         segments:
-          - label: "-352,60"
+          - label: -352,60
             count: 1
-          - label: "-524,30"
+          - label: -524,30
             count: 1
-          - label: "-78,60"
+          - label: -78,60
             count: 1
-          - label: "-383,50"
+          - label: -383,50
             count: 1
-          - label: "-807,40"
+          - label: -807,40
             count: 1
-          - label: "-535,10"
+          - label: -535,10
             count: 1
-          - label: "1.276,50"
+          - label: 1.276,50
             count: 1
-          - label: "-532,70"
+          - label: -532,70
             count: 1
-          - label: "-388,70"
+          - label: -388,70
             count: 1
-          - label: "107,80"
+          - label: 107,80
             count: 1
-          - label: "-267,30"
+          - label: -267,30
             count: 1
-          - label: "-191,80"
+          - label: -191,80
             count: 1
-      "Năm 2021 so với năm 2020":
+          - label: -788,90
+            count: 1
+          - label: -503,40
+            count: 1
+          - label: 255,10
+            count: 1
+        complete: true
+      Năm 2021 so với năm 2020:
         kind: categorical
         distinct: 15
         segments:
-          - label: "-244,60"
+          - label: -244,60
             count: 1
-          - label: "-177,90"
+          - label: -177,90
             count: 1
-          - label: "366,80"
+          - label: 366,80
             count: 1
-          - label: "205,80"
+          - label: 205,80
             count: 1
-          - label: "-119,10"
+          - label: -119,10
             count: 1
-          - label: "585,80"
+          - label: 585,80
             count: 1
-          - label: "-562,90"
+          - label: -562,90
             count: 1
-          - label: "-976,90"
+          - label: -976,90
             count: 1
-          - label: "-484,10"
+          - label: -484,10
             count: 1
-          - label: "1.172,70"
+          - label: 1.172,70
             count: 1
-          - label: "312,60"
+          - label: 312,60
             count: 1
-          - label: "-407,30"
+          - label: -407,30
             count: 1
-      "Năm 2023 so với năm 2022":
+          - label: 691,90
+            count: 1
+          - label: -24,20
+            count: 1
+          - label: -264,70
+            count: 1
+        complete: true
+      Năm 2023 so với năm 2022:
         kind: categorical
         distinct: 15
         segments:
-          - label: "-551,10"
+          - label: -551,10
             count: 1
-          - label: "-518,30"
+          - label: -518,30
             count: 1
-          - label: "-931,80"
+          - label: -931,80
             count: 1
-          - label: "-785,40"
+          - label: -785,40
             count: 1
-          - label: "-1.046,50"
+          - label: -1.046,50
             count: 1
-          - label: "-1.058,50"
+          - label: -1.058,50
             count: 1
-          - label: "-1.134,00"
+          - label: -1.134,00
             count: 1
-          - label: "1.037,10"
+          - label: 1.037,10
             count: 1
-          - label: "912,70"
+          - label: 912,70
             count: 1
-          - label: "-593,70"
+          - label: -593,70
             count: 1
-          - label: "366,10"
+          - label: 366,10
             count: 1
-          - label: "35,50"
+          - label: 35,50
             count: 1
+          - label: -547,40
+            count: 1
+          - label: -250,10
+            count: 1
+          - label: -268,90
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 2009, 2024 ]
