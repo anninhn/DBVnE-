@@ -27,41 +27,160 @@ files:
     r2_key: "03c19634-4e4e-419a-bac3-74ca6ccbdff0/ty-le-tre-em-duoi-mot-tuoi-duoc-tiem-chung-day-du-cac-loai-v.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [140, 140, 140, 70, 140, 140, 140, 140]
-      "Tỷ lệ trẻ em dưới một tuổi được tiêm chủng đầy đủ các loại vắc xin":
+        histogram: [ 140, 140, 140, 70, 140, 140, 140, 140 ]
+      Tỷ lệ trẻ em dưới một tuổi được tiêm chủng đầy đủ các loại vắc xin:
         kind: numeric
         min: 42.7
         max: 100
-        histogram: [3, 10, 10, 17, 32, 38, 156, 784]
-      "Địa phương":
+        histogram: [ 3, 10, 10, 17, 32, 38, 156, 784 ]
+      Địa phương:
         kind: categorical
         distinct: 70
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 15
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 15
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 15
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 15
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 15
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 15
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 15
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 15
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 15
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 15
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 15
-          - label: "Nam Định"
+          - label: Nam Định
             count: 15
+          - label: Ninh Bình
+            count: 15
+          - label: Trung du và miền núi phía Bắc
+            count: 15
+          - label: Hà Giang
+            count: 15
+          - label: Cao Bằng
+            count: 15
+          - label: Bắc Kạn
+            count: 15
+          - label: Tuyên Quang
+            count: 15
+          - label: Lào Cai
+            count: 15
+          - label: Yên Bái
+            count: 15
+          - label: Thái Nguyên
+            count: 15
+          - label: Lạng Sơn
+            count: 15
+          - label: Bắc Giang
+            count: 15
+          - label: Phú Thọ
+            count: 15
+          - label: Điện Biên
+            count: 15
+          - label: Lai Châu
+            count: 15
+          - label: Sơn La
+            count: 15
+          - label: Hoà Bình
+            count: 15
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 15
+          - label: Thanh Hoá
+            count: 15
+          - label: Nghệ An
+            count: 15
+          - label: Hà Tĩnh
+            count: 15
+          - label: Quảng Bình
+            count: 15
+          - label: Quảng Trị
+            count: 15
+          - label: Thừa Thiên Huế
+            count: 15
+          - label: Đà Nẵng
+            count: 15
+          - label: Quảng Nam
+            count: 15
+          - label: Quảng Ngãi
+            count: 15
+          - label: Bình Định
+            count: 15
+          - label: Phú Yên
+            count: 15
+          - label: Khánh Hoà
+            count: 15
+          - label: Ninh Thuận
+            count: 15
+          - label: Bình Thuận
+            count: 15
+          - label: Tây Nguyên
+            count: 15
+          - label: Kon Tum
+            count: 15
+          - label: Gia Lai
+            count: 15
+          - label: Đắk Lắk
+            count: 15
+          - label: Đắk Nông
+            count: 15
+          - label: Lâm Đồng
+            count: 15
+          - label: Đông Nam Bộ
+            count: 15
+          - label: Bình Phước
+            count: 15
+          - label: Tây Ninh
+            count: 15
+          - label: Bình Dương
+            count: 15
+          - label: Đồng Nai
+            count: 15
+          - label: Bà Rịa - Vũng Tàu
+            count: 15
+          - label: TP.Hồ Chí Minh
+            count: 15
+          - label: Đồng bằng sông Cửu Long
+            count: 15
+          - label: Long An
+            count: 15
+          - label: Tiền Giang
+            count: 15
+          - label: Bến Tre
+            count: 15
+          - label: Trà Vinh
+            count: 15
+          - label: Vĩnh Long
+            count: 15
+          - label: Đồng Tháp
+            count: 15
+          - label: An Giang
+            count: 15
+          - label: Kiên Giang
+            count: 15
+          - label: Cần Thơ
+            count: 15
+          - label: Hậu Giang
+            count: 15
+          - label: Sóc Trăng
+            count: 15
+          - label: Bạc Liêu
+            count: 15
+          - label: Cà Mau
+            count: 15
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
