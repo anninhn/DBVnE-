@@ -27,36 +27,40 @@ files:
     r2_key: "7157ed26-fa2e-4876-8206-3da113eaaa8b/so-giuong-benh-va-so-bac-si.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Số giường bệnh và số bác sĩ":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Số giường bệnh và số bác sĩ:
         kind: numeric
         min: 7.2
         max: 339.37
-        histogram: [19, 6, 3, 0, 0, 1, 0, 9]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 19, 6, 3, 0, 0, 1, 0, 9 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 93.35
         max: 114
-        histogram: [1, 3, 2, 19, 3, 4, 1, 1]
-      "Chỉ tiêu":
+        histogram: [ 1, 3, 2, 19, 3, 4, 1, 1 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Số giường bệnh (Nghìn giường)(*)"
+          - label: Số giường bệnh (Nghìn giường)(*)
             count: 10
-          - label: "Giường bệnh bình quân 1 vạn dân (Giường)(**)"
+          - label: Giường bệnh bình quân 1 vạn dân (Giường)(**)
             count: 10
-          - label: "Số bác sĩ (Nghìn người)(***)"
+          - label: Số bác sĩ (Nghìn người)(***)
             count: 10
-          - label: "Bác sĩ bình quân 1 vạn dân (Người)"
+          - label: Bác sĩ bình quân 1 vạn dân (Người)
             count: 10
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
