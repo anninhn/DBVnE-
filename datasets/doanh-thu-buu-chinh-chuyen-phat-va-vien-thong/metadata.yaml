@@ -27,34 +27,38 @@ files:
     r2_key: "c3d7d946-0fb1-4dfb-9d9d-ccbe03f1f014/doanh-thu-buu-chinh-chuyen-phat-va-vien-thong.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2007
         max: 2024
-        histogram: [9, 6, 6, 6, 6, 6, 6, 9]
-      "Doanh thu - Tỷ đồng":
+        histogram: [ 9, 6, 6, 6, 6, 6, 6, 9 ]
+      Doanh thu - Tỷ đồng:
         kind: numeric
         min: 1611.4
         max: 397339.68
-        histogram: [18, 4, 2, 3, 5, 4, 9, 9]
-      "Chỉ số phát triển (Năm trước =100) (%)":
+        histogram: [ 18, 4, 2, 3, 5, 4, 9, 9 ]
+      Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 88.09
         max: 192.5
-        histogram: [4, 32, 4, 3, 7, 0, 0, 1]
-      "Ngành":
+        histogram: [ 4, 32, 4, 3, 7, 0, 0, 1 ]
+      Ngành:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 18
-          - label: "Bưu chính, chuyển phát"
+          - label: Bưu chính, chuyển phát
             count: 18
-          - label: "Viễn thông"
+          - label: Viễn thông
             count: 18
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2007, 2024 ]
