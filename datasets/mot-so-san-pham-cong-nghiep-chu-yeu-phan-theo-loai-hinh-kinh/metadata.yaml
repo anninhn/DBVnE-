@@ -27,55 +27,60 @@ files:
     r2_key: "9ad6f5a5-e5fc-49b1-836e-9dcc29807150/mot-so-san-pham-cong-nghiep-chu-yeu-phan-theo-loai-hinh-kinh.csv"
     size_mb: 0.04
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [40, 40, 120, 80, 80, 120, 80, 120]
-      "Một số sản phẩm công nghiệp chủ yếu":
+        histogram: [ 40, 40, 120, 80, 80, 120, 80, 120 ]
+      Một số sản phẩm công nghiệp chủ yếu:
         kind: numeric
         min: 0
         max: 293125.6
-        histogram: [545, 53, 12, 9, 8, 5, 3, 3]
-      "Sản phẩm chủ yếu":
+        histogram: [ 545, 53, 12, 9, 8, 5, 3, 3 ]
+      Sản phẩm chủ yếu:
         kind: categorical
         distinct: 10
         segments:
-          - label: "Than sạch (Nghìn tấn)"
+          - label: Than sạch (Nghìn tấn)
             count: 68
-          - label: "Dầu thô khai thác (Nghìn tấn)"
+          - label: Dầu thô khai thác (Nghìn tấn)
             count: 68
-          - label: "Muối biển (Nghìn tấn)"
+          - label: Muối biển (Nghìn tấn)
             count: 68
-          - label: "Đường kính (Nghìn tấn)"
+          - label: Đường kính (Nghìn tấn)
             count: 68
-          - label: "Phân hóa học (Nghìn tấn)"
+          - label: Phân hóa học (Nghìn tấn)
             count: 68
-          - label: "Phân NPK (Nghìn tấn)"
+          - label: Phân NPK (Nghìn tấn)
             count: 68
-          - label: "Xi măng (Nghìn tấn)"
+          - label: Xi măng (Nghìn tấn)
             count: 68
-          - label: "Sắt, thép dạng thỏi đúc hoặc dạng thô khác (Nghìn tấn)"
+          - label: Sắt, thép dạng thỏi đúc hoặc dạng thô khác (Nghìn tấn)
             count: 68
-          - label: "Thép cán và thép hình (Nghìn tấn)"
+          - label: Thép cán và thép hình (Nghìn tấn)
             count: 68
-          - label: "Điện phát ra (Triệu Kwh)"
+          - label: Điện phát ra (Triệu Kwh)
             count: 68
-      "Thành phần kinh tế":
+        complete: true
+      Thành phần kinh tế:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 170
-          - label: "Nhà nước"
+          - label: Nhà nước
             count: 170
-          - label: "Ngoài Nhà nước"
+          - label: Ngoài Nhà nước
             count: 170
-          - label: "ĐTNN"
+          - label: ĐTNN
             count: 170
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 40
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
