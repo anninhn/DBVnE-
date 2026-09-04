@@ -27,28 +27,31 @@ files:
     r2_key: "f3f3535f-1060-4a4d-b072-806c3f36733b/san-luong-thuy-san.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1990
         max: 2023
-        histogram: [15, 12, 12, 12, 12, 12, 12, 15]
-      "Sản lượng (Nghìn tấn)":
+        histogram: [ 15, 12, 12, 12, 12, 12, 12, 15 ]
+      Sản lượng (Nghìn tấn):
         kind: numeric
         min: 162.1
         max: 9656.3
-        histogram: [27, 25, 21, 14, 6, 4, 3, 5]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 27, 25, 21, 14, 6, 4, 3, 5 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 98
         max: 182.9
-        histogram: [76, 21, 6, 1, 0, 0, 0, 1]
-      "Khai thác, nuôi trồng":
+        histogram: [ 76, 21, 6, 1, 0, 0, 0, 1 ]
+      Khai thác, nuôi trồng:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 35
-          - label: "Khai thác"
+          - label: Khai thác
             count: 35
-          - label: "Nuôi trồng"
+          - label: Nuôi trồng
             count: 35
+        complete: true
+coverage:
+  temporal: [ 1990, 2023 ]
