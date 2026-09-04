@@ -26,44 +26,48 @@ files:
     r2_key: "546f9f5d-eabc-4f62-8eb1-753c953f82f3/von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-theo.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [6, 6, 6, 3, 6, 6, 6, 6]
-      "Giá hiện hành (Tỷ đồng)":
+        histogram: [ 6, 6, 6, 3, 6, 6, 6, 6 ]
+      Giá hiện hành (Tỷ đồng):
         kind: numeric
         min: 167824
         max: 1019344
-        histogram: [12, 13, 5, 5, 5, 2, 1, 2]
-      "Cơ cấu (%)":
+        histogram: [ 12, 13, 5, 5, 5, 2, 1, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 35.6
         max: 100
-        histogram: [11, 4, 10, 5, 0, 0, 0, 15]
-      "Giá so sánh 2010 (Tỷ đồng )":
+        histogram: [ 11, 4, 10, 5, 0, 0, 0, 15 ]
+      Giá so sánh 2010 (Tỷ đồng ):
         kind: numeric
         min: 143058
         max: 649126
-        histogram: [11, 12, 5, 5, 4, 5, 1, 2]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 11, 12, 5, 5, 4, 5, 1, 2 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 82.2
         max: 117.4
-        histogram: [1, 1, 4, 6, 6, 10, 9, 5]
-      "Cấp quản lý":
+        histogram: [ 1, 1, 4, 6, 6, 10, 9, 5 ]
+      Cấp quản lý:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 15
-          - label: "Trung ương"
+          - label: Trung ương
             count: 15
-          - label: "Địa phương"
+          - label: Địa phương
             count: 15
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
