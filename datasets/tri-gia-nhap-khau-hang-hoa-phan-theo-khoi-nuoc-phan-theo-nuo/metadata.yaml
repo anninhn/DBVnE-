@@ -26,47 +26,157 @@ files:
     r2_key: "b1aa6e55-8769-403c-9a54-d5b96245d5e1/tri-gia-nhap-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo.csv"
     size_mb: 0.05
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [260, 260, 195, 260, 260, 195, 260, 260]
-      "Trị giá nhập khẩu hàng hoá":
+        histogram: [ 260, 260, 195, 260, 260, 195, 260, 260 ]
+      Trị giá nhập khẩu hàng hoá:
         kind: numeric
         min: 0
         max: 380990.6
-        histogram: [1855, 21, 9, 6, 5, 4, 3, 2]
-      "Khối nước, nước, vùng lãnh thổ chủ yếu":
+        histogram: [ 1855, 21, 9, 6, 5, 4, 3, 2 ]
+      Khối nước, nước, vùng lãnh thổ chủ yếu:
         kind: categorical
         distinct: 65
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 30
-          - label: "ASEAN"
+          - label: ASEAN
             count: 30
-          - label: "APEC"
+          - label: APEC
             count: 30
-          - label: "EU"
+          - label: EU
             count: 30
-          - label: "OPEC"
+          - label: OPEC
             count: 30
-          - label: "Bru-nây"
+          - label: Bru-nây
             count: 30
-          - label: "Cam-pu-chia"
+          - label: Cam-pu-chia
             count: 30
-          - label: "In-đô-nê-xi-a"
+          - label: In-đô-nê-xi-a
             count: 30
-          - label: "Lào"
+          - label: Lào
             count: 30
-          - label: "Ma-lai-xi-a"
+          - label: Ma-lai-xi-a
             count: 30
-          - label: "My-an-ma"
+          - label: My-an-ma
             count: 30
-          - label: "Phi-li-pin"
+          - label: Phi-li-pin
             count: 30
-      "Ghi chú":
+          - label: Xin-ga-po
+            count: 30
+          - label: Thái Lan
+            count: 30
+          - label: Đài Loan
+            count: 30
+          - label: Hàn Quốc
+            count: 30
+          - label: ĐKHC Hồng Công (TQ)
+            count: 30
+          - label: Nhật Bản
+            count: 30
+          - label: CHND Trung Hoa
+            count: 30
+          - label: Ấn Độ
+            count: 30
+          - label: Pa-ki-xtan
+            count: 30
+          - label: A-rập Xê-út
+            count: 30
+          - label: Các Tiểu vương quốc Ả-rập Thống nhất
+            count: 30
+          - label: Cô-Oét
+            count: 30
+          - label: I-xra-en
+            count: 30
+          - label: Qua-ta
+            count: 30
+          - label: Síp
+            count: 30
+          - label: Thổ Nhĩ Kỳ
+            count: 30
+          - label: Ba Lan
+            count: 30
+          - label: Bê-la-rút
+            count: 30
+          - label: Bun-ga-ri
+            count: 30
+          - label: Hung-ga-ri
+            count: 30
+          - label: Liên Bang Nga
+            count: 30
+          - label: Ru-ma-ni
+            count: 30
+          - label: Cộng hòa Séc
+            count: 30
+          - label: Slô-va-ki-a
+            count: 30
+          - label: U-crai-na
+            count: 30
+          - label: Đan Mạch
+            count: 30
+          - label: Ai-len
+            count: 30
+          - label: Vương quốc Anh
+            count: 30
+          - label: Na Uy
+            count: 30
+          - label: Phần Lan
+            count: 30
+          - label: Thụy Điển
+            count: 30
+          - label: Bồ Đào Nha
+            count: 30
+          - label: Hy Lạp
+            count: 30
+          - label: I-ta-li-a
+            count: 30
+          - label: Tây Ban Nha
+            count: 30
+          - label: Áo
+            count: 30
+          - label: CHLB Đức
+            count: 30
+          - label: Bỉ
+            count: 30
+          - label: Hà Lan
+            count: 30
+          - label: Pháp
+            count: 30
+          - label: Thụy Sĩ
+            count: 30
+          - label: Ca-na-đa
+            count: 30
+          - label: Hoa Kỳ
+            count: 30
+          - label: Ác-hen-ti-na
+            count: 30
+          - label: Bra-xin
+            count: 30
+          - label: Chi-lê
+            count: 30
+          - label: Mê-hi-cô
+            count: 30
+          - label: Pê-ru
+            count: 30
+          - label: Tuy-ni-di
+            count: 30
+          - label: Cốt-đi-voa (Bờ biển Ngà)
+            count: 30
+          - label: Nam Phi
+            count: 30
+          - label: Niu Di-Lân
+            count: 30
+          - label: Ô-xtrây-li-a
+            count: 30
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 65
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
