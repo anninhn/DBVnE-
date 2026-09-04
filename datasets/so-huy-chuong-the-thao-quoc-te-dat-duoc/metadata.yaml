@@ -26,35 +26,39 @@ files:
     r2_key: "cdbf0ccb-ebe0-4880-8a92-a9611c376ef8/so-huy-chuong-the-thao-quoc-te-dat-duoc.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [36, 36, 36, 24, 36, 36, 36, 36]
-      "Số huy chương thể thao quốc tế đạt được":
+        histogram: [ 36, 36, 36, 24, 36, 36, 36, 36 ]
+      Số huy chương thể thao quốc tế đạt được:
         kind: numeric
         min: 0
         max: 619
-        histogram: [133, 39, 24, 11, 6, 1, 2, 2]
-      "Loại huy chương":
+        histogram: [ 133, 39, 24, 11, 6, 1, 2, 2 ]
+      Loại huy chương:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Huy chương Vàng"
+          - label: Huy chương Vàng
             count: 92
-          - label: "Huy chương Bạc"
+          - label: Huy chương Bạc
             count: 92
-          - label: "Huy chương Đồng"
+          - label: Huy chương Đồng
             count: 92
-      "Cấp độ":
+        complete: true
+      Cấp độ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 69
-          - label: "Thế giới"
+          - label: Thế giới
             count: 69
-          - label: "Châu Á"
+          - label: Châu Á
             count: 69
-          - label: "Đông Nam Á"
+          - label: Đông Nam Á
             count: 69
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
