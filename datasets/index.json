@@ -9812,7 +9812,10 @@
     "format": "csv",
     "source": "Cục Thống kê (NSO)",
     "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
+    "year_range": [
+      1995,
+      2024
+    ],
     "resources": [
       {
         "type": "csv",
