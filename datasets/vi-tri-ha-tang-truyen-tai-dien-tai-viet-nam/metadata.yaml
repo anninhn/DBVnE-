@@ -23,7 +23,7 @@ row_count: 114001
 columns_count: 22
 feature_count: 114001
 geometry_type: "Point"
-bbox: [105.4384914, 10.1335966, 108.7398418, 21.0013677]
+bbox: [ 105.4384914, 10.1335966, 108.7398418, 21.0013677 ]
 crs: "EPSG:4326"
 confidence: high
 uploaded_by: ninh
@@ -34,202 +34,377 @@ files:
     r2_key: "d331e95e-e836-471c-a7b5-8bf9578190d8/power.geojson"
     size_mb: 18.03
     column_stats:
-      "design":
+      design:
         kind: categorical
         distinct: 13
         segments:
-          - label: "delta"
+          - label: delta
             count: 2197
-          - label: "three-level"
+          - label: three-level
             count: 1375
-          - label: "asymmetric"
+          - label: asymmetric
             count: 499
-          - label: "monopolar"
+          - label: monopolar
             count: 339
-          - label: "triangle"
+          - label: triangle
             count: 169
-          - label: "barrel"
+          - label: barrel
             count: 49
-          - label: "h-frame"
+          - label: h-frame
             count: 15
-          - label: "portal"
+          - label: portal
             count: 8
-          - label: "three-level;two-level"
+          - label: three-level;two-level
             count: 7
-          - label: "six-level"
+          - label: six-level
             count: 4
-          - label: "flag"
+          - label: flag
             count: 3
-          - label: "one-level"
+          - label: one-level
             count: 3
-      "power":
+          - label: flag;one-level
+            count: 1
+        complete: true
+      power:
         kind: categorical
         distinct: 5
         segments:
-          - label: "tower"
+          - label: tower
             count: 9795
-          - label: "pole"
+          - label: pole
             count: 154
-          - label: "portal"
+          - label: portal
             count: 47
-          - label: "transformer"
+          - label: transformer
             count: 3
-          - label: "tower;switch"
+          - label: tower;switch
             count: 1
-      "line_attachment":
+        complete: true
+      line_attachment:
         kind: categorical
         distinct: 3
         segments:
-          - label: "suspension"
+          - label: suspension
             count: 236
-          - label: "anchor"
+          - label: anchor
             count: 26
-          - label: "pin"
+          - label: pin
             count: 1
-      "operator":
+        complete: true
+      operator:
         kind: categorical
         distinct: 1
         segments:
-          - label: "EVN"
+          - label: EVN
             count: 13
-      "operator:official":
+        complete: true
+      operator:official:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Vietnam Energy"
+          - label: Vietnam Energy
             count: 13
-      "operator:wikidata":
+        complete: true
+      operator:wikidata:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Q3558046"
+          - label: Q3558046
             count: 13
-      "name":
+        complete: true
+      name:
         kind: categorical
         distinct: 89
         segments:
-          - label: "T1"
+          - label: T1
             count: 2
-          - label: "T2"
+          - label: T2
             count: 2
-          - label: "T21"
+          - label: T21
             count: 2
-          - label: "T3"
+          - label: T3
             count: 2
-          - label: "T4"
+          - label: T4
             count: 2
-          - label: "T5"
+          - label: T5
             count: 2
-          - label: "T20"
+          - label: T20
             count: 2
-          - label: "T6"
+          - label: T6
             count: 2
-          - label: "T19"
+          - label: T19
             count: 2
-          - label: "T7"
+          - label: T7
             count: 2
-          - label: "T18"
+          - label: T18
             count: 2
-          - label: "T8"
+          - label: T8
             count: 2
-      "source":
+          - label: T17
+            count: 2
+          - label: T9
+            count: 2
+          - label: T16
+            count: 2
+          - label: T10
+            count: 2
+          - label: T15
+            count: 2
+          - label: T11
+            count: 2
+          - label: T14
+            count: 2
+          - label: T12
+            count: 2
+          - label: T13
+            count: 1
+          - label: T23
+            count: 1
+          - label: T22
+            count: 1
+          - label: "35"
+            count: 1
+          - label: "34"
+            count: 1
+          - label: "33"
+            count: 1
+          - label: "32"
+            count: 1
+          - label: "31"
+            count: 1
+          - label: "30"
+            count: 1
+          - label: "29"
+            count: 1
+          - label: "28"
+            count: 1
+          - label: "27"
+            count: 1
+          - label: "26"
+            count: 1
+          - label: "25"
+            count: 1
+          - label: "24"
+            count: 1
+          - label: "23"
+            count: 1
+          - label: "22"
+            count: 1
+          - label: "20"
+            count: 1
+          - label: "19"
+            count: 1
+          - label: "18"
+            count: 1
+          - label: "17"
+            count: 1
+          - label: "16"
+            count: 1
+          - label: "15"
+            count: 1
+          - label: "14"
+            count: 1
+          - label: "13"
+            count: 1
+          - label: "12"
+            count: 1
+          - label: "11"
+            count: 1
+          - label: "10"
+            count: 1
+          - label: "9"
+            count: 1
+          - label: "8"
+            count: 1
+          - label: "7"
+            count: 1
+          - label: "6"
+            count: 1
+          - label: "5"
+            count: 1
+          - label: "4"
+            count: 1
+          - label: "3"
+            count: 1
+          - label: "2"
+            count: 1
+          - label: "230"
+            count: 1
+          - label: "229"
+            count: 1
+          - label: "228"
+            count: 1
+          - label: "227"
+            count: 1
+          - label: "226"
+            count: 1
+          - label: "225"
+            count: 1
+          - label: "224"
+            count: 1
+          - label: "223"
+            count: 1
+          - label: "222"
+            count: 1
+          - label: "221"
+            count: 1
+          - label: "220"
+            count: 1
+          - label: "219"
+            count: 1
+          - label: "218"
+            count: 1
+          - label: "217"
+            count: 1
+          - label: "216"
+            count: 1
+          - label: "215"
+            count: 1
+          - label: "214"
+            count: 1
+          - label: "213"
+            count: 1
+          - label: "212"
+            count: 1
+          - label: "211"
+            count: 1
+          - label: "210"
+            count: 1
+          - label: "209"
+            count: 1
+          - label: "208"
+            count: 1
+          - label: "207"
+            count: 1
+          - label: "206"
+            count: 1
+          - label: "205"
+            count: 1
+          - label: "204"
+            count: 1
+          - label: "203"
+            count: 1
+          - label: "202"
+            count: 1
+          - label: "201"
+            count: 1
+          - label: "200"
+            count: 1
+          - label: "199"
+            count: 1
+          - label: "196"
+            count: 1
+        complete: true
+      source:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Bing"
+          - label: Bing
             count: 405
-          - label: "Mapbox"
+          - label: Mapbox
             count: 3
-          - label: "tower"
+          - label: tower
             count: 1
-      "triple_tower":
+        complete: true
+      triple_tower:
         kind: categorical
         distinct: 1
         segments:
-          - label: "yes"
+          - label: yes
             count: 197
-      "line_arrangement":
+        complete: true
+      line_arrangement:
         kind: categorical
         distinct: 1
         segments:
-          - label: "horizontal"
+          - label: horizontal
             count: 1
-      "structure":
+        complete: true
+      structure:
         kind: categorical
         distinct: 2
         segments:
-          - label: "lattice"
+          - label: lattice
             count: 26
-          - label: "tubular"
+          - label: tubular
             count: 4
-      "material":
+        complete: true
+      material:
         kind: categorical
         distinct: 2
         segments:
-          - label: "metal"
+          - label: metal
             count: 264
-          - label: "steel"
+          - label: steel
             count: 28
-      "addr:housenumber":
+        complete: true
+      addr:housenumber:
         kind: categorical
         distinct: 1
         segments:
-          - label: "F2/33"
+          - label: F2/33
             count: 1
-      "addr:street":
+        complete: true
+      addr:street:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Trần Văn Giàu"
+          - label: Trần Văn Giàu
             count: 1
-      "amenity":
+        complete: true
+      amenity:
         kind: categorical
         distinct: 1
         segments:
-          - label: "theatre"
+          - label: theatre
             count: 1
-      "line_management":
+        complete: true
+      line_management:
         kind: categorical
         distinct: 4
         segments:
-          - label: "split"
+          - label: split
             count: 8
-          - label: "transpose"
+          - label: transpose
             count: 7
-          - label: "transition"
+          - label: transition
             count: 3
-          - label: "branch"
+          - label: branch
             count: 1
-      "location:transition":
+        complete: true
+      location:transition:
         kind: categorical
         distinct: 1
         segments:
-          - label: "yes"
+          - label: yes
             count: 3
-      "voltage":
+        complete: true
+      voltage:
         kind: numeric
         min: 500000
         max: 500000
-        histogram: [1, 0, 0, 0, 0, 0, 0, 0]
-      "ref":
+        histogram: [ 1, 0, 0, 0, 0, 0, 0, 0 ]
+      ref:
         kind: numeric
         min: 196
         max: 230
-        histogram: [3, 4, 4, 4, 5, 4, 4, 5]
-      "colour":
+        histogram: [ 3, 4, 4, 4, 5, 4, 4, 5 ]
+      colour:
         kind: categorical
         distinct: 1
         segments:
-          - label: "gray"
+          - label: gray
             count: 266
-      "height":
+        complete: true
+      height:
         kind: numeric
         min: 140
         max: 140
-        histogram: [2, 0, 0, 0, 0, 0, 0, 0]
-      "branch:type":
+        histogram: [ 2, 0, 0, 0, 0, 0, 0, 0 ]
+      branch:type:
         kind: categorical
         distinct: 1
         segments:
-          - label: "split"
+          - label: split
             count: 1
+        complete: true
