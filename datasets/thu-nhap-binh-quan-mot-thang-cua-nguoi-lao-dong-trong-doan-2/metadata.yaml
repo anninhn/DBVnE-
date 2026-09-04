@@ -26,41 +26,46 @@ files:
     r2_key: "02180cd8-f051-4ddd-89d9-fee6f63197ed/thu-nhap-binh-quan-mot-thang-cua-nguoi-lao-dong-trong-doan-2.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [13, 0, 0, 26, 26, 13, 26, 26]
-      "Thu nhập bình quân một tháng của người lao động trong doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh":
+        histogram: [ 13, 0, 0, 26, 26, 13, 26, 26 ]
+      Thu nhập bình quân một tháng của người lao động trong doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 2950
         max: 17671.15
-        histogram: [10, 13, 26, 28, 21, 13, 10, 9]
-      "Loại hình doanh nghiệp":
+        histogram: [ 10, 13, 26, 28, 21, 13, 10, 9 ]
+      Loại hình doanh nghiệp:
         kind: categorical
         distinct: 13
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Doanh nghiệp Nhà nước"
+          - label: Doanh nghiệp Nhà nước
             count: 10
-          - label: "DN 100% vốn nhà nước"
+          - label: DN 100% vốn nhà nước
             count: 10
-          - label: "DN hơn 50% vốn nhà nước"
+          - label: DN hơn 50% vốn nhà nước
             count: 10
-          - label: "Doanh nghiệp ngoài Nhà nước"
+          - label: Doanh nghiệp ngoài Nhà nước
             count: 10
-          - label: "Tư nhân"
+          - label: Tư nhân
             count: 10
-          - label: "Công ty hợp danh"
+          - label: Công ty hợp danh
             count: 10
-          - label: "Công ty TNHH"
+          - label: Công ty TNHH
             count: 10
-          - label: "Công ty cổ phần có vốn Nhà nước"
+          - label: Công ty cổ phần có vốn Nhà nước
             count: 10
-          - label: "Công ty cổ phần không có vốn Nhà nước"
+          - label: Công ty cổ phần không có vốn Nhà nước
             count: 10
-          - label: "Doanh nghiệp có vốn đầu tư nước ngoài"
+          - label: Doanh nghiệp có vốn đầu tư nước ngoài
             count: 10
-          - label: "DN 100% vốn nước ngoài - 100% foreign capital"
+          - label: DN 100% vốn nước ngoài - 100% foreign capital
             count: 10
+          - label: DN liên doanh với nước ngoài
+            count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
