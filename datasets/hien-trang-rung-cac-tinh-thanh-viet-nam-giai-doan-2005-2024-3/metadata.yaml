@@ -27,62 +27,172 @@ files:
     r2_key: "310a0126-854d-4a88-bd5e-0bfe9011c6b9/Hi_n_tr_ng_r_ng_c_c_t_nh_th_nh_2005-2024.csv"
     size_mb: 0.05
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [65, 128, 192, 128, 128, 192, 128, 192]
-      "Tổng diện tích rừng":
+        histogram: [ 65, 128, 192, 128, 128, 192, 128, 192 ]
+      Tổng diện tích rừng:
         kind: numeric
         min: 0
         max: 14874302
-        histogram: [1130, 0, 0, 0, 0, 0, 1, 17]
-      "Diện tích rừng tự nhiên":
+        histogram: [ 1130, 0, 0, 0, 0, 0, 1, 17 ]
+      Diện tích rừng tự nhiên:
         kind: numeric
         min: 0
         max: 10423844
-        histogram: [1109, 0, 0, 0, 0, 0, 0, 18]
-      "Diện tích rừng trồng":
+        histogram: [ 1109, 0, 0, 0, 0, 0, 0, 18 ]
+      Diện tích rừng trồng:
         kind: numeric
         min: 0
         max: 4740350
-        histogram: [1128, 0, 0, 1, 2, 3, 4, 8]
-      "Tỷ lệ che phủ rừng":
+        histogram: [ 1128, 0, 0, 1, 2, 3, 4, 8 ]
+      Tỷ lệ che phủ rừng:
         kind: numeric
         min: 0
         max: 73.4
-        histogram: [340, 102, 56, 44, 213, 220, 119, 50]
-      "Tỉnh thành":
+        histogram: [ 340, 102, 56, 44, 213, 220, 119, 50 ]
+      Tỉnh thành:
         kind: categorical
         distinct: 65
         segments:
-          - label: "Toàn quốc"
+          - label: Toàn quốc
             count: 18
-          - label: "Hà Giang"
+          - label: Hà Giang
             count: 18
-          - label: "Cao Bằng"
+          - label: Cao Bằng
             count: 18
-          - label: "Lạng Sơn"
+          - label: Lạng Sơn
             count: 18
-          - label: "Bắc Giang"
+          - label: Bắc Giang
             count: 18
-          - label: "Phú Thọ"
+          - label: Phú Thọ
             count: 18
-          - label: "Thái Nguyên"
+          - label: Thái Nguyên
             count: 18
-          - label: "Bắc Kạn"
+          - label: Bắc Kạn
             count: 18
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 18
-          - label: "Lào Cai"
+          - label: Lào Cai
             count: 18
-          - label: "Yên Bái"
+          - label: Yên Bái
             count: 18
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 18
-      "Ghi chú":
+          - label: Sơn La
+            count: 18
+          - label: Điện Biên
+            count: 18
+          - label: Hoà Bình
+            count: 18
+          - label: TP Hà Nội
+            count: 18
+          - label: TP Hải Phòng
+            count: 18
+          - label: Hải Dương
+            count: 18
+          - label: Hưng Yên
+            count: 18
+          - label: Vĩnh Phúc
+            count: 18
+          - label: Bắc Ninh
+            count: 18
+          - label: Thái Bình
+            count: 18
+          - label: Nam Định
+            count: 18
+          - label: Hà Nam
+            count: 18
+          - label: Ninh Bình
+            count: 18
+          - label: Quảng Ninh
+            count: 18
+          - label: Thanh Hoá
+            count: 18
+          - label: Nghệ An
+            count: 18
+          - label: Hà Tĩnh
+            count: 18
+          - label: Quảng Bình
+            count: 18
+          - label: Quảng Trị
+            count: 18
+          - label: TP Huế
+            count: 18
+          - label: TP Đà Nẵng
+            count: 18
+          - label: Quảng Nam
+            count: 18
+          - label: Quảng Ngãi
+            count: 18
+          - label: Bình Định
+            count: 18
+          - label: Phú Yên
+            count: 18
+          - label: Khánh Hoà
+            count: 18
+          - label: Ninh Thuận
+            count: 18
+          - label: Bình Thuận
+            count: 18
+          - label: Kon Tum
+            count: 18
+          - label: Gia Lai
+            count: 18
+          - label: Đắk Lắk
+            count: 18
+          - label: Đắk Nông
+            count: 18
+          - label: Lâm Đồng
+            count: 18
+          - label: TP HCM
+            count: 18
+          - label: Đồng Nai
+            count: 18
+          - label: Bà Rịa - V.Tàu
+            count: 18
+          - label: Bình Dương
+            count: 18
+          - label: Bình Phước
+            count: 18
+          - label: Tây Ninh
+            count: 18
+          - label: TP Cần Thơ
+            count: 18
+          - label: Long An
+            count: 18
+          - label: Tiền Giang
+            count: 18
+          - label: Bến Tre
+            count: 18
+          - label: Trà Vinh
+            count: 18
+          - label: Vĩnh Long
+            count: 18
+          - label: An Giang
+            count: 18
+          - label: Đồng Tháp
+            count: 18
+          - label: Kiên Giang
+            count: 18
+          - label: Hậu Giang
+            count: 18
+          - label: Sóc Trăng
+            count: 18
+          - label: Bạc Liêu
+            count: 18
+          - label: Cà Mau
+            count: 18
+          - label: Hà Tây
+            count: 1
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Số liệu thực tế tính đến 31/12/2012 (tỉnh chưa cập nhật kịp cho kỳ báo cáo 2013)"
+          - label: Số liệu thực tế tính đến 31/12/2012 (tỉnh chưa cập nhật kịp cho kỳ báo cáo 2013)
             count: 4
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
