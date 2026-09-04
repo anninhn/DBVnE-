@@ -27,30 +27,33 @@ files:
     r2_key: "828a0833-6ef1-48f0-9e38-0999b612a69c/so-lao-dong-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-x.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Số lao động (Người)":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Số lao động (Người):
         kind: numeric
         min: 613269
         max: 7653794
-        histogram: [15, 5, 1, 0, 10, 0, 2, 7]
-      "Cơ cấu (%)":
+        histogram: [ 15, 5, 1, 0, 10, 0, 2, 7 ]
+      Cơ cấu (%):
         kind: numeric
         min: 13.81
         max: 100
-        histogram: [20, 0, 0, 0, 10, 0, 0, 10]
-      "Trình độ công nghệ":
+        histogram: [ 20, 0, 0, 0, 10, 0, 0, 10 ]
+      Trình độ công nghệ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nhóm ngành công nghệ cao"
+          - label: Nhóm ngành công nghệ cao
             count: 10
-          - label: "Nhóm ngành công nghệ trung bình"
+          - label: Nhóm ngành công nghệ trung bình
             count: 10
-          - label: "Nhóm ngành công nghệ thấp"
+          - label: Nhóm ngành công nghệ thấp
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
