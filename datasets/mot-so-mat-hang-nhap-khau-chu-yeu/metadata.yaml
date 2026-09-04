@@ -26,47 +26,139 @@ files:
     r2_key: "480fa0b6-fa71-4230-a35c-0edb9942c2fb/mot-so-mat-hang-nhap-khau-chu-yeu.csv"
     size_mb: 0.09
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [224, 224, 168, 224, 224, 168, 224, 224]
-      "Một số mặt hàng nhập khẩu chủ yếu":
+        histogram: [ 224, 224, 168, 224, 224, 168, 224, 224 ]
+      Một số mặt hàng nhập khẩu chủ yếu:
         kind: numeric
         min: 0.04
         max: 173423
-        histogram: [1094, 28, 14, 7, 6, 4, 2, 3]
-      "Sản phẩm":
+        histogram: [ 1094, 28, 14, 7, 6, 4, 2, 3 ]
+      Sản phẩm:
         kind: categorical
         distinct: 56
         segments:
-          - label: "Hàng thuỷ sản (Triệu đô la Mỹ)"
+          - label: Hàng thuỷ sản (Triệu đô la Mỹ)
             count: 30
-          - label: "Sữa và sản phẩm từ sữa (Triệu đô la Mỹ)"
+          - label: Sữa và sản phẩm từ sữa (Triệu đô la Mỹ)
             count: 30
-          - label: "Hàng rau quả (Triệu đô la Mỹ)"
+          - label: Hàng rau quả (Triệu đô la Mỹ)
             count: 30
-          - label: "Hạt điều (Triệu đô la Mỹ)"
+          - label: Hạt điều (Triệu đô la Mỹ)
             count: 30
-          - label: "Lúa mỳ (Triệu đô la Mỹ)"
+          - label: Lúa mỳ (Triệu đô la Mỹ)
             count: 30
-          - label: "Ngô (Triệu đô la Mỹ)"
+          - label: Ngô (Triệu đô la Mỹ)
             count: 30
-          - label: "Thức ăn gia súc và NPL (Triệu đô la Mỹ)"
+          - label: Thức ăn gia súc và NPL (Triệu đô la Mỹ)
             count: 30
-          - label: "Quặng và khoáng sản khác (Triệu đô la Mỹ)"
+          - label: Quặng và khoáng sản khác (Triệu đô la Mỹ)
             count: 30
-          - label: "Than đá (Triệu đô la Mỹ)"
+          - label: Than đá (Triệu đô la Mỹ)
             count: 30
-          - label: "Dầu thô (Triệu đô la Mỹ)"
+          - label: Dầu thô (Triệu đô la Mỹ)
             count: 30
-          - label: "Xăng,dầu (Triệu đô la Mỹ)"
+          - label: Xăng,dầu (Triệu đô la Mỹ)
             count: 30
-          - label: "Hoá chất (Triệu đô la Mỹ)"
+          - label: Hoá chất (Triệu đô la Mỹ)
             count: 30
-      "Ghi chú":
+          - label: Sản phẩm hoá chất (Triệu đô la Mỹ)
+            count: 30
+          - label: Tân dược (Triệu đô la Mỹ)
+            count: 30
+          - label: Phân bón (Triệu đô la Mỹ)
+            count: 30
+          - label: Chất dẻo (Triệu đô la Mỹ)
+            count: 30
+          - label: Sản phẩm chất dẻo (Triệu đô la Mỹ)
+            count: 30
+          - label: Cao su (Triệu đô la Mỹ)
+            count: 30
+          - label: Gỗ và sản phẩm gỗ (Triệu đô la Mỹ)
+            count: 30
+          - label: Giấy (Triệu đô la Mỹ)
+            count: 30
+          - label: Bông (Triệu đô la Mỹ)
+            count: 30
+          - label: Sợi (Triệu đô la Mỹ)
+            count: 30
+          - label: Vải (Triệu đô la Mỹ)
+            count: 30
+          - label: Nguyên, phụ liệu dệt, may, giày dép (Triệu đô la Mỹ)
+            count: 30
+          - label: Thủy tinh và các sản phẩm từ thủy tinh (Triệu đô la Mỹ)
+            count: 30
+          - label: Phế liệu sắt thép (Triệu đô la Mỹ)
+            count: 30
+          - label: Sắt, thép (Triệu đô la Mỹ)
+            count: 30
+          - label: Sản phẩm từ sắt, thép (Triệu đô la Mỹ)
+            count: 30
+          - label: Sản phẩm từ kim loại thường khác (Triệu đô la Mỹ)
+            count: 30
+          - label: Hàng điện tử, máy tính và linh kiện (Triệu đô la Mỹ)
+            count: 30
+          - label: Hàng điện gia dụng và linh kiện (Triệu đô la Mỹ)
+            count: 30
+          - label: Điện thoại và linh kiện (Triệu đô la Mỹ)
+            count: 30
+          - label: Máy ảnh, máy quay phim và linh kiện (Triệu đô la Mỹ)
+            count: 30
+          - label: Máy móc, thiết bị, dụng cụ, phụ tùng khác
+            count: 30
+          - label: Dây điện và cáp điện (Triệu đô la Mỹ)
+            count: 30
+          - label: Ô tô nguyên chiếc (Triệu đô la Mỹ)
+            count: 30
+          - label: Xăng, dầu các loại (Nghìn tấn)
+            count: 30
+          - label: Xăng (Nghìn tấn)
+            count: 30
+          - label: Dầu diesel (Nghìn tấn)
+            count: 30
+          - label: Dầu mazut (Nghìn tấn)
+            count: 30
+          - label: Dầu hỏa (Nghìn tấn)
+            count: 30
+          - label: Nhiên liệu máy bay (Nghìn tấn)
+            count: 30
+          - label: Phân bón (Nghìn tấn)
+            count: 30
+          - label: Phân SA (Nghìn tấn)
+            count: 30
+          - label: Phân urê (Nghìn tấn)
+            count: 30
+          - label: Phân NPK (Nghìn tấn)
+            count: 30
+          - label: Phân DAP (Nghìn tấn)
+            count: 30
+          - label: Phân kali (Nghìn tấn)
+            count: 30
+          - label: Loại khác (Nghìn tấn)
+            count: 30
+          - label: Sắt, thép (Nghìn tấn)
+            count: 30
+          - label: Phôi thép (Nghìn tấn)
+            count: 30
+          - label: Ô tô nguyên chiếc (Chiếc)
+            count: 30
+          - label: Loại 9 chỗ ngồi trở xuống (Chiếc)
+            count: 30
+          - label: Loại trên 9 chỗ ngồi (Chiếc)
+            count: 30
+          - label: Ô tô tải (Chiếc)
+            count: 30
+          - label: Ô tô loại khác (Chiếc)
+            count: 30
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 56
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
