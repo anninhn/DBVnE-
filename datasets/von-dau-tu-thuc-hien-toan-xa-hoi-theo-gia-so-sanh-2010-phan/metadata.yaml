@@ -26,29 +26,32 @@ files:
     r2_key: "89b620e1-3973-4715-ba20-4c7c4e59e73b/von-dau-tu-thuc-hien-toan-xa-hoi-theo-gia-so-sanh-2010-phan.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [12, 12, 6, 12, 12, 6, 12, 12]
-      "Vốn đầu tư thực hiện toàn xã hội":
+        histogram: [ 12, 12, 6, 12, 12, 6, 12, 12 ]
+      Vốn đầu tư thực hiện toàn xã hội:
         kind: numeric
         min: 13210
         max: 2375855
-        histogram: [52, 8, 5, 7, 7, 4, 4, 3]
-      "Phân tổ":
+        histogram: [ 52, 8, 5, 7, 7, 4, 4, 3 ]
+      Phân tổ:
         kind: categorical
         distinct: 6
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 15
-          - label: "Vốn đầu tư xây dựng cơ bản"
+          - label: Vốn đầu tư xây dựng cơ bản
             count: 15
-          - label: "Vốn mua sắm tài sản cố định dùng cho sản xuất"
+          - label: Vốn mua sắm tài sản cố định dùng cho sản xuất
             count: 15
-          - label: "Vốn sửa chữa, nâng cấp tài sản cố định"
+          - label: Vốn sửa chữa, nâng cấp tài sản cố định
             count: 15
-          - label: "Vốn bổ sung cho vốn lưu động bằng nguồn vốn tự có"
+          - label: Vốn bổ sung cho vốn lưu động bằng nguồn vốn tự có
             count: 15
-          - label: "Vốn đầu tư khác"
+          - label: Vốn đầu tư khác
             count: 15
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
