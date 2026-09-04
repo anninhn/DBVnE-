@@ -27,38 +27,42 @@ files:
     r2_key: "44a0259d-9194-490d-abf8-768f4a5b6c0e/luc-luong-lao-dong-tu-15-tuoi-tro-len-phan-theo-gioi-tinh-va.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [15, 15, 15, 15, 15, 15, 15, 20]
-      "Tổng số (Nghìn người)":
+        histogram: [ 15, 15, 15, 15, 15, 15, 15, 20 ]
+      Tổng số (Nghìn người):
         kind: numeric
         min: 8910.3
         max: 55767.4
-        histogram: [11, 20, 30, 20, 19, 5, 5, 15]
-      "Cơ cấu (%)":
+        histogram: [ 11, 20, 30, 20, 19, 5, 5, 15 ]
+      Cơ cấu (%):
         kind: numeric
         min: 23.1
         max: 100
-        histogram: [20, 5, 39, 12, 13, 11, 0, 25]
-      "Phân tổ":
+        histogram: [ 20, 5, 39, 12, 13, 11, 0, 25 ]
+      Phân tổ:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 25
-          - label: "Nam"
+          - label: Nam
             count: 25
-          - label: "Nữ"
+          - label: Nữ
             count: 25
-          - label: "Thành thị"
+          - label: Thành thị
             count: 25
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 25
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 2000, 2024 ]
