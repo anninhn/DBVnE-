@@ -27,47 +27,55 @@ files:
     r2_key: "b71cf5e5-f568-4a05-bf91-80fd9e94fc4c/hoat-dong-tu-phap.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [28, 28, 14, 28, 28, 14, 28, 28]
-      "Hoạt động tư pháp":
+        histogram: [ 28, 28, 14, 28, 28, 14, 28, 28 ]
+      Hoạt động tư pháp:
         kind: numeric
         min: 1
         max: 165880
-        histogram: [68, 7, 12, 26, 16, 20, 8, 5]
-      "Phân tổ":
+        histogram: [ 68, 7, 12, 26, 16, 20, 8, 5 ]
+      Phân tổ:
         kind: categorical
         distinct: 14
         segments:
-          - label: "Số vụ án đã khởi tố (Vụ)"
+          - label: Số vụ án đã khởi tố (Vụ)
             count: 14
-          - label: "Số bị can đã khởi tố (Người)"
+          - label: Số bị can đã khởi tố (Người)
             count: 14
           - label: "Trong đó: Số nữ bị can đã khởi tố (Người)"
             count: 14
-          - label: "Số vụ án đã truy tố (Vụ)"
+          - label: Số vụ án đã truy tố (Vụ)
             count: 14
-          - label: "Số bị can đã truy tố (Người)"
+          - label: Số bị can đã truy tố (Người)
             count: 14
           - label: "Trong đó: Số nữ bị can đã truy tố (Người)"
             count: 14
-          - label: "Số vụ án đã xét xử (Vụ)"
+          - label: Số vụ án đã xét xử (Vụ)
             count: 14
-          - label: "Số bị cáo đã xét xử (Người)"
+          - label: Số bị cáo đã xét xử (Người)
             count: 14
           - label: "Trong đó: Số nữ bị cáo đã xét xử (Người)"
             count: 14
-          - label: "Số lượt người được trợ giúp pháp lý (Lượt người)(*)"
+          - label: Số lượt người được trợ giúp pháp lý (Lượt người)(*)
             count: 14
           - label: "Trong đó: Số nữ được trợ giúp pháp lý (Lượt người)"
             count: 14
           - label: "Kết quả thi hành án dân sự: Tỷ lệ thi hành xong về việc (%)"
             count: 14
-      "Ghi chú":
+          - label: "Kết quả thi hành án dân sự: Tỷ lệ thi hành xong về tiền (%)"
+            count: 14
+          - label: Số luật sư bình quân 10.000 người dân (Người)
+            count: 14
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 14
+        complete: true
+coverage:
+  temporal: [ 2011, 2024 ]
