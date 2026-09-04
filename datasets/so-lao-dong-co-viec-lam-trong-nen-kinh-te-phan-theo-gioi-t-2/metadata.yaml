@@ -27,38 +27,42 @@ files:
     r2_key: "5701a2a6-15f4-49c6-8e4a-a0c1a95203d6/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-t-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [15, 10, 15, 10, 10, 15, 10, 15]
-      "Tổng số - Nghìn người":
+        histogram: [ 15, 10, 15, 10, 10, 15, 10, 15 ]
+      Tổng số - Nghìn người:
         kind: numeric
         min: 10689.1
         max: 54659.2
-        histogram: [10, 12, 29, 15, 14, 1, 6, 13]
-      "Tỷ lệ so với dân số (%)":
+        histogram: [ 10, 12, 29, 15, 14, 1, 6, 13 ]
+      Tỷ lệ so với dân số (%):
         kind: numeric
         min: 46.21
         max: 60.6
-        histogram: [6, 7, 10, 18, 16, 13, 11, 19]
-      "Phân tổ":
+        histogram: [ 6, 7, 10, 18, 16, 13, 11, 19 ]
+      Phân tổ:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 20
-          - label: "Nam"
+          - label: Nam
             count: 20
-          - label: "Nữ"
+          - label: Nữ
             count: 20
-          - label: "Thành thị"
+          - label: Thành thị
             count: 20
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 20
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
