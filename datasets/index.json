@@ -18,6 +18,7 @@
     "format": "csv",
     "source": "Cục Thống kê (NSO)",
     "source_url": "https://www.nso.gov.vn/",
+    "status": "deleted",
     "year_range": [
       2024,
       2024
