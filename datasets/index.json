@@ -15166,36 +15166,6 @@
     ]
   },
   {
-    "slug": "du-lieu-mat-rung-tai-lam-dong-theo-toa-do-va-thoi-gian-2005",
-    "title": "Dữ liệu mất rừng tại Lâm Đồng theo tọa độ và thời gian (2005-2013)",
-    "description": "Bộ dữ liệu ghi nhận các điểm tọa độ (kinh độ, vĩ độ) cùng với năm và thời gian quan sát, có thể liên quan đến các sự kiện tổn thất (ví dụ: mất rừng) tại tỉnh Lâm Đồng từ năm 2005 đến 2013.",
-    "category": "moi-truong",
-    "tags": [
-      "lam-dong",
-      "moi-truong",
-      "toa-do",
-      "mat-rung",
-      "bien-doi-khi-hau"
-    ],
-    "uploaded_at": "2026-08-20T08:14:39.254Z",
-    "uploaded_by": "ninh",
-    "row_count": 696292,
-    "file_count": 1,
-    "total_size_mb": 29.88,
-    "format": "csv",
-    "source": "Dữ liệu vệ tinh + Niêm giám thống kê",
-    "source_url": "",
-    "status": "deleted",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "d1b0f1dc-73a9-4fb1-af41-3dc5d0647d52/kepler_lamdong_loss_2005_2013.csv",
-        "size_mb": 29.88
-      }
-    ]
-  },
-  {
     "slug": "hien-trang-rung-phan-theo-dia-phuong-va-vung-2008-2024",
     "title": "Hiện trạng rừng phân theo địa phương và vùng giai đoạn 2008-2024",
     "description": "Bộ dữ liệu cung cấp thông tin về diện tích rừng tổng diện tích, rừng tự nhiên, rừng trồng, diện tích trồng mới) và tỷ lệ che phủ rừng của Việt Nam, tính đến 31/12 hằng năm, phân theo tỉnh, vùng địa lý và cấp quốc gia, từ năm 2008 đến 2024.",
@@ -15325,70 +15295,6 @@
     ]
   },
   {
-    "slug": "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024-2",
-    "title": "Diện tích và tỷ lệ che phủ rừng các tỉnh thành Việt Nam giai đoạn 2005-2024",
-    "description": "Dataset cung cấp thông tin về tổng diện tích rừng, diện tích rừng tự nhiên, diện tích rừng trồng và tỷ lệ che phủ rừng của các tỉnh, thành phố trực thuộc trung ương và toàn quốc từ năm 2005 đến năm 2024 (thiếu dữ liệu năm 2006 và 2007).",
-    "category": "moi-truong",
-    "tags": [
-      "rung",
-      "lam-nghiep",
-      "moi-truong",
-      "dien-tich-rung",
-      "ty-le-che-phu"
-    ],
-    "uploaded_at": "2026-08-04T06:54:50.044Z",
-    "uploaded_by": "ha",
-    "last_edited_by": "ha",
-    "last_edited_at": "2026-08-04T06:59:44.699Z",
-    "row_count": 1152,
-    "file_count": 1,
-    "total_size_mb": 0.05,
-    "format": "csv",
-    "source": "Báo cáo hiện trạng rừng toàn quốc các năm - Bộ Nông nghiệp và Phát triển nông thôn",
-    "source_url": "",
-    "status": "deleted",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "09f5fdfb-ee33-4774-b630-f3ef9a083f41/Hi_n_tr_ng_r_ng_c_c_t_nh_th_nh_2005-2024.csv",
-        "size_mb": 0.05
-      }
-    ]
-  },
-  {
-    "slug": "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024",
-    "title": "Diện tích rừng và tỷ lệ che phủ rừng tại các tỉnh thành Việt Nam giai đoạn 2005-2024",
-    "description": "Bộ dữ liệu thống kê diện tích rừng (tự nhiên, trồng) và tỷ lệ che phủ rừng của các tỉnh thành trên toàn quốc và các tỉnh, thành phố từ năm 2005 đến 2024 (không có dữ liệu năm 2006 và 2007). Dữ liệu cung cấp cái nhìn tổng quan về tình hình rừng Việt Nam, mức độ chi tiết cấp tỉnh, thành. ",
-    "category": "moi-truong",
-    "tags": [
-      "rung",
-      "lam-nghiep",
-      "dien-tich-rung",
-      "ty-le-che-phu",
-      "moi-truong"
-    ],
-    "uploaded_at": "2026-08-03T16:26:58.837Z",
-    "uploaded_by": "ha",
-    "last_edited_by": "ha",
-    "last_edited_at": "2026-08-03T16:28:58.371Z",
-    "row_count": 1152,
-    "file_count": 1,
-    "total_size_mb": 0.05,
-    "format": "csv",
-    "source": "Báo cáo hiện trạng rừng quốc gia qua từng năm - Bộ Nông nghiệp và Phát triển Nông thôn (MARD)",
-    "source_url": "",
-    "status": "deleted",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "6e7427c2-f3d0-4520-a076-568d613766bc/Hi_n_tr_ng_r_ng_c_c_t_nh_th_nh_2005-2024.csv",
-        "size_mb": 0.05
-      }
-    ]
-  },
-  {
     "slug": "dien-tich-rung-va-ty-le-che-phu-rung-toan-quoc-giai-doan-199",
     "title": "Diện tích rừng và tỷ lệ che phủ rừng toàn quốc giai đoạn 1999-2025",
     "description": "Dữ liệu thống kê về diện tích rừng tự nhiên, rừng trồng, tốc độ tăng/giảm và tỷ lệ che phủ rừng trên toàn quốc từ năm 1999 đến năm 2025.",
@@ -15417,40 +15323,6 @@
         "type": "csv",
         "r2_key": "3c95087b-9ed7-4785-a523-93e0e6d8321f/Di_n_t_ch_r_ng_c__n__c_giai__o_n_1999-2025.csv",
         "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "dien-tich-rung-va-ty-le-che-phu-rung-cua-63-tinh-thanh-pho-v",
-    "title": "Diện tích rừng và tỷ lệ che phủ rừng của 63 tỉnh, thành phố Việt Nam giai đoạn 2014-2024",
-    "description": "Dataset cung cấp thông tin về tổng diện tích rừng, diện tích rừng tự nhiên, diện tích rừng trồng và tỷ lệ che phủ rừng của 63 tỉnh, thành phố trực thuộc trung ương của Việt Nam từ năm 2014 đến năm 2024.",
-    "category": "moi-truong",
-    "tags": [
-      "rung",
-      "lam-nghiep",
-      "moi-truong",
-      "dien-tich-rung",
-      "ty-le-che-phu",
-      "viet-nam",
-      "tinh-thanh"
-    ],
-    "uploaded_at": "2026-08-03T09:50:06.600Z",
-    "uploaded_by": "ha",
-    "last_edited_by": "ha",
-    "last_edited_at": "2026-08-03T09:51:49.792Z",
-    "row_count": 693,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Báo cáo hiện trạng rừng quốc gia - Bộ Nông nghiệp và Môi trường ",
-    "source_url": "",
-    "status": "deleted",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "867bc76e-4467-448a-9991-c1a13666a4b3/Di_n_t_ch_r_ng_c_c_t_nh_2014-2024_Clean.csv",
-        "size_mb": 0.03
       }
     ]
   },
@@ -15553,45 +15425,6 @@
         "size_mb": 5.2
       }
     ]
-  },
-  {
-    "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-cua-viet-nam",
-    "title": "Ranh giới hành chính cấp phường/xã của Việt Nam",
-    "description": "Dữ liệu ranh giới hành chính cấp xã (phường, xã, thị trấn) của Việt Nam, bao gồm 3321 đơn vị với định dạng MultiPolygon. Phạm vi địa lý bao phủ toàn bộ lãnh thổ Việt Nam, bao gồm cả các đảo.",
-    "category": "chinh-tri",
-    "tags": [
-      "hanh-chinh",
-      "ranh-gioi",
-      "cap-xa",
-      "viet-nam",
-      "ban-do"
-    ],
-    "uploaded_at": "2026-07-23T08:11:58.664Z",
-    "uploaded_by": "ninh",
-    "row_count": 3321,
-    "file_count": 1,
-    "total_size_mb": 169.21,
-    "format": "geojson",
-    "source": "Tổng hợp từ GSO",
-    "source_url": "https://github.com/thanglequoc/vietnamese-provinces-database",
-    "status": "deleted",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "geojson",
-        "r2_key": "2562d538-953e-47c2-b6c5-a06cb6113e90/vietnam_wards.geojson",
-        "size_mb": 169.21
-      }
-    ],
-    "feature_count": 3321,
-    "geometry_type": "MultiPolygon",
-    "bbox": [
-      102.143914,
-      7.183812,
-      117.827998,
-      23.392643
-    ],
-    "crs": "EPSG:4326"
   },
   {
     "slug": "ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam",
