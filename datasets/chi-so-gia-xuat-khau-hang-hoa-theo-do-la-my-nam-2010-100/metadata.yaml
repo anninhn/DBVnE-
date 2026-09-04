@@ -27,41 +27,92 @@ files:
     r2_key: "92da8bde-6172-4d62-ac51-d2029e669c97/chi-so-gia-xuat-khau-hang-hoa-theo-do-la-my-nam-2010-100.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [72, 72, 36, 72, 72, 36, 72, 72]
-      "Chỉ số giá xuất khẩu hàng hóa (Theo Đô la Mỹ, năm 2010 = 100)":
+        histogram: [ 72, 72, 36, 72, 72, 36, 72, 72 ]
+      Chỉ số giá xuất khẩu hàng hóa (Theo Đô la Mỹ, năm 2010 = 100):
         kind: numeric
         min: 40.09
         max: 293.52
-        histogram: [24, 140, 266, 50, 13, 4, 3, 4]
-      "Nhóm hàng":
+        histogram: [ 24, 140, 266, 50, 13, 4, 3, 4 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 36
         segments:
-          - label: "CHỈ SỐ GIÁ XUẤT KHẨU CHUNG"
+          - label: CHỈ SỐ GIÁ XUẤT KHẨU CHUNG
             count: 14
-          - label: "Hàng thuỷ sản"
+          - label: Hàng thuỷ sản
             count: 14
-          - label: "Hàng rau quả"
+          - label: Hàng rau quả
             count: 14
-          - label: "Hạt điều"
+          - label: Hạt điều
             count: 14
-          - label: "Cà phê"
+          - label: Cà phê
             count: 14
-          - label: "Chè"
+          - label: Chè
             count: 14
-          - label: "Hạt tiêu"
+          - label: Hạt tiêu
             count: 14
-          - label: "Gạo"
+          - label: Gạo
             count: 14
-          - label: "Sắn & sản phẩm từ sắn"
+          - label: Sắn & sản phẩm từ sắn
             count: 14
-          - label: "Bánh, kẹo & sản phẩm từ ngũ cốc"
+          - label: Bánh, kẹo & sản phẩm từ ngũ cốc
             count: 14
-          - label: "Than đá"
+          - label: Than đá
             count: 14
-          - label: "Dầu thô"
+          - label: Dầu thô
             count: 14
+          - label: Xăng dầu các loại
+            count: 14
+          - label: Quặng & khoáng sản khác
+            count: 14
+          - label: Hoá chất
+            count: 14
+          - label: Sản phẩm hoá chất
+            count: 14
+          - label: Chất dẻo nguyên liệu
+            count: 14
+          - label: Sản phẩm chất dẻo
+            count: 14
+          - label: Cao su
+            count: 14
+          - label: Sản phẩm từ cao su
+            count: 14
+          - label: Túi xách, ví, va li, mũ & ô dù
+            count: 14
+          - label: Sản phẩm mây, tre, cói & thảm
+            count: 14
+          - label: Gỗ & sản phẩm gỗ
+            count: 14
+          - label: Giấy và sản phẩm từ giấy
+            count: 14
+          - label: Hàng dệt, may
+            count: 14
+          - label: Giày dép các loại
+            count: 14
+          - label: Sản phẩm gốm, sứ
+            count: 14
+          - label: Thuỷ tinh & sản phẩm bằng thuỷ tinh
+            count: 14
+          - label: Đá quý, kim loại quý & sản phẩm
+            count: 14
+          - label: Sắt, thép
+            count: 14
+          - label: Sản phẩm từ sắt thép
+            count: 14
+          - label: Máy vi tính, sản phẩm điện tử & linh kiện
+            count: 14
+          - label: Máy móc, thiết bị, dụng cụ & phụ tùng khác
+            count: 14
+          - label: Dây điện & dây cáp điện
+            count: 14
+          - label: Phương tiện vận tải & phụ tùng
+            count: 14
+          - label: Khác
+            count: 14
+        complete: true
+coverage:
+  temporal: [ 2011, 2024 ]
