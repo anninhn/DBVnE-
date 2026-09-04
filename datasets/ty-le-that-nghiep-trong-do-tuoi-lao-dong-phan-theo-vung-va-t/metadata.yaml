@@ -27,47 +27,52 @@ files:
     r2_key: "b54f3277-0441-4ca3-84f8-e418daff5fd0/ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-vung-va-t.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [21, 21, 21, 0, 21, 21, 21, 21]
-      "Tỷ lệ thất nghiệp trong độ tuổi lao động":
+        histogram: [ 21, 21, 21, 0, 21, 21, 21, 21 ]
+      Tỷ lệ thất nghiệp trong độ tuổi lao động:
         kind: numeric
         min: 0.51
         max: 4.84
-        histogram: [16, 12, 34, 46, 23, 7, 5, 4]
-      "Thành thị, nông thôn":
+        histogram: [ 16, 12, 34, 46, 23, 7, 5, 4 ]
+      Thành thị, nông thôn:
         kind: categorical
         distinct: 3
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 49
-          - label: "Nam"
+          - label: Nam
             count: 49
-          - label: "Nữ"
+          - label: Nữ
             count: 49
-      "Vùng":
+        complete: true
+      Vùng:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 21
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 21
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 21
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 21
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 21
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 21
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 21
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 21
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
