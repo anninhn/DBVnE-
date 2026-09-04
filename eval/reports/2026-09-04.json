@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-04T07:24:21.561Z",
-  "model": "gemini-2.5-flash",
+  "date": "2026-09-04T07:28:19.787Z",
+  "base": "http://localhost:3001",
   "total": 8,
   "success_rate": 1,
   "avg_accuracy": 1,
@@ -18,10 +18,11 @@
       "vietnamese_only": true,
       "note": "Generic — Ninh curate slug cụ thể sau khi catalog có dataset kinh tế",
       "ok": true,
-      "response_summary": "Có một số dataset phù hợp để phân tích kinh tế miền Nam, bao gồm các chỉ số về tổng sản phẩm trên địa bàn (GRDP) bình quân đầu người, chỉ số giá tiêu ",
+      "response_summary": "Có một số dataset phù hợp để tìm hiểu về kinh tế miền Nam. Các dataset này cung cấp số liệu theo vùng kinh tế - xã hội, bao gồm Đông Nam Bộ và Đồng bằ",
       "cited": [
         "tong-san-pham-tren-dia-ban-binh-quan-dau-nguoi-phan-theo-dia",
-        "chi-so-gia-tieu-dung-phan-theo-vung-cac-thang-so-voi-thang-t",
+        "chi-so-san-xuat-cong-nghiep-phan-theo-dia-phuong",
+        "thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-dia",
         "ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-vung-va-2"
       ],
       "expected": [],
@@ -30,7 +31,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 17193
+      "latency_ms": 17258
     },
     {
       "id": "q002",
@@ -40,7 +41,7 @@
       "vietnamese_only": true,
       "note": "Lookup cụ thể — test Tier 1 behavior (cite dataset, không bịa con số)",
       "ok": true,
-      "response_summary": "Hiện có dataset **Dân số trung bình phân theo địa phương và năm** (`/datasets/dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th`) chứa thôn",
+      "response_summary": "Hiện có dataset **Dân số trung bình phân theo địa phương và năm** (`dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th`) chứa thông tin dân ",
       "cited": [
         "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th"
       ],
@@ -50,7 +51,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 15128
+      "latency_ms": 12969
     },
     {
       "id": "q003",
@@ -59,7 +60,7 @@
       "expected_answer_pattern": "bầu cử|quốc hội|không",
       "vietnamese_only": true,
       "ok": true,
-      "response_summary": "Hiện tại, trong kho dữ liệu chưa có dataset nào trực tiếp về chủ đề bầu cử quốc hội. Các dataset ứng viên được tìm thấy có mức độ liên quan thấp và kh",
+      "response_summary": "Hiện tại, kho dữ liệu chưa có dataset nào trực tiếp về chủ đề bầu cử quốc hội. Các dataset ứng viên được tìm thấy có mức độ liên quan thấp và không ch",
       "cited": [],
       "expected": [],
       "accuracy": 1,
@@ -67,7 +68,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 7865
+      "latency_ms": 11882
     },
     {
       "id": "q004",
@@ -78,7 +79,7 @@
       "zero_match": true,
       "note": "Zero-match test — EmptyState render",
       "ok": true,
-      "response_summary": "Hiện chưa có dataset nào liên quan đến chủ đề bạn vừa hỏi trong kho dữ liệu. Bạn có thể thử tìm kiếm với các từ khóa khác hoặc yêu cầu upload dataset ",
+      "response_summary": "Hiện chưa có dataset nào liên quan đến nội dung bạn vừa hỏi trong kho dữ liệu. Bạn có thể thử tìm kiếm với từ khóa khác hoặc yêu cầu upload dataset mớ",
       "cited": [],
       "expected": [],
       "accuracy": 1,
@@ -86,7 +87,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 4727
+      "latency_ms": 6798
     },
     {
       "id": "q005",
@@ -96,7 +97,7 @@
       "vietnamese_only": true,
       "note": "Synonyms vùng miền — ĐBSCL = đồng bằng sông Cửu Long = miền Tây",
       "ok": true,
-      "response_summary": "Để biết GRDP của Đồng bằng sông Cửu Long (ĐBSCL) 5 năm gần đây thế nào, bạn có thể tham khảo dataset **Chỉ số phát triển tổng sản phẩm trong nước (GRD",
+      "response_summary": "Để xem GRDP của Đồng bằng sông Cửu Long (ĐBSCL) 5 năm gần đây, bạn có thể tham khảo dataset **Chỉ số phát triển tổng sản phẩm trong nước (GRDP) theo g",
       "cited": [
         "chi-so-phat-trien-tong-san-pham-trong-nuoc-theo-gia-so-sanh"
       ],
@@ -106,7 +107,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 14763
+      "latency_ms": 10520
     },
     {
       "id": "q006",
@@ -115,7 +116,7 @@
       "expected_answer_pattern": "lãnh đạo|chủ tịch|tỉnh",
       "vietnamese_only": true,
       "ok": true,
-      "response_summary": "Hiện tại, trong kho dữ liệu chưa có dataset nào chứa thông tin về danh sách lãnh đạo của 34 tỉnh thành. Các dataset có sẵn chủ yếu liên quan đến ranh ",
+      "response_summary": "Hiện tại, kho dữ liệu chưa có dataset nào chứa thông tin về danh sách lãnh đạo của 34 tỉnh thành. Các dataset được tìm thấy chủ yếu liên quan đến ranh",
       "cited": [],
       "expected": [],
       "accuracy": 1,
@@ -123,7 +124,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 7766
+      "latency_ms": 8711
     },
     {
       "id": "q007",
@@ -136,7 +137,7 @@
       "response_summary": "Có dataset **Dữ liệu đầu tư trực tiếp nước ngoài (FDI) tại Việt Nam theo năm** (`dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-thoi-ky-1`) phù hợ",
       "cited": [
         "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-thoi-ky-1",
-        "von-dau-tu-thuc-hien-toan-xa-hoi-phan-theo-loai-hinh-kinh-te"
+        "dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-3"
       ],
       "expected": [],
       "accuracy": 1,
@@ -144,7 +145,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 13106
+      "latency_ms": 11688
     },
     {
       "id": "q008",
@@ -154,7 +155,7 @@
       "vietnamese_only": true,
       "note": "GeoJSON dataset test",
       "ok": true,
-      "response_summary": "Có dataset **Ranh giới hành chính 34 tỉnh thành Việt Nam** chứa thông tin ranh giới hành chính của 34 tỉnh thành Việt Nam. Mỗi tỉnh thành được biểu di",
+      "response_summary": "Có dataset **Ranh giới hành chính 34 tỉnh thành Việt Nam** chứa thông tin ranh giới hành chính của 34 tỉnh thành, được biểu diễn bằng geometry MultiPo",
       "cited": [
         "ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam"
       ],
@@ -164,7 +165,7 @@
       "vietnamese_ok": true,
       "pattern_ok": true,
       "zero_match_ok": true,
-      "latency_ms": 6487
+      "latency_ms": 7721
     }
   ]
 }

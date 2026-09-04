@@ -58,9 +58,6 @@ await loadEnv();
 // Config
 // ──────────────────────────────────────────────────────────────────────────────
 
-const AI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/";
-const AI_MODEL = "gemini-2.5-flash";
-
 const BASE = (() => {
   const i = process.argv.indexOf("--base");
   const v = i >= 0 ? process.argv[i + 1] : undefined;
@@ -70,53 +67,11 @@ const BASE = (() => {
 const PLATFORM_USER = process.env.PLATFORM_USER;
 const PLATFORM_PASS = process.env.PLATFORM_PASS;
 
-const GH_OWNER = process.env.GITHUB_REPO_OWNER;
-const GH_REPO = process.env.GITHUB_REPO_NAME;
-const GH_BRANCH = process.env.GITHUB_REPO_BRANCH || "main";
-const GH_TOKEN = process.env.GITHUB_TOKEN;
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-
-if (!GH_OWNER || !GH_REPO) {
-  console.error("[eval] Thiếu GITHUB_REPO_OWNER hoặc GITHUB_REPO_NAME");
-  process.exit(1);
-}
-if (!GEMINI_API_KEY) {
-  console.error("[eval] Thiếu GEMINI_API_KEY");
-  process.exit(1);
-}
+// Script không còn tự đọc GitHub hay gọi model — app làm cả hai. Nên nó cũng
+// không kiểm GITHUB_* / GEMINI_API_KEY nữa: kiểm ở đây là kiểm hộ tiến trình khác,
+// và báo thiếu env trong khi app đang chạy tốt chỉ làm người chạy đi tìm sai chỗ.
 
 // ──────────────────────────────────────────────────────────────────────────────
-// GitHub fetch
-// ──────────────────────────────────────────────────────────────────────────────
-
-function ghHeaders() {
-  return {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "vnexpress-eval",
-    ...(GH_TOKEN ? { Authorization: `Bearer ${GH_TOKEN}` } : {}),
-  };
-}
-
-async function ghFetch(path) {
-  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}?ref=${GH_BRANCH}`;
-  const res = await fetch(url, { headers: ghHeaders() });
-  if (!res.ok) return null;
-  const data = await res.json();
-  if (!data.content) return null;
-  return Buffer.from(data.content.replace(/\n/g, ""), "base64").toString("utf-8");
-}
-
-async function listSlugs() {
-  const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/datasets?ref=${GH_BRANCH}`;
-  const res = await fetch(url, {
-    headers: { ...ghHeaders(), "Cache-Control": "no-cache" },
-  });
-  if (!res.ok) return [];
-  const entries = await res.json();
-  if (!Array.isArray(entries)) return [];
-  return entries.filter((e) => e.type === "dir").map((e) => e.name);
-}
-
 // ──────────────────────────────────────────────────────────────────────────────
 // Gọi chính endpoint của app (không dựng lại ngữ cảnh ở đây)
 // ──────────────────────────────────────────────────────────────────────────────
@@ -309,7 +264,10 @@ const patternRate =
 
 const summary = {
   date: new Date().toISOString(),
-  model: AI_MODEL,
+  // Model do app chọn (`AI_MODEL` trong src/lib/ai/dataset-reviewer.ts). Không ghi
+  // lại ở đây: một hằng số chép tay sẽ lệch khi app đổi model, và báo cáo sẽ nói
+  // dối về thứ vừa được đo.
+  base: BASE,
   total,
   success_rate: successCount / total,
   avg_accuracy: accuracyAvg,
