@@ -26,30 +26,33 @@ files:
     r2_key: "29cdb1f8-f986-4ded-9b7d-e117ec2bb94d/loi-nhuan-truoc-thue-cua-doanh-nghiep-dang-hoat-dong-co-ket.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Lợi nhuận trước thuế (Tỷ đồng)":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Lợi nhuận trước thuế (Tỷ đồng):
         kind: numeric
         min: 15153.73
         max: 532748.37
-        histogram: [11, 8, 5, 5, 3, 2, 4, 2]
-      "Cơ cấu (%)":
+        histogram: [ 11, 8, 5, 5, 3, 2, 4, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 3.73
         max: 100
-        histogram: [8, 3, 9, 2, 7, 1, 0, 10]
-      "Trình độ công nghệ":
+        histogram: [ 8, 3, 9, 2, 7, 1, 0, 10 ]
+      Trình độ công nghệ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nhóm ngành công nghệ cao"
+          - label: Nhóm ngành công nghệ cao
             count: 10
-          - label: "Nhóm ngành công nghệ trung bình"
+          - label: Nhóm ngành công nghệ trung bình
             count: 10
-          - label: "Nhóm ngành công nghệ thấp"
+          - label: Nhóm ngành công nghệ thấp
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
