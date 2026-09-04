@@ -27,52 +27,56 @@ files:
     r2_key: "a7e6e676-9f15-44d3-8fc3-9e06c1771cd4/tri-gia-nhap-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-theo.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [48, 48, 36, 48, 48, 36, 48, 48]
-      "Giá trị (Triệu đô la Mỹ)":
+        histogram: [ 48, 48, 36, 48, 48, 36, 48, 48 ]
+      Giá trị (Triệu đô la Mỹ):
         kind: numeric
         min: 0
         max: 380990.6
-        histogram: [251, 35, 26, 13, 9, 3, 5, 3]
-      "Cơ cấu (%)":
+        histogram: [ 251, 35, 26, 13, 9, 3, 5, 3 ]
+      Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
-        histogram: [163, 5, 34, 32, 26, 21, 4, 59]
-      "Khu vực kinh tế, nhóm hàng":
+        histogram: [ 163, 5, 34, 32, 26, 21, 4, 59 ]
+      Khu vực kinh tế, nhóm hàng:
         kind: categorical
         distinct: 12
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 30
-          - label: "Khu vực kinh tế trong nước"
+          - label: Khu vực kinh tế trong nước
             count: 30
-          - label: "Khu vực có vốn đầu tư nước ngoài"
+          - label: Khu vực có vốn đầu tư nước ngoài
             count: 30
-          - label: "Tư liệu sản xuất"
+          - label: Tư liệu sản xuất
             count: 30
-          - label: "Máy móc, thiết bị, dụng cụ, phụ tùng"
+          - label: Máy móc, thiết bị, dụng cụ, phụ tùng
             count: 30
-          - label: "Nguyên, nhiên, vật liệu"
+          - label: Nguyên, nhiên, vật liệu
             count: 30
-          - label: "Hàng tiêu dùng"
+          - label: Hàng tiêu dùng
             count: 30
-          - label: "Lương thực"
+          - label: Lương thực
             count: 30
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 30
-          - label: "Hàng y tế"
+          - label: Hàng y tế
             count: 30
-          - label: "Hàng khác"
+          - label: Hàng khác
             count: 30
-          - label: "Vàng phi tiền tệ"
+          - label: Vàng phi tiền tệ
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 12
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
