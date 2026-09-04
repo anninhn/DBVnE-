@@ -27,50 +27,53 @@ files:
     r2_key: "e6482bcd-15e0-4c9b-80ec-226679c62515/mot-so-chi-tieu-ve-vu-chay-no-phan-theo-loai-chay-no-va-vung.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [9, 0, 0, 0, 9, 0, 0, 9]
-      "Số vụ cháy, nổ (Vụ)":
+        histogram: [ 9, 0, 0, 0, 9, 0, 0, 9 ]
+      Số vụ cháy, nổ (Vụ):
         kind: numeric
         min: 12
         max: 4166
-        histogram: [14, 6, 0, 3, 0, 0, 2, 2]
-      "Số người chết (người)":
+        histogram: [ 14, 6, 0, 3, 0, 0, 2, 2 ]
+      Số người chết (người):
         kind: numeric
         min: 4
         max: 157
-        histogram: [16, 3, 1, 0, 2, 2, 1, 2]
-      "Số người bị thương (Người)":
+        histogram: [ 16, 3, 1, 0, 2, 2, 1, 2 ]
+      Số người bị thương (Người):
         kind: numeric
         min: 4
         max: 136
-        histogram: [12, 5, 3, 0, 2, 1, 3, 1]
-      "Thiệt hại do cháy nổ (Tỷ đồng)":
+        histogram: [ 12, 5, 3, 0, 2, 1, 3, 1 ]
+      Thiệt hại do cháy nổ (Tỷ đồng):
         kind: numeric
         min: 0.2
         max: 657.8
-        histogram: [15, 1, 3, 0, 3, 0, 0, 4]
-      "Phân tổ":
+        histogram: [ 15, 1, 3, 0, 3, 0, 0, 4 ]
+      Phân tổ:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 3
-          - label: "Cháy"
+          - label: Cháy
             count: 3
-          - label: "Nổ"
+          - label: Nổ
             count: 3
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 3
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 3
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 3
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 3
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 3
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2022, 2024 ]
