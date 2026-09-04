@@ -27,47 +27,53 @@ files:
     r2_key: "8f1265fe-b401-41d2-aeb3-0253b981f2ad/co-cau-tri-gia-xuat-khau-hang-hoa-theo-bang-phan-loai-tieu-c.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [13, 26, 39, 26, 26, 39, 26, 39]
-      "Cơ cấu trị giá xuất khẩu hàng hoá":
+        histogram: [ 13, 26, 39, 26, 26, 39, 26, 39 ]
+      Cơ cấu trị giá xuất khẩu hàng hoá:
         kind: numeric
         min: 0
         max: 100
-        histogram: [135, 25, 26, 12, 3, 4, 8, 21]
-      "Phân loại tiêu chuẩn ngoại thương":
+        histogram: [ 135, 25, 26, 12, 3, 4, 8, 21 ]
+      Phân loại tiêu chuẩn ngoại thương:
         kind: categorical
         distinct: 13
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 18
-          - label: "Hàng thô hoặc mới sơ chế, hàng hóa thuộc ngành công nghiệp chế biến, khoáng sản"
+          - label: Hàng thô hoặc mới sơ chế, hàng hóa thuộc ngành công nghiệp chế biến, khoáng sản
             count: 18
-          - label: "Lương thực, thực phẩm và động vật sống"
+          - label: Lương thực, thực phẩm và động vật sống
             count: 18
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 18
-          - label: "Nguyên liệu thô, không dùng để ăn, trừ nhiên liệu"
+          - label: Nguyên liệu thô, không dùng để ăn, trừ nhiên liệu
             count: 18
-          - label: "Nhiên liệu, dầu mỡ nhờn và vật liệu liên quan"
+          - label: Nhiên liệu, dầu mỡ nhờn và vật liệu liên quan
             count: 18
-          - label: "Dầu, mỡ, chất béo, sáp động, thực vật"
+          - label: Dầu, mỡ, chất béo, sáp động, thực vật
             count: 18
-          - label: "Hàng hóa thuộc ngành công nghiệp chế tạo"
+          - label: Hàng hóa thuộc ngành công nghiệp chế tạo
             count: 18
-          - label: "Hoá chất và sản phẩm liên quan"
+          - label: Hoá chất và sản phẩm liên quan
             count: 18
-          - label: "Hàng chế biến phân loại theo nguyên liệu"
+          - label: Hàng chế biến phân loại theo nguyên liệu
             count: 18
-          - label: "Máy móc, phương tiện vận tải và phụ tùng"
+          - label: Máy móc, phương tiện vận tải và phụ tùng
             count: 18
-          - label: "Hàng chế biến khác"
+          - label: Hàng chế biến khác
             count: 18
-      "Ghi chú":
+          - label: Hàng hoá không thuộc các nhóm trên
+            count: 18
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 13
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
