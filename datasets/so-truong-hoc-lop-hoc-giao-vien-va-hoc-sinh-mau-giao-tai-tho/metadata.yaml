@@ -27,57 +27,95 @@ files:
     r2_key: "0eb13fa4-ef78-4d0e-8bb6-282d0d4157ed/so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-tho.csv"
     size_mb: 0.01
     column_stats:
-      "Tổng số":
+      Tổng số:
         kind: numeric
         min: 13.98
         max: 15485
-        histogram: [117, 20, 8, 0, 3, 4, 6, 11]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 117, 20, 8, 0, 3, 4, 6, 11 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 89.26
         max: 112.5
-        histogram: [3, 3, 25, 38, 44, 29, 18, 9]
-      "Chỉ số phát triển, Phân tổ":
+        histogram: [ 3, 3, 25, 38, 44, 29, 18, 9 ]
+      Chỉ số phát triển, Phân tổ:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Trường học"
+          - label: Trường học
             count: 29
-          - label: "Lớp học"
+          - label: Lớp học
             count: 29
-          - label: "Giáo viên"
+          - label: Giáo viên
             count: 29
-          - label: "Học sinh"
+          - label: Học sinh
             count: 29
-          - label: "Số học sinh bình quân một lớp học"
+          - label: Số học sinh bình quân một lớp học
             count: 29
-          - label: "Số học sinh bình quân một giáo viên"
+          - label: Số học sinh bình quân một giáo viên
             count: 29
-      "Năm học":
+        complete: true
+      Năm học:
         kind: categorical
         distinct: 29
         segments:
-          - label: "1995-1996"
+          - label: 1995-1996
             count: 6
-          - label: "1996-1997"
+          - label: 1996-1997
             count: 6
-          - label: "1997-1998"
+          - label: 1997-1998
             count: 6
-          - label: "1998-1999"
+          - label: 1998-1999
             count: 6
-          - label: "1999-2000"
+          - label: 1999-2000
             count: 6
-          - label: "2000-2001"
+          - label: 2000-2001
             count: 6
-          - label: "2001-2002"
+          - label: 2001-2002
             count: 6
-          - label: "2002-2003"
+          - label: 2002-2003
             count: 6
-          - label: "2003-2004"
+          - label: 2003-2004
             count: 6
-          - label: "2004-2005"
+          - label: 2004-2005
             count: 6
-          - label: "2005-2006"
+          - label: 2005-2006
             count: 6
-          - label: "2006-2007"
+          - label: 2006-2007
             count: 6
+          - label: 2007-2008
+            count: 6
+          - label: 2008-2009
+            count: 6
+          - label: 2009-2010
+            count: 6
+          - label: 2010-2011
+            count: 6
+          - label: 2011-2012
+            count: 6
+          - label: 2012-2013
+            count: 6
+          - label: 2013-2014
+            count: 6
+          - label: 2014-2015
+            count: 6
+          - label: 2015-2016
+            count: 6
+          - label: 2016-2017
+            count: 6
+          - label: 2017-2018
+            count: 6
+          - label: 2018-2019
+            count: 6
+          - label: 2019-2020
+            count: 6
+          - label: 2020-2021
+            count: 6
+          - label: 2021-2022
+            count: 6
+          - label: 2022-2023
+            count: 6
+          - label: 2023-2024
+            count: 6
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
