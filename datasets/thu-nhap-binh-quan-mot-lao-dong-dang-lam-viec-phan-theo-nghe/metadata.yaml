@@ -26,45 +26,49 @@ files:
     r2_key: "d507edf7-1f03-4d94-8050-872cb8ccec2e/thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-nghe.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [11, 11, 11, 0, 11, 11, 11, 11]
-      "Thu nhập bình quân một lao động đang làm việc":
+        histogram: [ 11, 11, 11, 0, 11, 11, 11, 11 ]
+      Thu nhập bình quân một lao động đang làm việc:
         kind: numeric
         min: 2617.8
         max: 16861.92
-        histogram: [7, 14, 25, 14, 7, 4, 4, 2]
-      "Nghề nghiệp":
+        histogram: [ 7, 14, 25, 14, 7, 4, 4, 2 ]
+      Nghề nghiệp:
         kind: categorical
         distinct: 11
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 7
-          - label: "Nhà lãnh đạo"
+          - label: Nhà lãnh đạo
             count: 7
-          - label: "Chuyên môn kỹ thuật bậc cao"
+          - label: Chuyên môn kỹ thuật bậc cao
             count: 7
-          - label: "Chuyên môn kỹ thuật bậc trung"
+          - label: Chuyên môn kỹ thuật bậc trung
             count: 7
-          - label: "Nhân viên"
+          - label: Nhân viên
             count: 7
-          - label: "Dịch vụ cá nhân, bảo vệ bán hàng"
+          - label: Dịch vụ cá nhân, bảo vệ bán hàng
             count: 7
-          - label: "Lao động có kỹ năng trong nông nghiệp, lâm nghệp và thủy sản"
+          - label: Lao động có kỹ năng trong nông nghiệp, lâm nghệp và thủy sản
             count: 7
-          - label: "Thợ thủ công và các thợ khác có liên quan"
+          - label: Thợ thủ công và các thợ khác có liên quan
             count: 7
-          - label: "Thợ lắp ráp và vận hành máy móc, thiết bị"
+          - label: Thợ lắp ráp và vận hành máy móc, thiết bị
             count: 7
-          - label: "Nghề giản đơn"
+          - label: Nghề giản đơn
             count: 7
-          - label: "Khác"
+          - label: Khác
             count: 7
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 11
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
