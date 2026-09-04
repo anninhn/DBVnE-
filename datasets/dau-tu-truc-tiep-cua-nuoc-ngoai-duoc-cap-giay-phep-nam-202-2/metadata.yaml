@@ -27,41 +27,144 @@ files:
     r2_key: "a82fe27c-6b17-4c17-956e-0b99be98a96e/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-nam-202-2.csv"
     size_mb: 0
     column_stats:
-      "Số dự án":
+      Số dự án:
         kind: numeric
         min: 1
         max: 3375
-        histogram: [53, 1, 1, 0, 0, 0, 0, 1]
-      "Tổng vốn đăng ký (Triệu đô la Mỹ)":
+        histogram: [ 53, 1, 1, 0, 0, 0, 0, 1 ]
+      Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 0.8
         max: 38226.2
-        histogram: [60, 1, 1, 0, 0, 0, 0, 1]
-      "Đối tác đầu tư":
+        histogram: [ 60, 1, 1, 0, 0, 0, 0, 1 ]
+      Đối tác đầu tư:
         kind: categorical
         distinct: 63
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 1
-          - label: "Xin-ga-po"
+          - label: Xin-ga-po
             count: 1
-          - label: "Hàn Quốc"
+          - label: Hàn Quốc
             count: 1
-          - label: "CHND Trung Hoa"
+          - label: CHND Trung Hoa
             count: 1
-          - label: "Đặc khu hành chính Hồng Công (TQ)"
+          - label: Đặc khu hành chính Hồng Công (TQ)
             count: 1
-          - label: "Nhật Bản"
+          - label: Nhật Bản
             count: 1
-          - label: "Đài Loan (TQ)"
+          - label: Đài Loan (TQ)
             count: 1
-          - label: "Quần đảo Cay-men"
+          - label: Quần đảo Cay-men
             count: 1
-          - label: "Xa-moa"
+          - label: Xa-moa
             count: 1
-          - label: "Cộng hòa Thổ Nhĩ Kỳ"
+          - label: Cộng hòa Thổ Nhĩ Kỳ
             count: 1
-          - label: "Quần đảo Virgin thuộc Anh"
+          - label: Quần đảo Virgin thuộc Anh
             count: 1
-          - label: "Hà Lan"
+          - label: Hà Lan
             count: 1
+          - label: Hoa Kỳ
+            count: 1
+          - label: CH Xây-sen
+            count: 1
+          - label: Vương quốc Anh
+            count: 1
+          - label: Thái Lan
+            count: 1
+          - label: Ma-lai-xi-a
+            count: 1
+          - label: Lúc-xăm-bua
+            count: 1
+          - label: CHLB Đức
+            count: 1
+          - label: Thụy Sỹ
+            count: 1
+          - label: Ấn Độ
+            count: 1
+          - label: Ca-na-đa
+            count: 1
+          - label: Đan Mạch
+            count: 1
+          - label: Pháp
+            count: 1
+          - label: Ba Lan
+            count: 1
+          - label: Ô-xtrây-li-a
+            count: 1
+          - label: Quần đảo Virgin thuộc Hoa Kỳ
+            count: 1
+          - label: Phần Lan
+            count: 1
+          - label: In-đô-nê-xi-a
+            count: 1
+          - label: Bru-nây
+            count: 1
+          - label: Ni-giê-ri-a
+            count: 1
+          - label: Phi-li-pin
+            count: 1
+          - label: Liên bang Nga
+            count: 1
+          - label: Ap-ga-ni-xtan
+            count: 1
+          - label: Cộng hoà Ai-rơ-len
+            count: 1
+          - label: Ma-ri-ti-us
+            count: 1
+          - label: Bỉ
+            count: 1
+          - label: Bê-li-xê
+            count: 1
+          - label: Pa-ki-xtan
+            count: 1
+          - label: Cộng hòa Síp
+            count: 1
+          - label: Quốc đảo Marshall
+            count: 1
+          - label: Băng-la-đet
+            count: 1
+          - label: Đảo An-gui-la
+            count: 1
+          - label: Na Uy
+            count: 1
+          - label: Cam-pu-chia
+            count: 1
+          - label: Cộng hòa Kyrgyzstan
+            count: 1
+          - label: I-xra-ren
+            count: 1
+          - label: Các Tiểu VQ Ả-rập Thống nhất
+            count: 1
+          - label: Cộng hoà E-xtô-ni-a
+            count: 1
+          - label: Vương quốc Bahrain
+            count: 1
+          - label: Cộng hòa Goa-tê-ma-la
+            count: 1
+          - label: Áo
+            count: 1
+          - label: Ba-ha-mát
+            count: 1
+          - label: Cộng hòa Vanuatu
+            count: 1
+          - label: Cộng hòa Séc
+            count: 1
+          - label: Y-ê-men
+            count: 1
+          - label: Ai Cập
+            count: 1
+          - label: Nam Phi
+            count: 1
+          - label: Thụy Điển
+            count: 1
+          - label: Lào
+            count: 1
+          - label: Cộng hòa En Xan-va-đo -
+            count: 1
+          - label: Cộng hòa Ca-mơ-run
+            count: 1
+          - label: Ả Rập Xê Út
+            count: 1
+        complete: true
