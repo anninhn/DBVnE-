@@ -1,9 +1,6 @@
 title: Hiện trạng rừng Việt Nam phân loại theo chức năng giai đoạn 2005-2025
 slug: hien-trang-rung-viet-nam-phan-loai-theo-chuc-nang
-description: "Dữ liệu về diện tích rừng tự nhiên và rừng trồng tại Việt Nam,
-  được phân loại theo chức năng (đặc dụng, phòng hộ, sản xuất) và diện tích đất
-  ngoài quy hoạch rừng, thống kê theo từng năm từ 2005 đến 2025. Diện tích đất
-  ngoài quy hoạch rừng chỉ được thống kê trong giai đoạn 2010-2018. "
+description: "Dữ liệu về diện tích rừng tự nhiên và rừng trồng tại Việt Nam, được phân loại theo chức năng (đặc dụng, phòng hộ, sản xuất) và diện tích đất ngoài quy hoạch rừng, thống kê theo từng năm từ 2005 đến 2025. Diện tích đất ngoài quy hoạch rừng chỉ được thống kê trong giai đoạn 2010-2018. "
 category: moi-truong
 tags:
   - rung
@@ -11,8 +8,7 @@ tags:
   - moi-truong
   - dien-tich
 source:
-  name: "Báo cáo hiện trạng rừng toàn quốc từng năm - Bộ Nông nghiệp và Phát triển
-    nông thôn "
+  name: "Báo cáo hiện trạng rừng toàn quốc từng năm - Bộ Nông nghiệp và Phát triển nông thôn "
   url: ""
   retrieved: 2026-08-06
   method: manual_entry
@@ -25,8 +21,7 @@ uploaded_by: ha
 uploaded_at: 2026-08-06T11:40:25.317Z
 files:
   - filename: Hiện trạng rừng 2005-2024_Phân loại theo chức năng.csv
-    path: hien-trang-rung-viet-nam-phan-loai-theo-chuc-nang/Hiện trạng rừng
-      2005-2024_Phân loại theo chức năng.csv
+    path: hien-trang-rung-viet-nam-phan-loai-theo-chuc-nang/Hiện trạng rừng 2005-2024_Phân loại theo chức năng.csv
     r2_key: ef52061e-1a4d-48c8-89fd-fdc99788ec45/Hi_n_tr_ng_r_ng_2005-2024_Ph_n_lo_i_theo_ch_c_n_ng.csv
     size_mb: 0
     column_stats:
@@ -34,15 +29,7 @@ files:
         kind: numeric
         min: 2005
         max: 2025
-        histogram:
-          - 2
-          - 4
-          - 6
-          - 4
-          - 6
-          - 4
-          - 6
-          - 6
+        histogram: [ 2, 4, 6, 4, 6, 4, 6, 6 ]
       Loại rừng:
         kind: categorical
         distinct: 2
@@ -51,6 +38,7 @@ files:
             count: 19
           - label: Rừng trồng
             count: 19
+        complete: true
       Rừng đặc dụng (ha):
         kind: categorical
         distinct: 36
@@ -79,6 +67,55 @@ files:
             count: 1
           - label: 2.071.628
             count: 1
+          - label: 2.075.091
+            count: 1
+          - label: 2.081.425
+            count: 1
+          - label: 2.100.785
+            count: 1
+          - label: 2.103.845
+            count: 1
+          - label: 2.114.190
+            count: 1
+          - label: 2.143.048
+            count: 1
+          - label: 2.156.561
+            count: 1
+          - label: 30040,27
+            count: 1
+          - label: 77087,81
+            count: 1
+          - label: "77971"
+            count: 1
+          - label: "79810"
+            count: 1
+          - label: "80290"
+            count: 1
+          - label: "81686"
+            count: 1
+          - label: "82.348"
+            count: 1
+          - label: "76.878"
+            count: 1
+          - label: "79.179"
+            count: 1
+          - label: "83550"
+            count: 1
+          - label: "86570"
+            count: 1
+          - label: "91.805"
+            count: 1
+          - label: "94940"
+            count: 1
+          - label: "94.241"
+            count: 1
+          - label: "94700"
+            count: 1
+          - label: "95.249"
+            count: 1
+          - label: "95.424"
+            count: 1
+        complete: true
       Rừng phòng hộ (ha):
         kind: categorical
         distinct: 37
@@ -107,6 +144,57 @@ files:
             count: 1
           - label: 3.953.408
             count: 1
+          - label: 4.070.519
+            count: 1
+          - label: 4.069.390
+            count: 1
+          - label: 4.078.464
+            count: 1
+          - label: 4.062.583
+            count: 1
+          - label: 4.054.336
+            count: 1
+          - label: 4.056.352
+            count: 1
+          - label: 317481,18
+            count: 1
+          - label: 571119,51
+            count: 1
+          - label: 591578,16
+            count: 1
+          - label: "614.265"
+            count: 1
+          - label: "625836"
+            count: 1
+          - label: "652364"
+            count: 1
+          - label: 653096,43
+            count: 1
+          - label: "625.848"
+            count: 1
+          - label: "622.656"
+            count: 1
+          - label: "666.43"
+            count: 1
+          - label: "666430"
+            count: 1
+          - label: "656.475"
+            count: 1
+          - label: "692730"
+            count: 1
+          - label: "614.985"
+            count: 1
+          - label: "626.124"
+            count: 1
+          - label: "630.994"
+            count: 1
+          - label: "631.362"
+            count: 1
+          - label: "635.206"
+            count: 1
+          - label: "634.061"
+            count: 1
+        complete: true
       Rừng sản xuất (ha):
         kind: categorical
         distinct: 36
@@ -135,6 +223,55 @@ files:
             count: 1
           - label: 4.252.313
             count: 1
+          - label: 4.263.935
+            count: 1
+          - label: 4.127.240
+            count: 1
+          - label: 4.001.582
+            count: 1
+          - label: 3.951.773
+            count: 1
+          - label: 3.952.978
+            count: 1
+          - label: 3.936.567
+            count: 1
+          - label: 3.866.452
+            count: 1
+          - label: 477963,68
+            count: 1
+          - label: 2028920,18
+            count: 1
+          - label: 2141241,2
+            count: 1
+          - label: 2.276.450
+            count: 1
+          - label: "2384354"
+            count: 1
+          - label: "2548561"
+            count: 1
+          - label: 2650530,41
+            count: 1
+          - label: 2.692.621
+            count: 1
+          - label: 2.727.950
+            count: 1
+          - label: 3.495.745
+            count: 1
+          - label: 3.537.486
+            count: 1
+          - label: 3.691.240
+            count: 1
+          - label: 3.852.380
+            count: 1
+          - label: 3.930.758
+            count: 1
+          - label: 4.004.496
+            count: 1
+          - label: 4.009.895
+            count: 1
+          - label: 4.162.703
+            count: 1
+        complete: true
       Ngoài quy hoạch rừng và đất lâm nghiệp (ha):
         kind: categorical
         distinct: 16
@@ -163,6 +300,15 @@ files:
             count: 1
           - label: "155589"
             count: 1
+          - label: 170319,09
+            count: 1
+          - label: "300.973"
+            count: 1
+          - label: "456.552"
+            count: 1
+          - label: 3.495.745
+            count: 1
+        complete: true
 edits:
   - by: ha
     at: 2026-08-06T11:42:16.127Z
@@ -172,3 +318,5 @@ edits:
     summary: Edit metadata
 last_edited_by: ha
 last_edited_at: 2026-08-06T11:54:21.413Z
+coverage:
+  temporal: [ 2005, 2025 ]

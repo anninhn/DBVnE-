@@ -15316,7 +15316,10 @@
     "format": "csv",
     "source": "Báo cáo hiện trạng rừng toàn quốc từng năm - Bộ Nông nghiệp và Phát triển nông thôn ",
     "source_url": "",
-    "year_range": [],
+    "year_range": [
+      2005,
+      2025
+    ],
     "resources": [
       {
         "type": "csv",
