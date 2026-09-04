@@ -26,46 +26,57 @@ files:
     r2_key: "f0aade7d-eeff-493e-acfd-3aea5042c60f/muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac-phan-theo.csv"
     size_mb: 0.06
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2014
         max: 2024
-        histogram: [384, 192, 192, 192, 384, 192, 192, 384]
-      "Tháng":
+        histogram: [ 384, 192, 192, 192, 384, 192, 192, 384 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [352, 176, 352, 176, 176, 352, 176, 352]
-      "Mức nước biển trung bình tại một số trạm quan trắc":
+        histogram: [ 352, 176, 352, 176, 176, 352, 176, 352 ]
+      Mức nước biển trung bình tại một số trạm quan trắc:
         kind: numeric
         min: 19
         max: 313
-        histogram: [2, 253, 216, 291, 306, 510, 343, 69]
-      "Trạm":
+        histogram: [ 2, 253, 216, 291, 306, 510, 343, 69 ]
+      Trạm:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Cô Tô"
+          - label: Cô Tô
             count: 132
-          - label: "Cửa Ông"
+          - label: Cửa Ông
             count: 132
-          - label: "Bãi Cháy"
+          - label: Bãi Cháy
             count: 132
-          - label: "Hòn Dấu"
+          - label: Hòn Dấu
             count: 132
-          - label: "Bạch Long Vĩ"
+          - label: Bạch Long Vĩ
             count: 132
-          - label: "Sầm Sơn"
+          - label: Sầm Sơn
             count: 132
-          - label: "Hòn Ngư"
+          - label: Hòn Ngư
             count: 132
-          - label: "Cồn Cỏ"
+          - label: Cồn Cỏ
             count: 132
-          - label: "Sơn Trà"
+          - label: Sơn Trà
             count: 132
-          - label: "Quy Nhơn"
+          - label: Quy Nhơn
             count: 132
-          - label: "Phú Quý"
+          - label: Phú Quý
             count: 132
-          - label: "Trường Sa"
+          - label: Trường Sa
             count: 132
+          - label: Vũng Tàu
+            count: 132
+          - label: Côn Đảo
+            count: 132
+          - label: Thổ Chu
+            count: 132
+          - label: Phú Quốc
+            count: 132
+        complete: true
+coverage:
+  temporal: [ 2014, 2024 ]
