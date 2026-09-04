@@ -28,41 +28,48 @@ files:
     r2_key: "e664a962-332e-4c59-8d5f-cbd5f98ae5bd/dien-tich-nha-o-binh-quan-dau-nguoi-phan-theo-thanh-thi-nong.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2004
         max: 2024
-        histogram: [28, 14, 14, 14, 28, 14, 14, 28]
-      "Diện tích nhà ở bình quân đầu người":
+        histogram: [ 28, 14, 14, 14, 28, 14, 14, 28 ]
+      Diện tích nhà ở bình quân đầu người:
         kind: numeric
         min: 10
         max: 38
-        histogram: [8, 19, 34, 30, 32, 10, 7, 2]
-      "Phân tổ":
+        histogram: [ 8, 19, 34, 30, 32, 10, 7, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 14
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 11
-          - label: "Thành thị"
+          - label: Thành thị
             count: 11
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 11
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 11
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 11
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 11
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 11
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 11
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 11
-          - label: "Nhóm thu nhập - Nhóm 1"
+          - label: Nhóm thu nhập - Nhóm 1
             count: 11
-          - label: "Nhóm thu nhập - Nhóm 2"
+          - label: Nhóm thu nhập - Nhóm 2
             count: 11
-          - label: "Nhóm thu nhập - Nhóm 3"
+          - label: Nhóm thu nhập - Nhóm 3
             count: 11
+          - label: Nhóm thu nhập - Nhóm 4
+            count: 11
+          - label: Nhóm thu nhập - Nhóm 5
+            count: 11
+        complete: true
+coverage:
+  temporal: [ 2004, 2024 ]
