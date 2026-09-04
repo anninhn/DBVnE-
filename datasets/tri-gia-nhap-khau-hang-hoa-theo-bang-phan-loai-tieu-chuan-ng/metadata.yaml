@@ -26,52 +26,62 @@ files:
     r2_key: "d3d9add3-c851-47c9-9eec-a12d706792c1/tri-gia-nhap-khau-hang-hoa-theo-bang-phan-loai-tieu-chuan-ng.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [60, 60, 45, 60, 60, 45, 60, 60]
-      "Trị giá (Triệu đô la Mỹ)":
+        histogram: [ 60, 60, 45, 60, 60, 45, 60, 60 ]
+      Trị giá (Triệu đô la Mỹ):
         kind: numeric
         min: 0
         max: 380990.6
-        histogram: [332, 24, 10, 8, 5, 5, 3, 2]
-      "Cơ cấu (%)":
+        histogram: [ 332, 24, 10, 8, 5, 5, 3, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
-        histogram: [212, 77, 31, 10, 0, 5, 25, 30]
-      "Phân loại tiêu chuẩn ngoại thương":
+        histogram: [ 212, 77, 31, 10, 0, 5, 25, 30 ]
+      Phân loại tiêu chuẩn ngoại thương:
         kind: categorical
         distinct: 15
         segments:
-          - label: "TỔNG TRỊ GIÁ"
+          - label: TỔNG TRỊ GIÁ
             count: 30
-          - label: "Hàng thô hoặc mới sơ chế, hàng hóa thuộc ngành công nghiệp chế biến, khoáng sản"
+          - label: Hàng thô hoặc mới sơ chế, hàng hóa thuộc ngành công nghiệp chế biến, khoáng sản
             count: 30
-          - label: "Lương thực, thực phẩm và động vật sống"
+          - label: Lương thực, thực phẩm và động vật sống
             count: 30
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 30
-          - label: "Nguyên liệu thô, không dùng để ăn, trừ nhiên liệu"
+          - label: Nguyên liệu thô, không dùng để ăn, trừ nhiên liệu
             count: 30
-          - label: "Nhiêu liệu, dầu mỡ nhờn và vật liệu liên quan"
+          - label: Nhiêu liệu, dầu mỡ nhờn và vật liệu liên quan
             count: 30
-          - label: "Dầu, mỡ, chất béo, sáp động, thực vật"
+          - label: Dầu, mỡ, chất béo, sáp động, thực vật
             count: 30
-          - label: "Hàng hóa thuộc ngành công nghiệp chế tạo"
+          - label: Hàng hóa thuộc ngành công nghiệp chế tạo
             count: 30
-          - label: "Hoá chất và sản phẩm liên quan"
+          - label: Hoá chất và sản phẩm liên quan
             count: 30
-          - label: "Hàng chế biến phân loại theo nguyên liệu"
+          - label: Hàng chế biến phân loại theo nguyên liệu
             count: 30
-          - label: "Máy móc, phương tiện vận tảI và phụ tùng"
+          - label: Máy móc, phương tiện vận tảI và phụ tùng
             count: 30
-          - label: "Hàng chế biến khác"
+          - label: Hàng chế biến khác
             count: 30
-      "Ghi chú":
+          - label: Hàng hoá không thuộc các nhóm trên
+            count: 30
+          - label: Hàng thô hoặc mới sơ chế
+            count: 30
+          - label: Hàng chế biến hoặc đã tinh chế
+            count: 30
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 15
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
