@@ -27,35 +27,38 @@ files:
     r2_key: "038a154f-3e48-4277-a582-010a23143351/ty-le-ho-ngheo-phan-theo-thanh-thi-nong-thon-va-theo-vung.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1998
         max: 2024
-        histogram: [9, 18, 9, 18, 36, 18, 9, 36]
-      "Tỷ lệ hộ nghèo":
+        histogram: [ 9, 18, 9, 18, 36, 18, 9, 36 ]
+      Tỷ lệ hộ nghèo:
         kind: numeric
         min: 0.2
         max: 64.5
-        histogram: [72, 44, 18, 9, 4, 3, 2, 1]
-      "Phân tổ":
+        histogram: [ 72, 44, 18, 9, 4, 3, 2, 1 ]
+      Phân tổ:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 17
-          - label: "Thành thị"
+          - label: Thành thị
             count: 17
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 17
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 17
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 17
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 17
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 17
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 17
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 17
+        complete: true
+coverage:
+  temporal: [ 1998, 2024 ]
