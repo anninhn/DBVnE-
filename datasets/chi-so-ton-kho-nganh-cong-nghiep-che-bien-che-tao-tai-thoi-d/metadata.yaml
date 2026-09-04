@@ -27,47 +27,75 @@ files:
     r2_key: "31ff18bb-c3e8-4e29-afb9-36524b2fb16d/chi-so-ton-kho-nganh-cong-nghiep-che-bien-che-tao-tai-thoi-d.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [48, 24, 48, 24, 48, 24, 48, 48]
-      "Chỉ số tồn kho ngành công nghiệp chế biến, chế tạo tại thời điểm 31/12 hàng năm":
+        histogram: [ 48, 24, 48, 24, 48, 24, 48, 48 ]
+      Chỉ số tồn kho ngành công nghiệp chế biến, chế tạo tại thời điểm 31/12 hàng năm:
         kind: numeric
         min: 25
         max: 577.66
-        histogram: [56, 208, 17, 3, 2, 0, 0, 1]
-      "Ngành công nghiệp":
+        histogram: [ 56, 208, 17, 3, 2, 0, 0, 1 ]
+      Ngành công nghiệp:
         kind: categorical
         distinct: 24
         segments:
-          - label: "TOÀN NGÀNH CHẾ BIẾN, CHẾ TẠO"
+          - label: TOÀN NGÀNH CHẾ BIẾN, CHẾ TẠO
             count: 13
-          - label: "Sản xuất, chế biến thực phẩm"
+          - label: Sản xuất, chế biến thực phẩm
             count: 13
-          - label: "Sản xuất đồ uống"
+          - label: Sản xuất đồ uống
             count: 13
-          - label: "Sản xuất sản phẩm thuốc lá"
+          - label: Sản xuất sản phẩm thuốc lá
             count: 13
-          - label: "Dệt"
+          - label: Dệt
             count: 13
-          - label: "Sản xuất trang phục"
+          - label: Sản xuất trang phục
             count: 13
-          - label: "Sản xuất da và các sản phẩm có liên quan"
+          - label: Sản xuất da và các sản phẩm có liên quan
             count: 13
-          - label: "Chế biến gỗ và sản xuất sản phẩm từ gỗ, tre, nứa (trừ giường, tủ, bàn ghế); sản xuất sản phẩm từ rơm, rạ và vật liệu tết bện"
+          - label: Chế biến gỗ và sản xuất sản phẩm từ gỗ, tre, nứa (trừ giường, tủ, bàn ghế); sản xuất sản phẩm từ rơm, rạ và vật liệu tết bện
             count: 13
-          - label: "Sản xuất giấy và sản phẩm từ giấy"
+          - label: Sản xuất giấy và sản phẩm từ giấy
             count: 13
-          - label: "In, sao chép bản ghi các loại"
+          - label: In, sao chép bản ghi các loại
             count: 13
-          - label: "Sản xuất than cốc, sản phẩm dầu mỏ tinh chế"
+          - label: Sản xuất than cốc, sản phẩm dầu mỏ tinh chế
             count: 13
-          - label: "Sản xuất hoá chất và sản phẩm hoá chất"
+          - label: Sản xuất hoá chất và sản phẩm hoá chất
             count: 13
-      "Ghi chú":
+          - label: Sản xuất thuốc, hoá dược và dược liệu
+            count: 13
+          - label: Sản xuất sản phẩm từ cao su và plastic
+            count: 13
+          - label: Sản xuất sản phẩm từ khoáng phi kim loại khác
+            count: 13
+          - label: Sản xuất kim loại
+            count: 13
+          - label: Sản xuất sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)
+            count: 13
+          - label: Sản xuất sản phẩm điện tử, máy vi tính và sản phẩm quang học
+            count: 13
+          - label: Sản xuất thiết bị điện
+            count: 13
+          - label: Sản xuất máy móc, thiết bị chưa được phân vào đâu
+            count: 13
+          - label: Sản xuất xe có động cơ, rơ moóc
+            count: 13
+          - label: Sản xuất phương tiện vận tải khác
+            count: 13
+          - label: Sản xuất giường, tủ, bàn, ghế
+            count: 13
+          - label: Công nghiệp chế biến, chế tạo khác
+            count: 13
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 24
+        complete: true
+coverage:
+  temporal: [ 2012, 2024 ]
