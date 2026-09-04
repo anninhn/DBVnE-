@@ -26,81 +26,260 @@ files:
     r2_key: "68ef54ef-d904-4308-9eb8-1baa165a0fd2/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-d-10.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2021
         max: 2023
-        histogram: [100, 0, 0, 0, 100, 0, 0, 100]
-      "Tổng số":
+        histogram: [ 100, 0, 0, 0, 100, 0, 0, 100 ]
+      Tổng số:
         kind: numeric
         min: 0
         max: 995
-        histogram: [252, 12, 7, 0, 7, 12, 7, 3]
-      "Dưới 0,5 tỷ đồng":
+        histogram: [ 252, 12, 7, 0, 7, 12, 7, 3 ]
+      Dưới 0,5 tỷ đồng:
         kind: numeric
         min: 0
         max: 989
-        histogram: [178, 42, 31, 14, 13, 6, 11, 5]
-      "Từ 0,5 đến dưới 1 tỷ đồng":
+        histogram: [ 178, 42, 31, 14, 13, 6, 11, 5 ]
+      Từ 0,5 đến dưới 1 tỷ đồng:
         kind: numeric
         min: 0
         max: 992
-        histogram: [176, 42, 33, 15, 13, 2, 12, 7]
-      "Từ 1 đến dưới 5 tỷ đồng":
+        histogram: [ 176, 42, 33, 15, 13, 2, 12, 7 ]
+      Từ 1 đến dưới 5 tỷ đồng:
         kind: numeric
         min: 0
         max: 990
-        histogram: [205, 14, 12, 13, 13, 11, 13, 19]
-      "Từ 5 đến dưới 10 tỷ đồng":
+        histogram: [ 205, 14, 12, 13, 13, 11, 13, 19 ]
+      Từ 5 đến dưới 10 tỷ đồng:
         kind: numeric
         min: 0
         max: 982
-        histogram: [166, 34, 25, 21, 24, 9, 6, 15]
-      "Từ 10 đến dưới 50 tỷ":
+        histogram: [ 166, 34, 25, 21, 24, 9, 6, 15 ]
+      Từ 10 đến dưới 50 tỷ:
         kind: numeric
         min: 0
         max: 985
-        histogram: [171, 39, 20, 18, 13, 21, 7, 11]
-      "Từ 50 đến dưới 200":
+        histogram: [ 171, 39, 20, 18, 13, 21, 7, 11 ]
+      Từ 50 đến dưới 200:
         kind: numeric
         min: 0
         max: 955
-        histogram: [172, 29, 42, 15, 13, 17, 6, 6]
-      "Từ 200 đến dưới 500 tỷ":
+        histogram: [ 172, 29, 42, 15, 13, 17, 6, 6 ]
+      Từ 200 đến dưới 500 tỷ:
         kind: numeric
         min: 0
         max: 654
-        histogram: [187, 49, 37, 12, 3, 5, 4, 3]
-      "Từ 500 tỷ đồng trở lên":
+        histogram: [ 187, 49, 37, 12, 3, 5, 4, 3 ]
+      Từ 500 tỷ đồng trở lên:
         kind: numeric
         min: 0
         max: 929
-        histogram: [217, 56, 10, 14, 2, 0, 0, 1]
-      "Ngành kinh tế":
+        histogram: [ 217, 56, 10, 14, 2, 0, 0, 1 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 100
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 3
-          - label: "Nông nghiệp, lâm nghiệp và thuỷ sản"
+          - label: Nông nghiệp, lâm nghiệp và thuỷ sản
             count: 3
-          - label: "Nông nghiệp và hoạt động dịch vụ có liên quan"
+          - label: Nông nghiệp và hoạt động dịch vụ có liên quan
             count: 3
-          - label: "Lâm nghiệp và hoạt động dịch vụ có liên quan"
+          - label: Lâm nghiệp và hoạt động dịch vụ có liên quan
             count: 3
-          - label: "Khai thác, nuôi trồng thuỷ sản"
+          - label: Khai thác, nuôi trồng thuỷ sản
             count: 3
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 3
-          - label: "Khai thác than cứng và than non"
+          - label: Khai thác than cứng và than non
             count: 3
-          - label: "Khai thác dầu thô và khí đốt tự nhiên"
+          - label: Khai thác dầu thô và khí đốt tự nhiên
             count: 3
-          - label: "Khai thác quặng kim loại"
+          - label: Khai thác quặng kim loại
             count: 3
-          - label: "Khai khoáng khác"
+          - label: Khai khoáng khác
             count: 3
-          - label: "Hoạt động dịch vụ hỗ trợ khai thác mỏ và quặng"
+          - label: Hoạt động dịch vụ hỗ trợ khai thác mỏ và quặng
             count: 3
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 3
+          - label: Sản xuất, chế biến thực phẩm
+            count: 3
+          - label: Sản xuất đồ uống
+            count: 3
+          - label: Sản xuất sản phẩm thuốc lá
+            count: 3
+          - label: Dệt
+            count: 3
+          - label: Sản xuất trang phục
+            count: 3
+          - label: Sản xuất da và các sản phẩm có liên quan
+            count: 3
+          - label: Chế biến gỗ và sản xuất sản phẩm từ gỗ, tre, nứa (trừ giường, tủ, bàn, ghế)
+            count: 3
+          - label: Sản xuất giấy và sản phẩm từ giấy
+            count: 3
+          - label: In, sao chép bản ghi các loại
+            count: 3
+          - label: Sản xuất than cốc, sản phẩm dầu mỏ tinh chế
+            count: 3
+          - label: Sản xuất hóa chất và sản phẩm hóa chất
+            count: 3
+          - label: Sản xuất thuốc, hóa dược và dược liệu
+            count: 3
+          - label: Sản xuất sản phẩm từ cao su và plastic
+            count: 3
+          - label: Sản xuất sản phẩm từ khoáng phi kim loại khác
+            count: 3
+          - label: Sản xuất kim loại
+            count: 3
+          - label: Sản xuất sản phẩm từ kim loại đúc sẵn (trừ máy móc, thiết bị)
+            count: 3
+          - label: Sản xuất sản phẩm điện tử, máy vi tính và sản phẩm quang học
+            count: 3
+          - label: Sản xuất thiết bị điện
+            count: 3
+          - label: Sản xuất máy móc, thiết bị chưa được phân vào đâu
+            count: 3
+          - label: Sản xuất xe có động cơ, rơ moóc
+            count: 3
+          - label: Sản xuất phương tiện vận tải khác
+            count: 3
+          - label: Sản xuất giường, tủ, bàn, ghế
+            count: 3
+          - label: Công nghiệp chế biến, chế tạo khác
+            count: 3
+          - label: Sửa chữa, bảo dưỡng và lắp đặt máy móc và thiết bị
+            count: 3
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
+            count: 3
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
+            count: 3
+          - label: Khai thác, xử lý và cung cấp nước
+            count: 3
+          - label: Thoát nước và xử lý nước thải
+            count: 3
+          - label: Hoạt động thu gom, xử lý và tiêu huỷ rác thải; tái chế phế liệu
+            count: 3
+          - label: Xử lý ô nhiễm và hoạt động quản lý chất thải khác
+            count: 3
+          - label: Xây dựng
+            count: 3
+          - label: Xây dựng nhà các loại
+            count: 3
+          - label: Xây dựng công trình kỹ thuật dân dụng
+            count: 3
+          - label: Hoạt động xây dựng chuyên dụng
+            count: 3
+          - label: Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
+            count: 3
+          - label: Bán, sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
+            count: 3
+          - label: Bán buôn (trừ ô tô, mô tô, xe máy và xe có động cơ khác)
+            count: 3
+          - label: Bán lẻ (trừ ô tô, mô tô, xe máy và xe có động cơ khác)
+            count: 3
+          - label: Vận tải, kho bãi
+            count: 3
+          - label: Vận tải đường sắt, đường bộ và vận tải đường ống
+            count: 3
+          - label: Vận tải đường thủy
+            count: 3
+          - label: Vận tải hàng không
+            count: 3
+          - label: Kho bãi và các hoạt động hỗ trợ cho vận tải
+            count: 3
+          - label: Bưu chính và chuyển phát
+            count: 3
+          - label: Dịch vụ lưu trú và ăn uống
+            count: 3
+          - label: Dịch vụ lưu trú
+            count: 3
+          - label: Dịch vụ ăn uống
+            count: 3
+          - label: Thông tin và truyền thông
+            count: 3
+          - label: Hoạt động xuất bản
+            count: 3
+          - label: Hoạt động điện ảnh, sản xuất chương trình truyền hình, ghi âm và xuất bản âm nhạc
+            count: 3
+          - label: Hoạt động phát thanh, truyền hình
+            count: 3
+          - label: Viễn thông
+            count: 3
+          - label: Lập trình máy vi tính, dịch vụ tư vấn và các hoạt động khác liên quan đến máy vi tính
+            count: 3
+          - label: Hoạt động dịch vụ thông tin
+            count: 3
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
+            count: 3
+          - label: Hoạt động dịch vụ tài chính (trừ bảo hiểm và bảo hiểm xã hội)
+            count: 3
+          - label: Bảo hiểm, tái bảo hiểm và bảo hiểm xã hội (trừ bảo đảm xã hội bắt buộc)
+            count: 3
+          - label: Hoạt động tài chính khác
+            count: 3
+          - label: Hoạt động kinh doanh bất động sản
+            count: 3
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 3
+          - label: Hoạt động pháp luật, kế toán và kiểm toán
+            count: 3
+          - label: Hoạt động của trụ sở văn phòng; hoạt động tư vấn quản lý
+            count: 3
+          - label: Hoạt động kiến trúc; kiểm tra và phân tích kỹ thuật
+            count: 3
+          - label: Nghiên cứu khoa học và phát triển
+            count: 3
+          - label: Quảng cáo và nghiên cứu thị trường
+            count: 3
+          - label: Hoạt động chuyên môn, khoa học và công nghệ khác
+            count: 3
+          - label: Hoạt động thú y
+            count: 3
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 3
+          - label: Cho thuê máy móc, thiết bị (không kèm người điều khiển); cho thuê đồ dùng cá nhân và gia đình; cho thuê tài sản vô hình phi tài chính
+            count: 3
+          - label: Hoạt động dịch vụ lao động và việc làm
+            count: 3
+          - label: Hoạt động của các đại lý du lịch, kinh doanh tua du lịch và các dịch vụ hỗ trợ khác
+            count: 3
+          - label: Hoạt động điều tra bảo đảm an toàn
+            count: 3
+          - label: Hoạt động dịch vụ vệ sinh nhà cửa, công trình và cảnh quan
+            count: 3
+          - label: Hoạt động hành chính, hỗ trợ văn phòng và các hoạt động hỗ trợ kinh doanh khác
+            count: 3
+          - label: Giáo dục và đào tạo
+            count: 3
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 3
+          - label: Hoạt động y tế
+            count: 3
+          - label: Hoạt động chăm sóc, điều dưỡng tập trung
+            count: 3
+          - label: Hoạt động trợ giúp xã hội không tập trung
+            count: 3
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 3
+          - label: Hoạt động sáng tác, nghệ thuật và giải trí
+            count: 3
+          - label: Hoạt động của thư viện, lưu trữ, bảo tàng và các hoạt động văn hóa khác
+            count: 3
+          - label: Hoạt động xổ số, cá cược và đánh bạc
+            count: 3
+          - label: Hoạt động thể thao, vui chơi và giải trí
+            count: 3
+          - label: Hoạt động dịch vụ khác
+            count: 3
+          - label: Hoạt động của các hiệp hội, tổ chức khác
+            count: 3
+          - label: Sửa chữa máy vi tính, đồ dùng cá nhân và gia đình
+            count: 3
+          - label: Hoạt động dịch vụ phục vụ cá nhân khác
+            count: 3
+        complete: true
+coverage:
+  temporal: [ 2021, 2023 ]
