@@ -27,39 +27,43 @@ files:
     r2_key: "1cbba545-fed3-4724-81e0-013f2c131f11/thiet-hai-do-thien-tai.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [14, 14, 7, 14, 14, 7, 14, 14]
-      "Thiệt hại do thiên tai":
+        histogram: [ 14, 14, 7, 14, 14, 7, 14, 14 ]
+      Thiệt hại do thiên tai:
         kind: numeric
         min: 95
         max: 694619
-        histogram: [71, 14, 4, 4, 2, 0, 2, 1]
-      "Loại thiệt hại":
+        histogram: [ 71, 14, 4, 4, 2, 0, 2, 1 ]
+      Loại thiệt hại:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Thiệt hại về người (Người) - Số người chết và mất tích"
+          - label: Thiệt hại về người (Người) - Số người chết và mất tích
             count: 14
-          - label: "Thiệt hại về người (Người) - Số người bị thương"
+          - label: Thiệt hại về người (Người) - Số người bị thương
             count: 14
-          - label: "Thiệt hại về nhà ở (Nhà) - Số nhà bị sập đổ, cuốn trôi"
+          - label: Thiệt hại về nhà ở (Nhà) - Số nhà bị sập đổ, cuốn trôi
             count: 14
-          - label: "Thiệt hại về nhà ở (Nhà) Số nhà bị ngập nước, sạt lở, tốc mái"
+          - label: Thiệt hại về nhà ở (Nhà) Số nhà bị ngập nước, sạt lở, tốc mái
             count: 14
-          - label: "Thiệt hại về nông nghiệp (Ha) - Diện tích lúa bị thiệt hại"
+          - label: Thiệt hại về nông nghiệp (Ha) - Diện tích lúa bị thiệt hại
             count: 14
-          - label: "Thiệt hại về nông nghiệp (Ha) - Diện tích hoa màu bị thiệt hại"
+          - label: Thiệt hại về nông nghiệp (Ha) - Diện tích hoa màu bị thiệt hại
             count: 14
-          - label: "Tổng giá trị thiệt hại do thiên tai gây ra (Tỷ đồng)"
+          - label: Tổng giá trị thiệt hại do thiên tai gây ra (Tỷ đồng)
             count: 14
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 2
         segments:
-          - label: "(*)"
+          - label: (*)
             count: 7
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 7
+        complete: true
+coverage:
+  temporal: [ 2011, 2024 ]
