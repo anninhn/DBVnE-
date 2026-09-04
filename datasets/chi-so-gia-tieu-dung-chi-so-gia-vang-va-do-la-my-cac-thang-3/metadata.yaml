@@ -28,46 +28,65 @@ files:
     r2_key: "88cb4f22-94be-48eb-99ae-33e4162cef7b/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-cac-thang-3.csv"
     size_mb: 0.23
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [720, 720, 720, 480, 720, 720, 720, 720]
-      "Tháng":
+        histogram: [ 720, 720, 720, 480, 720, 720, 720, 720 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [920, 460, 920, 460, 460, 920, 460, 920]
-      "Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng trong năm so với tháng trước":
+        histogram: [ 920, 460, 920, 460, 460, 920, 460, 920 ]
+      Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng trong năm so với tháng trước:
         kind: numeric
         min: 86.14
         max: 124.34
-        histogram: [1, 14, 3027, 1362, 49, 7, 2, 2]
-      "Nhóm hàng":
+        histogram: [ 1, 14, 3027, 1362, 49, 7, 2, 2 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 20
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 276
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 276
-          - label: "Lương thực"
+          - label: Lương thực
             count: 276
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 276
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 276
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 276
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 276
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 276
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 276
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 276
           - label: "Trong đó: Dịch vụ y tế"
             count: 276
-          - label: "Phương tiện đi lại, bưu điện"
+          - label: Phương tiện đi lại, bưu điện
             count: 276
+          - label: Giao thông
+            count: 276
+          - label: Bưu chính viễn thông
+            count: 276
+          - label: Giáo dục
+            count: 276
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 276
+          - label: Văn hóa, giải trí và du lịch
+            count: 276
+          - label: Hàng hoá và dịch vụ khác
+            count: 276
+          - label: Chỉ số giá vàng
+            count: 276
+          - label: Chỉ số đô la Mỹ
+            count: 276
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
