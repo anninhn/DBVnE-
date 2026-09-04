@@ -27,30 +27,33 @@ files:
     r2_key: "263904cd-7303-4d63-a035-2bea1f5a8247/gia-tri-tscd-va-dau-tu-dai-han-cua-doanh-nghiep-dang-hoat-do.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Giá trị (Tỷ đồng)":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Giá trị (Tỷ đồng):
         kind: numeric
         min: 178284
         max: 4767788.47
-        histogram: [5, 14, 12, 1, 2, 1, 2, 3]
-      "Cơ cấu (%)":
+        histogram: [ 5, 14, 12, 1, 2, 1, 2, 3 ]
+      Cơ cấu (%):
         kind: numeric
         min: 17.65
         max: 100
-        histogram: [3, 25, 2, 0, 0, 0, 0, 10]
-      "Trình độ công nghệ":
+        histogram: [ 3, 25, 2, 0, 0, 0, 0, 10 ]
+      Trình độ công nghệ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nhóm ngành công nghệ cao"
+          - label: Nhóm ngành công nghệ cao
             count: 10
-          - label: "Nhóm ngành công nghệ trung bình"
+          - label: Nhóm ngành công nghệ trung bình
             count: 10
-          - label: "Nhóm ngành công nghệ thấp"
+          - label: Nhóm ngành công nghệ thấp
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
