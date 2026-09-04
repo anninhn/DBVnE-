@@ -26,41 +26,62 @@ files:
     r2_key: "21cdb9df-6688-42d3-bb17-989731b35114/so-doanh-nghiep-dang-hoat-dong-tai-thoi-diem-31-12-hang-na-3.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2017
         max: 2024
-        histogram: [21, 21, 21, 21, 21, 21, 21, 21]
-      "Số doanh nghiệp đang hoạt động tại thời điểm 31/12 hàng năm":
+        histogram: [ 21, 21, 21, 21, 21, 21, 21, 21 ]
+      Số doanh nghiệp đang hoạt động tại thời điểm 31/12 hàng năm:
         kind: numeric
         min: 2.484
         max: 940.078
-        histogram: [121, 18, 13, 1, 4, 4, 3, 4]
-      "Ngành":
+        histogram: [ 121, 18, 13, 1, 4, 4, 3, 4 ]
+      Ngành:
         kind: categorical
         distinct: 21
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 8
-          - label: "Nông nghiệp, lâm nghiệp và thuỷ sản"
+          - label: Nông nghiệp, lâm nghiệp và thuỷ sản
             count: 8
-          - label: "Công nghiệp và xây dựng"
+          - label: Công nghiệp và xây dựng
             count: 8
-          - label: "Công nghiệp"
+          - label: Công nghiệp
             count: 8
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 8
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 8
-          - label: "Sản xuất và phân phối điện, nước; cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"
+          - label: Sản xuất và phân phối điện, nước; cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
             count: 8
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 8
-          - label: "Dịch vụ"
+          - label: Dịch vụ
             count: 8
-          - label: "Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 8
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 8
-          - label: "Dịch vụ lưu trú và ăn uống"
+          - label: Dịch vụ lưu trú và ăn uống
             count: 8
+          - label: Thông tin và truyền thông
+            count: 8
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
+            count: 8
+          - label: Hoạt động kinh doanh bất động sản
+            count: 8
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 8
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 8
+          - label: Giáo dục và đào tạo
+            count: 8
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 8
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 8
+          - label: Hoạt động dịch vụ khác
+            count: 8
+        complete: true
+coverage:
+  temporal: [ 2017, 2024 ]
