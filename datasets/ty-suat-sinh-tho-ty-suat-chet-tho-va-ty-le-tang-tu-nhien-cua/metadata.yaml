@@ -26,52 +26,174 @@ files:
     r2_key: "9f4eadba-aab7-43d8-bfd2-f7a1489a456f/ty-suat-sinh-tho-ty-suat-chet-tho-va-ty-le-tang-tu-nhien-cua.csv"
     size_mb: 0.04
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [142, 142, 213, 142, 142, 213, 142, 213]
-      "Tỷ suất sinh thô":
+        histogram: [ 142, 142, 213, 142, 142, 213, 142, 213 ]
+      Tỷ suất sinh thô:
         kind: numeric
         min: 9.5
         max: 31.2
-        histogram: [106, 292, 502, 287, 88, 39, 15, 3]
-      "Tỷ suất chết thô":
+        histogram: [ 106, 292, 502, 287, 88, 39, 15, 3 ]
+      Tỷ suất chết thô:
         kind: numeric
         min: 3.8
         max: 12.8
-        histogram: [74, 187, 263, 188, 51, 6, 1, 2]
-      "Địa phương":
+        histogram: [ 74, 187, 263, 188, 51, 6, 1, 2 ]
+      Địa phương:
         kind: categorical
         distinct: 71
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 19
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 19
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 19
-          - label: "Hà Tây"
+          - label: Hà Tây
             count: 19
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 19
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 19
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 19
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 19
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 19
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 19
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 19
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 19
-      "Ghi chú":
+          - label: Nam Định
+            count: 19
+          - label: Ninh Bình
+            count: 19
+          - label: Trung du và miền núi phía Bắc
+            count: 19
+          - label: Hà Giang
+            count: 19
+          - label: Cao Bằng
+            count: 19
+          - label: Bắc Kạn
+            count: 19
+          - label: Tuyên Quang
+            count: 19
+          - label: Lào Cai
+            count: 19
+          - label: Yên Bái
+            count: 19
+          - label: Thái Nguyên
+            count: 19
+          - label: Lạng Sơn
+            count: 19
+          - label: Bắc Giang
+            count: 19
+          - label: Phú Thọ
+            count: 19
+          - label: Điện Biên
+            count: 19
+          - label: Lai Châu
+            count: 19
+          - label: Sơn La
+            count: 19
+          - label: Hòa Bình
+            count: 19
+          - label: Bắc Trung Bộ và duyên hải miền Trung
+            count: 19
+          - label: Thanh Hóa
+            count: 19
+          - label: Nghệ An
+            count: 19
+          - label: Hà Tĩnh
+            count: 19
+          - label: Quảng Bình
+            count: 19
+          - label: Quảng Trị
+            count: 19
+          - label: Huế
+            count: 19
+          - label: Đà Nẵng
+            count: 19
+          - label: Quảng Nam
+            count: 19
+          - label: Quảng Ngãi
+            count: 19
+          - label: Bình Định
+            count: 19
+          - label: Phú Yên
+            count: 19
+          - label: Khánh Hòa
+            count: 19
+          - label: Ninh Thuận
+            count: 19
+          - label: Bình Thuận
+            count: 19
+          - label: Tây Nguyên
+            count: 19
+          - label: Kon Tum
+            count: 19
+          - label: Gia Lai
+            count: 19
+          - label: Đắk Lắk
+            count: 19
+          - label: Đắk Nông
+            count: 19
+          - label: Lâm Đồng
+            count: 19
+          - label: Đông Nam Bộ
+            count: 19
+          - label: Bình Phước
+            count: 19
+          - label: Tây Ninh
+            count: 19
+          - label: Bình Dương
+            count: 19
+          - label: Đồng Nai
+            count: 19
+          - label: Bà Rịa - Vũng Tàu
+            count: 19
+          - label: TP. Hồ Chí Minh
+            count: 19
+          - label: Đồng bằng sông Cửu Long
+            count: 19
+          - label: Long An
+            count: 19
+          - label: Tiền Giang
+            count: 19
+          - label: Bến Tre
+            count: 19
+          - label: Trà Vinh
+            count: 19
+          - label: Vĩnh Long
+            count: 19
+          - label: Đồng Tháp
+            count: 19
+          - label: An Giang
+            count: 19
+          - label: Kiên Giang
+            count: 19
+          - label: Cần Thơ
+            count: 19
+          - label: Hậu Giang
+            count: 19
+          - label: Sóc Trăng
+            count: 19
+          - label: Bạc Liêu
+            count: 19
+          - label: Cà Mau
+            count: 19
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 71
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
