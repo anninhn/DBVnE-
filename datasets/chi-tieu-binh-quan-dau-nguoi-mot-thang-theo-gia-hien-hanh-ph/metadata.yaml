@@ -27,55 +27,58 @@ files:
     r2_key: "bbb29f35-a926-4d2a-8561-953c8b62b7a9/chi-tieu-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-ph.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2020
-        histogram: [9, 9, 0, 9, 9, 0, 9, 9]
-      "Tổng chi tiêu":
+        histogram: [ 9, 9, 0, 9, 9, 0, 9, 9 ]
+      Tổng chi tiêu:
         kind: numeric
         min: 866
         max: 3929.61
-        histogram: [7, 9, 12, 11, 6, 4, 3, 2]
-      "Chi cho đời sống":
+        histogram: [ 7, 9, 12, 11, 6, 4, 3, 2 ]
+      Chi cho đời sống:
         kind: numeric
         min: 815
         max: 3719.24
-        histogram: [7, 11, 10, 11, 6, 4, 3, 2]
-      "Chi ăn uống, hút":
+        histogram: [ 7, 11, 10, 11, 6, 4, 3, 2 ]
+      Chi ăn uống, hút:
         kind: numeric
         min: 483
         max: 1827.54
-        histogram: [6, 11, 13, 12, 4, 5, 1, 2]
-      "Chi không phải ăn uống, hút":
+        histogram: [ 6, 11, 13, 12, 4, 5, 1, 2 ]
+      Chi không phải ăn uống, hút:
         kind: numeric
         min: 332
         max: 1796
-        histogram: [7, 10, 10, 13, 5, 1, 6, 2]
-      "Chi tiêu khác":
+        histogram: [ 7, 10, 10, 13, 5, 1, 6, 2 ]
+      Chi tiêu khác:
         kind: numeric
         min: 51
         max: 215.06
-        histogram: [5, 6, 7, 13, 6, 7, 4, 6]
-      "Phân tổ":
+        histogram: [ 5, 6, 7, 13, 6, 7, 4, 6 ]
+      Phân tổ:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 6
-          - label: "Thành thị"
+          - label: Thành thị
             count: 6
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 6
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 6
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 6
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 6
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 6
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 6
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 6
+        complete: true
+coverage:
+  temporal: [ 2010, 2020 ]
