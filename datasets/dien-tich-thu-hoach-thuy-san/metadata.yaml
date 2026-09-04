@@ -27,43 +27,47 @@ files:
     r2_key: "b643bd1a-4284-4e75-b281-859a3d3ca77c/dien-tich-thu-hoach-thuy-san.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [30, 30, 30, 30, 30, 30, 30, 40]
-      "Diện tích thu hoạch thủy sản":
+        histogram: [ 30, 30, 30, 30, 30, 30, 30, 40 ]
+      Diện tích thu hoạch thủy sản:
         kind: numeric
         min: 0
         max: 1146.1
-        histogram: [106, 5, 21, 3, 18, 9, 13, 31]
-      "Diện tích nuôi trồng/thu hoạch thủy sản (Nghìn ha)":
+        histogram: [ 106, 5, 21, 3, 18, 9, 13, 31 ]
+      Diện tích nuôi trồng/thu hoạch thủy sản (Nghìn ha):
         kind: categorical
         distinct: 10
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 25
           - label: "Thủy sản biển:"
             count: 25
-          - label: "Nuôi cá (thủy sản biển)"
+          - label: Nuôi cá (thủy sản biển)
             count: 25
-          - label: "Nuôi tôm (thủy sản biển)"
+          - label: Nuôi tôm (thủy sản biển)
             count: 25
-          - label: "Nuôi thuỷ sản khác (thủy sản biển)"
+          - label: Nuôi thuỷ sản khác (thủy sản biển)
             count: 25
-          - label: "Thủy sản nội địa(*)"
+          - label: Thủy sản nội địa(*)
             count: 25
-          - label: "Nuôi cá (thủy sản nội địa)"
+          - label: Nuôi cá (thủy sản nội địa)
             count: 25
-          - label: "Nuôi tôm (thủy sản nội địa)"
+          - label: Nuôi tôm (thủy sản nội địa)
             count: 25
-          - label: "Nuôi thuỷ sản khác (thủy sản nội địa)"
+          - label: Nuôi thuỷ sản khác (thủy sản nội địa)
             count: 25
-          - label: "Diện tích ươm, nuôi giống thủy sản"
+          - label: Diện tích ươm, nuôi giống thủy sản
             count: 25
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2000, 2024 ]
