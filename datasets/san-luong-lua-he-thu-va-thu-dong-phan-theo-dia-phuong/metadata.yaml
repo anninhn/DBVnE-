@@ -26,47 +26,101 @@ files:
     r2_key: "d6cf8fa9-952c-4842-829c-95644641f065/san-luong-lua-he-thu-va-thu-dong-phan-theo-dia-phuong.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [148, 148, 111, 148, 148, 111, 148, 148]
-      "Sản lượng lúa hè thu và thu đông":
+        histogram: [ 148, 148, 111, 148, 148, 111, 148, 148 ]
+      Sản lượng lúa hè thu và thu đông:
         kind: numeric
         min: 0
         max: 15461.2
-        histogram: [961, 37, 3, 10, 11, 8, 15, 13]
-      "Tỉnh, thành phố":
+        histogram: [ 961, 37, 3, 10, 11, 8, 15, 13 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 37
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 30
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 30
-          - label: "Nghệ An"
+          - label: Nghệ An
             count: 30
-          - label: "Hà Tĩnh"
+          - label: Hà Tĩnh
             count: 30
-          - label: "Quảng Bình"
+          - label: Quảng Bình
             count: 30
-          - label: "Quảng Trị"
+          - label: Quảng Trị
             count: 30
-          - label: "Thừa Thiên Huế"
+          - label: Thừa Thiên Huế
             count: 30
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 30
-          - label: "Quảng Nam"
+          - label: Quảng Nam
             count: 30
-          - label: "Quảng Ngãi"
+          - label: Quảng Ngãi
             count: 30
-          - label: "Bình Định"
+          - label: Bình Định
             count: 30
-          - label: "Phú Yên"
+          - label: Phú Yên
             count: 30
-      "Ghi chú":
+          - label: Khánh Hoà
+            count: 30
+          - label: Ninh Thuận
+            count: 30
+          - label: Bình Thuận
+            count: 30
+          - label: Tây Nguyên
+            count: 30
+          - label: Lâm Đồng
+            count: 30
+          - label: Đông Nam Bộ
+            count: 30
+          - label: Tây Ninh
+            count: 30
+          - label: Bình Dương
+            count: 30
+          - label: Đồng Nai
+            count: 30
+          - label: Bà Rịa - Vũng Tàu
+            count: 30
+          - label: TP.Hồ Chí Minh
+            count: 30
+          - label: Đồng bằng sông Cửu Long
+            count: 30
+          - label: Long An
+            count: 30
+          - label: Tiền Giang
+            count: 30
+          - label: Bến Tre
+            count: 30
+          - label: Trà Vinh
+            count: 30
+          - label: Vĩnh Long
+            count: 30
+          - label: Đồng Tháp
+            count: 30
+          - label: An Giang
+            count: 30
+          - label: Kiên Giang
+            count: 30
+          - label: Cần Thơ
+            count: 30
+          - label: Hậu Giang
+            count: 30
+          - label: Sóc Trăng
+            count: 30
+          - label: Bạc Liêu
+            count: 30
+          - label: Cà Mau
+            count: 30
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 37
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
