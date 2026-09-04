@@ -31,30 +31,31 @@ files:
         kind: numeric
         min: 90
         max: 98
-        histogram: [3, 2, 2, 1, 1, 0, 1, 1]
-      "label":
+        histogram: [ 3, 2, 2, 1, 1, 0, 1, 1 ]
+      label:
         kind: categorical
         distinct: 11
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 1
-          - label: "Thành thị"
+          - label: Thành thị
             count: 1
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 1
-          - label: "Nam"
+          - label: Nam
             count: 1
-          - label: "Nữ"
+          - label: Nữ
             count: 1
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 1
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 1
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 1
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 1
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 1
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 1
+        complete: true
