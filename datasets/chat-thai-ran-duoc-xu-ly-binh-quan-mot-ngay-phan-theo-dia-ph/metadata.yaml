@@ -26,51 +26,170 @@ files:
     r2_key: "da158932-1b2d-4467-9a6a-f96bc13b1799/chat-thai-ran-duoc-xu-ly-binh-quan-mot-ngay-phan-theo-dia-ph.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2020
-        histogram: [70, 70, 0, 70, 70, 0, 70, 70]
-      "Tổng lượng chất thải rắn thông thường được thu gom":
+        histogram: [ 70, 70, 0, 70, 70, 0, 70, 70 ]
+      Tổng lượng chất thải rắn thông thường được thu gom:
         kind: numeric
         min: 12
         max: 68451.29
-        histogram: [386, 16, 2, 2, 2, 1, 0, 1]
-      "Tổng lượng chất thải rắn thông thường thu gom được xử lý đạt tiêu chuẩn, quy chuẩn kỹ thuật quốc gia tương ứng":
+        histogram: [ 386, 16, 2, 2, 2, 1, 0, 1 ]
+      Tổng lượng chất thải rắn thông thường thu gom được xử lý đạt tiêu chuẩn, quy chuẩn kỹ thuật quốc gia tương ứng:
         kind: numeric
         min: 0
         max: 58007.32
-        histogram: [378, 15, 2, 3, 2, 1, 0, 1]
-      "Tỷ lệ chất thải rắn thông thường thu gom được xử lý đạt tiêu chuẩn, quy chuẩn kỹ thuật quốc gia tương ứng":
+        histogram: [ 378, 15, 2, 3, 2, 1, 0, 1 ]
+      Tỷ lệ chất thải rắn thông thường thu gom được xử lý đạt tiêu chuẩn, quy chuẩn kỹ thuật quốc gia tương ứng:
         kind: numeric
         min: 0
         max: 100
-        histogram: [7, 3, 8, 9, 20, 29, 36, 87]
-      "Địa phương":
+        histogram: [ 7, 3, 8, 9, 20, 29, 36, 87 ]
+      Địa phương:
         kind: categorical
         distinct: 70
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 6
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 6
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 6
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 6
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 6
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 6
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 6
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 6
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 6
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 6
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 6
-          - label: "Nam Định"
+          - label: Nam Định
             count: 6
+          - label: Ninh Bình
+            count: 6
+          - label: Trung du và miền núi phía Bắc
+            count: 6
+          - label: Hà Giang
+            count: 6
+          - label: Cao Bằng
+            count: 6
+          - label: Bắc Kạn
+            count: 6
+          - label: Tuyên Quang
+            count: 6
+          - label: Lào Cai
+            count: 6
+          - label: Yên Bái
+            count: 6
+          - label: Thái Nguyên
+            count: 6
+          - label: Lạng Sơn
+            count: 6
+          - label: Bắc Giang
+            count: 6
+          - label: Phú Thọ
+            count: 6
+          - label: Điện Biên
+            count: 6
+          - label: Lai Châu
+            count: 6
+          - label: Sơn La
+            count: 6
+          - label: Hòa Bình
+            count: 6
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 6
+          - label: Thanh Hóa
+            count: 6
+          - label: Nghệ An
+            count: 6
+          - label: Hà Tĩnh
+            count: 6
+          - label: Quảng Bình
+            count: 6
+          - label: Quảng Trị
+            count: 6
+          - label: Thừa Thiên-Huế
+            count: 6
+          - label: Đà Nẵng
+            count: 6
+          - label: Quảng Nam
+            count: 6
+          - label: Quảng Ngãi
+            count: 6
+          - label: Bình Định
+            count: 6
+          - label: Phú Yên
+            count: 6
+          - label: Khánh Hòa
+            count: 6
+          - label: Ninh Thuận
+            count: 6
+          - label: Bình Thuận
+            count: 6
+          - label: Tây Nguyên
+            count: 6
+          - label: Kon Tum
+            count: 6
+          - label: Gia Lai
+            count: 6
+          - label: Đắk Lắk
+            count: 6
+          - label: Đắk Nông
+            count: 6
+          - label: Lâm Đồng
+            count: 6
+          - label: Đông Nam Bộ
+            count: 6
+          - label: Bình Phước
+            count: 6
+          - label: Tây Ninh
+            count: 6
+          - label: Bình Dương
+            count: 6
+          - label: Đồng Nai
+            count: 6
+          - label: Bà Rịa - Vũng Tàu
+            count: 6
+          - label: TP. Hồ Chí Minh
+            count: 6
+          - label: Đồng bằng sông Cửu Long
+            count: 6
+          - label: Long An
+            count: 6
+          - label: Tiền Giang
+            count: 6
+          - label: Bến Tre
+            count: 6
+          - label: Trà Vinh
+            count: 6
+          - label: Vĩnh Long
+            count: 6
+          - label: Đồng Tháp
+            count: 6
+          - label: An Giang
+            count: 6
+          - label: Kiên Giang
+            count: 6
+          - label: Cần Thơ
+            count: 6
+          - label: Hậu Giang
+            count: 6
+          - label: Sóc Trăng
+            count: 6
+          - label: Bạc Liêu
+            count: 6
+          - label: Cà Mau
+            count: 6
+        complete: true
+coverage:
+  temporal: [ 2015, 2020 ]
