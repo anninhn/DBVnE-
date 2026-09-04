@@ -27,45 +27,49 @@ files:
     r2_key: "1fb659f9-32c4-4884-a190-51f52c5bbab9/ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-gioi-tin.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2013
         max: 2024
-        histogram: [2, 1, 2, 1, 1, 2, 1, 2]
-      "Tổng số":
+        histogram: [ 2, 1, 2, 1, 1, 2, 1, 2 ]
+      Tổng số:
         kind: numeric
         min: 64.47
         max: 78.11
-        histogram: [3, 0, 1, 2, 1, 1, 2, 2]
-      "Nam":
+        histogram: [ 3, 0, 1, 2, 1, 1, 2, 2 ]
+      Nam:
         kind: numeric
         min: 67.47
         max: 78.65
-        histogram: [2, 1, 1, 1, 2, 1, 2, 2]
-      "Nữ":
+        histogram: [ 2, 1, 1, 1, 2, 1, 2, 2 ]
+      Nữ:
         kind: numeric
         min: 61.03
         max: 77.55
-        histogram: [3, 1, 0, 2, 1, 2, 1, 2]
-      "Thành thị":
+        histogram: [ 3, 1, 0, 2, 1, 2, 1, 2 ]
+      Thành thị:
         kind: numeric
         min: 48.98
         max: 56.63
-        histogram: [2, 1, 0, 2, 1, 3, 1, 2]
-      "Nông thôn":
+        histogram: [ 2, 1, 0, 2, 1, 3, 1, 2 ]
+      Nông thôn:
         kind: numeric
         min: 74.12
         max: 87.47
-        histogram: [3, 0, 2, 2, 0, 2, 1, 2]
-      "Chỉ tiêu":
+        histogram: [ 3, 0, 2, 2, 0, 2, 1, 2 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Tỷ lệ lao động có việc làm phi chính thức"
+          - label: Tỷ lệ lao động có việc làm phi chính thức
             count: 12
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 1
+        complete: true
+coverage:
+  temporal: [ 2013, 2024 ]
