@@ -26,70 +26,465 @@ files:
     r2_key: "c3d276e2-e1bf-40df-bedf-91b6f3c2674c/lao-dong-trong-cac-co-so-kinh-te-ca-the-phi-nong-nghiep-ph-2.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [40, 20, 20, 20, 20, 20, 20, 40]
-      "Ngành kinh tế":
+        histogram: [ 40, 20, 20, 20, 20, 20, 20, 40 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 20
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Công nghiệp và xây dựng"
+          - label: Công nghiệp và xây dựng
             count: 10
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 10
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 10
-          - label: "Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí"
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
             count: 10
-          - label: "Cung cấp nước; hoạt động quản lý và xử lý rác thải"
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải
             count: 10
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 10
-          - label: "Thương mại, dịch vụ"
+          - label: Thương mại, dịch vụ
             count: 10
-          - label: "Bán buôn; bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn; bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 10
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 10
-          - label: "Dịch vụ, lưu trú và ăn uống"
+          - label: Dịch vụ, lưu trú và ăn uống
             count: 10
-          - label: "Thông tin truyền thông"
+          - label: Thông tin truyền thông
             count: 10
-      "Ghi chú":
+          - label: Hoạt động tài chính, ngân hàng, bảo hiểm
+            count: 10
+          - label: Hoạt động kinh doanh bất động sản
+            count: 10
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 10
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 10
+          - label: Giáo dục và đào tạo
+            count: 10
+          - label: Y tế và hoạt động cứu trợ xã hội
+            count: 10
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 10
+          - label: Hoạt động dịch vụ khác
+            count: 10
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 20
-      "Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp":
+        complete: true
+      Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp:
         kind: categorical
         distinct: 199
         segments:
           - label: "9.158"
             count: 2
-          - label: "7.987.457"
+          - label: 7.987.457
             count: 1
-          - label: "8.261.870"
+          - label: 8.261.870
             count: 1
-          - label: "8.701.319"
+          - label: 8.701.319
             count: 1
-          - label: "8.667.520"
+          - label: 8.667.520
             count: 1
-          - label: "9.048.804"
+          - label: 9.048.804
             count: 1
-          - label: "8.655.748"
+          - label: 8.655.748
             count: 1
-          - label: "8.490.029"
+          - label: 8.490.029
             count: 1
-          - label: "9.020.899"
+          - label: 9.020.899
             count: 1
-          - label: "8.907.866"
+          - label: 8.907.866
             count: 1
-          - label: "9.043.505"
+          - label: 9.043.505
             count: 1
-          - label: "2.112.677"
+          - label: 2.112.677
             count: 1
+          - label: 2.160.785
+            count: 1
+          - label: 2.264.476
+            count: 1
+          - label: 2.241.744
+            count: 1
+          - label: 2.337.183
+            count: 1
+          - label: 2.005.579
+            count: 1
+          - label: 2.027.862
+            count: 1
+          - label: 2.087.782
+            count: 1
+          - label: 2.025.980
+            count: 1
+          - label: 2.032.464
+            count: 1
+          - label: "44.362"
+            count: 1
+          - label: "33.136"
+            count: 1
+          - label: "32.735"
+            count: 1
+          - label: "31.254"
+            count: 1
+          - label: "29.651"
+            count: 1
+          - label: "20.818"
+            count: 1
+          - label: "19.129"
+            count: 1
+          - label: "19.472"
+            count: 1
+          - label: "17.093"
+            count: 1
+          - label: "17.686"
+            count: 1
+          - label: 1.609.840
+            count: 1
+          - label: 1.622.453
+            count: 1
+          - label: 1.650.664
+            count: 1
+          - label: 1.626.545
+            count: 1
+          - label: 1.656.983
+            count: 1
+          - label: 1.442.132
+            count: 1
+          - label: 1.450.118
+            count: 1
+          - label: 1.506.098
+            count: 1
+          - label: 1.475.861
+            count: 1
+          - label: 1.490.734
+            count: 1
+          - label: "8.590"
+            count: 1
+          - label: "7.613"
+            count: 1
+          - label: "9.907"
+            count: 1
+          - label: "9.822"
+            count: 1
+          - label: "10.175"
+            count: 1
+          - label: "9.224"
+            count: 1
+          - label: "37.962"
+            count: 1
+          - label: "41.096"
+            count: 1
+          - label: "41.487"
+            count: 1
+          - label: "42.523"
+            count: 1
+          - label: "11.076"
+            count: 1
+          - label: "10.048"
+            count: 1
+          - label: "10.891"
+            count: 1
+          - label: "10.437"
+            count: 1
+          - label: "11.419"
+            count: 1
+          - label: "9.244"
+            count: 1
+          - label: "9.023"
+            count: 1
+          - label: "8.722"
+            count: 1
+          - label: "438.809"
+            count: 1
+          - label: "487.535"
+            count: 1
+          - label: "560.279"
+            count: 1
+          - label: "563.686"
+            count: 1
+          - label: "628.955"
+            count: 1
+          - label: "524.161"
+            count: 1
+          - label: "511.630"
+            count: 1
+          - label: "511.958"
+            count: 1
+          - label: "482.817"
+            count: 1
+          - label: "472.363"
+            count: 1
+          - label: 5.874.780
+            count: 1
+          - label: 6.101.085
+            count: 1
+          - label: 6.436.843
+            count: 1
+          - label: 6.425.776
+            count: 1
+          - label: 6.711.621
+            count: 1
+          - label: 6.650.169
+            count: 1
+          - label: 6.462.167
+            count: 1
+          - label: 6.933.117
+            count: 1
+          - label: 6.881.886
+            count: 1
+          - label: 7.011.041
+            count: 1
+          - label: 3.248.277
+            count: 1
+          - label: 3.356.381
+            count: 1
+          - label: 3.498.087
+            count: 1
+          - label: 3.475.172
+            count: 1
+          - label: 3.616.529
+            count: 1
+          - label: 3.495.179
+            count: 1
+          - label: 3.493.757
+            count: 1
+          - label: 3.687.862
+            count: 1
+          - label: 3.639.292
+            count: 1
+          - label: 3.703.314
+            count: 1
+          - label: "310.732"
+            count: 1
+          - label: "311.615"
+            count: 1
+          - label: "324.812"
+            count: 1
+          - label: "328.092"
+            count: 1
+          - label: "348.770"
+            count: 1
+          - label: "325.310"
+            count: 1
+          - label: "309.028"
+            count: 1
+          - label: "324.291"
+            count: 1
+          - label: "315.838"
+            count: 1
+          - label: "325.994"
+            count: 1
+          - label: 1.340.905
+            count: 1
+          - label: 1.398.801
+            count: 1
+          - label: 1.512.542
+            count: 1
+          - label: 1.507.122
+            count: 1
+          - label: 1.575.283
+            count: 1
+          - label: 1.660.609
+            count: 1
+          - label: 1.510.133
+            count: 1
+          - label: 1.664.357
+            count: 1
+          - label: 1.642.795
+            count: 1
+          - label: 1.671.281
+            count: 1
+          - label: "53.489"
+            count: 1
+          - label: "51.883"
+            count: 1
+          - label: "50.317"
+            count: 1
+          - label: "50.329"
+            count: 1
+          - label: "52.291"
+            count: 1
+          - label: "30.154"
+            count: 1
+          - label: "21.433"
+            count: 1
+          - label: "23.608"
+            count: 1
+          - label: "23.761"
+            count: 1
+          - label: "24.866"
+            count: 1
+          - label: "18.239"
+            count: 1
+          - label: "19.619"
+            count: 1
+          - label: "16.929"
+            count: 1
+          - label: "17.082"
+            count: 1
+          - label: "17.889"
+            count: 1
+          - label: "18.210"
+            count: 1
+          - label: "16.190"
+            count: 1
+          - label: "17.853"
+            count: 1
+          - label: "17.630"
+            count: 1
+          - label: "18.224"
+            count: 1
+          - label: "333.341"
+            count: 1
+          - label: "347.755"
+            count: 1
+          - label: "380.354"
+            count: 1
+          - label: "399.433"
+            count: 1
+          - label: "425.941"
+            count: 1
+          - label: "428.875"
+            count: 1
+          - label: "442.655"
+            count: 1
+          - label: "468.236"
+            count: 1
+          - label: "502.345"
+            count: 1
+          - label: "514.502"
+            count: 1
+          - label: "30.088"
+            count: 1
+          - label: "31.797"
+            count: 1
+          - label: "28.995"
+            count: 1
+          - label: "28.815"
+            count: 1
+          - label: "30.056"
+            count: 1
+          - label: "27.796"
+            count: 1
+          - label: "27.900"
+            count: 1
+          - label: "30.868"
+            count: 1
+          - label: "30.810"
+            count: 1
+          - label: "31.389"
+            count: 1
+          - label: "83.354"
+            count: 1
+          - label: "89.800"
+            count: 1
+          - label: "99.070"
+            count: 1
+          - label: "97.272"
+            count: 1
+          - label: "100.413"
+            count: 1
+          - label: "90.707"
+            count: 1
+          - label: "89.256"
+            count: 1
+          - label: "96.132"
+            count: 1
+          - label: "96.706"
+            count: 1
+          - label: "97.668"
+            count: 1
+          - label: "30.422"
+            count: 1
+          - label: "33.914"
+            count: 1
+          - label: "43.662"
+            count: 1
+          - label: "43.133"
+            count: 1
+          - label: "45.172"
+            count: 1
+          - label: "42.836"
+            count: 1
+          - label: "37.768"
+            count: 1
+          - label: "44.291"
+            count: 1
+          - label: "43.183"
+            count: 1
+          - label: "44.881"
+            count: 1
+          - label: "44.778"
+            count: 1
+          - label: "52.600"
+            count: 1
+          - label: "51.362"
+            count: 1
+          - label: "51.496"
+            count: 1
+          - label: "53.557"
+            count: 1
+          - label: "56.852"
+            count: 1
+          - label: "57.216"
+            count: 1
+          - label: "65.400"
+            count: 1
+          - label: "64.755"
+            count: 1
+          - label: "66.813"
+            count: 1
+          - label: "61.303"
+            count: 1
+          - label: "66.530"
+            count: 1
+          - label: "64.777"
+            count: 1
+          - label: "64.470"
+            count: 1
+          - label: "67.683"
+            count: 1
+          - label: "58.821"
+            count: 1
+          - label: "50.228"
+            count: 1
+          - label: "58.397"
+            count: 1
+          - label: "56.884"
+            count: 1
+          - label: "57.875"
+            count: 1
+          - label: "319.852"
+            count: 1
+          - label: "340.390"
+            count: 1
+          - label: "365.936"
+            count: 1
+          - label: "363.360"
+            count: 1
+          - label: "378.037"
+            count: 1
+          - label: "414.820"
+            count: 1
+          - label: "406.603"
+            count: 1
+          - label: "451.822"
+            count: 1
+          - label: "447.887"
+            count: 1
+          - label: "454.234"
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
