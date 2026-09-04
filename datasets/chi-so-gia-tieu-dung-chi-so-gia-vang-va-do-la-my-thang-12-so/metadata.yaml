@@ -27,41 +27,58 @@ files:
     r2_key: "3b911ee8-c64c-4330-bf7a-45ac1d135ef4/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-thang-12-so.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [38, 38, 57, 38, 38, 57, 38, 57]
-      "Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ tháng 12 so với cùng kỳ năm trước":
+        histogram: [ 38, 38, 57, 38, 38, 57, 38, 57 ]
+      Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ tháng 12 so với cùng kỳ năm trước:
         kind: numeric
         min: 75.64
         max: 177.57
-        histogram: [3, 74, 205, 23, 8, 2, 2, 1]
-      "Nhóm hàng":
+        histogram: [ 3, 74, 205, 23, 8, 2, 2, 1 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 19
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 19
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 19
-          - label: "Lương thực"
+          - label: Lương thực
             count: 19
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 19
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 19
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 19
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 19
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 19
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 19
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 19
           - label: "Trong đó: Dịch vụ y tế"
             count: 19
-          - label: "Giao thông"
+          - label: Giao thông
             count: 19
+          - label: Bưu chính viễn thông
+            count: 19
+          - label: Giáo dục
+            count: 19
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 19
+          - label: Văn hóa, giải trí và du lịch
+            count: 19
+          - label: Hàng hoá và dịch vụ khác
+            count: 19
+          - label: Chỉ số giá vàng
+            count: 19
+          - label: Chỉ số đô la Mỹ
+            count: 19
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
