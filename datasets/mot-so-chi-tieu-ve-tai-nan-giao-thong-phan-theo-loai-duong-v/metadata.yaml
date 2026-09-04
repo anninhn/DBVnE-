@@ -27,51 +27,54 @@ files:
     r2_key: "34c27d71-ed9d-4eef-8c8f-2d11f8499dfb/mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-loai-duong-v.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [12, 0, 0, 0, 12, 0, 0, 12]
-      "Số Vụ TNGT (Vụ)":
+        histogram: [ 12, 0, 0, 0, 12, 0, 0, 12 ]
+      Số Vụ TNGT (Vụ):
         kind: numeric
         min: 1.138
         max: 784
-        histogram: [33, 2, 0, 0, 0, 0, 0, 1]
-      "Số người chết (người)":
+        histogram: [ 33, 2, 0, 0, 0, 0, 0, 1 ]
+      Số người chết (người):
         kind: numeric
         min: 1.04
         max: 959
-        histogram: [32, 0, 0, 0, 2, 0, 0, 2]
-      "Số người bị thương (Người)":
+        histogram: [ 32, 0, 0, 0, 2, 0, 0, 2 ]
+      Số người bị thương (Người):
         kind: numeric
         min: 0
         max: 965
-        histogram: [29, 0, 0, 0, 1, 0, 1, 2]
-      "Phân tổ":
+        histogram: [ 29, 0, 0, 0, 1, 0, 1, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 12
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 3
-          - label: "Đường bộ"
+          - label: Đường bộ
             count: 3
-          - label: "Đường sắt"
+          - label: Đường sắt
             count: 3
-          - label: "Đường thủy"
+          - label: Đường thủy
             count: 3
-          - label: "Đường hàng hải"
+          - label: Đường hàng hải
             count: 3
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 3
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 3
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 3
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 3
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 3
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 3
-          - label: "Khác"
+          - label: Khác
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2022, 2024 ]
