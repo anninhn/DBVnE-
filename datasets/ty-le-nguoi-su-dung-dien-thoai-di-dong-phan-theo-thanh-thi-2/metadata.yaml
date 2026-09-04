@@ -31,32 +31,61 @@ files:
         kind: numeric
         min: 11
         max: 98
-        histogram: [1, 1, 0, 0, 1, 1, 11, 11]
-      "label":
+        histogram: [ 1, 1, 0, 0, 1, 1, 11, 11 ]
+      label:
         kind: categorical
         distinct: 26
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 1
-          - label: "Thành thị"
+          - label: Thành thị
             count: 1
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 1
-          - label: "Nam"
+          - label: Nam
             count: 1
-          - label: "Nữ"
+          - label: Nữ
             count: 1
-          - label: "Dưới 6 tuổi"
+          - label: Dưới 6 tuổi
             count: 1
-          - label: "6-11 tuổi"
+          - label: 6-11 tuổi
             count: 1
-          - label: "12-15 tuổi"
+          - label: 12-15 tuổi
             count: 1
-          - label: "16 - 18 tuổi"
+          - label: 16 - 18 tuổi
             count: 1
-          - label: "19 - 24 tuổi"
+          - label: 19 - 24 tuổi
             count: 1
-          - label: "25 - 29 tuổi"
+          - label: 25 - 29 tuổi
             count: 1
-          - label: "30 - 34 tuổi"
+          - label: 30 - 34 tuổi
             count: 1
+          - label: 35 - 39 tuổi
+            count: 1
+          - label: 40 - 44 tuổi
+            count: 1
+          - label: 45 - 49 tuổi
+            count: 1
+          - label: 50 - 54 tuổi
+            count: 1
+          - label: 55 - 59 tuổi
+            count: 1
+          - label: 60+ tuổi
+            count: 1
+          - label: Đồng bằng sông Hồng
+            count: 1
+          - label: Trung du và miền núi phía Bắc
+            count: 1
+          - label: Bắc Trung Bộ và duyên hải miền Trung
+            count: 1
+          - label: Tây Nguyên
+            count: 1
+          - label: Đông Nam Bộ
+            count: 1
+          - label: Đồng bằng sông Cửu Long
+            count: 1
+          - label: Điện thoại thường
+            count: 1
+          - label: Điện thoại thông minh
+            count: 1
+        complete: true
