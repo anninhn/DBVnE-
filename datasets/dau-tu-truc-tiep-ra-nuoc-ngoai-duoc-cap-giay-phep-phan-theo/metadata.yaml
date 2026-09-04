@@ -26,41 +26,146 @@ files:
     r2_key: "e3317d9e-d593-472a-9d0f-40d442faeb8d/dau-tu-truc-tiep-ra-nuoc-ngoai-duoc-cap-giay-phep-phan-theo.csv"
     size_mb: 0
     column_stats:
-      "Số dự án":
+      Số dự án:
         kind: numeric
         min: 1
         max: 1825
-        histogram: [61, 2, 0, 0, 0, 0, 0, 1]
-      "Tổng vốn đăng ký (Triệu đô la Mỹ)":
+        histogram: [ 61, 2, 0, 0, 0, 0, 0, 1 ]
+      Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 0.7
         max: 22649
-        histogram: [61, 1, 1, 0, 0, 0, 0, 1]
-      "Đối tác đầu tư":
+        histogram: [ 61, 1, 1, 0, 0, 0, 0, 1 ]
+      Đối tác đầu tư:
         kind: categorical
         distinct: 64
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 1
-          - label: "Lào"
+          - label: Lào
             count: 1
-          - label: "Cam-pu-chia"
+          - label: Cam-pu-chia
             count: 1
-          - label: "Vê-nê-xu-ê-la"
+          - label: Vê-nê-xu-ê-la
             count: 1
-          - label: "Liên bang Nga"
+          - label: Liên bang Nga
             count: 1
-          - label: "My-an-ma"
+          - label: My-an-ma
             count: 1
-          - label: "Hoa Kỳ"
+          - label: Hoa Kỳ
             count: 1
-          - label: "Pê-ru"
+          - label: Pê-ru
             count: 1
-          - label: "An-giê-ri"
+          - label: An-giê-ri
             count: 1
-          - label: "Ma-lai-xi-a"
+          - label: Ma-lai-xi-a
             count: 1
-          - label: "Xin-ga-po"
+          - label: Xin-ga-po
             count: 1
-          - label: "Ôx-trây-li-a"
+          - label: Ôx-trây-li-a
             count: 1
+          - label: Tan-đa-ni-a
+            count: 1
+          - label: Mô-dăm-bích
+            count: 1
+          - label: CHLB Đức
+            count: 1
+          - label: Ca-na-đa
+            count: 1
+          - label: Ca-mơ-run
+            count: 1
+          - label: In-đô-nê-xi-a
+            count: 1
+          - label: Burundi
+            count: 1
+          - label: Quần đảo Virgin thuộc Anh
+            count: 1
+          - label: Ấn Độ
+            count: 1
+          - label: Hà Lan
+            count: 1
+          - label: Cu-ba
+            count: 1
+          - label: I-ran
+            count: 1
+          - label: I-xra-ren
+            count: 1
+          - label: Tây Ban Nha
+            count: 1
+          - label: Hai-i-ti
+            count: 1
+          - label: Quốc đảo Marshall
+            count: 1
+          - label: Đặc khu hành chính Hồng Công (TQ)
+            count: 1
+          - label: CHND Trung Hoa
+            count: 1
+          - label: Niu-di-lân
+            count: 1
+          - label: Phi-li-pin
+            count: 1
+          - label: Pháp
+            count: 1
+          - label: Vương quốc Anh
+            count: 1
+          - label: Hàn Quốc
+            count: 1
+          - label: U-gan-đa
+            count: 1
+          - label: Thái Lan
+            count: 1
+          - label: Gibraltar (vùng lãnh thổ hại ngoại thuộc Vương quốc liên hiệp Anh và Bắc Ireland)
+            count: 1
+          - label: Cộng hoà Công gô
+            count: 1
+          - label: Nhật Bản
+            count: 1
+          - label: Ai Cập
+            count: 1
+          - label: Đông Timor - East Timor
+            count: 1
+          - label: Liên bang Bosna và Hercegovina - Bosnia and Herzegovina
+            count: 1
+          - label: Bỉ - Belgium
+            count: 1
+          - label: Nam Phi
+            count: 1
+          - label: Đài Loan
+            count: 1
+          - label: Hung-ga-ry
+            count: 1
+          - label: U-dơ-bê-ki-xtan
+            count: 1
+          - label: Ba Lan
+            count: 1
+          - label: Ang-go-la
+            count: 1
+          - label: Các Tiểu VQ Ả-rập Thống nhất
+            count: 1
+          - label: Tát-gi-ki-xtan
+            count: 1
+          - label: Cộng hòa U-crai-na
+            count: 1
+          - label: Cộng hòa Séc
+            count: 1
+          - label: Ả Rập Xê Út
+            count: 1
+          - label: Cộng hòa Nhân dân Băng-la-dét
+            count: 1
+          - label: Bru-nây
+            count: 1
+          - label: Phần Lan
+            count: 1
+          - label: Bờ Biển Ngà
+            count: 1
+          - label: Bồ Đào Nha
+            count: 1
+          - label: Thổ Nhĩ Kỳ
+            count: 1
+          - label: Cộng hòa Bê-la-rút
+            count: 1
+          - label: Áo
+            count: 1
+          - label: Thụy Điển
+            count: 1
+        complete: true
