@@ -27,33 +27,36 @@ files:
     r2_key: "13dfa0bc-94eb-48ed-89ce-d5ed79ba4eaa/dien-tich-san-xay-dung-nha-tu-xay-tu-o-hoan-thanh-trong-na-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [16, 16, 8, 16, 16, 8, 16, 16]
-      "Diện tích sàn xây dựng nhà tự xây, tự ở hoàn thành trong năm của hộ dân cư":
+        histogram: [ 16, 16, 8, 16, 16, 8, 16, 16 ]
+      Diện tích sàn xây dựng nhà tự xây, tự ở hoàn thành trong năm của hộ dân cư:
         kind: numeric
         min: 1.104
         max: 984
-        histogram: [91, 0, 3, 5, 8, 3, 1, 1]
-      "Loại nhà":
+        histogram: [ 91, 0, 3, 5, 8, 3, 1, 1 ]
+      Loại nhà:
         kind: categorical
         distinct: 8
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 14
-          - label: "Nhà ở riêng lẻ dưới 4 tầng"
+          - label: Nhà ở riêng lẻ dưới 4 tầng
             count: 14
-          - label: "Nhà kiên cố"
+          - label: Nhà kiên cố
             count: 14
-          - label: "Nhà bán kiên cố"
+          - label: Nhà bán kiên cố
             count: 14
-          - label: "Nhà khung gỗ lâu bền"
+          - label: Nhà khung gỗ lâu bền
             count: 14
-          - label: "Nhà khác"
+          - label: Nhà khác
             count: 14
-          - label: "Nhà ở riêng lẻ từ 4 tầng trở lên"
+          - label: Nhà ở riêng lẻ từ 4 tầng trở lên
             count: 14
-          - label: "Nhà biệt thự"
+          - label: Nhà biệt thự
             count: 14
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
