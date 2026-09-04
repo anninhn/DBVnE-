@@ -26,120 +26,768 @@ files:
     r2_key: "2d638ca1-51bf-461d-9922-47deb840c369/ty-le-tre-em-duoi-5-tuoi-bi-suy-dinh-duong-phan-theo-dia-phu.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2021
         max: 2024
-        histogram: [70, 0, 70, 0, 0, 70, 0, 70]
-      "Địa phương":
+        histogram: [ 70, 0, 70, 0, 0, 70, 0, 70 ]
+      Địa phương:
         kind: categorical
         distinct: 70
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 4
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 4
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 4
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 4
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 4
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 4
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 4
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 4
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 4
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 4
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 4
-          - label: "Nam Định(*)"
+          - label: Nam Định(*)
             count: 4
-      "Cân nặng theo tuổi":
+          - label: Ninh Bình
+            count: 4
+          - label: Trung du và miền núi phía Bắc
+            count: 4
+          - label: Hà Giang
+            count: 4
+          - label: Cao Bằng
+            count: 4
+          - label: Bắc Kạn
+            count: 4
+          - label: Tuyên Quang
+            count: 4
+          - label: Lào Cai
+            count: 4
+          - label: Yên Bái
+            count: 4
+          - label: Thái Nguyên
+            count: 4
+          - label: Lạng Sơn
+            count: 4
+          - label: Bắc Giang
+            count: 4
+          - label: Phú Thọ
+            count: 4
+          - label: Điện Biên
+            count: 4
+          - label: Lai Châu
+            count: 4
+          - label: Sơn La
+            count: 4
+          - label: Hòa Bình
+            count: 4
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 4
+          - label: Thanh Hóa
+            count: 4
+          - label: Nghệ An
+            count: 4
+          - label: Hà Tĩnh
+            count: 4
+          - label: Quảng Bình
+            count: 4
+          - label: Quảng Trị
+            count: 4
+          - label: Thừa Thiên - Huế
+            count: 4
+          - label: Đà Nẵng
+            count: 4
+          - label: Quảng Nam
+            count: 4
+          - label: Quảng Ngãi
+            count: 4
+          - label: Bình Định
+            count: 4
+          - label: Phú Yên
+            count: 4
+          - label: Khánh Hòa
+            count: 4
+          - label: Ninh Thuận
+            count: 4
+          - label: Bình Thuận
+            count: 4
+          - label: Tây Nguyên
+            count: 4
+          - label: Kon Tum
+            count: 4
+          - label: Gia Lai
+            count: 4
+          - label: Đắk Lắk
+            count: 4
+          - label: Đắk Nông
+            count: 4
+          - label: Lâm Đồng
+            count: 4
+          - label: Đông Nam Bộ
+            count: 4
+          - label: Bình Phước
+            count: 4
+          - label: Tây Ninh
+            count: 4
+          - label: Bình Dương
+            count: 4
+          - label: Đồng Nai
+            count: 4
+          - label: Bà Rịa - Vũng Tàu
+            count: 4
+          - label: TP. Hồ Chí Minh
+            count: 4
+          - label: Đồng bằng sông Cửu Long
+            count: 4
+          - label: Long An
+            count: 4
+          - label: Tiền Giang
+            count: 4
+          - label: Bến Tre
+            count: 4
+          - label: Trà Vinh
+            count: 4
+          - label: Vĩnh Long
+            count: 4
+          - label: Đồng Tháp
+            count: 4
+          - label: An Giang
+            count: 4
+          - label: Kiên Giang
+            count: 4
+          - label: Cần Thơ
+            count: 4
+          - label: Hậu Giang
+            count: 4
+          - label: Sóc Trăng
+            count: 4
+          - label: Bạc Liêu
+            count: 4
+          - label: Cà Mau
+            count: 4
+        complete: true
+      Cân nặng theo tuổi:
         kind: categorical
         distinct: 108
         segments:
-          - label: "9,700000000000"
+          - label: 9,700000000000
             count: 8
-          - label: "11,200000000000"
+          - label: 11,200000000000
             count: 7
-          - label: "10,700000000000"
+          - label: 10,700000000000
             count: 6
-          - label: "10,200000000000"
+          - label: 10,200000000000
             count: 6
-          - label: "16,100000000000"
+          - label: 16,100000000000
             count: 6
-          - label: "12,000000000000"
+          - label: 12,000000000000
             count: 6
-          - label: "11,300000000000"
+          - label: 11,300000000000
             count: 6
-          - label: "11,000000000000"
+          - label: 11,000000000000
             count: 5
-          - label: "15,400000000000"
+          - label: 15,400000000000
             count: 5
-          - label: "11,800000000000"
+          - label: 11,800000000000
             count: 5
-          - label: "7,000000000000"
+          - label: 7,000000000000
             count: 5
-          - label: "5,400000000000"
+          - label: 5,400000000000
             count: 5
-      "Chiều cao theo tuổi":
+          - label: 8,500000000000
+            count: 4
+          - label: 4,600000000000
+            count: 4
+          - label: 7,200000000000
+            count: 4
+          - label: 9,300000000000
+            count: 4
+          - label: 9,800000000000
+            count: 4
+          - label: 9,900000000000
+            count: 4
+          - label: 10,300000000000
+            count: 4
+          - label: 10,100000000000
+            count: 4
+          - label: 15,200000000000
+            count: 4
+          - label: 16,400000000000
+            count: 4
+          - label: 14,900000000000
+            count: 4
+          - label: 17,800000000000
+            count: 4
+          - label: 12,700000000000
+            count: 4
+          - label: 10,600000000000
+            count: 4
+          - label: 12,800000000000
+            count: 4
+          - label: 10,400000000000
+            count: 3
+          - label: 6,900000000000
+            count: 3
+          - label: 6,500000000000
+            count: 3
+          - label: 10,000000000000
+            count: 3
+          - label: 18,300000000000
+            count: 3
+          - label: 16,300000000000
+            count: 3
+          - label: 15,100000000000
+            count: 3
+          - label: 9,100000000000
+            count: 3
+          - label: 12,100000000000
+            count: 3
+          - label: 9,600000000000
+            count: 3
+          - label: 18,000000000000
+            count: 3
+          - label: 11,400000000000
+            count: 3
+          - label: 5,700000000000
+            count: 3
+          - label: 4,200000000000
+            count: 3
+          - label: 8,600000000000
+            count: 3
+          - label: 8,800000000000
+            count: 2
+          - label: 7,600000000000
+            count: 2
+          - label: 7,300000000000
+            count: 2
+          - label: 7,800000000000
+            count: 2
+          - label: 8,100000000000
+            count: 2
+          - label: 9,000000000000
+            count: 2
+          - label: 10,900000000000
+            count: 2
+          - label: 15,700000000000
+            count: 2
+          - label: 14,800000000000
+            count: 2
+          - label: 10,500000000000
+            count: 2
+          - label: 11,900000000000
+            count: 2
+          - label: 17,000000000000
+            count: 2
+          - label: 13,700000000000
+            count: 2
+          - label: 12,600000000000
+            count: 2
+          - label: 15,000000000000
+            count: 2
+          - label: 9,500000000000
+            count: 2
+          - label: 14,700000000000
+            count: 2
+          - label: 13,300000000000
+            count: 2
+          - label: 3,400000000000
+            count: 2
+          - label: 13,200000000000
+            count: 2
+          - label: 8,300000000000
+            count: 2
+          - label: 13,100000000000
+            count: 2
+          - label: 17,060000000000
+            count: 2
+          - label: 19,700000000000
+            count: 2
+          - label: 16,500000000000
+            count: 2
+          - label: 19,400000000000
+            count: 2
+          - label: 5,200000000000
+            count: 2
+          - label: 4,500000000000
+            count: 2
+          - label: 7,400000000000
+            count: 2
+          - label: 11,500000000000
+            count: 2
+          - label: 4,800000000000
+            count: 1
+          - label: 3,800000000000
+            count: 1
+          - label: 6,600000000000
+            count: 1
+          - label: 14,000000000000
+            count: 1
+          - label: 14,400000000000
+            count: 1
+          - label: 18,700000000000
+            count: 1
+          - label: 16,800000000000
+            count: 1
+          - label: 14,500000000000
+            count: 1
+          - label: 12,200000000000
+            count: 1
+          - label: 14,100000000000
+            count: 1
+          - label: 12,900000000000
+            count: 1
+          - label: 13,800000000000
+            count: 1
+          - label: 10,800000000000
+            count: 1
+          - label: 17,900000000000
+            count: 1
+          - label: 17,400000000000
+            count: 1
+          - label: 14,200000000000
+            count: 1
+          - label: 13,900000000000
+            count: 1
+          - label: 12,400000000000
+            count: 1
+          - label: 7,700000000000
+            count: 1
+          - label: 3,200000000000
+            count: 1
+          - label: 3,300000000000
+            count: 1
+          - label: 8,000000000000
+            count: 1
+          - label: 12,300000000000
+            count: 1
+          - label: 16,200000000000
+            count: 1
+          - label: 19,100000000000
+            count: 1
+          - label: 16,900000000000
+            count: 1
+          - label: 22,100000000000
+            count: 1
+          - label: 24,600000000000
+            count: 1
+          - label: 17,600000000000
+            count: 1
+          - label: 17,100000000000
+            count: 1
+          - label: 7,100000000000
+            count: 1
+          - label: 6,000000000000
+            count: 1
+          - label: 6,400000000000
+            count: 1
+          - label: 9,400000000000
+            count: 1
+          - label: 6,800000000000
+            count: 1
+          - label: 8,700000000000
+            count: 1
+        complete: true
+      Chiều cao theo tuổi:
         kind: categorical
         distinct: 133
         segments:
-          - label: "20,800000000000"
+          - label: 20,800000000000
             count: 8
-          - label: "20,200000000000"
+          - label: 20,200000000000
             count: 6
-          - label: "20,300000000000"
+          - label: 20,300000000000
             count: 6
-          - label: "21,000000000000"
+          - label: 21,000000000000
             count: 6
-          - label: "18,000000000000"
+          - label: 18,000000000000
             count: 5
-          - label: "19,900000000000"
+          - label: 19,900000000000
             count: 5
-          - label: "19,200000000000"
+          - label: 19,200000000000
             count: 4
-          - label: "18,100000000000"
+          - label: 18,100000000000
             count: 4
-          - label: "18,500000000000"
+          - label: 18,500000000000
             count: 4
-          - label: "19,000000000000"
+          - label: 19,000000000000
             count: 4
-          - label: "28,200000000000"
+          - label: 28,200000000000
             count: 4
-          - label: "24,400000000000"
+          - label: 24,400000000000
             count: 4
-      "Cân nặng theo chiều cao":
+          - label: 27,000000000000
+            count: 4
+          - label: 23,300000000000
+            count: 4
+          - label: 20,100000000000
+            count: 4
+          - label: 14,300000000000
+            count: 3
+          - label: 13,800000000000
+            count: 3
+          - label: 16,900000000000
+            count: 3
+          - label: 17,800000000000
+            count: 3
+          - label: 16,200000000000
+            count: 3
+          - label: 17,300000000000
+            count: 3
+          - label: 24,800000000000
+            count: 3
+          - label: 23,800000000000
+            count: 3
+          - label: 30,200000000000
+            count: 3
+          - label: 28,000000000000
+            count: 3
+          - label: 24,900000000000
+            count: 3
+          - label: 23,700000000000
+            count: 3
+          - label: 20,600000000000
+            count: 3
+          - label: 22,100000000000
+            count: 3
+          - label: 18,300000000000
+            count: 3
+          - label: 26,000000000000
+            count: 3
+          - label: 22,700000000000
+            count: 3
+          - label: 22,200000000000
+            count: 3
+          - label: 22,000000000000
+            count: 3
+          - label: 15,800000000000
+            count: 3
+          - label: 19,500000000000
+            count: 3
+          - label: 17,400000000000
+            count: 3
+          - label: 16,800000000000
+            count: 2
+          - label: 12,200000000000
+            count: 2
+          - label: 20,000000000000
+            count: 2
+          - label: 20,400000000000
+            count: 2
+          - label: 16,300000000000
+            count: 2
+          - label: 17,700000000000
+            count: 2
+          - label: 12,600000000000
+            count: 2
+          - label: 25,300000000000
+            count: 2
+          - label: 29,500000000000
+            count: 2
+          - label: 26,300000000000
+            count: 2
+          - label: 24,000000000000
+            count: 2
+          - label: 21,800000000000
+            count: 2
+          - label: 22,800000000000
+            count: 2
+          - label: 18,600000000000
+            count: 2
+          - label: 26,100000000000
+            count: 2
+          - label: 28,500000000000
+            count: 2
+          - label: 22,400000000000
+            count: 2
+          - label: 16,500000000000
+            count: 2
+          - label: 25,200000000000
+            count: 2
+          - label: 10,400000000000
+            count: 2
+          - label: 24,300000000000
+            count: 2
+          - label: 21,600000000000
+            count: 2
+          - label: 13,200000000000
+            count: 2
+          - label: 12,400000000000
+            count: 2
+          - label: 20,900000000000
+            count: 2
+          - label: 21,200000000000
+            count: 2
+          - label: 23,900000000000
+            count: 2
+          - label: 29,300000000000
+            count: 2
+          - label: 27,600000000000
+            count: 2
+          - label: 28,300000000000
+            count: 2
+          - label: 27,200000000000
+            count: 2
+          - label: 20,700000000000
+            count: 2
+          - label: 6,300000000000
+            count: 2
+          - label: 18,700000000000
+            count: 2
+          - label: 21,100000000000
+            count: 2
+          - label: 21,700000000000
+            count: 2
+          - label: 21,500000000000
+            count: 2
+          - label: 18,200000000000
+            count: 1
+          - label: 12,000000000000
+            count: 1
+          - label: 8,800000000000
+            count: 1
+          - label: 14,400000000000
+            count: 1
+          - label: 11,500000000000
+            count: 1
+          - label: 10,800000000000
+            count: 1
+          - label: 11,600000000000
+            count: 1
+          - label: 16,600000000000
+            count: 1
+          - label: 14,600000000000
+            count: 1
+          - label: 12,700000000000
+            count: 1
+          - label: 30,100000000000
+            count: 1
+          - label: 29,000000000000
+            count: 1
+          - label: 22,900000000000
+            count: 1
+          - label: 25,600000000000
+            count: 1
+          - label: 23,100000000000
+            count: 1
+          - label: 19,800000000000
+            count: 1
+          - label: 21,400000000000
+            count: 1
+          - label: 19,400000000000
+            count: 1
+          - label: 25,500000000000
+            count: 1
+          - label: 27,100000000000
+            count: 1
+          - label: 26,700000000000
+            count: 1
+          - label: 22,500000000000
+            count: 1
+          - label: 23,400000000000
+            count: 1
+          - label: 13,600000000000
+            count: 1
+          - label: 19,100000000000
+            count: 1
+          - label: 15,400000000000
+            count: 1
+          - label: 14,900000000000
+            count: 1
+          - label: 12,300000000000
+            count: 1
+          - label: 13,000000000000
+            count: 1
+          - label: 13,100000000000
+            count: 1
+          - label: 15,000000000000
+            count: 1
+          - label: 11,300000000000
+            count: 1
+          - label: 21,900000000000
+            count: 1
+          - label: 25,900000000000
+            count: 1
+          - label: 27,300000000000
+            count: 1
+          - label: 28,700000000000
+            count: 1
+          - label: 28,100000000000
+            count: 1
+          - label: 28,600000000000
+            count: 1
+          - label: 27,800000000000
+            count: 1
+          - label: 25,700000000000
+            count: 1
+          - label: 24,700000000000
+            count: 1
+          - label: 10,100000000000
+            count: 1
+          - label: 9,300000000000
+            count: 1
+          - label: 8,100000000000
+            count: 1
+          - label: 15,100000000000
+            count: 1
+          - label: 6,000000000000
+            count: 1
+          - label: 5,800000000000
+            count: 1
+          - label: 15,700000000000
+            count: 1
+          - label: 16,000000000000
+            count: 1
+          - label: 18,900000000000
+            count: 1
+          - label: 10,500000000000
+            count: 1
+          - label: 11,200000000000
+            count: 1
+          - label: 11,000000000000
+            count: 1
+          - label: 10,300000000000
+            count: 1
+          - label: 16,700000000000
+            count: 1
+          - label: 14,500000000000
+            count: 1
+          - label: 14,000000000000
+            count: 1
+          - label: 12,800000000000
+            count: 1
+          - label: 19,300000000000
+            count: 1
+        complete: true
+      Cân nặng theo chiều cao:
         kind: categorical
         distinct: 58
         segments:
-          - label: "5,600000000000"
+          - label: 5,600000000000
             count: 15
-          - label: "4,800000000000"
+          - label: 4,800000000000
             count: 12
-          - label: "5,500000000000"
+          - label: 5,500000000000
             count: 11
-          - label: "5,800000000000"
+          - label: 5,800000000000
             count: 11
-          - label: "6,600000000000"
+          - label: 6,600000000000
             count: 11
-          - label: "4,500000000000"
+          - label: 4,500000000000
             count: 10
-          - label: "6,500000000000"
+          - label: 6,500000000000
             count: 10
-          - label: "4,900000000000"
+          - label: 4,900000000000
             count: 9
-          - label: "5,400000000000"
+          - label: 5,400000000000
             count: 9
-          - label: "3,600000000000"
+          - label: 3,600000000000
             count: 8
-          - label: "4,400000000000"
+          - label: 4,400000000000
             count: 8
-          - label: "4,300000000000"
+          - label: 4,300000000000
             count: 8
+          - label: 6,100000000000
+            count: 8
+          - label: 3,200000000000
+            count: 7
+          - label: 5,200000000000
+            count: 7
+          - label: 7,100000000000
+            count: 7
+          - label: 7,500000000000
+            count: 7
+          - label: 7,700000000000
+            count: 6
+          - label: 6,300000000000
+            count: 6
+          - label: 7,000000000000
+            count: 6
+          - label: 5,000000000000
+            count: 5
+          - label: 3,800000000000
+            count: 5
+          - label: 6,200000000000
+            count: 5
+          - label: 5,100000000000
+            count: 5
+          - label: 6,700000000000
+            count: 5
+          - label: 4,600000000000
+            count: 4
+          - label: 7,600000000000
+            count: 4
+          - label: 6,900000000000
+            count: 4
+          - label: 7,200000000000
+            count: 4
+          - label: 5,700000000000
+            count: 3
+          - label: 5,900000000000
+            count: 3
+          - label: 7,300000000000
+            count: 3
+          - label: 7,400000000000
+            count: 3
+          - label: 6,800000000000
+            count: 3
+          - label: 4,000000000000
+            count: 3
+          - label: 7,800000000000
+            count: 3
+          - label: 4,700000000000
+            count: 2
+          - label: 6,000000000000
+            count: 2
+          - label: 3,900000000000
+            count: 2
+          - label: 5,300000000000
+            count: 2
+          - label: 6,400000000000
+            count: 2
+          - label: 8,800000000000
+            count: 2
+          - label: 2,500000000000
+            count: 2
+          - label: 8,300000000000
+            count: 2
+          - label: 4,100000000000
+            count: 2
+          - label: 1,900000000000
+            count: 2
+          - label: 11,700000000000
+            count: 1
+          - label: 12,700000000000
+            count: 1
+          - label: 11,400000000000
+            count: 1
+          - label: 8,200000000000
+            count: 1
+          - label: 9,200000000000
+            count: 1
+          - label: 2,800000000000
+            count: 1
+          - label: 3,500000000000
+            count: 1
+          - label: 3,000000000000
+            count: 1
+          - label: 9,000000000000
+            count: 1
+          - label: 4,200000000000
+            count: 1
+          - label: 3,700000000000
+            count: 1
+          - label: 7,900000000000
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 2021, 2024 ]
