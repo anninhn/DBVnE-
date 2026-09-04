@@ -15,6 +15,8 @@ import type { FileInspection } from "./column";
 import {
   MAX_SAMPLE_ROWS_FOR_AI,
   MAX_ROWS_FOR_INSPECTION,
+  MAX_STORED_SEGMENTS,
+  TRUNCATED_SEGMENTS,
   inspectColumn,
 } from "./column";
 
@@ -107,17 +109,19 @@ function computeCSVStats(
     result[col] = { kind: "numeric", min, max, histogram };
   }
 
-  // Categorical: distinct + top-12 segments
+  // Categorical: lưu ĐỦ giá trị khi cột có ít, cắt khi quá nhiều (FR-038)
   for (const [col, counts] of catCounts) {
     if (counts.size === 0) continue;
+    const complete = counts.size <= MAX_STORED_SEGMENTS;
     const segments = Array.from(counts.entries())
       .map(([label, count]) => ({ label, count }))
       .sort((a, b) => b.count - a.count)
-      .slice(0, 12);
+      .slice(0, complete ? counts.size : TRUNCATED_SEGMENTS);
     result[col] = {
       kind: "categorical",
       distinct: counts.size,
       segments,
+      complete,
     };
   }
 

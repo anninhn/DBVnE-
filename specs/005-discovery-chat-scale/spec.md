@@ -332,8 +332,9 @@ journalist về sau), và cả hai phải cho **cùng một đáp án**.
   trong đợt thử 50 câu hỏi liên tiếp của nhiều người
 - **SC-004**: Tỷ lệ câu hỏi được trả lời thành công **≥ 87,5%** (không thấp hơn mức
   hiện tại)
-- **SC-005**: Trong các dataset được nêu, tỷ lệ nêu đúng **≥ 95%**
-- **SC-006**: Tỷ lệ tìm hết dataset đúng **≥ 70%** (mức hiện tại 42,9%)
+- **SC-005**: Trong các dataset được nêu, tỷ lệ nêu đúng **≥ 95%** — *chưa có mốc so
+  sánh, xem ghi chú dưới*
+- **SC-006**: Trong các dataset đúng, tỷ lệ tìm được **≥ 70%** — *chưa có mốc so sánh*
 - **SC-007**: **100%** câu hỏi dạng tính toán không nhận về con số nào
 - **SC-008**: Câu hỏi theo giá trị trả lời đúng **cả hai chiều** có/không trên
   **≥ 95%** trường hợp thử

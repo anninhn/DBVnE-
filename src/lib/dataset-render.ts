@@ -19,7 +19,12 @@ export interface MetadataForRender {
 /** ColumnStats — matches type từ dataset.ts, giữ render file pure (không import type) */
 type ColumnStatsForRender =
   | { kind: "numeric"; min: number; max: number; histogram: number[] }
-  | { kind: "categorical"; distinct: number; segments: { label: string; count: number }[] };
+  | {
+      kind: "categorical";
+      distinct: number;
+      segments: { label: string; count: number }[];
+      complete?: boolean;
+    };
 
 /** Dictionary entry cho render markdown — dùng chung upload + edit */
 export interface DictionaryForRender {
@@ -70,7 +75,7 @@ function escYaml(s: string): string {
  * Render column_stats object → YAML block (cho metadata.yaml files[].column_stats).
  *
  * Numeric: kind + min + max + histogram[8]
- * Categorical: kind + distinct + segments[top-12]
+ * Categorical: kind + distinct + segments + complete
  *
  * @param indent số space indent cho column key level (thường là 6 — nằm trong files[].column_stats:)
  */
@@ -91,6 +96,12 @@ function renderColumnStatsYaml(
     } else {
       lines.push(`${pad}  kind: categorical`);
       lines.push(`${pad}  distinct: ${stat.distinct}`);
+      // `complete: false` PHẢI được ghi ra: thiếu nó thì bên đọc không phân biệt
+      // được "cột này chỉ có 12 giá trị" với "cột này bị cắt còn 12" — và sẽ trả
+      // lời "không có Đà Nẵng" cho một dataset thật ra có (D5, FR-038).
+      if (stat.complete === false) {
+        lines.push(`${pad}  complete: false`);
+      }
       if (stat.segments.length > 0) {
         lines.push(`${pad}  segments:`);
         for (const seg of stat.segments) {

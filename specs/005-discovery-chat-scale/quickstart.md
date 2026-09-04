@@ -199,13 +199,23 @@ Bộ đo phải có **≥25 câu**, mỗi câu ghi rõ danh sách dataset đúng
 | Chỉ số | Ngưỡng | Mốc hiện tại |
 |---|---|---|
 | `success_rate` | ≥ 87,5% | 87,5% |
-| `avg_accuracy` | ≥ 95% | 100% |
-| `avg_recall` | **≥ 70%** | **42,9%** |
+| tỷ lệ nêu đúng (precision) | ≥ 95% | **chưa có** |
+| tỷ lệ tìm được (recall) | **≥ 70%** | **chưa có** |
 
-`avg_recall` là chỉ số khó nhất và là lý do US6 phải làm **trước**. Mốc 42,9% đo lúc
-kho có ~17 dataset trên bộ 8 câu mà **không câu nào ghi đáp án đúng** — nên nó không
-so sánh trực tiếp được với con số sau khi curate. Chạy bộ đo mới **trên code hiện tại**
-trước khi sửa gì, để có mốc thật.
+**Không có mốc chất lượng tìm kiếm nào tồn tại**, dù báo cáo cũ có in ra hai con số
+100% và 42,9%. Cả 8 câu trong gold set cũ để `expected_dataset_slugs` rỗng, mà với
+danh sách rỗng thì:
+
+- công thức cho `accuracy = 1` **luôn luôn** → con số 100% không mang thông tin gì
+- công thức cho `recall = 1` khi câu trả lời **không nêu dataset nào** → con số 42,9%
+  thực chất là "3 trên 7 câu trả lời rằng không có dataset phù hợp"
+
+Thêm nữa, hai chỉ số trong code **bị đặt tên đảo**: field `accuracy` tính theo công
+thức recall, field `recall` tính theo công thức precision (`scripts/eval-chat.mjs`
+dòng 228 và 232). Sửa tên là việc của T010.
+
+Vì vậy phải chạy bộ đo **sau khi curate 25 câu có đáp án** nhưng **trước khi sửa code
+xử lý** — đó mới là mốc thật (T013).
 
 ---
 

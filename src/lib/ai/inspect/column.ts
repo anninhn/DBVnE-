@@ -76,6 +76,22 @@ export interface FileInspection {
 // Constants
 // ──────────────────────────────────────────────────────────────────────────────
 
+/**
+ * Số giá trị tối đa lưu cho một cột phân loại khi lưu ĐỦ.
+ *
+ * Ngưỡng 200 chốt ở `specs/005-discovery-chat-scale/spec.md` § Clarifications, dựa
+ * trên số đo 203 cột phân loại của bộ dữ liệu Cục Thống kê: median 32, p90 71, cao
+ * nhất 100. Ngưỡng 200 phủ trọn bộ hiện tại và dư gấp đôi, đồng thời vẫn cắt dữ liệu
+ * cấp xã/phường (~3.300 đơn vị) — chỗ đúng ra phải cắt.
+ */
+export const MAX_STORED_SEGMENTS = 200;
+
+/**
+ * Số giá trị lưu khi cột VƯỢT ngưỡng trên. Chỉ đủ để vẽ thanh tỷ lệ — mục đích ban
+ * đầu của `segments`. Cột như vậy luôn kèm `complete: false`.
+ */
+export const TRUNCATED_SEGMENTS = 12;
+
 export const MAX_SAMPLE_ROWS_FOR_AI = 5;
 export const MAX_SAMPLE_VALUES_PER_COLUMN = 5;
 export const MAX_ROWS_FOR_INSPECTION = 1000; // cap để tránh file khổng lồ
@@ -234,11 +250,12 @@ export function computeStatsFromRows(
         counts.set(key, (counts.get(key) ?? 0) + 1);
       }
       if (counts.size === 0) continue;
+      const complete = counts.size <= MAX_STORED_SEGMENTS;
       const segments = Array.from(counts.entries())
         .map(([label, count]) => ({ label, count }))
         .sort((a, b) => b.count - a.count)
-        .slice(0, 12);
-      result[col] = { kind: "categorical", distinct: counts.size, segments };
+        .slice(0, complete ? counts.size : TRUNCATED_SEGMENTS);
+      result[col] = { kind: "categorical", distinct: counts.size, segments, complete };
     }
   }
 

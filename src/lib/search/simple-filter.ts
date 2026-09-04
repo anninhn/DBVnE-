@@ -38,23 +38,10 @@ function sizeBucket(rowCount: number): string {
   return "> 1M";
 }
 
-/**
- * Normalize text cho search: lowercase + strip diacritics + đ→d.
- * "Thủ tục" → "thu tuc". Slug đã normalize sẵn nhưng gọi lại cho safe.
- *
- * Nhận `unknown` chứ không phải `string`: dữ liệu đến từ YAML do người/AI ghi,
- * kiểu không đảm bảo. Tag toàn chữ số (`- 2024`) parse ra number, gọi thẳng
- * `.toLowerCase()` là TypeError — mà lỗi này ném trong render nên sập cả trang
- * chủ, không chỉ hỏng một kết quả. Ép kiểu ở đây để một dataset lỗi không kéo
- * đổ toàn bộ listing.
- */
-function normalize(s: unknown): string {
-  return String(s ?? "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/đ/g, "d");
-}
+// Chuẩn hoá text: tái dùng hàm dùng chung ở `src/lib/retrieval/normalize.ts` để ô
+// search, nhánh khớp từ khoá và chỉ mục giá trị không chuẩn hoá khác nhau.
+// Hành vi không đổi so với bản cục bộ trước đây.
+import { normalize } from "@/lib/retrieval/normalize";
 
 /** Điểm weight cho mỗi field khi match query text */
 const SCORE_WEIGHTS = {
