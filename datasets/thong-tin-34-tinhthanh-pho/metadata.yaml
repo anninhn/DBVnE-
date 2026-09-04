@@ -25,3 +25,263 @@ files:
     path: "thong-tin-34-tinhthanh-pho/250703_34tinhthanh_Cleaned .xlsx"
     r2_key: "3ff7a8f6-ea22-43a6-8b3d-7f54a2a6348d/250703_34tinhthanh_Cleaned_.xlsx"
     size_mb: 0.76
+    column_stats:
+      TinhThanh:
+        kind: categorical
+        distinct: 34
+        segments:
+          - label: An Giang
+            count: 1
+          - label: Bắc Ninh
+            count: 1
+          - label: Cà Mau
+            count: 1
+          - label: Cần Thơ
+            count: 1
+          - label: Cao Bằng
+            count: 1
+          - label: Đà Nẵng
+            count: 1
+          - label: Đắk Lắk
+            count: 1
+          - label: Điện Biên
+            count: 1
+          - label: Đồng Nai
+            count: 1
+          - label: Đồng Tháp
+            count: 1
+          - label: Gia Lai
+            count: 1
+          - label: Hà Nội
+            count: 1
+          - label: Hà Tĩnh
+            count: 1
+          - label: Hải Phòng
+            count: 1
+          - label: Hưng Yên
+            count: 1
+          - label: Khánh Hòa
+            count: 1
+          - label: Lai Châu
+            count: 1
+          - label: Lâm Đồng
+            count: 1
+          - label: Lạng Sơn
+            count: 1
+          - label: Lào Cai
+            count: 1
+          - label: Nghệ An
+            count: 1
+          - label: Ninh Bình
+            count: 1
+          - label: Phú Thọ
+            count: 1
+          - label: Quảng Ngãi
+            count: 1
+          - label: Quảng Ninh
+            count: 1
+          - label: Quảng Trị
+            count: 1
+          - label: Sơn La
+            count: 1
+          - label: Tây Ninh
+            count: 1
+          - label: Thái Nguyên
+            count: 1
+          - label: Thanh Hoá
+            count: 1
+          - label: TP HCM
+            count: 1
+          - label: TP Huế
+            count: 1
+          - label: Tuyên Quang
+            count: 1
+          - label: Vĩnh Long
+            count: 1
+        complete: true
+      Truocsapnhap:
+        kind: categorical
+        distinct: 24
+        segments:
+          - label: Không sáp nhập
+            count: 11
+          - label: An Giang, Kiên Giang
+            count: 1
+          - label: Bắc Ninh, Bắc Giang
+            count: 1
+          - label: Cà Mau, Bạc Liêu
+            count: 1
+          - label: Cần Thơ, Sóc Trăng, Hậu Giang
+            count: 1
+          - label: Đà Nẵng, Quảng Nam
+            count: 1
+          - label: Đăk Lăk, Phú Yên
+            count: 1
+          - label: Đồng Nai, Bình Phước
+            count: 1
+          - label: Đồng Tháp, Tiền Giang
+            count: 1
+          - label: Gia Lai, Bình Định
+            count: 1
+          - label: Hải Phòng, Hải Dương
+            count: 1
+          - label: Hưng Yên, Thái Bình
+            count: 1
+          - label: Khánh Hòa, Ninh Thuận
+            count: 1
+          - label: Lâm Đồng, Đắk Nông, Bình Thuận
+            count: 1
+          - label: Lào Cai, Yên Bái
+            count: 1
+          - label: Ninh Bình, Nam Định, Hà Nam
+            count: 1
+          - label: Phú Thọ, Vĩnh Phúc, Hoà Bình
+            count: 1
+          - label: Quảng Ngãi, Kon Tum
+            count: 1
+          - label: Quảng Trị, Quảng Bình
+            count: 1
+          - label: Tây Ninh, Long An
+            count: 1
+          - label: Thái Nguyên, Bắc Kạn
+            count: 1
+          - label: TP HCM, Bình Dương, Bà Rịa - Vũng Tàu
+            count: 1
+          - label: Tuyên Quang, Hà Giang
+            count: 1
+          - label: Vĩnh Long, Bến Tre, Trà Vinh
+            count: 1
+        complete: true
+      Trungtamhanhchinhmoi:
+        kind: categorical
+        distinct: 34
+        segments:
+          - label: TP Rạch Giá (cũ)
+            count: 1
+          - label: TP Bắc Giang (cũ)
+            count: 1
+          - label: TP Cà Mau (cũ)
+            count: 1
+          - label: Quận Ninh Kiều (cũ)
+            count: 1
+          - label: TP Cao Bằng (cũ)
+            count: 1
+          - label: Quận Hải Châu (cũ)
+            count: 1
+          - label: TP Buôn Ma Thuột (cũ)
+            count: 1
+          - label: TP Điện Biên Phủ (cũ)
+            count: 1
+          - label: TP Biên Hòa (cũ)
+            count: 1
+          - label: TP Mỹ Tho (cũ)
+            count: 1
+          - label: TP Quy Nhơn (cũ)
+            count: 1
+          - label: Quận Hoàn Kiếm (cũ)
+            count: 1
+          - label: TP Hà Tĩnh (cũ)
+            count: 1
+          - label: TP Thuỷ Nguyên (cũ)
+            count: 1
+          - label: TP Hưng Yên (cũ)
+            count: 1
+          - label: TP Nha Trang (cũ)
+            count: 1
+          - label: TP Lai Châu (cũ)
+            count: 1
+          - label: TP Đà Lạt (cũ)
+            count: 1
+          - label: TP Lạng Sơn (cũ)
+            count: 1
+          - label: TP Yên Bái (cũ)
+            count: 1
+          - label: TP Vinh (cũ)
+            count: 1
+          - label: TP Ninh Bình (cũ)
+            count: 1
+          - label: TP Việt Trì (cũ)
+            count: 1
+          - label: TP Quảng Ngãi (cũ)
+            count: 1
+          - label: TP Hạ Long (cũ)
+            count: 1
+          - label: TP Đồng Hới (cũ)
+            count: 1
+          - label: TP Sơn La (cũ)
+            count: 1
+          - label: TP Tân An (cũ)
+            count: 1
+          - label: TP Thái Nguyên (cũ)
+            count: 1
+          - label: TP Thanh Hóa (cũ)
+            count: 1
+          - label: Quận 1 (cũ)
+            count: 1
+          - label: Quận Phú Xuân (cũ)
+            count: 1
+          - label: TP Tuyên Quang (cũ)
+            count: 1
+          - label: TP Vĩnh Long (cũ)
+            count: 1
+        complete: true
+      Danso:
+        kind: numeric
+        min: 512601
+        max: 14002598
+        histogram: [ 13, 10, 9, 0, 1, 0, 0, 1 ]
+      Dientich:
+        kind: numeric
+        min: 2515
+        max: 24233
+        histogram: [ 6, 8, 8, 5, 3, 2, 0, 2 ]
+      SoDVHCcapxa:
+        kind: numeric
+        min: 38
+        max: 168
+        histogram: [ 4, 5, 2, 10, 3, 7, 1, 2 ]
+      GRDP:
+        kind: numeric
+        min: 15316
+        max: 2715782
+        histogram: [ 28, 4, 0, 0, 1, 0, 0, 1 ]
+      Thungansach:
+        kind: numeric
+        min: 1575
+        max: 681936
+        histogram: [ 31, 1, 0, 0, 0, 1, 0, 1 ]
+      Socangbien:
+        kind: numeric
+        min: 0
+        max: 3
+        histogram: [ 11, 0, 15, 0, 0, 5, 0, 3 ]
+      Sosanbay:
+        kind: numeric
+        min: 0
+        max: 2
+        histogram: [ 17, 0, 0, 0, 12, 0, 0, 5 ]
+      Sapnhap:
+        kind: numeric
+        min: 0
+        max: 1
+        histogram: [ 11, 0, 0, 0, 0, 0, 0, 23 ]
+      ThuhangDanso:
+        kind: numeric
+        min: 1
+        max: 34
+        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+      ThuhangDientich:
+        kind: numeric
+        min: 1
+        max: 34
+        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+      ThuhangGRDP:
+        kind: numeric
+        min: 1
+        max: 34
+        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+      ThuhangThungansach:
+        kind: numeric
+        min: 1
+        max: 34
+        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
