@@ -26,66 +26,77 @@ files:
     r2_key: "d6948362-950d-49e6-a9fa-62e966da5a8e/muc-tieu-dung-mot-so-mat-hang-chu-yeu-binh-quan-dau-nguoi-mo.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2018
-        histogram: [16, 0, 16, 0, 16, 0, 16, 16]
-      "Bình quân chung":
+        histogram: [ 16, 0, 16, 0, 16, 0, 16, 16 ]
+      Bình quân chung:
         kind: numeric
         min: 0.05
         max: 9.7
-        histogram: [52, 18, 2, 3, 0, 0, 1, 4]
-      "Nhóm 1":
+        histogram: [ 52, 18, 2, 3, 0, 0, 1, 4 ]
+      Nhóm 1:
         kind: numeric
         min: 0
         max: 10.9
-        histogram: [66, 7, 2, 0, 0, 0, 1, 4]
-      "Nhóm 2":
+        histogram: [ 66, 7, 2, 0, 0, 0, 1, 4 ]
+      Nhóm 2:
         kind: numeric
         min: 0
         max: 10.6
-        histogram: [55, 15, 5, 0, 0, 0, 1, 4]
-      "Nhóm 3":
+        histogram: [ 55, 15, 5, 0, 0, 0, 1, 4 ]
+      Nhóm 3:
         kind: numeric
         min: 0
         max: 9.9
-        histogram: [52, 18, 2, 3, 0, 0, 1, 4]
-      "Nhóm 4":
+        histogram: [ 52, 18, 2, 3, 0, 0, 1, 4 ]
+      Nhóm 4:
         kind: numeric
         min: 0.05
         max: 9.1
-        histogram: [49, 19, 2, 5, 0, 0, 2, 3]
-      "Nhóm 5":
+        histogram: [ 49, 19, 2, 5, 0, 0, 2, 3 ]
+      Nhóm 5:
         kind: numeric
         min: 0.06
         max: 8.3
-        histogram: [35, 24, 11, 0, 5, 0, 1, 4]
-      "Phân tổ":
+        histogram: [ 35, 24, 11, 0, 5, 0, 1, 4 ]
+      Phân tổ:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Gạo (Kg)"
+          - label: Gạo (Kg)
             count: 5
-          - label: "Lương thực khác (quy gạo) (Kg)"
+          - label: Lương thực khác (quy gạo) (Kg)
             count: 5
-          - label: "Thịt các loại (Kg)"
+          - label: Thịt các loại (Kg)
             count: 5
-          - label: "Mỡ, dầu ăn (Kg)"
+          - label: Mỡ, dầu ăn (Kg)
             count: 5
-          - label: "Tôm, cá (Kg)"
+          - label: Tôm, cá (Kg)
             count: 5
-          - label: "Trứng gia cầm (Quả)"
+          - label: Trứng gia cầm (Quả)
             count: 5
-          - label: "Đậu phụ (Kg)"
+          - label: Đậu phụ (Kg)
             count: 5
-          - label: "Đường, mật, sữa, bánh, mứt kẹo (Kg)"
+          - label: Đường, mật, sữa, bánh, mứt kẹo (Kg)
             count: 5
-          - label: "Nước mắm, nước chấm (Lít)"
+          - label: Nước mắm, nước chấm (Lít)
             count: 5
-          - label: "Chè, cà phê (Kg)"
+          - label: Chè, cà phê (Kg)
             count: 5
-          - label: "Rượu, bia (Lít)"
+          - label: Rượu, bia (Lít)
             count: 5
-          - label: "Đồ uống khác (Lít)"
+          - label: Đồ uống khác (Lít)
             count: 5
+          - label: Đỗ các loại (Kg)
+            count: 5
+          - label: Lạc, vừng (Kg)
+            count: 5
+          - label: Rau (Kg)
+            count: 5
+          - label: Quả (Kg)
+            count: 5
+        complete: true
+coverage:
+  temporal: [ 2010, 2018 ]
