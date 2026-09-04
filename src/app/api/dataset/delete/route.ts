@@ -6,7 +6,7 @@ export const maxDuration = 30;
 import { commitFiles } from "@/lib/git/commit";
 import { requireUserOr401 } from "@/lib/auth";
 import { injectDeleted } from "@/lib/auth/inject-actor";
-import { appendDeleteAudit } from "@/lib/auth/audit-log";
+import { appendDeleteAudit, DeleteAuditFailed } from "@/lib/auth/audit-log";
 import { fetchFileContents } from "@/lib/github/contents-api";
 import { buildIndexFileFromYaml } from "@/lib/datasets/index-json";
 import { removeDatasetIndexes } from "@/lib/retrieval/build";
@@ -121,7 +121,16 @@ export async function POST(req: NextRequest) {
   // vẫn khẳng định là có.
   await removeDatasetIndexes(slug);
 
-  // 5. Append audit log (best-effort, không fail request nếu log fail)
+  // 5. Ghi vết xoá.
+  //
+  // KHÔNG fail request: dataset đã được đánh dấu xoá và commit xong rồi, trả lỗi
+  // lúc này là nói sai — người dùng sẽ tưởng việc xoá không thành và bấm lại.
+  //
+  // Nhưng cũng KHÔNG im lặng. Trước đây chỗ này chỉ `console.warn` chung chung,
+  // và log đã thiếu 2/5 dòng mà không ai biết. Nay: `appendDeleteAudit` tự thử
+  // lại 3 lần, và nếu vẫn thất bại thì in ra ĐÚNG dòng cần thêm tay — dataset
+  // không hoàn tác được nữa, nên đó là thứ duy nhất còn cứu được.
+  let auditLogged = true;
   try {
     await appendDeleteAudit({
       username: user.username,
@@ -130,15 +139,27 @@ export async function POST(req: NextRequest) {
       isoTime: isoNow,
     });
   } catch (err) {
-    console.warn(
-      `[delete] Audit log append thất bại (commit đã thành công, log được trace qua git history):`,
-      err
-    );
+    auditLogged = false;
+    if (err instanceof DeleteAuditFailed) {
+      console.error(
+        `[delete] GHI VẾT XOÁ THẤT BẠI cho "${slug}". Dataset ĐÃ xoá. ` +
+          `Thêm tay dòng sau vào datasets/_audit/delete.log:\n${err.line}`,
+        err.cause,
+      );
+    } else {
+      console.error(`[delete] Ghi vết xoá thất bại cho "${slug}":`, err);
+    }
   }
 
   return NextResponse.json({
     success: true,
     redirect: "/",
-    message: `Dataset "${slug}" đã được xóa (soft delete). Raw file vẫn còn ở R2 cho đến khi admin hard-delete.`,
+    // Trả cờ ra ngoài để mặt tiền nào cần thì hiện được. Component xoá hiện tại
+    // chuyển trang ngay nên không đọc tới — nhưng cờ nằm ở API là chỗ đúng của
+    // nó, còn hiện hay không là việc của mặt tiền.
+    audit_logged: auditLogged,
+    message:
+      `Dataset "${slug}" đã được xóa (soft delete). Raw file vẫn còn ở R2 cho đến khi admin hard-delete.` +
+      (auditLogged ? "" : " CẢNH BÁO: không ghi được vết xoá vào _audit/delete.log — xem server log."),
   });
 }
