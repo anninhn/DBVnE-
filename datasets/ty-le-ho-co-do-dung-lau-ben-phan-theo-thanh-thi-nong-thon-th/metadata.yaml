@@ -27,41 +27,48 @@ files:
     r2_key: "02f1da36-9f1a-4312-8593-3c4757b7dc4e/ty-le-ho-co-do-dung-lau-ben-phan-theo-thanh-thi-nong-thon-th.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [28, 14, 28, 14, 14, 28, 14, 28]
-      "Tỷ lệ hộ có đồ dùng lâu bền":
+        histogram: [ 28, 14, 28, 14, 14, 28, 14, 28 ]
+      Tỷ lệ hộ có đồ dùng lâu bền:
         kind: numeric
         min: 91
         max: 100
-        histogram: [1, 0, 1, 1, 3, 4, 11, 129]
-      "Phân tổ":
+        histogram: [ 1, 0, 1, 1, 3, 4, 11, 129 ]
+      Phân tổ:
         kind: categorical
         distinct: 14
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 12
-          - label: "Thành thị"
+          - label: Thành thị
             count: 12
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 12
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 12
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 12
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 12
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 12
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 12
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 12
-          - label: "Nhóm thu nhập - Nhóm 1"
+          - label: Nhóm thu nhập - Nhóm 1
             count: 12
-          - label: "Nhóm thu nhập - Nhóm 2"
+          - label: Nhóm thu nhập - Nhóm 2
             count: 12
-          - label: "Nhóm thu nhập - Nhóm 3"
+          - label: Nhóm thu nhập - Nhóm 3
             count: 12
+          - label: Nhóm thu nhập - Nhóm 4
+            count: 12
+          - label: Nhóm thu nhập - Nhóm 5
+            count: 12
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
