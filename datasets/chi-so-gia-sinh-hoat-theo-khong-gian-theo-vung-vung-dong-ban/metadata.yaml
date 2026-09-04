@@ -27,29 +27,32 @@ files:
     r2_key: "da26b5cf-55ff-4bc9-b931-ff544f01ccb6/chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-vung-dong-ban.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [6, 12, 12, 6, 12, 12, 12, 12]
-      "Chỉ số giá sinh hoạt":
+        histogram: [ 6, 12, 12, 6, 12, 12, 12, 12 ]
+      Chỉ số giá sinh hoạt:
         kind: numeric
         min: 94.85
         max: 104.77
-        histogram: [5, 4, 13, 9, 31, 12, 5, 5]
-      "Vùng":
+        histogram: [ 5, 4, 13, 9, 31, 12, 5, 5 ]
+      Vùng:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 14
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 14
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 14
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 14
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 14
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 14
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
