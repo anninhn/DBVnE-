@@ -27,70 +27,261 @@ files:
     r2_key: "0d508dfb-10cd-4c07-a9ad-a45adf82a6ad/ty-le-tre-em-duoi-5-tuoi-bi-suy-dinh-duong-phan-theo-gioi-ti.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [15, 15, 30, 15, 30, 30, 30, 30]
-      "Chỉ tiêu":
+        histogram: [ 15, 15, 30, 15, 30, 30, 30, 30 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 15
         segments:
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Chung"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Chung
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Nam"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Nam
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Nữ"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Nữ
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Thành thị"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Thành thị
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Nông thôn"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo tuổi - Nông thôn
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Chung"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Chung
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Nam"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Nam
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Nữ"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Nữ
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Thành thị"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Thành thị
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Nông thôn"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng chiều cao theo tuổi - Nông thôn
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Chung"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Chung
             count: 13
-          - label: "Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Nam"
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Nam
             count: 13
-      "Ghi chú":
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Nữ
+            count: 13
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Thành thị
+            count: 13
+          - label: Tỷ lệ trẻ em dưới 5 tuổi suy dinh dưỡng cân nặng theo chiều cao - Nông thôn
+            count: 13
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 15
-      "Tỷ lệ trẻ em dưới 5 tuổi bị suy dinh dưỡng":
+        complete: true
+      Tỷ lệ trẻ em dưới 5 tuổi bị suy dinh dưỡng:
         kind: categorical
         distinct: 102
         segments:
-          - label: "5,700000000000"
+          - label: 5,700000000000
             count: 5
-          - label: "24,900000000000"
+          - label: 24,900000000000
             count: 4
-          - label: "14,500000000000"
+          - label: 14,500000000000
             count: 3
-          - label: "14,100000000000"
+          - label: 14,100000000000
             count: 3
-          - label: "7,500000000000"
+          - label: 7,500000000000
             count: 3
-          - label: "6,900000000000"
+          - label: 6,900000000000
             count: 3
-          - label: "17,100000000000"
+          - label: 17,100000000000
             count: 3
-          - label: "26,700000000000"
+          - label: 26,700000000000
             count: 3
-          - label: "23,100000000000"
+          - label: 23,100000000000
             count: 3
-          - label: "6,800000000000"
+          - label: 6,800000000000
             count: 3
-          - label: "6,200000000000"
+          - label: 6,200000000000
             count: 3
-          - label: "13,400000000000"
+          - label: 13,400000000000
             count: 2
+          - label: 10,200000000000
+            count: 2
+          - label: 15,000000000000
+            count: 2
+          - label: 14,200000000000
+            count: 2
+          - label: 12,500000000000
+            count: 2
+          - label: 11,300000000000
+            count: 2
+          - label: 12,000000000000
+            count: 2
+          - label: 8,700000000000
+            count: 2
+          - label: 7,100000000000
+            count: 2
+          - label: 24,600000000000
+            count: 2
+          - label: 22,600000000000
+            count: 2
+          - label: 15,900000000000
+            count: 2
+          - label: 28,700000000000
+            count: 2
+          - label: 5,200000000000
+            count: 2
+          - label: 4,400000000000
+            count: 2
+          - label: 4,700000000000
+            count: 2
+          - label: 5,800000000000
+            count: 2
+          - label: 5,100000000000
+            count: 2
+          - label: 8,500000000000
+            count: 2
+          - label: 8,300000000000
+            count: 2
+          - label: 15,300000000000
+            count: 1
+          - label: 13,900000000000
+            count: 1
+          - label: 13,200000000000
+            count: 1
+          - label: 12,200000000000
+            count: 1
+          - label: 11,500000000000
+            count: 1
+          - label: 11,200000000000
+            count: 1
+          - label: 9,700000000000
+            count: 1
+          - label: 10,400000000000
+            count: 1
+          - label: 13,700000000000
+            count: 1
+          - label: 11,700000000000
+            count: 1
+          - label: 13,800000000000
+            count: 1
+          - label: 13,600000000000
+            count: 1
+          - label: 13,000000000000
+            count: 1
+          - label: 11,000000000000
+            count: 1
+          - label: 7,800000000000
+            count: 1
+          - label: 7,200000000000
+            count: 1
+          - label: 7,000000000000
+            count: 1
+          - label: 16,900000000000
+            count: 1
+          - label: 16,400000000000
+            count: 1
+          - label: 16,100000000000
+            count: 1
+          - label: 16,750000000000
+            count: 1
+          - label: 15,600000000000
+            count: 1
+          - label: 15,400000000000
+            count: 1
+          - label: 25,900000000000
+            count: 1
+          - label: 24,500000000000
+            count: 1
+          - label: 24,200000000000
+            count: 1
+          - label: 24,300000000000
+            count: 1
+          - label: 22,400000000000
+            count: 1
+          - label: 19,600000000000
+            count: 1
+          - label: 19,200000000000
+            count: 1
+          - label: 18,900000000000
+            count: 1
+          - label: 18,200000000000
+            count: 1
+          - label: 18,100000000000
+            count: 1
+          - label: 24,700000000000
+            count: 1
+          - label: 21,600000000000
+            count: 1
+          - label: 18,600000000000
+            count: 1
+          - label: 18,300000000000
+            count: 1
+          - label: 22,500000000000
+            count: 1
+          - label: 23,300000000000
+            count: 1
+          - label: 20,600000000000
+            count: 1
+          - label: 20,100000000000
+            count: 1
+          - label: 10,800000000000
+            count: 1
+          - label: 10,600000000000
+            count: 1
+          - label: 10,500000000000
+            count: 1
+          - label: 12,400000000000
+            count: 1
+          - label: 28,100000000000
+            count: 1
+          - label: 28,000000000000
+            count: 1
+          - label: 27,100000000000
+            count: 1
+          - label: 30,100000000000
+            count: 1
+          - label: 26,500000000000
+            count: 1
+          - label: 26,300000000000
+            count: 1
+          - label: 6,600000000000
+            count: 1
+          - label: 6,400000000000
+            count: 1
+          - label: 6,300000000000
+            count: 1
+          - label: 6,100000000000
+            count: 1
+          - label: 4,200000000000
+            count: 1
+          - label: 3,600000000000
+            count: 1
+          - label: 5,600000000000
+            count: 1
+          - label: 6,500000000000
+            count: 1
+          - label: 3,700000000000
+            count: 1
+          - label: 3,400000000000
+            count: 1
+          - label: 5,400000000000
+            count: 1
+          - label: 4,300000000000
+            count: 1
+          - label: 4,000000000000
+            count: 1
+          - label: 4,800000000000
+            count: 1
+          - label: 3,900000000000
+            count: 1
+          - label: 2,900000000000
+            count: 1
+          - label: 2,700000000000
+            count: 1
+          - label: 8,400000000000
+            count: 1
+          - label: 6,700000000000
+            count: 1
+          - label: 4,500000000000
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
