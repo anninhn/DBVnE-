@@ -1,7 +1,6 @@
 title: Ranh giới hành chính cấp phường/xã TP. Hồ Chí Minh
 slug: ranh-gioi-hanh-chinh-cap-phuongxa-tp-ho-chi-minh
-description: "Dữ liệu ranh giới hành chính cấp xã (phường/xã/thị trấn) của TP
-  HCM: 168 đơn vị, được thể hiện dưới dạng MultiPolygon. "
+description: "Dữ liệu ranh giới hành chính cấp xã (phường/xã/thị trấn) của TP HCM: 168 đơn vị, được thể hiện dưới dạng MultiPolygon. "
 category: chinh-tri
 tags:
   - ranh-gioi
@@ -31,15 +30,7 @@ files:
         kind: numeric
         min: 25747
         max: 27676
-        histogram:
-          - 36
-          - 0
-          - 0
-          - 26
-          - 32
-          - 24
-          - 17
-          - 33
+        histogram: [ 36, 0, 0, 26, 32, 24, 17, 33 ]
       name:
         kind: categorical
         distinct: 168
@@ -68,6 +59,319 @@ files:
             count: 1
           - label: Trừ Văn Thố
             count: 1
+          - label: Chánh Phú Hoà
+            count: 1
+          - label: Long Nguyên
+            count: 1
+          - label: Hoà Lợi
+            count: 1
+          - label: Tây Nam
+            count: 1
+          - label: Thới Hoà
+            count: 1
+          - label: Phú Giáo
+            count: 1
+          - label: Phước Thành
+            count: 1
+          - label: An Long
+            count: 1
+          - label: Phước Hoà
+            count: 1
+          - label: Tân Khánh
+            count: 1
+          - label: Tân Uyên
+            count: 1
+          - label: Thường Tân
+            count: 1
+          - label: Bắc Tân Uyên
+            count: 1
+          - label: Dĩ An
+            count: 1
+          - label: Đông Hoà
+            count: 1
+          - label: Tân Đông Hiệp
+            count: 1
+          - label: Bình Cơ
+            count: 1
+          - label: Tân Hiệp
+            count: 1
+          - label: Thuận Giao
+            count: 1
+          - label: Lái Thiêu
+            count: 1
+          - label: Vĩnh Tân
+            count: 1
+          - label: An Phú
+            count: 1
+          - label: Phước Thắng
+            count: 1
+          - label: Tam Thắng
+            count: 1
+          - label: Thuận An
+            count: 1
+          - label: Rạch Dừa
+            count: 1
+          - label: Vũng Tàu
+            count: 1
+          - label: Bình Hoà
+            count: 1
+          - label: Long Sơn
+            count: 1
+          - label: Long Hương
+            count: 1
+          - label: Bà Rịa
+            count: 1
+          - label: Tam Long
+            count: 1
+          - label: Ngãi Giao
+            count: 1
+          - label: Châu Đức
+            count: 1
+          - label: Xuân Sơn
+            count: 1
+          - label: Bình Giã
+            count: 1
+          - label: Kim Long
+            count: 1
+          - label: Xuyên Mộc
+            count: 1
+          - label: Nghĩa Thành
+            count: 1
+          - label: Hồ Tràm
+            count: 1
+          - label: Bàu Lâm
+            count: 1
+          - label: Hoà Hội
+            count: 1
+          - label: Hoà Hiệp
+            count: 1
+          - label: Bình Châu
+            count: 1
+          - label: Long Điền
+            count: 1
+          - label: Long Hải
+            count: 1
+          - label: Đất Đỏ
+            count: 1
+          - label: Phú Mỹ
+            count: 1
+          - label: Phước Hải
+            count: 1
+          - label: Tân Hải
+            count: 1
+          - label: Tân Thành
+            count: 1
+          - label: Tân Phước
+            count: 1
+          - label: Châu Pha
+            count: 1
+          - label: Tân Định
+            count: 1
+          - label: Côn Đảo
+            count: 1
+          - label: Bến Thành
+            count: 1
+          - label: Sài Gòn
+            count: 1
+          - label: Cầu Ông Lãnh
+            count: 1
+          - label: Thới An
+            count: 1
+          - label: An Phú Đông
+            count: 1
+          - label: Tân Thới Hiệp
+            count: 1
+          - label: Linh Xuân
+            count: 1
+          - label: Trung Mỹ Tây
+            count: 1
+          - label: Tam Bình
+            count: 1
+          - label: Hiệp Bình
+            count: 1
+          - label: Thủ Đức
+            count: 1
+          - label: Đông Hưng Thuận
+            count: 1
+          - label: Long Bình
+            count: 1
+          - label: Tăng Nhơn Phú
+            count: 1
+          - label: Phước Long
+            count: 1
+          - label: Long Phước
+            count: 1
+          - label: An Hội Đông
+            count: 1
+          - label: Long Trường
+            count: 1
+          - label: An Nhơn
+            count: 1
+          - label: An Hội Tây
+            count: 1
+          - label: Gò Vấp
+            count: 1
+          - label: Hạnh Thông
+            count: 1
+          - label: Thông Tây Hội
+            count: 1
+          - label: Bình Lợi Trung
+            count: 1
+          - label: Gia Định
+            count: 1
+          - label: Thạnh Mỹ Tây
+            count: 1
+          - label: Bình Quới
+            count: 1
+          - label: Bình Thạnh
+            count: 1
+          - label: Bảy Hiền
+            count: 1
+          - label: Tân Sơn Hoà
+            count: 1
+          - label: Tân Sơn Nhất
+            count: 1
+          - label: Tân Bình
+            count: 1
+          - label: Tân Hoà
+            count: 1
+          - label: Tân Sơn
+            count: 1
+          - label: Tân Sơn Nhì
+            count: 1
+          - label: Tây Thạnh
+            count: 1
+          - label: Phú Thọ Hoà
+            count: 1
+          - label: Phú Thạnh
+            count: 1
+          - label: Tân Phú
+            count: 1
+          - label: Đức Nhuận
+            count: 1
+          - label: Cầu Kiệu
+            count: 1
+          - label: Phú Nhuận
+            count: 1
+          - label: Xuân Hoà
+            count: 1
+          - label: Cát Lái
+            count: 1
+          - label: Bình Trưng
+            count: 1
+          - label: An Khánh
+            count: 1
+          - label: Bàn Cờ
+            count: 1
+          - label: Nhiêu Lộc
+            count: 1
+          - label: Diên Hồng
+            count: 1
+          - label: Hoà Hưng
+            count: 1
+          - label: Phú Thọ
+            count: 1
+          - label: Vườn Lài
+            count: 1
+          - label: Hoà Bình
+            count: 1
+          - label: Bình Thới
+            count: 1
+          - label: Xóm Chiếu
+            count: 1
+          - label: Khánh Hội
+            count: 1
+          - label: Vĩnh Hội
+            count: 1
+          - label: An Đông
+            count: 1
+          - label: Chợ Quán
+            count: 1
+          - label: Chợ Lớn
+            count: 1
+          - label: Phú Lâm
+            count: 1
+          - label: Bình Tiên
+            count: 1
+          - label: Bình Tây
+            count: 1
+          - label: Bình Phú
+            count: 1
+          - label: Minh Phụng
+            count: 1
+          - label: Bình Đông
+            count: 1
+          - label: Chánh Hưng
+            count: 1
+          - label: Phú Định
+            count: 1
+          - label: Bình Hưng Hoà
+            count: 1
+          - label: Bình Trị Đông
+            count: 1
+          - label: Bình Tân
+            count: 1
+          - label: Tân Tạo
+            count: 1
+          - label: An Lạc
+            count: 1
+          - label: Tân Thuận
+            count: 1
+          - label: Tân Hưng
+            count: 1
+          - label: Phú Thuận
+            count: 1
+          - label: Tân Mỹ
+            count: 1
+          - label: Tân An Hội
+            count: 1
+          - label: Nhuận Đức
+            count: 1
+          - label: Thái Mỹ
+            count: 1
+          - label: An Nhơn Tây
+            count: 1
+          - label: Củ Chi
+            count: 1
+          - label: Phú Hoà Đông
+            count: 1
+          - label: Hóc Môn
+            count: 1
+          - label: Bình Mỹ
+            count: 1
+          - label: Xuân Thới Sơn
+            count: 1
+          - label: Đông Thạnh
+            count: 1
+          - label: Bà Điểm
+            count: 1
+          - label: Tân Nhựt
+            count: 1
+          - label: Bình Lợi
+            count: 1
+          - label: Tân Vĩnh Lộc
+            count: 1
+          - label: Bình Hưng
+            count: 1
+          - label: Vĩnh Lộc
+            count: 1
+          - label: Hưng Long
+            count: 1
+          - label: Bình Chánh
+            count: 1
+          - label: Nhà Bè
+            count: 1
+          - label: Hiệp Phước
+            count: 1
+          - label: An Thới Đông
+            count: 1
+          - label: Cần Giờ
+            count: 1
+          - label: Bình Khánh
+            count: 1
+          - label: Thạnh An
+            count: 1
+        complete: true
       nameEn:
         kind: categorical
         distinct: 167
@@ -96,6 +400,317 @@ files:
             count: 1
           - label: Tru Van Tho
             count: 1
+          - label: Chanh Phu Hoa
+            count: 1
+          - label: Long Nguyen
+            count: 1
+          - label: Hoa Loi
+            count: 1
+          - label: Tay Nam
+            count: 1
+          - label: Thoi Hoa
+            count: 1
+          - label: Phu Giao
+            count: 1
+          - label: Phuoc Thanh
+            count: 1
+          - label: An Long
+            count: 1
+          - label: Phuoc Hoa
+            count: 1
+          - label: Tan Khanh
+            count: 1
+          - label: Tan Uyen
+            count: 1
+          - label: Thuong Tan
+            count: 1
+          - label: Bac Tan Uyen
+            count: 1
+          - label: Di An
+            count: 1
+          - label: Dong Hoa
+            count: 1
+          - label: Tan Dong Hiep
+            count: 1
+          - label: Binh Co
+            count: 1
+          - label: Tan Hiep
+            count: 1
+          - label: Thuan Giao
+            count: 1
+          - label: Lai Thieu
+            count: 1
+          - label: Vinh Tan
+            count: 1
+          - label: An Phu
+            count: 1
+          - label: Phuoc Thang
+            count: 1
+          - label: Tam Thang
+            count: 1
+          - label: Thuan An
+            count: 1
+          - label: Rach Dua
+            count: 1
+          - label: Vung Tau
+            count: 1
+          - label: Binh Hoa
+            count: 1
+          - label: Long Son
+            count: 1
+          - label: Long Huong
+            count: 1
+          - label: Ba Ria
+            count: 1
+          - label: Tam Long
+            count: 1
+          - label: Ngai Giao
+            count: 1
+          - label: Chau Duc
+            count: 1
+          - label: Xuan Son
+            count: 1
+          - label: Binh Gia
+            count: 1
+          - label: Kim Long
+            count: 1
+          - label: Xuyen Moc
+            count: 1
+          - label: Nghia Thanh
+            count: 1
+          - label: Ho Tram
+            count: 1
+          - label: Bau Lam
+            count: 1
+          - label: Hoa Hoi
+            count: 1
+          - label: Hoa Hiep
+            count: 1
+          - label: Binh Chau
+            count: 1
+          - label: Long Dien
+            count: 1
+          - label: Long Hai
+            count: 1
+          - label: Dat Do
+            count: 1
+          - label: Phu My
+            count: 1
+          - label: Phuoc Hai
+            count: 1
+          - label: Tan Hai
+            count: 1
+          - label: Tan Thanh
+            count: 1
+          - label: Tan Phuoc
+            count: 1
+          - label: Chau Pha
+            count: 1
+          - label: Tan Dinh
+            count: 1
+          - label: Con Dao
+            count: 1
+          - label: Ben Thanh
+            count: 1
+          - label: Sai Gon
+            count: 1
+          - label: Cau Ong Lanh
+            count: 1
+          - label: Thoi An
+            count: 1
+          - label: An Phu Dong
+            count: 1
+          - label: Tan Thoi Hiep
+            count: 1
+          - label: Linh Xuan
+            count: 1
+          - label: Trung My Tay
+            count: 1
+          - label: Tam Binh
+            count: 1
+          - label: Hiep Binh
+            count: 1
+          - label: Thu Duc
+            count: 1
+          - label: Dong Hung Thuan
+            count: 1
+          - label: Long Binh
+            count: 1
+          - label: Tang Nhon Phu
+            count: 1
+          - label: Phuoc Long
+            count: 1
+          - label: Long Phuoc
+            count: 1
+          - label: An Hoi Dong
+            count: 1
+          - label: Long Truong
+            count: 1
+          - label: An Nhon
+            count: 1
+          - label: An Hoi Tay
+            count: 1
+          - label: Go Vap
+            count: 1
+          - label: Hanh Thong
+            count: 1
+          - label: Thong Tay Hoi
+            count: 1
+          - label: Binh Loi Trung
+            count: 1
+          - label: Gia Dinh
+            count: 1
+          - label: Thanh My Tay
+            count: 1
+          - label: Binh Quoi
+            count: 1
+          - label: Binh Thanh
+            count: 1
+          - label: Bay Hien
+            count: 1
+          - label: Tan Son Hoa
+            count: 1
+          - label: Tan Son Nhat
+            count: 1
+          - label: Tan Binh
+            count: 1
+          - label: Tan Hoa
+            count: 1
+          - label: Tan Son
+            count: 1
+          - label: Tan Son Nhi
+            count: 1
+          - label: Tay Thanh
+            count: 1
+          - label: Phu Tho Hoa
+            count: 1
+          - label: Phu Thanh
+            count: 1
+          - label: Tan Phu
+            count: 1
+          - label: Duc Nhuan
+            count: 1
+          - label: Cau Kieu
+            count: 1
+          - label: Phu Nhuan
+            count: 1
+          - label: Xuan Hoa
+            count: 1
+          - label: Cat Lai
+            count: 1
+          - label: Binh Trung
+            count: 1
+          - label: An Khanh
+            count: 1
+          - label: Ban Co
+            count: 1
+          - label: Nhieu Loc
+            count: 1
+          - label: Dien Hong
+            count: 1
+          - label: Hoa Hung
+            count: 1
+          - label: Phu Tho
+            count: 1
+          - label: Vuon Lai
+            count: 1
+          - label: Hoa Binh
+            count: 1
+          - label: Binh Thoi
+            count: 1
+          - label: Xom Chieu
+            count: 1
+          - label: Khanh Hoi
+            count: 1
+          - label: Vinh Hoi
+            count: 1
+          - label: An Dong
+            count: 1
+          - label: Cho Quan
+            count: 1
+          - label: Cho Lon
+            count: 1
+          - label: Phu Lam
+            count: 1
+          - label: Binh Tien
+            count: 1
+          - label: Binh Tay
+            count: 1
+          - label: Binh Phu
+            count: 1
+          - label: Minh Phung
+            count: 1
+          - label: Binh Dong
+            count: 1
+          - label: Chanh Hung
+            count: 1
+          - label: Phu Dinh
+            count: 1
+          - label: Binh Hung Hoa
+            count: 1
+          - label: Binh Tri Dong
+            count: 1
+          - label: Binh Tan
+            count: 1
+          - label: Tan Tao
+            count: 1
+          - label: An Lac
+            count: 1
+          - label: Tan Thuan
+            count: 1
+          - label: Tan Hung
+            count: 1
+          - label: Phu Thuan
+            count: 1
+          - label: Tan My
+            count: 1
+          - label: Tan An Hoi
+            count: 1
+          - label: Nhuan Duc
+            count: 1
+          - label: Thai My
+            count: 1
+          - label: An Nhon Tay
+            count: 1
+          - label: Cu Chi
+            count: 1
+          - label: Phu Hoa Dong
+            count: 1
+          - label: Hoc Mon
+            count: 1
+          - label: Binh My
+            count: 1
+          - label: Xuan Thoi Son
+            count: 1
+          - label: Dong Thanh
+            count: 1
+          - label: Ba Diem
+            count: 1
+          - label: Tan Nhut
+            count: 1
+          - label: Binh Loi
+            count: 1
+          - label: Tan Vinh Loc
+            count: 1
+          - label: Binh Hung
+            count: 1
+          - label: Vinh Loc
+            count: 1
+          - label: Hung Long
+            count: 1
+          - label: Binh Chanh
+            count: 1
+          - label: Nha Be
+            count: 1
+          - label: Hiep Phuoc
+            count: 1
+          - label: An Thoi Dong
+            count: 1
+          - label: Can Gio
+            count: 1
+          - label: Binh Khanh
+            count: 1
+        complete: true
       fullName:
         kind: categorical
         distinct: 168
@@ -124,6 +739,319 @@ files:
             count: 1
           - label: Xã Trừ Văn Thố
             count: 1
+          - label: Phường Chánh Phú Hoà
+            count: 1
+          - label: Phường Long Nguyên
+            count: 1
+          - label: Phường Hoà Lợi
+            count: 1
+          - label: Phường Tây Nam
+            count: 1
+          - label: Phường Thới Hoà
+            count: 1
+          - label: Xã Phú Giáo
+            count: 1
+          - label: Xã Phước Thành
+            count: 1
+          - label: Xã An Long
+            count: 1
+          - label: Xã Phước Hoà
+            count: 1
+          - label: Phường Tân Khánh
+            count: 1
+          - label: Phường Tân Uyên
+            count: 1
+          - label: Xã Thường Tân
+            count: 1
+          - label: Xã Bắc Tân Uyên
+            count: 1
+          - label: Phường Dĩ An
+            count: 1
+          - label: Phường Đông Hoà
+            count: 1
+          - label: Phường Tân Đông Hiệp
+            count: 1
+          - label: Phường Bình Cơ
+            count: 1
+          - label: Phường Tân Hiệp
+            count: 1
+          - label: Phường Thuận Giao
+            count: 1
+          - label: Phường Lái Thiêu
+            count: 1
+          - label: Phường Vĩnh Tân
+            count: 1
+          - label: Phường An Phú
+            count: 1
+          - label: Phường Phước Thắng
+            count: 1
+          - label: Phường Tam Thắng
+            count: 1
+          - label: Phường Thuận An
+            count: 1
+          - label: Phường Rạch Dừa
+            count: 1
+          - label: Phường Vũng Tàu
+            count: 1
+          - label: Phường Bình Hoà
+            count: 1
+          - label: Xã Long Sơn
+            count: 1
+          - label: Phường Long Hương
+            count: 1
+          - label: Phường Bà Rịa
+            count: 1
+          - label: Phường Tam Long
+            count: 1
+          - label: Xã Ngãi Giao
+            count: 1
+          - label: Xã Châu Đức
+            count: 1
+          - label: Xã Xuân Sơn
+            count: 1
+          - label: Xã Bình Giã
+            count: 1
+          - label: Xã Kim Long
+            count: 1
+          - label: Xã Xuyên Mộc
+            count: 1
+          - label: Xã Nghĩa Thành
+            count: 1
+          - label: Xã Hồ Tràm
+            count: 1
+          - label: Xã Bàu Lâm
+            count: 1
+          - label: Xã Hoà Hội
+            count: 1
+          - label: Xã Hoà Hiệp
+            count: 1
+          - label: Xã Bình Châu
+            count: 1
+          - label: Xã Long Điền
+            count: 1
+          - label: Xã Long Hải
+            count: 1
+          - label: Xã Đất Đỏ
+            count: 1
+          - label: Phường Phú Mỹ
+            count: 1
+          - label: Xã Phước Hải
+            count: 1
+          - label: Phường Tân Hải
+            count: 1
+          - label: Phường Tân Thành
+            count: 1
+          - label: Phường Tân Phước
+            count: 1
+          - label: Xã Châu Pha
+            count: 1
+          - label: Phường Tân Định
+            count: 1
+          - label: Đặc khu Côn Đảo
+            count: 1
+          - label: Phường Bến Thành
+            count: 1
+          - label: Phường Sài Gòn
+            count: 1
+          - label: Phường Cầu Ông Lãnh
+            count: 1
+          - label: Phường Thới An
+            count: 1
+          - label: Phường An Phú Đông
+            count: 1
+          - label: Phường Tân Thới Hiệp
+            count: 1
+          - label: Phường Linh Xuân
+            count: 1
+          - label: Phường Trung Mỹ Tây
+            count: 1
+          - label: Phường Tam Bình
+            count: 1
+          - label: Phường Hiệp Bình
+            count: 1
+          - label: Phường Thủ Đức
+            count: 1
+          - label: Phường Đông Hưng Thuận
+            count: 1
+          - label: Phường Long Bình
+            count: 1
+          - label: Phường Tăng Nhơn Phú
+            count: 1
+          - label: Phường Phước Long
+            count: 1
+          - label: Phường Long Phước
+            count: 1
+          - label: Phường An Hội Đông
+            count: 1
+          - label: Phường Long Trường
+            count: 1
+          - label: Phường An Nhơn
+            count: 1
+          - label: Phường An Hội Tây
+            count: 1
+          - label: Phường Gò Vấp
+            count: 1
+          - label: Phường Hạnh Thông
+            count: 1
+          - label: Phường Thông Tây Hội
+            count: 1
+          - label: Phường Bình Lợi Trung
+            count: 1
+          - label: Phường Gia Định
+            count: 1
+          - label: Phường Thạnh Mỹ Tây
+            count: 1
+          - label: Phường Bình Quới
+            count: 1
+          - label: Phường Bình Thạnh
+            count: 1
+          - label: Phường Bảy Hiền
+            count: 1
+          - label: Phường Tân Sơn Hoà
+            count: 1
+          - label: Phường Tân Sơn Nhất
+            count: 1
+          - label: Phường Tân Bình
+            count: 1
+          - label: Phường Tân Hoà
+            count: 1
+          - label: Phường Tân Sơn
+            count: 1
+          - label: Phường Tân Sơn Nhì
+            count: 1
+          - label: Phường Tây Thạnh
+            count: 1
+          - label: Phường Phú Thọ Hoà
+            count: 1
+          - label: Phường Phú Thạnh
+            count: 1
+          - label: Phường Tân Phú
+            count: 1
+          - label: Phường Đức Nhuận
+            count: 1
+          - label: Phường Cầu Kiệu
+            count: 1
+          - label: Phường Phú Nhuận
+            count: 1
+          - label: Phường Xuân Hoà
+            count: 1
+          - label: Phường Cát Lái
+            count: 1
+          - label: Phường Bình Trưng
+            count: 1
+          - label: Phường An Khánh
+            count: 1
+          - label: Phường Bàn Cờ
+            count: 1
+          - label: Phường Nhiêu Lộc
+            count: 1
+          - label: Phường Diên Hồng
+            count: 1
+          - label: Phường Hoà Hưng
+            count: 1
+          - label: Phường Phú Thọ
+            count: 1
+          - label: Phường Vườn Lài
+            count: 1
+          - label: Phường Hoà Bình
+            count: 1
+          - label: Phường Bình Thới
+            count: 1
+          - label: Phường Xóm Chiếu
+            count: 1
+          - label: Phường Khánh Hội
+            count: 1
+          - label: Phường Vĩnh Hội
+            count: 1
+          - label: Phường An Đông
+            count: 1
+          - label: Phường Chợ Quán
+            count: 1
+          - label: Phường Chợ Lớn
+            count: 1
+          - label: Phường Phú Lâm
+            count: 1
+          - label: Phường Bình Tiên
+            count: 1
+          - label: Phường Bình Tây
+            count: 1
+          - label: Phường Bình Phú
+            count: 1
+          - label: Phường Minh Phụng
+            count: 1
+          - label: Phường Bình Đông
+            count: 1
+          - label: Phường Chánh Hưng
+            count: 1
+          - label: Phường Phú Định
+            count: 1
+          - label: Phường Bình Hưng Hoà
+            count: 1
+          - label: Phường Bình Trị Đông
+            count: 1
+          - label: Phường Bình Tân
+            count: 1
+          - label: Phường Tân Tạo
+            count: 1
+          - label: Phường An Lạc
+            count: 1
+          - label: Phường Tân Thuận
+            count: 1
+          - label: Phường Tân Hưng
+            count: 1
+          - label: Phường Phú Thuận
+            count: 1
+          - label: Phường Tân Mỹ
+            count: 1
+          - label: Xã Tân An Hội
+            count: 1
+          - label: Xã Nhuận Đức
+            count: 1
+          - label: Xã Thái Mỹ
+            count: 1
+          - label: Xã An Nhơn Tây
+            count: 1
+          - label: Xã Củ Chi
+            count: 1
+          - label: Xã Phú Hoà Đông
+            count: 1
+          - label: Xã Hóc Môn
+            count: 1
+          - label: Xã Bình Mỹ
+            count: 1
+          - label: Xã Xuân Thới Sơn
+            count: 1
+          - label: Xã Đông Thạnh
+            count: 1
+          - label: Xã Bà Điểm
+            count: 1
+          - label: Xã Tân Nhựt
+            count: 1
+          - label: Xã Bình Lợi
+            count: 1
+          - label: Xã Tân Vĩnh Lộc
+            count: 1
+          - label: Xã Bình Hưng
+            count: 1
+          - label: Xã Vĩnh Lộc
+            count: 1
+          - label: Xã Hưng Long
+            count: 1
+          - label: Xã Bình Chánh
+            count: 1
+          - label: Xã Nhà Bè
+            count: 1
+          - label: Xã Hiệp Phước
+            count: 1
+          - label: Xã An Thới Đông
+            count: 1
+          - label: Xã Cần Giờ
+            count: 1
+          - label: Xã Bình Khánh
+            count: 1
+          - label: Xã Thạnh An
+            count: 1
+        complete: true
       fullNameEn:
         kind: categorical
         distinct: 167
@@ -152,6 +1080,317 @@ files:
             count: 1
           - label: Tru Van Tho Commune
             count: 1
+          - label: Chanh Phu Hoa Ward
+            count: 1
+          - label: Long Nguyen Ward
+            count: 1
+          - label: Hoa Loi Ward
+            count: 1
+          - label: Tay Nam Ward
+            count: 1
+          - label: Thoi Hoa Ward
+            count: 1
+          - label: Phu Giao Commune
+            count: 1
+          - label: Phuoc Thanh Commune
+            count: 1
+          - label: An Long Commune
+            count: 1
+          - label: Phuoc Hoa Commune
+            count: 1
+          - label: Tan Khanh Ward
+            count: 1
+          - label: Tan Uyen Ward
+            count: 1
+          - label: Thuong Tan Commune
+            count: 1
+          - label: Bac Tan Uyen Commune
+            count: 1
+          - label: Di An Ward
+            count: 1
+          - label: Dong Hoa Ward
+            count: 1
+          - label: Tan Dong Hiep Ward
+            count: 1
+          - label: Binh Co Ward
+            count: 1
+          - label: Tan Hiep Ward
+            count: 1
+          - label: Thuan Giao Ward
+            count: 1
+          - label: Lai Thieu Ward
+            count: 1
+          - label: Vinh Tan Ward
+            count: 1
+          - label: An Phu Ward
+            count: 1
+          - label: Phuoc Thang Ward
+            count: 1
+          - label: Tam Thang Ward
+            count: 1
+          - label: Thuan An Ward
+            count: 1
+          - label: Rach Dua Ward
+            count: 1
+          - label: Vung Tau Ward
+            count: 1
+          - label: Binh Hoa Ward
+            count: 1
+          - label: Long Son Commune
+            count: 1
+          - label: Long Huong Ward
+            count: 1
+          - label: Ba Ria Ward
+            count: 1
+          - label: Tam Long Ward
+            count: 1
+          - label: Ngai Giao Commune
+            count: 1
+          - label: Chau Duc Commune
+            count: 1
+          - label: Xuan Son Commune
+            count: 1
+          - label: Binh Gia Commune
+            count: 1
+          - label: Kim Long Commune
+            count: 1
+          - label: Xuyen Moc Commune
+            count: 1
+          - label: Nghia Thanh Commune
+            count: 1
+          - label: Ho Tram Commune
+            count: 1
+          - label: Bau Lam Commune
+            count: 1
+          - label: Hoa Hoi Commune
+            count: 1
+          - label: Hoa Hiep Commune
+            count: 1
+          - label: Binh Chau Commune
+            count: 1
+          - label: Long Dien Commune
+            count: 1
+          - label: Long Hai Commune
+            count: 1
+          - label: Dat Do Commune
+            count: 1
+          - label: Phu My Ward
+            count: 1
+          - label: Phuoc Hai Commune
+            count: 1
+          - label: Tan Hai Ward
+            count: 1
+          - label: Tan Thanh Ward
+            count: 1
+          - label: Tan Phuoc Ward
+            count: 1
+          - label: Chau Pha Commune
+            count: 1
+          - label: Tan Dinh Ward
+            count: 1
+          - label: Con Dao Special administrative region
+            count: 1
+          - label: Ben Thanh Ward
+            count: 1
+          - label: Sai Gon Ward
+            count: 1
+          - label: Cau Ong Lanh Ward
+            count: 1
+          - label: Thoi An Ward
+            count: 1
+          - label: An Phu Dong Ward
+            count: 1
+          - label: Tan Thoi Hiep Ward
+            count: 1
+          - label: Linh Xuan Ward
+            count: 1
+          - label: Trung My Tay Ward
+            count: 1
+          - label: Tam Binh Ward
+            count: 1
+          - label: Hiep Binh Ward
+            count: 1
+          - label: Thu Duc Ward
+            count: 1
+          - label: Dong Hung Thuan Ward
+            count: 1
+          - label: Long Binh Ward
+            count: 1
+          - label: Tang Nhon Phu Ward
+            count: 1
+          - label: Phuoc Long Ward
+            count: 1
+          - label: Long Phuoc Ward
+            count: 1
+          - label: An Hoi Dong Ward
+            count: 1
+          - label: Long Truong Ward
+            count: 1
+          - label: An Nhon Ward
+            count: 1
+          - label: An Hoi Tay Ward
+            count: 1
+          - label: Go Vap Ward
+            count: 1
+          - label: Hanh Thong Ward
+            count: 1
+          - label: Thong Tay Hoi Ward
+            count: 1
+          - label: Binh Loi Trung Ward
+            count: 1
+          - label: Gia Dinh Ward
+            count: 1
+          - label: Thanh My Tay Ward
+            count: 1
+          - label: Binh Quoi Ward
+            count: 1
+          - label: Binh Thanh Ward
+            count: 1
+          - label: Bay Hien Ward
+            count: 1
+          - label: Tan Son Hoa Ward
+            count: 1
+          - label: Tan Son Nhat Ward
+            count: 1
+          - label: Tan Binh Ward
+            count: 1
+          - label: Tan Hoa Ward
+            count: 1
+          - label: Tan Son Ward
+            count: 1
+          - label: Tan Son Nhi Ward
+            count: 1
+          - label: Tay Thanh Ward
+            count: 1
+          - label: Phu Tho Hoa Ward
+            count: 1
+          - label: Phu Thanh Ward
+            count: 1
+          - label: Tan Phu Ward
+            count: 1
+          - label: Duc Nhuan Ward
+            count: 1
+          - label: Cau Kieu Ward
+            count: 1
+          - label: Phu Nhuan Ward
+            count: 1
+          - label: Xuan Hoa Ward
+            count: 1
+          - label: Cat Lai Ward
+            count: 1
+          - label: Binh Trung Ward
+            count: 1
+          - label: An Khanh Ward
+            count: 1
+          - label: Ban Co Ward
+            count: 1
+          - label: Nhieu Loc Ward
+            count: 1
+          - label: Dien Hong Ward
+            count: 1
+          - label: Hoa Hung Ward
+            count: 1
+          - label: Phu Tho Ward
+            count: 1
+          - label: Vuon Lai Ward
+            count: 1
+          - label: Hoa Binh Ward
+            count: 1
+          - label: Binh Thoi Ward
+            count: 1
+          - label: Xom Chieu Ward
+            count: 1
+          - label: Khanh Hoi Ward
+            count: 1
+          - label: Vinh Hoi Ward
+            count: 1
+          - label: An Dong Ward
+            count: 1
+          - label: Cho Quan Ward
+            count: 1
+          - label: Cho Lon Ward
+            count: 1
+          - label: Phu Lam Ward
+            count: 1
+          - label: Binh Tien Ward
+            count: 1
+          - label: Binh Tay Ward
+            count: 1
+          - label: Binh Phu Ward
+            count: 1
+          - label: Minh Phung Ward
+            count: 1
+          - label: Binh Dong Ward
+            count: 1
+          - label: Chanh Hung Ward
+            count: 1
+          - label: Phu Dinh Ward
+            count: 1
+          - label: Binh Hung Hoa Ward
+            count: 1
+          - label: Binh Tri Dong Ward
+            count: 1
+          - label: Binh Tan Ward
+            count: 1
+          - label: Tan Tao Ward
+            count: 1
+          - label: An Lac Ward
+            count: 1
+          - label: Tan Thuan Ward
+            count: 1
+          - label: Tan Hung Ward
+            count: 1
+          - label: Phu Thuan Ward
+            count: 1
+          - label: Tan My Ward
+            count: 1
+          - label: Tan An Hoi Commune
+            count: 1
+          - label: Nhuan Duc Commune
+            count: 1
+          - label: Thai My Commune
+            count: 1
+          - label: An Nhon Tay Commune
+            count: 1
+          - label: Cu Chi Commune
+            count: 1
+          - label: Phu Hoa Dong Commune
+            count: 1
+          - label: Hoc Mon Commune
+            count: 1
+          - label: Binh My Commune
+            count: 1
+          - label: Xuan Thoi Son Commune
+            count: 1
+          - label: Dong Thanh Commune
+            count: 1
+          - label: Ba Diem Commune
+            count: 1
+          - label: Tan Nhut Commune
+            count: 1
+          - label: Binh Loi Commune
+            count: 1
+          - label: Tan Vinh Loc Commune
+            count: 1
+          - label: Binh Hung Commune
+            count: 1
+          - label: Vinh Loc Commune
+            count: 1
+          - label: Hung Long Commune
+            count: 1
+          - label: Binh Chanh Commune
+            count: 1
+          - label: Nha Be Commune
+            count: 1
+          - label: Hiep Phuoc Commune
+            count: 1
+          - label: An Thoi Dong Commune
+            count: 1
+          - label: Can Gio Commune
+            count: 1
+          - label: Binh Khanh Commune
+            count: 1
+        complete: true
       codeName:
         kind: categorical
         distinct: 167
@@ -180,6 +1419,317 @@ files:
             count: 1
           - label: tru_van_tho
             count: 1
+          - label: chanh_phu_hoa
+            count: 1
+          - label: long_nguyen
+            count: 1
+          - label: hoa_loi
+            count: 1
+          - label: tay_nam
+            count: 1
+          - label: thoi_hoa
+            count: 1
+          - label: phu_giao
+            count: 1
+          - label: phuoc_thanh
+            count: 1
+          - label: an_long
+            count: 1
+          - label: phuoc_hoa
+            count: 1
+          - label: tan_khanh
+            count: 1
+          - label: tan_uyen
+            count: 1
+          - label: thuong_tan
+            count: 1
+          - label: bac_tan_uyen
+            count: 1
+          - label: di_an
+            count: 1
+          - label: dong_hoa
+            count: 1
+          - label: tan_dong_hiep
+            count: 1
+          - label: binh_co
+            count: 1
+          - label: tan_hiep
+            count: 1
+          - label: thuan_giao
+            count: 1
+          - label: lai_thieu
+            count: 1
+          - label: vinh_tan
+            count: 1
+          - label: an_phu
+            count: 1
+          - label: phuoc_thang
+            count: 1
+          - label: tam_thang
+            count: 1
+          - label: thuan_an
+            count: 1
+          - label: rach_dua
+            count: 1
+          - label: vung_tau
+            count: 1
+          - label: binh_hoa
+            count: 1
+          - label: long_son
+            count: 1
+          - label: long_huong
+            count: 1
+          - label: ba_ria
+            count: 1
+          - label: tam_long
+            count: 1
+          - label: ngai_giao
+            count: 1
+          - label: chau_duc
+            count: 1
+          - label: xuan_son
+            count: 1
+          - label: binh_gia
+            count: 1
+          - label: kim_long
+            count: 1
+          - label: xuyen_moc
+            count: 1
+          - label: nghia_thanh
+            count: 1
+          - label: ho_tram
+            count: 1
+          - label: bau_lam
+            count: 1
+          - label: hoa_hoi
+            count: 1
+          - label: hoa_hiep
+            count: 1
+          - label: binh_chau
+            count: 1
+          - label: long_dien
+            count: 1
+          - label: long_hai
+            count: 1
+          - label: dat_do
+            count: 1
+          - label: phu_my
+            count: 1
+          - label: phuoc_hai
+            count: 1
+          - label: tan_hai
+            count: 1
+          - label: tan_thanh
+            count: 1
+          - label: tan_phuoc
+            count: 1
+          - label: chau_pha
+            count: 1
+          - label: tan_dinh
+            count: 1
+          - label: con_dao
+            count: 1
+          - label: ben_thanh
+            count: 1
+          - label: sai_gon
+            count: 1
+          - label: cau_ong_lanh
+            count: 1
+          - label: thoi_an
+            count: 1
+          - label: an_phu_dong
+            count: 1
+          - label: tan_thoi_hiep
+            count: 1
+          - label: linh_xuan
+            count: 1
+          - label: trung_my_tay
+            count: 1
+          - label: tam_binh
+            count: 1
+          - label: hiep_binh
+            count: 1
+          - label: thu_duc
+            count: 1
+          - label: dong_hung_thuan
+            count: 1
+          - label: long_binh
+            count: 1
+          - label: tang_nhon_phu
+            count: 1
+          - label: phuoc_long
+            count: 1
+          - label: long_phuoc
+            count: 1
+          - label: an_hoi_dong
+            count: 1
+          - label: long_truong
+            count: 1
+          - label: an_nhon
+            count: 1
+          - label: an_hoi_tay
+            count: 1
+          - label: go_vap
+            count: 1
+          - label: hanh_thong
+            count: 1
+          - label: thong_tay_hoi
+            count: 1
+          - label: binh_loi_trung
+            count: 1
+          - label: gia_dinh
+            count: 1
+          - label: thanh_my_tay
+            count: 1
+          - label: binh_quoi
+            count: 1
+          - label: binh_thanh
+            count: 1
+          - label: bay_hien
+            count: 1
+          - label: tan_son_hoa
+            count: 1
+          - label: tan_son_nhat
+            count: 1
+          - label: tan_binh
+            count: 1
+          - label: tan_hoa
+            count: 1
+          - label: tan_son
+            count: 1
+          - label: tan_son_nhi
+            count: 1
+          - label: tay_thanh
+            count: 1
+          - label: phu_tho_hoa
+            count: 1
+          - label: phu_thanh
+            count: 1
+          - label: tan_phu
+            count: 1
+          - label: duc_nhuan
+            count: 1
+          - label: cau_kieu
+            count: 1
+          - label: phu_nhuan
+            count: 1
+          - label: xuan_hoa
+            count: 1
+          - label: cat_lai
+            count: 1
+          - label: binh_trung
+            count: 1
+          - label: an_khanh
+            count: 1
+          - label: ban_co
+            count: 1
+          - label: nhieu_loc
+            count: 1
+          - label: dien_hong
+            count: 1
+          - label: hoa_hung
+            count: 1
+          - label: phu_tho
+            count: 1
+          - label: vuon_lai
+            count: 1
+          - label: hoa_binh
+            count: 1
+          - label: binh_thoi
+            count: 1
+          - label: xom_chieu
+            count: 1
+          - label: khanh_hoi
+            count: 1
+          - label: vinh_hoi
+            count: 1
+          - label: an_dong
+            count: 1
+          - label: cho_quan
+            count: 1
+          - label: cho_lon
+            count: 1
+          - label: phu_lam
+            count: 1
+          - label: binh_tien
+            count: 1
+          - label: binh_tay
+            count: 1
+          - label: binh_phu
+            count: 1
+          - label: minh_phung
+            count: 1
+          - label: binh_dong
+            count: 1
+          - label: chanh_hung
+            count: 1
+          - label: phu_dinh
+            count: 1
+          - label: binh_hung_hoa
+            count: 1
+          - label: binh_tri_dong
+            count: 1
+          - label: binh_tan
+            count: 1
+          - label: tan_tao
+            count: 1
+          - label: an_lac
+            count: 1
+          - label: tan_thuan
+            count: 1
+          - label: tan_hung
+            count: 1
+          - label: phu_thuan
+            count: 1
+          - label: tan_my
+            count: 1
+          - label: tan_an_hoi
+            count: 1
+          - label: nhuan_duc
+            count: 1
+          - label: thai_my
+            count: 1
+          - label: an_nhon_tay
+            count: 1
+          - label: cu_chi
+            count: 1
+          - label: phu_hoa_dong
+            count: 1
+          - label: hoc_mon
+            count: 1
+          - label: binh_my
+            count: 1
+          - label: xuan_thoi_son
+            count: 1
+          - label: dong_thanh
+            count: 1
+          - label: ba_diem
+            count: 1
+          - label: tan_nhut
+            count: 1
+          - label: binh_loi
+            count: 1
+          - label: tan_vinh_loc
+            count: 1
+          - label: binh_hung
+            count: 1
+          - label: vinh_loc
+            count: 1
+          - label: hung_long
+            count: 1
+          - label: binh_chanh
+            count: 1
+          - label: nha_be
+            count: 1
+          - label: hiep_phuoc
+            count: 1
+          - label: an_thoi_dong
+            count: 1
+          - label: can_gio
+            count: 1
+          - label: binh_khanh
+            count: 1
+        complete: true
       gisServerId:
         kind: categorical
         distinct: 168
@@ -208,38 +1758,336 @@ files:
             count: 1
           - label: diaphanhanhchinhcapxa_2025.11
             count: 1
+          - label: diaphanhanhchinhcapxa_2025.14
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.13
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.16
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.8
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.15
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.18
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.19
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.20
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.21
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.23
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.22
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.28
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.24
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.29
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.31
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.30
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.25
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.27
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.34
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.33
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.26
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.35
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2201
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2199
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.32
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2200
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2198
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.36
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2226
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2204
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2202
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2203
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2206
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2209
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2207
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2208
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2205
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2212
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2210
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2211
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2213
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2214
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2215
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2216
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2217
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2218
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2219
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2221
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2220
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2222
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2224
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2223
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.2225
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.37
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.3307
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.39
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.38
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.40
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.41
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.138
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.43
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.46
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.44
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.47
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.42
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.48
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.45
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.49
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.50
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.51
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.52
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.54
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.53
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.56
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.57
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.55
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.58
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.59
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.60
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.63
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.62
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.64
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.61
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.67
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.65
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.66
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.68
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.69
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.70
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.71
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.72
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.73
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.74
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.75
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.76
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.77
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.78
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.83
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.81
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.80
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.79
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.84
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.82
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.86
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.85
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.88
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.87
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.89
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.90
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.92
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.93
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.94
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.96
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.95
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.97
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.98
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.101
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.99
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.100
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.91
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.104
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.102
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.103
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.105
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.106
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.107
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.109
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.108
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.110
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.111
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.112
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.113
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.117
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.115
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.119
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.114
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.118
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.116
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.121
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.120
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.123
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.122
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.124
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.125
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.128
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.127
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.129
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.126
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.130
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.131
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.132
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.133
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.136
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.134
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.135
+            count: 1
+          - label: diaphanhanhchinhcapxa_2025.137
+            count: 1
+        complete: true
       areaKm2:
         kind: numeric
         min: 0.98
         max: 257.85
-        histogram:
-          - 99
-          - 29
-          - 18
-          - 11
-          - 7
-          - 3
-          - 0
-          - 1
+        histogram: [ 99, 29, 18, 11, 7, 3, 0, 1 ]
       provinceCode:
         kind: numeric
         min: 79
         max: 79
-        histogram:
-          - 168
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
+        histogram: [ 168, 0, 0, 0, 0, 0, 0, 0 ]
       provinceName:
         kind: categorical
         distinct: 1
         segments:
           - label: Hồ Chí Minh
             count: 168
+        complete: true
 edits:
   - by: ninh
     at: 2026-07-25T05:55:03.127Z
