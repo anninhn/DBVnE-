@@ -27,24 +27,25 @@ files:
     r2_key: "4ffb513c-c31e-4a8f-9aee-2be0fd814b65/so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-mot-so-toi-dan.csv"
     size_mb: 0.02
     column_stats:
-      "Điều luật Article of Law":
+      Điều luật Article of Law:
         kind: numeric
         min: 123
         max: 341
-        histogram: [156, 260, 148, 0, 156, 52, 52, 156]
-      "Số vụ án đã bị khởi tố (Vụ)":
+        histogram: [ 156, 260, 148, 0, 156, 52, 52, 156 ]
+      Số vụ án đã bị khởi tố (Vụ):
         kind: numeric
         min: 124
         max: 100504
-        histogram: [833, 110, 18, 0, 0, 0, 0, 19]
+        histogram: [ 833, 110, 18, 0, 0, 0, 0, 19 ]
       "":
         kind: numeric
         min: 165.88
         max: 165.88
-        histogram: [1, 0, 0, 0, 0, 0, 0, 0]
-      "Chỉ tiêu":
+        histogram: [ 1, 0, 0, 0, 0, 0, 0, 0 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 1
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 980
+        complete: true
