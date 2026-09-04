@@ -27,46 +27,63 @@ files:
     r2_key: "68fd1ebf-122a-430f-908b-8a758ff064e3/chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-cac-thang-2.csv"
     size_mb: 0.05
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2020
         max: 2024
-        histogram: [228, 0, 228, 0, 228, 0, 228, 228]
-      "Tháng":
+        histogram: [ 228, 0, 228, 0, 228, 0, 228, 228 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [190, 95, 190, 95, 95, 190, 95, 190]
-      "Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng so với kỳ gốc 2019":
+        histogram: [ 190, 95, 190, 95, 95, 190, 95, 190 ]
+      Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng so với kỳ gốc 2019:
         kind: numeric
         min: 81.62
         max: 219.14
-        histogram: [77, 830, 138, 36, 11, 3, 5, 4]
-      "Nhóm hàng":
+        histogram: [ 77, 830, 138, 36, 11, 3, 5, 4 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 19
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 60
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 60
-          - label: "Lương thực"
+          - label: Lương thực
             count: 60
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 60
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 60
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 60
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 60
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 60
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 60
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 60
           - label: "Trong đó: Dịch vụ y tế"
             count: 60
-          - label: "Giao thông"
+          - label: Giao thông
             count: 60
+          - label: Bưu chính viễn thông
+            count: 60
+          - label: Giáo dục
+            count: 60
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 60
+          - label: Văn hóa, giải trí và du lịch
+            count: 60
+          - label: Hàng hoá và dịch vụ khác
+            count: 60
+          - label: Chỉ số giá vàng
+            count: 60
+          - label: Chỉ số đô la Mỹ
+            count: 60
+        complete: true
+coverage:
+  temporal: [ 2020, 2024 ]
