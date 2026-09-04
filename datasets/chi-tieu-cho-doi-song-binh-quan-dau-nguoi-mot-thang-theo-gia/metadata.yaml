@@ -28,64 +28,67 @@ files:
     r2_key: "cd0d5088-f276-4cd5-ac96-57abb38d22bd/chi-tieu-cho-doi-song-binh-quan-dau-nguoi-mot-thang-theo-gia.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2018
-        histogram: [11, 0, 11, 0, 11, 0, 11, 11]
-      "Bình quân chung":
+        histogram: [ 11, 0, 11, 0, 11, 0, 11, 11 ]
+      Bình quân chung:
         kind: numeric
         min: 1.077
         max: 988
-        histogram: [50, 0, 0, 0, 0, 0, 1, 4]
-      "Nhóm 1":
+        histogram: [ 50, 0, 0, 0, 0, 0, 1, 4 ]
+      Nhóm 1:
         kind: numeric
         min: 1.016
         max: 973
-        histogram: [19, 0, 0, 4, 8, 7, 10, 7]
-      "Nhóm 2":
+        histogram: [ 19, 0, 0, 4, 8, 7, 10, 7 ]
+      Nhóm 2:
         kind: numeric
         min: 1.004
         max: 959
-        histogram: [38, 0, 0, 0, 1, 6, 3, 7]
-      "Nhóm 3":
+        histogram: [ 38, 0, 0, 0, 1, 6, 3, 7 ]
+      Nhóm 3:
         kind: numeric
         min: 1.072
         max: 974
-        histogram: [47, 0, 0, 0, 0, 1, 3, 4]
-      "Nhóm 4":
+        histogram: [ 47, 0, 0, 0, 0, 1, 3, 4 ]
+      Nhóm 4:
         kind: numeric
         min: 1.003
         max: 904
-        histogram: [54, 0, 0, 0, 0, 0, 0, 1]
-      "Nhóm 5":
+        histogram: [ 54, 0, 0, 0, 0, 0, 0, 1 ]
+      Nhóm 5:
         kind: numeric
         min: 1.56
         max: 5.055
-        histogram: [5, 9, 9, 8, 10, 4, 6, 4]
-      "Phân tổ":
+        histogram: [ 5, 9, 9, 8, 10, 4, 6, 4 ]
+      Phân tổ:
         kind: categorical
         distinct: 11
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 5
-          - label: "Thành thị"
+          - label: Thành thị
             count: 5
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 5
-          - label: "Giới tỉnh chủ hộ - Nam"
+          - label: Giới tỉnh chủ hộ - Nam
             count: 5
-          - label: "Giới tỉnh chủ hộ - Nữ"
+          - label: Giới tỉnh chủ hộ - Nữ
             count: 5
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 5
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 5
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 5
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 5
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 5
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 5
+        complete: true
+coverage:
+  temporal: [ 2010, 2018 ]
