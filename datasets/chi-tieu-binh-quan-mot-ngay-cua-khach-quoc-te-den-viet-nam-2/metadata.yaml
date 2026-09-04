@@ -27,41 +27,76 @@ files:
     r2_key: "c90e9563-8424-4b6e-8897-0db8251c2e18/chi-tieu-binh-quan-mot-ngay-cua-khach-quoc-te-den-viet-nam-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2019
-        histogram: [28, 0, 28, 28, 28, 0, 28, 28]
-      "Chi tiêu bình quân một ngày của khách quốc tế đến Việt Nam":
+        histogram: [ 28, 0, 28, 28, 28, 0, 28, 28 ]
+      Chi tiêu bình quân một ngày của khách quốc tế đến Việt Nam:
         kind: numeric
         min: 47.9
         max: 188.1
-        histogram: [9, 30, 50, 42, 18, 14, 2, 2]
-      "Quốc tịch":
+        histogram: [ 9, 30, 50, 42, 18, 14, 2, 2 ]
+      Quốc tịch:
         kind: categorical
         distinct: 28
         segments:
-          - label: "BÌNH QUÂN CHUNG"
+          - label: BÌNH QUÂN CHUNG
             count: 6
-          - label: "Bỉ"
+          - label: Bỉ
             count: 6
-          - label: "Cam-pu-chia"
+          - label: Cam-pu-chia
             count: 6
-          - label: "Ca-na-đa"
+          - label: Ca-na-đa
             count: 6
-          - label: "CHND Trung Hoa"
+          - label: CHND Trung Hoa
             count: 6
-          - label: "Đài Loan"
+          - label: Đài Loan
             count: 6
-          - label: "Đan Mạch"
+          - label: Đan Mạch
             count: 6
-          - label: "Đức"
+          - label: Đức
             count: 6
-          - label: "Hà Lan"
+          - label: Hà Lan
             count: 6
-          - label: "Hàn Quốc"
+          - label: Hàn Quốc
             count: 6
-          - label: "Hoa Kỳ"
+          - label: Hoa Kỳ
             count: 6
-          - label: "In-đô-nê-xi-a"
+          - label: In-đô-nê-xi-a
             count: 6
+          - label: I-ta-li-a
+            count: 6
+          - label: Lào
+            count: 6
+          - label: Liên bang Nga
+            count: 6
+          - label: Ma-lai-xi-a
+            count: 6
+          - label: Na Uy
+            count: 6
+          - label: Nhật Bản
+            count: 6
+          - label: Niu-di-lân
+            count: 6
+          - label: Ôx-trây-li-a
+            count: 6
+          - label: Pháp
+            count: 6
+          - label: Phi-li-pin
+            count: 6
+          - label: Tây Ban Nha
+            count: 6
+          - label: Thái Lan
+            count: 6
+          - label: Thụy Điển
+            count: 6
+          - label: Thụy Sĩ
+            count: 6
+          - label: Vương quốc Anh
+            count: 6
+          - label: Xin-ga-po
+            count: 6
+        complete: true
+coverage:
+  temporal: [ 2005, 2019 ]
