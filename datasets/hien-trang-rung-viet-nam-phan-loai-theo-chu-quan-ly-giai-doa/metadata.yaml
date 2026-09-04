@@ -27,35 +27,36 @@ files:
     r2_key: "96f30bf0-819d-4a06-96ae-2adeb439224d/Hi_n_tr_ng_r_ng_2005-2024_Ph_n_lo_i_theo_ch__qu_n_l_.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2025
-        histogram: [2, 4, 6, 4, 6, 4, 6, 6]
-      "Doanh nghiệp ngoài quốc doanh (Tổ chức khoa học và công nghệ, giáo dục, đào tạo)":
+        histogram: [ 2, 4, 6, 4, 6, 4, 6, 6 ]
+      Doanh nghiệp ngoài quốc doanh (Tổ chức khoa học và công nghệ, giáo dục, đào tạo):
         kind: numeric
         min: 41.374
         max: 80390
-        histogram: [19, 0, 0, 1, 0, 1, 0, 1]
-      "Doanh nghiệp 100% vốn nước ngoài":
+        histogram: [ 19, 0, 0, 1, 0, 1, 0, 1 ]
+      Doanh nghiệp 100% vốn nước ngoài:
         kind: numeric
         min: 1.113
         max: 2322000
-        histogram: [19, 0, 0, 0, 0, 0, 0, 1]
-      "Tổ chức kinh tế khác":
+        histogram: [ 19, 0, 0, 0, 0, 0, 0, 1 ]
+      Tổ chức kinh tế khác:
         kind: numeric
-        min: 109.004
-        max: 127948
-        histogram: [2, 0, 1, 1, 0, 0, 1, 1]
-      "Loại đất  loại rừng":
+        min: 24450.73
+        max: 1957008
+        histogram: [ 14, 0, 1, 0, 0, 0, 1, 1 ]
+      Loại đất  loại rừng:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Rừng tự nhiên"
+          - label: Rừng tự nhiên
             count: 19
-          - label: "Rừng trồng"
+          - label: Rừng trồng
             count: 19
-      "Tổng diện tích":
+        complete: true
+      Tổng diện tích:
         kind: categorical
         distinct: 38
         segments:
@@ -71,175 +72,453 @@ files:
             count: 1
           - label: "10423844"
             count: 1
-          - label: "10398159,6"
+          - label: 10398159,6
             count: 1
-          - label: "10.100.186"
+          - label: 10.100.186
             count: 1
-          - label: "10.175.519"
+          - label: 10.175.519
             count: 1
-          - label: "10.242.141"
+          - label: 10.242.141
             count: 1
-          - label: "10.236.415"
+          - label: 10.236.415
             count: 1
-          - label: "10.255.525"
+          - label: 10.255.525
             count: 1
-      "Ban Quản lý rừng đặc dụng":
+          - label: 10.292.434
+            count: 1
+          - label: 10.279.185
+            count: 1
+          - label: 10.171.757
+            count: 1
+          - label: 10.134.082
+            count: 1
+          - label: 10.129.751
+            count: 1
+          - label: 10.133.952
+            count: 1
+          - label: 10.079.366
+            count: 1
+          - label: 2333526,48
+            count: 1
+          - label: 2770181,93
+            count: 1
+          - label: 2919537,88
+            count: 1
+          - label: 3083259,25
+            count: 1
+          - label: "3229681"
+            count: 1
+          - label: "3438200"
+            count: 1
+          - label: 3556293,88
+            count: 1
+          - label: 3.696.320
+            count: 1
+          - label: 3.886.337
+            count: 1
+          - label: 4.135.541
+            count: 1
+          - label: 4.178.966
+            count: 1
+          - label: 4.235.770
+            count: 1
+          - label: 4.316.786
+            count: 1
+          - label: 4.398.030
+            count: 1
+          - label: 4.573.444
+            count: 1
+          - label: 4.655.993
+            count: 1
+          - label: 4.730.557
+            count: 1
+          - label: 4.740.350
+            count: 1
+          - label: 4.892.187
+            count: 1
+        complete: true
+      Ban Quản lý rừng đặc dụng:
         kind: categorical
         distinct: 38
         segments:
-          - label: "1299922,43"
+          - label: 1299922,43
             count: 1
-          - label: "3900012,3"
+          - label: 3900012,3
             count: 1
-          - label: "3818717,9"
+          - label: 3818717,9
             count: 1
-          - label: "3954910,76"
+          - label: 3954910,76
             count: 1
           - label: "3972371"
             count: 1
           - label: "4028354"
             count: 1
-          - label: "4190987,66"
+          - label: 4190987,66
             count: 1
-          - label: "4.252.858"
+          - label: 4.252.858
             count: 1
-          - label: "2.026.872"
+          - label: 2.026.872
             count: 1
-          - label: "1.958.727"
+          - label: 1.958.727
             count: 1
-          - label: "1.963.159"
+          - label: 1.963.159
             count: 1
-          - label: "1.971.204"
+          - label: 1.971.204
             count: 1
-      "Ban Quản lý rừng phòng hộ":
+          - label: 2.065.445
+            count: 1
+          - label: 2.086.842
+            count: 1
+          - label: 2.064.488
+            count: 1
+          - label: 2.064.145
+            count: 1
+          - label: 2.073.897
+            count: 1
+          - label: 2.076.669
+            count: 1
+          - label: 2.097.915
+            count: 1
+          - label: 253362,97
+            count: 1
+          - label: 498698,9
+            count: 1
+          - label: 499774,06
+            count: 1
+          - label: 532901,94
+            count: 1
+          - label: "549813"
+            count: 1
+          - label: "578010"
+            count: 1
+          - label: 553133,37
+            count: 1
+          - label: "544980"
+            count: 1
+          - label: "79.179"
+            count: 1
+          - label: "84.293"
+            count: 1
+          - label: "84.344"
+            count: 1
+          - label: "85.3"
+            count: 1
+          - label: "87.015"
+            count: 1
+          - label: "96.967"
+            count: 1
+          - label: "110.594"
+            count: 1
+          - label: "100.944"
+            count: 1
+          - label: "98.585"
+            count: 1
+          - label: "98.487"
+            count: 1
+          - label: "100.031"
+            count: 1
+        complete: true
+      Ban Quản lý rừng phòng hộ:
         kind: categorical
         distinct: 22
         segments:
-          - label: "3.839.979"
+          - label: 3.839.979
             count: 1
-          - label: "2.491.299"
+          - label: 2.491.299
             count: 1
-          - label: "2.496.177"
+          - label: 2.496.177
             count: 1
-          - label: "2.499.605"
+          - label: 2.499.605
             count: 1
-          - label: "2.529.446"
+          - label: 2.529.446
             count: 1
-          - label: "2.515.571"
+          - label: 2.515.571
             count: 1
-          - label: "2.533.254"
+          - label: 2.533.254
             count: 1
-          - label: "2.488.441"
+          - label: 2.488.441
             count: 1
-          - label: "2.566.128"
+          - label: 2.566.128
             count: 1
-          - label: "2.556.975"
+          - label: 2.556.975
             count: 1
-          - label: "2.665.521"
+          - label: 2.665.521
             count: 1
           - label: "622.656"
             count: 1
+          - label: "494.38"
+            count: 1
+          - label: "487.278"
+            count: 1
+          - label: "484.553"
+            count: 1
+          - label: "487.094"
+            count: 1
+          - label: "508.293"
+            count: 1
+          - label: "526.281"
+            count: 1
+          - label: "537.191"
+            count: 1
+          - label: "556.198"
+            count: 1
+          - label: "558.489"
+            count: 1
+          - label: "571.284"
+            count: 1
+        complete: true
       "Doanh nghiệp nhà nước/Tổ chức kinh tế ":
         kind: categorical
         distinct: 38
         segments:
-          - label: "2270711,23"
+          - label: 2270711,23
             count: 1
-          - label: "1634847,83"
+          - label: 1634847,83
             count: 1
-          - label: "1551472,58"
+          - label: 1551472,58
             count: 1
-          - label: "1491390,63"
+          - label: 1491390,63
             count: 1
           - label: "1462049"
             count: 1
           - label: "1429400"
             count: 1
-          - label: "1394853,96"
+          - label: 1394853,96
             count: 1
-          - label: "1.340.395"
+          - label: 1.340.395
             count: 1
-          - label: "3.940.252"
+          - label: 3.940.252
             count: 1
-          - label: "1.145.029"
+          - label: 1.145.029
             count: 1
-          - label: "1.173.228"
+          - label: 1.173.228
             count: 1
-          - label: "1.171.267"
+          - label: 1.171.267
             count: 1
-      "Gia đình":
+          - label: 1.185.459
+            count: 1
+          - label: 1.100.952
+            count: 1
+          - label: 1.127.240
+            count: 1
+          - label: 1.058.953
+            count: 1
+          - label: 1.158.360
+            count: 1
+          - label: 1.156.984
+            count: 1
+          - label: 1.161.585
+            count: 1
+          - label: 607990,05
+            count: 1
+          - label: 470813,99
+            count: 1
+          - label: 492779,08
+            count: 1
+          - label: 526882,06
+            count: 1
+          - label: "509428"
+            count: 1
+          - label: "536071"
+            count: 1
+          - label: 505540,43
+            count: 1
+          - label: "551.946"
+            count: 1
+          - label: 2.727.950
+            count: 1
+          - label: "464.726"
+            count: 1
+          - label: "527.455"
+            count: 1
+          - label: "540.327"
+            count: 1
+          - label: "578.502"
+            count: 1
+          - label: "619.961"
+            count: 1
+          - label: "561.563"
+            count: 1
+          - label: "605.714"
+            count: 1
+          - label: "626.465"
+            count: 1
+          - label: "619.871"
+            count: 1
+          - label: "646.973"
+            count: 1
+        complete: true
+      Gia đình:
         kind: categorical
         distinct: 36
         segments:
-          - label: "1910198,21"
+          - label: 1910198,21
             count: 1
-          - label: "112488,52"
+          - label: 112488,52
             count: 1
-          - label: "1961516,66"
+          - label: 1961516,66
             count: 1
-          - label: "2012652,75"
+          - label: 2012652,75
             count: 1
           - label: "1991334"
             count: 1
           - label: "1809976"
             count: 1
-          - label: "1709289,52"
+          - label: 1709289,52
             count: 1
-          - label: "1.496.980"
+          - label: 1.496.980
             count: 1
-          - label: "1.329.058"
+          - label: 1.329.058
             count: 1
-          - label: "1.409.911"
+          - label: 1.409.911
             count: 1
-          - label: "1.410.324"
+          - label: 1.410.324
             count: 1
-          - label: "1.445.569"
+          - label: 1.445.569
             count: 1
-      "Tập thể":
+          - label: 1.318.510
+            count: 1
+          - label: 1.320.187
+            count: 1
+          - label: 1.298.998
+            count: 1
+          - label: 1.294.487
+            count: 1
+          - label: 1.314.215
+            count: 1
+          - label: 1.273.282
+            count: 1
+          - label: 944684,83
+            count: 1
+          - label: 28158,99
+            count: 1
+          - label: 1325553,31
+            count: 1
+          - label: 1418901,78
+            count: 1
+          - label: "1519002"
+            count: 1
+          - label: "1578972"
+            count: 1
+          - label: 1705070,04
+            count: 1
+          - label: 1.784.113
+            count: 1
+          - label: 1.601.001
+            count: 1
+          - label: 1.532.199
+            count: 1
+          - label: 1.544.810
+            count: 1
+          - label: 1.594.028
+            count: 1
+          - label: 1.874.659
+            count: 1
+          - label: 1.781.671
+            count: 1
+          - label: 1.884.069
+            count: 1
+          - label: 1.821.099
+            count: 1
+          - label: 1.879.020
+            count: 1
+          - label: 2.024.565
+            count: 1
+        complete: true
+      Tập thể:
         kind: categorical
         distinct: 36
         segments:
-          - label: "501038,04"
+          - label: 501038,04
             count: 1
-          - label: "414943,68"
+          - label: 414943,68
             count: 1
-          - label: "171394,78"
+          - label: 171394,78
             count: 1
-          - label: "227505,75"
+          - label: 227505,75
             count: 1
           - label: "266021"
             count: 1
           - label: "553797"
             count: 1
-          - label: "502130,92"
+          - label: 502130,92
             count: 1
           - label: "441.421"
             count: 1
-          - label: "1.069.003"
+          - label: 1.069.003
             count: 1
-          - label: "1.048.765"
+          - label: 1.048.765
             count: 1
-          - label: "1.051.224"
+          - label: 1.051.224
             count: 1
-          - label: "1.107.070"
+          - label: 1.107.070
             count: 1
-      "Đơn vị vũ trang":
+          - label: 1.095.320
+            count: 1
+          - label: "920.341"
+            count: 1
+          - label: "894.999"
+            count: 1
+          - label: "956.169"
+            count: 1
+          - label: "976.477"
+            count: 1
+          - label: "990.599"
+            count: 1
+          - label: 58432,33
+            count: 1
+          - label: 44865,39
+            count: 1
+          - label: 19988,54
+            count: 1
+          - label: 30759,03
+            count: 1
+          - label: "32963"
+            count: 1
+          - label: "34456"
+            count: 1
+          - label: 22345,74
+            count: 1
+          - label: "16.803"
+            count: 1
+          - label: "59.093"
+            count: 1
+          - label: "96.836"
+            count: 1
+          - label: "105.49"
+            count: 1
+          - label: "109.911"
+            count: 1
+          - label: "71150"
+            count: 1
+          - label: "69.486"
+            count: 1
+          - label: "102.697"
+            count: 1
+          - label: "138.308"
+            count: 1
+          - label: "75.755"
+            count: 1
+          - label: "78.597"
+            count: 1
+        complete: true
+      Đơn vị vũ trang:
         kind: categorical
         distinct: 36
         segments:
-          - label: "213084,84"
+          - label: 213084,84
             count: 1
-          - label: "196458,29"
+          - label: 196458,29
             count: 1
-          - label: "196027,23"
+          - label: 196027,23
             count: 1
-          - label: "195220,01"
+          - label: 195220,01
             count: 1
           - label: "203866"
             count: 1
           - label: "207831"
             count: 1
-          - label: "208968,45"
+          - label: 208968,45
             count: 1
           - label: "116420"
             count: 1
@@ -251,21 +530,70 @@ files:
             count: 1
           - label: "154.407"
             count: 1
-      "Liên doanh hoặc tổ chức khác":
+          - label: "124.391"
+            count: 1
+          - label: "123.126"
+            count: 1
+          - label: "108.022"
+            count: 1
+          - label: "120.979"
+            count: 1
+          - label: "121.178"
+            count: 1
+          - label: "127.207"
+            count: 1
+          - label: 49407,69
+            count: 1
+          - label: 44089,63
+            count: 1
+          - label: 47661,37
+            count: 1
+          - label: 51854,73
+            count: 1
+          - label: "61019"
+            count: 1
+          - label: "63769"
+            count: 1
+          - label: 55957,17
+            count: 1
+          - label: "70230"
+            count: 1
+          - label: "61.687"
+            count: 1
+          - label: "128500"
+            count: 1
+          - label: "131.193"
+            count: 1
+          - label: "57.401"
+            count: 1
+          - label: "63.901"
+            count: 1
+          - label: "61310"
+            count: 1
+          - label: "64.746"
+            count: 1
+          - label: "67.389"
+            count: 1
+          - label: "68130"
+            count: 1
+          - label: "70.004"
+            count: 1
+        complete: true
+      Liên doanh hoặc tổ chức khác:
         kind: categorical
         distinct: 21
         segments:
-          - label: "9274,33"
+          - label: 9274,33
             count: 1
-          - label: "1902770,93"
+          - label: 1902770,93
             count: 1
-          - label: "575378,47"
+          - label: 575378,47
             count: 1
           - label: "606798"
             count: 1
           - label: "554505"
             count: 1
-          - label: "467392,36"
+          - label: 467392,36
             count: 1
           - label: "457.902"
             count: 1
@@ -275,41 +603,112 @@ files:
             count: 1
           - label: "85.602"
             count: 1
-          - label: "57355,88"
+          - label: 57355,88
             count: 1
-          - label: "1247678,63"
+          - label: 1247678,63
             count: 1
-      "UBND":
+          - label: 84556,12
+            count: 1
+          - label: 97723,21
+            count: 1
+          - label: "94178"
+            count: 1
+          - label: "117941"
+            count: 1
+          - label: 140016,1
+            count: 1
+          - label: "92.132"
+            count: 1
+          - label: "46.666"
+            count: 1
+          - label: "46800"
+            count: 1
+          - label: "63.191"
+            count: 1
+        complete: true
+      UBND:
         kind: categorical
         distinct: 36
         segments:
-          - label: "2535790,55"
+          - label: 2535790,55
             count: 1
-          - label: "2162618,82"
+          - label: 2162618,82
             count: 1
-          - label: "2037578,06"
+          - label: 2037578,06
             count: 1
-          - label: "1767636,37"
+          - label: 1767636,37
             count: 1
           - label: "1746384"
             count: 1
           - label: "1790356"
             count: 1
-          - label: "1876181,8"
+          - label: 1876181,8
             count: 1
-          - label: "1.885.204"
+          - label: 1.885.204
             count: 1
-          - label: "1.957.008"
+          - label: 1.957.008
             count: 1
-          - label: "1.932.916"
+          - label: 1.932.916
             count: 1
-          - label: "1.910.742"
+          - label: 1.910.742
             count: 1
-          - label: "1.703.163"
+          - label: 1.703.163
             count: 1
-      "Ghi chú":
+          - label: 1.923.644
+            count: 1
+          - label: 2.000.529
+            count: 1
+          - label: "139.948"
+            count: 1
+          - label: 1.903.561
+            count: 1
+          - label: 1.879.898
+            count: 1
+          - label: 1.725.133
+            count: 1
+          - label: 280400,71
+            count: 1
+          - label: 374822,52
+            count: 1
+          - label: 384907,06
+            count: 1
+          - label: 340522,39
+            count: 1
+          - label: "356641"
+            count: 1
+          - label: "401033"
+            count: 1
+          - label: 416444,55
+            count: 1
+          - label: "487.219"
+            count: 1
+          - label: 1.161.944
+            count: 1
+          - label: 1.177.865
+            count: 1
+          - label: 1.184.151
+            count: 1
+          - label: 1.290.528
+            count: 1
+          - label: 1.016.840
+            count: 1
+          - label: 1.337.241
+            count: 1
+          - label: 1.282.243
+            count: 1
+          - label: 1.351.587
+            count: 1
+          - label: 1.373.515
+            count: 1
+          - label: 1.347.501
+            count: 1
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Năm 2005-2013 không chia chủ thể Ban Quản lý rừng đặc dụng và phòng hộ riêng biệt, mà tính chung là Ban Quản lý rừng"
+          - label: Năm 2005-2013 không chia chủ thể Ban Quản lý rừng đặc dụng và phòng hộ riêng biệt, mà tính chung là Ban Quản lý rừng
             count: 1
+        complete: true
+coverage:
+  temporal: [ 2005, 2025 ]
