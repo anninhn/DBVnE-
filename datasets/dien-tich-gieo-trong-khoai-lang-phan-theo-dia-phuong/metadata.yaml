@@ -27,47 +27,169 @@ files:
     r2_key: "c500bf80-46c0-4650-aa21-5a7e2e42a2dd/dien-tich-gieo-trong-khoai-lang-phan-theo-dia-phuong.csv"
     size_mb: 0.06
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [284, 284, 213, 284, 284, 213, 284, 284]
-      "Diện tích gieo trồng khoai lang":
+        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+      Diện tích gieo trồng khoai lang:
         kind: numeric
         min: 0
         max: 117933
-        histogram: [2038, 28, 0, 0, 0, 3, 1, 3]
-      "Tỉnh, thành phố":
+        histogram: [ 2038, 28, 0, 0, 0, 3, 1, 3 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 71
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 30
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 30
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 30
-          - label: "Hà Tây"
+          - label: Hà Tây
             count: 30
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 30
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 30
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 30
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 30
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 30
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 30
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 30
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 30
-      "Ghi chú":
+          - label: Nam Định
+            count: 30
+          - label: Ninh Bình
+            count: 30
+          - label: Trung du và miền núi phía Bắc
+            count: 30
+          - label: Hà Giang
+            count: 30
+          - label: Cao Bằng
+            count: 30
+          - label: Bắc Kạn
+            count: 30
+          - label: Tuyên Quang
+            count: 30
+          - label: Lào Cai
+            count: 30
+          - label: Yên Bái
+            count: 30
+          - label: Thái Nguyên
+            count: 30
+          - label: Lạng Sơn
+            count: 30
+          - label: Bắc Giang
+            count: 30
+          - label: Phú Thọ
+            count: 30
+          - label: Điện Biên
+            count: 30
+          - label: Lai Châu
+            count: 30
+          - label: Sơn La
+            count: 30
+          - label: Hoà Bình
+            count: 30
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 30
+          - label: Thanh Hoá
+            count: 30
+          - label: Nghệ An
+            count: 30
+          - label: Hà Tĩnh
+            count: 30
+          - label: Quảng Bình
+            count: 30
+          - label: Quảng Trị
+            count: 30
+          - label: Thừa Thiên Huế
+            count: 30
+          - label: Đà Nẵng
+            count: 30
+          - label: Quảng Nam
+            count: 30
+          - label: Quảng Ngãi
+            count: 30
+          - label: Bình Định
+            count: 30
+          - label: Phú Yên
+            count: 30
+          - label: Khánh Hoà
+            count: 30
+          - label: Ninh Thuận
+            count: 30
+          - label: Bình Thuận
+            count: 30
+          - label: Tây Nguyên
+            count: 30
+          - label: Kon Tum
+            count: 30
+          - label: Gia Lai
+            count: 30
+          - label: Đắk Lắk
+            count: 30
+          - label: Đắk Nông
+            count: 30
+          - label: Lâm Đồng
+            count: 30
+          - label: Đông Nam Bộ
+            count: 30
+          - label: Bình Phước
+            count: 30
+          - label: Tây Ninh
+            count: 30
+          - label: Bình Dương
+            count: 30
+          - label: Đồng Nai
+            count: 30
+          - label: Bà Rịa - Vũng Tàu
+            count: 30
+          - label: TP.Hồ Chí Minh
+            count: 30
+          - label: Đồng bằng sông Cửu Long
+            count: 30
+          - label: Long An
+            count: 30
+          - label: Tiền Giang
+            count: 30
+          - label: Bến Tre
+            count: 30
+          - label: Trà Vinh
+            count: 30
+          - label: Vĩnh Long
+            count: 30
+          - label: Đồng Tháp
+            count: 30
+          - label: An Giang
+            count: 30
+          - label: Kiên Giang
+            count: 30
+          - label: Cần Thơ
+            count: 30
+          - label: Hậu Giang
+            count: 30
+          - label: Sóc Trăng
+            count: 30
+          - label: Bạc Liêu
+            count: 30
+          - label: Cà Mau
+            count: 30
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 71
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
