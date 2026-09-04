@@ -29,47 +29,52 @@ files:
     r2_key: "c444d77b-39ce-449f-ad94-3a9bc46fcfca/so-truong-hoc-lop-hoc-giao-vien-va-hoc-sinh-mau-giao-tai-t-3.csv"
     size_mb: 0
     column_stats:
-      "Tổng số":
+      Tổng số:
         kind: numeric
         min: 10.59
         max: 12111
-        histogram: [27, 0, 6, 0, 0, 0, 0, 3]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 27, 0, 6, 0, 0, 0, 0, 3 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 90.69
         max: 133.2
-        histogram: [2, 12, 5, 2, 0, 1, 1, 1]
-      "Chỉ số phát triển":
+        histogram: [ 2, 12, 5, 2, 0, 1, 1, 1 ]
+      Chỉ số phát triển:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Trường học"
+          - label: Trường học
             count: 6
-          - label: "Lớp học"
+          - label: Lớp học
             count: 6
-          - label: "Giáo viên"
+          - label: Giáo viên
             count: 6
-          - label: "Học sinh"
+          - label: Học sinh
             count: 6
-          - label: "Số học sinh bình quân một lớp học"
+          - label: Số học sinh bình quân một lớp học
             count: 6
-          - label: "Số học sinh bình quân một giáo viên"
+          - label: Số học sinh bình quân một giáo viên
             count: 6
-      "Năm học":
+        complete: true
+      Năm học:
         kind: categorical
         distinct: 3
         segments:
-          - label: "2021-2022"
+          - label: 2021-2022
             count: 12
-          - label: "2022-2023"
+          - label: 2022-2023
             count: 12
-          - label: "2023-2024"
+          - label: 2023-2024
             count: 12
-      "Phân tổ, Loại hình":
+        complete: true
+      Phân tổ, Loại hình:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Công lập"
+          - label: Công lập
             count: 18
-          - label: "Ngoài công lập"
+          - label: Ngoài công lập
             count: 18
+        complete: true
+coverage:
+  temporal: [ 2021, 2024 ]
