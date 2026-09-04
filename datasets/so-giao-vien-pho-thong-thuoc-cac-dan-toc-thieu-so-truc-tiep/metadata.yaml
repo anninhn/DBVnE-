@@ -26,56 +26,131 @@ files:
     r2_key: "131b4f53-fc13-4c90-94a1-4ac1cdd7039c/so-giao-vien-pho-thong-thuoc-cac-dan-toc-thieu-so-truc-tiep.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2004
         max: 2012
-        histogram: [48, 48, 48, 48, 48, 48, 48, 48]
-      "Tổng số":
+        histogram: [ 48, 48, 48, 48, 48, 48, 48, 48 ]
+      Tổng số:
         kind: numeric
         min: 105
         max: 79713
-        histogram: [305, 0, 0, 0, 0, 0, 6, 2]
-      "Tiểu học":
+        histogram: [ 305, 0, 0, 0, 0, 0, 6, 2 ]
+      Tiểu học:
         kind: numeric
         min: 45
         max: 47096
-        histogram: [304, 0, 0, 0, 0, 0, 6, 2]
-      "Trung học cơ sở":
+        histogram: [ 304, 0, 0, 0, 0, 0, 6, 2 ]
+      Trung học cơ sở:
         kind: numeric
         min: 2
         max: 22852
-        histogram: [258, 7, 0, 0, 0, 0, 3, 4]
-      "Trung học phổ thông":
+        histogram: [ 258, 7, 0, 0, 0, 0, 3, 4 ]
+      Trung học phổ thông:
         kind: numeric
         min: 3
         max: 7470
-        histogram: [265, 0, 0, 0, 2, 2, 1, 2]
-      "Địa phương":
+        histogram: [ 265, 0, 0, 0, 2, 2, 1, 2 ]
+      Địa phương:
         kind: categorical
         distinct: 48
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 8
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 8
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 8
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 8
-          - label: "Ninh Bình"
+          - label: Ninh Bình
             count: 8
-          - label: "Hà Giang"
+          - label: Hà Giang
             count: 8
-          - label: "Cao Bằng"
+          - label: Cao Bằng
             count: 8
-          - label: "Bắc Kạn"
+          - label: Bắc Kạn
             count: 8
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 8
-          - label: "Lào Cai"
+          - label: Lào Cai
             count: 8
-          - label: "Yên Bái"
+          - label: Yên Bái
             count: 8
-          - label: "Thái Nguyên"
+          - label: Thái Nguyên
             count: 8
+          - label: Lạng Sơn
+            count: 8
+          - label: Bắc Giang
+            count: 8
+          - label: Phú Thọ
+            count: 8
+          - label: Điện Biên
+            count: 8
+          - label: Lai Châu
+            count: 8
+          - label: Sơn La
+            count: 8
+          - label: Hòa Bình
+            count: 8
+          - label: Thanh Hóa
+            count: 8
+          - label: Nghệ An
+            count: 8
+          - label: Quảng Trị
+            count: 8
+          - label: Thừa Thiên - Huế
+            count: 8
+          - label: Quảng Nam
+            count: 8
+          - label: Quảng Ngãi
+            count: 8
+          - label: Bình Định
+            count: 8
+          - label: Phú Yên
+            count: 8
+          - label: Khánh Hòa
+            count: 8
+          - label: Ninh Thuận
+            count: 8
+          - label: Bình Thuận
+            count: 8
+          - label: Kon Tum
+            count: 8
+          - label: Gia Lai
+            count: 8
+          - label: Đắk Lắk
+            count: 8
+          - label: Đắk Nông
+            count: 8
+          - label: Lâm Đồng
+            count: 8
+          - label: Bình Phước
+            count: 8
+          - label: Đồng Nai
+            count: 8
+          - label: Bà Rịa - Vũng Tàu
+            count: 8
+          - label: TP. Hồ Chí Minh
+            count: 8
+          - label: Trà Vinh
+            count: 8
+          - label: Vĩnh Long
+            count: 8
+          - label: An Giang
+            count: 8
+          - label: Kiên Giang
+            count: 8
+          - label: Cần Thơ
+            count: 8
+          - label: Sóc Trăng
+            count: 8
+          - label: Bạc Liêu
+            count: 8
+          - label: Cà Mau
+            count: 8
+          - label: Các địa phương khác
+            count: 8
+        complete: true
+coverage:
+  temporal: [ 2004, 2012 ]
