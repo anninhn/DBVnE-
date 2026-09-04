@@ -26,36 +26,40 @@ files:
     r2_key: "9f5d2322-5733-4fac-af29-41f5979b6646/tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-th-2.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [20, 16, 16, 16, 20, 16, 16, 20]
-      "Giá trị (Tỷ đồng )":
+        histogram: [ 20, 16, 16, 16, 20, 16, 16, 20 ]
+      Giá trị (Tỷ đồng ):
         kind: numeric
         min: 2283.8
         max: 6447397.36
-        histogram: [103, 5, 7, 5, 6, 4, 4, 2]
-      "Cơ cấu (%)":
+        histogram: [ 103, 5, 7, 5, 6, 4, 4, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 5.5
         max: 100
-        histogram: [66, 0, 0, 0, 0, 10, 25, 35]
-      "Ngành kinh doanh":
+        histogram: [ 66, 0, 0, 0, 0, 10, 25, 35 ]
+      Ngành kinh doanh:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 35
-          - label: "Bán lẻ"
+          - label: Bán lẻ
             count: 35
-          - label: "Dịch vụ lưu trú, ăn uống"
+          - label: Dịch vụ lưu trú, ăn uống
             count: 35
-          - label: "Dịch vụ và du lịch"
+          - label: Dịch vụ và du lịch
             count: 35
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 1990, 2024 ]
