@@ -1,5 +1,36 @@
 [
   {
+    "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-n",
+    "title": "Tỷ lệ người sử dụng điện thoại di động phân theo khu vực, giới tính, nhóm tuổi và vùng kinh tế",
+    "description": "Dataset thống kê tỷ lệ phần trăm người dân sử dụng điện thoại di động tại Việt Nam, được phân loại chi tiết theo khu vực thành thị/nông thôn, giới tính, các nhóm tuổi và 6 vùng kinh tế - xã hội.",
+    "category": "xa-hoi",
+    "tags": [
+      "dien-thoai-di-dong",
+      "ty-le",
+      "dan-so",
+      "xa-hoi",
+      "vung-mien",
+      "gioi-tinh",
+      "tuoi"
+    ],
+    "uploaded_at": "2026-09-04T08:02:50.246Z",
+    "uploaded_by": "ninh",
+    "row_count": 24,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6724908b-2777-42bb-97be-0d49899790b8/ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-n.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-2",
     "title": "Tỷ lệ người sử dụng điện thoại di động phân theo các nhóm nhân khẩu học, địa lý và loại thiết bị",
     "description": "Dataset này cung cấp tỷ lệ phần trăm người dân Việt Nam sử dụng điện thoại di động, được phân loại theo nhiều tiêu chí khác nhau như giới tính, nhóm tuổi, khu vực địa lý (thành thị, nông thôn, các vùng kinh tế) và loại điện thoại sử dụng (thường, thông minh).",
