@@ -1,5 +1,38 @@
 [
   {
+    "slug": "co-cau-dat-su-dung-phan-theo-dia-phuong",
+    "title": "Cơ cấu đất sử dụng phân theo địa phương và vùng kinh tế",
+    "description": "Dataset này cung cấp thông tin về cơ cấu sử dụng đất theo các loại hình (nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) tính bằng phần trăm tổng diện tích, phân theo từng tỉnh/thành phố, các vùng kinh tế và toàn quốc, từ năm 2018 đến 2023.",
+    "category": "moi-truong",
+    "tags": [
+      "dat-dai",
+      "su-dung-dat",
+      "nong-nghiep",
+      "lam-nghiep",
+      "dia-phuong",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-09-04T07:58:03.486Z",
+    "uploaded_by": "ninh",
+    "row_count": 355,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2018,
+      2023
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "6dc3ba68-fcda-4dfb-97dd-736d7c22b837/co-cau-dat-su-dung-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh",
     "title": "Chỉ số biến động diện tích đất tự nhiên theo loại đất và địa phương, giai đoạn 2019-2023",
     "description": "Dataset này cung cấp chỉ số biến động diện tích đất tự nhiên (đất sản xuất nông nghiệp, đất lâm nghiệp, đất chuyên dùng, đất ở) theo từng địa phương (tỉnh/thành phố, vùng kinh tế - xã hội) và toàn quốc, với các kỳ so sánh từ 2020/2019 đến 2023/2022.",
