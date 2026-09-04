@@ -27,36 +27,40 @@ files:
     r2_key: "f1aee056-a2b6-4c76-9f7b-3cca402b416a/khoi-luong-hang-hoa-luan-chuyen-phan-theo-thanh-phan-kinh-te.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [16, 16, 12, 16, 16, 12, 16, 16]
-      "Khối lượng (Triệu tấn.km)":
+        histogram: [ 16, 16, 12, 16, 16, 12, 16, 16 ]
+      Khối lượng (Triệu tấn.km):
         kind: numeric
         min: 1704.3
         max: 297238.74
-        histogram: [42, 22, 10, 12, 12, 6, 5, 5]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 42, 22, 10, 12, 12, 6, 5, 5 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 60.1
         max: 464.5
-        histogram: [64, 45, 0, 0, 0, 0, 0, 1]
-      "Thành phần kinh tế":
+        histogram: [ 64, 45, 0, 0, 0, 0, 0, 1 ]
+      Thành phần kinh tế:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 30
-          - label: "Kinh tế Nhà nước"
+          - label: Kinh tế Nhà nước
             count: 30
-          - label: "Kinh tế ngoài Nhà nước"
+          - label: Kinh tế ngoài Nhà nước
             count: 30
-          - label: "Khu vực có vốn đầu tư nước ngoài"
+          - label: Khu vực có vốn đầu tư nước ngoài
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
