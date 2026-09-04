@@ -27,55 +27,59 @@ files:
     r2_key: "bbfc56e7-9a38-4e16-99ad-04af6c5b1014/xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-cong-nghiep.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2017
-        histogram: [35, 0, 0, 0, 35, 0, 0, 35]
-      "Tổng số khu công nghiệp (Khu)":
+        histogram: [ 35, 0, 0, 0, 35, 0, 0, 35 ]
+      Tổng số khu công nghiệp (Khu):
         kind: numeric
         min: 1
         max: 384
-        histogram: [45, 10, 2, 0, 0, 0, 3, 3]
-      "Số khu công nghiệp xử lý đạt tiêu chuẩn quy định (Khu)":
+        histogram: [ 45, 10, 2, 0, 0, 0, 3, 3 ]
+      Số khu công nghiệp xử lý đạt tiêu chuẩn quy định (Khu):
         kind: numeric
         min: 1
         max: 245
-        histogram: [34, 7, 3, 0, 0, 0, 0, 6]
-      "Tỷ lệ khu công nghiệp xử lý đạt tiêu chuẩn quy định (%)":
+        histogram: [ 34, 7, 3, 0, 0, 0, 0, 6 ]
+      Tỷ lệ khu công nghiệp xử lý đạt tiêu chuẩn quy định (%):
         kind: numeric
         min: 0
         max: 100
-        histogram: [3, 5, 6, 1, 11, 12, 5, 9]
-      "Vùng":
+        histogram: [ 3, 5, 6, 1, 11, 12, 5, 9 ]
+      Vùng:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Cả nước"
+          - label: Cả nước
             count: 15
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 15
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 15
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 15
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 15
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 15
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 15
-      "Loại khu công nghiệp":
+        complete: true
+      Loại khu công nghiệp:
         kind: categorical
         distinct: 5
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 21
-          - label: "Khu công nghiệp"
+          - label: Khu công nghiệp
             count: 21
-          - label: "Khu chế xuất"
+          - label: Khu chế xuất
             count: 21
-          - label: "Khu kinh tế"
+          - label: Khu kinh tế
             count: 21
-          - label: "Khu công nghệ cao"
+          - label: Khu công nghệ cao
             count: 21
+        complete: true
+coverage:
+  temporal: [ 2015, 2017 ]
