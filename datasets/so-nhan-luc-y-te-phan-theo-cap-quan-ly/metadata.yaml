@@ -27,48 +27,52 @@ files:
     r2_key: "f4460ae7-8f2f-46b5-bf6f-b8e87b38f40a/so-nhan-luc-y-te-phan-theo-cap-quan-ly.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2014
-        histogram: [56, 28, 28, 28, 28, 0, 28, 14]
-      "Tổng số - Người":
+        histogram: [ 56, 28, 28, 28, 28, 0, 28, 14 ]
+      Tổng số - Người:
         kind: numeric
         min: 26
         max: 102011
-        histogram: [142, 17, 6, 18, 18, 5, 2, 2]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 142, 17, 6, 18, 18, 5, 2, 2 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 1.5
         max: 2808.9
-        histogram: [209, 0, 0, 0, 0, 0, 0, 1]
-      "Cán bộ":
+        histogram: [ 209, 0, 0, 0, 0, 0, 0, 1 ]
+      Cán bộ:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Cán bộ ngành y - Bác sĩ"
+          - label: Cán bộ ngành y - Bác sĩ
             count: 30
-          - label: "Cán bộ ngành y - Y sĩ"
+          - label: Cán bộ ngành y - Y sĩ
             count: 30
-          - label: "Cán bộ ngành y - Y tá"
+          - label: Cán bộ ngành y - Y tá
             count: 30
-          - label: "Cán bộ ngành y - Hộ sinh"
+          - label: Cán bộ ngành y - Hộ sinh
             count: 30
-          - label: "Cán bộ ngành dược(**) - Dược sĩ cao cấp"
+          - label: Cán bộ ngành dược(**) - Dược sĩ cao cấp
             count: 30
-          - label: "Cán bộ ngành dược(**) - Dược sĩ trung cấp"
+          - label: Cán bộ ngành dược(**) - Dược sĩ trung cấp
             count: 30
-          - label: "Cán bộ ngành dược(**) - Dược tá"
+          - label: Cán bộ ngành dược(**) - Dược tá
             count: 30
-      "Cấp quản lý":
+        complete: true
+      Cấp quản lý:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 56
-          - label: "Bộ Y tế quản lý"
+          - label: Bộ Y tế quản lý
             count: 56
-          - label: "Sở Y tế quản lý"
+          - label: Sở Y tế quản lý
             count: 49
-          - label: "Các ngành khác quản lý"
+          - label: Các ngành khác quản lý
             count: 49
+        complete: true
+coverage:
+  temporal: [ 2005, 2014 ]
