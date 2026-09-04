@@ -26,49 +26,71 @@ files:
     r2_key: "c89d7a0e-2dec-4b30-b5aa-98ac9efc1e45/nang-suat-lao-dong-xa-hoi-phan-theo-nganh-kinh-te.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [42, 42, 63, 42, 42, 63, 42, 63]
-      "Năng suất lao động xã hội":
+        histogram: [ 42, 42, 63, 42, 42, 63, 42, 63 ]
+      Năng suất lao động xã hội:
         kind: numeric
         min: 7.5
         max: 3232.2
-        histogram: [300, 46, 31, 14, 3, 1, 1, 3]
-      "Ngành":
+        histogram: [ 300, 46, 31, 14, 3, 1, 1, 3 ]
+      Ngành:
         kind: categorical
         distinct: 21
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 19
-          - label: "Nông nghiệp, lâm nghiệp và thủy sản"
+          - label: Nông nghiệp, lâm nghiệp và thủy sản
             count: 19
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 19
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 19
-          - label: "Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí"
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
             count: 19
-          - label: "Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
             count: 19
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 19
-          - label: "Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn và bán lẻ; sửa chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 19
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 19
-          - label: "Dịch vụ lưu trú và ăn uống"
+          - label: Dịch vụ lưu trú và ăn uống
             count: 19
-          - label: "Thông tin và truyền thông"
+          - label: Thông tin và truyền thông
             count: 19
-          - label: "Hoạt động tài chính, ngân hàng và bảo hiểm"
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
             count: 19
-      "Ghi chú":
+          - label: Hoạt động kinh doanh bất động sản
+            count: 19
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 19
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 19
+          - label: Hoạt động của Đảng Cộng sản, tổ chức chính trị - xã hội; quản lý Nhà nước, an ninh quốc phòng; đảm bảo xã hội bắt buộc
+            count: 19
+          - label: Giáo dục và đào tạo
+            count: 19
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 19
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 19
+          - label: Hoạt động dịch vụ khác
+            count: 19
+          - label: Hoạt động làm thuê các công việc trong các hộ gia đình, sản xuất sản phẩm, vật chất và dịch vụ tiêu dùng của hộ gia đình
+            count: 19
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 2
         segments:
-          - label: "(**)"
+          - label: (**)
             count: 21
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 21
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
