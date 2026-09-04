@@ -27,61 +27,182 @@ files:
     r2_key: "2b6c1c35-e2aa-4737-864f-ab4754941d0e/so-nguoi-nhiem-hiv-aids-va-so-nguoi-chet-do-hiv-aids-phan-th.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2011
         max: 2014
-        histogram: [71, 0, 71, 0, 0, 71, 0, 71]
-      "Số người nhiễm HIV - Phát hiện mới":
+        histogram: [ 71, 0, 71, 0, 0, 71, 0, 71 ]
+      Số người nhiễm HIV - Phát hiện mới:
         kind: numeric
         min: 6
         max: 14127
-        histogram: [257, 17, 2, 0, 0, 0, 1, 3]
-      "Số bệnh nhân AIDS - Phát hiện mới":
+        histogram: [ 257, 17, 2, 0, 0, 0, 1, 3 ]
+      Số bệnh nhân AIDS - Phát hiện mới:
         kind: numeric
         min: 2
         max: 6734
-        histogram: [256, 17, 4, 0, 0, 0, 0, 4]
-      "Số người nhiễm HIV còn sống - Lũy kế tính đến 31/12":
+        histogram: [ 256, 17, 4, 0, 0, 0, 0, 4 ]
+      Số người nhiễm HIV còn sống - Lũy kế tính đến 31/12:
         kind: numeric
         min: 169
         max: 226964
-        histogram: [256, 16, 4, 0, 0, 0, 1, 3]
-      "Số bệnh nhân AIDS còn sống - Lũy kế tính đến 31/12":
+        histogram: [ 256, 16, 4, 0, 0, 0, 1, 3 ]
+      Số bệnh nhân AIDS còn sống - Lũy kế tính đến 31/12:
         kind: numeric
         min: 19
         max: 71433
-        histogram: [260, 10, 7, 0, 0, 1, 1, 2]
-      "Số người chết do HIV/AIDS trong năm":
+        histogram: [ 260, 10, 7, 0, 0, 1, 1, 2 ]
+      Số người chết do HIV/AIDS trong năm:
         kind: numeric
         min: 0
         max: 2413
-        histogram: [257, 13, 4, 0, 0, 0, 0, 4]
-      "Địa phương":
+        histogram: [ 257, 13, 4, 0, 0, 0, 0, 4 ]
+      Địa phương:
         kind: categorical
         distinct: 71
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 4
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 4
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 4
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 4
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 4
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 4
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 4
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 4
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 4
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 4
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 4
-          - label: "Nam Định"
+          - label: Nam Định
             count: 4
+          - label: Ninh Bình
+            count: 4
+          - label: Trung du và miền núi phía Bắc
+            count: 4
+          - label: Hà Giang
+            count: 4
+          - label: Cao Bằng
+            count: 4
+          - label: Bắc Kạn
+            count: 4
+          - label: Tuyên Quang
+            count: 4
+          - label: Lào Cai
+            count: 4
+          - label: Yên Bái
+            count: 4
+          - label: Thái Nguyên
+            count: 4
+          - label: Lạng Sơn
+            count: 4
+          - label: Bắc Giang
+            count: 4
+          - label: Phú Thọ
+            count: 4
+          - label: Điện Biên
+            count: 4
+          - label: Lai Châu
+            count: 4
+          - label: Sơn La
+            count: 4
+          - label: Hoà Bình
+            count: 4
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 4
+          - label: Thanh Hoá
+            count: 4
+          - label: Nghệ An
+            count: 4
+          - label: Hà Tĩnh
+            count: 4
+          - label: Quảng Bình
+            count: 4
+          - label: Quảng Trị
+            count: 4
+          - label: Thừa Thiên Huế
+            count: 4
+          - label: Đà Nẵng
+            count: 4
+          - label: Quảng Nam
+            count: 4
+          - label: Quảng Ngãi
+            count: 4
+          - label: Bình Định
+            count: 4
+          - label: Phú Yên
+            count: 4
+          - label: Khánh Hoà
+            count: 4
+          - label: Ninh Thuận
+            count: 4
+          - label: Bình Thuận
+            count: 4
+          - label: Tây Nguyên
+            count: 4
+          - label: Kon Tum
+            count: 4
+          - label: Gia Lai
+            count: 4
+          - label: Đắk Lắk
+            count: 4
+          - label: Đắk Nông
+            count: 4
+          - label: Lâm Đồng
+            count: 4
+          - label: Đông Nam Bộ
+            count: 4
+          - label: Bình Phước
+            count: 4
+          - label: Tây Ninh
+            count: 4
+          - label: Bình Dương
+            count: 4
+          - label: Đồng Nai
+            count: 4
+          - label: Bà Rịa - Vũng Tàu
+            count: 4
+          - label: TP.Hồ Chí Minh
+            count: 4
+          - label: Đồng bằng sông Cửu Long
+            count: 4
+          - label: Long An
+            count: 4
+          - label: Tiền Giang
+            count: 4
+          - label: Bến Tre
+            count: 4
+          - label: Trà Vinh
+            count: 4
+          - label: Vĩnh Long
+            count: 4
+          - label: Đồng Tháp
+            count: 4
+          - label: An Giang
+            count: 4
+          - label: Kiên Giang
+            count: 4
+          - label: Cần Thơ
+            count: 4
+          - label: Hậu Giang
+            count: 4
+          - label: Sóc Trăng
+            count: 4
+          - label: Bạc Liêu
+            count: 4
+          - label: Cà Mau
+            count: 4
+          - label: Không xác định
+            count: 4
+        complete: true
+coverage:
+  temporal: [ 2011, 2014 ]
