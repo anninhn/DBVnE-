@@ -26,41 +26,78 @@ files:
     r2_key: "6de5b4f9-8b5e-4219-9cd2-1f653d3c814b/chi-so-gia-san-xuat-cong-nghiep-nam-truoc-100.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [29, 29, 87, 58, 58, 87, 58, 87]
-      "Chỉ số giá sản xuất công nghiệp (Năm trước = 100)":
+        histogram: [ 29, 29, 87, 58, 58, 87, 58, 87 ]
+      Chỉ số giá sản xuất công nghiệp (Năm trước = 100):
         kind: numeric
         min: 55.47
         max: 157.1
-        histogram: [1, 1, 9, 360, 98, 17, 4, 3]
-      "Nhóm hàng":
+        histogram: [ 1, 1, 9, 360, 98, 17, 4, 3 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 29
         segments:
-          - label: "CHỈ SỐ CHUNG"
+          - label: CHỈ SỐ CHUNG
             count: 17
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 17
-          - label: "Than cứng và than non"
+          - label: Than cứng và than non
             count: 17
-          - label: "Dầu thô, khí tự nhiên"
+          - label: Dầu thô, khí tự nhiên
             count: 17
-          - label: "Quặng kim loại"
+          - label: Quặng kim loại
             count: 17
-          - label: "Sản phẩm khai khoáng"
+          - label: Sản phẩm khai khoáng
             count: 17
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 17
-          - label: "Thực phẩm chế biến"
+          - label: Thực phẩm chế biến
             count: 17
-          - label: "Đồ uống"
+          - label: Đồ uống
             count: 17
-          - label: "Sản phẩm đồ hút"
+          - label: Sản phẩm đồ hút
             count: 17
-          - label: "Sản phẩm dệt"
+          - label: Sản phẩm dệt
             count: 17
-          - label: "Trang phục"
+          - label: Trang phục
             count: 17
+          - label: Da và các sản phẩm da có liên quan
+            count: 17
+          - label: Gỗ và sản phẩm từ gỗ, tre
+            count: 17
+          - label: Giấy, sản phẩm từ giấy
+            count: 17
+          - label: Dịch vụ và sao chép bản ghi (*)
+            count: 17
+          - label: Hoá chất
+            count: 17
+          - label: Thuốc, hóa dược và dược liệu
+            count: 17
+          - label: Sản phẩm từ cao su, plastic
+            count: 17
+          - label: Sản phẩm từ khoáng chất phi kim loại khác
+            count: 17
+          - label: Kim loại
+            count: 17
+          - label: Sản phẩm điện tử, máy tính, quang học (**)
+            count: 17
+          - label: Thiết bị điện
+            count: 17
+          - label: Máy móc thiết bị điện khác (***)
+            count: 17
+          - label: Xe có động cơ
+            count: 17
+          - label: Phương tiện vận tải khác
+            count: 17
+          - label: Sản phẩm giường, tủ, bàn, ghế
+            count: 17
+          - label: Điện, khí đốt, nước nóng, hơi nước và điều hòa không khí
+            count: 17
+          - label: Nước tự nhiên khai thác; dịch vụ quản lý và xử lý rác thải, nước thải
+            count: 17
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
