@@ -28,39 +28,43 @@ files:
     r2_key: "dd0fc67a-0cf9-4b9f-bf7e-e14778f301fa/khoi-luong-hang-hoa-thong-qua-cang-bien-cang-thuy-noi-dia-va.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [16, 8, 8, 8, 8, 8, 8, 16]
-      "Khối lượng hàng hóa thông qua cảng biển, cảng thủy nội địa và cảng hàng không":
+        histogram: [ 16, 8, 8, 8, 8, 8, 8, 16 ]
+      Khối lượng hàng hóa thông qua cảng biển, cảng thủy nội địa và cảng hàng không:
         kind: numeric
         min: 965
         max: 1044275
-        histogram: [27, 23, 4, 8, 5, 6, 5, 2]
-      "Loại hàng hóa, cảng":
+        histogram: [ 27, 23, 4, 8, 5, 6, 5, 2 ]
+      Loại hàng hóa, cảng:
         kind: categorical
         distinct: 8
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 10
-          - label: "Hàng xuất khẩu"
+          - label: Hàng xuất khẩu
             count: 10
-          - label: "Hàng nhập khẩu"
+          - label: Hàng nhập khẩu
             count: 10
-          - label: "Hàng nội địa"
+          - label: Hàng nội địa
             count: 10
-          - label: "Hàng quá cảnh"
+          - label: Hàng quá cảnh
             count: 10
-          - label: "Cảng biển"
+          - label: Cảng biển
             count: 10
-          - label: "Cảng thủy nội địa"
+          - label: Cảng thủy nội địa
             count: 10
-          - label: "Cảng hàng không"
+          - label: Cảng hàng không
             count: 10
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 8
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
