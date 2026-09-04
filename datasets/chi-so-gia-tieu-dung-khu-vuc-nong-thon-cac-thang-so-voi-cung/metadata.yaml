@@ -28,46 +28,59 @@ files:
     r2_key: "ee82286b-44e6-46e7-82ce-d534fe1c2803/chi-so-gia-tieu-dung-khu-vuc-nong-thon-cac-thang-so-voi-cung.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2022
         max: 2023
-        histogram: [204, 0, 0, 0, 0, 0, 0, 204]
-      "Tháng":
+        histogram: [ 204, 0, 0, 0, 0, 0, 0, 204 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [68, 34, 68, 34, 34, 68, 34, 68]
-      "Chỉ số giá tiêu dùng khu vực nông thôn các tháng so với cùng kỳ năm trước":
+        histogram: [ 68, 34, 68, 34, 34, 68, 34, 68 ]
+      Chỉ số giá tiêu dùng khu vực nông thôn các tháng so với cùng kỳ năm trước:
         kind: numeric
         min: 86.78
         max: 122.85
-        histogram: [3, 13, 68, 246, 55, 12, 8, 3]
-      "Nhóm hàng":
+        histogram: [ 3, 13, 68, 246, 55, 12, 8, 3 ]
+      Nhóm hàng:
         kind: categorical
         distinct: 17
         segments:
-          - label: "Chỉ số giá tiêu dùng"
+          - label: Chỉ số giá tiêu dùng
             count: 24
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 24
-          - label: "Lương thực"
+          - label: Lương thực
             count: 24
-          - label: "Thực phẩm"
+          - label: Thực phẩm
             count: 24
-          - label: "Ăn uống ngoài gia đình"
+          - label: Ăn uống ngoài gia đình
             count: 24
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 24
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 24
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 24
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 24
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 24
           - label: "Trong đó: Dịch vụ y tế"
             count: 24
-          - label: "Giao thông"
+          - label: Giao thông
             count: 24
+          - label: Bưu chính viễn thông
+            count: 24
+          - label: Giáo dục
+            count: 24
+          - label: "Trong đó: Dịch vụ giáo dục"
+            count: 24
+          - label: Văn hóa, giải trí và du lịch
+            count: 24
+          - label: Hàng hoá và dịch vụ khác
+            count: 24
+        complete: true
+coverage:
+  temporal: [ 2022, 2023 ]
