@@ -26,41 +26,52 @@ files:
     r2_key: "97dfaeb2-5c74-4d89-867f-2e4a35e48402/chi-cho-nghien-cuu-va-phat-trien-khoa-hoc-cong-nghe.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2023
-        histogram: [16, 0, 16, 0, 16, 0, 16, 16]
-      "Chi cho nghiên cứu và phát triển khoa học công nghệ":
+        histogram: [ 16, 0, 16, 0, 16, 0, 16, 16 ]
+      Chi cho nghiên cứu và phát triển khoa học công nghệ:
         kind: numeric
         min: 151.13
         max: 42784
-        histogram: [55, 5, 3, 4, 5, 5, 2, 1]
-      "Ngân sách, lĩnh vực nghiên cứu, khu vực hoạt động":
+        histogram: [ 55, 5, 3, 4, 5, 5, 2, 1 ]
+      Ngân sách, lĩnh vực nghiên cứu, khu vực hoạt động:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Tổng chi"
+          - label: Tổng chi
             count: 5
-          - label: "Ngân sách nhà nước - Trung ương"
+          - label: Ngân sách nhà nước - Trung ương
             count: 5
-          - label: "Ngân sách nhà nước- Địa phương"
+          - label: Ngân sách nhà nước- Địa phương
             count: 5
-          - label: "Ngoài ngân sách nhà nước- Trong nước"
+          - label: Ngoài ngân sách nhà nước- Trong nước
             count: 5
-          - label: "Ngoài ngân sách nhà nước-Ngoài nước"
+          - label: Ngoài ngân sách nhà nước-Ngoài nước
             count: 5
-          - label: "Khoa học tự nhiên"
+          - label: Khoa học tự nhiên
             count: 5
-          - label: "Khoa học kỹ thuật và công nghệ"
+          - label: Khoa học kỹ thuật và công nghệ
             count: 5
-          - label: "Khoa học y dược"
+          - label: Khoa học y dược
             count: 5
-          - label: "Khoa học nông nghiệp"
+          - label: Khoa học nông nghiệp
             count: 5
-          - label: "Khoa học xã hội"
+          - label: Khoa học xã hội
             count: 5
-          - label: "Khoa học nhân văn"
+          - label: Khoa học nhân văn
             count: 5
-          - label: "Tổ chức nghiên cứu khoa học và phát triển công nghệ"
+          - label: Tổ chức nghiên cứu khoa học và phát triển công nghệ
             count: 5
+          - label: Trường đại học, học viện, cao đẳng
+            count: 5
+          - label: Cơ quan hành chính, đơn vị sự nghiệp khác
+            count: 5
+          - label: Các tổ chức dịch vụ nghiên cứu
+            count: 5
+          - label: Doanh nghiệp
+            count: 5
+        complete: true
+coverage:
+  temporal: [ 2015, 2023 ]
