@@ -26,31 +26,35 @@ files:
     r2_key: "471a925e-a803-487f-8f6d-7bd7327a102b/ty-le-thieu-viec-lam-trong-do-tuoi-lao-dong-phan-theo-nhom-t.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [4, 4, 4, 0, 4, 4, 4, 4]
-      "Tỷ lệ thiếu việc làm trong độ tuổi lao động":
+        histogram: [ 4, 4, 4, 0, 4, 4, 4, 4 ]
+      Tỷ lệ thiếu việc làm trong độ tuổi lao động:
         kind: numeric
         min: 0.94
         max: 4.05
-        histogram: [1, 6, 8, 4, 3, 4, 0, 2]
-      "Nhóm tuổi":
+        histogram: [ 1, 6, 8, 4, 3, 4, 0, 2 ]
+      Nhóm tuổi:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 7
-          - label: "15 - 24"
+          - label: 15 - 24
             count: 7
-          - label: "25 - 49"
+          - label: 25 - 49
             count: 7
-          - label: "50+"
+          - label: 50+
             count: 7
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
