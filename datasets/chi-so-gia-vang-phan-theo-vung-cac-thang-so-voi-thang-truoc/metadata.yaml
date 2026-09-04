@@ -26,36 +26,39 @@ files:
     r2_key: "0ea33970-7d87-4756-be1a-107b5ff34d6d/chi-so-gia-vang-phan-theo-vung-cac-thang-so-voi-thang-truoc.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2022
         max: 2023
-        histogram: [84, 0, 0, 0, 0, 0, 0, 84]
-      "Tháng":
+        histogram: [ 84, 0, 0, 0, 0, 0, 0, 84 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [28, 14, 28, 14, 14, 28, 14, 28]
-      "Chỉ số giá vàng":
+        histogram: [ 28, 14, 28, 14, 14, 28, 14, 28 ]
+      Chỉ số giá vàng:
         kind: numeric
         min: 97.2
         max: 106.73
-        histogram: [13, 32, 44, 52, 13, 11, 2, 1]
-      "Vùng":
+        histogram: [ 13, 32, 44, 52, 13, 11, 2, 1 ]
+      Vùng:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Chỉ số chung"
+          - label: Chỉ số chung
             count: 24
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 24
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 24
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 24
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 24
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 24
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 24
+        complete: true
+coverage:
+  temporal: [ 2022, 2023 ]
