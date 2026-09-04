@@ -27,33 +27,37 @@ files:
     r2_key: "d9dad27a-5c95-422d-aed0-144bec284daa/ty-le-lao-dong-tu-15-tuoi-tro-len-da-qua-dao-tao-phan-theo-t.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2009
         max: 2024
-        histogram: [10, 10, 10, 10, 10, 10, 10, 10]
-      "Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo":
+        histogram: [ 10, 10, 10, 10, 10, 10, 10, 10 ]
+      Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo:
         kind: numeric
         min: 1.5
         max: 28.44
-        histogram: [35, 14, 6, 6, 3, 4, 3, 4]
-      "Chuyên môn kỹ thuật":
+        histogram: [ 35, 14, 6, 6, 3, 4, 3, 4 ]
+      Chuyên môn kỹ thuật:
         kind: categorical
         distinct: 5
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 16
-          - label: "Sơ cấp"
+          - label: Sơ cấp
             count: 16
-          - label: "Trung cấp"
+          - label: Trung cấp
             count: 16
-          - label: "Cao đẳng"
+          - label: Cao đẳng
             count: 16
-          - label: "Đại học trở lên"
+          - label: Đại học trở lên
             count: 16
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 2009, 2024 ]
