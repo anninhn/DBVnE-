@@ -26,44 +26,48 @@ files:
     r2_key: "66352efe-b0fb-4c08-aec6-528a81012485/von-dau-tu-thuc-hien-cua-khu-vuc-kinh-te-nha-nuoc-phan-the-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [6, 6, 6, 3, 6, 6, 6, 6]
-      "Giá hiện hành (Tỷ đồng)":
+        histogram: [ 6, 6, 6, 3, 6, 6, 6, 6 ]
+      Giá hiện hành (Tỷ đồng):
         kind: numeric
         min: 158677
         max: 1019344.16
-        histogram: [12, 13, 4, 6, 5, 2, 1, 2]
-      "Cơ cấu (%)":
+        histogram: [ 12, 13, 4, 6, 5, 2, 1, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 31.66
         max: 100
-        histogram: [5, 9, 7, 7, 2, 0, 0, 15]
-      "Giá so sánh 2010 (Tỷ đồng)":
+        histogram: [ 5, 9, 7, 7, 2, 0, 0, 15 ]
+      Giá so sánh 2010 (Tỷ đồng):
         kind: numeric
         min: 136632
         max: 649126
-        histogram: [9, 14, 4, 5, 5, 5, 1, 2]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 9, 14, 4, 5, 5, 5, 1, 2 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 86.11
         max: 129.32
-        histogram: [5, 3, 7, 12, 8, 4, 2, 1]
-      "Nguồn vốn":
+        histogram: [ 5, 3, 7, 12, 8, 4, 2, 1 ]
+      Nguồn vốn:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 15
-          - label: "Vốn đầu tư công"
+          - label: Vốn đầu tư công
             count: 15
-          - label: "Vốn của các doanh nghiệp Nhà nước và nguồn vốn khác"
+          - label: Vốn của các doanh nghiệp Nhà nước và nguồn vốn khác
             count: 15
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
