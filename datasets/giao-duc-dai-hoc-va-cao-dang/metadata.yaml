@@ -27,46 +27,65 @@ files:
     r2_key: "a2f19be8-832d-4710-8857-13c271424fa5/giao-duc-dai-hoc-va-cao-dang.csv"
     size_mb: 0.03
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2023
-        histogram: [80, 60, 80, 60, 80, 60, 80, 80]
-      "Tổng số":
+        histogram: [ 80, 60, 80, 60, 80, 60, 80, 80 ]
+      Tổng số:
         kind: numeric
         min: 4.5
         max: 2363.9
-        histogram: [264, 44, 18, 28, 10, 15, 10, 6]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 264, 44, 18, 28, 10, 15, 10, 6 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 62.8
         max: 189.68
-        histogram: [4, 33, 233, 84, 14, 4, 4, 2]
-      "Phân tổ":
+        histogram: [ 4, 33, 233, 84, 14, 4, 4, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 20
         segments:
-          - label: "Trường học"
+          - label: Trường học
             count: 29
-          - label: "Trường công lập"
+          - label: Trường công lập
             count: 29
-          - label: "Trường ngoài công lập"
+          - label: Trường ngoài công lập
             count: 29
-          - label: "Giảng viên"
+          - label: Giảng viên
             count: 29
-          - label: "Giáo viên công lập"
+          - label: Giáo viên công lập
             count: 29
-          - label: "Giáo viên ngoài công lập"
+          - label: Giáo viên ngoài công lập
             count: 29
-          - label: "Giáo viên Nam"
+          - label: Giáo viên Nam
             count: 29
-          - label: "Giáo viên Nữ"
+          - label: Giáo viên Nữ
             count: 29
-          - label: "Sinh viên"
+          - label: Sinh viên
             count: 29
-          - label: "Sinh viên công lập"
+          - label: Sinh viên công lập
             count: 29
-          - label: "Sinh viên ngoài công lập"
+          - label: Sinh viên ngoài công lập
             count: 29
-          - label: "Sinh viên Nam"
+          - label: Sinh viên Nam
             count: 29
+          - label: Sinh viên Nữ
+            count: 29
+          - label: Sinh viên tốt nghiệp
+            count: 29
+          - label: Sinh viên công lập tốt nghiệp
+            count: 29
+          - label: Sinh viên ngoài công lập tốt nghiệp
+            count: 29
+          - label: Số sinh viên đại học trên 10.000 dân
+            count: 29
+          - label: Số sinh viên đại học công lập trên 10.000 dân
+            count: 29
+          - label: Số sinh viên đại học ngoài công lập trên 10.000 dân
+            count: 29
+          - label: Giáo viên
+            count: 29
+        complete: true
+coverage:
+  temporal: [ 1995, 2023 ]
