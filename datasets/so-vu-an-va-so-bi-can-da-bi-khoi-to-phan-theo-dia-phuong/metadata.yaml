@@ -28,46 +28,173 @@ files:
     r2_key: "ce801682-a661-43a2-9f21-e817fe200ae0/so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-dia-phuong.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [74, 0, 0, 0, 74, 0, 0, 74]
-      "Số vụ án đã bị khởi tố":
+        histogram: [ 74, 0, 0, 0, 74, 0, 0, 74 ]
+      Số vụ án đã bị khởi tố:
         kind: numeric
         min: 1
         max: 991
-        histogram: [132, 5, 3, 8, 13, 18, 25, 14]
-      "Số bị can đã bị khởi tố":
+        histogram: [ 132, 5, 3, 8, 13, 18, 25, 14 ]
+      Số bị can đã bị khởi tố:
         kind: numeric
         min: 1.008
         max: 993
-        histogram: [189, 2, 1, 2, 3, 4, 7, 10]
-      "Địa phương":
+        histogram: [ 189, 2, 1, 2, 3, 4, 7, 10 ]
+      Địa phương:
         kind: categorical
         distinct: 74
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 3
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 3
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 3
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 3
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 3
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 3
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 3
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 3
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 3
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 3
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 3
-          - label: "Nam Định"
+          - label: Nam Định
             count: 3
+          - label: Ninh Bình
+            count: 3
+          - label: Trung du và miền núi phía Bắc
+            count: 3
+          - label: Hà Giang
+            count: 3
+          - label: Cao Bằng
+            count: 3
+          - label: Bắc Kạn
+            count: 3
+          - label: Tuyên Quang
+            count: 3
+          - label: Lào Cai
+            count: 3
+          - label: Yên Bái
+            count: 3
+          - label: Thái Nguyên
+            count: 3
+          - label: Lạng Sơn
+            count: 3
+          - label: Bắc Giang
+            count: 3
+          - label: Phú Thọ
+            count: 3
+          - label: Điện Biên
+            count: 3
+          - label: Lai Châu
+            count: 3
+          - label: Sơn La
+            count: 3
+          - label: Hòa Bình
+            count: 3
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 3
+          - label: Thanh Hóa
+            count: 3
+          - label: Nghệ An
+            count: 3
+          - label: Hà Tĩnh
+            count: 3
+          - label: Quảng Bình
+            count: 3
+          - label: Quảng Trị
+            count: 3
+          - label: Thừa Thiên-Huế
+            count: 3
+          - label: Đà Nẵng
+            count: 3
+          - label: Quảng Nam
+            count: 3
+          - label: Quảng Ngãi
+            count: 3
+          - label: Bình Định
+            count: 3
+          - label: Phú Yên
+            count: 3
+          - label: Khánh Hòa
+            count: 3
+          - label: Ninh Thuận
+            count: 3
+          - label: Bình Thuận
+            count: 3
+          - label: Tây Nguyên
+            count: 3
+          - label: Kon Tum
+            count: 3
+          - label: Gia Lai
+            count: 3
+          - label: Đắk Lắk
+            count: 3
+          - label: Đắk Nông
+            count: 3
+          - label: Lâm Đồng
+            count: 3
+          - label: Đông Nam Bộ
+            count: 3
+          - label: Bình Phước
+            count: 3
+          - label: Tây Ninh
+            count: 3
+          - label: Bình Dương
+            count: 3
+          - label: Đồng Nai
+            count: 3
+          - label: Bà Rịa - Vũng Tàu
+            count: 3
+          - label: TP. Hồ Chí Minh
+            count: 3
+          - label: Đồng bằng sông Cửu Long
+            count: 3
+          - label: Long An
+            count: 3
+          - label: Tiền Giang
+            count: 3
+          - label: Bến Tre
+            count: 3
+          - label: Trà Vinh
+            count: 3
+          - label: Vĩnh Long
+            count: 3
+          - label: Đồng Tháp
+            count: 3
+          - label: An Giang
+            count: 3
+          - label: Kiên Giang
+            count: 3
+          - label: Cần Thơ
+            count: 3
+          - label: Hậu Giang
+            count: 3
+          - label: Sóc Trăng
+            count: 3
+          - label: Bạc Liêu
+            count: 3
+          - label: Cà Mau
+            count: 3
+          - label: Cơ quan khác - Others
+            count: 3
+          - label: Quân đội - Military
+            count: 3
+          - label: Cấp Trung ương - Central level
+            count: 3
+          - label: A
+            count: 3
+        complete: true
+coverage:
+  temporal: [ 2022, 2024 ]
