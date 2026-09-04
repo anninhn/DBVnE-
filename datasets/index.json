@@ -3639,35 +3639,6 @@
     ]
   },
   {
-    "slug": "so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-mot-so-toi-dan",
-    "title": "Số vụ án đã bị khởi tố phân theo điều luật",
-    "description": "Dữ liệu thống kê số vụ án đã bị khởi tố trên phạm vi cả nước, phân loại theo các điều luật cụ thể trong Bộ luật Hình sự. Dataset này có thể là một phần của dữ liệu lớn hơn về số bị can.",
-    "category": "xa-hoi",
-    "tags": [
-      "vu-an",
-      "toi-pham",
-      "phap-luat",
-      "khoi-to",
-      "ca-nuoc"
-    ],
-    "uploaded_at": "2026-08-28T11:44:44.425Z",
-    "uploaded_by": "ninh",
-    "row_count": 980,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "4ffb513c-c31e-4a8f-9aee-2be0fd814b65/so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-mot-so-toi-dan.csv",
-        "size_mb": 0.02
-      }
-    ]
-  },
-  {
     "slug": "so-vu-an-va-so-bi-can-da-bi-khoi-to-phan-theo-dia-phuong",
     "title": "Số vụ án và số bị can đã bị khởi tố phân theo địa phương",
     "description": "Dữ liệu thống kê số lượng vụ án và số bị can đã bị khởi tố theo từng địa phương (bao gồm các vùng kinh tế và tỉnh/thành phố) và theo năm, từ 2022 đến 2024.",
@@ -4240,34 +4211,6 @@
         "type": "csv",
         "r2_key": "1c165477-2cfc-4db4-b978-764e7834fa55/so-di-tich-lich-su-van-hoa-danh-lam-thang-canh.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "so-di-san-van-hoa-cap-quoc-gia-phan-theo-dia-phuong",
-    "title": "Số di sản văn hóa cấp quốc gia phân theo địa phương",
-    "description": "Dataset thống kê số lượng di sản văn hóa cấp quốc gia, phân loại theo các đơn vị địa lý như quốc gia, vùng, tỉnh/thành phố. Dữ liệu có thể liên quan đến năm 2023.",
-    "category": "xa-hoi",
-    "tags": [
-      "di-san-van-hoa",
-      "van-hoa",
-      "dia-phuong",
-      "quoc-gia"
-    ],
-    "uploaded_at": "2026-08-28T11:37:27.999Z",
-    "uploaded_by": "ninh",
-    "row_count": 980,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "632f300d-3de8-4e8b-993c-d6d6a170cb36/so-di-san-van-hoa-cap-quoc-gia-phan-theo-dia-phuong.csv",
-        "size_mb": 0.02
       }
     ]
   },
