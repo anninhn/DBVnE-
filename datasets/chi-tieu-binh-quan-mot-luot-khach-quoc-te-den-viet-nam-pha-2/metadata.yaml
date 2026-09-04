@@ -27,47 +27,83 @@ files:
     r2_key: "682eb093-a50a-46e3-acf4-630e6048a5d2/chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-pha-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2017
         max: 2024
-        histogram: [28, 0, 28, 0, 0, 0, 28, 28]
-      "Chi tiêu bình quân một lượt khách quốc tế đến Việt Nam":
+        histogram: [ 28, 0, 28, 0, 0, 0, 28, 28 ]
+      Chi tiêu bình quân một lượt khách quốc tế đến Việt Nam:
         kind: numeric
         min: 343.5
         max: 4788.2
-        histogram: [28, 65, 15, 3, 0, 0, 0, 1]
-      "Quốc tịch":
+        histogram: [ 28, 65, 15, 3, 0, 0, 0, 1 ]
+      Quốc tịch:
         kind: categorical
         distinct: 28
         segments:
-          - label: "BÌNH QUÂN CHUNG"
+          - label: BÌNH QUÂN CHUNG
             count: 4
-          - label: "Bỉ"
+          - label: Bỉ
             count: 4
-          - label: "Cam-pu-chia"
+          - label: Cam-pu-chia
             count: 4
-          - label: "Ca-na-đa"
+          - label: Ca-na-đa
             count: 4
-          - label: "CHND Trung Hoa"
+          - label: CHND Trung Hoa
             count: 4
-          - label: "Đài Loan"
+          - label: Đài Loan
             count: 4
-          - label: "Đan Mạch"
+          - label: Đan Mạch
             count: 4
-          - label: "Đức"
+          - label: Đức
             count: 4
-          - label: "Hà Lan"
+          - label: Hà Lan
             count: 4
-          - label: "Hàn Quốc"
+          - label: Hàn Quốc
             count: 4
-          - label: "Hoa Kỳ"
+          - label: Hoa Kỳ
             count: 4
-          - label: "In-đô-nê-xi-a"
+          - label: In-đô-nê-xi-a
             count: 4
-      "Ghi chú":
+          - label: I-ta-li-a
+            count: 4
+          - label: Lào
+            count: 4
+          - label: Liên bang Nga
+            count: 4
+          - label: Ma-lai-xi-a
+            count: 4
+          - label: Na Uy
+            count: 4
+          - label: Nhật Bản
+            count: 4
+          - label: Niu-di-lân
+            count: 4
+          - label: Ôx-trây-li-a
+            count: 4
+          - label: Pháp
+            count: 4
+          - label: Phi-li-pin
+            count: 4
+          - label: Tây Ban Nha
+            count: 4
+          - label: Thái Lan
+            count: 4
+          - label: Thụy Điển
+            count: 4
+          - label: Thụy Sĩ
+            count: 4
+          - label: Vương quốc Anh
+            count: 4
+          - label: Xin-ga-po
+            count: 4
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 28
+        complete: true
+coverage:
+  temporal: [ 2017, 2024 ]
