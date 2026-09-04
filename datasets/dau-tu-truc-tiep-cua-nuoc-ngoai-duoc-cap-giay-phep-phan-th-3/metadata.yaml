@@ -26,46 +26,63 @@ files:
     r2_key: "814fe1df-89db-4e55-8599-0d519125acaf/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-3.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [38, 19, 19, 19, 19, 19, 19, 38]
-      "Số dự án":
+        histogram: [ 38, 19, 19, 19, 19, 19, 19, 38 ]
+      Số dự án:
         kind: numeric
         min: 0
         max: 4028
-        histogram: [158, 12, 8, 1, 2, 3, 3, 1]
-      "Tổng vốn đăng ký (Triệu đô la Mỹ)":
+        histogram: [ 158, 12, 8, 1, 2, 3, 3, 1 ]
+      Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 1
         max: 39390.3
-        histogram: [163, 7, 0, 6, 2, 5, 1, 6]
-      "Ngành kinh tế":
+        histogram: [ 163, 7, 0, 6, 2, 5, 1, 6 ]
+      Ngành kinh tế:
         kind: categorical
         distinct: 19
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 10
-          - label: "Nông nghiệp, lâm nghiệp và thủy sản"
+          - label: Nông nghiệp, lâm nghiệp và thủy sản
             count: 10
-          - label: "Khai khoáng"
+          - label: Khai khoáng
             count: 10
-          - label: "Công nghiệp chế biến, chế tạo"
+          - label: Công nghiệp chế biến, chế tạo
             count: 10
-          - label: "Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí"
+          - label: Sản xuất và phân phối điện, khí đốt, nước nóng, hơi nước và điều hoà không khí
             count: 10
-          - label: "Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải"
+          - label: Cung cấp nước; hoạt động quản lý và xử lý rác thải, nước thải
             count: 10
-          - label: "Xây dựng"
+          - label: Xây dựng
             count: 10
-          - label: "Bán buôn và bán lẻ; sử chữa ô tô, mô tô, xe máy và xe có động cơ khác"
+          - label: Bán buôn và bán lẻ; sử chữa ô tô, mô tô, xe máy và xe có động cơ khác
             count: 10
-          - label: "Vận tải, kho bãi"
+          - label: Vận tải, kho bãi
             count: 10
-          - label: "Dịch vụ lưu trú và ăn uống"
+          - label: Dịch vụ lưu trú và ăn uống
             count: 10
-          - label: "Thông tin và truyền thông"
+          - label: Thông tin và truyền thông
             count: 10
-          - label: "Hoạt động tài chính, ngân hàng và bảo hiểm"
+          - label: Hoạt động tài chính, ngân hàng và bảo hiểm
             count: 10
+          - label: Hoạt động kinh doanh bất động sản
+            count: 10
+          - label: Hoạt động chuyên môn, khoa học và công nghệ
+            count: 10
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
+            count: 10
+          - label: Giáo dục và đào tạo
+            count: 10
+          - label: Y tế và hoạt động trợ giúp xã hội
+            count: 10
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 10
+          - label: Hoạt động dịch vụ khác
+            count: 10
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
