@@ -28,206 +28,202 @@ files:
     r2_key: "7a92dee4-81ac-44ac-bd9f-3b1be51eb44f/Quy_hoa_ch_he___tho__ng_ca_ng_ha_ng_kho_ng__Phu__lu_c_I___II__-_Quy_hoa_ch_he___tho__ng_ca_ng_ha_ng_kho_ng__Phu__lu_c_I___II_.csv"
     size_mb: 0
     column_stats:
-      "TT":
+      TT:
         kind: numeric
         min: 1
         max: 37
-        histogram: [5, 4, 5, 4, 5, 4, 5, 5]
-      "Latitude":
+        histogram: [ 5, 4, 5, 4, 5, 4, 5, 5 ]
+      Latitude:
         kind: numeric
         min: 8.7009282
         max: 22.635689
-        histogram: [6, 6, 3, 4, 3, 2, 4, 8]
-      "Longitude":
+        histogram: [ 6, 6, 3, 4, 3, 2, 4, 8 ]
+      Longitude:
         kind: numeric
         min: 103.0063608
         max: 109.3440042
-        histogram: [3, 3, 2, 5, 6, 5, 6, 6]
-      "Ước tính chi phí đầu tư 2030 (tỷ đồng)":
+        histogram: [ 3, 3, 2, 5, 6, 5, 6, 6 ]
+      Công suất thiết kế dự kiến 2030:
+        kind: numeric
+        min: 0.02
+        max: 50
+        histogram: [ 28, 2, 0, 3, 1, 1, 0, 1 ]
+      Công suất thiết kế dự kiến 2050:
+        kind: numeric
+        min: 0.5
+        max: 100
+        histogram: [ 26, 4, 2, 4, 0, 0, 0, 1 ]
+      Diện tích đất dự kiến đến 2030 (ha):
+        kind: numeric
+        min: 171.7
+        max: 5000
+        histogram: [ 27, 4, 2, 2, 0, 0, 0, 1 ]
+      Diện tích đất dự kiến đến 2050 (ha):
+        kind: numeric
+        min: 233.36
+        max: 2094.49
+        histogram: [ 3, 1, 1, 1, 0, 1, 0, 1 ]
+      Ước tính chi phí đầu tư 2030 (tỷ đồng):
         kind: numeric
         min: 1.605
         max: 9982
-        histogram: [32, 0, 0, 0, 0, 0, 0, 2]
-      "Ước tính chi phí đầu tư 2050 (tỷ đồng)":
+        histogram: [ 32, 0, 0, 0, 0, 0, 0, 2 ]
+      Ước tính chi phí đầu tư 2050 (tỷ đồng):
         kind: numeric
         min: 1.257
         max: 5900
-        histogram: [25, 2, 0, 0, 0, 0, 0, 1]
-      "Tên Cảng hàng không":
+        histogram: [ 25, 2, 0, 0, 0, 0, 0, 1 ]
+      Tên Cảng hàng không:
         kind: categorical
         distinct: 37
         segments:
-          - label: "Cảng hàng không quốc tế Cao Bằng"
+          - label: Cảng hàng không quốc tế Cao Bằng
             count: 1
-          - label: "Cảng hàng không quốc tế Nội Bài"
+          - label: Cảng hàng không quốc tế Nội Bài
             count: 1
-          - label: "Cảng hàng không thứ 2 vùng Thủ đô"
+          - label: Cảng hàng không thứ 2 vùng Thủ đô
             count: 1
-          - label: "Cảng hàng không quốc tế Gia Bình"
+          - label: Cảng hàng không quốc tế Gia Bình
             count: 1
-          - label: "Cảng hàng không quốc tế Vân Đồn"
+          - label: Cảng hàng không quốc tế Vân Đồn
             count: 1
-          - label: "Cảng hàng không quốc tế Cát Bi"
+          - label: Cảng hàng không quốc tế Cát Bi
             count: 1
-          - label: "Cảng hàng không quốc tế Ninh Bình"
+          - label: Cảng hàng không quốc tế Ninh Bình
             count: 1
-          - label: "Cảng hàng không quốc tế Thọ Xuân"
+          - label: Cảng hàng không quốc tế Thọ Xuân
             count: 1
-          - label: "Cảng hàng không quốc tế Vinh"
+          - label: Cảng hàng không quốc tế Vinh
             count: 1
-          - label: "Cảng hàng không quốc tế Phú Bài"
+          - label: Cảng hàng không quốc tế Phú Bài
             count: 1
-          - label: "Cảng hàng không quốc tế Đà Nẵng"
+          - label: Cảng hàng không quốc tế Đà Nẵng
             count: 1
-          - label: "Cảng hàng không quốc tế Chu Lai"
+          - label: Cảng hàng không quốc tế Chu Lai
             count: 1
-      "Quy mô, cấp sân bay":
+          - label: Cảng hàng không quốc tế Vân Phong
+            count: 1
+          - label: Cảng hàng không quốc tế Cam Ranh
+            count: 1
+          - label: Cảng hàng không quốc tế Liên Khương
+            count: 1
+          - label: Cảng hàng không quốc tế Long Thành
+            count: 1
+          - label: Cảng hàng không quốc tế Tân Sơn Nhất
+            count: 1
+          - label: Cảng hàng không quốc tế Côn Đảo
+            count: 1
+          - label: Cảng hàng không quốc tế Cần Thơ
+            count: 1
+          - label: Cảng hàng không quốc tế Phú Quốc
+            count: 1
+          - label: Cảng hàng không Lai Châu
+            count: 1
+          - label: Cảng hàng không Điện Biên
+            count: 1
+          - label: Cảng hàng không Sa Pa
+            count: 1
+          - label: Cảng hàng không Nà Sản
+            count: 1
+          - label: Cảng hàng không Bạch Long Vĩ
+            count: 1
+          - label: Cảng hàng không Đồng Hới
+            count: 1
+          - label: Cảng hàng không Quảng Trị
+            count: 1
+          - label: Cảng hàng không Pleiku
+            count: 1
+          - label: Cảng hàng không Phù Cát
+            count: 1
+          - label: Cảng hàng không Tuy Hòa
+            count: 1
+          - label: Cảng hàng không Buôn Ma Thuột
+            count: 1
+          - label: Cảng hàng không Măng Đen
+            count: 1
+          - label: Cảng hàng không Thành Sơn
+            count: 1
+          - label: Cảng hàng không Phan Thiết
+            count: 1
+          - label: Cảng hàng không Rạch Giá
+            count: 1
+          - label: Cảng hàng không Thổ Chu
+            count: 1
+          - label: Cảng hàng không Cà Mau
+            count: 1
+        complete: true
+      Quy mô, cấp sân bay:
         kind: categorical
         distinct: 4
         segments:
-          - label: "4E"
+          - label: 4E
             count: 18
-          - label: "4C"
+          - label: 4C
             count: 13
-          - label: "4F"
+          - label: 4F
             count: 4
-          - label: "3C"
+          - label: 3C
             count: 1
-      "Tỉnh/Thành phố":
+        complete: true
+      Tỉnh/Thành phố:
         kind: categorical
         distinct: 25
         segments:
-          - label: "Khánh Hòa"
+          - label: Khánh Hòa
             count: 3
-          - label: "An Giang"
+          - label: An Giang
             count: 3
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 2
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 2
-          - label: "Lâm Đồng"
+          - label: Lâm Đồng
             count: 2
-          - label: "Thành phố Hồ Chí Minh"
+          - label: Thành phố Hồ Chí Minh
             count: 2
-          - label: "Quảng Trị"
+          - label: Quảng Trị
             count: 2
-          - label: "Gia Lai"
+          - label: Gia Lai
             count: 2
-          - label: "Đắk Lắk"
+          - label: Đắk Lắk
             count: 2
-          - label: "Cao Bằng"
+          - label: Cao Bằng
             count: 1
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 1
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 1
-      "Công suất thiết kế dự kiến 2030":
-        kind: categorical
-        distinct: 18
-        segments:
-          - label: "2,0"
-            count: 5
-          - label: "1,0"
-            count: 5
-          - label: "3,0"
-            count: 4
-          - label: "1,5"
-            count: 4
-          - label: "2,5"
-            count: 2
-          - label: "5,0"
-            count: 2
-          - label: "0,3"
-            count: 2
-          - label: "0,02"
-            count: 2
-          - label: "0,5"
+          - label: Quảng Ninh
             count: 1
-          - label: "35,0"
+          - label: Ninh Bình
             count: 1
-          - label: "30,0"
+          - label: Thanh Hóa
             count: 1
-          - label: "7,0"
+          - label: Nghệ An
             count: 1
-      "Công suất thiết kế dự kiến 2050":
-        kind: categorical
-        distinct: 17
-        segments:
-          - label: "5,0"
-            count: 6
-          - label: "50,0"
-            count: 4
-          - label: "7,0"
-            count: 4
-          - label: "3,0"
-            count: 4
-          - label: "2,0"
-            count: 3
-          - label: "20,0"
-            count: 2
-          - label: "18,0"
-            count: 2
-          - label: "2,5"
-            count: 2
-          - label: "1,0"
-            count: 2
-          - label: "10,0"
+          - label: Thành phố Huế
             count: 1
-          - label: "12,0"
+          - label: Đồng Nai
             count: 1
-          - label: "30,0"
+          - label: Cần Thơ
             count: 1
-      "Diện tích đất dự kiến đến 2030 (ha)":
-        kind: categorical
-        distinct: 36
-        segments:
-          - label: "500,00"
+          - label: Lai Châu
             count: 1
-          - label: "1.500,00"
+          - label: Điện Biên
             count: 1
-          - label: "1.960,00"
+          - label: Lào Cai
             count: 1
-          - label: "390,42"
+          - label: Sơn La
             count: 1
-          - label: "490,61"
+          - label: Quảng Ngãi
             count: 1
-          - label: "400,00"
+          - label: Cà Mau
             count: 1
-          - label: "844,86"
-            count: 1
-          - label: "543,53"
-            count: 1
-          - label: "527,00"
-            count: 1
-          - label: "806,62"
-            count: 1
-          - label: "2.097,02"
-            count: 1
-          - label: "497,10"
-            count: 1
-      "Diện tích đất dự kiến đến 2050 (ha)":
-        kind: categorical
-        distinct: 8
-        segments:
-          - label: "1.500,00"
-            count: 1
-          - label: "488,89"
-            count: 1
-          - label: "1.092,53"
-            count: 1
-          - label: "376,69"
-            count: 1
-          - label: "233,36"
-            count: 1
-          - label: "2.094,49"
-            count: 1
-          - label: "835,56"
-            count: 1
-          - label: "244,43"
-            count: 1
-      "Nhóm Sân bay":
+        complete: true
+      Nhóm Sân bay:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Quốc tế"
+          - label: Quốc tế
             count: 20
+        complete: true
