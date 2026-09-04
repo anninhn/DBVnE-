@@ -27,41 +27,160 @@ files:
     r2_key: "f4bdf165-9354-4f8f-807d-9fad5b9f2167/ty-le-nguoi-su-dung-internet-phan-theo-dia-phuong.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2024
         max: 2024
-        histogram: [70, 0, 0, 0, 0, 0, 0, 0]
-      "Tỷ lệ người sử dụng internet":
+        histogram: [ 70, 0, 0, 0, 0, 0, 0, 0 ]
+      Tỷ lệ người sử dụng internet:
         kind: numeric
         min: 71
         max: 94
-        histogram: [7, 2, 11, 17, 14, 11, 5, 3]
-      "Địa phương":
+        histogram: [ 7, 2, 11, 17, 14, 11, 5, 3 ]
+      Địa phương:
         kind: categorical
         distinct: 70
         segments:
-          - label: "Cả nước"
+          - label: Cả nước
             count: 1
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 1
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 1
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 1
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 1
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 1
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 1
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 1
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 1
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 1
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 1
-          - label: "Nam Định"
+          - label: Nam Định
             count: 1
+          - label: Ninh Bình
+            count: 1
+          - label: Trung du và miền núi phía Bắc
+            count: 1
+          - label: Hà Giang
+            count: 1
+          - label: Cao Bằng
+            count: 1
+          - label: Bắc Kạn
+            count: 1
+          - label: Tuyên Quang
+            count: 1
+          - label: Lào Cai
+            count: 1
+          - label: Yên Bái
+            count: 1
+          - label: Thái Nguyên
+            count: 1
+          - label: Lạng Sơn
+            count: 1
+          - label: Bắc Giang
+            count: 1
+          - label: Phú Thọ
+            count: 1
+          - label: Điện Biên
+            count: 1
+          - label: Lai Châu
+            count: 1
+          - label: Sơn La
+            count: 1
+          - label: Hòa Bình
+            count: 1
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 1
+          - label: Thanh Hóa
+            count: 1
+          - label: Nghệ An
+            count: 1
+          - label: Hà Tĩnh
+            count: 1
+          - label: Quảng Bình
+            count: 1
+          - label: Quảng Trị
+            count: 1
+          - label: Thừa Thiên-Huế
+            count: 1
+          - label: Đà Nẵng
+            count: 1
+          - label: Quảng Nam
+            count: 1
+          - label: Quảng Ngãi
+            count: 1
+          - label: Bình Định
+            count: 1
+          - label: Phú Yên
+            count: 1
+          - label: Khánh Hòa
+            count: 1
+          - label: Ninh Thuận
+            count: 1
+          - label: Bình Thuận
+            count: 1
+          - label: Tây Nguyên
+            count: 1
+          - label: Kon Tum
+            count: 1
+          - label: Gia Lai
+            count: 1
+          - label: Đắk Lắk
+            count: 1
+          - label: Đắk Nông
+            count: 1
+          - label: Lâm Đồng
+            count: 1
+          - label: Đông Nam Bộ
+            count: 1
+          - label: Bình Phước
+            count: 1
+          - label: Tây Ninh
+            count: 1
+          - label: Bình Dương
+            count: 1
+          - label: Đồng Nai
+            count: 1
+          - label: Bà Rịa - Vũng Tàu
+            count: 1
+          - label: TP. Hồ Chí Minh
+            count: 1
+          - label: Đồng bằng sông Cửu Long
+            count: 1
+          - label: Long An
+            count: 1
+          - label: Tiền Giang
+            count: 1
+          - label: Bến Tre
+            count: 1
+          - label: Trà Vinh
+            count: 1
+          - label: Vĩnh Long
+            count: 1
+          - label: Đồng Tháp
+            count: 1
+          - label: An Giang
+            count: 1
+          - label: Kiên Giang
+            count: 1
+          - label: Cần Thơ
+            count: 1
+          - label: Hậu Giang
+            count: 1
+          - label: Sóc Trăng
+            count: 1
+          - label: Bạc Liêu
+            count: 1
+          - label: Cà Mau
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 2024, 2024 ]
