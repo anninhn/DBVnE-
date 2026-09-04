@@ -25,3 +25,238 @@ files:
     path: "thu-tuc-hanh-chinh-theo-linh-vuc-va-co-quan-quan-ly/Lĩnh vực quản lý thủ tục hành chính_Bộ ngành.xlsx - Tổng.csv"
     r2_key: "e58f4baa-06fa-49fc-9635-628b429b4617/Li_nh_vu__c_qua_n_ly__thu__tu_c_ha_nh_chi_nh_Bo___nga_nh.xlsx_-_To__ng.csv"
     size_mb: 0.03
+    column_stats:
+      Số lượng thủ tục:
+        kind: numeric
+        min: 1
+        max: 192
+        histogram: [ 215, 31, 15, 5, 0, 3, 1, 1 ]
+      Tên lĩnh vực:
+        kind: categorical
+        distinct: 266
+        segments:
+          - label: thi đua – khen thưởng
+            count: 2
+          - label: giám định tư pháp
+            count: 2
+          - label: báo chí
+            count: 2
+          - label: tiêu chuẩn đo lường chất lượng
+            count: 2
+          - label: an toàn thực phẩm
+            count: 2
+          - label: quốc tịch
+            count: 2
+          - label: thành lập và hoạt động ngân hàng
+            count: 1
+          - label: hoạt động ngoại hối
+            count: 1
+          - label: hoạt động thanh toán
+            count: 1
+          - label: hoạt động tiền tệ
+            count: 1
+          - label: hoạt động công nghệ thông tin ngân hàng
+            count: 1
+          - label: hoạt động kho quỹ
+            count: 1
+        complete: false
+      Cơ quan quản lý sau sáp nhập:
+        kind: categorical
+        distinct: 17
+        segments:
+          - label: Bộ Tài chính
+            count: 43
+          - label: Bộ Công Thương
+            count: 33
+          - label: Bộ Nông nghiệp và Môi trường
+            count: 23
+          - label: Bộ Công an
+            count: 23
+          - label: Bộ Tư pháp
+            count: 19
+          - label: Bộ Quốc phòng
+            count: 19
+          - label: Bộ Xây dựng
+            count: 18
+          - label: Bộ Văn hóa, Thể thao và Du lịch
+            count: 18
+          - label: Bộ Y tế
+            count: 15
+          - label: Bộ Ngoại giao
+            count: 14
+          - label: Bộ Giáo dục và Đào tạo
+            count: 13
+          - label: Bộ Nội vụ
+            count: 12
+          - label: "Ngân hàng Nhà nước Việt Nam "
+            count: 9
+          - label: Bộ Khoa học và Công nghệ
+            count: 8
+          - label: Bộ Dân tộc và Tôn giáo
+            count: 2
+          - label: |-
+              Bộ Xây dựng
+              Bộ Quốc phòng
+              Bộ Công an
+            count: 1
+          - label: Tòa án Nhân dân
+            count: 1
+        complete: true
+      Cơ quan quản lý lĩnh vực trước sáp nhập:
+        kind: categorical
+        distinct: 38
+        segments:
+          - label: Bộ Tài chính
+            count: 32
+          - label: Bộ Công Thương
+            count: 32
+          - label: Bộ Tư pháp
+            count: 19
+          - label: Bộ Quốc phòng
+            count: 19
+          - label: Bộ Công an
+            count: 17
+          - label: Bộ Ngoại giao
+            count: 14
+          - label: Bộ Xây dựng
+            count: 13
+          - label: Bộ Văn hóa, Thể thao và Du lịch
+            count: 13
+          - label: Bộ Y tế
+            count: 11
+          - label: Bộ NN&PTNT
+            count: 10
+          - label: Bộ LĐTB&XH
+            count: 10
+          - label: Bộ Giáo dục và Đào tạo
+            count: 10
+          - label: Ngân hàng Nhà nước Việt Nam
+            count: 9
+          - label: Bộ Thông tin và Truyền thông
+            count: 9
+          - label: Bộ Tài nguyên và Môi trường
+            count: 9
+          - label: Bộ Nội vụ
+            count: 6
+          - label: Bộ GTVT
+            count: 4
+          - label: Bộ Khoa học và Công nghệ
+            count: 4
+          - label: Bộ Kế hoạch và Đầu tư
+            count: 4
+          - label: Bộ Giao thông Vận tải
+            count: 3
+          - label: |-
+              Bộ NN&PTNT
+              Bộ Tài nguyên và Môi trường
+            count: 2
+          - label: Bộ Lao động, Thương binh và Xã hội
+            count: 2
+          - label: "Bộ Giáo dục và Đào tạo "
+            count: 2
+          - label: |-
+              Bộ Y tế
+              Bộ NN&PTNT
+              Bộ Công Thương 
+            count: 2
+          - label: "Bộ Tài chính "
+            count: 2
+          - label: |-
+              Bộ GTVT
+              Bộ Quốc phòng
+            count: 1
+          - label: |-
+              Bộ GTVT
+              Bộ Xây dựng
+            count: 1
+          - label: |
+              Bộ Văn hóa, Thể thao  và Du lịch
+            count: 1
+          - label: "Bộ Tài nguyên và Môi trường "
+            count: 1
+          - label: |-
+              Bộ LĐTB&XH
+              Bộ Tài chính
+            count: 1
+          - label: Tòa án Nhân dân
+            count: 1
+          - label: Ủy ban Dân tộc
+            count: 1
+          - label: "Bộ Tư pháp "
+            count: 1
+          - label: "Bộ Kế hoạch và Đầu tư "
+            count: 1
+          - label: "Bộ Kế hoạch và Đầu tư  "
+            count: 1
+          - label: |-
+              Bộ Tài chính
+              Bộ Kế hoạch và Đầu tư
+            count: 1
+          - label: |-
+              Bộ Kế hoạch và Đầu tư
+              Bộ Tài chính
+            count: 1
+          - label: Bảo hiểm Xã hội Việt Nam
+            count: 1
+        complete: true
+      Nguồn Văn bản Quy phạm pháp luật quy định quản lý nhà nước theo lĩnh vực:
+        kind: categorical
+        distinct: 28
+        segments:
+          - label: Văn bản hợp nhất 20/VBHN-NHNN 2023 Thông tư cấp Giấy phép và tổ chức ngân hàng thương mại
+            count: 1
+          - label: https://thuvienphapluat.vn/van-ban/Tien-te-Ngan-hang/Phap-lenh-ngoai-hoi-2005-28-2005-PL-UBTVQH11-8043.aspx?anchor=dieu_4
+            count: 1
+          - label: Nghị định 52/2024/NĐ-CP quy định về thanh toán không dùng tiền mặt mới nhất
+            count: 1
+          - label: Văn bản hợp nhất 15/VBHN-NHNN 2024 hợp nhất Thông tư về hoạt động môi giới tiền tệ của ngân hàng nước ngoài
+            count: 1
+          - label: Nghị định 58/2021/NĐ-CP hoạt động cung ứng dịch vụ thông tin tín dụng mới nhất
+            count: 1
+          - label: https://s-vnba-cdn.aicms.vn/vnba-media/24/1/9/thong-tu-so-23-tt-nhnn_659d0c908bfc0.pdf?md5=ox8hqaDLCSYjnA47_JBRFQ&expires=1781116569
+            count: 1
+          - label: Thông tư 15/2023/TT-NHNN hoạt động thông tin tín dụng của Ngân hàng Nhà nước mới nhất
+            count: 1
+          - label: Luật Các tổ chức tín dụng 2024 số 32/2024/QH15 - Toàn văn mới nhất
+            count: 1
+          - label: Bộ luật hàng hải Việt Nam 2015 số 95/2015/QH13 áp dụng 2025 mới nhất
+            count: 1
+          - label: Luật hàng không dân dụng Việt Nam 2006 số 66/2006/QH11 áp dụng 2024 mới nhất
+            count: 1
+          - label: Toàn văn Luật Đường bộ 2024 (Số 35/2024/QH15) mới nhất mới nhất
+            count: 1
+          - label: Luật Nhà ở 2023 số 27/2023/QH15 áp dụng năm 2025 mới nhất
+            count: 1
+          - label: Nghị định 166/2024/NĐ-CP về cơ sở đăng kiểm xe cơ giới, cơ sở kiểm định khí thải xe mô tô, xe gắn máy mới nhất
+            count: 1
+          - label: "https://thuvienphapluat.vn/van-ban/Xay-dung-Do-thi/Luat-Xay-dung-2014-238644.aspx "
+            count: 1
+          - label: Văn bản hợp nhất 05/VBHN-VPQH 2023 Luật Đường sắt
+            count: 1
+          - label: Luật Kinh doanh bất động sản 2023 số 29/2023/QH15 áp dụng năm 2025 mới nhất
+            count: 1
+          - label: Luật Quy hoạch đô thị và nông thôn
+            count: 1
+          - label: Luật Kiến trúc 2019 số 40/2019/QH14 áp dụng năm 2025 mới nhất
+            count: 1
+          - label: Nghị định 72/2012/NĐ-CP quản lý sử dụng chung công trình hạ tầng kỹ thuật mới nhất
+            count: 1
+          - label: Nghị định 35/2023/NĐ-CP sửa đổi các Nghị định thuộc lĩnh vực quản lý nhà nước mới nhất
+            count: 1
+          - label: CÔNG BÁO/Số 1519 + 1520/Ngày 29-12-2024 35 LUẬT DI SẢN VĂN HÓA Căn cứ Hiến pháp nước Cộng hòa xã hội
+            count: 1
+          - label: Luật Báo chí 2016 số 103/2016/QH13 áp dụng 2024 mới nhất
+            count: 1
+          - label: Luật du lịch 2017 số 09/2017/QH14 áp dụng 2025 mới nhất
+            count: 1
+          - label: "Luật số 19/2012/QH13 của Quốc hội: LUẬT XUẤT BẢN"
+            count: 1
+          - label: Nghị định 23/2019/NĐ-CP quy định về hoạt động triển lãm mới nhất
+            count: 1
+          - label: Luật an toàn thực phẩm 2010 số 55/2010/QH12 áp dụng 2024 mới nhất
+            count: 1
+          - label: https://thuvienphapluat.vn/van-ban/Dau-tu/Luat-Dau-tu-theo-hinh-thuc-doi-tac-cong-tu-so-64-2020-QH14-374160.aspx
+            count: 1
+          - label: "https://thuvienphapluat.vn/van-ban/Dau-tu/Luat-Dau-thau-2023-22-2023-QH15-518805.aspx "
+            count: 1
+        complete: true
