@@ -26,46 +26,50 @@ files:
     r2_key: "00690b93-a570-4fc8-a750-a251ad0f66fa/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-the-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2019
         max: 2024
-        histogram: [9, 9, 0, 0, 0, 0, 9, 9]
-      "Trị giá (Nghìn đồng)":
+        histogram: [ 9, 9, 0, 0, 0, 0, 9, 9 ]
+      Trị giá (Nghìn đồng):
         kind: numeric
         min: 20.8
         max: 3493.5
-        histogram: [19, 11, 2, 0, 0, 1, 1, 2]
-      "Cơ cấu (%)":
+        histogram: [ 19, 11, 2, 0, 0, 1, 1, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 0.6
         max: 100
-        histogram: [19, 9, 4, 0, 0, 0, 0, 4]
-      "Mục đích":
+        histogram: [ 19, 9, 4, 0, 0, 0, 0, 4 ]
+      Mục đích:
         kind: categorical
         distinct: 9
         segments:
-          - label: "Chi tiêu bình quân 1 lượt khách"
+          - label: Chi tiêu bình quân 1 lượt khách
             count: 4
-          - label: "Thuê phòng"
+          - label: Thuê phòng
             count: 4
-          - label: "Ăn uống"
+          - label: Ăn uống
             count: 4
-          - label: "Đi lại"
+          - label: Đi lại
             count: 4
-          - label: "Thăm quan"
+          - label: Thăm quan
             count: 4
-          - label: "Mua hàng hóa"
+          - label: Mua hàng hóa
             count: 4
-          - label: "Vui chơi"
+          - label: Vui chơi
             count: 4
-          - label: "Y tế"
+          - label: Y tế
             count: 4
-          - label: "Chi khác"
+          - label: Chi khác
             count: 4
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 2019, 2024 ]
