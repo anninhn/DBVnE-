@@ -26,41 +26,52 @@ files:
     r2_key: "9b0b11d9-d90c-403a-b6c7-0bc8ca2e7990/muc-tieu-dung-mot-so-mat-hang-chu-yeu-binh-quan-dau-nguoi-2.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [32, 16, 32, 16, 16, 32, 16, 32]
-      "Mức tiêu dùng một số mặt hàng chủ yếu bình quân đầu người một tháng":
+        histogram: [ 32, 16, 32, 16, 16, 32, 16, 32 ]
+      Mức tiêu dùng một số mặt hàng chủ yếu bình quân đầu người một tháng:
         kind: numeric
         min: 0.05
         max: 12
-        histogram: [144, 28, 5, 3, 2, 4, 2, 4]
-      "Phân tổ":
+        histogram: [ 144, 28, 5, 3, 2, 4, 2, 4 ]
+      Phân tổ:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Gạo (Kg)"
+          - label: Gạo (Kg)
             count: 12
-          - label: "Lương thực khác (quy gạo) (Kg)"
+          - label: Lương thực khác (quy gạo) (Kg)
             count: 12
-          - label: "Thịt các loại (Kg)"
+          - label: Thịt các loại (Kg)
             count: 12
-          - label: "Mỡ, dầu ăn (Kg)"
+          - label: Mỡ, dầu ăn (Kg)
             count: 12
-          - label: "Tôm, cá (Kg)"
+          - label: Tôm, cá (Kg)
             count: 12
-          - label: "Trứng gia cầm (Quả)"
+          - label: Trứng gia cầm (Quả)
             count: 12
-          - label: "Đậu phụ (Kg)"
+          - label: Đậu phụ (Kg)
             count: 12
-          - label: "Đường, mật, sữa, bánh, mứt kẹo (Kg)"
+          - label: Đường, mật, sữa, bánh, mứt kẹo (Kg)
             count: 12
-          - label: "Nước mắm, nước chấm (Lít)"
+          - label: Nước mắm, nước chấm (Lít)
             count: 12
-          - label: "Chè, cà phê (Kg)"
+          - label: Chè, cà phê (Kg)
             count: 12
-          - label: "Rượu, bia (Lít)"
+          - label: Rượu, bia (Lít)
             count: 12
-          - label: "Đồ uống khác (Lít)"
+          - label: Đồ uống khác (Lít)
             count: 12
+          - label: Đỗ các loại (Kg)
+            count: 12
+          - label: Lạc, vừng (Kg)
+            count: 12
+          - label: Rau (Kg)
+            count: 12
+          - label: Quả (Kg)
+            count: 12
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
