@@ -96,11 +96,13 @@ function renderColumnStatsYaml(
     } else {
       lines.push(`${pad}  kind: categorical`);
       lines.push(`${pad}  distinct: ${stat.distinct}`);
-      // `complete: false` PHẢI được ghi ra: thiếu nó thì bên đọc không phân biệt
-      // được "cột này chỉ có 12 giá trị" với "cột này bị cắt còn 12" — và sẽ trả
-      // lời "không có Đà Nẵng" cho một dataset thật ra có (D5, FR-038).
-      if (stat.complete === false) {
-        lines.push(`${pad}  complete: false`);
+      // `complete` PHẢI được ghi ra: thiếu nó thì bên đọc không phân biệt được
+      // "cột này chỉ có 12 giá trị" với "cột này bị cắt còn 12" — và sẽ trả lời
+      // "không có Đà Nẵng" cho một dataset thật ra có (D5, FR-038).
+      // Ghi cả khi `true`, để khớp đúng dạng mà `/api/dataset/recompute` ghi ra;
+      // hai bộ ghi cùng một trường mà khác dạng là chỗ để lệch âm thầm.
+      if (stat.complete !== undefined) {
+        lines.push(`${pad}  complete: ${stat.complete}`);
       }
       if (stat.segments.length > 0) {
         lines.push(`${pad}  segments:`);

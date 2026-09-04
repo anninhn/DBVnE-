@@ -157,6 +157,12 @@ export interface ValueIndexEntry {
 
 export interface ValueIndex {
   entries: Record<string, ValueIndexEntry>;
+  /**
+   * `slug → title`. Hợp đồng đòi `datasets[]` có cả tiêu đề, nhưng nhét tiêu đề
+   * vào từng entry là chép lại nó hàng nghìn lần — một tỉnh xuất hiện ở hàng trăm
+   * dataset. Tra bảng này lúc trả kết quả.
+   */
+  titles: Record<string, string>;
   /** Cột bị cắt vì quá nhiều giá trị — nguồn của `partialColumns` */
   partialColumns: { slug: string; column: string }[];
   builtAt: string;

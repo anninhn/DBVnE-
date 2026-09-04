@@ -35,10 +35,9 @@ thứ tự ưu tiên**, và làm theo ưu tiên sẽ không chạy được:
 
 | Story | Ưu tiên | Vì sao vị trí thi công khác |
 |---|---|---|
-| **US6** | P3 | Bộ đo là **thước** cho SC-004→SC-008. Làm sau thì năm story kia không chứng minh được kết quả |
 | **US3** | P2 | US1 phải bỏ dữ liệu mẫu và thay bằng danh sách giá trị cột — nên US3 là **điều kiện tiên quyết** của US1 |
 | **US1** | P1 | Ưu tiên cao nhất (lỗi người dùng không tự phát hiện) nhưng phải chờ US3 |
-| **US2** | P1 | Nặng nhất, cần thước đo của US6 để hiệu chỉnh trọng số trộn hai nhánh |
+| **US2** | P1 | Nặng nhất. Không còn thước đo nên trọng số trộn hai nhánh đặt cố định 50/50 (T053) |
 
 Ghi chú này đã có trong `spec.md` § Assumptions và `checklists/requirements.md`.
 Ưu tiên vẫn là ưu tiên về **giá trị**; thứ tự dưới đây là thứ tự **thi công**.
@@ -261,9 +260,9 @@ cố ý gộp vào một script để chỉ đọc CSV từ R2 **một lượt**
 
 ### MVP — ship gì trước
 
-**Phase 1 → 2 → 3 → 4 → 5**, rồi **deploy**.
+**Phase 1 → 2 → 4 → 5**, rồi **deploy**. (Phase 3 đã bỏ.)
 
-Tới đó đã có: thước đo đáng tin, câu hỏi theo giá trị trả lời chắc chắn cả hai chiều, và
+Tới đó đã có: câu hỏi theo giá trị trả lời chắc chắn cả hai chiều, và
 **không còn đường để hệ thống đưa ra con số không kiểm chứng được**. Đó là phần giá trị
 cao nhất và cũng là phần rủi ro cao nhất nếu để lâu.
 
@@ -281,8 +280,9 @@ ngay khi xảy ra** — còn con số bịa thì không ai thấy.
 
 ### Hai chỗ dễ làm sai
 
-**T001 không lấy lại được.** Chạy bộ đo lấy mốc **trước** khi sửa dòng code nào. Sửa rồi
-thì mốc cũ mất, và không còn cách chứng minh thay đổi có làm tốt lên.
+**T018/T035 chỉ nên chạy một lượt.** Cả hai đọc CSV của 495 dataset từ R2 — tách thành
+hai lượt là trả tiền băng thông và thời gian hai lần cho cùng một dữ liệu. Viết đủ cả
+hai việc vào script trước khi chạy thật.
 
 **T044 quan trọng hơn vẻ ngoài của nó.** Cơ chế phát hiện chỉ mục lệch là thứ duy nhất
 chặn được lỗi im lặng nặng nhất của cả đợt: vector cũ + metadata mới thì hệ thống vẫn
