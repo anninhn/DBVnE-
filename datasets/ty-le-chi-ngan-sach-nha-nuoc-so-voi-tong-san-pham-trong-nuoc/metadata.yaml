@@ -26,39 +26,40 @@ files:
     r2_key: "41b89b41-4564-4631-8a96-524871c9e163/ty-le-chi-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc.csv"
     size_mb: 0
     column_stats:
-      "header0":
+      header0:
         kind: numeric
         min: 2018
         max: 2023
-        histogram: [11, 11, 0, 11, 11, 0, 11, 11]
-      "Tỷ lệ (%)":
+        histogram: [ 11, 11, 0, 11, 11, 0, 11, 11 ]
+      Tỷ lệ (%):
         kind: numeric
         min: 0
         max: 21.5
-        histogram: [15, 6, 7, 1, 6, 0, 2, 5]
-      "Loại chi":
+        histogram: [ 15, 6, 7, 1, 6, 0, 2, 5 ]
+      Loại chi:
         kind: categorical
         distinct: 11
         segments:
-          - label: "TỔNG CHI (*)"
+          - label: TỔNG CHI (*)
             count: 7
-          - label: "Chi đầu tư phát triển (**)"
+          - label: Chi đầu tư phát triển (**)
             count: 7
-          - label: "Chi phát triển sự nghiệp kinh tế - xã hội (***)"
+          - label: Chi phát triển sự nghiệp kinh tế - xã hội (***)
             count: 7
-          - label: "Chi sự nghiệp giáo dục, đào tạo"
+          - label: Chi sự nghiệp giáo dục, đào tạo
             count: 7
-          - label: "Chi sự nghiệp y tế, dân số và gia đình"
+          - label: Chi sự nghiệp y tế, dân số và gia đình
             count: 7
-          - label: "Chi sự nghiệp khoa học, công nghệ"
+          - label: Chi sự nghiệp khoa học, công nghệ
             count: 7
-          - label: "Chi văn hoá thông tin; phát thanh truyền hình, thông tấn; thể dục thể thao"
+          - label: Chi văn hoá thông tin; phát thanh truyền hình, thông tấn; thể dục thể thao
             count: 7
-          - label: "Chi đảm bảo xã hội"
+          - label: Chi đảm bảo xã hội
             count: 7
-          - label: "Chi sự nghiệp kinh tế, bảo vệ môi trường"
+          - label: Chi sự nghiệp kinh tế, bảo vệ môi trường
             count: 7
-          - label: "Chi hoạt động của các cơ quan Quản lý nhà nước, Đảng, đoàn thể"
+          - label: Chi hoạt động của các cơ quan Quản lý nhà nước, Đảng, đoàn thể
             count: 7
-          - label: "Chi bổ sung quĩ dự trữ tài chính"
+          - label: Chi bổ sung quĩ dự trữ tài chính
             count: 7
+        complete: true
