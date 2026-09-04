@@ -26,23 +26,25 @@ files:
     r2_key: "fcd059c9-a1a5-4256-ad34-549b20f03b45/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-thoi-ky-1.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1991
         max: 2024
-        histogram: [5, 4, 4, 4, 4, 4, 4, 5]
-      "Số dự án":
+        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+      Số dự án:
         kind: numeric
         min: 152
         max: 38349
-        histogram: [35, 0, 0, 0, 0, 0, 0, 1]
-      "Tổng vốn đăng ký (Triệu đô la Mỹ)":
+        histogram: [ 35, 0, 0, 0, 0, 0, 0, 1 ]
+      Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 1284.4
         max: 523918.6
-        histogram: [34, 1, 0, 0, 0, 0, 0, 1]
-      "Tổng số vốn thực hiện (Triệu đô la Mỹ)":
+        histogram: [ 34, 1, 0, 0, 0, 0, 0, 1 ]
+      Tổng số vốn thực hiện (Triệu đô la Mỹ):
         kind: numeric
         min: 428.5
         max: 251192.9
-        histogram: [34, 0, 0, 0, 0, 0, 0, 1]
+        histogram: [ 34, 0, 0, 0, 0, 0, 0, 1 ]
+coverage:
+  temporal: [ 1991, 2024 ]
