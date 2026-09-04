@@ -26,38 +26,41 @@ files:
     r2_key: "3a3db549-565f-4920-bb03-f5ed1e0fbcd8/so-giuong-benh.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2017
-        histogram: [24, 24, 24, 16, 24, 24, 24, 24]
-      "Số giường (Nghìn giường)":
+        histogram: [ 24, 24, 24, 16, 24, 24, 24, 24 ]
+      Số giường (Nghìn giường):
         kind: numeric
         min: 1.3
         max: 315
-        histogram: [110, 23, 9, 5, 12, 10, 5, 5]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 110, 23, 9, 5, 12, 10, 5, 5 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 57.1
         max: 175
-        histogram: [4, 6, 102, 62, 2, 1, 1, 1]
-      "Loại cơ sở":
+        histogram: [ 4, 6, 102, 62, 2, 1, 1, 1 ]
+      Loại cơ sở:
         kind: categorical
         distinct: 8
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 23
-          - label: "Bệnh viện"
+          - label: Bệnh viện
             count: 23
-          - label: "Bệnh viện điều dưỡng và phục hồi chức năng"
+          - label: Bệnh viện điều dưỡng và phục hồi chức năng
             count: 23
-          - label: "Phòng khám đa khoa khu vực"
+          - label: Phòng khám đa khoa khu vực
             count: 23
-          - label: "Trạm y tế xã, phường"
+          - label: Trạm y tế xã, phường
             count: 23
-          - label: "Trạm y tế của cơ quan, xí nghiệp"
+          - label: Trạm y tế của cơ quan, xí nghiệp
             count: 23
-          - label: "Cơ sở khác"
+          - label: Cơ sở khác
             count: 23
-          - label: "Giường bệnh tính bình quân cho 1 vạn dân(**) (Giường)"
+          - label: Giường bệnh tính bình quân cho 1 vạn dân(**) (Giường)
             count: 23
+        complete: true
+coverage:
+  temporal: [ 1995, 2017 ]
