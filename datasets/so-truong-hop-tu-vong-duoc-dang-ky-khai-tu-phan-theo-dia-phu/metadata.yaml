@@ -26,51 +26,170 @@ files:
     r2_key: "b62d7970-c266-40bb-9dfd-90f32c716827/so-truong-hop-tu-vong-duoc-dang-ky-khai-tu-phan-theo-dia-phu.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [70, 70, 70, 0, 70, 70, 70, 70]
-      "Tổng số":
+        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+      Tổng số:
         kind: numeric
         min: 1697
         max: 725035
-        histogram: [461, 21, 1, 0, 0, 0, 5, 2]
-      "Đúng hạn":
+        histogram: [ 461, 21, 1, 0, 0, 0, 5, 2 ]
+      Đúng hạn:
         kind: numeric
         min: 853
         max: 508780
-        histogram: [457, 25, 1, 0, 0, 0, 3, 4]
-      "Quá hạn":
+        histogram: [ 457, 25, 1, 0, 0, 0, 3, 4 ]
+      Quá hạn:
         kind: numeric
         min: 375
         max: 216255
-        histogram: [469, 6, 8, 0, 0, 3, 3, 1]
-      "Tỉnh, thành phố":
+        histogram: [ 469, 6, 8, 0, 0, 3, 3, 1 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 70
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 7
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 7
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 7
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 7
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 7
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 7
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 7
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 7
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 7
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 7
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 7
-          - label: "Nam Định"
+          - label: Nam Định
             count: 7
+          - label: Ninh Bình
+            count: 7
+          - label: Trung du và miền núi phía Bắc
+            count: 7
+          - label: Hà Giang
+            count: 7
+          - label: Cao Bằng
+            count: 7
+          - label: Bắc Kạn
+            count: 7
+          - label: Tuyên Quang
+            count: 7
+          - label: Lào Cai
+            count: 7
+          - label: Yên Bái
+            count: 7
+          - label: Thái Nguyên
+            count: 7
+          - label: Lạng Sơn
+            count: 7
+          - label: Bắc Giang
+            count: 7
+          - label: Phú Thọ
+            count: 7
+          - label: Điện Biên
+            count: 7
+          - label: Lai Châu
+            count: 7
+          - label: Sơn La
+            count: 7
+          - label: Hòa Bình
+            count: 7
+          - label: Bắc Trung Bộ và duyên hải miền Trung
+            count: 7
+          - label: Thanh Hóa
+            count: 7
+          - label: Nghệ An
+            count: 7
+          - label: Hà Tĩnh
+            count: 7
+          - label: Quảng Bình
+            count: 7
+          - label: Quảng Trị
+            count: 7
+          - label: Huế
+            count: 7
+          - label: Đà Nẵng
+            count: 7
+          - label: Quảng Nam
+            count: 7
+          - label: Quảng Ngãi
+            count: 7
+          - label: Bình Định
+            count: 7
+          - label: Phú Yên
+            count: 7
+          - label: Khánh Hòa
+            count: 7
+          - label: Ninh Thuận
+            count: 7
+          - label: Bình Thuận
+            count: 7
+          - label: Tây Nguyên
+            count: 7
+          - label: Kon Tum
+            count: 7
+          - label: Gia Lai
+            count: 7
+          - label: Đắk Lắk
+            count: 7
+          - label: Đắk Nông
+            count: 7
+          - label: Lâm Đồng
+            count: 7
+          - label: Đông Nam Bộ
+            count: 7
+          - label: Bình Phước
+            count: 7
+          - label: Tây Ninh
+            count: 7
+          - label: Bình Dương
+            count: 7
+          - label: Đồng Nai
+            count: 7
+          - label: Bà Rịa - Vũng Tàu
+            count: 7
+          - label: TP. Hồ Chí Minh
+            count: 7
+          - label: Đồng bằng sông Cửu Long
+            count: 7
+          - label: Long An
+            count: 7
+          - label: Tiền Giang
+            count: 7
+          - label: Bến Tre
+            count: 7
+          - label: Trà Vinh
+            count: 7
+          - label: Vĩnh Long
+            count: 7
+          - label: Đồng Tháp
+            count: 7
+          - label: An Giang
+            count: 7
+          - label: Kiên Giang
+            count: 7
+          - label: Cần Thơ
+            count: 7
+          - label: Hậu Giang
+            count: 7
+          - label: Sóc Trăng
+            count: 7
+          - label: Bạc Liêu
+            count: 7
+          - label: Cà Mau
+            count: 7
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
