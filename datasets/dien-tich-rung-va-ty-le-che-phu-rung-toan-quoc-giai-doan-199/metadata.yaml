@@ -27,148 +27,265 @@ files:
     r2_key: "3c95087b-9ed7-4785-a523-93e0e6d8321f/Di_n_t_ch_r_ng_c__n__c_giai__o_n_1999-2025.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1999
         max: 2025
-        histogram: [4, 3, 3, 3, 4, 3, 3, 4]
-      "Diện tích rừng tự nhiên":
+        histogram: [ 4, 3, 3, 3, 4, 3, 3, 4 ]
+      Diện tích rừng tự nhiên:
         kind: categorical
         distinct: 24
         segments:
-          - label: "9.444.198"
+          - label: 9.444.198
             count: 1
-          - label: "9.675.700"
+          - label: 9.675.700
             count: 1
-          - label: "10.004.000"
+          - label: 10.004.000
             count: 1
-          - label: "10.088.288"
+          - label: 10.088.288
             count: 1
-          - label: "10.283.173"
+          - label: 10.283.173
             count: 1
-          - label: "10.283.965"
+          - label: 10.283.965
             count: 1
-          - label: "10.348.591"
+          - label: 10.348.591
             count: 1
-          - label: "10.339.305"
+          - label: 10.339.305
             count: 1
-          - label: "10.304.816"
+          - label: 10.304.816
             count: 1
-          - label: "10.285.383"
+          - label: 10.285.383
             count: 1
-          - label: "10.423.844"
+          - label: 10.423.844
             count: 1
-          - label: "10.398.160"
+          - label: 10.398.160
             count: 1
-      "Tốc độ tăng/giảm rừng tự nhiên":
+          - label: 10.100.186
+            count: 1
+          - label: 10.175.519
+            count: 1
+          - label: 10.242.141
+            count: 1
+          - label: 10.236.415
+            count: 1
+          - label: 10.255.525
+            count: 1
+          - label: 10.292.434
+            count: 1
+          - label: 10.279.185
+            count: 1
+          - label: 10.171.757
+            count: 1
+          - label: 10.134.082
+            count: 1
+          - label: 10.129.751
+            count: 1
+          - label: 10.133.952
+            count: 1
+          - label: 10.079.366
+            count: 1
+        complete: true
+      Tốc độ tăng/giảm rừng tự nhiên:
         kind: categorical
         distinct: 23
         segments:
-          - label: "2,45%"
+          - label: 2,45%
             count: 1
-          - label: "1,12%"
+          - label: 1,12%
             count: 1
-          - label: "0,84%"
+          - label: 0,84%
             count: 1
-          - label: "1,93%"
+          - label: 1,93%
             count: 1
-          - label: "0,00%"
+          - label: 0,00%
             count: 1
-          - label: "0,63%"
+          - label: 0,63%
             count: 1
-          - label: "-0,09%"
+          - label: -0,09%
             count: 1
-          - label: "-0,33%"
+          - label: -0,33%
             count: 1
-          - label: "-0,19%"
+          - label: -0,19%
             count: 1
-          - label: "1,35%"
+          - label: 1,35%
             count: 1
-          - label: "-0,25%"
+          - label: -0,25%
             count: 1
-          - label: "-2,87%"
+          - label: -2,87%
             count: 1
-      "Diện tích rừng trồng":
+          - label: 0,75%
+            count: 1
+          - label: 0,65%
+            count: 1
+          - label: -0,06%
+            count: 1
+          - label: 0,19%
+            count: 1
+          - label: 0,36%
+            count: 1
+          - label: -0,13%
+            count: 1
+          - label: -1,05%
+            count: 1
+          - label: -0,37%
+            count: 1
+          - label: -0,04%
+            count: 1
+          - label: 0,04%
+            count: 1
+          - label: -0,54%
+            count: 1
+        complete: true
+      Diện tích rừng trồng:
         kind: categorical
         distinct: 24
         segments:
-          - label: "1.471.394"
+          - label: 1.471.394
             count: 1
-          - label: "1.638.926"
+          - label: 1.638.926
             count: 1
-          - label: "2.090.000"
+          - label: 2.090.000
             count: 1
-          - label: "2.218.570"
+          - label: 2.218.570
             count: 1
-          - label: "2.333.526"
+          - label: 2.333.526
             count: 1
-          - label: "2.553.369"
+          - label: 2.553.369
             count: 1
-          - label: "2.770.182"
+          - label: 2.770.182
             count: 1
-          - label: "2.919.538"
+          - label: 2.919.538
             count: 1
-          - label: "3.083.259"
+          - label: 3.083.259
             count: 1
-          - label: "3.229.681"
+          - label: 3.229.681
             count: 1
-          - label: "3.438.200"
+          - label: 3.438.200
             count: 1
-          - label: "3.556.294"
+          - label: 3.556.294
             count: 1
-      "Tốc độ tăng/giảm rừng trồng":
+          - label: 3.696.320
+            count: 1
+          - label: 3.886.337
+            count: 1
+          - label: 4.135.541
+            count: 1
+          - label: 4.178.966
+            count: 1
+          - label: 4.235.770
+            count: 1
+          - label: 4.316.786
+            count: 1
+          - label: 4.398.030
+            count: 1
+          - label: 4.573.444
+            count: 1
+          - label: 4.655.993
+            count: 1
+          - label: 4.730.557
+            count: 1
+          - label: 4.740.350
+            count: 1
+          - label: 4.892.187
+            count: 1
+        complete: true
+      Tốc độ tăng/giảm rừng trồng:
         kind: categorical
         distinct: 23
         segments:
-          - label: "11,39%"
+          - label: 11,39%
             count: 1
-          - label: "8,44%"
+          - label: 8,44%
             count: 1
-          - label: "6,15%"
+          - label: 6,15%
             count: 1
-          - label: "5,18%"
+          - label: 5,18%
             count: 1
-          - label: "4,60%"
+          - label: 4,60%
             count: 1
-          - label: "8,49%"
+          - label: 8,49%
             count: 1
-          - label: "-5,39%"
+          - label: -5,39%
             count: 1
-          - label: "-5,61%"
+          - label: -5,61%
             count: 1
-          - label: "-4,75%"
+          - label: -4,75%
             count: 1
-          - label: "6,46%"
+          - label: 6,46%
             count: 1
-          - label: "-3,43%"
+          - label: -3,43%
             count: 1
-          - label: "-3,94%"
+          - label: -3,94%
             count: 1
-      "Tỷ lệ che phủ rừng toàn quốc":
+          - label: 5,14%
+            count: 1
+          - label: 6,41%
+            count: 1
+          - label: -1,05%
+            count: 1
+          - label: 1,36%
+            count: 1
+          - label: 1,91%
+            count: 1
+          - label: -1,88%
+            count: 1
+          - label: -3,99%
+            count: 1
+          - label: -1,80%
+            count: 1
+          - label: -1,60%
+            count: 1
+          - label: 0,21%
+            count: 1
+          - label: -3,20%
+            count: 1
+        complete: true
+      Tỷ lệ che phủ rừng toàn quốc:
         kind: categorical
         distinct: 21
         segments:
-          - label: "42,02%"
+          - label: 42,02%
             count: 3
-          - label: "42,03%"
+          - label: 42,03%
             count: 2
-          - label: "33,20%"
+          - label: 33,20%
             count: 1
-          - label: "34,40%"
+          - label: 34,40%
             count: 1
-          - label: "36,10%"
+          - label: 36,10%
             count: 1
-          - label: "36,70%"
+          - label: 36,70%
             count: 1
-          - label: "37%"
+          - label: 37%
             count: 1
-          - label: "38,20%"
+          - label: 38,20%
             count: 1
-          - label: "38,70%"
+          - label: 38,70%
             count: 1
-          - label: "39,10%"
+          - label: 39,10%
             count: 1
-          - label: "39,50%"
+          - label: 39,50%
             count: 1
-          - label: "39,70%"
+          - label: 39,70%
             count: 1
+          - label: 40,70%
+            count: 1
+          - label: 41,00%
+            count: 1
+          - label: 40,43%
+            count: 1
+          - label: 40,84%
+            count: 1
+          - label: 41,19%
+            count: 1
+          - label: 41,45%
+            count: 1
+          - label: 41,65%
+            count: 1
+          - label: 41,89 %
+            count: 1
+          - label: 42,01%
+            count: 1
+        complete: true
+coverage:
+  temporal: [ 1999, 2025 ]
