@@ -27,30 +27,33 @@ files:
     r2_key: "f02994ab-7d99-45df-b5ff-61411c186976/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-doan.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Doanh nghiệp":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Doanh nghiệp:
         kind: numeric
         min: 5182
         max: 118890
-        histogram: [11, 5, 9, 4, 4, 1, 1, 5]
-      "Cơ cấu (%)":
+        histogram: [ 11, 5, 9, 4, 4, 1, 1, 5 ]
+      Cơ cấu (%):
         kind: numeric
         min: 11.4
         max: 100
-        histogram: [10, 10, 0, 7, 3, 0, 0, 10]
-      "Trình độ công nghệ":
+        histogram: [ 10, 10, 0, 7, 3, 0, 0, 10 ]
+      Trình độ công nghệ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nhóm ngành công nghệ cao"
+          - label: Nhóm ngành công nghệ cao
             count: 10
-          - label: "Nhóm ngành công nghệ trung bình"
+          - label: Nhóm ngành công nghệ trung bình
             count: 10
-          - label: "Nhóm ngành công nghệ thấp"
+          - label: Nhóm ngành công nghệ thấp
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
