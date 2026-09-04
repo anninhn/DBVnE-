@@ -15251,7 +15251,10 @@
     "format": "csv",
     "source": "Tổng cục Thống kê (GSO)",
     "source_url": "https://www.nso.gov.vn/px-web-2/?pxid=V0651&theme=Nông%2C%20lâm%20nghiệp%20và%20thủy%20sản",
-    "year_range": [],
+    "year_range": [
+      2008,
+      2024
+    ],
     "resources": [
       {
         "type": "csv",

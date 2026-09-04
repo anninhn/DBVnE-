@@ -27,87 +27,188 @@ files:
     r2_key: "f3232cad-ca94-42e3-b87e-32ad8c9ee76a/Hie__n_tra_ng_ru__ng_co___e__n_31-12_ha__ng_na_m_pha_n_theo__i_a_phu_o_ng.csv"
     size_mb: 0.05
     column_stats:
-      "year":
+      year:
         kind: numeric
         min: 2008
         max: 2024
-        histogram: [134, 134, 134, 134, 67, 134, 134, 201]
-      "total_forest_area_nghin_ha":
+        histogram: [ 134, 134, 134, 134, 67, 134, 134, 201 ]
+      total_forest_area_nghin_ha:
         kind: numeric
         min: 0.6
         max: 14874.3
-        histogram: [1008, 16, 28, 4, 0, 0, 0, 16]
-      "natural_forest_nghin_ha":
+        histogram: [ 1008, 16, 28, 4, 0, 0, 0, 16 ]
+      natural_forest_nghin_ha:
         kind: numeric
         min: 0
         max: 10423.8
-        histogram: [932, 12, 36, 0, 0, 0, 0, 16]
-      "planted_forest_nghin_ha":
+        histogram: [ 932, 12, 36, 0, 0, 0, 0, 16 ]
+      planted_forest_nghin_ha:
         kind: numeric
         min: 0.6
         max: 4740.4
-        histogram: [1024, 7, 20, 5, 2, 3, 4, 7]
-      "new_planting_nghin_ha":
+        histogram: [ 1024, 7, 20, 5, 2, 3, 4, 7 ]
+      new_planting_nghin_ha:
         kind: numeric
         min: 0
         max: 540.9
-        histogram: [397, 5, 8, 1, 0, 5, 1, 1]
-      "forest_cover_pct":
+        histogram: [ 397, 5, 8, 1, 0, 5, 1, 1 ]
+      forest_cover_pct:
         kind: numeric
         min: 0.5
         max: 73.4
-        histogram: [274, 93, 64, 39, 193, 221, 106, 46]
-      "scope":
+        histogram: [ 274, 93, 64, 39, 193, 221, 106, 46 ]
+      scope:
         kind: categorical
         distinct: 2
         segments:
-          - label: "province"
+          - label: province
             count: 960
-          - label: "region"
+          - label: region
             count: 112
-      "province":
+        complete: true
+      province:
         kind: categorical
         distinct: 60
         segments:
-          - label: "Nghệ An"
+          - label: Nghệ An
             count: 16
-          - label: "Gia Lai"
+          - label: Gia Lai
             count: 16
-          - label: "Quảng Nam"
+          - label: Quảng Nam
             count: 16
-          - label: "Sơn La"
+          - label: Sơn La
             count: 16
-          - label: "Kon Tum"
+          - label: Kon Tum
             count: 16
-          - label: "Thanh Hóa"
+          - label: Thanh Hóa
             count: 16
-          - label: "Đắk Lắk"
+          - label: Đắk Lắk
             count: 16
-          - label: "Lâm Đồng"
+          - label: Lâm Đồng
             count: 16
-          - label: "Quảng Bình"
+          - label: Quảng Bình
             count: 16
-          - label: "Lạng Sơn"
+          - label: Lạng Sơn
             count: 16
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 16
-          - label: "Hà Giang"
+          - label: Hà Giang
             count: 16
-      "region":
+          - label: Yên Bái
+            count: 16
+          - label: Điện Biên
+            count: 16
+          - label: Tuyên Quang
+            count: 16
+          - label: Lào Cai
+            count: 16
+          - label: Bình Định
+            count: 16
+          - label: Cao Bằng
+            count: 16
+          - label: Bắc Kạn
+            count: 16
+          - label: Quảng Ninh
+            count: 16
+          - label: Bình Thuận
+            count: 16
+          - label: Quảng Ngãi
+            count: 16
+          - label: Hà Tĩnh
+            count: 16
+          - label: Đắk Nông
+            count: 16
+          - label: Thừa Thiên Huế
+            count: 16
+          - label: Hoà Bình
+            count: 16
+          - label: Phú Yên
+            count: 16
+          - label: Quảng Trị
+            count: 16
+          - label: Khánh Hòa
+            count: 16
+          - label: Thái Nguyên
+            count: 16
+          - label: Đồng Nai
+            count: 16
+          - label: Phú Thọ
+            count: 16
+          - label: Ninh Thuận
+            count: 16
+          - label: Bắc Giang
+            count: 16
+          - label: Bình Phước
+            count: 16
+          - label: Cà Mau
+            count: 16
+          - label: Kiên Giang
+            count: 16
+          - label: Tây Ninh
+            count: 16
+          - label: Đà Nẵng
+            count: 16
+          - label: Đồng Tháp
+            count: 16
+          - label: Long An
+            count: 16
+          - label: TP. Hồ Chí Minh
+            count: 16
+          - label: Vĩnh Phúc
+            count: 16
+          - label: Bà Rịa - Vũng Tàu
+            count: 16
+          - label: Ninh Bình
+            count: 16
+          - label: Hà Nội
+            count: 16
+          - label: Hải Phòng
+            count: 16
+          - label: An Giang
+            count: 16
+          - label: Hải Dương
+            count: 16
+          - label: Sóc Trăng
+            count: 16
+          - label: Bình Dương
+            count: 16
+          - label: Tiền Giang
+            count: 16
+          - label: Trà Vinh
+            count: 16
+          - label: Hà Nam
+            count: 16
+          - label: Thái Bình
+            count: 16
+          - label: Bạc Liêu
+            count: 16
+          - label: Bến Tre
+            count: 16
+          - label: Hậu Giang
+            count: 16
+          - label: Nam Định
+            count: 16
+          - label: Bắc Ninh
+            count: 16
+        complete: true
+      region:
         kind: categorical
         distinct: 7
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 16
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 16
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 16
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 16
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 16
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 16
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 16
+        complete: true
+coverage:
+  temporal: [ 2008, 2024 ]
