@@ -26,41 +26,52 @@ files:
     r2_key: "163a21f2-7c23-43d5-b999-fc1f3def1a65/muc-nuoc-bien-trung-binh-tai-mot-so-tram-quan-trac.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2013
         max: 2024
-        histogram: [32, 16, 32, 16, 16, 32, 16, 32]
-      "Mực nước biển trung bình tại một số trạm quan trắc":
+        histogram: [ 32, 16, 32, 16, 16, 32, 16, 32 ]
+      Mực nước biển trung bình tại một số trạm quan trắc:
         kind: numeric
         min: 70
         max: 277
-        histogram: [24, 20, 0, 35, 18, 40, 18, 30]
-      "Trạm":
+        histogram: [ 24, 20, 0, 35, 18, 40, 18, 30 ]
+      Trạm:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Cô Tô"
+          - label: Cô Tô
             count: 12
-          - label: "Cửa Ông"
+          - label: Cửa Ông
             count: 12
-          - label: "Bãi Cháy"
+          - label: Bãi Cháy
             count: 12
-          - label: "Hòn Dấu"
+          - label: Hòn Dấu
             count: 12
-          - label: "Bạch Long Vĩ"
+          - label: Bạch Long Vĩ
             count: 12
-          - label: "Sầm Sơn"
+          - label: Sầm Sơn
             count: 12
-          - label: "Hòn Ngư"
+          - label: Hòn Ngư
             count: 12
-          - label: "Cồn Cỏ"
+          - label: Cồn Cỏ
             count: 12
-          - label: "Sơn Trà"
+          - label: Sơn Trà
             count: 12
-          - label: "Quy Nhơn"
+          - label: Quy Nhơn
             count: 12
-          - label: "Phú Quý"
+          - label: Phú Quý
             count: 12
-          - label: "Trường Sa"
+          - label: Trường Sa
             count: 12
+          - label: Vũng Tàu
+            count: 12
+          - label: Côn Đảo
+            count: 12
+          - label: Thổ Chu
+            count: 12
+          - label: Phú Quốc
+            count: 12
+        complete: true
+coverage:
+  temporal: [ 2013, 2024 ]
