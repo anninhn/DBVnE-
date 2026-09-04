@@ -25,41 +25,148 @@ files:
     r2_key: "19d0bf2d-7d0b-436e-8387-b34f7eeb922c/dau-tu-truc-tiep-cua-nuoc-ngoai-duoc-cap-giay-phep-phan-th-2.csv"
     size_mb: 0
     column_stats:
-      "Số dự án":
+      Số dự án:
         kind: numeric
         min: 1
         max: 42002
-        histogram: [61, 2, 0, 0, 0, 0, 0, 1]
-      "Tổng vốn đăng ký (Triệu đô la Mỹ)":
+        histogram: [ 61, 2, 0, 0, 0, 0, 0, 1 ]
+      Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 43.1
         max: 502820.9
-        histogram: [60, 3, 0, 0, 0, 0, 0, 1]
-      "Đối tác đầu tư":
+        histogram: [ 60, 3, 0, 0, 0, 0, 0, 1 ]
+      Đối tác đầu tư:
         kind: categorical
         distinct: 65
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 1
-          - label: "Hàn Quốc"
+          - label: Hàn Quốc
             count: 1
-          - label: "Xin-ga-po"
+          - label: Xin-ga-po
             count: 1
-          - label: "Nhật Bản"
+          - label: Nhật Bản
             count: 1
-          - label: "Đài Loan"
+          - label: Đài Loan
             count: 1
-          - label: "Đặc khu hành chính Hồng Công (TQ"
+          - label: Đặc khu hành chính Hồng Công (TQ
             count: 1
-          - label: "CHND Trung Hoa"
+          - label: CHND Trung Hoa
             count: 1
-          - label: "Quần đảo Virgin thuộc Anh"
+          - label: Quần đảo Virgin thuộc Anh
             count: 1
-          - label: "Hà Lan"
+          - label: Hà Lan
             count: 1
-          - label: "Thái Lan"
+          - label: Thái Lan
             count: 1
-          - label: "Ma-lai-xi-a"
+          - label: Ma-lai-xi-a
             count: 1
-          - label: "Hoa Kỳ"
+          - label: Hoa Kỳ
             count: 1
+          - label: Xa-moa
+            count: 1
+          - label: Quần đảo Cay-men
+            count: 1
+          - label: Ca-na-đa
+            count: 1
+          - label: Vương quốc Anh
+            count: 1
+          - label: Pháp
+            count: 1
+          - label: CHLB Đức
+            count: 1
+          - label: Lúc-xăm-bua
+            count: 1
+          - label: CH Xây-sen
+            count: 1
+          - label: Thụy Sỹ
+            count: 1
+          - label: Đan Mạch
+            count: 1
+          - label: Ô-xtrây-li-a
+            count: 1
+          - label: Cộng hòa Thổ Nhĩ Kỳ
+            count: 1
+          - label: Ấn Độ
+            count: 1
+          - label: Bỉ
+            count: 1
+          - label: Liên bang Nga
+            count: 1
+          - label: Tây Ấn thuộc Anh
+            count: 1
+          - label: Bru-nây
+            count: 1
+          - label: Thụy Điển
+            count: 1
+          - label: In-đô-nê-xi-a
+            count: 1
+          - label: Phi-li-pin
+            count: 1
+          - label: Béc-mu-đa
+            count: 1
+          - label: I-ta-li-a
+            count: 1
+          - label: Ba Lan
+            count: 1
+          - label: Cộng hòa Síp
+            count: 1
+          - label: Ma-ri-ti-us
+            count: 1
+          - label: Quốc đảo Marshall
+            count: 1
+          - label: Bê-li-xê
+            count: 1
+          - label: Niu-di-lân
+            count: 1
+          - label: Na Uy
+            count: 1
+          - label: Đặc khu HC Ma-cao (TQ)
+            count: 1
+          - label: Đảo An-gui-la
+            count: 1
+          - label: Quần đảo Cúc
+            count: 1
+          - label: I-xra-ren
+            count: 1
+          - label: Áo
+            count: 1
+          - label: Tây Ban Nha
+            count: 1
+          - label: Xlô-va-ki-a
+            count: 1
+          - label: Ba-ha-ma
+            count: 1
+          - label: Ăng-gô-la
+            count: 1
+          - label: Cộng hòa Séc
+            count: 1
+          - label: Cam-pu-chia
+            count: 1
+          - label: Các Tiểu VQ Ả-rập Thống nhất
+            count: 1
+          - label: Quần đảo Virgin thuộc Hoa Kỳ
+            count: 1
+          - label: Hung-ga-ry
+            count: 1
+          - label: Lào
+            count: 1
+          - label: Ai-len
+            count: 1
+          - label: Ê-cu-a-đo
+            count: 1
+          - label: Pa-na-ma
+            count: 1
+          - label: Phần Lan
+            count: 1
+          - label: Xanh-vin-xen và Grê-na-din
+            count: 1
+          - label: Xoa-di-len
+            count: 1
+          - label: Pa-ki-xtan
+            count: 1
+          - label: Xri Lan-ca
+            count: 1
+          - label: (*) Bao gồm vốn cấp mới và vốn tăng thêm của các dự án đã được cấp giấy phép từ các năm trước. Từ năm 2016 bao gồm cả vốn góp, mua cổ phần của nhà đầu tư nước ngoài.
+            count: 1
+        complete: true
