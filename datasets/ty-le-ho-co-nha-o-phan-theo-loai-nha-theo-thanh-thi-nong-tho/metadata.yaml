@@ -27,67 +27,75 @@ files:
     r2_key: "6a9cffd8-37c4-44a2-9ac2-6120490b4e25/ty-le-ho-co-nha-o-phan-theo-loai-nha-theo-thanh-thi-nong-tho.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2014
         max: 2024
-        histogram: [14, 14, 0, 14, 14, 0, 14, 14]
-      "Chung":
+        histogram: [ 14, 14, 0, 14, 14, 0, 14, 14 ]
+      Chung:
         kind: numeric
         min: 100
         max: 100
-        histogram: [84, 0, 0, 0, 0, 0, 0, 0]
-      "Nhà kiên cố":
+        histogram: [ 84, 0, 0, 0, 0, 0, 0, 0 ]
+      Nhà kiên cố:
         kind: numeric
         min: 7.6
         max: 93.63
-        histogram: [13, 5, 2, 26, 26, 6, 0, 6]
-      "Nhà bán kiên cố":
+        histogram: [ 13, 5, 2, 26, 26, 6, 0, 6 ]
+      Nhà bán kiên cố:
         kind: numeric
         min: 6.33
         max: 87
-        histogram: [6, 0, 13, 34, 13, 1, 6, 11]
-      "Nhà thiếu kiên cố":
+        histogram: [ 6, 0, 13, 34, 13, 1, 6, 11 ]
+      Nhà thiếu kiên cố:
         kind: numeric
         min: 0
         max: 16.2
-        histogram: [36, 14, 15, 7, 4, 3, 3, 2]
-      "Nhà đơn sơ":
+        histogram: [ 36, 14, 15, 7, 4, 3, 3, 2 ]
+      Nhà đơn sơ:
         kind: numeric
         min: 0
         max: 10.2
-        histogram: [49, 14, 9, 5, 1, 2, 1, 2]
-      "Phân tổ":
+        histogram: [ 49, 14, 9, 5, 1, 2, 1, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 14
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 6
-          - label: "Thành thị"
+          - label: Thành thị
             count: 6
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 6
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 6
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 6
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 6
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 6
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 6
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 6
-          - label: "Nhóm thu nhập - Nhóm 1"
+          - label: Nhóm thu nhập - Nhóm 1
             count: 6
-          - label: "Nhóm thu nhập - Nhóm 2"
+          - label: Nhóm thu nhập - Nhóm 2
             count: 6
-          - label: "Nhóm thu nhập - Nhóm 3"
+          - label: Nhóm thu nhập - Nhóm 3
             count: 6
-      "Ghi chú":
+          - label: Nhóm thu nhập - Nhóm 4
+            count: 6
+          - label: Nhóm thu nhập - Nhóm 5
+            count: 6
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 14
+        complete: true
+coverage:
+  temporal: [ 2014, 2024 ]
