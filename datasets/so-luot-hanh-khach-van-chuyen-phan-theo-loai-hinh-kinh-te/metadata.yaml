@@ -26,36 +26,40 @@ files:
     r2_key: "fe405f94-829d-454c-b45e-a8da9fe8d17a/so-luot-hanh-khach-van-chuyen-phan-theo-loai-hinh-kinh-te.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [12, 12, 12, 12, 12, 12, 12, 16]
-      "Lượt hành khách (Triệu lượt người)":
+        histogram: [ 12, 12, 12, 12, 12, 12, 12, 16 ]
+      Lượt hành khách (Triệu lượt người):
         kind: numeric
         min: 8.57
         max: 5481.85
-        histogram: [49, 14, 8, 8, 8, 5, 4, 3]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 49, 14, 8, 8, 8, 5, 4, 3 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 57.68
         max: 237.6
-        histogram: [6, 14, 67, 5, 5, 0, 0, 1]
-      "Thành phần kinh tế":
+        histogram: [ 6, 14, 67, 5, 5, 0, 0, 1 ]
+      Thành phần kinh tế:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 25
-          - label: "Kinh tế Nhà nước"
+          - label: Kinh tế Nhà nước
             count: 25
-          - label: "Kinh tế ngoài Nhà nước"
+          - label: Kinh tế ngoài Nhà nước
             count: 25
-          - label: "Khu vực có vốn đầu tư nước ngoài"
+          - label: Khu vực có vốn đầu tư nước ngoài
             count: 25
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 2000, 2024 ]
