@@ -26,47 +26,73 @@ files:
     r2_key: "491116b2-f4c7-4cc1-9104-4ec0a1e23b73/chi-tieu-binh-quan-mot-luot-khach-du-lich-noi-dia-phan-theo.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2019
         max: 2024
-        histogram: [23, 23, 0, 0, 0, 0, 23, 23]
-      "Trị giá (Nghìn đồng)":
+        histogram: [ 23, 23, 0, 0, 0, 0, 23, 23 ]
+      Trị giá (Nghìn đồng):
         kind: numeric
         min: 1929.8
         max: 4351.8
-        histogram: [1, 8, 6, 9, 9, 13, 8, 4]
-      "Mục đích":
+        histogram: [ 1, 8, 6, 9, 9, 13, 8, 4 ]
+      Mục đích:
         kind: categorical
         distinct: 23
         segments:
-          - label: "BÌNH QUÂN CHUNG"
+          - label: BÌNH QUÂN CHUNG
             count: 4
-          - label: "Phân theo giới tính"
+          - label: Phân theo giới tính
             count: 4
-          - label: "Nam"
+          - label: Nam
             count: 4
-          - label: "Nữ"
+          - label: Nữ
             count: 4
-          - label: "Phân theo nghề nghiệp"
+          - label: Phân theo nghề nghiệp
             count: 4
-          - label: "Thương gia"
+          - label: Thương gia
             count: 4
-          - label: "Nhà báo"
+          - label: Nhà báo
             count: 4
-          - label: "Giáo sư, giáo viên"
+          - label: Giáo sư, giáo viên
             count: 4
-          - label: "Kiến trúc sư"
+          - label: Kiến trúc sư
             count: 4
-          - label: "Hưu trí"
+          - label: Hưu trí
             count: 4
-          - label: "Học sinh, sinh viên"
+          - label: Học sinh, sinh viên
             count: 4
-          - label: "Công chức, viên chức"
+          - label: Công chức, viên chức
             count: 4
-      "Ghi chú":
+          - label: Công nhân
+            count: 4
+          - label: Nông dân
+            count: 4
+          - label: Khác
+            count: 4
+          - label: Phân theo nhóm tuổi
+            count: 4
+          - label: Dưới 15
+            count: 4
+          - label: 15 - 24
+            count: 4
+          - label: 25 - 34
+            count: 4
+          - label: 35 - 44
+            count: 4
+          - label: 45 - 54
+            count: 4
+          - label: 55 - 64
+            count: 4
+          - label: 64+
+            count: 4
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 23
+        complete: true
+coverage:
+  temporal: [ 2019, 2024 ]
