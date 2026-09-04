@@ -3052,7 +3052,10 @@
     "format": "csv",
     "source": "Cục Thống kê (NSO)",
     "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
+    "year_range": [
+      2023,
+      2023
+    ],
     "resources": [
       {
         "type": "csv",
