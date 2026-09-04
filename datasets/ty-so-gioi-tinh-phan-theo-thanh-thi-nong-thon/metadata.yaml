@@ -27,34 +27,38 @@ files:
     r2_key: "88b2649f-4e31-4ef4-a891-b2c9a43ea0a0/ty-so-gioi-tinh-phan-theo-thanh-thi-nong-thon.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [9, 9, 9, 9, 9, 9, 9, 12]
-      "Tỷ số giới tính của dân số (Số nam/100 nữ)":
+        histogram: [ 9, 9, 9, 9, 9, 9, 9, 12 ]
+      Tỷ số giới tính của dân số (Số nam/100 nữ):
         kind: numeric
         min: 94.3
         max: 100.7
-        histogram: [12, 2, 8, 17, 10, 12, 9, 5]
-      "Tỷ số giới tính khi sinh (Số bé trai/100 bé gái)":
+        histogram: [ 12, 2, 8, 17, 10, 12, 9, 5 ]
+      Tỷ số giới tính khi sinh (Số bé trai/100 bé gái):
         kind: numeric
         min: 99.5
         max: 118
-        histogram: [1, 1, 6, 7, 17, 31, 10, 2]
-      "Phân tổ":
+        histogram: [ 1, 1, 6, 7, 17, 31, 10, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 25
-          - label: "Thành thị"
+          - label: Thành thị
             count: 25
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 25
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2000, 2024 ]
