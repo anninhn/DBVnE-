@@ -1,5 +1,36 @@
 [
   {
+    "slug": "zz-thu-nghiem-ghi-vet-xoa",
+    "title": "Dữ liệu thử nghiệm ghi vết xóa",
+    "description": "Dataset chứa dữ liệu thử nghiệm cho các tỉnh thành và năm, với một cột số liệu chung để kiểm tra chức năng ghi vết xóa. Dữ liệu bao gồm Hà Nội và Đà Nẵng trong năm 2024.",
+    "category": "khac",
+    "tags": [
+      "thu-nghiem",
+      "test",
+      "tinh-thanh",
+      "nam"
+    ],
+    "uploaded_at": "2026-09-04T08:58:18.338Z",
+    "uploaded_by": "ninh",
+    "row_count": 2,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2024,
+      2024
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "18584b4e-575f-45fd-acf1-9b92cde2d8f6/zz-thu-nghiem-ghi-vet-xoa.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non",
     "title": "Tỷ lệ người dân tham gia mạng xã hội phân theo các nhóm đối tượng",
     "description": "Dữ liệu thống kê tỷ lệ phần trăm người dân Việt Nam tham gia mạng xã hội, được phân loại chi tiết theo giới tính, độ tuổi, khu vực sinh sống (thành thị/nông thôn), vùng địa lý và mức độ kỹ năng số.",
