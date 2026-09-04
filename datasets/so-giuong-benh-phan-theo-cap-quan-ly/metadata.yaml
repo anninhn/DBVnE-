@@ -26,48 +26,52 @@ files:
     r2_key: "2ca51289-bc3d-4a6f-b1e4-f12a1e41ebfb/so-giuong-benh-phan-theo-cap-quan-ly.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2012
-        histogram: [28, 28, 28, 28, 28, 28, 28, 14]
-      "Số giường":
+        histogram: [ 28, 28, 28, 28, 28, 28, 28, 14 ]
+      Số giường:
         kind: numeric
         min: 1.1
         max: 680
-        histogram: [118, 15, 18, 10, 3, 2, 3, 2]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 118, 15, 18, 10, 3, 2, 3, 2 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 29
         max: 191
-        histogram: [1, 6, 7, 126, 18, 4, 3, 4]
-      "Loại cơ sở":
+        histogram: [ 1, 6, 7, 126, 18, 4, 3, 4 ]
+      Loại cơ sở:
         kind: categorical
         distinct: 7
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 30
-          - label: "Bệnh viện"
+          - label: Bệnh viện
             count: 30
-          - label: "Bệnh viện điều dưỡng và phục hồi chức năng"
+          - label: Bệnh viện điều dưỡng và phục hồi chức năng
             count: 30
-          - label: "Phòng khám đa khoa khu vực"
+          - label: Phòng khám đa khoa khu vực
             count: 30
-          - label: "Trạm y tế xã, phường"
+          - label: Trạm y tế xã, phường
             count: 30
-          - label: "Trạm y tế của cơ quan, xí nghiệp"
+          - label: Trạm y tế của cơ quan, xí nghiệp
             count: 30
-          - label: "Cơ sở khác"
+          - label: Cơ sở khác
             count: 30
-      "Cấp quản lý":
+        complete: true
+      Cấp quản lý:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 56
-          - label: "Bộ Y tế quản lý"
+          - label: Bộ Y tế quản lý
             count: 56
-          - label: "Sở Y tế quản lý"
+          - label: Sở Y tế quản lý
             count: 49
-          - label: "Các ngành khác quản lý"
+          - label: Các ngành khác quản lý
             count: 49
+        complete: true
+coverage:
+  temporal: [ 2005, 2012 ]
