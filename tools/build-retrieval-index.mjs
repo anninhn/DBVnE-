@@ -100,12 +100,40 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`dataset đọc được : ${out.datasetsRead}`);
-  console.log(`cột vào chỉ mục  : ${out.columnsIndexed}`);
-  console.log(`khoá tra         : ${out.keys}`);
-  console.log(`cột chưa tra hết : ${out.partialColumns}`);
-  console.log(`kích thước       : ${out.sizeKb} KB`);
-  console.log(`thời gian        : ${(out.elapsedMs / 1000).toFixed(1)}s`);
+  const v = out.vector;
+
+  console.log(`dataset đọc được   : ${out.datasetsRead}`);
+  console.log(`thời gian          : ${(out.elapsedMs / 1000).toFixed(1)}s`);
+  console.log("");
+  console.log(`CHỈ MỤC GIÁ TRỊ`);
+  console.log(`  cột vào chỉ mục  : ${out.value.columnsIndexed}`);
+  console.log(`  khoá tra         : ${out.value.keys}`);
+  console.log(`  cột chưa tra hết : ${out.value.partialColumns}`);
+  console.log(`  kích thước       : ${out.value.sizeKb} KB`);
+  console.log("");
+  console.log(`CHỈ MỤC VECTOR`);
+  console.log(`  đang có          : ${v.existing}`);
+  console.log(`  giữ nguyên       : ${v.unchanged}`);
+  console.log(`  còn thiếu        : ${v.missing.length}`);
+  console.log(`  ĐANG LỆCH        : ${v.drifted.length}`);
+  console.log(`  không còn trong kho: ${v.stale.length}`);
+  console.log(`  cần sinh vector  : ${v.toEmbed} dataset`);
+  if (out.applied) {
+    console.log(`  đã sinh vector   : ${out.embedded}`);
+    console.log(`  kích thước vector: ${out.vectorSizeKb} KB`);
+  }
+
+  // Đây là phần quan trọng nhất của script. Vector cũ + metadata mới thì hệ thống
+  // VẪN trả lời, chỉ là trả lời sai dataset, và không có triệu chứng nào (R4).
+  // In ra từng slug lệch là cách duy nhất người vận hành thấy được chuyện đó.
+  if (v.drifted.length) {
+    console.log(`\nLỆCH ${v.drifted.length} dataset — vector đang không khớp metadata:`);
+    for (const slug of v.drifted) console.log(`  ~ ${slug}`);
+  }
+  if (v.stale.length) {
+    console.log(`\nCÒN SÓT ${v.stale.length} entry của dataset không còn trong kho:`);
+    for (const slug of v.stale) console.log(`  - ${slug}`);
+  }
 
   // Dataset đọc không ra KHÔNG được lướt qua: chỉ mục thiếu nó thì mọi câu hỏi
   // "dataset nào có X" sau này đều trả lời sai về nó mà không có dấu hiệu gì.
@@ -114,7 +142,12 @@ async function main() {
     for (const slug of out.unreadable) console.log(`  - ${slug}`);
   }
 
-  if (!APPLY) console.log("\nĐây là dry-run — chưa ghi gì. Thêm --apply để ghi lên R2.");
+  if (!APPLY) {
+    console.log(
+      `\nĐây là dry-run — chưa ghi gì và chưa gọi embedding lần nào.` +
+      `\nThêm --apply để ghi lên R2 (sinh vector cho ${v.toEmbed} dataset).`,
+    );
+  }
 }
 
 main().catch((err) => {

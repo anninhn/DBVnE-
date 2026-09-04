@@ -11,8 +11,14 @@
  *   - Mọi lượt gọi đều được ghi nhận kèm người gọi (FR-059)
  */
 
+import { fetchListingIndex, type IndexEntry } from "@/lib/datasets/index-json";
 import { getDatasetBySlug } from "@/lib/datasets/read";
 import { loadValueIndex } from "./store";
+import { loadVectorIndex, rankByVector } from "./vector-store";
+import { rankByKeyword } from "./keyword";
+import { fuse } from "./fuse";
+import { embedQuery } from "./embed";
+import { tokenize } from "./normalize";
 import { isValueListComplete, valueKeys } from "./value-index";
 import { withAudit } from "./audit";
 import type {
@@ -22,6 +28,9 @@ import type {
   GetDatasetResult,
   LookupValueInput,
   LookupValueResult,
+  SearchDatasetsInput,
+  SearchDatasetsResult,
+  SearchFilters,
   ValueLocation,
 } from "./types";
 
@@ -29,6 +38,103 @@ export type * from "./types";
 export { RetrievalIndexUnavailableError } from "./types";
 export { normalize, tokenize } from "./normalize";
 export { buildValueIndex, valueKeys, isValueListComplete } from "./value-index";
+
+// ── searchDatasets ────────────────────────────────────────────────────────────
+
+/**
+ * `filters` là **ràng buộc cứng**, áp TRƯỚC khi cắt `limit`.
+ *
+ * Áp sau khi cắt thì người dùng lọc "danh mục kinh tế" sẽ nhận về ít hơn `limit`
+ * kết quả một cách ngẫu nhiên — số kết quả phụ thuộc vào việc top-20 tình cờ có
+ * bao nhiêu dataset kinh tế, không phụ thuộc vào kho có bao nhiêu.
+ */
+function passesFilters(entry: IndexEntry, filters?: SearchFilters): boolean {
+  if (!filters) return true;
+
+  if (filters.category && entry.category !== filters.category) return false;
+
+  if (filters.format) {
+    const formats = new Set(entry.resources.map((r) => r.type));
+    if (!formats.has(filters.format)) return false;
+  }
+
+  if (filters.yearFrom != null || filters.yearTo != null) {
+    const years = entry.year_range ?? [];
+    // Dataset chưa biết phạm vi thời gian thì KHÔNG khớp — nhận bừa là hứa nó có
+    // dữ liệu năm đó, mà không ai kiểm được.
+    if (years.length === 0) return false;
+    const from = Math.min(...years);
+    const to = Math.max(...years);
+    if (filters.yearFrom != null && to < filters.yearFrom) return false;
+    if (filters.yearTo != null && from > filters.yearTo) return false;
+  }
+
+  return true;
+}
+
+/**
+ * Tìm dataset liên quan tới một câu hỏi, chạy **cả hai** nhánh.
+ *
+ * Bắt buộc cả hai (FR-030, FR-031): vector bắt từ đồng nghĩa ("lạm phát" ↔ "chỉ số
+ * giá tiêu dùng"), từ khoá bắt tên riêng chính xác ("Đà Nẵng"). Bỏ một nhánh là mất
+ * hẳn một loại câu hỏi, và loại bị mất không báo lỗi — nó chỉ trả về dataset khác.
+ *
+ * Câu hỏi phải đã được hiểu đầy đủ trong ngữ cảnh TRƯỚC khi gọi. Năng lực này không
+ * đọc lịch sử hội thoại (bất biến của hợp đồng).
+ */
+export async function searchDatasets(
+  input: SearchDatasetsInput,
+): Promise<SearchDatasetsResult> {
+  return withAudit(
+    "searchDatasets",
+    input.caller,
+    input.query,
+    (r) => r.results.length,
+    async () => {
+      // Ném khi chỉ mục chưa dựng — rỗng và lỗi là hai chuyện khác nhau (T043).
+      const index = await loadVectorIndex();
+      const limit = input.limit ?? 20;
+
+      // Câu hỏi chỉ gồm từ dừng ("có không", "thế nào") → không đoán. Kiểm TRƯỚC
+      // khi gọi embedding: vừa đúng hợp đồng, vừa không tốn một lượt gọi mạng.
+      if (tokenize(input.query).length === 0) {
+        return { results: [], indexBuiltAt: index.builtAt, total: 0 };
+      }
+
+      const [queryVector, listing] = await Promise.all([
+        embedQuery(input.query),
+        fetchListingIndex(),
+      ]);
+
+      const semantic = rankByVector(index, queryVector);
+      const keyword = rankByKeyword(index, input.query);
+
+      const meta = new Map(listing.map((e) => [e.slug, e]));
+      // Cắt `limit` sau cùng: trộn hết, lọc, rồi mới cắt.
+      const fused = fuse(semantic, keyword, Number.MAX_SAFE_INTEGER);
+
+      const allowed = fused.filter((hit) => {
+        const entry = meta.get(hit.slug);
+        // Không có trong danh mục = đã xoá hoặc chỉ mục cũ hơn kho. Không trả về
+        // (D6): dataset đã xoá không bao giờ được xuất hiện.
+        if (!entry || entry.status === "deleted") return false;
+        return passesFilters(entry, input.filters);
+      });
+
+      const results = allowed.slice(0, limit).map((hit) => ({
+        ...hit,
+        title: meta.get(hit.slug)?.title ?? hit.slug,
+      }));
+
+      return {
+        results,
+        // Caller cần biết chỉ mục dựng lúc nào để tự đánh giá kết quả có cũ không.
+        indexBuiltAt: index.builtAt,
+        total: allowed.length,
+      };
+    },
+  );
+}
 
 // ── lookupValue ───────────────────────────────────────────────────────────────
 

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { buildValueIndexFromRepo, buildAndSaveValueIndex } from "@/lib/retrieval/build";
+import { buildIndexes } from "@/lib/retrieval/build";
 import { requireUserOr401 } from "@/lib/auth";
 
 /**
@@ -29,17 +29,7 @@ export async function POST(req: NextRequest) {
   }
 
   const started = Date.now();
-  const result = apply ? await buildAndSaveValueIndex() : await buildValueIndexFromRepo();
+  const result = await buildIndexes(apply);
 
-  return NextResponse.json({
-    applied: apply,
-    datasetsRead: result.datasetsRead,
-    unreadable: result.unreadable,
-    columnsIndexed: result.columnsIndexed,
-    keys: result.keys,
-    partialColumns: result.index.partialColumns.length,
-    builtAt: result.index.builtAt,
-    sizeKb: Math.round(JSON.stringify(result.index).length / 1024),
-    elapsedMs: Date.now() - started,
-  });
+  return NextResponse.json({ ...result, elapsedMs: Date.now() - started });
 }

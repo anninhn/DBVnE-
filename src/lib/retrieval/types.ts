@@ -37,6 +37,15 @@ export interface SearchHit {
   score: number;
   /** Nhánh nào tìm ra — để soi khi kết quả sai */
   matchedBy: "semantic" | "keyword" | "both";
+  /**
+   * Điểm thô từng nhánh, giữ lại để soi.
+   *
+   * `semantic` là cosine, có thang **tuyệt đối** so được giữa các câu hỏi khác
+   * nhau. `keyword` đã chuẩn hoá theo câu hỏi nên chỉ so được trong cùng một lượt.
+   * Biết một dataset vào top nhờ điểm nào là khác biệt giữa sửa được và đoán.
+   */
+  semanticScore?: number;
+  keywordScore?: number;
 }
 
 export interface SearchDatasetsResult {
