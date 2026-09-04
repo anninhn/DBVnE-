@@ -27,63 +27,70 @@ files:
     r2_key: "0e614ea5-819f-42b6-9170-3eab0cbe7b24/so-lop-giao-vien-va-hoc-sinh-pho-thong-tai-thoi-diem-30-9-ph.csv"
     size_mb: 0.01
     column_stats:
-      "Số lớp, giáo viên và học sinh":
+      Số lớp, giáo viên và học sinh:
         kind: numeric
         min: 3.19
         max: 17908.17
-        histogram: [100, 5, 5, 3, 2, 0, 0, 5]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 100, 5, 5, 3, 2, 0, 0, 5 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 92.38
         max: 118.96
-        histogram: [3, 6, 38, 15, 10, 17, 4, 3]
-      "Phân loại":
+        histogram: [ 3, 6, 38, 15, 10, 17, 4, 3 ]
+      Phân loại:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Lớp"
+          - label: Lớp
             count: 40
-          - label: "Giáo viên"
+          - label: Giáo viên
             count: 40
-          - label: "Học sinh"
+          - label: Học sinh
             count: 40
-      "Cấp học":
+        complete: true
+      Cấp học:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 30
-          - label: "Tiểu học"
+          - label: Tiểu học
             count: 30
-          - label: "Trung học cơ sở"
+          - label: Trung học cơ sở
             count: 30
-          - label: "Trung học phổ thông"
+          - label: Trung học phổ thông
             count: 30
-      "Năm học":
+        complete: true
+      Năm học:
         kind: categorical
         distinct: 5
         segments:
-          - label: "2020-2021"
+          - label: 2020-2021
             count: 24
-          - label: "2021-2022"
+          - label: 2021-2022
             count: 24
-          - label: "2022-2023"
+          - label: 2022-2023
             count: 24
-          - label: "2023-2024"
+          - label: 2023-2024
             count: 24
-          - label: "2024-2025"
+          - label: 2024-2025
             count: 24
-      "Loại hình":
+        complete: true
+      Loại hình:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Công lập"
+          - label: Công lập
             count: 60
-          - label: "Ngoài công lập"
+          - label: Ngoài công lập
             count: 60
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 24
+        complete: true
+coverage:
+  temporal: [ 2020, 2025 ]
