@@ -26,25 +26,28 @@ files:
     r2_key: "f24b0390-20c1-451d-b343-0776f3b764cb/trang-bi-tai-san-co-dinh-binh-quan-1-lao-dong-cua-doanh-ng-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 175.6
         max: 1347.86
-        histogram: [12, 14, 5, 1, 0, 2, 4, 2]
-      "Loại hình doanh nghiệp":
+        histogram: [ 12, 14, 5, 1, 0, 2, 4, 2 ]
+      Loại hình doanh nghiệp:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Doanh nghiệp Nhà nước"
+          - label: Doanh nghiệp Nhà nước
             count: 10
-          - label: "Doanh nghiệp ngoài Nhà nước"
+          - label: Doanh nghiệp ngoài Nhà nước
             count: 10
-          - label: "Doanh nghiệp có vốn đầu tư nước ngoài"
+          - label: Doanh nghiệp có vốn đầu tư nước ngoài
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
