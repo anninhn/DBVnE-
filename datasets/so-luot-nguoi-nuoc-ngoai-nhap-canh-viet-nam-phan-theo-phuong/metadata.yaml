@@ -26,31 +26,35 @@ files:
     r2_key: "4d31ccf8-eb6f-4b92-aa32-8915d0014d48/so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-phuong.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [16, 16, 12, 16, 16, 12, 16, 16]
-      "Số lượt người nước ngoài nhập cảnh Việt Nam":
+        histogram: [ 16, 16, 12, 16, 16, 12, 16, 16 ]
+      Số lượt người nước ngoài nhập cảnh Việt Nam:
         kind: numeric
         min: 0.6
         max: 18008.6
-        histogram: [75, 22, 7, 5, 3, 3, 3, 2]
-      "Phương tiện đến":
+        histogram: [ 75, 22, 7, 5, 3, 3, 3, 2 ]
+      Phương tiện đến:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 30
-          - label: "Đường hàng không"
+          - label: Đường hàng không
             count: 30
-          - label: "Đường thủy"
+          - label: Đường thủy
             count: 30
-          - label: "Đường bộ"
+          - label: Đường bộ
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
