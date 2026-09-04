@@ -27,38 +27,42 @@ files:
     r2_key: "23b72359-25f3-40de-ba59-99c574de4c5c/tong-san-pham-trong-nuoc-theo-gia-so-sanh-2010-phan-theo-khu.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [15, 10, 15, 10, 10, 15, 10, 15]
-      "Giá trị (Tỷ đồng)":
+        histogram: [ 15, 10, 15, 10, 10, 15, 10, 15 ]
+      Giá trị (Tỷ đồng):
         kind: numeric
         min: 300688.5
         max: 6261036.3
-        histogram: [48, 16, 14, 6, 3, 2, 3, 3]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 48, 16, 14, 6, 3, 2, 3, 3 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 98.1
         max: 110.7
-        histogram: [1, 1, 10, 19, 10, 35, 16, 2]
-      "Khu vực kinh tế":
+        histogram: [ 1, 1, 10, 19, 10, 35, 16, 2 ]
+      Khu vực kinh tế:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 20
-          - label: "Nông, lâm nghiệp và thuỷ sản"
+          - label: Nông, lâm nghiệp và thuỷ sản
             count: 20
-          - label: "Công nghiệp và xây dựng"
+          - label: Công nghiệp và xây dựng
             count: 20
-          - label: "Dịch vụ"
+          - label: Dịch vụ
             count: 20
-          - label: "Thuế sản phẩm trừ trợ cấp sản phẩm"
+          - label: Thuế sản phẩm trừ trợ cấp sản phẩm
             count: 20
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
