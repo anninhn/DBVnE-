@@ -31,70 +31,73 @@ files:
         kind: numeric
         min: 1
         max: 36.5
-        histogram: [4, 2, 2, 1, 1, 0, 0, 1]
+        histogram: [ 4, 2, 2, 1, 1, 0, 0, 1 ]
       "2017":
         kind: numeric
         min: 0.9
         max: 34.1
-        histogram: [4, 2, 2, 1, 1, 0, 0, 1]
+        histogram: [ 4, 2, 2, 1, 1, 0, 0, 1 ]
       "2018":
         kind: numeric
         min: 0.6
         max: 28.1
-        histogram: [4, 2, 2, 1, 0, 1, 0, 1]
+        histogram: [ 4, 2, 2, 1, 0, 1, 0, 1 ]
       "2019":
         kind: numeric
         min: 0.5
         max: 28.3
-        histogram: [4, 3, 1, 1, 1, 0, 0, 1]
+        histogram: [ 4, 3, 1, 1, 1, 0, 0, 1 ]
       "2020":
         kind: numeric
         min: 0.3
         max: 22.7
-        histogram: [4, 2, 2, 1, 0, 1, 0, 1]
+        histogram: [ 4, 2, 2, 1, 0, 1, 0, 1 ]
       "2022":
         kind: numeric
         min: 0.4
         max: 23.7
-        histogram: [4, 4, 0, 1, 1, 0, 0, 1]
-      "2021*":
+        histogram: [ 4, 4, 0, 1, 1, 0, 0, 1 ]
+      2021*:
         kind: numeric
         min: 0.2
         max: 21.3
-        histogram: [4, 2, 2, 1, 0, 1, 0, 1]
-      "2023**":
+        histogram: [ 4, 2, 2, 1, 0, 1, 0, 1 ]
+      2023**:
         kind: numeric
         min: 0.3
         max: 19.3
-        histogram: [4, 4, 0, 1, 1, 0, 0, 1]
-      "Sơ bộ 2024":
+        histogram: [ 4, 4, 0, 1, 1, 0, 0, 1 ]
+      Sơ bộ 2024:
         kind: numeric
         min: 0.2
         max: 13.8
-        histogram: [4, 4, 0, 1, 1, 0, 0, 1]
-      "Phân tổ":
+        histogram: [ 4, 4, 0, 1, 1, 0, 0, 1 ]
+      Phân tổ:
         kind: categorical
         distinct: 11
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 1
-          - label: "Dân tộc Kinh/Hoa"
+          - label: Dân tộc Kinh/Hoa
             count: 1
-          - label: "Dân tộc khác"
+          - label: Dân tộc khác
             count: 1
-          - label: "Thành thị"
+          - label: Thành thị
             count: 1
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 1
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 1
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 1
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 1
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 1
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 1
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 1
+        complete: true
+coverage:
+  temporal: [ 2016, 2024 ]
