@@ -27,66 +27,69 @@ files:
     r2_key: "e862d531-3b88-4f6f-92b6-d6f75ea3c2ba/chi-so-gia-sinh-hoat-theo-khong-gian-theo-vung-phan-theo-nho.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [24, 12, 12, 12, 12, 12, 12, 24]
-      "Đồng bằng sông Hồng":
+        histogram: [ 24, 12, 12, 12, 12, 12, 12, 24 ]
+      Đồng bằng sông Hồng:
         kind: numeric
         min: 100
         max: 100
-        histogram: [120, 0, 0, 0, 0, 0, 0, 0]
-      "Trung du và miền núi phía Bắc":
+        histogram: [ 120, 0, 0, 0, 0, 0, 0, 0 ]
+      Trung du và miền núi phía Bắc:
         kind: numeric
         min: 74.7
         max: 108.73
-        histogram: [1, 0, 0, 1, 2, 46, 60, 10]
-      "Bắc Trung Bộ và Duyên hải miền Trung":
+        histogram: [ 1, 0, 0, 1, 2, 46, 60, 10 ]
+      Bắc Trung Bộ và Duyên hải miền Trung:
         kind: numeric
         min: 88.88
         max: 120.18
-        histogram: [4, 9, 58, 40, 8, 0, 0, 1]
-      "Tây Nguyên":
+        histogram: [ 4, 9, 58, 40, 8, 0, 0, 1 ]
+      Tây Nguyên:
         kind: numeric
         min: 78.76
         max: 109.75
-        histogram: [2, 1, 4, 6, 20, 73, 11, 3]
-      "Đông Nam Bộ":
+        histogram: [ 2, 1, 4, 6, 20, 73, 11, 3 ]
+      Đông Nam Bộ:
         kind: numeric
         min: 88.99
         max: 112.74
-        histogram: [3, 4, 4, 44, 47, 13, 4, 1]
-      "Đồng bằng sông Cửu Long":
+        histogram: [ 3, 4, 4, 44, 47, 13, 4, 1 ]
+      Đồng bằng sông Cửu Long:
         kind: numeric
         min: 82.78
         max: 106.18
-        histogram: [2, 1, 4, 8, 20, 65, 16, 4]
-      "nhóm hàng":
+        histogram: [ 2, 1, 4, 8, 20, 65, 16, 4 ]
+      nhóm hàng:
         kind: categorical
         distinct: 12
         segments:
-          - label: "CHỈ SỐ CHUNG"
+          - label: CHỈ SỐ CHUNG
             count: 10
-          - label: "Hàng ăn và dịch vụ ăn uống"
+          - label: Hàng ăn và dịch vụ ăn uống
             count: 10
-          - label: "Đồ uống và thuốc lá"
+          - label: Đồ uống và thuốc lá
             count: 10
-          - label: "May mặc, mũ nón, giày dép"
+          - label: May mặc, mũ nón, giày dép
             count: 10
-          - label: "Nhà ở và vật liệu xây dựng"
+          - label: Nhà ở và vật liệu xây dựng
             count: 10
-          - label: "Thiết bị và đồ dùng gia đình"
+          - label: Thiết bị và đồ dùng gia đình
             count: 10
-          - label: "Thuốc và dịch vụ y tế"
+          - label: Thuốc và dịch vụ y tế
             count: 10
-          - label: "Giao thông"
+          - label: Giao thông
             count: 10
-          - label: "Bưu chính viễn thông"
+          - label: Bưu chính viễn thông
             count: 10
-          - label: "Giáo dục"
+          - label: Giáo dục
             count: 10
-          - label: "Văn hoá, giải trí và du lịch"
+          - label: Văn hoá, giải trí và du lịch
             count: 10
-          - label: "Hàng hoá và dịch vụ khác"
+          - label: Hàng hoá và dịch vụ khác
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
