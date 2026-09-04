@@ -26,30 +26,33 @@ files:
     r2_key: "63551eac-65d8-4567-8eac-21bce8e9152f/nguon-von-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xua.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Nguồn vốn (Tỷ đồng)":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Nguồn vốn (Tỷ đồng):
         kind: numeric
         min: 453607
         max: 11897151.15
-        histogram: [8, 15, 8, 2, 2, 1, 1, 3]
-      "Cơ cấu (%)":
+        histogram: [ 8, 15, 8, 2, 2, 1, 1, 3 ]
+      Cơ cấu (%):
         kind: numeric
         min: 20.38
         max: 100
-        histogram: [4, 25, 1, 0, 0, 0, 0, 10]
-      "Trình độ công nghệ":
+        histogram: [ 4, 25, 1, 0, 0, 0, 0, 10 ]
+      Trình độ công nghệ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nhóm ngành công nghệ cao"
+          - label: Nhóm ngành công nghệ cao
             count: 10
-          - label: "Nhóm ngành công nghệ trung bình"
+          - label: Nhóm ngành công nghệ trung bình
             count: 10
-          - label: "Nhóm ngành công nghệ thấp"
+          - label: Nhóm ngành công nghệ thấp
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
