@@ -28,38 +28,42 @@ files:
     r2_key: "e0ca34e3-d1a4-43e9-b6dd-0d4c9e7fec4a/ty-suat-chet-cua-tre-em-phan-theo-gioi-tinh-va-theo-thanh-th.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2001
         max: 2024
-        histogram: [15, 15, 15, 15, 15, 15, 15, 15]
-      "Tỷ suất chết của trẻ em dưới một tuổi (Trẻ em dưới một tuổi tử vong/1000 trẻ sinh sống)":
+        histogram: [ 15, 15, 15, 15, 15, 15, 15, 15 ]
+      Tỷ suất chết của trẻ em dưới một tuổi (Trẻ em dưới một tuổi tử vong/1000 trẻ sinh sống):
         kind: numeric
         min: 6.96
         max: 32.9
-        histogram: [22, 23, 32, 27, 8, 3, 3, 2]
-      "Tỷ suất chết của trẻ em dưới năm tuổi (Trẻ em dưới năm tuổi tử vong/1000 trẻ sinh sống)":
+        histogram: [ 22, 23, 32, 27, 8, 3, 3, 2 ]
+      Tỷ suất chết của trẻ em dưới năm tuổi (Trẻ em dưới năm tuổi tử vong/1000 trẻ sinh sống):
         kind: numeric
         min: 10.51
         max: 56.5
-        histogram: [35, 20, 34, 22, 2, 3, 3, 1]
-      "Phân tổ":
+        histogram: [ 35, 20, 34, 22, 2, 3, 3, 1 ]
+      Phân tổ:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 24
-          - label: "Nam"
+          - label: Nam
             count: 24
-          - label: "Nữ"
+          - label: Nữ
             count: 24
-          - label: "Thành thị"
+          - label: Thành thị
             count: 24
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 24
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 2001, 2024 ]
