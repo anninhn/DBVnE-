@@ -27,44 +27,48 @@ files:
     r2_key: "2ba678fa-79e6-45aa-8d65-b04b7f98b9f7/chi-tieu-binh-quan-mot-luot-khach-quoc-te-den-viet-nam-phan.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2017
         max: 2024
-        histogram: [8, 0, 8, 0, 0, 0, 8, 8]
-      "Trị giá (Đô la Mỹ)":
+        histogram: [ 8, 0, 8, 0, 0, 0, 8, 8 ]
+      Trị giá (Đô la Mỹ):
         kind: numeric
         min: 10.1
         max: 1449.7
-        histogram: [17, 9, 2, 0, 0, 0, 3, 1]
-      "Cơ cấu (%)":
+        histogram: [ 17, 9, 2, 0, 0, 0, 3, 1 ]
+      Cơ cấu (%):
         kind: numeric
         min: 0.8
         max: 100
-        histogram: [14, 10, 4, 0, 0, 0, 0, 4]
-      "Mục đích":
+        histogram: [ 14, 10, 4, 0, 0, 0, 0, 4 ]
+      Mục đích:
         kind: categorical
         distinct: 8
         segments:
-          - label: "Chi tiêu bình quân 1 lượt khách"
+          - label: Chi tiêu bình quân 1 lượt khách
             count: 4
-          - label: "Thuê phòng"
+          - label: Thuê phòng
             count: 4
-          - label: "Ăn uống"
+          - label: Ăn uống
             count: 4
-          - label: "Đi lại tại Việt Nam"
+          - label: Đi lại tại Việt Nam
             count: 4
-          - label: "Thăm quan"
+          - label: Thăm quan
             count: 4
-          - label: "Mua hàng hóa"
+          - label: Mua hàng hóa
             count: 4
-          - label: "Y tế"
+          - label: Y tế
             count: 4
-          - label: "Chi khác"
+          - label: Chi khác
             count: 4
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 8
+        complete: true
+coverage:
+  temporal: [ 2017, 2024 ]
