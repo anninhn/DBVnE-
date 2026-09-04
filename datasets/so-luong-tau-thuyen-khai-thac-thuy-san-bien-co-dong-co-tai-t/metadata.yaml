@@ -27,66 +27,113 @@ files:
     r2_key: "7fbc591c-eddd-47c8-ae31-7a2f64d5811a/so-luong-tau-thuyen-khai-thac-thuy-san-bien-co-dong-co-tai-t.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2021
         max: 2024
-        histogram: [34, 0, 34, 0, 0, 34, 0, 34]
-      "Tổng số":
+        histogram: [ 34, 0, 34, 0, 0, 34, 0, 34 ]
+      Tổng số:
         kind: numeric
         min: 1.022
         max: 983
-        histogram: [111, 0, 0, 7, 1, 0, 10, 7]
-      "Dưới 6m":
+        histogram: [ 111, 0, 0, 7, 1, 0, 10, 7 ]
+      Dưới 6m:
         kind: numeric
         min: 0
         max: 991
-        histogram: [94, 14, 2, 8, 5, 5, 2, 2]
-      "Từ 6m đến dưới 12m":
+        histogram: [ 94, 14, 2, 8, 5, 5, 2, 2 ]
+      Từ 6m đến dưới 12m:
         kind: numeric
         min: 1.111
         max: 988
-        histogram: [83, 5, 13, 9, 2, 8, 2, 14]
-      "Từ 12m đến dưới 15m":
+        histogram: [ 83, 5, 13, 9, 2, 8, 2, 14 ]
+      Từ 12m đến dưới 15m:
         kind: numeric
         min: 1.027
         max: 980
-        histogram: [41, 27, 15, 16, 9, 14, 11, 3]
-      "Từ 15m đến dưới 24m":
+        histogram: [ 41, 27, 15, 16, 9, 14, 11, 3 ]
+      Từ 15m đến dưới 24m:
         kind: numeric
         min: 1
         max: 958
-        histogram: [68, 23, 11, 6, 12, 12, 3, 1]
-      "Từ 24m trở lên":
+        histogram: [ 68, 23, 11, 6, 12, 12, 3, 1 ]
+      Từ 24m trở lên:
         kind: numeric
         min: 0
         max: 607
-        histogram: [100, 12, 12, 0, 0, 2, 9, 1]
-      "Tỉnh, thành phố":
+        histogram: [ 100, 12, 12, 0, 0, 2, 9, 1 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 34
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 4
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 4
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 4
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 4
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 4
-          - label: "Nam Định"
+          - label: Nam Định
             count: 4
-          - label: "Ninh Bình"
+          - label: Ninh Bình
             count: 4
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 4
-          - label: "Thanh Hoá"
+          - label: Thanh Hoá
             count: 4
-          - label: "Nghệ An"
+          - label: Nghệ An
             count: 4
-          - label: "Hà Tĩnh"
+          - label: Hà Tĩnh
             count: 4
-          - label: "Quảng Bình"
+          - label: Quảng Bình
             count: 4
+          - label: Quảng Trị
+            count: 4
+          - label: Thừa Thiên Huế
+            count: 4
+          - label: Đà Nẵng
+            count: 4
+          - label: Quảng Nam
+            count: 4
+          - label: Quảng Ngãi
+            count: 4
+          - label: Bình Định
+            count: 4
+          - label: Phú Yên
+            count: 4
+          - label: Khánh Hoà
+            count: 4
+          - label: Ninh Thuận
+            count: 4
+          - label: Bình Thuận
+            count: 4
+          - label: Đông Nam Bộ
+            count: 4
+          - label: Bà Rịa - Vũng Tàu
+            count: 4
+          - label: TP.Hồ Chí Minh
+            count: 4
+          - label: Đồng bằng sông Cửu Long
+            count: 4
+          - label: Long An
+            count: 4
+          - label: Tiền Giang
+            count: 4
+          - label: Bến Tre
+            count: 4
+          - label: Trà Vinh
+            count: 4
+          - label: Kiên Giang
+            count: 4
+          - label: Sóc Trăng
+            count: 4
+          - label: Bạc Liêu
+            count: 4
+          - label: Cà Mau
+            count: 4
+        complete: true
+coverage:
+  temporal: [ 2021, 2024 ]
