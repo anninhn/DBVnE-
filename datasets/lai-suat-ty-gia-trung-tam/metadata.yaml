@@ -27,47 +27,61 @@ files:
     r2_key: "80f29e71-feaf-487d-b5c7-2a203450da9c/lai-suat-ty-gia-trung-tam.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [34, 17, 17, 17, 17, 17, 17, 34]
-      "Lãi suất, tỷ giá trung tâm":
+        histogram: [ 34, 17, 17, 17, 17, 17, 17, 34 ]
+      Lãi suất, tỷ giá trung tâm:
         kind: numeric
         min: 0
         max: 24170.4
-        histogram: [160, 0, 0, 0, 0, 0, 0, 7]
-      "Chỉ tiêu":
+        histogram: [ 160, 0, 0, 0, 0, 0, 0, 7 ]
+      Chỉ tiêu:
         kind: categorical
         distinct: 17
         segments:
-          - label: "Lãi suất tiền gửi bình quân bằng đồng Việt Nam Không kỳ hạn"
+          - label: Lãi suất tiền gửi bình quân bằng đồng Việt Nam Không kỳ hạn
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn 3 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn 3 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn 6 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn 6 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn 12 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn 12 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn từ trên 12 tháng đến 24 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn từ trên 12 tháng đến 24 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn trên 24 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đồng Việt Nam Kỳ hạn trên 24 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đô la Mỹ Không kỳ hạn"
+          - label: Lãi suất tiền gửi bình quân bằng đô la Mỹ Không kỳ hạn
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn 3 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn 3 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn 6 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn 6 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn 12 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn 12 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn từ trên 12 tháng đến 24 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn từ trên 12 tháng đến 24 tháng
             count: 10
-          - label: "Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn trên 24 tháng"
+          - label: Lãi suất tiền gửi bình quân bằng đô la Mỹ Kỳ hạn trên 24 tháng
             count: 10
-      "Ghi chú":
+          - label: Lãi suất cho vay bình quân bằng đồng Việt Nam Ngắn hạn
+            count: 10
+          - label: Lãi suất cho vay bình quân bằng đồng Việt Nam Trung hạn và dài hạn
+            count: 10
+          - label: Lãi suất cho vay bình quân bằng đô la Mỹ Ngắn hạn
+            count: 10
+          - label: Lãi suất cho vay bình quân bằng đô la Mỹ Trung hạn và dài hạn
+            count: 10
+          - label: Tỷ giá trung tâm của đồng Việt Nam so với đồng đô la Mỹ
+            count: 10
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 17
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
