@@ -27,41 +27,44 @@ files:
     r2_key: "9a7ca3f7-e40c-44ef-9eda-108c28fa1aa5/dien-tich-san-xay-dung-nha-o-hoan-thanh-trong-nam-phan-the-2.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2023
-        histogram: [24, 24, 24, 24, 36, 24, 24, 36]
-      "Diện tích sàn xây dựng nhà ở hoàn thành trong năm":
+        histogram: [ 24, 24, 24, 24, 36, 24, 24, 36 ]
+      Diện tích sàn xây dựng nhà ở hoàn thành trong năm:
         kind: numeric
         min: 7
         max: 112504
-        histogram: [114, 0, 2, 3, 3, 10, 14, 18]
-      "Loại nhà":
+        histogram: [ 114, 0, 2, 3, 3, 10, 14, 18 ]
+      Loại nhà:
         kind: categorical
         distinct: 12
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 18
-          - label: "Nhà ở chung cư"
+          - label: Nhà ở chung cư
             count: 18
-          - label: "Từ 5 tầng trở xuống(*)"
+          - label: Từ 5 tầng trở xuống(*)
             count: 18
-          - label: "Từ 6-8 tầng(**)"
+          - label: Từ 6-8 tầng(**)
             count: 18
-          - label: "Từ 9-15 tầng(***)"
+          - label: Từ 9-15 tầng(***)
             count: 18
-          - label: "Từ 16-20 tầng(****)"
+          - label: Từ 16-20 tầng(****)
             count: 18
-          - label: "Từ 21-25 tầng(*****)"
+          - label: Từ 21-25 tầng(*****)
             count: 18
-          - label: "Từ 26 tầng trở lên"
+          - label: Từ 26 tầng trở lên
             count: 18
-          - label: "Nhà ở riêng lẻ"
+          - label: Nhà ở riêng lẻ
             count: 18
-          - label: "Nhà ở riêng lẻ dưới 4 tầng"
+          - label: Nhà ở riêng lẻ dưới 4 tầng
             count: 18
-          - label: "Nhà ở riêng lẻ từ 4 tầng trở lên"
+          - label: Nhà ở riêng lẻ từ 4 tầng trở lên
             count: 18
-          - label: "Nhà biệt thự"
+          - label: Nhà biệt thự
             count: 18
+        complete: true
+coverage:
+  temporal: [ 2005, 2023 ]
