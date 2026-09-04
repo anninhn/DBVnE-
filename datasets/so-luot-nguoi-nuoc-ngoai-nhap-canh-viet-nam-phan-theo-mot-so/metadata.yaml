@@ -26,47 +26,83 @@ files:
     r2_key: "372c78ec-8fa9-4d9e-9ee0-f77ce91880e4/so-luot-nguoi-nuoc-ngoai-nhap-canh-viet-nam-phan-theo-mot-so.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [56, 56, 56, 28, 56, 56, 56, 56]
-      "Số lượt người nước ngoài nhập cảnh Việt Nam":
+        histogram: [ 56, 56, 56, 28, 56, 56, 56, 56 ]
+      Số lượt người nước ngoài nhập cảnh Việt Nam:
         kind: numeric
         min: 0.1
         max: 18008.6
-        histogram: [396, 9, 5, 4, 1, 2, 1, 2]
-      "Quốc tịch":
+        histogram: [ 396, 9, 5, 4, 1, 2, 1, 2 ]
+      Quốc tịch:
         kind: categorical
         distinct: 28
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 15
-          - label: "Bỉ"
+          - label: Bỉ
             count: 15
-          - label: "Cam-pu-chia"
+          - label: Cam-pu-chia
             count: 15
-          - label: "Ca-na-đa"
+          - label: Ca-na-đa
             count: 15
-          - label: "CHND Trung Hoa"
+          - label: CHND Trung Hoa
             count: 15
-          - label: "Đài Loan"
+          - label: Đài Loan
             count: 15
-          - label: "Đan Mạch"
+          - label: Đan Mạch
             count: 15
-          - label: "Đức"
+          - label: Đức
             count: 15
-          - label: "Hà Lan"
+          - label: Hà Lan
             count: 15
-          - label: "Hàn Quốc"
+          - label: Hàn Quốc
             count: 15
-          - label: "Hoa Kỳ"
+          - label: Hoa Kỳ
             count: 15
-          - label: "In-đô-nê-xi-a"
+          - label: In-đô-nê-xi-a
             count: 15
-      "Ghi chú":
+          - label: I-ta-li-a
+            count: 15
+          - label: Lào
+            count: 15
+          - label: Liên bang Nga
+            count: 15
+          - label: Ma-lai-xi-a
+            count: 15
+          - label: Na Uy
+            count: 15
+          - label: Nhật Bản
+            count: 15
+          - label: Niu-di-lân
+            count: 15
+          - label: Ôx-trây-li-a
+            count: 15
+          - label: Pháp
+            count: 15
+          - label: Phi-li-pin
+            count: 15
+          - label: Tây Ban Nha
+            count: 15
+          - label: Thái Lan
+            count: 15
+          - label: Thụy Điển
+            count: 15
+          - label: Thụy Sĩ
+            count: 15
+          - label: Vương quốc Anh
+            count: 15
+          - label: Xin-ga-po
+            count: 15
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 28
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
