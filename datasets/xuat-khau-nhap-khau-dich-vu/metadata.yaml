@@ -26,47 +26,52 @@ files:
     r2_key: "a08bfc3f-841e-4b2e-8b3b-885f3d5b4fb7/xuat-khau-nhap-khau-dich-vu.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [48, 32, 48, 32, 32, 48, 32, 48]
-      "Xuất khẩu, nhập khẩu dịch vụ":
+        histogram: [ 48, 32, 48, 32, 32, 48, 32, 48 ]
+      Xuất khẩu, nhập khẩu dịch vụ:
         kind: numeric
         min: 30
         max: 35557
-        histogram: [233, 50, 16, 8, 8, 2, 2, 1]
-      "Giá trị":
+        histogram: [ 233, 50, 16, 8, 8, 2, 2, 1 ]
+      Giá trị:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Xuất khẩu"
+          - label: Xuất khẩu
             count: 160
-          - label: "Nhập khẩu"
+          - label: Nhập khẩu
             count: 160
-      "Loại hình dịch vụ":
+        complete: true
+      Loại hình dịch vụ:
         kind: categorical
         distinct: 8
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 40
-          - label: "Dịch vụ vận tải"
+          - label: Dịch vụ vận tải
             count: 40
-          - label: "Dịch vụ bưu chính viễn thông"
+          - label: Dịch vụ bưu chính viễn thông
             count: 40
-          - label: "Dịch vụ du lịch"
+          - label: Dịch vụ du lịch
             count: 40
-          - label: "Dịch vụ tài chính"
+          - label: Dịch vụ tài chính
             count: 40
-          - label: "Dịch vụ bảo hiểm"
+          - label: Dịch vụ bảo hiểm
             count: 40
-          - label: "Dịch vụ Chính phủ"
+          - label: Dịch vụ Chính phủ
             count: 40
-          - label: "Dịch vụ khác"
+          - label: Dịch vụ khác
             count: 40
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 16
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
