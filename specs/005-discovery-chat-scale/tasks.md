@@ -149,28 +149,28 @@ Chạy **song song** với Phase 4 — không dùng chung file nào.
 
 ### Chỉ mục tra cứu
 
-- [ ] T038 [US2] Viết `src/lib/retrieval/embed.ts` — gọi `gemini-embedding-001` qua client `openai` sẵn có, chuẩn hoá text đầu vào theo `data-model.md` § RetrievalIndexEntry (R1)
-- [ ] T039 [US2] Viết `src/lib/retrieval/vector-store.ts` — đọc chỉ mục vector từ R2, cache ở module scope, tính cosine trong memory (R2, R3)
-- [ ] T040 [US2] Viết `src/lib/retrieval/keyword.ts` — nhánh khớp từ khoá tính điểm theo tần suất từ, dùng `normalize.ts` từ T005; **không** dùng AND như `SimpleFilterAdapter` (R5)
-- [ ] T041 [US2] Viết `src/lib/retrieval/fuse.ts` — chuẩn hoá điểm hai nhánh về [0,1], cộng có trọng số, gộp trùng, cắt **top-20** (R6)
-- [ ] T042 [US2] Cài `searchDatasets` trong `src/lib/retrieval/index.ts` theo `contracts/search-datasets.md` — hai nhánh chạy song song, `filters` là ràng buộc cứng áp trước khi cắt `limit`
-- [ ] T043 [US2] Phân biệt lỗi "chỉ mục chưa dựng" với kết quả rỗng trong `searchDatasets` (ca biên bắt buộc ở contract)
+- [x] T038 [US2] Viết `src/lib/retrieval/embed.ts` — gọi `gemini-embedding-001` qua client `openai` sẵn có, chuẩn hoá text đầu vào theo `data-model.md` § RetrievalIndexEntry (R1)
+- [x] T039 [US2] Viết `src/lib/retrieval/vector-store.ts` — đọc chỉ mục vector từ R2, cache ở module scope, tính cosine trong memory (R2, R3)
+- [x] T040 [US2] Viết `src/lib/retrieval/keyword.ts` — nhánh khớp từ khoá tính điểm theo tần suất từ, dùng `normalize.ts` từ T005; **không** dùng AND như `SimpleFilterAdapter` (R5)
+- [x] T041 [US2] Viết `src/lib/retrieval/fuse.ts` — chuẩn hoá điểm hai nhánh về [0,1], cộng có trọng số, gộp trùng, cắt **top-20** (R6)
+- [x] T042 [US2] Cài `searchDatasets` trong `src/lib/retrieval/index.ts` theo `contracts/search-datasets.md` — hai nhánh chạy song song, `filters` là ràng buộc cứng áp trước khi cắt `limit`
+- [x] T043 [US2] Phân biệt lỗi "chỉ mục chưa dựng" với kết quả rỗng trong `searchDatasets` (ca biên bắt buộc ở contract)
 
 ### Dựng và giữ chỉ mục đồng bộ
 
-- [ ] T044 [US2] Viết `tools/build-retrieval-index.mjs` — dựng chỉ mục vector + chỉ mục giá trị, ghi lên R2; dry-run mặc định, **báo danh sách entry lệch trước khi sửa** (R4)
-- [ ] T045 [US2] Thêm `source_fingerprint` vào mỗi entry chỉ mục để phát hiện lệch (D3), trong `src/lib/retrieval/vector-store.ts`
-- [ ] T046 [US2] Ghi lại vector + entry chỉ mục giá trị của **một** dataset trong luồng commit tại `src/app/api/upload/commit/route.ts` (FR-032)
-- [ ] T047 [US2] Ghi lại tương tự trong luồng sửa tại `src/app/api/dataset/edit/route.ts` (FR-033)
-- [ ] T048 [US2] Bỏ entry chỉ mục trong luồng xoá tại `src/app/api/dataset/delete/route.ts` và `tools/hard-delete-datasets.mjs` (D6)
-- [ ] T049 [US2] Chạy `tools/build-retrieval-index.mjs --apply` dựng chỉ mục cho 495 dataset
+- [x] T044 [US2] Viết `tools/build-retrieval-index.mjs` — dựng chỉ mục vector + chỉ mục giá trị, ghi lên R2; dry-run mặc định, **báo danh sách entry lệch trước khi sửa** (R4)
+- [x] T045 [US2] Thêm `source_fingerprint` vào mỗi entry chỉ mục để phát hiện lệch (D3), trong `src/lib/retrieval/vector-store.ts`
+- [x] T046 [US2] Ghi lại vector + entry chỉ mục giá trị của **một** dataset trong luồng commit tại `src/app/api/upload/commit/route.ts` (FR-032)
+- [x] T047 [US2] Ghi lại tương tự trong luồng sửa tại `src/app/api/dataset/edit/route.ts` (FR-033)
+- [x] T048 [US2] Bỏ entry chỉ mục trong luồng xoá tại `src/app/api/dataset/delete/route.ts` và `tools/hard-delete-datasets.mjs` (D6)
+- [x] T049 [US2] Chạy `tools/build-retrieval-index.mjs --apply` dựng chỉ mục cho 495 dataset
 
 ### Nối vào luồng trả lời
 
-- [ ] T050 [US2] Viết lại `src/lib/chat/flatten-metadata.ts` — bỏ hàm nạp toàn bộ dataset, chỉ dựng khối mô tả cho danh sách slug nhận vào
-- [ ] T051 [US2] Sửa `src/app/api/chat/discovery/route.ts` — gọi `searchDatasets` rồi `getDataset` cho top-20, thay vì nạp toàn bộ
-- [ ] T052 [US2] Xoá đường đọc metadata từng dataset khỏi `src/lib/chat/flatten-metadata.ts` — giảm từ hơn 1.000 lượt gọi GitHub API xuống ~21
-- [ ] T053 [US2] Đặt trọng số trộn hai nhánh **50/50** trong `src/lib/retrieval/fuse.ts`, để hằng số ở đầu file kèm chú thích cách chỉnh tay (R6 — không còn bộ đo để hiệu chỉnh)
+- [x] T050 [US2] Viết lại `src/lib/chat/flatten-metadata.ts` — bỏ hàm nạp toàn bộ dataset, chỉ dựng khối mô tả cho danh sách slug nhận vào
+- [x] T051 [US2] Sửa `src/app/api/chat/discovery/route.ts` — gọi `searchDatasets` rồi `getDataset` cho top-20, thay vì nạp toàn bộ
+- [x] T052 [US2] Xoá đường đọc metadata từng dataset khỏi `src/lib/chat/flatten-metadata.ts` — giảm từ hơn 1.000 lượt gọi GitHub API xuống ~21
+- [x] T053 [US2] Đặt trọng số trộn hai nhánh **50/50** trong `src/lib/retrieval/fuse.ts`, để hằng số ở đầu file kèm chú thích cách chỉnh tay (R6 — không còn bộ đo để hiệu chỉnh)
 - [ ] T054 [US2] Kiểm theo `quickstart.md` kịch bản 2, 3, 6 và 9 (SC-001, SC-002, SC-003, SC-004→SC-006, SC-009)
 
 **Checkpoint**: chi phí mỗi câu hỏi ≤15.000 token và **không tăng** khi nhân đôi số entry
@@ -187,11 +187,11 @@ chỉ mục. `avg_recall` ≥70%.
 Phụ thuộc Phase 7 — viết lại câu hỏi theo ngữ cảnh chỉ có nghĩa khi việc chọn dataset
 đã chạy trên cơ chế mới.
 
-- [ ] T055 [US4] Thêm `history` vào kiểu `DiscoveryRequest` trong `src/app/api/chat/discovery/route.ts`
-- [ ] T056 [US4] Gửi kèm lịch sử cuộc trò chuyện vào lượt gọi chọn dataset trong `src/app/api/chat/discovery/route.ts`, yêu cầu model hiểu câu hỏi trong ngữ cảnh **trước khi** tìm (R9, FR-044)
-- [ ] T057 [US4] Thêm quy tắc vào `tools/prompts/discovery-chat.md`: lịch sử chỉ dùng để **hiểu** câu hỏi, **không** dùng để giới hạn phạm vi tìm kiếm — mỗi lượt tìm mới hoàn toàn (FR-045)
-- [ ] T058 [US4] Giữ lịch sử phía client trong `src/components/chat/ChatBox.tsx`, bền qua việc tải lại trang (FR-062)
-- [ ] T059 [US4] Thêm nút "Trò chuyện mới" vào `src/components/chat/ChatBox.tsx`, xoá ngữ cảnh khi bấm (FR-046)
+- [x] T055 [US4] Thêm `history` vào kiểu `DiscoveryRequest` trong `src/app/api/chat/discovery/route.ts`
+- [x] T056 [US4] Gửi kèm lịch sử cuộc trò chuyện vào lượt gọi chọn dataset trong `src/app/api/chat/discovery/route.ts`, yêu cầu model hiểu câu hỏi trong ngữ cảnh **trước khi** tìm (R9, FR-044)
+- [x] T057 [US4] Thêm quy tắc vào `tools/prompts/discovery-chat.md`: lịch sử chỉ dùng để **hiểu** câu hỏi, **không** dùng để giới hạn phạm vi tìm kiếm — mỗi lượt tìm mới hoàn toàn (FR-045)
+- [x] T058 [US4] Giữ lịch sử phía client trong `src/components/chat/ChatBox.tsx`, bền qua việc tải lại trang (FR-062)
+- [x] T059 [US4] Thêm nút "Trò chuyện mới" vào `src/components/chat/ChatBox.tsx`, xoá ngữ cảnh khi bấm (FR-046)
 - [ ] T060 [US4] Kiểm theo `quickstart.md` kịch bản 5 — đặc biệt lượt 3 phải **thoát khỏi** chủ đề của hai lượt trước (SC-010)
 
 **Checkpoint**: US4 ship được.

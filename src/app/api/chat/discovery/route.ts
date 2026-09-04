@@ -22,8 +22,8 @@
  * Streaming: OpenAI SDK v6 với stream:true trả async iterable ChatCompletionChunk.
  * Forward delta content về client qua ReadableStream. Client accumulate + parse JSON cuối.
  *
- * Response format JSON mode KHÔNG dùng cùng stream (Gemini OpenAI compat chưa ổn định
- * với stream + response_format) → rely vào system prompt để enforce JSON.
+ * JSON được ép ở tầng API bằng `response_format: json_object` (kiểm lại 2026-09-04:
+ * dùng được cùng stream), system prompt chỉ mô tả schema.
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -62,11 +62,34 @@ export const maxDuration = 60; // AI stream có thể mất 10-30s
  */
 const CANDIDATE_LIMIT = 20;
 
+/** Một lượt đã xảy ra trong cuộc trò chuyện — client giữ và gửi lại. */
+interface HistoryTurn {
+  role: "user" | "assistant";
+  content: string;
+}
+
 interface DiscoveryRequest {
   query: string;
   /** Optional slug dataset user đã attach (ChatGPT-style chip). */
   attachedSlug?: string;
+  /**
+   * Các lượt trước của cùng cuộc trò chuyện, cũ → mới (FR-044).
+   *
+   * Client giữ lịch sử, không phải server: mỗi cuộc trò chuyện thuộc về một tab
+   * của một người, và lưu server nghĩa là phải quyết định khi nào hết hạn, ai
+   * được đọc, xoá lúc nào — cả một vòng đời cho thứ mà `localStorage` làm xong.
+   */
+  history?: HistoryTurn[];
 }
+
+/**
+ * Số lượt lịch sử giữ lại.
+ *
+ * Đủ để hiểu câu hỏi rút gọn ("còn năm 2023 thì sao"), và có trần để một cuộc trò
+ * chuyện dài không âm thầm đẩy chi phí mỗi câu hỏi vượt ngưỡng SC-001 — chi phí
+ * tăng dần theo độ dài cuộc trò chuyện là kiểu vượt ngưỡng không ai để ý.
+ */
+const MAX_HISTORY_TURNS = 6;
 
 async function loadSystemPrompt(): Promise<string> {
   const promptPath = path.join(
@@ -76,6 +99,23 @@ async function loadSystemPrompt(): Promise<string> {
     "discovery-chat.md",
   );
   return readFile(promptPath, "utf-8");
+}
+
+/**
+ * Đưa một lượt trả lời cũ về đúng dạng JSON.
+ *
+ * Model học khuôn từ các lượt trước trong cùng cuộc trò chuyện. Nếu lượt trợ lý cũ
+ * là văn xuôi thì nó kết luận cuộc này nói bằng văn xuôi và bỏ luôn quy tắc
+ * chỉ-trả-JSON — đo thực tế: lượt 1 trả JSON đúng, lượt 2 trả văn xuôi và client
+ * parse thất bại, hiện ra EmptyState dù câu trả lời hoàn toàn đúng nội dung.
+ *
+ * Bọc ở đây chứ không bắt client gửi đúng dạng: client nào gửi sai cũng không được
+ * phép làm sập cuộc trò chuyện.
+ */
+function asJsonTurn(content: string): string {
+  const trimmed = content.trim();
+  if (trimmed.startsWith("{")) return trimmed;
+  return JSON.stringify({ answer: trimmed, datasets: [], follow_ups: [] });
 }
 
 export async function POST(req: NextRequest) {
@@ -118,6 +158,28 @@ export async function POST(req: NextRequest) {
 
   const attachedSlug = body.attachedSlug?.trim() || undefined;
 
+  const history = (body.history ?? [])
+    .filter(
+      (t): t is HistoryTurn =>
+        !!t && (t.role === "user" || t.role === "assistant") && typeof t.content === "string",
+    )
+    .slice(-MAX_HISTORY_TURNS);
+
+  /**
+   * Câu dùng để TÌM dataset.
+   *
+   * Câu hỏi rút gọn ("còn năm 2023 thì sao") tự nó không mang chủ đề nào, nên đem
+   * đi tìm thì ra kết quả vô nghĩa. Ghép câu hỏi người dùng gần nhất vào để phần
+   * tìm kiếm hiểu được nó đang nói về cái gì (FR-044).
+   *
+   * Chỉ ghép MỘT lượt và câu hỏi hiện tại luôn đứng trước: đó là chỗ giữ FR-045 —
+   * lịch sử để **hiểu** câu hỏi, không để **giới hạn** phạm vi. Ghép cả cuộc trò
+   * chuyện thì lượt 3 đổi chủ đề vẫn bị kéo về chủ đề của lượt 1, đúng cái bẫy mà
+   * SC-010 kiểm.
+   */
+  const lastUserQuery = [...history].reverse().find((t) => t.role === "user")?.content;
+  const searchQuery = lastUserQuery ? `${query}\n${lastUserQuery}` : query;
+
   // 3. Rate limit — per-user + global (Gemini free tier guard)
   const [userCount, globalQuota] = await Promise.all([
     getUserDailyCount(userKey),
@@ -146,7 +208,7 @@ export async function POST(req: NextRequest) {
   let focusBlock = "";
   try {
     const [search, prompt] = await Promise.all([
-      searchDatasets({ query, limit: CANDIDATE_LIMIT, caller: `chat:${userKey}` }),
+      searchDatasets({ query: searchQuery, limit: CANDIDATE_LIMIT, caller: `chat:${userKey}` }),
       loadSystemPrompt(),
     ]);
     systemPrompt = prompt;
@@ -232,6 +294,13 @@ export async function POST(req: NextRequest) {
           model: AI_MODEL,
           messages: [
             { role: "system", content: systemPrompt },
+            // Lịch sử đi vào đúng chỗ của nó — các lượt trước, không nhồi vào câu
+            // hỏi hiện tại. Nhồi vào thì model không phân biệt được đâu là câu
+            // đang hỏi và đâu là chuyện cũ.
+            ...history.map((t) => ({
+              role: t.role,
+              content: t.role === "assistant" ? asJsonTurn(t.content) : t.content,
+            }) as const),
             {
               role: "user",
               content: userContent,
@@ -242,8 +311,15 @@ export async function POST(req: NextRequest) {
           // cut tại entry #4 với max_tokens=2000 → JSON parse fail → EmptyState).
           max_tokens: 4000,
           stream: true,
-          // KHÔNG dùng response_format json_object — Gemini OpenAI compat chưa ổn định
-          // với stream + json_object. Rely vào system prompt để enforce JSON output.
+          // Ép JSON ở tầng API, không chỉ nhờ system prompt.
+          //
+          // Comment cũ ở đây ghi "Gemini OpenAI compat chưa ổn định với stream +
+          // json_object". Kiểm lại 2026-09-04 với SDK và model hiện tại: chạy tốt.
+          // Và nó cần thiết từ khi có hội thoại nhiều lượt — đo thực tế: lượt 1 và
+          // 2 trả JSON đúng, tới lượt 3 model chuyển sang văn xuôi, client parse
+          // thất bại và hiện EmptyState dù nội dung câu trả lời hoàn toàn đúng.
+          // Quy tắc trong prompt không đủ khi cuộc trò chuyện dài ra.
+          response_format: { type: "json_object" },
         });
 
         let finishReason: string | null = null;

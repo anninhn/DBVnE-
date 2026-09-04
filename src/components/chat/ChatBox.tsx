@@ -18,7 +18,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
-import { Loader2, ArrowUp, AlertCircle, Search, Compass, Lightbulb, Database, X } from "lucide-react";
+import { Loader2, ArrowUp, AlertCircle, Search, Compass, Lightbulb, Database, X, MessageSquarePlus } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import CitationCard from "./CitationCard";
@@ -30,6 +30,19 @@ import {
   type DiscoveryResponse,
 } from "@/lib/chat/extract-json";
 import { ensureComputeNotice } from "@/lib/chat/intent";
+
+/**
+ * Khoá lưu cuộc trò chuyện trong `sessionStorage`.
+ *
+ * `sessionStorage` chứ không `localStorage`: ngữ cảnh giữ nguyên qua việc tải lại
+ * trang (FR-062) nhưng không sống mãi sang phiên làm việc hôm sau. Người dùng mở
+ * lại trình duyệt tuần sau và thấy hệ thống vẫn nhớ chủ đề cũ là hoang mang, không
+ * phải tiện lợi — và họ không có cách nào đoán được cái nhớ đó tới từ đâu.
+ */
+const STORAGE_KEY = "discovery-chat-v1";
+
+/** Số lượt gửi kèm cho server — khớp `MAX_HISTORY_TURNS` ở route. */
+const MAX_HISTORY_TURNS = 6;
 
 // Capability hints — mô tả cho user thấy platform có thể giúp gì.
 // Render bên dưới input, vertical stack, left-aligned (ChatGPT pattern).
@@ -60,6 +73,35 @@ const PLACEHOLDERS = [
   "Đừng nhìn nữa, hỏi gì đi...",
 ];
 
+/**
+ * Chuyển các lượt đã xảy ra thành lịch sử gửi cho server.
+ *
+ * Lượt trợ lý gửi lại dạng **JSON**, không phải văn xuôi: model học khuôn từ các
+ * lượt trước, thấy văn xuôi thì nó kết luận cuộc này nói bằng văn xuôi và bỏ luôn
+ * quy tắc chỉ-trả-JSON. Đo thực tế: lượt 1 và 2 đúng, tới lượt 3 trả văn xuôi và
+ * client parse thất bại — câu trả lời đúng nội dung nhưng người dùng thấy màn hình
+ * trống.
+ */
+function buildHistory(
+  entries: ChatEntry[],
+): { role: "user" | "assistant"; content: string }[] {
+  return entries
+    .filter((e) => !e.error)
+    .map((e) =>
+      e.role === "user"
+        ? { role: "user" as const, content: e.query }
+        : {
+            role: "assistant" as const,
+            content: JSON.stringify({
+              answer: e.response?.answer ?? "",
+              datasets: (e.response?.datasets ?? []).map((d) => ({ slug: d.slug })),
+              follow_ups: [],
+            }),
+          },
+    )
+    .slice(-MAX_HISTORY_TURNS);
+}
+
 interface ChatEntry {
   id: string | null; // null cho user message
   role: "user" | "assistant";
@@ -79,6 +121,15 @@ export default function ChatBox({
   const searchParams = useSearchParams();
   const [input, setInput] = useState("");
   const [entries, setEntries] = useState<ChatEntry[]>([]);
+  // Đọc trong effect chứ không trong `useState(() => ...)`: server render không có
+  // `sessionStorage`, khởi tạo từ nó ngay sẽ lệch giữa server và client và React
+  // báo lỗi hydration.
+  const [restored, setRestored] = useState(false);
+  // `submit` là useCallback và không nên phụ thuộc `entries` — mỗi lượt trả lời
+  // dựng lại hàm thì mọi thứ nhận nó làm prop cũng render lại. Giữ bản mới nhất
+  // trong ref: đọc ref lúc gửi cho ra lịch sử ĐÚNG, còn đóng gói `entries` vào
+  // closure thì gửi đi lịch sử của lượt trước và không có triệu chứng gì.
+  const entriesRef = useRef<ChatEntry[]>([]);
   const [loading, setLoading] = useState(false);
   const [streamingText, setStreamingText] = useState("");
   // Attach dataset (ChatGPT-style chip) — từ sidebar "Hỏi về dataset này".
@@ -110,6 +161,32 @@ export default function ChatBox({
     });
   }, [entries, streamingText]);
 
+  // Cập nhật ref trong effect, không trong lúc render: React Compiler cấm đọc/ghi
+  // ref khi render, và effect đã chạy xong trước khi người dùng bấm gửi.
+  useEffect(() => {
+    entriesRef.current = entries;
+  }, [entries]);
+
+  // Khôi phục cuộc trò chuyện sau khi tải lại trang (FR-062).
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(STORAGE_KEY);
+      if (raw) setEntries(JSON.parse(raw) as ChatEntry[]);
+    } catch {
+      // Dữ liệu hỏng thì bắt đầu lại từ trống — không đáng để làm hỏng cả trang.
+    }
+    setRestored(true);
+  }, []);
+
+  useEffect(() => {
+    if (!restored) return; // tránh ghi đè bản đã lưu bằng mảng rỗng lúc mới mount
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    } catch {
+      // Hết chỗ hoặc bị chặn — cuộc trò chuyện vẫn chạy, chỉ là không sống qua reload.
+    }
+  }, [entries, restored]);
+
   const submit = useCallback(async (queryText: string) => {
     const query = queryText.trim();
     if (!query || loading) return;
@@ -130,7 +207,11 @@ export default function ChatBox({
       const res = await fetch("/api/chat/discovery", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, attachedSlug: attached?.slug }),
+        body: JSON.stringify({
+          query,
+          attachedSlug: attached?.slug,
+          history: buildHistory(entriesRef.current),
+        }),
       });
 
       if (!res.ok) {
@@ -215,7 +296,9 @@ export default function ChatBox({
       setLoading(false);
       setStreamingText("");
     }
-  }, [loading, attached?.slug]);
+    // Phụ thuộc cả object `attached`, không chỉ `attached?.slug`: React Compiler
+    // suy ra `attached` và từ chối tối ưu cả component khi hai bên không khớp.
+  }, [loading, attached]);
 
   // Pre-fill từ URL ?prefill=<title> — CTA từ dataset detail page.
   // CHỈ fill input, KHÔNG auto-submit — user có agency edit/ask câu riêng.
@@ -233,6 +316,21 @@ export default function ChatBox({
   }
 
   const hasEntries = entries.length > 0;
+
+  // Bắt đầu cuộc mới (FR-046). Ngữ cảnh chỉ mất khi người dùng CHỦ ĐỘNG bấm — không
+  // tự hết theo thời gian, không để AI tự đoán là đã đổi chủ đề. Đó là cách duy
+  // nhất người dùng biết chắc mình đang ở đâu.
+  const startNewConversation = () => {
+    setEntries([]);
+    setStreamingText("");
+    setInput("");
+    setAttached(null);
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Không xoá được thì effect ở trên cũng sẽ ghi đè bằng mảng rỗng.
+    }
+  };
 
   // Attach chip — ChatGPT-style, render phía trên input. Click X để clear attach.
   // (User có thể clear nếu muốn hỏi về dataset khác hoặc câu generic.)
@@ -329,6 +427,19 @@ export default function ChatBox({
         {/* CONVERSATION STATE — entries */}
         {hasEntries && (
           <div className="px-4 py-6 space-y-6">
+            {/* Ranh giới cuộc trò chuyện phải do người dùng đặt (FR-046). Nút nằm
+                ngay đầu cuộc, thấy được mà không phải tìm. */}
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={startNewConversation}
+                disabled={loading}
+                className="inline-flex items-center gap-1.5 text-xs text-hf-text-muted hover:text-hf-text disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              >
+                <MessageSquarePlus className="w-3.5 h-3.5" aria-hidden />
+                Trò chuyện mới
+              </button>
+            </div>
             {entries.map((entry, idx) => (
               <div
                 key={entry.id ?? `entry-${idx}`}
