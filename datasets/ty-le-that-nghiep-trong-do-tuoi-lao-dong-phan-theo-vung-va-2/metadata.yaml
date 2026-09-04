@@ -27,47 +27,52 @@ files:
     r2_key: "a1439246-6b51-406d-9317-10f25cd8184d/ty-le-that-nghiep-trong-do-tuoi-lao-dong-phan-theo-vung-va-2.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [42, 42, 42, 21, 42, 42, 42, 42]
-      "Tỷ lệ thất nghiệp trong độ tuổi lao động":
+        histogram: [ 42, 42, 42, 21, 42, 42, 42, 42 ]
+      Tỷ lệ thất nghiệp trong độ tuổi lao động:
         kind: numeric
         min: 0.46
         max: 5.75
-        histogram: [38, 47, 84, 79, 39, 19, 6, 3]
-      "Thành thị, nông thôn":
+        histogram: [ 38, 47, 84, 79, 39, 19, 6, 3 ]
+      Thành thị, nông thôn:
         kind: categorical
         distinct: 3
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 105
-          - label: "Thành thị"
+          - label: Thành thị
             count: 105
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 105
-      "Vùng":
+        complete: true
+      Vùng:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 45
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 45
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 45
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 45
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 45
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 45
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 45
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 21
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
