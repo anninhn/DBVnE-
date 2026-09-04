@@ -26,48 +26,52 @@ files:
     r2_key: "5993c98f-450f-4de6-8e01-10771221533d/su-dung-tong-san-pham-trong-nuoc-theo-gia-hien-hanh.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [40, 40, 30, 40, 40, 30, 40, 40]
-      "Giá trị (Tỷ đồng)":
+        histogram: [ 40, 40, 30, 40, 40, 30, 40, 40 ]
+      Giá trị (Tỷ đồng):
         kind: numeric
         min: -308120.5
         max: 11510328.9
-        histogram: [194, 30, 20, 13, 6, 4, 1, 2]
-      "Cơ cấu (%)":
+        histogram: [ 194, 30, 20, 13, 6, 4, 1, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: -13.6
         max: 100
-        histogram: [42, 78, 13, 47, 11, 36, 13, 30]
-      "Loại":
+        histogram: [ 42, 78, 13, 47, 11, 36, 13, 30 ]
+      Loại:
         kind: categorical
         distinct: 10
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 30
-          - label: "Tích luỹ tài sản"
+          - label: Tích luỹ tài sản
             count: 30
-          - label: "Tổng tài sản cố định"
+          - label: Tổng tài sản cố định
             count: 30
-          - label: "Thay đổi tồn kho"
+          - label: Thay đổi tồn kho
             count: 30
-          - label: "Tiêu dùng cuối cùng(*)"
+          - label: Tiêu dùng cuối cùng(*)
             count: 30
-          - label: "Nhà nước"
+          - label: Nhà nước
             count: 30
-          - label: "Hộ dân cư"
+          - label: Hộ dân cư
             count: 30
-          - label: "Chênh lệch xuất khẩu hàng hoá và dịch vụ"
+          - label: Chênh lệch xuất khẩu hàng hoá và dịch vụ
             count: 30
-          - label: "Sai số"
+          - label: Sai số
             count: 30
-          - label: "Tổng tích luỹ tài sản"
+          - label: Tổng tích luỹ tài sản
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 10
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
