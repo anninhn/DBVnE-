@@ -1,8 +1,6 @@
 title: Ranh giới hành chính 34 tỉnh thành Việt Nam
 slug: ranh-gioi-hanh-chinh-34-tinh-thanh-viet-nam
-description: Dataset chứa ranh giới hành chính của 34 tỉnh thành Việt Nam, với
-  mỗi tỉnh thành được biểu diễn bằng geometry MultiPolygon. Dữ liệu bao gồm 34
-  features và sử dụng hệ tọa độ WGS84, phủ khắp lãnh thổ Việt Nam. TEST 2
+description: Dataset chứa ranh giới hành chính của 34 tỉnh thành Việt Nam, với mỗi tỉnh thành được biểu diễn bằng geometry MultiPolygon. Dữ liệu bao gồm 34 features và sử dụng hệ tọa độ WGS84, phủ khắp lãnh thổ Việt Nam. TEST 2
 category: chinh-tri
 tags:
   - ranh-gioi
@@ -32,15 +30,7 @@ files:
         kind: numeric
         min: 1
         max: 96
-        histogram:
-          - 5
-          - 6
-          - 3
-          - 7
-          - 3
-          - 2
-          - 4
-          - 4
+        histogram: [ 5, 6, 3, 7, 3, 2, 4, 4 ]
       name:
         kind: categorical
         distinct: 34
@@ -69,6 +59,51 @@ files:
             count: 1
           - label: Phú Thọ
             count: 1
+          - label: Hải Phòng
+            count: 1
+          - label: Hưng Yên
+            count: 1
+          - label: Ninh Bình
+            count: 1
+          - label: Nghệ An
+            count: 1
+          - label: Thanh Hoá
+            count: 1
+          - label: Hà Tĩnh
+            count: 1
+          - label: Quảng Trị
+            count: 1
+          - label: Huế
+            count: 1
+          - label: Đà Nẵng
+            count: 1
+          - label: Quảng Ngãi
+            count: 1
+          - label: Gia Lai
+            count: 1
+          - label: Khánh Hoà
+            count: 1
+          - label: Đắk Lắk
+            count: 1
+          - label: Lâm Đồng
+            count: 1
+          - label: Đồng Nai
+            count: 1
+          - label: Hồ Chí Minh
+            count: 1
+          - label: Tây Ninh
+            count: 1
+          - label: Đồng Tháp
+            count: 1
+          - label: Vĩnh Long
+            count: 1
+          - label: Cần Thơ
+            count: 1
+          - label: An Giang
+            count: 1
+          - label: Cà Mau
+            count: 1
+        complete: true
       nameEn:
         kind: categorical
         distinct: 34
@@ -97,6 +132,51 @@ files:
             count: 1
           - label: Phu Tho
             count: 1
+          - label: Haiphong
+            count: 1
+          - label: Hung Yen
+            count: 1
+          - label: Ninh Binh
+            count: 1
+          - label: Nghe An
+            count: 1
+          - label: Thanh Hoa
+            count: 1
+          - label: Ha Tinh
+            count: 1
+          - label: Quang Tri
+            count: 1
+          - label: Hue
+            count: 1
+          - label: Da Nang
+            count: 1
+          - label: Quang Ngai
+            count: 1
+          - label: Gia Lai
+            count: 1
+          - label: Khanh Hoa
+            count: 1
+          - label: Dak Lak
+            count: 1
+          - label: Lam Dong
+            count: 1
+          - label: Dong Nai
+            count: 1
+          - label: Ho Chi Minh
+            count: 1
+          - label: Tay Ninh
+            count: 1
+          - label: Dong Thap
+            count: 1
+          - label: Vinh Long
+            count: 1
+          - label: Can Tho
+            count: 1
+          - label: An Giang
+            count: 1
+          - label: Ca Mau
+            count: 1
+        complete: true
       fullName:
         kind: categorical
         distinct: 34
@@ -125,6 +205,51 @@ files:
             count: 1
           - label: Tỉnh Phú Thọ
             count: 1
+          - label: Thành phố Hải Phòng
+            count: 1
+          - label: Tỉnh Hưng Yên
+            count: 1
+          - label: Tỉnh Ninh Bình
+            count: 1
+          - label: Tỉnh Nghệ An
+            count: 1
+          - label: Tỉnh Thanh Hoá
+            count: 1
+          - label: Tỉnh Hà Tĩnh
+            count: 1
+          - label: Tỉnh Quảng Trị
+            count: 1
+          - label: Thành phố Huế
+            count: 1
+          - label: Thành phố Đà Nẵng
+            count: 1
+          - label: Tỉnh Quảng Ngãi
+            count: 1
+          - label: Tỉnh Gia Lai
+            count: 1
+          - label: Tỉnh Khánh Hoà
+            count: 1
+          - label: Tỉnh Đắk Lắk
+            count: 1
+          - label: Tỉnh Lâm Đồng
+            count: 1
+          - label: Thành phố Đồng Nai
+            count: 1
+          - label: Thành phố Hồ Chí Minh
+            count: 1
+          - label: Tỉnh Tây Ninh
+            count: 1
+          - label: Tỉnh Đồng Tháp
+            count: 1
+          - label: Tỉnh Vĩnh Long
+            count: 1
+          - label: Thành phố Cần Thơ
+            count: 1
+          - label: Tỉnh An Giang
+            count: 1
+          - label: Tỉnh Cà Mau
+            count: 1
+        complete: true
       fullNameEn:
         kind: categorical
         distinct: 34
@@ -153,6 +278,51 @@ files:
             count: 1
           - label: Phu Tho Province
             count: 1
+          - label: Haiphong City
+            count: 1
+          - label: Hung Yen Province
+            count: 1
+          - label: Ninh Binh Province
+            count: 1
+          - label: Nghe An Province
+            count: 1
+          - label: Thanh Hoa Province
+            count: 1
+          - label: Ha Tinh Province
+            count: 1
+          - label: Quang Tri Province
+            count: 1
+          - label: Hue City
+            count: 1
+          - label: Da Nang City
+            count: 1
+          - label: Quang Ngai Province
+            count: 1
+          - label: Gia Lai Province
+            count: 1
+          - label: Khanh Hoa Province
+            count: 1
+          - label: Dak Lak Province
+            count: 1
+          - label: Lam Dong Province
+            count: 1
+          - label: Dong Nai City
+            count: 1
+          - label: Ho Chi Minh City
+            count: 1
+          - label: Tay Ninh Province
+            count: 1
+          - label: Dong Thap Province
+            count: 1
+          - label: Vinh Long Province
+            count: 1
+          - label: Can Tho City
+            count: 1
+          - label: An Giang Province
+            count: 1
+          - label: Ca Mau Province
+            count: 1
+        complete: true
       codeName:
         kind: categorical
         distinct: 34
@@ -181,6 +351,51 @@ files:
             count: 1
           - label: phu_tho
             count: 1
+          - label: hai_phong
+            count: 1
+          - label: hung_yen
+            count: 1
+          - label: ninh_binh
+            count: 1
+          - label: nghe_an
+            count: 1
+          - label: thanh_hoa
+            count: 1
+          - label: ha_tinh
+            count: 1
+          - label: quang_tri
+            count: 1
+          - label: hue
+            count: 1
+          - label: da_nang
+            count: 1
+          - label: quang_ngai
+            count: 1
+          - label: gia_lai
+            count: 1
+          - label: khanh_hoa
+            count: 1
+          - label: dak_lak
+            count: 1
+          - label: lam_dong
+            count: 1
+          - label: dong_nai
+            count: 1
+          - label: ho_chi_minh
+            count: 1
+          - label: tay_ninh
+            count: 1
+          - label: dong_thap
+            count: 1
+          - label: vinh_long
+            count: 1
+          - label: can_tho
+            count: 1
+          - label: an_giang
+            count: 1
+          - label: ca_mau
+            count: 1
+        complete: true
       gisServerId:
         kind: categorical
         distinct: 34
@@ -209,19 +424,56 @@ files:
             count: 1
           - label: diaphanhanhchinhcaptinh_sn.125
             count: 1
+          - label: diaphanhanhchinhcaptinh_sn.107
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.103
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.104
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.60
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.61
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.53
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.54
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.134
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.132
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.130
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.51
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.133
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.46
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.47
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.50
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.49
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.40
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.127
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.42
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.1
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.131
+            count: 1
+          - label: diaphanhanhchinhcaptinh_sn.39
+            count: 1
+        complete: true
       areaKm2:
         kind: numeric
         min: 2514.81
         max: 24233.07
-        histogram:
-          - 6
-          - 8
-          - 8
-          - 5
-          - 3
-          - 2
-          - 0
-          - 2
+        histogram: [ 6, 8, 8, 5, 3, 2, 0, 2 ]
 edits:
   - by: ninh
     at: 2026-07-24T03:15:12.141Z
