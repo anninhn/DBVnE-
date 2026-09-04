@@ -27,46 +27,50 @@ files:
     r2_key: "ef43ba57-fde2-490e-98fc-1d7401eb3172/tri-gia-xuat-khau-hang-hoa-phan-theo-khu-vuc-kinh-te-va-phan.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [36, 36, 27, 36, 36, 27, 36, 36]
-      "Trị giá (Triệu đô la Mỹ)":
+        histogram: [ 36, 36, 27, 36, 36, 27, 36, 36 ]
+      Trị giá (Triệu đô la Mỹ):
         kind: numeric
         min: 4.5
         max: 405935.4
-        histogram: [171, 15, 8, 6, 7, 6, 4, 3]
-      "Cơ cấu (%)":
+        histogram: [ 171, 15, 8, 6, 7, 6, 4, 3 ]
+      Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
-        histogram: [99, 16, 19, 13, 13, 17, 5, 35]
-      "Khu vực kinh tế, nhóm hàng":
+        histogram: [ 99, 16, 19, 13, 13, 17, 5, 35 ]
+      Khu vực kinh tế, nhóm hàng:
         kind: categorical
         distinct: 9
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 30
-          - label: "Khu vực kinh tế trong nước"
+          - label: Khu vực kinh tế trong nước
             count: 30
-          - label: "Khu vực có vốn đầu tư nước ngoài(*)"
+          - label: Khu vực có vốn đầu tư nước ngoài(*)
             count: 30
-          - label: "Nhiên liệu và khoáng sản"
+          - label: Nhiên liệu và khoáng sản
             count: 30
-          - label: "Công nghiệp chế biến"
+          - label: Công nghiệp chế biến
             count: 30
-          - label: "Hàng nông sản"
+          - label: Hàng nông sản
             count: 30
-          - label: "Hàng lâm sản"
+          - label: Hàng lâm sản
             count: 30
-          - label: "Hàng thủy sản"
+          - label: Hàng thủy sản
             count: 30
-          - label: "Vàng phi tiền tệ(**)"
+          - label: Vàng phi tiền tệ(**)
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
