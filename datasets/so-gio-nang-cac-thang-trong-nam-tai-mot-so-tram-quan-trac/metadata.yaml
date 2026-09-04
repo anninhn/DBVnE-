@@ -26,46 +26,55 @@ files:
     r2_key: "4a2435f4-cd9d-4025-9641-91d711069f72/so-gio-nang-cac-thang-trong-nam-tai-mot-so-tram-quan-trac.csv"
     size_mb: 0.1
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [540, 540, 540, 360, 540, 540, 540, 540]
-      "Tháng":
+        histogram: [ 540, 540, 540, 360, 540, 540, 540, 540 ]
+      Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [690, 345, 690, 345, 345, 690, 345, 690]
-      "Số giờ nắng các tháng trong năm tại một số trạm quan trắc":
+        histogram: [ 690, 345, 690, 345, 345, 690, 345, 690 ]
+      Số giờ nắng các tháng trong năm tại một số trạm quan trắc:
         kind: numeric
         min: 0
         max: 319.9
-        histogram: [177, 337, 578, 939, 922, 607, 448, 131]
-      "Tỉnh, thành phố":
+        histogram: [ 177, 337, 578, 939, 922, 607, 448, 131 ]
+      Tỉnh, thành phố:
         kind: categorical
         distinct: 15
         segments:
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 276
-          - label: "Sơn La"
+          - label: Sơn La
             count: 276
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 276
-          - label: "Hà Nội (Láng)"
+          - label: Hà Nội (Láng)
             count: 276
-          - label: "Bãi Cháy"
+          - label: Bãi Cháy
             count: 276
-          - label: "Nam Định"
+          - label: Nam Định
             count: 276
-          - label: "Vinh"
+          - label: Vinh
             count: 276
-          - label: "Huế"
+          - label: Huế
             count: 276
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 276
-          - label: "Quy Nhơn"
+          - label: Quy Nhơn
             count: 276
-          - label: "Pleiku"
+          - label: Pleiku
             count: 276
-          - label: "Đà Lạt"
+          - label: Đà Lạt
             count: 276
+          - label: Nha Trang
+            count: 276
+          - label: Vũng Tàu
+            count: 276
+          - label: Cà Mau
+            count: 276
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
