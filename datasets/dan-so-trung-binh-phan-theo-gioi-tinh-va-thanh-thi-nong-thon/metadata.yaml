@@ -27,43 +27,47 @@ files:
     r2_key: "b7a40eef-b7ae-43e4-b031-ac0868b4b320/dan-so-trung-binh-phan-theo-gioi-tinh-va-thanh-thi-nong-thon.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [25, 20, 20, 20, 25, 20, 20, 25]
-      "Tổng số (Nghìn người)":
+        histogram: [ 25, 20, 20, 20, 25, 20, 20, 25 ]
+      Tổng số (Nghìn người):
         kind: numeric
         min: 12880.3
         max: 101343.75
-        histogram: [18, 19, 49, 25, 31, 10, 12, 11]
-      "Tỷ lệ tăng (%)":
+        histogram: [ 18, 19, 49, 25, 31, 10, 12, 11 ]
+      Tỷ lệ tăng (%):
         kind: numeric
         min: -1.58
         max: 9.18
-        histogram: [3, 54, 94, 17, 5, 1, 0, 1]
-      "Cơ cấu (%)":
+        histogram: [ 3, 54, 94, 17, 5, 1, 0, 1 ]
+      Cơ cấu (%):
         kind: numeric
         min: 19.51
         max: 100
-        histogram: [19, 16, 28, 42, 15, 16, 4, 35]
-      "Phân tổ":
+        histogram: [ 19, 16, 28, 42, 15, 16, 4, 35 ]
+      Phân tổ:
         kind: categorical
         distinct: 5
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 35
-          - label: "Nam"
+          - label: Nam
             count: 35
-          - label: "Nữ"
+          - label: Nữ
             count: 35
-          - label: "Thành thị"
+          - label: Thành thị
             count: 35
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 35
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 5
+        complete: true
+coverage:
+  temporal: [ 1990, 2024 ]
