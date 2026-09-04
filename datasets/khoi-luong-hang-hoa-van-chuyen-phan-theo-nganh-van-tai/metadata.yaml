@@ -26,40 +26,44 @@ files:
     r2_key: "9b1be9fd-8e0f-4856-9c34-4d152ebb1480/khoi-luong-hang-hoa-van-chuyen-phan-theo-nganh-van-tai.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [24, 24, 18, 24, 24, 18, 24, 24]
-      "Giá trị (Nghìn tấn)":
+        histogram: [ 24, 24, 18, 24, 24, 18, 24, 24 ]
+      Giá trị (Nghìn tấn):
         kind: numeric
         min: 32
         max: 2575279.41
-        histogram: [136, 13, 10, 8, 5, 4, 2, 2]
-      "Chỉ số phát triển (Năm trước =100) (%)":
+        histogram: [ 136, 13, 10, 8, 5, 4, 2, 2 ]
+      Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 61.01
         max: 152.4
-        histogram: [2, 2, 9, 49, 97, 11, 6, 4]
-      "Ngành":
+        histogram: [ 2, 2, 9, 49, 97, 11, 6, 4 ]
+      Ngành:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 30
-          - label: "Đường sắt"
+          - label: Đường sắt
             count: 30
-          - label: "Đường bộ"
+          - label: Đường bộ
             count: 30
-          - label: "Đường sông"
+          - label: Đường sông
             count: 30
-          - label: "Đường biển"
+          - label: Đường biển
             count: 30
-          - label: "Đường hàng không"
+          - label: Đường hàng không
             count: 30
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 6
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
