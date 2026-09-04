@@ -27,47 +27,63 @@ files:
     r2_key: "096ab863-219b-47f1-b394-540864c67fac/tieu-dung-nang-luong-binh-quan-dau-nguoi-phan-theo-loai-nang.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [18, 0, 18, 0, 0, 18, 0, 18]
-      "Tiêu dùng năng lượng bình quân đầu người":
+        histogram: [ 18, 0, 18, 0, 0, 18, 0, 18 ]
+      Tiêu dùng năng lượng bình quân đầu người:
         kind: numeric
         min: 0.81
         max: 7380.94
-        histogram: [32, 3, 5, 4, 6, 8, 6, 4]
-      "Phân tổ":
+        histogram: [ 32, 3, 5, 4, 6, 8, 6, 4 ]
+      Phân tổ:
         kind: categorical
         distinct: 18
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 4
-          - label: "Phân theo loại năng lượng"
+          - label: Phân theo loại năng lượng
             count: 4
-          - label: "Điện"
+          - label: Điện
             count: 4
-          - label: "Than đá"
+          - label: Than đá
             count: 4
-          - label: "Than bánh/tổ ong"
+          - label: Than bánh/tổ ong
             count: 4
-          - label: "Xăng"
+          - label: Xăng
             count: 4
-          - label: "Dầu hoả"
+          - label: Dầu hoả
             count: 4
-          - label: "Dầu diesel"
+          - label: Dầu diesel
             count: 4
-          - label: "Dầu mazut"
+          - label: Dầu mazut
             count: 4
-          - label: "Ga hoá lỏng"
+          - label: Ga hoá lỏng
             count: 4
-          - label: "Khí thiên nhiên"
+          - label: Khí thiên nhiên
             count: 4
-          - label: "Củi"
+          - label: Củi
             count: 4
-      "Ghi chú":
+          - label: Ðồng bằng sông Hồng
+            count: 4
+          - label: Trung du và miền núi phía Bắc
+            count: 4
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 4
+          - label: Tây Nguyên
+            count: 4
+          - label: Ðông Nam Bộ
+            count: 4
+          - label: Ðồng bằng sông Cửu Long
+            count: 4
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 18
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
