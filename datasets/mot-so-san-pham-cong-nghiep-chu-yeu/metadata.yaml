@@ -27,47 +27,193 @@ files:
     r2_key: "5ddc7844-ed92-4550-94d6-fa1dd3ed55e5/mot-so-san-pham-cong-nghiep-chu-yeu.csv"
     size_mb: 0.13
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [332, 332, 249, 332, 332, 249, 332, 332]
-      "Một số sản phẩm công nghiệp chủ yếu":
+        histogram: [ 332, 332, 249, 332, 332, 249, 332, 332 ]
+      Một số sản phẩm công nghiệp chủ yếu:
         kind: numeric
         min: 0
         max: 416972.05
-        histogram: [1901, 74, 11, 3, 5, 3, 1, 2]
-      "Sản phẩm chủ yếu":
+        histogram: [ 1901, 74, 11, 3, 5, 3, 1, 2 ]
+      Sản phẩm chủ yếu:
         kind: categorical
         distinct: 83
         segments:
-          - label: "Than sạch (Nghìn tấn)"
+          - label: Than sạch (Nghìn tấn)
             count: 30
-          - label: "Dầu thô khai thác (Nghìn tấn)"
+          - label: Dầu thô khai thác (Nghìn tấn)
             count: 30
-          - label: "Dầu thô khai thác trong nước (Nghìn tấn)"
+          - label: Dầu thô khai thác trong nước (Nghìn tấn)
             count: 30
-          - label: "Khí tự nhiên ở dạng khí (Triệu m3 )"
+          - label: Khí tự nhiên ở dạng khí (Triệu m3 )
             count: 30
-          - label: "Quặng sắt và tinh quặng sắt (Nghìn tấn)"
+          - label: Quặng sắt và tinh quặng sắt (Nghìn tấn)
             count: 30
-          - label: "Quặng đồng và tinh quặng đồng (Tấn)"
+          - label: Quặng đồng và tinh quặng đồng (Tấn)
             count: 30
-          - label: "Quặng Titan và tinh quặng Titan (Nghìn tấn)"
+          - label: Quặng Titan và tinh quặng Titan (Nghìn tấn)
             count: 30
-          - label: "Quặng antimoan và tinh quặng antimoan (Tấn)"
+          - label: Quặng antimoan và tinh quặng antimoan (Tấn)
             count: 30
-          - label: "Đá khai thác (Triệu m3)"
+          - label: Đá khai thác (Triệu m3)
             count: 30
-          - label: "Cát các loại* (Nghìn m3)"
+          - label: Cát các loại* (Nghìn m3)
             count: 30
-          - label: "Sỏi, đá cuội (Nghìn m3)"
+          - label: Sỏi, đá cuội (Nghìn m3)
             count: 30
-          - label: "Quặng apatít (Nghìn tấn)"
+          - label: Quặng apatít (Nghìn tấn)
             count: 30
-      "Ghi chú":
+          - label: Muối biển (Nghìn tấn)
+            count: 30
+          - label: Thịt hộp (Tấn)
+            count: 30
+          - label: Thủy sản đóng hộp (Tấn)
+            count: 30
+          - label: Thủy sản ướp đông (Nghìn tấn)
+            count: 30
+          - label: Nước mắm (Triệu lít)
+            count: 30
+          - label: Rau đóng hộp* (Tấn)
+            count: 30
+          - label: Quả và hạt đóng hộp (Nghìn tấn)
+            count: 30
+          - label: Dầu thực vật tinh luyện (Nghìn tấn)
+            count: 30
+          - label: Sữa tươi (Triệu lít)
+            count: 30
+          - label: Sữa bột (Nghìn tấn)
+            count: 30
+          - label: Gạo xay xát (Nghìn tấn)
+            count: 30
+          - label: Đường kính (Nghìn tấn)
+            count: 30
+          - label: Cà phê bột và cà phê hòa tan (Nghìn tấn)
+            count: 30
+          - label: Chè chế biến (Nghìn tấn)
+            count: 30
+          - label: Bột ngọt (Nghìn tấn)
+            count: 30
+          - label: Thức ăn cho gia súc và gia cầm (Nghìn tấn)
+            count: 30
+          - label: Thức ăn cho thủy sản (Nghìn tấn)
+            count: 30
+          - label: Rượu mạnh và rượu trắng (Triệu lít)
+            count: 30
+          - label: Bia (Triệu lít)
+            count: 30
+          - label: Nước khoáng (Triệu lít)
+            count: 30
+          - label: Nước tinh khiết (Triệu lít)
+            count: 30
+          - label: Thuốc lá (Triệu bao)
+            count: 30
+          - label: Sợi (Nghìn tấn)
+            count: 30
+          - label: Vải (Triệu m2)
+            count: 30
+          - label: Quần áo mặc thường (Triệu cái)
+            count: 30
+          - label: Giày, dép da (Triệu đôi)
+            count: 30
+          - label: Giày vải (Triệu đôi)
+            count: 30
+          - label: Giày thể thao (Triệu đôi)
+            count: 30
+          - label: Gỗ xẻ (Nghìn m3)
+            count: 30
+          - label: Giấy, bìa (Nghìn tấn)
+            count: 30
+          - label: Báo in và các sản phẩm in khác (Tỷ trang)
+            count: 30
+          - label: Phốt pho vàng (Nghìn tấn)
+            count: 30
+          - label: Phân hóa học (Nghìn tấn)
+            count: 30
+          - label: Phân NPK (Nghìn tấn)
+            count: 30
+          - label: Thuốc trừ sâu (Nghìn tấn)
+            count: 30
+          - label: Thuốc diệt cỏ (Tấn)
+            count: 30
+          - label: Dầu gội, dầu xả (Tấn)
+            count: 30
+          - label: Thuốc đánh răng (Tấn)
+            count: 30
+          - label: Sữa tắm, sữa rửa mặt (Tấn)
+            count: 30
+          - label: Bột giặt và các chế phẩm dùng để tẩy, rửa (Nghìn tấn)
+            count: 30
+          - label: Lốp ô tô, máy kéo loại bơm hơi (Nghìn cái)
+            count: 30
+          - label: Lốp xe máy, xe đạp loại bơm hơi (Nghìn cái)
+            count: 30
+          - label: Săm dùng cho ô tô, máy bay (Nghìn cái)
+            count: 30
+          - label: Săm dùng cho xe đạp, xe máy (Triệu cái)
+            count: 30
+          - label: Bao bì và túi bằng plastic (Nghìn tấn)
+            count: 30
+          - label: Sứ dân dụng (Triệu cái)
+            count: 30
+          - label: Sứ vệ sinh (Nghìn cái)
+            count: 30
+          - label: Gạch nung (Triệu viên)
+            count: 30
+          - label: Ngói nung (Triệu viên)
+            count: 30
+          - label: Xi măng (Nghìn tấn)
+            count: 30
+          - label: Tấm lợp fipro xi-măng (Triệu m2)
+            count: 30
+          - label: Sắt, thép dạng thỏi đúc hoặc dạng thô khác (Nghìn tấn)
+            count: 30
+          - label: Thép cán và thép hình (Nghìn tấn)
+            count: 30
+          - label: Máy in (Nghìn cái)
+            count: 30
+          - label: Điện thoại cố định (Nghìn cái)
+            count: 30
+          - label: Điện thoại di động (Triệu cái)
+            count: 30
+          - label: Ti vi lắp ráp (Nghìn cái)
+            count: 30
+          - label: Máy ảnh kỹ thuật số (Nghìn cái)
+            count: 30
+          - label: Pin quy chuẩn (1,5V) (Triệu viên)
+            count: 30
+          - label: Ắc quy điện các loại (Nghìn kwh)
+            count: 30
+          - label: Bóng đèn điện (Triệu cái)
+            count: 30
+          - label: Tủ lạnh và tủ đông dùng trong gia đình (Nghìn cái)
+            count: 30
+          - label: Máy giặt dùng trong gia đình (Nghìn cái)
+            count: 30
+          - label: Quạt điện dùng trong gia đình (Nghìn cái)
+            count: 30
+          - label: Máy điều hoà không khí (Nghìn cái)
+            count: 30
+          - label: Máy tuốt lúa (Nghìn cái)
+            count: 30
+          - label: Ô tô lắp ráp (Nghìn cái)
+            count: 30
+          - label: Xe mô tô, xe máy lắp ráp (Nghìn cái)
+            count: 30
+          - label: Xe đạp các loại (Nghìn cái)
+            count: 30
+          - label: Điện phát ra (Triệu Kwh)
+            count: 30
+          - label: Nước máy thương phẩm (Triệu m3)
+            count: 30
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 83
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
