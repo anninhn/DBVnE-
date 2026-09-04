@@ -27,41 +27,44 @@ files:
     r2_key: "668019a0-5447-42ad-bc8f-49bd8ece6586/xu-ly-chat-thai-ran-va-nuoc-thai-cua-cac-khu-do-thi.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2017
-        histogram: [7, 0, 0, 0, 7, 0, 0, 7]
-      "Tổng số đô thị":
+        histogram: [ 7, 0, 0, 0, 7, 0, 0, 7 ]
+      Tổng số đô thị:
         kind: numeric
         min: 2
         max: 819
-        histogram: [15, 0, 0, 0, 0, 0, 3, 3]
-      "Số đô thị có công trình xử lý chất thải rắn đạt tiêu chuẩn quy định":
+        histogram: [ 15, 0, 0, 0, 0, 0, 3, 3 ]
+      Số đô thị có công trình xử lý chất thải rắn đạt tiêu chuẩn quy định:
         kind: numeric
         min: 2
         max: 276
-        histogram: [15, 0, 1, 1, 1, 1, 1, 1]
-      "Số đô thị có công trình xử lý nước thải đạt tiêu chuẩn quy định":
+        histogram: [ 15, 0, 1, 1, 1, 1, 1, 1 ]
+      Số đô thị có công trình xử lý nước thải đạt tiêu chuẩn quy định:
         kind: numeric
         min: 1
         max: 61
-        histogram: [12, 3, 3, 0, 0, 2, 0, 1]
-      "Loại đô thị":
+        histogram: [ 12, 3, 3, 0, 0, 2, 0, 1 ]
+      Loại đô thị:
         kind: categorical
         distinct: 7
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 3
-          - label: "Đô thị đặc biệt"
+          - label: Đô thị đặc biệt
             count: 3
-          - label: "Đô thị loại I"
+          - label: Đô thị loại I
             count: 3
-          - label: "Đô thị loại II"
+          - label: Đô thị loại II
             count: 3
-          - label: "Đô thị loại III"
+          - label: Đô thị loại III
             count: 3
-          - label: "Đô thị loại IV"
+          - label: Đô thị loại IV
             count: 3
-          - label: "Đô thị loại V"
+          - label: Đô thị loại V
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2015, 2017 ]
