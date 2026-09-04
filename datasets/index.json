@@ -1,5 +1,39 @@
 [
   {
+    "slug": "hien-trang-su-dung-dat-phan-theo-dia-phuong",
+    "title": "Hiện trạng sử dụng đất phân theo địa phương và loại đất",
+    "description": "Dataset thống kê diện tích các loại đất chính (nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) phân theo các tỉnh, thành phố, vùng kinh tế - xã hội và toàn quốc tại Việt Nam từ năm 2018 đến 2023.",
+    "category": "moi-truong",
+    "tags": [
+      "dat-dai",
+      "su-dung-dat",
+      "dia-phuong",
+      "dien-tich",
+      "nong-nghiep",
+      "lam-nghiep",
+      "dat-o"
+    ],
+    "uploaded_at": "2026-09-04T07:58:56.251Z",
+    "uploaded_by": "ninh",
+    "row_count": 355,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2018,
+      2023
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "551453a0-bff0-4a76-be9b-4751256043b6/hien-trang-su-dung-dat-phan-theo-dia-phuong.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "hien-trang-su-dung-dat",
     "title": "Hiện trạng sử dụng đất theo loại đất và thời điểm tại Việt Nam",
     "description": "Dataset thống kê hiện trạng sử dụng đất tại Việt Nam, phân loại theo các nhóm đất chính và chi tiết hơn, được cập nhật vào ngày 31 tháng 12 hàng năm từ 2018 đến 2023. Dữ liệu bao gồm tổng diện tích, diện tích đã giao cho các đối tượng sử dụng và diện tích đã giao cho các đối tượng quản lý.",
