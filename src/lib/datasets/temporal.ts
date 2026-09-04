@@ -27,8 +27,27 @@ const MAX_YEAR = 2100;
  */
 const YEAR_RATIO = 0.8;
 
-/** Tên cột chỉ dùng để **ưu tiên**, không dùng để kết luận. */
-const YEAR_NAME_HINTS = ["nam", "year", "thoi gian", "thoi ky", "ky"];
+/**
+ * Cột năm BẮT BUỘC phải có tên chỉ thời gian.
+ *
+ * Ban đầu tên cột chỉ dùng để ưu tiên, còn nội dung tự nó đủ để kết luận. Chạy
+ * thử trên 495 dataset cho thấy như vậy là quá rộng: 466 cột được nhận đúng đều
+ * có tên chỉ thời gian (`Năm`, `Năm học`, `year`), còn đúng 2 cột được nhận nhờ
+ * nội dung lại là nhận nhầm — một cột tên văn bản pháp quy (`Nghị định .../2005`)
+ * và một cột `Hiện trạng`, cả hai chứa năm nhưng năm đó không phải phạm vi thời
+ * gian của dataset. Bỏ chúng đi không mất gì; giữ lại thì hai dataset mang khoảng
+ * thời gian sai mà không có triệu chứng.
+ */
+const YEAR_NAME_HINTS = [
+  "nam",
+  "year",
+  "thoi gian",
+  "thoi ky",
+  "thoi diem",
+  "nien do",
+  "period",
+  "ky",
+];
 
 /** Cột có tên chỉ thời gian không — dùng chung hàm chuẩn hoá của tầng tra cứu. */
 function hasYearName(column: string): boolean {
@@ -76,10 +95,6 @@ function scanColumns(inspection: FileInspection): ColumnYears[] {
       // đầu đều nằm trong khoảng năm — đủ để bắt cột `Năm` đã infer thành số.
       const lo = Math.round(stat.min);
       const hi = Math.round(stat.max);
-      // Cột số BẮT BUỘC phải có tên chỉ thời gian mới được nhận. Chỉ dựa vào
-      // min/max nằm trong 1900–2100 là bằng chứng quá yếu: một cột "số trường
-      // học" hay "số ca" rơi vào khoảng đó là chuyện thường, và nhận nhầm thì
-      // dataset mang một khoảng năm bịa mà không ai thấy.
       const whole = Number.isInteger(stat.min) && Number.isInteger(stat.max);
       if (whole && lo >= MIN_YEAR && hi <= MAX_YEAR && hasYearName(column)) {
         found.push({ column, years: [lo, hi], ratio: 1 });
@@ -87,6 +102,7 @@ function scanColumns(inspection: FileInspection): ColumnYears[] {
       continue;
     }
 
+    if (!hasYearName(column)) continue;
     const labels = stat.segments.map((s) => s.label);
     if (labels.length === 0) continue;
     const years: number[] = [];
@@ -110,22 +126,16 @@ function scanColumns(inspection: FileInspection): ColumnYears[] {
 /**
  * Chọn cột năm đáng tin nhất trong số các ứng viên.
  *
- * Khi nhiều cột trông như cột năm (ví dụ vừa có cột `Năm` vừa có cột `Mã` lọt
- * lưới), ưu tiên cột có TÊN chỉ thời gian; hoà thì lấy cột có tỉ lệ khớp cao hơn.
- * Cố ý KHÔNG gộp năm của mọi cột lại: gộp nhầm một cột mã số vào là khoảng thời
- * gian rộng ra một cách âm thầm, không ai phát hiện.
+ * Cố ý KHÔNG gộp năm của mọi cột lại: gộp nhầm một cột vào là khoảng thời gian
+ * rộng ra một cách âm thầm, không ai phát hiện.
  */
 function pickTemporalColumn(inspection: FileInspection): ColumnYears | null {
   const candidates = scanColumns(inspection);
   if (candidates.length === 0) return null;
 
-  candidates.sort((a, b) => {
-    const an = hasYearName(a.column);
-    const bn = hasYearName(b.column);
-    if (an !== bn) return an ? -1 : 1;
-    return b.ratio - a.ratio;
-  });
-
+  // Mọi ứng viên đều đã có tên chỉ thời gian, nên chỉ còn xếp theo tỉ lệ ô đọc
+  // được thành năm — cột nào "ra năm" rõ hơn thì tin cột đó.
+  candidates.sort((a, b) => b.ratio - a.ratio);
   return candidates[0];
 }
 

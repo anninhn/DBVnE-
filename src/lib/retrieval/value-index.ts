@@ -9,8 +9,26 @@
  * nằm ở chỗ khác — giữ như vậy để hàm dựng chỉ mục kiểm được mà không cần mạng.
  */
 
+import type { ColumnStats } from "@/lib/types/dataset";
 import { normalize } from "./normalize";
 import type { ValueIndex, ValueIndexEntry } from "./types";
+
+/**
+ * Danh sách giá trị của một cột phân loại đã đầy đủ chưa.
+ *
+ * KHÔNG đọc cờ `complete` một mình. Metadata viết trước spec 005 không có cờ
+ * đó, và `complete === undefined` bị hiểu thành "đầy đủ" là dựng lại đúng lỗi mà
+ * cả US3 muốn chặn: nói "không có Đà Nẵng" về một dataset thật ra có, chỉ vì danh
+ * sách của nó đã bị cắt còn 12 từ lúc upload.
+ *
+ * So `segments.length` với `distinct` là bằng chứng tự thân, đúng cho cả dữ liệu
+ * cũ lẫn mới, và không phụ thuộc vào việc ai đã ghi metadata đó.
+ */
+export function isValueListComplete(
+  stat: Extract<ColumnStats, { kind: "categorical" }>,
+): boolean {
+  return stat.complete ?? stat.segments.length >= stat.distinct;
+}
 
 // ── Khoá tra ──────────────────────────────────────────────────────────────────
 
