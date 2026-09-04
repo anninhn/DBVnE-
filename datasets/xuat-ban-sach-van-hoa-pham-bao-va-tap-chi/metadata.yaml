@@ -27,55 +27,80 @@ files:
     r2_key: "cad0a09f-9490-4ded-a3dc-7bfff7996157/xuat-ban-sach-van-hoa-pham-bao-va-tap-chi.csv"
     size_mb: 0.13
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [176, 176, 132, 176, 176, 132, 176, 176]
-      "Xuất bản sách, văn hóa phẩm, báo và tạp chí":
+        histogram: [ 176, 176, 132, 176, 176, 132, 176, 176 ]
+      Xuất bản sách, văn hóa phẩm, báo và tạp chí:
         kind: numeric
         min: 0.01
         max: 43463
-        histogram: [1098, 60, 22, 11, 15, 10, 9, 4]
-      "Cách tính":
+        histogram: [ 1098, 60, 22, 11, 15, 10, 9, 4 ]
+      Cách tính:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 660
-          - label: "Chỉ số phát triển (Năm trước = 100) %"
+          - label: Chỉ số phát triển (Năm trước = 100) %
             count: 660
-      "Loại ấn xuất bản phẩm":
+        complete: true
+      Loại ấn xuất bản phẩm:
         kind: categorical
         distinct: 22
         segments:
-          - label: "SÁCH- Đầu sách"
+          - label: SÁCH- Đầu sách
             count: 60
-          - label: "SÁCH- Triệu bản"
+          - label: SÁCH- Triệu bản
             count: 60
-          - label: "Phân theo cấp quản lý - Trung ương - Đầu sách"
+          - label: Phân theo cấp quản lý - Trung ương - Đầu sách
             count: 60
-          - label: "Phân theo cấp quản lý - Trung ương - Triệu bản"
+          - label: Phân theo cấp quản lý - Trung ương - Triệu bản
             count: 60
-          - label: "Phân theo cấp quản lý - Địa phương - Đầu sách"
+          - label: Phân theo cấp quản lý - Địa phương - Đầu sách
             count: 60
-          - label: "Phân theo cấp quản lý - Địa phương - Triệu bản"
+          - label: Phân theo cấp quản lý - Địa phương - Triệu bản
             count: 60
-          - label: "Phân theo loại sách- Sách quốc văn - Đầu sách"
+          - label: Phân theo loại sách- Sách quốc văn - Đầu sách
             count: 60
-          - label: "Phân theo loại sách- Sách quốc văn - Triệu bản"
+          - label: Phân theo loại sách- Sách quốc văn - Triệu bản
             count: 60
-          - label: "Phân theo loại sách- Sách giáo khoa - Đầu sách"
+          - label: Phân theo loại sách- Sách giáo khoa - Đầu sách
             count: 60
-          - label: "Phân theo loại sách- Sách giáo khoa - Triệu bản"
+          - label: Phân theo loại sách- Sách giáo khoa - Triệu bản
             count: 60
-          - label: "Phân theo loại sách- Sách khoa học xã hội- Đầu sách"
+          - label: Phân theo loại sách- Sách khoa học xã hội- Đầu sách
             count: 60
-          - label: "Phân theo loại sách- Sách khoa học xã hội - Triệu bản"
+          - label: Phân theo loại sách- Sách khoa học xã hội - Triệu bản
             count: 60
-      "Ghi chú":
+          - label: Phân theo loại sách- Sách kỹ thuật - Đầu sách
+            count: 60
+          - label: Phân theo loại sách- Sách kỹ thuật - Triệu bản
+            count: 60
+          - label: Phân theo loại sách - Sách thiếu nhi - Đầu sách
+            count: 60
+          - label: Phân theo loại sách - Sách thiếu nhi - Triệu bản
+            count: 60
+          - label: Phân theo loại sách - Sách văn học - Đầu sách
+            count: 60
+          - label: Phân theo loại sách - Sách văn học - Triệu bản
+            count: 60
+          - label: Phân theo loại sách - Sách ngoại văn - Đầu sách
+            count: 60
+          - label: Phân theo loại sách - Sách ngoại văn - Triệu bản
+            count: 60
+          - label: Văn hóa phẩm (Triệu bản)
+            count: 60
+          - label: Báo và tạp chí (Triệu bản)
+            count: 60
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 44
+        complete: true
+coverage:
+  temporal: [ 1995, 2024 ]
