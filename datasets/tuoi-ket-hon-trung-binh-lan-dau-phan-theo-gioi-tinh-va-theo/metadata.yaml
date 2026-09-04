@@ -27,39 +27,42 @@ files:
     r2_key: "14fbc40d-68b7-426f-a164-2f75820ea23f/tuoi-ket-hon-trung-binh-lan-dau-phan-theo-gioi-tinh-va-theo.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [3, 2, 3, 2, 2, 3, 2, 3]
-      "Tổng số":
+        histogram: [ 3, 2, 3, 2, 2, 3, 2, 3 ]
+      Tổng số:
         kind: numeric
         min: 24.5
         max: 27.3
-        histogram: [5, 8, 2, 1, 1, 0, 1, 2]
-      "Nam":
+        histogram: [ 5, 8, 2, 1, 1, 0, 1, 2 ]
+      Nam:
         kind: numeric
         min: 26.2
         max: 29.36
-        histogram: [4, 7, 2, 2, 1, 1, 0, 3]
-      "Nữ":
+        histogram: [ 4, 7, 2, 2, 1, 1, 0, 3 ]
+      Nữ:
         kind: numeric
         min: 22.5
         max: 25.17
-        histogram: [6, 5, 5, 0, 1, 0, 1, 2]
-      "Thành thị":
+        histogram: [ 6, 5, 5, 0, 1, 0, 1, 2 ]
+      Thành thị:
         kind: numeric
         min: 25.9
         max: 28.57
-        histogram: [7, 3, 6, 0, 1, 0, 1, 2]
-      "Nông thôn":
+        histogram: [ 7, 3, 6, 0, 1, 0, 1, 2 ]
+      Nông thôn:
         kind: numeric
         min: 23.8
         max: 26.51
-        histogram: [5, 5, 5, 1, 1, 0, 1, 2]
-      "Ghi chú":
+        histogram: [ 5, 5, 5, 1, 1, 0, 1, 2 ]
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 1
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
