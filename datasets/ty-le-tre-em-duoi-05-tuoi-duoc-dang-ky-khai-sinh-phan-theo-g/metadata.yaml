@@ -27,41 +27,45 @@ files:
     r2_key: "86e307d5-a043-4086-9365-47930712e2e0/ty-le-tre-em-duoi-05-tuoi-duoc-dang-ky-khai-sinh-phan-theo-g.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2019
         max: 2024
-        histogram: [9, 9, 0, 9, 9, 0, 9, 9]
-      "Tỷ lệ trẻ em dưới 05 tuổi được đăng ký khai sinh":
+        histogram: [ 9, 9, 0, 9, 9, 0, 9, 9 ]
+      Tỷ lệ trẻ em dưới 05 tuổi được đăng ký khai sinh:
         kind: numeric
         min: 97.11
         max: 99.72
-        histogram: [2, 4, 4, 3, 6, 19, 9, 7]
-      "Giới tính, vùng":
+        histogram: [ 2, 4, 4, 3, 6, 19, 9, 7 ]
+      Giới tính, vùng:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 6
-          - label: "Nam"
+          - label: Nam
             count: 6
-          - label: "Nữ"
+          - label: Nữ
             count: 6
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 6
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 6
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 6
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 6
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 6
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 6
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 2019, 2024 ]
