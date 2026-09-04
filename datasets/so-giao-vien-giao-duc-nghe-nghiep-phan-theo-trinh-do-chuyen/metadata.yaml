@@ -26,35 +26,39 @@ files:
     r2_key: "3fcde323-9031-43dc-8aab-03a928119c05/so-giao-vien-giao-duc-nghe-nghiep-phan-theo-trinh-do-chuyen.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2016
         max: 2023
-        histogram: [12, 12, 12, 12, 12, 12, 12, 12]
-      "Số giáo viên giáo dục nghề nghiệp":
+        histogram: [ 12, 12, 12, 12, 12, 12, 12, 12 ]
+      Số giáo viên giáo dục nghề nghiệp:
         kind: numeric
         min: 1419
         max: 86910
-        histogram: [24, 19, 14, 13, 5, 2, 1, 7]
-      "Loại hình trường":
+        histogram: [ 24, 19, 14, 13, 5, 2, 1, 7 ]
+      Loại hình trường:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Công lập và ngoài công lập"
+          - label: Công lập và ngoài công lập
             count: 32
-          - label: "Công lập"
+          - label: Công lập
             count: 32
-          - label: "Ngoài công lập"
+          - label: Ngoài công lập
             count: 32
-      "Trình độ chuyên môn":
+        complete: true
+      Trình độ chuyên môn:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 24
-          - label: "Trên đại học"
+          - label: Trên đại học
             count: 24
-          - label: "Đại học, cao đẳng"
+          - label: Đại học, cao đẳng
             count: 24
-          - label: "Trình độ khác"
+          - label: Trình độ khác
             count: 24
+        complete: true
+coverage:
+  temporal: [ 2016, 2023 ]
