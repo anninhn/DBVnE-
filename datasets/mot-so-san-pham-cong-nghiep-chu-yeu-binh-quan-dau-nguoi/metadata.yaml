@@ -27,47 +27,63 @@ files:
     r2_key: "badcba79-6b44-4200-9150-4d228a300231/mot-so-san-pham-cong-nghiep-chu-yeu-binh-quan-dau-nguoi.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [36, 36, 36, 18, 36, 36, 36, 36]
-      "Một số sản phẩm công nghiệp chủ yếu bình quân đầu người":
+        histogram: [ 36, 36, 36, 18, 36, 36, 36, 36 ]
+      Một số sản phẩm công nghiệp chủ yếu bình quân đầu người:
         kind: numeric
         min: 0.9
         max: 2892.39
-        histogram: [241, 0, 1, 3, 2, 2, 4, 3]
-      "Sản phẩm công nghiệp bình quân đầu người":
+        histogram: [ 241, 0, 1, 3, 2, 2, 4, 3 ]
+      Sản phẩm công nghiệp bình quân đầu người:
         kind: categorical
         distinct: 18
         segments:
-          - label: "Bia các loại (Lít)"
+          - label: Bia các loại (Lít)
             count: 15
-          - label: "Nước khoáng (Lít)"
+          - label: Nước khoáng (Lít)
             count: 15
-          - label: "Muối biển (Kg)"
+          - label: Muối biển (Kg)
             count: 15
-          - label: "Thủy sản đóng hộp (Kg)"
+          - label: Thủy sản đóng hộp (Kg)
             count: 15
-          - label: "Nước mắm (Lít)"
+          - label: Nước mắm (Lít)
             count: 15
-          - label: "Dầu thực vật tinh luyện (Kg)"
+          - label: Dầu thực vật tinh luyện (Kg)
             count: 15
-          - label: "Bột ngọt (Kg)"
+          - label: Bột ngọt (Kg)
             count: 15
-          - label: "Sữa tươi (Lít)"
+          - label: Sữa tươi (Lít)
             count: 15
-          - label: "Đường kính (Kg)"
+          - label: Đường kính (Kg)
             count: 15
-          - label: "Sợi (Kg)"
+          - label: Sợi (Kg)
             count: 15
-          - label: "Vải (M2)"
+          - label: Vải (M2)
             count: 15
-          - label: "Quần áo mặc thường (Cái)"
+          - label: Quần áo mặc thường (Cái)
             count: 15
-      "Ghi chú":
+          - label: Giầy, dép da (Đôi)
+            count: 15
+          - label: Giày thể thao (Đôi)
+            count: 15
+          - label: Chè chế biến (Kg)
+            count: 15
+          - label: Rượu mạnh và rượu trắng (Lít)
+            count: 15
+          - label: Điện phát ra (Kwh)
+            count: 15
+          - label: Nước máy thương phẩm (M3)
+            count: 15
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 18
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
