@@ -26,47 +26,93 @@ files:
     r2_key: "8507043e-fd4b-4ba0-a7a4-30a05b35d3e1/can-can-thanh-toan-quoc-te.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [66, 33, 33, 33, 33, 33, 33, 66]
-      "Trị giá (Triệu đô la Mỹ)":
+        histogram: [ 66, 33, 33, 33, 33, 33, 33, 66 ]
+      Trị giá (Triệu đô la Mỹ):
         kind: numeric
         min: -33618.6
         max: 405935
-        histogram: [221, 18, 0, 2, 1, 5, 4, 4]
-      "Chỉ tiêu chủ yếu":
+        histogram: [ 221, 18, 0, 2, 1, 5, 4, 4 ]
+      Chỉ tiêu chủ yếu:
         kind: categorical
         distinct: 33
         segments:
-          - label: "CÁN CÂN VÃNG LAI"
+          - label: CÁN CÂN VÃNG LAI
             count: 10
-          - label: "Cán cân hàng hóa"
+          - label: Cán cân hàng hóa
             count: 10
-          - label: "Cán cân hàng hóa - Xuất khẩu (FOB)"
+          - label: Cán cân hàng hóa - Xuất khẩu (FOB)
             count: 10
-          - label: "Cán cân hàng hóa - Nhập khẩu (FOB)"
+          - label: Cán cân hàng hóa - Nhập khẩu (FOB)
             count: 10
-          - label: "Dịch vụ"
+          - label: Dịch vụ
             count: 10
-          - label: "Dịch vụ - Xuất khẩu"
+          - label: Dịch vụ - Xuất khẩu
             count: 10
-          - label: "Dịch vụ - Nhập khẩu"
+          - label: Dịch vụ - Nhập khẩu
             count: 10
-          - label: "Thu nhập"
+          - label: Thu nhập
             count: 10
-          - label: "Thu nhập - Thu"
+          - label: Thu nhập - Thu
             count: 10
-          - label: "Thu nhập - Chi"
+          - label: Thu nhập - Chi
             count: 10
-          - label: "Chuyển giao vãng lai"
+          - label: Chuyển giao vãng lai
             count: 10
-          - label: "Chuyển giao vãng lai - Thu"
+          - label: Chuyển giao vãng lai - Thu
             count: 10
-      "Ghi chú":
+          - label: Chuyển giao vãng lai - Chi
+            count: 10
+          - label: Tỷ lệ cán cân vãng lai so với tổng sản phẩm trong nước (%)
+            count: 10
+          - label: CÁN CÂN TÀI CHÍNH
+            count: 10
+          - label: Đầu tư trực tiếp
+            count: 10
+          - label: Đầu tư trực tiếp của Việt Nam ra nước ngoài
+            count: 10
+          - label: Đầu tư trực tiếp vào Việt Nam
+            count: 10
+          - label: Đầu tư gián tiếp
+            count: 10
+          - label: Đầu tư gián tiếp của Việt Nam ra nước ngoài
+            count: 10
+          - label: Đầu tư gián tiếp vào Việt Nam
+            count: 10
+          - label: Đầu tư khác (Tài sản có)
+            count: 10
+          - label: Đầu tư khác (Tài sản có) - Tiền và tiền gửi
+            count: 10
+          - label: Đầu tư khác (Tài sản có) - Các khoản phải thu, phải trả khác
+            count: 10
+          - label: Đầu tư khác (Tài sản nợ)
+            count: 10
+          - label: Đầu tư khác (Tài sản nợ) - Tiền và tiền gửi
+            count: 10
+          - label: Đầu tư khác (Tài sản nợ) - Vay, trả nợ nước ngoài
+            count: 10
+          - label: Đầu tư khác (Tài sản nợ) - Phân bổ quyền rút vốn đặc biệt
+            count: 10
+          - label: Đầu tư khác (Ròng)
+            count: 10
+          - label: LỖI VÀ SAI SÓT
+            count: 10
+          - label: CÁN CÂN TỔNG THỂ
+            count: 10
+          - label: DỰ TRỮ VÀ CÁC HẠNG MỤC LIÊN QUAN
+            count: 10
+          - label: Tài sản dự trữ
+            count: 10
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 33
+        complete: true
+coverage:
+  temporal: [ 2015, 2024 ]
