@@ -1,5 +1,34 @@
 [
   {
+    "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-2",
+    "title": "Tỷ lệ người sử dụng điện thoại di động phân theo các nhóm nhân khẩu học, địa lý và loại thiết bị",
+    "description": "Dataset này cung cấp tỷ lệ phần trăm người dân Việt Nam sử dụng điện thoại di động, được phân loại theo nhiều tiêu chí khác nhau như giới tính, nhóm tuổi, khu vực địa lý (thành thị, nông thôn, các vùng kinh tế) và loại điện thoại sử dụng (thường, thông minh).",
+    "category": "xa-hoi",
+    "tags": [
+      "dien-thoai-di-dong",
+      "dan-so",
+      "xa-hoi",
+      "thong-tin-truyen-thong",
+      "cong-nghe"
+    ],
+    "uploaded_at": "2026-09-04T08:02:10.595Z",
+    "uploaded_by": "ninh",
+    "row_count": 26,
+    "file_count": 1,
+    "total_size_mb": 0,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "14a9f962-6e1d-4229-a418-7cc736844f95/ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-2.csv",
+        "size_mb": 0
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the",
     "title": "Tỷ lệ người dân Việt Nam có kỹ năng công nghệ thông tin theo các phân tổ",
     "description": "Dataset thống kê tỷ lệ người dân Việt Nam có kỹ năng về công nghệ thông tin, được phân loại theo các tiêu chí như giới tính, khu vực sống (thành thị/nông thôn), nhóm tuổi, cấp độ kỹ năng và vùng kinh tế - xã hội.",
