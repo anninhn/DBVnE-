@@ -4,6 +4,99 @@ Mọi thay đổi đáng chú ý của dự án. Format dựa [Keep a Changelog]
 
 ---
 
+## [005-discovery-chat-scale] - 2026-09-04 — Discovery Chat ở quy mô vài nghìn dataset
+
+Spec: `specs/005-discovery-chat-scale/`. Chạy đủ luồng spec-kit (specify → clarify →
+plan → tasks → implement). US6 (bộ đo chất lượng) **bỏ theo quyết định của người dùng**
+— không đo, không user test, build thẳng; hệ quả là trọng số trộn hai nhánh đặt cố định
+50/50 thay vì hiệu chỉnh bằng dữ liệu, và SC-004→SC-006 không kiểm được.
+
+### Vấn đề
+
+Mỗi câu hỏi nạp metadata **toàn bộ kho** vào ngữ cảnh. Đo ở 495 dataset: ~202.000 token
+và hơn 1.000 lượt gọi GitHub API cho MỘT câu hỏi, tăng tuyến tính theo số dataset. Đó
+không phải chuyện tối ưu — Discovery Chat tự đặt hạn sử dụng cho chính nó.
+
+### Tầng năng lực tra cứu — `src/lib/retrieval/`
+
+Đặt ngang cấp `src/lib/chat/`, không nằm trong: không phải việc riêng của luồng chat.
+
+- `searchDatasets` — vector 768 chiều (`gemini-embedding-001`) + khớp từ khoá có cân
+  độ hiếm, chạy song song, trộn 50/50. Mặt tiền `GET /api/retrieval/search`
+- `getDataset` — mô tả đầy đủ của các slug đã biết, kèm danh sách giá trị cột
+- `lookupValue` — tra một giá trị ra **đầy đủ** dataset chứa nó, phân biệt ba trạng
+  thái "không có" / "chưa tra hết" / "chưa biết". Mặt tiền `GET /api/retrieval/lookup`
+- Mọi lượt gọi ghi nhận kèm người gọi vào `logs/retrieval/<ngày>.json`
+
+Chi phí sau thay đổi: **~8.200 token và 41 lượt gọi GitHub** mỗi câu hỏi (đo trên 5
+câu, header `X-Context-Chars` để theo dõi về sau).
+
+### Chỉ mục trên R2 `_index/`
+
+- `retrieval.json` ~1.485 KB — vector base64 Float32 + token từ khoá + dấu vết metadata
+- `values.json` ~797 KB — chỉ mục nghịch đảo giá trị cột, slug/tên cột gộp bảng chung
+- `tools/build-retrieval-index.mjs` — dry-run mặc định, chỉ sinh vector cho entry lệch
+  hoặc còn thiếu, **in ra từng slug lệch** trước khi sửa
+- Đồng bộ ở cả ba luồng ghi (upload / sửa / xoá), best-effort, gọi **sau**
+  `revalidateTag` để không dựng chỉ mục từ metadata cũ
+- `_index/` thêm vào `PROTECTED_PREFIXES` của `cleanup-orphans.mjs`
+
+### Câu hỏi theo giá trị trả lời chắc chắn cả hai chiều
+
+- `column_stats` lưu tới **200** giá trị mỗi cột phân loại (trước: 12), cột vượt ngưỡng
+  mang `complete: false`
+- `POST /api/dataset/recompute` + `tools/backfill-column-values.mjs` — tính lại cho 493
+  dataset đã có. Chạy lại lượt hai báo toàn bộ "không đổi"
+- `isValueListComplete()` so `segments.length` với `distinct` — đọc đúng cả metadata
+  viết trước spec này (không có cờ). Trước khi có hàm này, 380 cột bị cắt bị hiểu là
+  đầy đủ, tức hệ thống nói "không có Đà Nẵng" về dataset thật ra có
+- Gộp cách viết theo chính tả tiếng Việt: `y`→`i` chỉ khi sau phụ âm hoặc trong `qu`
+  (Qui/Quy), cộng bí danh bỏ tiền tố cấp hành chính và bỏ phần trong ngoặc
+
+### Không nhận con số không kiểm chứng được
+
+- Prompt cấm đưa con số kể cả ước lượng, kèm khuôn trả lời bắt buộc (dataset + cột +
+  phạm vi thời gian + đường dẫn xem trước)
+- Model tự phân loại câu hỏi qua trường `intent`, không thêm lượt gọi riêng
+- Lưới cuối `ensureComputeNotice` ở client — model quên nói rõ giới hạn thì thêm vào
+- **Bỏ dữ liệu mẫu** khỏi khối FOCUS, thay bằng danh sách giá trị cột kèm cờ
+  đầy-đủ/bị-cắt. 5 dòng đầu của file thống kê là mẫu không đại diện
+
+### Khoảng thời gian
+
+- `year_range` (trước trống 495/495) suy từ **dữ liệu**, không từ tiêu đề. Hai đường:
+  cột năm trong dữ liệu, và tên cột cho bảng còn ở dạng ngang mỗi năm một cột
+- 464 dataset điền được; dataset không có chiều thời gian để trống, không bịa khoảng
+- Bộ lọc năm ở trang danh sách, nghĩa GIAO không phải nằm trọn
+
+### Hội thoại nhiều lượt
+
+- Lịch sử để **hiểu** câu hỏi, không để giới hạn phạm vi: câu tìm kiếm ghép câu hiện
+  tại + đúng một câu hỏi gần nhất
+- `sessionStorage` giữ ngữ cảnh qua tải lại trang; nút "Trò chuyện mới" xoá
+- `response_format: json_object` ép JSON ở tầng API — cần thiết từ khi có nhiều lượt:
+  đo thực tế model chuyển sang văn xuôi ở lượt 3 và client parse thất bại
+
+### Hạn mức
+
+500 câu/người/ngày và 5.000 câu/hệ thống/ngày (trước 100 và 1.200). Hai thông báo hết
+hạn mức nay khác nhau — chúng đòi hai hành động khác nhau.
+
+### Sửa số liệu sai trong tài liệu
+
+- `research.md` R7 ước lượng chỉ mục giá trị "vài trăm KB ở 2.000 dataset"; dựng thật
+  ra 2,75 MB. Gộp slug/tên cột vào bảng chung → 797 KB
+- `research.md` R2 tính dung lượng theo 768 chiều nhưng model mặc định trả 3.072; và
+  vector cắt chiều **không** có độ dài 1 (đo được 0,59) nên phải chuẩn hoá lại
+- `research.md` R6 giả định có ngưỡng tách được "có dataset" khỏi "không có"; đo thấy
+  không: `Đà Nẵng` cho cosine 0,54, thấp hơn cả câu vô quan (tới 0,62)
+- `docs/phase-2.md` ghi "100% accuracy, 42.9% recall" của bộ eval — hai chỉ số đó
+  **không đo chất lượng tìm kiếm**: cả 8 câu gold đều có `expected_dataset_slugs: []`
+  nên công thức suy biến, và "42,9%" thực chất là "3 trong 7 câu không cite dataset
+  nào". Đã ghi rõ trong doc và trong `scripts/eval-chat.mjs`
+
+---
+
 ## [Branch ssr-optimization] - 2026-07-24 — Discovery attach + auth gates (commit 3c67250)
 
 ### Discovery Chat attach dataset (ChatGPT-style chip)

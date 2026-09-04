@@ -8,8 +8,16 @@
  *
  * Output: eval/reports/<YYYY-MM-DD>.json + console summary
  *
- * Pure JS (no new deps). Reads .env.local + reimplements flatten + AI call inline
- * (eval is dev tool, không chạy production, không cần reuse production modules).
+ * Pure JS (no new deps). Reads .env.local.
+ *
+ * Từ 2026-09-04 script gọi **chính endpoint của app** (`POST /api/chat/discovery`)
+ * thay vì tự dựng ngữ cảnh rồi gọi model. Trước đó nó có bản flatten riêng đọc toàn
+ * bộ `metadata.yaml` — mà đường nạp toàn bộ đã bị xoá khỏi sản phẩm ở spec 005. Đo
+ * một đường code không còn tồn tại thì kết quả không nói gì về sản phẩm, và tệ hơn
+ * là nó vẫn chạy xanh nên không ai biết.
+ *
+ * Cần app đang chạy + PLATFORM_USER/PLATFORM_PASS trong .env.local.
+ *   --base <url>   mặc định http://localhost:3000
  */
 
 import { readFile, writeFile, mkdir } from "fs/promises";
@@ -52,6 +60,15 @@ await loadEnv();
 
 const AI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/";
 const AI_MODEL = "gemini-2.5-flash";
+
+const BASE = (() => {
+  const i = process.argv.indexOf("--base");
+  const v = i >= 0 ? process.argv[i + 1] : undefined;
+  return (v ?? "http://localhost:3000").replace(/\/$/, "");
+})();
+
+const PLATFORM_USER = process.env.PLATFORM_USER;
+const PLATFORM_PASS = process.env.PLATFORM_PASS;
 
 const GH_OWNER = process.env.GITHUB_REPO_OWNER;
 const GH_REPO = process.env.GITHUB_REPO_NAME;
@@ -101,78 +118,62 @@ async function listSlugs() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// Flatten (simplified — không cần dictionary.md cho eval)
+// Gọi chính endpoint của app (không dựng lại ngữ cảnh ở đây)
 // ──────────────────────────────────────────────────────────────────────────────
 
-async function flattenAll() {
-  const slugs = await listSlugs();
-  if (slugs.length === 0) return "(Hiện chưa có dataset nào trong kho.)";
+const jar = new Map();
 
-  const results = await Promise.all(
-    slugs.map(async (slug) => {
-      const yamlText = await ghFetch(`datasets/${slug}/metadata.yaml`);
-      if (!yamlText) return null;
-
-      // Simple regex extraction — tránh thêm yaml dependency cho eval script
-      const titleMatch = yamlText.match(/^title:\s*(.+)$/m);
-      const descMatch = yamlText.match(/^description:\s*[>"']?\s*(.+)$/m);
-      const tagsMatch = yamlText.match(/^tags:\s*\[(.+)\]\s*$/m);
-      const formatMatch = yamlText.match(/^format:\s*(\w+)/m);
-      const rowsMatch = yamlText.match(/^row_count:\s*(\d+)/m);
-      const statusMatch = yamlText.match(/^status:\s*(\w+)/m);
-
-      if (statusMatch?.[1] === "deleted") return null;
-
-      const title = titleMatch?.[1]?.trim().replace(/['"]/g, "") ?? slug;
-      const desc = descMatch?.[1]?.trim().replace(/['"]/g, "") ?? "";
-      const tags = tagsMatch?.[1]?.trim() ?? "";
-      const format = formatMatch?.[1]?.trim() ?? "";
-      const rows = rowsMatch?.[1] ?? "";
-
-      const lines = [`### ${title}`, `slug: \`${slug}\``];
-      if (desc) lines.push(`Mô tả: ${desc}`);
-      if (tags) lines.push(`Tags: ${tags}`);
-      if (format) lines.push(`Định dạng: ${format}`);
-      if (rows) lines.push(`Số dòng: ${rows}`);
-      return lines.join("\n");
-    }),
-  );
-
-  const blocks = results.filter((b) => b !== null);
-  if (blocks.length === 0) return "(Không có dataset hợp lệ.)";
-  return `DANH SÁCH DATASET TRONG KHO VnExpress (${blocks.length} datasets):\n\n${blocks.join("\n\n---\n\n")}`;
+function saveCookies(res) {
+  for (const line of res.headers.getSetCookie?.() ?? []) {
+    const [pair] = line.split(";");
+    const idx = pair.indexOf("=");
+    if (idx > 0) jar.set(pair.slice(0, idx).trim(), pair.slice(idx + 1).trim());
+  }
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Gemini call (OpenAI compat)
-// ──────────────────────────────────────────────────────────────────────────────
-
-async function askDiscovery(query, flattened, systemPrompt) {
-  const res = await fetch(`${AI_BASE_URL}chat/completions`, {
-    method: "POST",
+async function req(url, init = {}) {
+  const res = await fetch(url, {
+    ...init,
+    redirect: "manual",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${GEMINI_API_KEY}`,
+      ...(init.headers ?? {}),
+      cookie: [...jar].map(([k, v]) => `${k}=${v}`).join("; "),
     },
-    body: JSON.stringify({
-      model: AI_MODEL,
-      messages: [
-        { role: "system", content: systemPrompt },
-        {
-          role: "user",
-          content: `CÂU HỎI CỦA PHÓNG VIÊN:\n${query}\n\n\nDANH SÁCH DATASET:\n${flattened}`,
-        },
-      ],
-      temperature: 0.3,
-      max_tokens: 2000,
+  });
+  saveCookies(res);
+  return res;
+}
+
+async function login() {
+  const { csrfToken } = await (await req(`${BASE}/api/auth/csrf`)).json();
+  await req(`${BASE}/api/auth/callback/credentials`, {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      csrfToken,
+      username: PLATFORM_USER,
+      password: PLATFORM_PASS,
+      callbackUrl: BASE,
+      json: "true",
     }),
   });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`AI ${res.status}: ${text.slice(0, 200)}`);
+  const session = await (await req(`${BASE}/api/auth/session`)).json();
+  if (!session?.user?.username) {
+    throw new Error("Đăng nhập thất bại — kiểm tra PLATFORM_USER / PLATFORM_PASS");
   }
-  const data = await res.json();
-  return data.choices[0]?.message?.content ?? "";
+  return session.user.username;
+}
+
+/** Trả về `{ raw, contextChars }` — kích thước ngữ cảnh là thứ SC-001 đặt trần. */
+async function askDiscovery(query) {
+  const res = await req(`${BASE}/api/chat/discovery`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ query }),
+  });
+  const text = await res.text();
+  if (!res.ok) throw new Error(`API ${res.status}: ${text.slice(0, 200)}`);
+  return { raw: text, contextChars: Number(res.headers.get("X-Context-Chars") ?? 0) };
 }
 
 function parseJSON(content) {
@@ -190,16 +191,23 @@ function parseJSON(content) {
 // ──────────────────────────────────────────────────────────────────────────────
 
 const goldPath = path.join(ROOT, "eval", "gold-questions.json");
-const promptPath = path.join(ROOT, "tools", "prompts", "discovery-chat.md");
 const reportDir = path.join(ROOT, "eval", "reports");
 
 const goldSet = JSON.parse(await readFile(goldPath, "utf-8"));
-const systemPrompt = await readFile(promptPath, "utf-8");
 
-console.log(`[eval] Loading ${goldSet.length} gold questions...`);
-const flattened = await flattenAll();
-console.log(`[eval] Context: ${flattened.length} chars`);
+if (!PLATFORM_USER || !PLATFORM_PASS) {
+  console.error(
+    "Cần PLATFORM_USER / PLATFORM_PASS trong .env.local (script gọi API của app, API đòi đăng nhập).",
+  );
+  process.exit(2);
+}
+
+console.log(`[eval] ${goldSet.length} câu hỏi chuẩn, gọi qua ${BASE}`);
+const who = await login();
+console.log(`[eval] đăng nhập: ${who}`);
 console.log("");
+
+const contextSizes = [];
 
 const results = [];
 for (const item of goldSet) {
@@ -207,7 +215,8 @@ for (const item of goldSet) {
   const start = Date.now();
   let response;
   try {
-    const raw = await askDiscovery(item.query, flattened, systemPrompt);
+    const { raw, contextChars } = await askDiscovery(item.query);
+    if (contextChars > 0) contextSizes.push(contextChars);
     response = parseJSON(raw);
   } catch (err) {
     console.log(`FAIL (${err.message})`);
@@ -224,6 +233,11 @@ for (const item of goldSet) {
   const expected = item.expected_dataset_slugs ?? [];
   const matchedExpected = expected.filter((s) => cited.includes(s));
 
+  // CẢNH BÁO: cả 8 câu trong gold-questions.json đang có `expected_dataset_slugs: []`,
+  // và với mảng rỗng thì hai công thức dưới đây suy biến — `accuracy` luôn bằng 1,
+  // `recall` bằng 1 chỉ khi KHÔNG cite gì. Chúng không đo chất lượng tìm kiếm. Muốn
+  // đo thật thì phải điền slug kỳ vọng cho từng câu trước. Xem docs/phase-2.md.
+  //
   // Accuracy: % expected slugs được cite. Empty expected → 1 nếu trả OK
   const accuracy =
     expected.length > 0 ? matchedExpected.length / expected.length : 1;
@@ -236,7 +250,7 @@ for (const item of goldSet) {
         ? 1
         : 0;
 
-  // Vietnamese compliance — crude check: nhiều từ 4+ ký tự English подряд = fail
+  // Vietnamese compliance — crude check: nhiều từ 4+ ký tự English liên tiếp = fail
   const answerText = response.answer ?? "";
   const englishSentencePattern = /\b(?:the|is|are|was|were|this|that|with|from|have)\b/i;
   const vietnamese_ok = !englishSentencePattern.test(answerText);
@@ -301,6 +315,13 @@ const summary = {
   avg_accuracy: accuracyAvg,
   avg_recall: recallAvg,
   vietnamese_compliance: vietRate,
+  // Kích thước ngữ cảnh mỗi câu hỏi — trần của SC-001. Đây là chỉ số DUY NHẤT ở
+  // đây so được giữa các lần chạy một cách có nghĩa; xem cảnh báo về
+  // accuracy/recall ở trên và ở docs/phase-2.md.
+  context_chars_avg: contextSizes.length
+    ? Math.round(contextSizes.reduce((a, b) => a + b, 0) / contextSizes.length)
+    : null,
+  context_chars_max: contextSizes.length ? Math.max(...contextSizes) : null,
   pattern_match_rate: patternRate,
   results,
 };
@@ -314,8 +335,12 @@ console.log("");
 console.log("─── Summary ───");
 console.log(`Total:        ${total}`);
 console.log(`Success:      ${((successCount / total) * 100).toFixed(1)}%`);
-console.log(`Avg accuracy: ${(accuracyAvg * 100).toFixed(1)}%`);
-console.log(`Avg recall:   ${(recallAvg * 100).toFixed(1)}%`);
+console.log(`Avg accuracy: ${(accuracyAvg * 100).toFixed(1)}%  (vô nghĩa — xem chú thích trong file)`);
+console.log(`Avg recall:   ${(recallAvg * 100).toFixed(1)}%  (vô nghĩa — xem chú thích trong file)`);
+if (contextSizes.length) {
+  const avg = Math.round(contextSizes.reduce((a, b) => a + b, 0) / contextSizes.length);
+  console.log(`Ngữ cảnh:     ${avg} ký tự trung bình, cao nhất ${Math.max(...contextSizes)}`);
+}
 console.log(`Vietnamese:   ${(vietRate * 100).toFixed(1)}%`);
 console.log(`Pattern:      ${(patternRate * 100).toFixed(1)}%`);
 console.log(`Report:       ${path.relative(ROOT, reportPath)}`);

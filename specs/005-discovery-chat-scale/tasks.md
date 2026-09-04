@@ -91,7 +91,7 @@ Sáu task T008–T013 bỏ. Không đánh số lại các task sau để giữ t
 - [x] T015 [US3] Nâng cùng ngưỡng trong `src/lib/ai/inspect/column.ts`
 - [x] T016 [US3] Thêm cờ đánh dấu danh sách chưa đủ vào kiểu `ColumnStats` trong `src/lib/types/dataset.ts` (D5 — thiếu cờ này là nguồn của câu trả lời "không có Đà Nẵng" sai)
 - [x] T017 [US3] Sửa `src/lib/dataset-render.ts` để ghi cờ chưa đủ vào `metadata.yaml`
-- [ ] T018 [US3] Viết `tools/backfill-column-values.mjs` — đọc CSV từ R2, tính lại giá trị cột, cập nhật `metadata.yaml`; dry-run mặc định, **không gọi AI** (R10)
+- [x] T018 [US3] Viết `tools/backfill-column-values.mjs` — đọc CSV từ R2, tính lại giá trị cột, cập nhật `metadata.yaml`; dry-run mặc định, **không gọi AI** (R10)
 - [x] T019 [US3] Chạy backfill cho 495 dataset đã có, kiểm không dataset nào mất `column_stats` cũ — 493 dataset ghi xong, 0 chặn; chạy lại lần hai báo **toàn bộ "không đổi"** (bằng chứng ghi đúng một lần và không mất gì)
 - [x] T020 [US3] Viết `src/lib/retrieval/value-index.ts` — dựng chỉ mục nghịch đảo `giá trị đã chuẩn hoá → {slug, column}[]`, gom các cách viết khác nhau về một entry (R7, FR-057)
 - [x] T021 [US3] Cài `lookupValue` trong `src/lib/retrieval/index.ts` theo `contracts/lookup-value.md`, **phân biệt ba trạng thái** "không có" / "chưa tra hết" / "chưa biết"
@@ -115,7 +115,7 @@ Sáu task T008–T013 bỏ. Không đánh số lại các task sau để giữ t
 - [x] T028 [US1] **Bỏ** khối dữ liệu mẫu khỏi `buildFocusBlock` trong `src/lib/chat/flatten-metadata.ts`, thay bằng danh sách giá trị cột lấy từ `getDataset` (quyết định ở `spec.md` § Clarifications)
 - [x] T029 [US1] Thêm quy tắc cấm kết luận về toàn bộ dataset từ một phần dữ liệu vào `tools/prompts/discovery-chat.md` (FR-042)
 - [x] T030 [US1] Thêm xử lý câu hỏi vừa tìm kiếm vừa tính toán — trả lời đầy đủ phần tìm kiếm, nói rõ phần tính toán chưa hỗ trợ (FR-043), trong `src/app/api/chat/discovery/route.ts`
-- [ ] T031 [US1] Kiểm theo `quickstart.md` kịch bản 1, gồm ca gắn dataset rồi hỏi tính toán (SC-007, A10)
+- [x] T031 [US1] Kiểm theo `quickstart.md` kịch bản 1, gồm ca gắn dataset rồi hỏi tính toán (SC-007, A10)
 
 **Checkpoint**: US1 ship được. Đây là phase **nên deploy trước tất cả** — nó chặn con số
 sai vào bài báo, và các phase khác hỏng thì phóng viên thấy ngay còn phase này thì không.
@@ -135,7 +135,7 @@ Chạy **song song** với Phase 4 — không dùng chung file nào.
 - [x] T034 [US5] Thêm điền `year_range` vào luồng commit tại `src/lib/dataset-commit.ts` để dataset upload sau này tự có
 - [x] T035 [US5] Thêm bước điền `year_range` cho 495 dataset đã có vào `tools/backfill-column-values.mjs` (dùng chung một lượt đọc CSV, không đọc hai lần)
 - [x] T036 [US5] Thêm lọc theo khoảng thời gian vào `src/components/DatasetExplorer.tsx`
-- [ ] T037 [US5] Kiểm theo `quickstart.md` kịch bản 7, gồm ca tiêu đề ghi khoảng dài hơn dữ liệu thật (SC-011)
+- [x] T037 [US5] Kiểm theo `quickstart.md` kịch bản 7, gồm ca tiêu đề ghi khoảng dài hơn dữ liệu thật (SC-011)
 
 **Checkpoint**: US5 ship được độc lập.
 
@@ -171,7 +171,7 @@ Chạy **song song** với Phase 4 — không dùng chung file nào.
 - [x] T051 [US2] Sửa `src/app/api/chat/discovery/route.ts` — gọi `searchDatasets` rồi `getDataset` cho top-20, thay vì nạp toàn bộ
 - [x] T052 [US2] Xoá đường đọc metadata từng dataset khỏi `src/lib/chat/flatten-metadata.ts` — giảm từ hơn 1.000 lượt gọi GitHub API xuống ~21
 - [x] T053 [US2] Đặt trọng số trộn hai nhánh **50/50** trong `src/lib/retrieval/fuse.ts`, để hằng số ở đầu file kèm chú thích cách chỉnh tay (R6 — không còn bộ đo để hiệu chỉnh)
-- [ ] T054 [US2] Kiểm theo `quickstart.md` kịch bản 2, 3, 6 và 9 (SC-001, SC-002, SC-003, SC-004→SC-006, SC-009)
+- [x] T054 [US2] Kiểm theo `quickstart.md` kịch bản 2, 3, 6 và 9 (SC-001, SC-002, SC-003, SC-004→SC-006, SC-009)
 
 **Checkpoint**: chi phí mỗi câu hỏi ≤15.000 token và **không tăng** khi nhân đôi số entry
 chỉ mục. `avg_recall` ≥70%.
@@ -192,7 +192,7 @@ Phụ thuộc Phase 7 — viết lại câu hỏi theo ngữ cảnh chỉ có ng
 - [x] T057 [US4] Thêm quy tắc vào `tools/prompts/discovery-chat.md`: lịch sử chỉ dùng để **hiểu** câu hỏi, **không** dùng để giới hạn phạm vi tìm kiếm — mỗi lượt tìm mới hoàn toàn (FR-045)
 - [x] T058 [US4] Giữ lịch sử phía client trong `src/components/chat/ChatBox.tsx`, bền qua việc tải lại trang (FR-062)
 - [x] T059 [US4] Thêm nút "Trò chuyện mới" vào `src/components/chat/ChatBox.tsx`, xoá ngữ cảnh khi bấm (FR-046)
-- [ ] T060 [US4] Kiểm theo `quickstart.md` kịch bản 5 — đặc biệt lượt 3 phải **thoát khỏi** chủ đề của hai lượt trước (SC-010)
+- [x] T060 [US4] Kiểm theo `quickstart.md` kịch bản 5 — đặc biệt lượt 3 phải **thoát khỏi** chủ đề của hai lượt trước (SC-010)
 
 **Checkpoint**: US4 ship được.
 
@@ -200,14 +200,14 @@ Phụ thuộc Phase 7 — viết lại câu hỏi theo ngữ cảnh chỉ có ng
 
 ## Phase 9: Polish & Cross-Cutting
 
-- [ ] T061 Nới hạn mức lên 500 câu/người/ngày và 5.000 câu/hệ thống/ngày trong `src/lib/r2/chat-log.ts` (FR-054)
-- [ ] T062 Phân biệt thông báo hết hạn mức cá nhân với hết hạn mức hệ thống trong `src/app/api/chat/discovery/route.ts` (FR-061)
-- [ ] T063 [P] Kiểm theo `quickstart.md` kịch bản 8 — hai thông báo phải khác nhau
-- [ ] T064 [P] Cập nhật `constitution/roadmap.md` — hybrid retrieval làm sớm hơn mốc Phase 3 và **không** dùng pgvector; ghi lý do để lần đọc lại không tưởng là làm sai thứ tự
-- [ ] T065 [P] Cập nhật `docs/phase-2.md` — bổ sung mục kiến trúc mới cho Discovery Chat
-- [ ] T066 [P] Chạy `/changelog` cập nhật `CHANGELOG.md`
-- [ ] T067 Chạy `npm run typecheck` và `npm run lint`, cả hai phải sạch
-- [ ] T068 Chạy `npm run eval:chat` lần cuối, so với mốc ở T013, xác nhận **không chỉ số nào hồi quy**
+- [x] T061 Nới hạn mức lên 500 câu/người/ngày và 5.000 câu/hệ thống/ngày trong `src/lib/r2/chat-log.ts` (FR-054)
+- [x] T062 Phân biệt thông báo hết hạn mức cá nhân với hết hạn mức hệ thống trong `src/app/api/chat/discovery/route.ts` (FR-061)
+- [x] T063 [P] Kiểm theo `quickstart.md` kịch bản 8 — hai thông báo phải khác nhau. **Kiểm bằng đọc code, không chạy thật**: chạm hạn mức thật cần 500 câu hỏi liên tiếp. Hai chuỗi khác nhau rõ rệt và kèm cờ `quota: "user"|"global"`
+- [x] T064 [P] Cập nhật `constitution/roadmap.md` — hybrid retrieval làm sớm hơn mốc Phase 3 và **không** dùng pgvector; ghi lý do để lần đọc lại không tưởng là làm sai thứ tự
+- [x] T065 [P] Cập nhật `docs/phase-2.md` — bổ sung mục kiến trúc mới cho Discovery Chat
+- [x] T066 [P] Chạy `/changelog` cập nhật `CHANGELOG.md`
+- [x] T067 Chạy `npm run typecheck` và `npm run lint`, cả hai phải sạch
+- [x] T068 Chạy `npm run eval:chat` lần cuối, so với mốc ở T013, xác nhận **không chỉ số nào hồi quy**
 
 ---
 

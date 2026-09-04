@@ -185,10 +185,19 @@ export async function POST(req: NextRequest) {
     getUserDailyCount(userKey),
     getDailyQuota(),
   ]);
+  // Hai thông báo PHẢI khác nhau (FR-061). Chúng đòi hai hành động khác nhau:
+  // hết hạn mức cá nhân thì người khác vẫn hỏi được và mình chờ sang ngày; hết
+  // hạn mức hệ thống thì cả toà soạn đang bị chặn và việc cần làm là báo quản
+  // trị. Gộp thành một câu "thử lại sau" là để người dùng chờ một thứ không tự
+  // hết, và không ai biết đường nào mà lần.
   if (userCount >= RATE_LIMIT_PER_USER_PER_DAY) {
     return NextResponse.json(
       {
-        error: `Bạn đã hỏi quá ${RATE_LIMIT_PER_USER_PER_DAY} câu hôm nay. Quay lại sau.`,
+        error:
+          `Bạn đã dùng hết ${RATE_LIMIT_PER_USER_PER_DAY} câu hỏi của mình hôm nay ` +
+          `(hạn mức tính theo từng người, sang ngày mới sẽ được cấp lại). ` +
+          `Đồng nghiệp khác vẫn hỏi được bình thường.`,
+        quota: "user",
       },
       { status: 429 },
     );
@@ -196,7 +205,11 @@ export async function POST(req: NextRequest) {
   if (globalQuota.count >= GLOBAL_QUOTA_HARD_LIMIT) {
     return NextResponse.json(
       {
-        error: "Hệ thống đã đạt giới hạn câu hỏi trong ngày. Vui lòng thử lại vào ngày mai.",
+        error:
+          `Cả hệ thống đã dùng hết ${GLOBAL_QUOTA_HARD_LIMIT} câu hỏi trong ngày, ` +
+          `nên hiện không ai hỏi được — không phải riêng bạn. ` +
+          `Nếu cần dùng gấp, báo người quản trị để nâng hạn mức.`,
+        quota: "global",
       },
       { status: 429 },
     );
