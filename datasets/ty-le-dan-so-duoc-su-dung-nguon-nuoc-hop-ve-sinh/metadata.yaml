@@ -27,41 +27,45 @@ files:
     r2_key: "fe6a9b8a-08dd-40db-b67d-a0d5d29d9d82/ty-le-dan-so-duoc-su-dung-nguon-nuoc-hop-ve-sinh.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [18, 9, 18, 9, 9, 18, 27, 27]
-      "Tỷ lệ dân số được sử dụng nguồn nước hợp vệ sinh":
+        histogram: [ 18, 9, 18, 9, 9, 18, 27, 27 ]
+      Tỷ lệ dân số được sử dụng nguồn nước hợp vệ sinh:
         kind: numeric
         min: 67
         max: 100
-        histogram: [1, 1, 2, 7, 8, 12, 24, 62]
-      "Phân tổ":
+        histogram: [ 1, 1, 2, 7, 8, 12, 24, 62 ]
+      Phân tổ:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 15
-          - label: "Thành thị"
+          - label: Thành thị
             count: 15
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 15
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 15
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 15
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 15
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 15
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 15
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 15
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
