@@ -5462,7 +5462,10 @@
     "format": "csv",
     "source": "Cục Thống kê (NSO)",
     "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
+    "year_range": [
+      2010,
+      2025
+    ],
     "resources": [
       {
         "type": "csv",

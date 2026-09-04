@@ -27,62 +27,70 @@ files:
     r2_key: "b17cb3c6-dee0-45ca-82f3-79449cd61939/so-hoc-sinh-pho-thong-binh-quan-mot-lop-hoc-va-so-hoc-sinh-2.csv"
     size_mb: 0.01
     column_stats:
-      "Số học sinh phổ thông bình quân một lớp học và số học sinh phổ thông bình quân một giáo viên tại thời điểm 30/9":
+      Số học sinh phổ thông bình quân một lớp học và số học sinh phổ thông bình quân một giáo viên tại thời điểm 30/9:
         kind: numeric
         min: 15.6
         max: 41.9
-        histogram: [21, 20, 11, 6, 12, 13, 11, 10]
-      "Số học sinh phổ thông":
+        histogram: [ 21, 20, 11, 6, 12, 13, 11, 10 ]
+      Số học sinh phổ thông:
         kind: categorical
         distinct: 2
         segments:
-          - label: "Bình quân một lớp học"
+          - label: Bình quân một lớp học
             count: 52
-          - label: "Bình quân một giáo viên"
+          - label: Bình quân một giáo viên
             count: 52
-      "Cấp học":
+        complete: true
+      Cấp học:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 26
-          - label: "Tiểu học"
+          - label: Tiểu học
             count: 26
-          - label: "Trung học cơ sở"
+          - label: Trung học cơ sở
             count: 26
-          - label: "Trung học phổ thông"
+          - label: Trung học phổ thông
             count: 26
-      "Năm học":
+        complete: true
+      Năm học:
         kind: categorical
         distinct: 13
         segments:
-          - label: "2010-2011"
+          - label: 2010-2011
             count: 8
-          - label: "2013-2014"
+          - label: 2013-2014
             count: 8
-          - label: "2014-2015"
+          - label: 2014-2015
             count: 8
-          - label: "2015-2016"
+          - label: 2015-2016
             count: 8
-          - label: "2016-2017"
+          - label: 2016-2017
             count: 8
-          - label: "2017-2018"
+          - label: 2017-2018
             count: 8
-          - label: "2018-2019"
+          - label: 2018-2019
             count: 8
-          - label: "2019-2020"
+          - label: 2019-2020
             count: 8
-          - label: "2020-2021"
+          - label: 2020-2021
             count: 8
-          - label: "2021-2022"
+          - label: 2021-2022
             count: 8
-          - label: "2022-2023"
+          - label: 2022-2023
             count: 8
-          - label: "2023-2024"
+          - label: 2023-2024
             count: 8
-      "Ghi chú":
+          - label: 2024-2025
+            count: 8
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 8
+        complete: true
+coverage:
+  temporal: [ 2010, 2025 ]
