@@ -27,55 +27,59 @@ files:
     r2_key: "ed57aaf1-f327-453f-8faf-de1eaae62c8d/chenh-lech-chi-tieu-cho-doi-song-binh-quan-dau-nguoi-mot-tha.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [11, 11, 11, 11, 11, 11, 11, 11]
-      "Chi tiêu bình quân đầu người một tháng (Nghìn đồng) - Nhóm thu nhập thấp nhất":
+        histogram: [ 11, 11, 11, 11, 11, 11, 11, 11 ]
+      Chi tiêu bình quân đầu người một tháng (Nghìn đồng) - Nhóm thu nhập thấp nhất:
         kind: numeric
         min: 1.016
         max: 973
-        histogram: [47, 0, 0, 4, 8, 7, 13, 9]
-      "Chi tiêu bình quân đầu người một tháng (Nghìn đồng) - Nhóm thu nhập cao nhất":
+        histogram: [ 47, 0, 0, 4, 8, 7, 13, 9 ]
+      Chi tiêu bình quân đầu người một tháng (Nghìn đồng) - Nhóm thu nhập cao nhất:
         kind: numeric
         min: 1.56
         max: 5.907
-        histogram: [7, 10, 14, 21, 12, 15, 6, 3]
-      "Nhóm thu nhập cao nhất so với Nhóm thu nhập thấp nhất (Lần)":
+        histogram: [ 7, 10, 14, 21, 12, 15, 6, 3 ]
+      Nhóm thu nhập cao nhất so với Nhóm thu nhập thấp nhất (Lần):
         kind: numeric
         min: 2
         max: 5
-        histogram: [5, 0, 42, 0, 0, 34, 0, 7]
-      "Phân tổ":
+        histogram: [ 5, 0, 42, 0, 0, 34, 0, 7 ]
+      Phân tổ:
         kind: categorical
         distinct: 11
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 8
-          - label: "Thành thị"
+          - label: Thành thị
             count: 8
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 8
-          - label: "Giới tính chủ hộ - Nam"
+          - label: Giới tính chủ hộ - Nam
             count: 8
-          - label: "Giới tính chủ hộ - Nữ"
+          - label: Giới tính chủ hộ - Nữ
             count: 8
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 8
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 8
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 8
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 8
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 8
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 8
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 11
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
