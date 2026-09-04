@@ -27,57 +27,69 @@ files:
     r2_key: "efb2d45b-9b3b-4053-99aa-52c980dcfd02/muc-tieu-dung-mot-so-mat-hang-chu-yeu-binh-quan-dau-nguoi-3.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [16, 16, 16, 16, 16, 16, 16, 16]
-      "Chung":
+        histogram: [ 16, 16, 16, 16, 16, 16, 16, 16 ]
+      Chung:
         kind: numeric
         min: 0.05
         max: 9.7
-        histogram: [81, 29, 4, 4, 2, 2, 2, 4]
-      "Thành thị":
+        histogram: [ 81, 29, 4, 4, 2, 2, 2, 4 ]
+      Thành thị:
         kind: numeric
         min: 0.04
         max: 7.7
-        histogram: [60, 34, 18, 0, 6, 4, 2, 4]
-      "Nông thôn":
+        histogram: [ 60, 34, 18, 0, 6, 4, 2, 4 ]
+      Nông thôn:
         kind: numeric
         min: 0
         max: 10.6
-        histogram: [86, 25, 5, 4, 0, 2, 2, 4]
-      "Phân tổ":
+        histogram: [ 86, 25, 5, 4, 0, 2, 2, 4 ]
+      Phân tổ:
         kind: categorical
         distinct: 16
         segments:
-          - label: "Gạo (Kg)"
+          - label: Gạo (Kg)
             count: 8
-          - label: "Lương thực khác (quy gạo) (Kg)"
+          - label: Lương thực khác (quy gạo) (Kg)
             count: 8
-          - label: "Thịt các loại (Kg)"
+          - label: Thịt các loại (Kg)
             count: 8
-          - label: "Mỡ, dầu ăn (Kg)"
+          - label: Mỡ, dầu ăn (Kg)
             count: 8
-          - label: "Tôm, cá (Kg)"
+          - label: Tôm, cá (Kg)
             count: 8
-          - label: "Trứng gia cầm (Quả)"
+          - label: Trứng gia cầm (Quả)
             count: 8
-          - label: "Đậu phụ (Kg)"
+          - label: Đậu phụ (Kg)
             count: 8
-          - label: "Đường, mật, sữa, bánh, mứt kẹo (Kg)"
+          - label: Đường, mật, sữa, bánh, mứt kẹo (Kg)
             count: 8
-          - label: "Nước mắm, nước chấm (Lít)"
+          - label: Nước mắm, nước chấm (Lít)
             count: 8
-          - label: "Chè, cà phê (Kg)"
+          - label: Chè, cà phê (Kg)
             count: 8
-          - label: "Rượu, bia (Lít)"
+          - label: Rượu, bia (Lít)
             count: 8
-          - label: "Đồ uống khác (Lít)"
+          - label: Đồ uống khác (Lít)
             count: 8
-      "Ghi chú":
+          - label: Đỗ các loại (Kg)
+            count: 8
+          - label: Lạc, vừng (Kg)
+            count: 8
+          - label: Rau (Kg)
+            count: 8
+          - label: Quả (Kg)
+            count: 8
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 16
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
