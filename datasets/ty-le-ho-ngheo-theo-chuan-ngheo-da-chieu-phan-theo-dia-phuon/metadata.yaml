@@ -27,47 +27,167 @@ files:
     r2_key: "90472360-1cbb-4f8c-9506-3f6b5a973168/ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dia-phuon.csv"
     size_mb: 0.02
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2016
         max: 2024
-        histogram: [70, 70, 70, 70, 70, 70, 70, 140]
-      "Tỷ lệ hộ nghèo":
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 140 ]
+      Tỷ lệ hộ nghèo:
         kind: numeric
         min: 0
         max: 53.9
-        histogram: [384, 131, 47, 28, 23, 10, 5, 2]
-      "Địa phương":
+        histogram: [ 384, 131, 47, 28, 23, 10, 5, 2 ]
+      Địa phương:
         kind: categorical
         distinct: 70
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 9
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 9
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 9
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 9
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 9
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 9
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 9
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 9
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 9
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 9
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 9
-          - label: "Nam Định"
+          - label: Nam Định
             count: 9
-      "Ghi chú":
+          - label: Ninh Bình
+            count: 9
+          - label: Trung du và miền núi phía Bắc
+            count: 9
+          - label: Hà Giang
+            count: 9
+          - label: Cao Bằng
+            count: 9
+          - label: Bắc Kạn
+            count: 9
+          - label: Tuyên Quang
+            count: 9
+          - label: Lào Cai
+            count: 9
+          - label: Yên Bái
+            count: 9
+          - label: Thái Nguyên
+            count: 9
+          - label: Lạng Sơn
+            count: 9
+          - label: Bắc Giang
+            count: 9
+          - label: Phú Thọ
+            count: 9
+          - label: Điện Biên
+            count: 9
+          - label: Lai Châu
+            count: 9
+          - label: Sơn La
+            count: 9
+          - label: Hòa Bình
+            count: 9
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
+            count: 9
+          - label: Thanh Hóa
+            count: 9
+          - label: Nghệ An
+            count: 9
+          - label: Hà Tĩnh
+            count: 9
+          - label: Quảng Bình
+            count: 9
+          - label: Quảng Trị
+            count: 9
+          - label: Thừa Thiên-Huế
+            count: 9
+          - label: Đà Nẵng
+            count: 9
+          - label: Quảng Nam
+            count: 9
+          - label: Quảng Ngãi
+            count: 9
+          - label: Bình Định
+            count: 9
+          - label: Phú Yên
+            count: 9
+          - label: Khánh Hòa
+            count: 9
+          - label: Ninh Thuận
+            count: 9
+          - label: Bình Thuận
+            count: 9
+          - label: Tây Nguyên
+            count: 9
+          - label: Kon Tum
+            count: 9
+          - label: Gia Lai
+            count: 9
+          - label: Đắk Lắk
+            count: 9
+          - label: Đắk Nông
+            count: 9
+          - label: Lâm Đồng
+            count: 9
+          - label: Đông Nam Bộ
+            count: 9
+          - label: Bình Phước
+            count: 9
+          - label: Tây Ninh
+            count: 9
+          - label: Bình Dương
+            count: 9
+          - label: Đồng Nai
+            count: 9
+          - label: Bà Rịa - Vũng Tàu
+            count: 9
+          - label: TP. Hồ Chí Minh
+            count: 9
+          - label: Đồng bằng sông Cửu Long
+            count: 9
+          - label: Long An
+            count: 9
+          - label: Tiền Giang
+            count: 9
+          - label: Bến Tre
+            count: 9
+          - label: Trà Vinh
+            count: 9
+          - label: Vĩnh Long
+            count: 9
+          - label: Đồng Tháp
+            count: 9
+          - label: An Giang
+            count: 9
+          - label: Kiên Giang
+            count: 9
+          - label: Cần Thơ
+            count: 9
+          - label: Hậu Giang
+            count: 9
+          - label: Sóc Trăng
+            count: 9
+          - label: Bạc Liêu
+            count: 9
+          - label: Cà Mau
+            count: 9
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 70
+        complete: true
+coverage:
+  temporal: [ 2016, 2024 ]
