@@ -27,41 +27,45 @@ files:
     r2_key: "09194a01-5c2d-473f-8e11-0ee9ae39a66e/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-nhom-tuo.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2009
         max: 2024
-        histogram: [18, 18, 18, 18, 18, 18, 18, 18]
-      "Số lao động có việc làm trong nền kinh tế":
+        histogram: [ 18, 18, 18, 18, 18, 18, 18, 18 ]
+      Số lao động có việc làm trong nền kinh tế:
         kind: numeric
         min: 1311.8
         max: 54659.2
-        histogram: [112, 14, 2, 0, 0, 0, 1, 15]
-      "Nhóm tuổi":
+        histogram: [ 112, 14, 2, 0, 0, 0, 1, 15 ]
+      Nhóm tuổi:
         kind: categorical
         distinct: 9
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 16
-          - label: "15-19"
+          - label: 15-19
             count: 16
-          - label: "20-24"
+          - label: 20-24
             count: 16
-          - label: "25-29"
+          - label: 25-29
             count: 16
-          - label: "30-34"
+          - label: 30-34
             count: 16
-          - label: "35-39"
+          - label: 35-39
             count: 16
-          - label: "40-44"
+          - label: 40-44
             count: 16
-          - label: "45-49"
+          - label: 45-49
             count: 16
-          - label: "50+"
+          - label: 50+
             count: 16
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 2009, 2024 ]
