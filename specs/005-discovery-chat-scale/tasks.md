@@ -93,10 +93,10 @@ Sáu task T008–T013 bỏ. Không đánh số lại các task sau để giữ t
 - [x] T017 [US3] Sửa `src/lib/dataset-render.ts` để ghi cờ chưa đủ vào `metadata.yaml`
 - [ ] T018 [US3] Viết `tools/backfill-column-values.mjs` — đọc CSV từ R2, tính lại giá trị cột, cập nhật `metadata.yaml`; dry-run mặc định, **không gọi AI** (R10)
 - [ ] T019 [US3] Chạy backfill cho 495 dataset đã có, kiểm không dataset nào mất `column_stats` cũ
-- [ ] T020 [US3] Viết `src/lib/retrieval/value-index.ts` — dựng chỉ mục nghịch đảo `giá trị đã chuẩn hoá → {slug, column}[]`, gom các cách viết khác nhau về một entry (R7, FR-057)
-- [ ] T021 [US3] Cài `lookupValue` trong `src/lib/retrieval/index.ts` theo `contracts/lookup-value.md`, **phân biệt ba trạng thái** "không có" / "chưa tra hết" / "chưa biết"
-- [ ] T022 [US3] Cài `getDataset` trong `src/lib/retrieval/index.ts` theo `contracts/get-dataset.md`, kèm danh sách giá trị cột và cờ `complete`
-- [ ] T023 [US3] Sửa `tools/prompts/discovery-chat.md` — thêm quy tắc: dùng danh sách giá trị cột để trả lời câu hỏi theo giá trị, và **cấm** kết luận "không có" khi cờ `complete` là false
+- [x] T020 [US3] Viết `src/lib/retrieval/value-index.ts` — dựng chỉ mục nghịch đảo `giá trị đã chuẩn hoá → {slug, column}[]`, gom các cách viết khác nhau về một entry (R7, FR-057)
+- [x] T021 [US3] Cài `lookupValue` trong `src/lib/retrieval/index.ts` theo `contracts/lookup-value.md`, **phân biệt ba trạng thái** "không có" / "chưa tra hết" / "chưa biết"
+- [x] T022 [US3] Cài `getDataset` trong `src/lib/retrieval/index.ts` theo `contracts/get-dataset.md`, kèm danh sách giá trị cột và cờ `complete`
+- [x] T023 [US3] Sửa `tools/prompts/discovery-chat.md` — thêm quy tắc: dùng danh sách giá trị cột để trả lời câu hỏi theo giá trị, và **cấm** kết luận "không có" khi cờ `complete` là false
 - [ ] T024 [US3] Kiểm theo `quickstart.md` kịch bản 4 — Đà Nẵng có, Cần Thơ không, `Qui Nhơn` tìm ra (SC-008)
 
 **Checkpoint**: US3 ship được độc lập. Danh sách giá trị cột đã sẵn để US1 dùng thay dữ liệu mẫu.
@@ -109,12 +109,12 @@ Sáu task T008–T013 bỏ. Không đánh số lại các task sau để giữ t
 
 **Independent Test**: 5 câu dạng tính toán (có và không gắn dataset), không câu nào chứa con số.
 
-- [ ] T025 [US1] Viết `src/lib/chat/intent.ts` — phân loại câu hỏi thành *tìm kiếm* / *tính toán* / *cả hai*, dựa trên quy tắc trong prompt chứ không phải khớp từ khoá (R8)
-- [ ] T026 [US1] Thêm quy tắc từ chối câu hỏi tính toán vào `tools/prompts/discovery-chat.md`, kèm khuôn câu trả lời: dataset + cột + phạm vi thời gian + đường dẫn xem trước (FR-039, FR-040)
-- [ ] T027 [US1] Thêm quy tắc cấm hứa hẹn tính năng chưa có vào `tools/prompts/discovery-chat.md` (FR-063)
-- [ ] T028 [US1] **Bỏ** khối dữ liệu mẫu khỏi `buildFocusBlock` trong `src/lib/chat/flatten-metadata.ts`, thay bằng danh sách giá trị cột lấy từ `getDataset` (quyết định ở `spec.md` § Clarifications)
-- [ ] T029 [US1] Thêm quy tắc cấm kết luận về toàn bộ dataset từ một phần dữ liệu vào `tools/prompts/discovery-chat.md` (FR-042)
-- [ ] T030 [US1] Thêm xử lý câu hỏi vừa tìm kiếm vừa tính toán — trả lời đầy đủ phần tìm kiếm, nói rõ phần tính toán chưa hỗ trợ (FR-043), trong `src/app/api/chat/discovery/route.ts`
+- [x] T025 [US1] Viết `src/lib/chat/intent.ts` — phân loại câu hỏi thành *tìm kiếm* / *tính toán* / *cả hai*, dựa trên quy tắc trong prompt chứ không phải khớp từ khoá (R8)
+- [x] T026 [US1] Thêm quy tắc từ chối câu hỏi tính toán vào `tools/prompts/discovery-chat.md`, kèm khuôn câu trả lời: dataset + cột + phạm vi thời gian + đường dẫn xem trước (FR-039, FR-040)
+- [x] T027 [US1] Thêm quy tắc cấm hứa hẹn tính năng chưa có vào `tools/prompts/discovery-chat.md` (FR-063)
+- [x] T028 [US1] **Bỏ** khối dữ liệu mẫu khỏi `buildFocusBlock` trong `src/lib/chat/flatten-metadata.ts`, thay bằng danh sách giá trị cột lấy từ `getDataset` (quyết định ở `spec.md` § Clarifications)
+- [x] T029 [US1] Thêm quy tắc cấm kết luận về toàn bộ dataset từ một phần dữ liệu vào `tools/prompts/discovery-chat.md` (FR-042)
+- [x] T030 [US1] Thêm xử lý câu hỏi vừa tìm kiếm vừa tính toán — trả lời đầy đủ phần tìm kiếm, nói rõ phần tính toán chưa hỗ trợ (FR-043), trong `src/app/api/chat/discovery/route.ts`
 - [ ] T031 [US1] Kiểm theo `quickstart.md` kịch bản 1, gồm ca gắn dataset rồi hỏi tính toán (SC-007, A10)
 
 **Checkpoint**: US1 ship được. Đây là phase **nên deploy trước tất cả** — nó chặn con số

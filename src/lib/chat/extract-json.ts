@@ -13,6 +13,8 @@
  * Spec 2026-07-24-discovery-chat.
  */
 
+import { normalizeIntent, type QuestionIntent } from "./intent";
+
 export interface DiscoveryDataset {
   slug: string;
   title?: string;
@@ -24,6 +26,11 @@ export interface DiscoveryResponse {
   answer: string;
   datasets: DiscoveryDataset[];
   follow_ups: string[];
+  /**
+   * Câu hỏi thuộc loại nào — model tự phân loại theo quy tắc trong system prompt
+   * (R8). Thiếu thì coi là `"search"`, xem `normalizeIntent`.
+   */
+  intent: QuestionIntent;
 }
 
 /**
@@ -86,10 +93,15 @@ function normalized(raw: unknown): DiscoveryResponse | null {
     ? obj.follow_ups.filter((s): s is string => typeof s === "string")
     : [];
 
-  // answer bắt buộc — nếu thiếu thì视为 parse fail
+  // answer bắt buộc — thiếu thì coi như parse fail
   if (!answer) return null;
 
-  return { answer, datasets, follow_ups: followUps.slice(0, 5) };
+  return {
+    answer,
+    datasets,
+    follow_ups: followUps.slice(0, 5),
+    intent: normalizeIntent(obj.intent),
+  };
 }
 
 function normalizeDataset(raw: unknown): DiscoveryDataset | null {

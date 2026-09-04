@@ -19,6 +19,7 @@ import {
 } from "@/lib/github/contents-api";
 import { parseDictionaryMarkdown } from "@/lib/datasets/read";
 import type { DataDictionaryEntry, Dataset } from "@/lib/types/dataset";
+import type { DatasetColumn } from "@/lib/retrieval/types";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Cache
@@ -164,23 +165,26 @@ export async function flattenAllDatasets(): Promise<string> {
 // FOCUS block — Discovery Chat attach dataset
 // ──────────────────────────────────────────────────────────────────────────────
 
-const FOCUS_SAMPLE_ROWS = 5; // sample rows bổ trợ minh họa, không phải primary context
-
 /**
  * Build FOCUS block cho Discovery Chat khi user attach dataset cụ thể (click
  * "Hỏi về dataset này" từ sidebar).
  *
  * Format tương tự `formatDataset` NHƯNG:
  * - Toàn bộ data dictionary (không cap MAX_COLUMNS) — AI cần columns đầy đủ để
- *   trả lời chính xác, không phụ thuộc sample rows.
+ *   trả lời chính xác.
  * - Có marker `🎯 FOCUS DATASET` để system prompt nhận biết priority.
- * - Kèm 5 sample rows đầu (nếu có structured_data) — CHỈ bổ trợ minh họa data
- *   shape/value pattern. Nếu structured_data null (file quá lớn) → block vẫn
- *   đủ metadata + dictionary để AI trả lời chính xác.
+ * - Kèm **danh sách giá trị** của các cột phân loại, thay cho dữ liệu mẫu.
+ *
+ * Vì sao bỏ dữ liệu mẫu: 5 dòng đầu của một file là mẫu **không đại diện** —
+ * dữ liệu thống kê hầu hết sắp theo thời gian hoặc theo địa bàn, nên 5 dòng đầu
+ * chỉ có một năm và vài tỉnh. Model đọc chúng rồi kết luận về cả dataset:
+ * "dataset này có Hà Nội, Hải Phòng..." trong khi nó có đủ 63 tỉnh, hoặc tệ hơn
+ * là "không có Đà Nẵng". Danh sách giá trị đi kèm cờ đầy-đủ/bị-cắt trả lời đúng
+ * câu đó, và ngắn hơn.
  */
 export function buildFocusBlock(
   dataset: Dataset,
-  sampleRows?: Record<string, string | number | boolean | null>[],
+  valueColumns?: DatasetColumn[],
 ): string {
   const lines: string[] = [];
   lines.push("🎯 FOCUS DATASET (user đã chọn — ưu tiên trả lời dựa trên dataset này):");
@@ -222,25 +226,20 @@ export function buildFocusBlock(
     }
   }
 
-  // Sample rows — CHỈ bổ trợ minh họa, KHÔNG bắt buộc để trả lời
-  const rows = sampleRows?.slice(0, FOCUS_SAMPLE_ROWS) ?? [];
-  if (rows.length > 0) {
-    const headers = dataset.data_dictionary.length > 0
-      ? dataset.data_dictionary.map((d) => d.column_name)
-      : Object.keys(rows[0]);
-    lines.push(`DỮ LIỆU MẪU (${rows.length} dòng đầu — chỉ bổ trợ minh họa):`);
-    lines.push(`| ${headers.join(" | ")} |`);
-    lines.push(`| ${headers.map(() => "---").join(" | ")} |`);
-    for (const row of rows) {
-      const cells = headers.map((h) => {
-        const v = row[h];
-        if (v == null) return "";
-        return String(v).replace(/\|/g, "\\|").replace(/\n/g, " ");
-      });
-      lines.push(`| ${cells.join(" | ")} |`);
+  // Danh sách giá trị của các chiều phân loại — thay cho dữ liệu mẫu.
+  const categorical = (valueColumns ?? []).filter((c) => c.values);
+  if (categorical.length > 0) {
+    lines.push("GIÁ TRỊ CỦA CÁC CỘT PHÂN LOẠI:");
+    for (const col of categorical) {
+      const v = col.values!;
+      // Nhãn phải nằm NGAY cạnh danh sách, không nằm ở chú thích cuối khối:
+      // model đọc tới đâu kết luận tới đó, và "bị cắt" là thông tin quyết định
+      // câu trả lời có được phép nói "không có" hay không.
+      const flag = v.complete
+        ? `${v.total} giá trị, ĐẦY ĐỦ`
+        : `${v.total} giá trị, DANH SÁCH BỊ CẮT còn ${v.list.length} — KHÔNG được kết luận "không có" từ danh sách này`;
+      lines.push(`  - \`${col.name}\` (${flag}): ${v.list.join(", ")}`);
     }
-  } else {
-    lines.push("DỮ LIỆU MẪU: (không có sample rows — dựa vào metadata + dictionary ở trên)");
   }
 
   return lines.join("\n");

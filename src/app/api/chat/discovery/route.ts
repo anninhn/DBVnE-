@@ -30,7 +30,8 @@ import { requireUserOr401 } from "@/lib/auth";
 import { getAIClient } from "@/lib/ai/dataset-reviewer";
 import { flattenAllDatasets, buildFocusBlock } from "@/lib/chat/flatten-metadata";
 import { extractDiscoveryJSON } from "@/lib/chat/extract-json";
-import { getDatasetDetail } from "@/lib/datasets/read";
+import { getDatasetBySlug } from "@/lib/datasets/read";
+import { getDataset } from "@/lib/retrieval";
 import {
   appendChatLog,
   getDailyQuota,
@@ -134,13 +135,18 @@ export async function POST(req: NextRequest) {
       loadSystemPrompt(),
     ]);
 
-    // FOCUS block — fetch full metadata + dictionary + sample rows của dataset attach.
+    // FOCUS block — metadata + dictionary + danh sách giá trị cột của dataset attach.
+    // Dùng `getDatasetBySlug` chứ KHÔNG `getDatasetDetail`: bản detail tải cả file
+    // về để dựng preview, mà từ nay khối FOCUS không dùng dữ liệu mẫu nữa — tải
+    // file chỉ để vứt đi là bắt phóng viên chờ thêm vài giây mỗi câu hỏi.
     // Silent fallback: slug invalid/deleted → focusBlock rỗng → flow như không attach.
     if (attachedSlug) {
-      const detail = await getDatasetDetail(attachedSlug);
-      if (detail) {
-        const sampleRows = detail.resources[0]?.structured_data?.slice(0, 5);
-        focusBlock = buildFocusBlock(detail, sampleRows);
+      const [dataset, detail] = await Promise.all([
+        getDatasetBySlug(attachedSlug),
+        getDataset({ slugs: [attachedSlug], caller: `chat:${userKey}` }),
+      ]);
+      if (dataset) {
+        focusBlock = buildFocusBlock(dataset, detail.datasets[0]?.columns);
       } else {
         console.warn(`[chat/discovery] attachedSlug "${attachedSlug}" not found — ignoring attach`);
       }

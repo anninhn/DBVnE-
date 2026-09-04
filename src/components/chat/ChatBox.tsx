@@ -29,6 +29,7 @@ import {
   extractDiscoveryJSON,
   type DiscoveryResponse,
 } from "@/lib/chat/extract-json";
+import { ensureComputeNotice } from "@/lib/chat/intent";
 
 // Capability hints — mô tả cho user thấy platform có thể giúp gì.
 // Render bên dưới input, vertical stack, left-aligned (ChatGPT pattern).
@@ -181,7 +182,12 @@ export default function ChatBox({
           answer: fullText || "(Phản hồi trống)",
           datasets: [],
           follow_ups: [],
+          intent: "search",
         };
+      // Lưới cuối cho câu hỏi tính toán: nếu model quên nói rõ giới hạn thì thêm
+      // vào đây. Phải làm ở client vì câu trả lời được stream thẳng từ model —
+      // lúc route đọc xong JSON thì chữ đã tới người dùng rồi.
+      parsed.answer = ensureComputeNotice(parsed.answer, parsed.intent);
 
       // Read chatId từ header → wire cho thumbs
       const chatId = res.headers.get("X-Chat-Id") ?? undefined;
