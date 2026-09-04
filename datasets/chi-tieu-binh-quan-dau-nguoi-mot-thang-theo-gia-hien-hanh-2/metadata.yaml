@@ -26,35 +26,38 @@ files:
     r2_key: "aee7b751-0f3e-4b42-930b-bc0887438a0b/chi-tieu-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-2.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [18, 9, 18, 9, 9, 18, 9, 18]
-      "Chi tiêu bình quân đầu người một tháng":
+        histogram: [ 18, 9, 18, 9, 9, 18, 9, 18 ]
+      Chi tiêu bình quân đầu người một tháng:
         kind: numeric
         min: 1.015
         max: 971
-        histogram: [71, 1, 2, 2, 3, 5, 3, 3]
-      "Phân tổ":
+        histogram: [ 71, 1, 2, 2, 3, 5, 3, 3 ]
+      Phân tổ:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 12
-          - label: "Thành thị"
+          - label: Thành thị
             count: 12
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 12
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 12
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 12
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 12
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 12
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 12
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 12
+        complete: true
+coverage:
+  temporal: [ 2002, 2024 ]
