@@ -27,29 +27,33 @@ files:
     r2_key: "e0896db7-4522-447e-ba0b-38f42e16a16e/so-lao-dong-co-viec-lam-trong-nen-kinh-te-phan-theo-gioi-tin.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [6, 6, 6, 3, 6, 6, 6, 6]
-      "Số lao động có việc làm trong nền kinh tế":
+        histogram: [ 6, 6, 6, 3, 6, 6, 6, 6 ]
+      Số lao động có việc làm trong nền kinh tế:
         kind: numeric
         min: 22833.1
         max: 54659.2
-        histogram: [19, 11, 0, 0, 0, 0, 4, 11]
-      "Giới tính":
+        histogram: [ 19, 11, 0, 0, 0, 0, 4, 11 ]
+      Giới tính:
         kind: categorical
         distinct: 3
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 15
-          - label: "Nam"
+          - label: Nam
             count: 15
-          - label: "Nữ"
+          - label: Nữ
             count: 15
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2010, 2024 ]
