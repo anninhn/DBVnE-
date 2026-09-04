@@ -1,5 +1,36 @@
 [
   {
+    "slug": "thu-ngan-sach-nha-nuoc",
+    "title": "Thu ngân sách nhà nước Việt Nam",
+    "description": "Dữ liệu thống kê các khoản thu ngân sách nhà nước của Việt Nam theo từng loại thu và năm, bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm, từ năm 2000 đến 2024.",
+    "category": "kinh-te",
+    "tags": [
+      "ngan-sach",
+      "thu-ngan-sach",
+      "kinh-te",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-09-04T07:59:22.466Z",
+    "uploaded_by": "ninh",
+    "row_count": 528,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2000,
+      2024
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "d4c350dc-7849-4453-88ed-5659316316be/thu-ngan-sach-nha-nuoc.csv",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "hien-trang-su-dung-dat-phan-theo-dia-phuong",
     "title": "Hiện trạng sử dụng đất phân theo địa phương và loại đất",
     "description": "Dataset thống kê diện tích các loại đất chính (nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) phân theo các tỉnh, thành phố, vùng kinh tế - xã hội và toàn quốc tại Việt Nam từ năm 2018 đến 2023.",
