@@ -1835,69 +1835,6 @@
     ]
   },
   {
-    "slug": "hien-trang-su-dung-dat-phan-theo-dia-phuong",
-    "title": "Hiện trạng sử dụng đất phân theo địa phương",
-    "description": "Dataset thống kê hiện trạng sử dụng đất theo các loại hình (tổng diện tích, đất nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) phân theo địa phương và khu vực hành chính trên toàn quốc, từ năm 2018 đến 2023.",
-    "category": "moi-truong",
-    "tags": [
-      "dat-dai",
-      "su-dung-dat",
-      "dien-tich",
-      "dia-phuong",
-      "nong-nghiep",
-      "lam-nghiep"
-    ],
-    "uploaded_at": "2026-08-28T12:02:47.199Z",
-    "uploaded_by": "ninh",
-    "row_count": 355,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [
-      2018,
-      2023
-    ],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "f21256b1-04fc-487b-99fa-3dd5f6a43f03/hien-trang-su-dung-dat-phan-theo-dia-phuong.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "hien-trang-su-dung-dat",
-    "title": "Hiện trạng sử dụng đất theo loại và đối tượng quản lý, sử dụng tại Việt Nam",
-    "description": "Dữ liệu thống kê hiện trạng sử dụng đất của Việt Nam theo các loại đất khác nhau và phân chia diện tích đất đã giao cho các đối tượng sử dụng hoặc quản lý, được cập nhật qua các năm.",
-    "category": "moi-truong",
-    "tags": [
-      "dat-dai",
-      "su-dung-dat",
-      "moi-truong",
-      "nong-nghiep",
-      "lam-nghiep",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T12:02:26.840Z",
-    "uploaded_by": "ninh",
-    "row_count": 155,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "5b6d268a-97ad-49e8-a9f0-b01861d3de34/hien-trang-su-dung-dat.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "do-am-khong-khi-trung-binh-tai-mot-so-tram-quan-trac",
     "title": "Độ ẩm không khí trung bình tại các trạm quan trắc ở Việt Nam",
     "description": "Dataset này cung cấp dữ liệu về độ ẩm không khí trung bình hàng năm tại 15 tỉnh, thành phố và trạm quan trắc trên khắp Việt Nam, từ năm 2006 đến 2024.",
@@ -1926,70 +1863,6 @@
         "type": "csv",
         "r2_key": "831aa6c6-2e4f-4ede-81fe-a50680e1d78c/do-am-khong-khi-trung-binh-tai-mot-so-tram-quan-trac.csv",
         "size_mb": 0.01
-      }
-    ]
-  },
-  {
-    "slug": "co-cau-dat-su-dung-phan-theo-dia-phuong",
-    "title": "Cơ cấu đất sử dụng phân theo địa phương và loại hình, giai đoạn 2018-2023",
-    "description": "Dataset này cung cấp thông tin về tỷ lệ phần trăm cơ cấu đất sử dụng theo các loại hình chính (nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) tại các địa phương và vùng kinh tế của Việt Nam, bao gồm cả số liệu toàn quốc, từ năm 2018 đến 2023.",
-    "category": "moi-truong",
-    "tags": [
-      "dat-dai",
-      "su-dung-dat",
-      "co-cau-dat",
-      "dia-phuong",
-      "moi-truong"
-    ],
-    "uploaded_at": "2026-08-28T12:01:23.746Z",
-    "uploaded_by": "ninh",
-    "row_count": 355,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [
-      2018,
-      2023
-    ],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "18f79349-50c3-4ba7-8a52-32bc377521b9/co-cau-dat-su-dung-phan-theo-dia-phuong.csv",
-        "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh",
-    "title": "Chỉ số biến động diện tích đất tự nhiên phân theo địa phương và loại đất",
-    "description": "Dataset thống kê chỉ số biến động diện tích các loại đất tự nhiên (nông nghiệp, lâm nghiệp, chuyên dùng, đất ở) của Việt Nam, phân theo địa phương từ năm 2019 đến năm 2023. Các chỉ số thể hiện tỷ lệ diện tích so với năm liền kề trước đó.",
-    "category": "moi-truong",
-    "tags": [
-      "dat-dai",
-      "dien-tich",
-      "bien-dong",
-      "dia-phuong",
-      "moi-truong"
-    ],
-    "uploaded_at": "2026-08-28T12:01:02.908Z",
-    "uploaded_by": "ninh",
-    "row_count": 284,
-    "file_count": 1,
-    "total_size_mb": 0.02,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [
-      2019,
-      2023
-    ],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "01dcd403-9334-4b6b-b3d3-9ad3e9f53956/chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh.csv",
-        "size_mb": 0.02
       }
     ]
   },
@@ -2185,64 +2058,6 @@
     ]
   },
   {
-    "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-2",
-    "title": "Tỷ lệ người sử dụng điện thoại di động phân theo các nhóm nhân khẩu học",
-    "description": "Dataset này cung cấp tỷ lệ phần trăm người sử dụng điện thoại di động tại Việt Nam, được phân loại theo các nhóm nhân khẩu học khác nhau bao gồm toàn quốc, thành thị/nông thôn, giới tính và các nhóm độ tuổi.",
-    "category": "dan-so",
-    "tags": [
-      "dien-thoai",
-      "dan-so",
-      "nhan-khau-hoc",
-      "ty-le",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T11:58:16.221Z",
-    "uploaded_by": "ninh",
-    "row_count": 26,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "c9dcd6bc-19e7-46c9-8259-05e331b3f628/ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-2.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-n",
-    "title": "Tỷ lệ người sử dụng điện thoại di động phân theo khu vực, giới tính và nhóm tuổi",
-    "description": "Dữ liệu thống kê tỷ lệ phần trăm người dân Việt Nam sử dụng điện thoại di động, được phân loại chi tiết theo khu vực sinh sống (thành thị, nông thôn), giới tính và các nhóm tuổi khác nhau.",
-    "category": "xa-hoi",
-    "tags": [
-      "dien-thoai-di-dong",
-      "su-dung-dien-thoai",
-      "dan-so",
-      "xa-hoi",
-      "gioi-tinh"
-    ],
-    "uploaded_at": "2026-08-28T11:57:58.538Z",
-    "uploaded_by": "ninh",
-    "row_count": 24,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "e77ff66e-99c4-4ab2-b43a-aaaebd0d8fb2/ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-n.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-dia-phuong",
     "title": "Tỷ lệ người sử dụng điện thoại di động phân theo địa phương năm 2024",
     "description": "Dataset thống kê tỷ lệ phần trăm người dân sử dụng điện thoại di động tại Việt Nam, phân chia theo các địa phương và vùng kinh tế trong năm 2024.",
@@ -2301,62 +2116,6 @@
       {
         "type": "csv",
         "r2_key": "6f33c8c9-b1f6-4f64-a95a-7c4a9fea1ad7/ty-le-nguoi-dan-tham-gia-mang-xa-hoi-theo-dia-phuong.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non",
-    "title": "Tỷ lệ người dân tham gia mạng xã hội phân theo thành thị, nông thôn, giới tính và nhóm tuổi",
-    "description": "Dataset này thể hiện tỷ lệ phần trăm người dân Việt Nam tham gia mạng xã hội, được phân loại theo khu vực (thành thị, nông thôn), giới tính và các nhóm tuổi khác nhau.",
-    "category": "xa-hoi",
-    "tags": [
-      "mang-xa-hoi",
-      "internet",
-      "dan-so",
-      "xa-hoi"
-    ],
-    "uploaded_at": "2026-08-28T11:57:00.218Z",
-    "uploaded_by": "ninh",
-    "row_count": 25,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "707b1d43-33d8-46fc-aa0d-3904a944000d/ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
-    "slug": "ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the",
-    "title": "Tỷ lệ người dân biết kỹ năng công nghệ thông tin phân theo đặc điểm",
-    "description": "Dữ liệu thể hiện tỷ lệ phần trăm người dân biết các kỹ năng về công nghệ thông tin, được phân loại theo giới tính, khu vực sống và nhóm tuổi tại Việt Nam.",
-    "category": "xa-hoi",
-    "tags": [
-      "cong-nghe-thong-tin",
-      "ky-nang-so",
-      "dan-so",
-      "xa-hoi"
-    ],
-    "uploaded_at": "2026-08-28T11:56:41.879Z",
-    "uploaded_by": "ninh",
-    "row_count": 25,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "0858d1de-52b2-424b-9802-f6e8f4492a2c/ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the.csv",
         "size_mb": 0
       }
     ]
@@ -2518,35 +2277,6 @@
         "type": "csv",
         "r2_key": "b1166788-7d28-4848-acaa-e0e8a9487724/ty-le-ho-ngheo-phan-theo-dia-phuong.csv",
         "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no",
-    "title": "Tỷ lệ hộ gia đình có kết nối Internet phân theo khu vực, giới tính và vùng kinh tế",
-    "description": "Dataset thống kê tỷ lệ hộ gia đình có kết nối Internet tại Việt Nam, phân loại theo khu vực (thành thị, nông thôn), giới tính và các vùng kinh tế-xã hội.",
-    "category": "xa-hoi",
-    "tags": [
-      "internet",
-      "ho-gia-dinh",
-      "thanh-thi",
-      "nong-thon",
-      "vung-kinh-te"
-    ],
-    "uploaded_at": "2026-08-28T11:54:46.242Z",
-    "uploaded_by": "ninh",
-    "row_count": 11,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "7a54555d-5c7f-4296-b04a-e3502a8b28d5/ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no.csv",
-        "size_mb": 0
       }
     ]
   },
@@ -5858,34 +5588,6 @@
     ]
   },
   {
-    "slug": "ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
-    "title": "Tỷ lệ thu ngân sách nhà nước so với tổng sản phẩm trong nước",
-    "description": "Dataset thống kê tỷ lệ các khoản thu ngân sách nhà nước so với tổng sản phẩm trong nước (GDP) của Việt Nam theo từng loại thu, giai đoạn từ 2018 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "ngan-sach",
-      "kinh-te",
-      "gdp",
-      "thu-ngan-sach"
-    ],
-    "uploaded_at": "2026-08-28T11:14:35.766Z",
-    "uploaded_by": "ninh",
-    "row_count": 147,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "3d05af83-cdad-4826-8885-7fbf90ae84e0/ty-le-thu-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "ty-le-nguoi-tham-gia-bao-hiem-y-te-phan-theo-dia-phuong",
     "title": "Tỷ lệ người tham gia bảo hiểm y tế phân theo địa phương",
     "description": "Dataset thống kê tỷ lệ người dân tham gia bảo hiểm y tế của Việt Nam, phân theo các tỉnh, thành phố và vùng kinh tế, từ năm 2015 đến 2024.",
@@ -5980,34 +5682,6 @@
     ]
   },
   {
-    "slug": "ty-le-chi-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc",
-    "title": "Tỷ lệ chi ngân sách nhà nước so với Tổng sản phẩm trong nước (GDP)",
-    "description": "Dữ liệu thể hiện tỷ lệ phần trăm của các loại chi ngân sách nhà nước so với Tổng sản phẩm trong nước (GDP) của Việt Nam từ năm 2018 đến 2023.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "ngan-sach",
-      "gdp",
-      "chi-tieu"
-    ],
-    "uploaded_at": "2026-08-28T11:13:25.127Z",
-    "uploaded_by": "ninh",
-    "row_count": 77,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "41b89b41-4564-4631-8a96-524871c9e163/ty-le-chi-ngan-sach-nha-nuoc-so-voi-tong-san-pham-trong-nuoc.csv",
-        "size_mb": 0
-      }
-    ]
-  },
-  {
     "slug": "tong-phuong-tien-thanh-toan-so-du-huy-dong-von-cua-cac-to-ch",
     "title": "Tổng phương tiện thanh toán và số dư huy động vốn của các tổ chức tín dụng",
     "description": "Dữ liệu thống kê về tổng phương tiện thanh toán, số dư huy động vốn của các tổ chức tín dụng và chi nhánh ngân hàng nước ngoài tại Việt Nam từ năm 2015 đến 2024, bao gồm trị giá, tốc độ tăng trưởng và tỷ lệ so với GDP.",
@@ -6037,37 +5711,6 @@
         "type": "csv",
         "r2_key": "e11b336f-f0e7-477a-a5f5-aac3724eb481/tong-phuong-tien-thanh-toan-so-du-huy-dong-von-cua-cac-to-ch.csv",
         "size_mb": 0.02
-      }
-    ]
-  },
-  {
-    "slug": "thu-ngan-sach-nha-nuoc",
-    "title": "Thu ngân sách nhà nước Việt Nam giai đoạn 2000-2023",
-    "description": "Dữ liệu thống kê các khoản thu ngân sách nhà nước của Việt Nam từ năm 2000 đến năm 2023, bao gồm giá trị thu theo từng loại và cơ cấu tỷ trọng của chúng trong tổng thu.",
-    "category": "kinh-te",
-    "tags": [
-      "ngan-sach",
-      "thu-ngan-sach",
-      "kinh-te",
-      "viet-nam"
-    ],
-    "uploaded_at": "2026-08-28T11:12:44.747Z",
-    "uploaded_by": "ninh",
-    "row_count": 528,
-    "file_count": 1,
-    "total_size_mb": 0.03,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [
-      2000,
-      2023
-    ],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "39147283-361b-45fa-9827-65554d00e9fb/thu-ngan-sach-nha-nuoc.csv",
-        "size_mb": 0.03
       }
     ]
   },
@@ -6168,37 +5811,6 @@
     ]
   },
   {
-    "slug": "chi-ngan-sach-nha-nuoc",
-    "title": "Chi ngân sách nhà nước Việt Nam theo loại chi và năm",
-    "description": "Dữ liệu thống kê các khoản chi ngân sách nhà nước Việt Nam từ năm 2005 đến 2023, phân loại theo các nhóm chi khác nhau. Bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm của từng loại chi.",
-    "category": "kinh-te",
-    "tags": [
-      "ngan-sach",
-      "chi-ngan-sach",
-      "kinh-te",
-      "chinh-phu"
-    ],
-    "uploaded_at": "2026-08-28T11:11:24.756Z",
-    "uploaded_by": "ninh",
-    "row_count": 209,
-    "file_count": 1,
-    "total_size_mb": 0.01,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [
-      2005,
-      2023
-    ],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "2163618d-ff45-4800-87ae-c70cde6c3933/chi-ngan-sach-nha-nuoc.csv",
-        "size_mb": 0.01
-      }
-    ]
-  },
-  {
     "slug": "can-can-thanh-toan-quoc-te",
     "title": "Cán cân thanh toán quốc tế của Việt Nam giai đoạn 2015-2024",
     "description": "Dữ liệu về các thành phần của cán cân thanh toán quốc tế của Việt Nam, bao gồm cán cân vãng lai, cán cân hàng hóa, dịch vụ, thu nhập và chuyển giao vãng lai. Dữ liệu được thu thập từ năm 2015 đến 2024.",
@@ -6258,38 +5870,6 @@
         "type": "csv",
         "r2_key": "af59061e-5af1-4ab5-a8d8-9ca4dfab32c4/bao-hiem-xa-hoi-bao-hiem-y-te-va-bao-hiem-that-nghiep.csv",
         "size_mb": 0.03
-      }
-    ]
-  },
-  {
-    "slug": "ty-trong-dong-gop-cua-cac-yeu-to-von-lao-dong-nang-suat-cac",
-    "title": "Tỷ trọng đóng góp của các yếu tố vốn, lao động và TFP vào tăng trưởng",
-    "description": "Dữ liệu thể hiện tỷ trọng đóng góp của các yếu tố vốn, lao động và năng suất các nhân tố tổng hợp (TFP) vào tăng trưởng kinh tế qua các giai đoạn từ 2011 đến 2023, cùng với tốc độ tăng trưởng TFP.",
-    "category": "kinh-te",
-    "tags": [
-      "kinh-te",
-      "tfp",
-      "von",
-      "lao-dong",
-      "tang-truong"
-    ],
-    "uploaded_at": "2026-08-28T11:10:28.599Z",
-    "uploaded_by": "ninh",
-    "row_count": 3,
-    "file_count": 1,
-    "total_size_mb": 0,
-    "format": "csv",
-    "source": "Cục Thống kê (NSO)",
-    "source_url": "https://www.nso.gov.vn/",
-    "year_range": [
-      2011,
-      2023
-    ],
-    "resources": [
-      {
-        "type": "csv",
-        "r2_key": "faa3b3a9-dd38-4268-9e38-de300ee2a88f/ty-trong-dong-gop-cua-cac-yeu-to-von-lao-dong-nang-suat-cac.csv",
-        "size_mb": 0
       }
     ]
   },
