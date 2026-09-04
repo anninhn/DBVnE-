@@ -26,41 +26,45 @@ files:
     r2_key: "b47164f3-fc16-4404-ae3f-bc4828a25c49/ty-le-dan-so-dung-ho-xi-hop-ve-sinh-phan-theo-thanh-thi-nong.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [9, 9, 9, 0, 9, 9, 9, 9]
-      "Tỷ lệ dân số dùng hố xí hợp vệ sinh":
+        histogram: [ 9, 9, 9, 0, 9, 9, 9, 9 ]
+      Tỷ lệ dân số dùng hố xí hợp vệ sinh:
         kind: numeric
         min: 77
         max: 100
-        histogram: [3, 2, 3, 5, 9, 9, 11, 21]
-      "Thành thị, nông thôn":
+        histogram: [ 3, 2, 3, 5, 9, 9, 11, 21 ]
+      Thành thị, nông thôn:
         kind: categorical
         distinct: 9
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 7
-          - label: "Thành thị"
+          - label: Thành thị
             count: 7
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 7
-          - label: "Ðồng bằng sông Hồng"
+          - label: Ðồng bằng sông Hồng
             count: 7
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 7
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 7
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 7
-          - label: "Ðông Nam Bộ"
+          - label: Ðông Nam Bộ
             count: 7
-          - label: "Ðồng bằng sông Cửu Long"
+          - label: Ðồng bằng sông Cửu Long
             count: 7
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
