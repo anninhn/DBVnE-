@@ -27,81 +27,202 @@ files:
     r2_key: "c49a83d1-dd91-4b96-aed1-5866ecfb714b/so-doanh-nghiep-dang-hoat-dong-co-ket-qua-san-xuat-kinh-do-8.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2021
         max: 2023
-        histogram: [71, 0, 0, 0, 71, 0, 0, 71]
-      "Tổng số":
+        histogram: [ 71, 0, 0, 0, 71, 0, 0, 71 ]
+      Tổng số:
         kind: numeric
         min: 1.003
         max: 996
-        histogram: [183, 12, 3, 0, 3, 2, 2, 8]
-      "Dưới 0,5 tỷ đồng":
+        histogram: [ 183, 12, 3, 0, 3, 2, 2, 8 ]
+      Dưới 0,5 tỷ đồng:
         kind: numeric
         min: 0
         max: 889
-        histogram: [85, 28, 37, 28, 20, 9, 3, 3]
-      "Từ 0,5 đến dưới 1 tỷ đồng":
+        histogram: [ 85, 28, 37, 28, 20, 9, 3, 3 ]
+      Từ 0,5 đến dưới 1 tỷ đồng:
         kind: numeric
         min: 0
         max: 985
-        histogram: [83, 25, 45, 18, 17, 12, 10, 3]
-      "Từ 1 đến dưới 5 tỷ đồng":
+        histogram: [ 83, 25, 45, 18, 17, 12, 10, 3 ]
+      Từ 1 đến dưới 5 tỷ đồng:
         kind: numeric
         min: 0
         max: 962
-        histogram: [159, 3, 14, 1, 12, 6, 11, 7]
-      "Từ 5 đến dưới 10 tỷ đồng":
+        histogram: [ 159, 3, 14, 1, 12, 6, 11, 7 ]
+      Từ 5 đến dưới 10 tỷ đồng:
         kind: numeric
         min: 1
         max: 987
-        histogram: [97, 16, 24, 19, 11, 17, 19, 10]
-      "Từ 10 đến dưới 50 tỷ":
+        histogram: [ 97, 16, 24, 19, 11, 17, 19, 10 ]
+      Từ 10 đến dưới 50 tỷ:
         kind: numeric
         min: 1.032
         max: 999
-        histogram: [121, 7, 21, 12, 24, 12, 9, 7]
-      "Từ 50 đến dưới 200":
+        histogram: [ 121, 7, 21, 12, 24, 12, 9, 7 ]
+      Từ 50 đến dưới 200:
         kind: numeric
         min: 1.022
         max: 939
-        histogram: [82, 48, 26, 18, 19, 13, 6, 1]
-      "Từ 200 đến dưới 500 tỷ":
+        histogram: [ 82, 48, 26, 18, 19, 13, 6, 1 ]
+      Từ 200 đến dưới 500 tỷ:
         kind: numeric
         min: 1.097
         max: 949
-        histogram: [155, 37, 9, 3, 1, 2, 3, 3]
-      "Từ 500 tỷ đồng trở lên":
+        histogram: [ 155, 37, 9, 3, 1, 2, 3, 3 ]
+      Từ 500 tỷ đồng trở lên:
         kind: numeric
         min: 1
         max: 769
-        histogram: [142, 48, 9, 2, 5, 2, 3, 2]
-      "Tỉnh/thành phố":
+        histogram: [ 142, 48, 9, 2, 5, 2, 3, 2 ]
+      Tỉnh/thành phố:
         kind: categorical
         distinct: 71
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 3
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 3
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 3
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 3
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 3
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 3
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 3
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 3
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 3
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 3
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 3
-          - label: "Nam Định"
+          - label: Nam Định
             count: 3
+          - label: Ninh Bình
+            count: 3
+          - label: Trung du và miền núi phía Bắc
+            count: 3
+          - label: Hà Giang
+            count: 3
+          - label: Cao Bằng
+            count: 3
+          - label: Bắc Kạn
+            count: 3
+          - label: Tuyên Quang
+            count: 3
+          - label: Lào Cai
+            count: 3
+          - label: Yên Bái
+            count: 3
+          - label: Thái Nguyên
+            count: 3
+          - label: Lạng Sơn
+            count: 3
+          - label: Bắc Giang
+            count: 3
+          - label: Phú Thọ
+            count: 3
+          - label: Điện Biên
+            count: 3
+          - label: Lai Châu
+            count: 3
+          - label: Sơn La
+            count: 3
+          - label: Hòa Bình
+            count: 3
+          - label: Bắc Trung Bộ và duyên hải miền Trung
+            count: 3
+          - label: Thanh Hóa
+            count: 3
+          - label: Nghệ An
+            count: 3
+          - label: Hà Tĩnh
+            count: 3
+          - label: Quảng Bình
+            count: 3
+          - label: Quảng Trị
+            count: 3
+          - label: Thừa Thiên - Huế
+            count: 3
+          - label: Đà Nẵng
+            count: 3
+          - label: Quảng Nam
+            count: 3
+          - label: Quảng Ngãi
+            count: 3
+          - label: Bình Định
+            count: 3
+          - label: Phú Yên
+            count: 3
+          - label: Khánh Hòa
+            count: 3
+          - label: Ninh Thuận
+            count: 3
+          - label: Bình Thuận
+            count: 3
+          - label: Tây Nguyên
+            count: 3
+          - label: Kon Tum
+            count: 3
+          - label: Gia Lai
+            count: 3
+          - label: Đắk Lắk
+            count: 3
+          - label: Đắk Nông
+            count: 3
+          - label: Lâm Đồng
+            count: 3
+          - label: Đông Nam Bộ
+            count: 3
+          - label: Bình Phước
+            count: 3
+          - label: Tây Ninh
+            count: 3
+          - label: Bình Dương
+            count: 3
+          - label: Đồng Nai
+            count: 3
+          - label: Bà Rịa - Vũng Tàu
+            count: 3
+          - label: TP. Hồ Chí Minh
+            count: 3
+          - label: Đồng bằng sông Cửu Long
+            count: 3
+          - label: Long An
+            count: 3
+          - label: Tiền Giang
+            count: 3
+          - label: Bến Tre
+            count: 3
+          - label: Trà Vinh
+            count: 3
+          - label: Vĩnh Long
+            count: 3
+          - label: Đồng Tháp
+            count: 3
+          - label: An Giang
+            count: 3
+          - label: Kiên Giang
+            count: 3
+          - label: Cần Thơ
+            count: 3
+          - label: Hậu Giang
+            count: 3
+          - label: Sóc Trăng
+            count: 3
+          - label: Bạc Liêu
+            count: 3
+          - label: Cà Mau
+            count: 3
+          - label: Không xác định
+            count: 3
+        complete: true
+coverage:
+  temporal: [ 2021, 2023 ]
