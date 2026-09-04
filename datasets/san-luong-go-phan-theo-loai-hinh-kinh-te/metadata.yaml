@@ -26,36 +26,39 @@ files:
     r2_key: "aa5368d1-a335-4827-b16b-9215d4fb06e3/san-luong-go-phan-theo-loai-hinh-kinh-te.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [14, 14, 7, 14, 14, 7, 14, 14]
-      "Sản lượng (Nghìn m3)":
+        histogram: [ 14, 14, 7, 14, 14, 7, 14, 14 ]
+      Sản lượng (Nghìn m3):
         kind: numeric
         min: 19
         max: 21632.3
-        histogram: [44, 3, 9, 7, 5, 4, 5, 3]
-      "Chỉ số phát triển (Năm trước = 100) (%)":
+        histogram: [ 44, 3, 9, 7, 5, 4, 5, 3 ]
+      Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 56.43
         max: 217.77
-        histogram: [5, 8, 53, 8, 2, 2, 0, 2]
-      "Loại hình kinh tế":
+        histogram: [ 5, 8, 53, 8, 2, 2, 0, 2 ]
+      Loại hình kinh tế:
         kind: categorical
         distinct: 7
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 14
-          - label: "Kinh tế Nhà nước"
+          - label: Kinh tế Nhà nước
             count: 14
           - label: "Kinh tế Ngoài Nhà nước:"
             count: 14
-          - label: "Tập thể"
+          - label: Tập thể
             count: 14
-          - label: "Cá thể"
+          - label: Cá thể
             count: 14
-          - label: "Tư nhân"
+          - label: Tư nhân
             count: 14
-          - label: "Khu vực có vốn đầu tư nước ngoài"
+          - label: Khu vực có vốn đầu tư nước ngoài
             count: 14
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
