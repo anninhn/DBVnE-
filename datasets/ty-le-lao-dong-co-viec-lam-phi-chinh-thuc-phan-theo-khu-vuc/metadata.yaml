@@ -27,31 +27,35 @@ files:
     r2_key: "5e2e4333-ca6e-4fa8-a658-bbb5ac485614/ty-le-lao-dong-co-viec-lam-phi-chinh-thuc-phan-theo-khu-vuc.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2013
         max: 2024
-        histogram: [8, 4, 8, 4, 4, 8, 4, 8]
-      "Tổng số (%)":
+        histogram: [ 8, 4, 8, 4, 4, 8, 4, 8 ]
+      Tổng số (%):
         kind: numeric
         min: 46.9
         max: 99.27
-        histogram: [3, 19, 5, 4, 5, 0, 0, 12]
-      "Khu vực kinh tế":
+        histogram: [ 3, 19, 5, 4, 5, 0, 0, 12 ]
+      Khu vực kinh tế:
         kind: categorical
         distinct: 4
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 12
-          - label: "Nông, lâm nghiệp và thủy sản"
+          - label: Nông, lâm nghiệp và thủy sản
             count: 12
-          - label: "Công nghiệp - Xây dựng"
+          - label: Công nghiệp - Xây dựng
             count: 12
-          - label: "Dịch vụ"
+          - label: Dịch vụ
             count: 12
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 4
+        complete: true
+coverage:
+  temporal: [ 2013, 2024 ]
