@@ -27,45 +27,50 @@ files:
     r2_key: "1c165477-2cfc-4db4-b978-764e7834fa55/so-di-tich-lich-su-van-hoa-danh-lam-thang-canh.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [18, 18, 18, 0, 18, 18, 18, 18]
-      "Số di tích lịch sử, văn hóa, danh lam thắng cảnh":
+        histogram: [ 18, 18, 18, 0, 18, 18, 18, 18 ]
+      Số di tích lịch sử, văn hóa, danh lam thắng cảnh:
         kind: numeric
         min: 0
         max: 346
-        histogram: [49, 9, 12, 2, 5, 0, 0, 2]
-      "Phân tổ":
+        histogram: [ 49, 9, 12, 2, 5, 0, 0, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Di tích quốc gia"
+          - label: Di tích quốc gia
             count: 42
-          - label: "Di tích quốc gia đặc biệt"
+          - label: Di tích quốc gia đặc biệt
             count: 42
-          - label: "Di tích được UNESCO công nhận di sản thế giới"
+          - label: Di tích được UNESCO công nhận di sản thế giới
             count: 42
-      "Loại di tích":
+        complete: true
+      Loại di tích:
         kind: categorical
         distinct: 6
         segments:
-          - label: "Tổng số"
+          - label: Tổng số
             count: 21
-          - label: "Di tích lịch sử"
+          - label: Di tích lịch sử
             count: 21
-          - label: "Di tích kiến trúc nghệ thuật"
+          - label: Di tích kiến trúc nghệ thuật
             count: 21
-          - label: "Di tích khảo cổ"
+          - label: Di tích khảo cổ
             count: 21
-          - label: "Danh lam thắng cảnh"
+          - label: Danh lam thắng cảnh
             count: 21
-          - label: "Di tích hỗn hợp"
+          - label: Di tích hỗn hợp
             count: 21
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 18
+        complete: true
+coverage:
+  temporal: [ 2018, 2024 ]
