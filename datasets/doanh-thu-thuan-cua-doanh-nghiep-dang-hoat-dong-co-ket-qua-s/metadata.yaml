@@ -26,30 +26,33 @@ files:
     r2_key: "5f40470d-cd0d-4e8c-a4ac-baa5ab9992d0/doanh-thu-thuan-cua-doanh-nghiep-dang-hoat-dong-co-ket-qua-s.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [4, 0, 0, 8, 8, 4, 8, 8]
-      "Doanh thu thuần (Tỷ đồng)":
+        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+      Doanh thu thuần (Tỷ đồng):
         kind: numeric
         min: 608538
         max: 13809242.9
-        histogram: [7, 16, 6, 4, 1, 2, 2, 2]
-      "Cơ cấu (%)":
+        histogram: [ 7, 16, 6, 4, 1, 2, 2, 2 ]
+      Cơ cấu (%):
         kind: numeric
         min: 20.05
         max: 100
-        histogram: [10, 10, 10, 0, 0, 0, 0, 10]
-      "Trình độ công nghệ":
+        histogram: [ 10, 10, 10, 0, 0, 0, 0, 10 ]
+      Trình độ công nghệ:
         kind: categorical
         distinct: 4
         segments:
-          - label: "TỔNG SỐ"
+          - label: TỔNG SỐ
             count: 10
-          - label: "Nhóm ngành công nghệ cao"
+          - label: Nhóm ngành công nghệ cao
             count: 10
-          - label: "Nhóm ngành công nghệ trung bình"
+          - label: Nhóm ngành công nghệ trung bình
             count: 10
-          - label: "Nhóm ngành công nghệ thấp"
+          - label: Nhóm ngành công nghệ thấp
             count: 10
+        complete: true
+coverage:
+  temporal: [ 2010, 2023 ]
