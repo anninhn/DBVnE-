@@ -27,61 +27,64 @@ files:
     r2_key: "cc573165-7fb6-4735-b2de-64b6232cb3f7/thu-nhap-binh-quan-dau-nguoi-mot-thang-theo-gia-hien-hanh-3.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2019
-        histogram: [12, 12, 0, 12, 0, 12, 0, 24]
-      "Tổng số":
+        histogram: [ 12, 12, 0, 12, 0, 12, 0, 24 ]
+      Tổng số:
         kind: numeric
         min: 905
         max: 6280
-        histogram: [8, 13, 10, 12, 6, 6, 1, 4]
-      "Thu từ tiền lương, tiền công":
+        histogram: [ 8, 13, 10, 12, 6, 6, 1, 4 ]
+      Thu từ tiền lương, tiền công:
         kind: numeric
         min: 41.23
         max: 3898.05
-        histogram: [6, 16, 15, 8, 7, 4, 3, 2]
-      "Thu từ nông, lâm nghiệp, thủy sản":
+        histogram: [ 6, 16, 15, 8, 7, 4, 3, 2 ]
+      Thu từ nông, lâm nghiệp, thủy sản:
         kind: numeric
         min: 96
         max: 982
-        histogram: [8, 13, 13, 14, 4, 4, 1, 3]
-      "Thu phi nông, lâm nghiệp, thủy sản":
+        histogram: [ 8, 13, 13, 14, 4, 4, 1, 3 ]
+      Thu phi nông, lâm nghiệp, thủy sản:
         kind: numeric
         min: 146
         max: 1530
-        histogram: [9, 11, 13, 10, 6, 4, 3, 4]
-      "Các khoản thu khác":
+        histogram: [ 9, 11, 13, 10, 6, 4, 3, 4 ]
+      Các khoản thu khác:
         kind: numeric
         min: 67
         max: 740
-        histogram: [9, 8, 14, 9, 6, 8, 3, 3]
-      "Phân tổ":
+        histogram: [ 9, 8, 14, 9, 6, 8, 3, 3 ]
+      Phân tổ:
         kind: categorical
         distinct: 12
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 6
-          - label: "Thành thị"
+          - label: Thành thị
             count: 6
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 6
-          - label: "Chủ hộ là nam"
+          - label: Chủ hộ là nam
             count: 6
-          - label: "Chủ hộ là nữ"
+          - label: Chủ hộ là nữ
             count: 6
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 6
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 6
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 6
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 6
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 6
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 6
-          - label: "Nghìn đồng"
+          - label: Nghìn đồng
             count: 6
+        complete: true
+coverage:
+  temporal: [ 2010, 2019 ]
