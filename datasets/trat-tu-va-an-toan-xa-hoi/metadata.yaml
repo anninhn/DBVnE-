@@ -26,41 +26,45 @@ files:
     r2_key: "1f27569a-6073-40b7-a528-79c7872ca7d5/trat-tu-va-an-toan-xa-hoi.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [18, 9, 18, 9, 18, 9, 18, 18]
-      "Trật tự và an toàn xã hội":
+        histogram: [ 18, 9, 18, 9, 18, 9, 18, 18 ]
+      Trật tự và an toàn xã hội:
         kind: numeric
         min: 85
         max: 38060
-        histogram: [51, 19, 18, 9, 8, 3, 2, 2]
-      "Phân tổ":
+        histogram: [ 51, 19, 18, 9, 8, 3, 2, 2 ]
+      Phân tổ:
         kind: categorical
         distinct: 9
         segments:
-          - label: "Số vụ tai nạn giao thông (Vụ)"
+          - label: Số vụ tai nạn giao thông (Vụ)
             count: 13
-          - label: "Số vụ va chạm giao thông (Vụ)"
+          - label: Số vụ va chạm giao thông (Vụ)
             count: 13
-          - label: "Số vụ tai nạn giao thông gây hậu quả từ ít nghiêm trọng trở lên (Vụ)"
+          - label: Số vụ tai nạn giao thông gây hậu quả từ ít nghiêm trọng trở lên (Vụ)
             count: 13
-          - label: "Số người chết do tai nạn giao thông (Người)"
+          - label: Số người chết do tai nạn giao thông (Người)
             count: 13
-          - label: "Số người bị thương do tai nạn giao thông (Người)"
+          - label: Số người bị thương do tai nạn giao thông (Người)
             count: 13
-          - label: "Số vụ cháy, nổ (Vụ)"
+          - label: Số vụ cháy, nổ (Vụ)
             count: 13
-          - label: "Số người chết do cháy, nổ (Người)"
+          - label: Số người chết do cháy, nổ (Người)
             count: 13
-          - label: "Số người bị thương do cháy, nổ (Người)"
+          - label: Số người bị thương do cháy, nổ (Người)
             count: 13
-          - label: "Tổng giá trị tài sản thiệt hại ước tính do cháy nổ (Tỷ đồng)"
+          - label: Tổng giá trị tài sản thiệt hại ước tính do cháy nổ (Tỷ đồng)
             count: 13
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 9
+        complete: true
+coverage:
+  temporal: [ 2012, 2024 ]
