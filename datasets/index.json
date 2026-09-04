@@ -1,5 +1,39 @@
 [
   {
+    "slug": "chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh",
+    "title": "Chỉ số biến động diện tích đất tự nhiên theo loại đất và địa phương, giai đoạn 2019-2023",
+    "description": "Dataset này cung cấp chỉ số biến động diện tích đất tự nhiên (đất sản xuất nông nghiệp, đất lâm nghiệp, đất chuyên dùng, đất ở) theo từng địa phương (tỉnh/thành phố, vùng kinh tế - xã hội) và toàn quốc, với các kỳ so sánh từ 2020/2019 đến 2023/2022.",
+    "category": "moi-truong",
+    "tags": [
+      "dat-dai",
+      "dien-tich",
+      "bien-dong",
+      "dia-phuong",
+      "nong-nghiep",
+      "lam-nghiep",
+      "dat-o"
+    ],
+    "uploaded_at": "2026-09-04T07:57:39.617Z",
+    "uploaded_by": "ninh",
+    "row_count": 284,
+    "file_count": 1,
+    "total_size_mb": 0.02,
+    "format": "csv",
+    "source": "Cục Thống kê (NSO)",
+    "source_url": "https://www.nso.gov.vn/",
+    "year_range": [
+      2019,
+      2023
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "009010d9-5741-4891-b3ce-1cedca7dd7bc/chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh.csv",
+        "size_mb": 0.02
+      }
+    ]
+  },
+  {
     "slug": "chi-ngan-sach-nha-nuoc",
     "title": "Chi ngân sách nhà nước Việt Nam giai đoạn 2005-2024",
     "description": "Dữ liệu chi ngân sách nhà nước Việt Nam theo các loại chi chính từ năm 2005 đến năm 2024. Bao gồm giá trị tuyệt đối (tỷ đồng) và cơ cấu phần trăm của từng loại chi.",
