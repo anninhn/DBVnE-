@@ -39,20 +39,66 @@ import re
 import sys
 import unicodedata
 from collections import Counter, OrderedDict
+from datetime import date, timedelta
 from pathlib import Path
 
+# Tiền tố NSO gắn vào nhãn năm. Xếp dài trước ngắn: "Ước tính" phải khớp trước
+# "Ước", nếu không thì phần " tính" còn lại làm cả biểu thức không khớp — đo thực
+# tế: cột "Ước tính 2024" khiến trục 7 giá trị chỉ đạt 6/7 = 0,857 < ngưỡng 0,9,
+# nên trục năm bị coi là phân tổ và mất luôn tên "Năm" (2 dataset ngân sách).
+YEAR_PREFIX = r"(?:Sơ bộ|So bo|Ước tính|Uoc tinh|Ước|Uoc|Dự báo|Du bao|Chính thức|Chinh thuc)"
 YEAR_RE = re.compile(
-    r"^(?P<pre>(?:Sơ bộ|So bo|Ước|Uoc|Dự báo)\s+)?(?P<year>(?:19|20)\d{2})(?P<post>\s*\(\*+\))?$"
+    rf"^(?P<pre>{YEAR_PREFIX}\s+)?(?P<year>(?:19|20)\d{{2}})(?P<post>\s*\(\*+\))?$"
 )
+# Mốc thời điểm dạng ngày: "31/12/2023". Không nhận thì trục này bị coi là phân
+# tổ, mất tên và lấn chỗ tên của chiều thật (3 dataset đất đai).
+DATE_RE = re.compile(r"^(\d{1,2})/(\d{1,2})/((?:19|20)\d{2})$")
+# Kỳ so sánh: "2023/2022" — chỉ số năm này so với năm trước.
+YOY_RE = re.compile(r"^(19|20)\d{2}\s*/\s*(19|20)\d{2}$")
 MONTH_RE = re.compile(r"^(0?[1-9]|1[0-2])$")
 # Năm học / năm tài khoá: "1995 -1996", "2005-2006", "Sơ bộ 2024-2025".
 # Không nhận dạng được thì trục năm bị coi là phân tổ và pivot thành 30 cột năm.
 YEAR_RANGE_RE = re.compile(
-    r"^(?:(?:Sơ bộ|So bo|Ước|Uoc)\s+)?(19|20)\d{2}\s*[-–]\s*(19|20)?\d{2}(\s*\(\*+\))?$"
+    rf"^(?:{YEAR_PREFIX}\s+)?(?P<a>(19|20)\d{{2}})\s*[-–]\s*(?P<b>(19|20)?\d{{2}})(\s*\(\*+\))?$"
 )
 MISSING = {"..", "...", "-", "…"}
 # Nhãn tổng chung chung — làm tên cột thì vô nghĩa, thay bằng tên chỉ tiêu ở tiêu đề
 GENERIC_TOTAL = {"tổng số", "tổng", "chung", "chỉ số chung", "tổng cộng", "toàn bộ"}
+
+
+# Ngày trong Excel là số ngày kể từ 30/12/1899. Khoảng 39000–50000 ≈ 2006–2036.
+EXCEL_EPOCH = date(1899, 12, 30)
+
+
+def excel_serial_to_date(v: str) -> str | None:
+    """
+    '44926' → '31/12/2022'.
+
+    Cổng NSO đôi khi xuất một ô ngày thành số serial thô. Để nguyên thì nó vào
+    kho làm TÊN CỘT là `44926` — đo thực tế 1 dataset (cơ cấu đất sử dụng), lẫn
+    giữa các cột `31/12/2018 … 31/12/2023`.
+    """
+    v = v.strip()
+    if not re.fullmatch(r"\d{5}", v):
+        return None
+    n = int(v)
+    if not 39000 <= n <= 50000:
+        return None
+    d = EXCEL_EPOCH + timedelta(days=n)
+    return f"{d.day:02d}/{d.month:02d}/{d.year}"
+
+
+def normalize_time_axis(vals: list[str]) -> list[str]:
+    """
+    Chữa serial Excel trong một trục — CHỈ khi trục đó thật sự là trục ngày.
+
+    Điều kiện "có ít nhất một ô đúng dạng ngày" là chốt chặn cần thiết: một trục
+    phân tổ bình thường cũng có thể chứa số 5 chữ số (dân số, số vụ), đổi nó
+    thành ngày là bịa dữ liệu.
+    """
+    if not any(DATE_RE.match(v.strip()) for v in vals):
+        return vals
+    return [excel_serial_to_date(v) or v for v in vals]
 
 
 def strip_accents(s: str) -> str:
@@ -117,7 +163,44 @@ def split_title(title: str) -> tuple[str, str]:
     return title[: m.start()].strip(), m.group(1).strip()
 
 
-TIME_DIM_WORDS = {"nam", "thang", "nam hoc", "ky", "quy"}
+TIME_DIM_WORDS = {"nam", "thang", "nam hoc", "ky", "quy", "giai doan", "thoi diem", "ky so sanh"}
+
+
+def year_range_name(vals: list[str]) -> str:
+    """
+    Phân biệt NIÊN KHOÁ với GIAI ĐOẠN — hai thứ khác nhau, cùng dạng "a-b".
+
+    "2020-2021" là năm học; "2011-2015" là giai đoạn 5 năm. Gán chung một tên là
+    nói sai về dữ liệu: đo thực tế, dataset TFP có cột `Năm học` chứa
+    2011-2015 / 2016-2020 / 2021-2023 trong khi tiêu đề gốc ghi rõ "chia theo
+    Giai đoạn".
+
+    Quy tắc: hai đầu liền năm nhau → niên khoá; cách nhau hơn một năm → giai đoạn.
+    """
+    for v in vals:
+        m = YEAR_RANGE_RE.match(v.strip())
+        if not m:
+            continue
+        a, b = m.group("a"), m.group("b")
+        end = int(b) if len(b) == 4 else int(a[:2] + b)
+        if end - int(a) != 1:
+            return "Giai đoạn"
+    return "Năm học"
+
+
+def reserved_name(kind: str, vals: list[str]) -> str | None:
+    """Tên cho trục thời gian, suy từ chính giá trị của trục — không lấy từ tiêu đề."""
+    if kind == "year":
+        return "Năm"
+    if kind == "month":
+        return "Tháng"
+    if kind == "date":
+        return "Thời điểm"
+    if kind == "year_over_year":
+        return "Kỳ so sánh"
+    if kind == "year_range":
+        return year_range_name(vals)
+    return None
 
 
 def split_dims(dim_clause: str, n_needed: int) -> list[str]:
@@ -169,6 +252,13 @@ def classify_axis(values: list[str]) -> str:
         return "other"
     if sum(1 for v in vals if YEAR_RE.match(v)) >= len(vals) * 0.9:
         return "year"
+    # Kiểm YOY TRƯỚC date: "2023/2022" không khớp DATE_RE nhưng để lẫn vào nhóm
+    # "other" thì trục này bị đem đặt tên bằng tên của chiều thật, và chiều thật
+    # rơi xuống fallback — đúng lỗi của dataset chỉ số biến động diện tích đất.
+    if sum(1 for v in vals if YOY_RE.match(v)) >= len(vals) * 0.9:
+        return "year_over_year"
+    if sum(1 for v in vals if DATE_RE.match(v)) >= len(vals) * 0.9:
+        return "date"
     if sum(1 for v in vals if YEAR_RANGE_RE.match(v)) >= len(vals) * 0.9:
         return "year_range"
     if len(vals) >= 6 and sum(1 for v in vals if MONTH_RE.match(v)) >= len(vals) * 0.9:
@@ -232,6 +322,11 @@ def build_with_pivot(
         measures = [clean_header(v) for v in raw_measures]
         if len(measures) == 1 and measures[0].lower() in GENERIC_TOTAL:
             measures = [short_measure(indicator)]
+        # Ô header TRỐNG → cột không có tên nào cả. Đo thực tế 7/495 dataset lên
+        # kho với một cột tên rỗng: dictionary hiện ô trắng, và AI của wizard phải
+        # tự mô tả "cột này có tên trống". Lấy tên chỉ tiêu ở tiêu đề thay vào —
+        # đó chính là thứ cột đó đang đo.
+        measures = [m or short_measure(indicator) for m in measures]
         measure_of = dict(zip(raw_measures, measures))
     else:
         measures = [short_measure(indicator)]
@@ -398,25 +493,40 @@ def transform(path: Path) -> dict:
         axes[f"group{d}"] = group_level_values[d]
     axes["label"] = [r[0].strip() for r in data_rows if r and r[0].strip()]
     for i, vals in enumerate(header_axes):
+        # Chữa tại chỗ: `axes` và `header_axes` dùng chung đúng một list, nên phải
+        # sửa chính list đó, không tạo bản mới — `put()` đọc từ `header_axes`.
+        vals[:] = normalize_time_axis(vals)
         axes[f"header{i}"] = vals
 
     kinds = {k: classify_axis(v) for k, v in axes.items()}
-    reserved = {"year": "Năm", "month": "Tháng", "year_range": "Năm học"}
 
     # Trục thời gian đặt tên theo NỘI DUNG, không lấy từ tiêu đề. Nên chỉ cần
     # tách tiêu đề ra đúng số trục còn lại — truyền tổng số trục sẽ khiến
     # split_dims cắt dư và sinh tên rác kiểu "Năm, Tỉnh".
-    n_other = sum(1 for k in axes if kinds[k] not in reserved)
-    dims = split_dims(dim_clause, n_other)
-
     names: dict[str, str] = {}
     for key in axes:
-        if kinds[key] in reserved:
-            names[key] = reserved[kinds[key]]
+        nm = reserved_name(kinds[key], axes[key])
+        if nm:
+            names[key] = nm
+
+    n_other = sum(1 for k in axes if k not in names)
+    dims = split_dims(dim_clause, n_other)
+
+    # Tiêu đề không đủ tên cho mọi trục → dùng "Phân tổ", KHÔNG dùng khoá nội bộ.
+    # Trước đây fallback là `key`, nên `label`/`header0`/`header1` lọt thẳng vào
+    # kho làm tên cột — đo thực tế 12/495 dataset. Người đọc mở data dictionary
+    # ra thấy cột tên `header0` thì không hiểu gì, mà cột đó vẫn là chiều thật.
+    # "Phân tổ" là từ NSO tự dùng trong các bảng khác của chính bộ dữ liệu này.
     pool = list(dims)
+    fallback_used = 0
     for key in axes:
-        if key not in names:
-            names[key] = pool.pop(0) if pool else key
+        if key in names:
+            continue
+        if pool:
+            names[key] = pool.pop(0)
+        else:
+            fallback_used += 1
+            names[key] = "Phân tổ" if fallback_used == 1 else f"Phân tổ {fallback_used}"
 
     # ── trục nào thành cột, trục nào thành dòng ───────────────────────────────
     #
