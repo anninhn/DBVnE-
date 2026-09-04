@@ -27,34 +27,38 @@ files:
     r2_key: "1330e162-53db-4ca4-b30f-f1e7b6bcc7ae/so-thue-bao-dien-thoai-va-internet.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [9, 6, 9, 6, 6, 9, 6, 9]
-      "Tổng số - Nghìn thuê bao":
+        histogram: [ 9, 6, 9, 6, 6, 9, 6, 9 ]
+      Tổng số - Nghìn thuê bao:
         kind: numeric
         min: 210
         max: 141229.8
-        histogram: [18, 6, 1, 1, 1, 2, 7, 24]
-      "Chỉ số phát triển (Năm trước =100) (%)":
+        histogram: [ 18, 6, 1, 1, 1, 2, 7, 24 ]
+      Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 91.1
         max: 250.5
-        histogram: [30, 16, 2, 3, 1, 1, 2, 2]
-      "Viễn thông":
+        histogram: [ 30, 16, 2, 3, 1, 1, 2, 2 ]
+      Viễn thông:
         kind: categorical
         distinct: 3
         segments:
-          - label: "Số thuê bao điện thoại"
+          - label: Số thuê bao điện thoại
             count: 20
-          - label: "Số thuê bao di động trong số thuê bao điện thoại"
+          - label: Số thuê bao di động trong số thuê bao điện thoại
             count: 20
-          - label: "Số thuê bao internet băng rộng cố định (ADSL)"
+          - label: Số thuê bao internet băng rộng cố định (ADSL)
             count: 20
-      "Ghi chú":
+        complete: true
+      Ghi chú:
         kind: categorical
         distinct: 1
         segments:
-          - label: "Sơ bộ"
+          - label: Sơ bộ
             count: 3
+        complete: true
+coverage:
+  temporal: [ 2005, 2024 ]
