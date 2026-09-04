@@ -27,41 +27,50 @@ files:
     r2_key: "f80ecf35-c7e9-4aaf-8ac1-fb66ca207711/chi-so-gia-san-xuat-dich-vu-nam-2010-100.csv"
     size_mb: 0.01
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [30, 15, 30, 15, 30, 15, 30, 30]
-      "Chỉ số giá sản xuất dịch vụ (Năm 2010 = 100)":
+        histogram: [ 30, 15, 30, 15, 30, 15, 30, 30 ]
+      Chỉ số giá sản xuất dịch vụ (Năm 2010 = 100):
         kind: numeric
         min: 99.43
         max: 592.99
-        histogram: [128, 31, 9, 2, 0, 0, 0, 1]
-      "Chỉ số giá sản xuất dịch vụ":
+        histogram: [ 128, 31, 9, 2, 0, 0, 0, 1 ]
+      Chỉ số giá sản xuất dịch vụ:
         kind: categorical
         distinct: 15
         segments:
-          - label: "CHỈ SỐ CHUNG"
+          - label: CHỈ SỐ CHUNG
             count: 13
-          - label: "Vận tải kho bãi (bao gồm bưu chính và chuyển phát)"
+          - label: Vận tải kho bãi (bao gồm bưu chính và chuyển phát)
             count: 13
-          - label: "Dịch vụ vận tải đường sắt, đường bộ"
+          - label: Dịch vụ vận tải đường sắt, đường bộ
             count: 13
-          - label: "Dịch vụ vận tải đường thủy"
+          - label: Dịch vụ vận tải đường thủy
             count: 13
-          - label: "Dịch vụ vận tải hàng không"
+          - label: Dịch vụ vận tải hàng không
             count: 13
-          - label: "Dịch vụ kho bãi và dịch vụ hỗ trợ vận tải."
+          - label: Dịch vụ kho bãi và dịch vụ hỗ trợ vận tải.
             count: 13
-          - label: "Dịch vụ lưu trú và ăn uống"
+          - label: Dịch vụ lưu trú và ăn uống
             count: 13
-          - label: "Thông tin và truyền thông"
+          - label: Thông tin và truyền thông
             count: 13
-          - label: "Hoạt động chuyên môn khoa học và công nghệ"
+          - label: Hoạt động chuyên môn khoa học và công nghệ
             count: 13
-          - label: "Hoạt động hành chính và dịch vụ hỗ trợ"
+          - label: Hoạt động hành chính và dịch vụ hỗ trợ
             count: 13
-          - label: "Giáo dục và đào tạo"
+          - label: Giáo dục và đào tạo
             count: 13
-          - label: "Y tế và hoạt động trợ giúp xã hội"
+          - label: Y tế và hoạt động trợ giúp xã hội
             count: 13
+          - label: Nghệ thuật, vui chơi và giải trí
+            count: 13
+          - label: Hoạt động dịch vụ khác
+            count: 13
+          - label: Hoạt động làm thuê các công việc trong các hộ gia đình
+            count: 13
+        complete: true
+coverage:
+  temporal: [ 2012, 2024 ]
