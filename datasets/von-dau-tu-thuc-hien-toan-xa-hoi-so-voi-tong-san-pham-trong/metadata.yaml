@@ -27,18 +27,20 @@ files:
     r2_key: "7b4805cb-d426-4335-acb1-c7be79a1559f/von-dau-tu-thuc-hien-toan-xa-hoi-so-voi-tong-san-pham-trong.csv"
     size_mb: 0
     column_stats:
-      "Năm":
+      Năm:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [2, 2, 1, 2, 2, 1, 2, 2]
-      "Vốn đầu tư thực hiện so với tổng sản phẩm trong nước theo giá thực tế (%)":
+        histogram: [ 2, 2, 1, 2, 2, 1, 2, 2 ]
+      Vốn đầu tư thực hiện so với tổng sản phẩm trong nước theo giá thực tế (%):
         kind: numeric
         min: 31.05
         max: 38.14
-        histogram: [3, 2, 2, 3, 4, 0, 0, 1]
-      "Hệ số ICOR theo giá so sánh 2010":
+        histogram: [ 3, 2, 2, 3, 4, 0, 0, 1 ]
+      Hệ số ICOR theo giá so sánh 2010:
         kind: numeric
         min: 4.82
         max: 15.57
-        histogram: [9, 2, 1, 0, 0, 0, 0, 2]
+        histogram: [ 9, 2, 1, 0, 0, 0, 0, 2 ]
+coverage:
+  temporal: [ 2010, 2023 ]
