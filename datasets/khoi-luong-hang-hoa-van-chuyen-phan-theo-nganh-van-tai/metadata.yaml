@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 24, 24, 18, 24, 24, 18, 24, 24 ]
+        distinct: 30
+        histogram: [ 24, 24, 24, 24, 24, 24, 24, 12 ]
       Giá trị (Nghìn tấn):
         kind: numeric
         min: 32
         max: 2575279.41
+        distinct: 180
         histogram: [ 136, 13, 10, 8, 5, 4, 2, 2 ]
       Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 61.01
         max: 152.4
+        distinct: 157
         histogram: [ 2, 2, 9, 49, 97, 11, 6, 4 ]
       Ngành:
         kind: categorical
