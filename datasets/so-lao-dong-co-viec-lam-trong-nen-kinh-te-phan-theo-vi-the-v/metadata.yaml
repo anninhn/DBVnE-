@@ -30,11 +30,30 @@ files:
         kind: numeric
         min: 2009
         max: 2024
-        histogram: [ 14, 14, 14, 14, 14, 14, 14, 14 ]
+        distinct: 16
+        values:
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ]
       Số lao động có việc làm trong nền kinh tế:
         kind: numeric
         min: 4.4
         max: 54659.2
+        distinct: 97
         histogram: [ 38, 11, 12, 18, 2, 0, 1, 15 ]
       Vị thế việc làm:
         kind: categorical
