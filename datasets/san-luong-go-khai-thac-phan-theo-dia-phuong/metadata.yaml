@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Sản lượng gỗ khai thác:
         kind: numeric
         min: 0
         max: 23968.3
+        distinct: 1317
         histogram: [ 2041, 17, 8, 7, 4, 3, 2, 2 ]
       Tỉnh, thành phố:
         kind: categorical
