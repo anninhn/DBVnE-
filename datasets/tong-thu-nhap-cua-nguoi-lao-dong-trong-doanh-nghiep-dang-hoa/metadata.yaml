@@ -32,11 +32,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 71, 0, 0, 142, 142, 71, 142, 142 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 71, 71, 71, 71, 71, 71, 71, 71, 71, 71 ]
       Tổng thu nhập của người lao động trong doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 249
         max: 2144310.2
+        distinct: 707
         histogram: [ 669, 20, 11, 2, 1, 2, 3, 2 ]
       Tỉnh/thành phố:
         kind: categorical
