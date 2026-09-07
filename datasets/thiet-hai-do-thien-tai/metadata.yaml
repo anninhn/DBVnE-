@@ -31,11 +31,28 @@ files:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [ 14, 14, 7, 14, 14, 7, 14, 14 ]
+        distinct: 14
+        values:
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ]
       Thiệt hại do thiên tai:
         kind: numeric
         min: 95
         max: 694619
+        distinct: 97
         histogram: [ 71, 14, 4, 4, 2, 0, 2, 1 ]
       Loại thiệt hại:
         kind: categorical
