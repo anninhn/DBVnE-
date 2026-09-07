@@ -31,36 +31,48 @@ files:
         kind: numeric
         min: 2021
         max: 2024
-        histogram: [ 34, 0, 34, 0, 0, 34, 0, 34 ]
+        distinct: 4
+        values:
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 34, 34, 34, 34 ]
       Tổng số:
         kind: numeric
         min: 1.022
         max: 983
+        distinct: 132
         histogram: [ 111, 0, 0, 7, 1, 0, 10, 7 ]
       Dưới 6m:
         kind: numeric
         min: 0
         max: 991
+        distinct: 91
         histogram: [ 94, 14, 2, 8, 5, 5, 2, 2 ]
       Từ 6m đến dưới 12m:
         kind: numeric
         min: 1.111
         max: 988
+        distinct: 134
         histogram: [ 83, 5, 13, 9, 2, 8, 2, 14 ]
       Từ 12m đến dưới 15m:
         kind: numeric
         min: 1.027
         max: 980
+        distinct: 129
         histogram: [ 41, 27, 15, 16, 9, 14, 11, 3 ]
       Từ 15m đến dưới 24m:
         kind: numeric
         min: 1
         max: 958
+        distinct: 123
         histogram: [ 68, 23, 11, 6, 12, 12, 3, 1 ]
       Từ 24m trở lên:
         kind: numeric
         min: 0
         max: 607
+        distinct: 79
         histogram: [ 100, 12, 12, 0, 0, 2, 9, 1 ]
       Tỉnh, thành phố:
         kind: categorical
