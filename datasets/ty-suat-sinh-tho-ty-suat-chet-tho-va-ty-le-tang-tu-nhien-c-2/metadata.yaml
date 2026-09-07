@@ -31,21 +31,25 @@ files:
         kind: numeric
         min: 2001
         max: 2024
+        distinct: 24
         histogram: [ 9, 9, 9, 9, 9, 9, 9, 9 ]
       Tỷ suất sinh thô:
         kind: numeric
         min: 12.8
         max: 19.9
+        distinct: 59
         histogram: [ 4, 7, 9, 16, 15, 11, 5, 5 ]
       Tỷ suất chết thô:
         kind: numeric
         min: 3.9
         max: 7.62
+        distinct: 50
         histogram: [ 2, 8, 5, 14, 14, 5, 14, 10 ]
       Tỷ lệ tăng tự nhiên:
         kind: numeric
         min: 7.56
         max: 14.2
+        distinct: 56
         histogram: [ 10, 8, 17, 11, 10, 6, 5, 5 ]
       Thành thị/nông thôn:
         kind: categorical
