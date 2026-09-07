@@ -13,3 +13,8 @@ tsconfig.tsbuildinfo
 # Claude Code local state — không commit (worktrees là embedded git repo)
 .claude/worktrees/
 .claude/settings.local.json
+
+# Tài liệu cá nhân — `git add -A` từng quét nguyên một đơn ứng tuyển .docx vào
+# repo (commit acc3d70, đã bỏ ra). Repo này chỉ chứa metadata text + code.
+*.docx
+Documents/
