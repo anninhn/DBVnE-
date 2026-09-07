@@ -27,65 +27,66 @@ files:
     r2_key: "14a9f962-6e1d-4229-a418-7cc736844f95/ty-le-nguoi-su-dung-dien-thoai-di-dong-phan-theo-thanh-thi-2.csv"
     size_mb: 0
     column_stats:
-      "Tỷ lệ người sử dụng điện thoại di động":
+      Tỷ lệ người sử dụng điện thoại di động:
         kind: numeric
         min: 11
         max: 98
-        histogram: [1, 1, 0, 0, 1, 1, 11, 11]
-      "Phân tổ":
+        distinct: 17
+        histogram: [ 1, 1, 0, 0, 1, 1, 11, 11 ]
+      Phân tổ:
         kind: categorical
         distinct: 26
-        complete: true
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 1
-          - label: "Thành thị"
+          - label: Thành thị
             count: 1
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 1
-          - label: "Nam"
+          - label: Nam
             count: 1
-          - label: "Nữ"
+          - label: Nữ
             count: 1
-          - label: "Dưới 6 tuổi"
+          - label: Dưới 6 tuổi
             count: 1
-          - label: "6-11 tuổi"
+          - label: 6-11 tuổi
             count: 1
-          - label: "12-15 tuổi"
+          - label: 12-15 tuổi
             count: 1
-          - label: "16 - 18 tuổi"
+          - label: 16 - 18 tuổi
             count: 1
-          - label: "19 - 24 tuổi"
+          - label: 19 - 24 tuổi
             count: 1
-          - label: "25 - 29 tuổi"
+          - label: 25 - 29 tuổi
             count: 1
-          - label: "30 - 34 tuổi"
+          - label: 30 - 34 tuổi
             count: 1
-          - label: "35 - 39 tuổi"
+          - label: 35 - 39 tuổi
             count: 1
-          - label: "40 - 44 tuổi"
+          - label: 40 - 44 tuổi
             count: 1
-          - label: "45 - 49 tuổi"
+          - label: 45 - 49 tuổi
             count: 1
-          - label: "50 - 54 tuổi"
+          - label: 50 - 54 tuổi
             count: 1
-          - label: "55 - 59 tuổi"
+          - label: 55 - 59 tuổi
             count: 1
-          - label: "60+ tuổi"
+          - label: 60+ tuổi
             count: 1
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 1
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 1
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 1
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 1
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 1
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 1
-          - label: "Điện thoại thường"
+          - label: Điện thoại thường
             count: 1
-          - label: "Điện thoại thông minh"
+          - label: Điện thoại thông minh
             count: 1
+        complete: true
