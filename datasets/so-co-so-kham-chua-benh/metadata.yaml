@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 1995
         max: 2017
-        histogram: [ 21, 21, 21, 14, 21, 21, 21, 21 ]
+        distinct: 23
+        histogram: [ 21, 21, 21, 21, 21, 21, 21, 14 ]
       Cơ sở:
         kind: numeric
         min: 29
         max: 13617
+        distinct: 130
         histogram: [ 111, 0, 0, 0, 0, 5, 18, 22 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 68.8
         max: 134.1
+        distinct: 79
         histogram: [ 1, 5, 11, 112, 25, 1, 0, 1 ]
       Loại cơ sở:
         kind: categorical
