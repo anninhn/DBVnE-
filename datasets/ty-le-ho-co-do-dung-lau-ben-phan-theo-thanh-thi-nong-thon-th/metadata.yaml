@@ -31,12 +31,36 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 28, 14, 28, 14, 14, 28, 14, 28 ]
+        distinct: 12
+        values:
+          - 2002
+          - 2004
+          - 2006
+          - 2008
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2020
+          - 2022
+          - 2024
+        histogram: [ 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14 ]
       Tỷ lệ hộ có đồ dùng lâu bền:
         kind: numeric
         min: 91
         max: 100
-        histogram: [ 1, 0, 1, 1, 3, 4, 11, 129 ]
+        distinct: 8
+        values:
+          - 91
+          - 94
+          - 95
+          - 96
+          - 97
+          - 98
+          - 99
+          - 100
+        histogram: [ 1, 1, 1, 3, 4, 11, 26, 103 ]
       Phân tổ:
         kind: categorical
         distinct: 14
