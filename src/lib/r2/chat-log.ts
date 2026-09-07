@@ -21,16 +21,28 @@ import { getR2Bucket, getR2Client } from "./client";
 
 const CHAT_LOG_PREFIX = "logs/chat";
 
-/** Per-user rate limit — Gemini free tier 15 RPM global, 1500 RPD. */
-export const RATE_LIMIT_PER_USER_PER_DAY = 100;
+/**
+ * Hạn mức mỗi người mỗi ngày (FR-054).
+ *
+ * Nâng 100 → 500 sau khi chi phí mỗi câu hỏi giảm từ ~202.000 token xuống ~8.200
+ * (spec 005, US2). Hạn mức 100 được đặt khi mỗi câu hỏi nạp toàn bộ kho — nó là
+ * hệ quả của chi phí đó, không phải của việc phóng viên nên hỏi bao nhiêu. Giữ
+ * nguyên sau khi chi phí giảm 25 lần là bắt người dùng trả giá cho một giới hạn
+ * đã hết lý do tồn tại.
+ */
+export const RATE_LIMIT_PER_USER_PER_DAY = 500;
 
 /**
- * Hard limit global queries/day across all users — 80% của Gemini free tier 1500 RPD,
- * buffer 300 cho eval script + retry + dev testing. Route check trước khi call Gemini,
- * exceed → HTTP 429. Race condition overshoot có thể xảy ra (read-then-write) — acceptable
- * cho low traffic internal newsroom.
+ * Hạn mức toàn hệ thống mỗi ngày (FR-054).
+ *
+ * Nâng 1.200 → 5.000. Mốc 1.200 là 80% của free tier Gemini (1.500 request/ngày);
+ * mốc mới giả định key trả tiền, và ở mức ~8.200 token mỗi câu hỏi thì 5.000 câu
+ * là khoảng 41 triệu token đầu vào một ngày.
+ *
+ * Route chặn TRƯỚC khi gọi model. Đua đọc-rồi-ghi có thể làm vượt vài đơn vị —
+ * chấp nhận được với lưu lượng của một toà soạn.
  */
-export const GLOBAL_QUOTA_HARD_LIMIT = 1200;
+export const GLOBAL_QUOTA_HARD_LIMIT = 5000;
 
 export interface ChatLogEntry {
   id: string;
@@ -41,7 +53,25 @@ export interface ChatLogEntry {
   datasets_cited: string[]; // slugs
   thumbs: "up" | "down" | null;
   feedback_text?: string;
+  /** Tổng thời gian từ lúc nhận request tới lúc stream xong */
   latency_ms: number;
+  /**
+   * Thời gian tới **chữ đầu tiên** người dùng thấy.
+   *
+   * Đây mới là con số SC-012 đặt trần 4 giây. Trước đây log chỉ có `latency_ms`
+   * (tổng thời gian), nên điều kiện đó KHÔNG đo được — và khi đo tay ra
+   * 6,6–10,0s thì tiêu chí đã vượt trần suốt mà không ai thấy.
+   */
+  ttfb_ms?: number;
+  /**
+   * `false` = không parse được JSON của model.
+   *
+   * Cần cờ riêng vì `datasets_cited: []` gộp hai chuyện khác nhau: model nói
+   * "kho chưa có dataset" (đúng) và server không đọc được câu trả lời (lỗi). Đếm
+   * chung thì tỉ lệ "không cite" vô nghĩa — đo ngày 2026-09-04: 19 lượt không
+   * cite, ít nhất 4 lượt thực ra là parse thất bại.
+   */
+  parse_ok?: boolean;
 }
 
 interface DailyQuota {
@@ -178,7 +208,7 @@ export async function incrementDailyQuota(): Promise<number> {
     // >= HARD_LIMIT nhưng read-then-write race có thể làm count vượt vài đơn vị).
     if (next.count >= GLOBAL_QUOTA_HARD_LIMIT) {
       console.warn(
-        `[chat-log] Global daily quota reached ${next.count} (hard limit ${GLOBAL_QUOTA_HARD_LIMIT}). Gemini free tier 1500 RPD approach — consider upgrade hoặc fallback provider.`,
+        `[chat-log] Đã chạm hạn mức toàn hệ thống: ${next.count}/${GLOBAL_QUOTA_HARD_LIMIT} câu hôm nay.`,
       );
     }
     return next.count;

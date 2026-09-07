@@ -6,6 +6,8 @@ export const maxDuration = 30;
 
 import { getObjectMetadata } from "@/lib/r2/get";
 import { getMetadataYaml } from "@/lib/datasets/read";
+import { detectTemporalRange } from "@/lib/datasets/temporal";
+import { syncDatasetIndexes } from "@/lib/retrieval/build";
 import { slugify, isValidSlug } from "@/lib/slugify";
 import {
   commitMetadata,
@@ -154,6 +156,10 @@ export async function POST(req: NextRequest) {
       row_count: metadata.row_count,
       columns_count: metadata.columns_count,
       column_stats: column_stats,
+      // Khoảng thời gian suy từ chính dữ liệu (FR-047). Không suy từ tiêu đề:
+      // tiêu đề ghi "2005-2024" mà dữ liệu chỉ tới 2013 thì bộ lọc theo năm sẽ
+      // trả về dataset không có năm người dùng cần, và họ không có cách nào biết.
+      coverage_temporal: detectTemporalRange(column_stats ?? {}) ?? undefined,
       // GeoJSON-only fields — undefined cho tabular, render helper tự skip
       feature_count: metadata.feature_count,
       geometry_type: metadata.geometry_type,
@@ -199,6 +205,11 @@ export async function POST(req: NextRequest) {
   // Invalidate listing cache — homepage refresh ngay < 1s sau upload.
   // Next.js 16: profile={expire:0} cho route handler = expire immediately.
   revalidateTag("datasets", { expire: 0 });
+
+  // Sinh vector + entry chỉ mục giá trị cho DUY NHẤT dataset vừa upload (FR-032).
+  // Phải sau `revalidateTag`: hàm này đọc lại metadata qua `getDatasetBySlug` (cache
+  // 60s) — không xoá cache trước thì nó đọc phải bản chưa có dataset này.
+  await syncDatasetIndexes(slug);
 
   return NextResponse.json({
     slug,

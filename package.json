@@ -22,6 +22,7 @@
     "cheerio": "^1.2.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.24.0",
+    "minisearch": "^7.2.0",
     "next": "16.2.11",
     "next-auth": "5.0.0-beta.32",
     "nextjs-toploader": "^3.9.17",

@@ -69,11 +69,14 @@ const INCLUDE_DELETED = process.argv.includes("--include-deleted");
  *
  *   logs/chat/<ngày>.json          — src/lib/r2/chat-log.ts
  *   logs/chat/_quota/<ngày>.json   — bộ đếm quota theo ngày
+ *   logs/retrieval/<ngày>.json     — src/lib/retrieval/audit.ts
  *   _counters/<slug>.json          — đếm lượt download
+ *   _index/retrieval.json          — chỉ mục tìm kiếm, src/lib/retrieval/store.ts
+ *   _index/values.json             — chỉ mục giá trị
  *
  * Thêm tính năng nào ghi thẳng vào R2 thì phải khai prefix ở đây.
  */
-const PROTECTED_PREFIXES = ["logs/", "_counters/"];
+const PROTECTED_PREFIXES = ["logs/", "_counters/", "_index/"];
 
 const isProtectedKey = (key) =>
   PROTECTED_PREFIXES.some((prefix) => key.startsWith(prefix));

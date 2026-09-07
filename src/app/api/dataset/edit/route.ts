@@ -7,6 +7,7 @@ import { commitMetadata } from "@/lib/dataset-commit";
 import { requireUserOr401 } from "@/lib/auth";
 import { injectEdited, mergeAuthFields } from "@/lib/auth/inject-actor";
 import { getMetadataYamlRaw } from "@/lib/datasets/read";
+import { syncDatasetIndexes } from "@/lib/retrieval/build";
 
 interface EditRequest {
   slug: string;
@@ -80,6 +81,12 @@ export async function POST(req: NextRequest) {
     // Invalidate listing cache — homepage refresh ngay < 1s sau edit.
     // Next.js 16: profile={expire:0} cho route handler = expire immediately.
     revalidateTag("datasets", { expire: 0 });
+
+    // Ghi lại vector + entry chỉ mục giá trị của DUY NHẤT dataset này (FR-033).
+    // Phải sau `revalidateTag`: hàm này đọc lại metadata qua `getDatasetBySlug`, mà
+    // nó có cache 60s — không xoá cache trước thì nó dựng chỉ mục từ bản CŨ, tức là
+    // tự tạo ra đúng cái lệch mà nó tồn tại để ngăn.
+    await syncDatasetIndexes(slug);
 
     return NextResponse.json({
       success: true,

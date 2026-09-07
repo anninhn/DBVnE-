@@ -1,170 +1,146 @@
 /**
- * Flatten metadata + dictionary của tất cả datasets → 1 text block cho LLM context.
+ * Dựng khối mô tả dataset cho model đọc.
  *
- * Discovery Chat (Phase 2 spec 2026-07-24) gửi flatten text cho Gemini cùng câu hỏi
- * của user. LLM đọc metadata + dictionary → trả lời + cite dataset cụ thể.
+ * Trước spec 005, file này nạp **toàn bộ** kho vào mỗi câu hỏi: liệt kê thư mục
+ * `datasets/`, rồi đọc `metadata.yaml` + `dictionary.md` của từng slug — hơn 1.000
+ * lượt gọi GitHub API và ~200.000 token cho một câu hỏi ở 495 dataset. Chi phí đó
+ * tăng tuyến tính theo số dataset, nên nó không phải chuyện tối ưu mà là chuyện hệ
+ * thống ngừng hoạt động ở vài nghìn dataset (US2).
  *
- * Pattern: tái sửing GitHub Contents API fetch (list.ts + read.ts).
- * Output ~300-400 tokens/dataset — fits Gemini 2.5 Flash context (1M tokens/day free tier).
- *
- * In-memory cache 60s để tránh refetch trong burst (nhiều query liên tiếp).
- * Cache invalidate tự động — đủ fresh cho chat, cheap cho R2/GitHub.
+ * Nay chỉ dựng khối cho **danh sách dataset nhận vào** — do `searchDatasets` chọn
+ * ra. Đường nạp toàn bộ đã xoá hẳn, không để lại làm tuỳ chọn: còn để đó thì sớm
+ * muộn có chỗ gọi lại nó.
  */
 
-import { parse as parseYaml } from "yaml";
-import type { MetadataYaml } from "@/lib/datasets/types";
-import {
-  fetchFileContents,
-  listFolderEntries,
-} from "@/lib/github/contents-api";
-import { parseDictionaryMarkdown } from "@/lib/datasets/read";
-import type { DataDictionaryEntry, Dataset } from "@/lib/types/dataset";
+import type { DatasetColumn, DatasetDetail } from "@/lib/retrieval/types";
+import type { Dataset } from "@/lib/types/dataset";
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Cache
-// ──────────────────────────────────────────────────────────────────────────────
+/** Cap số cột in ra, tránh dataset rất rộng chiếm hết chỗ của các dataset khác. */
+const MAX_COLUMNS = 30;
 
-const CACHE_TTL_MS = 60_000; // 1 phút
-let _cache: { text: string; at: number } | null = null;
+/** Số chỗ chứa giá trị được liệt kê làm ví dụ. Con số TỔNG vẫn nói đầy đủ. */
+const VALUE_SAMPLE = 6;
 
-/** Clear cache — cho eval script refresh giữa các run */
-export function clearFlattenCache(): void {
-  _cache = null;
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
-// Helpers
-// ──────────────────────────────────────────────────────────────────────────────
-
-async function listSlugs(): Promise<string[]> {
-  const entries = await listFolderEntries("datasets");
-  return entries.filter((e) => e.type === "dir").map((e) => e.name);
-}
-
-async function fetchRaw(path: string): Promise<string | null> {
-  return (await fetchFileContents(path))?.content ?? null;
-}
-
-// ──────────────────────────────────────────────────────────────────────────────
-// Formatter — text compact, signal-rich cho LLM
-// ──────────────────────────────────────────────────────────────────────────────
-
-const MAX_COLUMNS = 30; // cap columns tránh token bloat cho dataset wide
-
-function formatDataset(
-  slug: string,
-  meta: MetadataYaml,
-  dict: DataDictionaryEntry[],
+/**
+ * Khối giá trị tra được từ chỉ mục nghịch đảo.
+ *
+ * Đây là **dữ kiện**, không phải gợi ý: `Đà Nẵng` có ở 176 dataset là chuyện tra
+ * được đúng/sai, không phải chuyện tương đồng ngữ nghĩa. Khối này tồn tại vì tìm
+ * kiếm bằng vector KHÔNG trả lời được câu "có dữ liệu gì về Đà Nẵng" — đo thực
+ * tế cosine cao nhất chỉ 0,613, thấp hơn cả câu hỏi vô quan.
+ */
+export function buildValueBlock(
+  matches: {
+    display: string;
+    variants: string[];
+    datasetCount: number;
+    datasets: { slug: string; title: string; column: string }[];
+  }[],
+  partialColumnCount: number,
 ): string {
-  const lines: string[] = [];
-  lines.push(`### ${meta.title}`);
-  lines.push(`slug: \`${slug}\``);
+  if (matches.length === 0) return "";
 
-  if (meta.description) lines.push(`Mô tả: ${meta.description}`);
-  if (meta.category) lines.push(`Danh mục: ${meta.category}`);
-  if (meta.tags?.length) lines.push(`Tags: ${meta.tags.join(", ")}`);
-  if (meta.format) lines.push(`Định dạng: ${meta.format}`);
-  if (meta.row_count) lines.push(`Số dòng: ${meta.row_count}`);
-  if (meta.coverage?.temporal?.length) {
-    lines.push(`Phạm vi thời gian: ${meta.coverage.temporal.join(", ")}`);
-  }
-  if (meta.coverage?.geographic) {
-    lines.push(`Phạm vi địa lý: ${meta.coverage.geographic}`);
-  }
-  if (meta.feature_count) lines.push(`Số features: ${meta.feature_count}`);
-  if (meta.geometry_type) lines.push(`Geometry: ${meta.geometry_type}`);
-  if (meta.page_count) lines.push(`Số trang: ${meta.page_count}`);
-  if (meta.duration_seconds) {
-    lines.push(`Thời lượng: ${Math.round(meta.duration_seconds / 60)} phút`);
-  }
-  if (meta.key_findings) lines.push(`Tóm tắt: ${meta.key_findings}`);
-  if (meta.source) {
-    const src =
-      typeof meta.source === "string" ? meta.source : meta.source.name;
-    if (src) lines.push(`Nguồn: ${src}`);
-  }
-
-  // Dictionary entries — column signal quan trọng nhất cho LLM matching
-  // ("có data gì về dân số theo tỉnh" match `dan_so` column)
-  if (dict.length > 0) {
-    lines.push("Các cột/trường dữ liệu:");
-    for (const entry of dict.slice(0, MAX_COLUMNS)) {
-      const parts = [`  - \`${entry.column_name}\``];
-      if (entry.data_type) parts.push(`(${entry.data_type})`);
-      if (entry.unit && entry.unit !== "-") parts.push(`[${entry.unit}]`);
-      if (entry.description) parts.push(`— ${entry.description}`);
-      lines.push(parts.join(" "));
+  const lines: string[] = [
+    "GIÁ TRỊ TRA ĐƯỢC TRONG DỮ LIỆU (tra chỉ mục, KHÔNG phải suy đoán):",
+  ];
+  for (const m of matches) {
+    const others = m.variants.filter((v) => v !== m.display);
+    lines.push(
+      `  - "${m.display}" — CÓ THẬT trong ${m.datasetCount} dataset ` +
+        `(${m.datasets.length} cột)` +
+        (others.length ? `. Cách viết khác trong dữ liệu: ${others.join(", ")}` : ""),
+    );
+    for (const d of m.datasets.slice(0, VALUE_SAMPLE)) {
+      lines.push(`      · ${d.title} (\`${d.slug}\`) — cột \`${d.column}\``);
     }
-    if (dict.length > MAX_COLUMNS) {
-      lines.push(`  - (và ${dict.length - MAX_COLUMNS} cột khác)`);
+    if (m.datasets.length > VALUE_SAMPLE) {
+      lines.push(`      · … và ${m.datasets.length - VALUE_SAMPLE} chỗ khác`);
+    }
+  }
+  lines.push(
+    "TUYỆT ĐỐI KHÔNG nói kho chưa có dữ liệu về các giá trị trên — chúng đã được " +
+      "tra ra trong dữ liệu thật.",
+  );
+  if (partialColumnCount > 0) {
+    lines.push(
+      `Ngoài ra còn ${partialColumnCount} cột có quá nhiều giá trị nên chưa tra hết — ` +
+        "nếu người hỏi nêu một giá trị KHÔNG có trong khối trên thì nói \"chưa tra hết\", " +
+        "không nói \"không có\".",
+    );
+  }
+  return lines.join("\n");
+}
+
+function formatColumn(col: DatasetColumn): string {
+  const parts = [`  - \`${col.name}\``];
+  if (col.type) parts.push(`(${col.type})`);
+  if (col.unit && col.unit !== "-") parts.push(`[${col.unit}]`);
+  if (col.description) parts.push(`— ${col.description}`);
+  return parts.join(" ");
+}
+
+/** Một dataset ứng viên — mô tả gọn, đủ để model quyết định nó có hợp không. */
+function formatCandidate(d: DatasetDetail): string {
+  const lines: string[] = [];
+  lines.push(`### ${d.title}`);
+  lines.push(`slug: \`${d.slug}\``);
+  if (d.description) lines.push(`Mô tả: ${d.description}`);
+  if (d.category) lines.push(`Danh mục: ${d.category}`);
+  if (d.rowCount) lines.push(`Số dòng: ${d.rowCount}`);
+  // Không có chiều thời gian thì KHÔNG in dòng nào — in "không rõ" cũng là một
+  // khẳng định, và model sẽ nhắc lại nó như thể đã kiểm (FR-048).
+  if (d.yearRange) {
+    lines.push(
+      d.yearRange.from === d.yearRange.to
+        ? `Phạm vi thời gian: ${d.yearRange.from}`
+        : `Phạm vi thời gian: ${d.yearRange.from}–${d.yearRange.to}`,
+    );
+  }
+  if (d.source) lines.push(`Nguồn: ${d.source}`);
+
+  if (d.columns.length > 0) {
+    lines.push("Các cột/trường dữ liệu:");
+    for (const col of d.columns.slice(0, MAX_COLUMNS)) lines.push(formatColumn(col));
+    if (d.columns.length > MAX_COLUMNS) {
+      lines.push(`  - (và ${d.columns.length - MAX_COLUMNS} cột khác)`);
     }
   }
 
   return lines.join("\n");
 }
 
-// ──────────────────────────────────────────────────────────────────────────────
-// Public API
-// ──────────────────────────────────────────────────────────────────────────────
-
 /**
- * Flatten tất cả datasets (metadata + dictionary) thành 1 text block cho LLM.
+ * Khối ứng viên gửi cho model.
  *
- * Skip soft-deleted + datasets thiếu title. Cache 60s trong memory.
- * Trả text intro + blocks dataset cách nhau bởi `---`.
+ * Nói rõ đây là **ứng viên đã lọc**, không phải cả kho: model không được suy ra
+ * "kho chỉ có bấy nhiêu dataset" từ danh sách này, và cũng không được cho rằng
+ * dataset đầu bảng là câu trả lời chỉ vì nó đứng đầu.
  */
-export async function flattenAllDatasets(): Promise<string> {
-  if (_cache && Date.now() - _cache.at < CACHE_TTL_MS) {
-    return _cache.text;
+export function buildCandidateBlock(
+  datasets: DatasetDetail[],
+  opts?: { total?: number; valueSorted?: boolean },
+): string {
+  if (datasets.length === 0) {
+    return "(Không tìm thấy dataset nào liên quan tới câu hỏi này trong kho.)";
   }
 
-  const slugs = await listSlugs();
-  if (slugs.length === 0) {
-    const empty = "(Hiện chưa có dataset nào trong kho.)";
-    _cache = { text: empty, at: Date.now() };
-    return empty;
-  }
+  const header =
+    `DATASET ỨNG VIÊN (${datasets.length} dataset liên quan nhất` +
+    (opts?.total && opts.total > datasets.length ? ` trong ${opts.total} dataset khớp` : "") +
+    `, xếp theo mức liên quan giảm dần — KHÔNG phải toàn bộ kho):`;
 
-  const results = await Promise.allSettled(
-    slugs.map(async (slug) => {
-      const [yamlText, dictText] = await Promise.all([
-        fetchRaw(`datasets/${slug}/metadata.yaml`),
-        fetchRaw(`datasets/${slug}/dictionary.md`),
-      ]);
-      if (!yamlText) return null;
-      let meta: MetadataYaml;
-      try {
-        meta = parseYaml(yamlText) as MetadataYaml;
-      } catch {
-        return null;
-      }
-      if (!meta?.title || meta.status === "deleted") return null;
-      const dict = dictText ? parseDictionaryMarkdown(dictText) : [];
-      return formatDataset(slug, meta, dict);
-    }),
-  );
+  // Nói rõ danh sách đã được xếp lại theo giá trị tra được — nếu không, model
+  // thấy thứ tự khác thứ tự "liên quan nhất" mà không hiểu vì sao.
+  const note = opts?.valueSorted
+    ? "\nDanh sách đã xếp lại: dataset CHỨA các giá trị tra được ở khối trên lên trước."
+    : "";
 
-  const blocks = results
-    .filter(
-      (r): r is PromiseFulfilledResult<string | null> => r.status === "fulfilled",
-    )
-    .map((r) => r.value)
-    .filter((b): b is string => b !== null);
-
-  const text =
-    blocks.length > 0
-      ? `DANH SÁCH DATASET TRONG KHO VnExpress (${blocks.length} datasets):\n\n${blocks.join("\n\n---\n\n")}`
-      : "(Hiện chưa có dataset nào hợp lệ trong kho.)";
-
-  _cache = { text, at: Date.now() };
-  return text;
+  return `${header}${note}\n\n${datasets.map(formatCandidate).join("\n\n---\n\n")}`;
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
 // FOCUS block — Discovery Chat attach dataset
 // ──────────────────────────────────────────────────────────────────────────────
-
-const FOCUS_SAMPLE_ROWS = 5; // sample rows bổ trợ minh họa, không phải primary context
 
 /**
  * Build FOCUS block cho Discovery Chat khi user attach dataset cụ thể (click
@@ -172,15 +148,20 @@ const FOCUS_SAMPLE_ROWS = 5; // sample rows bổ trợ minh họa, không phải
  *
  * Format tương tự `formatDataset` NHƯNG:
  * - Toàn bộ data dictionary (không cap MAX_COLUMNS) — AI cần columns đầy đủ để
- *   trả lời chính xác, không phụ thuộc sample rows.
+ *   trả lời chính xác.
  * - Có marker `🎯 FOCUS DATASET` để system prompt nhận biết priority.
- * - Kèm 5 sample rows đầu (nếu có structured_data) — CHỈ bổ trợ minh họa data
- *   shape/value pattern. Nếu structured_data null (file quá lớn) → block vẫn
- *   đủ metadata + dictionary để AI trả lời chính xác.
+ * - Kèm **danh sách giá trị** của các cột phân loại, thay cho dữ liệu mẫu.
+ *
+ * Vì sao bỏ dữ liệu mẫu: 5 dòng đầu của một file là mẫu **không đại diện** —
+ * dữ liệu thống kê hầu hết sắp theo thời gian hoặc theo địa bàn, nên 5 dòng đầu
+ * chỉ có một năm và vài tỉnh. Model đọc chúng rồi kết luận về cả dataset:
+ * "dataset này có Hà Nội, Hải Phòng..." trong khi nó có đủ 63 tỉnh, hoặc tệ hơn
+ * là "không có Đà Nẵng". Danh sách giá trị đi kèm cờ đầy-đủ/bị-cắt trả lời đúng
+ * câu đó, và ngắn hơn.
  */
 export function buildFocusBlock(
   dataset: Dataset,
-  sampleRows?: Record<string, string | number | boolean | null>[],
+  valueColumns?: DatasetColumn[],
 ): string {
   const lines: string[] = [];
   lines.push("🎯 FOCUS DATASET (user đã chọn — ưu tiên trả lời dựa trên dataset này):");
@@ -222,25 +203,20 @@ export function buildFocusBlock(
     }
   }
 
-  // Sample rows — CHỈ bổ trợ minh họa, KHÔNG bắt buộc để trả lời
-  const rows = sampleRows?.slice(0, FOCUS_SAMPLE_ROWS) ?? [];
-  if (rows.length > 0) {
-    const headers = dataset.data_dictionary.length > 0
-      ? dataset.data_dictionary.map((d) => d.column_name)
-      : Object.keys(rows[0]);
-    lines.push(`DỮ LIỆU MẪU (${rows.length} dòng đầu — chỉ bổ trợ minh họa):`);
-    lines.push(`| ${headers.join(" | ")} |`);
-    lines.push(`| ${headers.map(() => "---").join(" | ")} |`);
-    for (const row of rows) {
-      const cells = headers.map((h) => {
-        const v = row[h];
-        if (v == null) return "";
-        return String(v).replace(/\|/g, "\\|").replace(/\n/g, " ");
-      });
-      lines.push(`| ${cells.join(" | ")} |`);
+  // Danh sách giá trị của các chiều phân loại — thay cho dữ liệu mẫu.
+  const categorical = (valueColumns ?? []).filter((c) => c.values);
+  if (categorical.length > 0) {
+    lines.push("GIÁ TRỊ CỦA CÁC CỘT PHÂN LOẠI:");
+    for (const col of categorical) {
+      const v = col.values!;
+      // Nhãn phải nằm NGAY cạnh danh sách, không nằm ở chú thích cuối khối:
+      // model đọc tới đâu kết luận tới đó, và "bị cắt" là thông tin quyết định
+      // câu trả lời có được phép nói "không có" hay không.
+      const flag = v.complete
+        ? `${v.total} giá trị, ĐẦY ĐỦ`
+        : `${v.total} giá trị, DANH SÁCH BỊ CẮT còn ${v.list.length} — KHÔNG được kết luận "không có" từ danh sách này`;
+      lines.push(`  - \`${col.name}\` (${flag}): ${v.list.join(", ")}`);
     }
-  } else {
-    lines.push("DỮ LIỆU MẪU: (không có sample rows — dựa vào metadata + dictionary ở trên)");
   }
 
   return lines.join("\n");

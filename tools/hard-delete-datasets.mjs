@@ -125,6 +125,57 @@ async function pruneIndex(removed) {
   return list.length - kept.length;
 }
 
+const AUDIT_PATH = "datasets/_audit/delete.log";
+
+/**
+ * Ghi vết xoá vào `datasets/_audit/delete.log` — cùng file mà route soft delete ghi.
+ *
+ * Vì sao script này phải tự ghi: nó xoá thẳng GitHub + R2, không đi qua
+ * `/api/dataset/delete`, nên `appendDeleteAudit` không bao giờ chạy. Trước khi có
+ * hàm này, mọi lượt hard delete đều không để lại dòng nào trong log — đo thực tế
+ * 2026-09-04: 7 dataset bị xoá hẳn, log không có dòng nào.
+ *
+ * Vết vẫn còn trong git history (mỗi lượt xoá là một commit), nhưng log tồn tại
+ * đúng để không phải đi đọc git log mới biết ai xoá gì. Log không phản ánh đúng
+ * thì nó tệ hơn không có log: người đọc tin nó là đầy đủ.
+ *
+ * Đánh dấu `hard delete` ở cột lý do để phân biệt với soft delete — hai việc khác
+ * nhau về mức không hoàn tác được, và người đọc log cần thấy ngay.
+ */
+async function appendDeleteLog(targets) {
+  // Hạ chữ thường: route soft delete ghi `user.username` (đã là chữ thường), còn
+  // `PLATFORM_USER` trong .env.local người ta gõ hoa. Hai cách viết cho cùng một
+  // người làm log không lọc được theo user — mà đó gần như là việc duy nhất người
+  // ta làm với file này.
+  const who = (process.env.PLATFORM_USER || process.env.USER || "unknown").toLowerCase();
+  const iso = new Date().toISOString();
+  const lines = targets
+    .map((t) => `${iso} | ${who} | ${t.slug} | hard delete (tools/hard-delete-datasets.mjs)`)
+    .join("\n") + "\n";
+
+  let existing = "";
+  let sha;
+  try {
+    const cur = await readFileJson(AUDIT_PATH);
+    existing = cur.text;
+    sha = cur.sha;
+  } catch {
+    // Chưa có file — tạo mới. Không bọc try quanh cả hàm: ghi log THẤT BẠI phải
+    // báo ra, xem chỗ gọi.
+  }
+
+  await gh(`contents/${AUDIT_PATH}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      message: `Audit: hard delete ${targets.length} dataset by ${who}`,
+      content: Buffer.from(existing + lines, "utf8").toString("base64"),
+      ...(sha ? { sha } : {}),
+      branch: GH_BRANCH,
+    }),
+  });
+  return targets.length;
+}
+
 // ─── Main ───────────────────────────────────────────────────────────────────
 
 console.log(`\n${APPLY ? "APPLY — XOÁ THẬT, KHÔNG HOÀN TÁC" : "DRY-RUN — không xoá gì"}\n`);
@@ -175,4 +226,32 @@ for (const t of live) {
 
 const pruned = await pruneIndex(new Set(live.map((t) => t.slug)));
 console.log(`index.json: đã bỏ ${pruned} entry`);
+
+// Ghi log SAU khi xoá xong: ghi trước rồi xoá lỗi giữa đường là log nói dối theo
+// chiều tệ hơn — báo đã xoá một thứ vẫn còn đó.
+try {
+  const n = await appendDeleteLog(live);
+  console.log(`_audit/delete.log: đã ghi ${n} dòng`);
+} catch (err) {
+  // KHÔNG im lặng: dataset đã xoá xong, nhưng log thiếu dòng thì lần sau không ai
+  // biết là thiếu. In ra đúng dòng cần thêm tay.
+  console.error(`\n!! GHI LOG THẤT BẠI: ${err.message}`);
+  console.error("Dataset ĐÃ bị xoá. Thêm tay các dòng sau vào datasets/_audit/delete.log:");
+  const who = (process.env.PLATFORM_USER || process.env.USER || "unknown").toLowerCase();
+  const iso = new Date().toISOString();
+  for (const t of live) {
+    console.error(`  ${iso} | ${who} | ${t.slug} | hard delete (tools/hard-delete-datasets.mjs)`);
+  }
+}
+
 console.log("\nXong. Slug đã được giải phóng, upload lại được cùng slug.");
+
+// Script này xoá thẳng GitHub + R2, KHÔNG đi qua `/api/dataset/delete` — nên nó
+// cũng không chạy `removeDatasetIndexes`. Chỉ mục tra cứu vì thế còn giữ entry của
+// dataset vừa xoá, và câu hỏi sau đó vẫn được chỉ tới một dataset không còn tồn
+// tại. Nhắc ra đây thay vì tự gọi: script chạy được cả khi app không bật (D6).
+console.log(
+  "\nCHƯA XONG một việc: chỉ mục tra cứu còn entry của các dataset vừa xoá.\n" +
+  "Chạy tiếp để dọn (script sẽ báo chúng ở mục \"không còn trong kho\"):\n" +
+  "  node --env-file=.env.local tools/build-retrieval-index.mjs --apply"
+);

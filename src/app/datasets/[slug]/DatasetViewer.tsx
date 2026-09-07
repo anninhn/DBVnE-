@@ -4,11 +4,11 @@ import { useMemo, useState } from "react";
 import type { Dataset } from "@/lib/types/dataset";
 import type { NumberSchema } from "@/lib/parse/number";
 import { formatCompactNumber } from "@/lib/format";
+import Pagination from "@/components/ui/Pagination";
 import { useDatasetPreview } from "./useDatasetPreview";
 import {
   ColumnHeader,
   formatCell,
-  pageWindow,
   type ColumnDef,
 } from "./DatasetViewerParts";
 
@@ -195,42 +195,12 @@ export default function DatasetViewer({ dataset, canDownload = true, slug }: Dat
         </table>
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-center gap-1 py-4 border-b border-hf-border">
-        <button
-          onClick={() => setPage((p) => Math.max(0, p - 1))}
-          disabled={page === 0}
-          className="px-2.5 py-1 text-[13px] text-hf-text-muted rounded hover:bg-hf-bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-        >
-          ‹ Previous
-        </button>
-        {pageWindow(page, totalPages).map((item, idx) =>
-          item === "…" ? (
-            <span key={`e${idx}`} className="px-1 py-1 text-[13px] text-hf-text-muted">
-              …
-            </span>
-          ) : (
-            <button
-              key={item}
-              onClick={() => setPage(item)}
-              className={`min-w-[32px] px-2 py-1 text-[13px] rounded ${
-                item === page
-                  ? "bg-hf-text text-white font-medium"
-                  : "text-hf-text-muted hover:bg-hf-bg-muted"
-              }`}
-            >
-              {item + 1}
-            </button>
-          )
-        )}
-        <button
-          onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-          disabled={page >= totalPages - 1}
-          className="px-2.5 py-1 text-[13px] text-hf-text-muted rounded hover:bg-hf-bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-        >
-          Next ›
-        </button>
-      </div>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onChange={setPage}
+        className="border-b border-hf-border"
+      />
       <div className="text-center text-[13px] text-hf-text-muted py-4">
         {search.trim() && (
           <span>

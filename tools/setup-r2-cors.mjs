@@ -38,9 +38,18 @@ const client = new S3Client({
 const corsConfig = {
   CORSRules: [
     {
+      // Cổng dev KHÔNG chỉ có 3000: `next dev` tự nhảy sang 3001/3002 khi 3000
+      // bị chiếm. Thiếu cổng đang chạy thì mọi thứ fetch trực tiếp từ R2 ở client
+      // đều chết vì CORS — đo 2026-09-07: map trong Dataset card báo "Không tải
+      // được bản đồ (Failed to fetch)" trên localhost:3001, trong khi production
+      // vẫn bình thường. Lỗi chỉ xuất hiện ở máy dev nên rất dễ tưởng là lỗi khác.
       AllowedOrigins: [
         "http://localhost:3000",
+        "http://localhost:3001",
+        "http://localhost:3002",
         "http://127.0.0.1:3000",
+        "http://127.0.0.1:3001",
+        "http://127.0.0.1:3002",
         "https://*.vercel.app",
       ],
       AllowedMethods: ["PUT", "GET", "HEAD"],

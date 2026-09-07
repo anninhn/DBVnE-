@@ -19,7 +19,12 @@ export interface MetadataForRender {
 /** ColumnStats — matches type từ dataset.ts, giữ render file pure (không import type) */
 type ColumnStatsForRender =
   | { kind: "numeric"; min: number; max: number; histogram: number[] }
-  | { kind: "categorical"; distinct: number; segments: { label: string; count: number }[] };
+  | {
+      kind: "categorical";
+      distinct: number;
+      segments: { label: string; count: number }[];
+      complete?: boolean;
+    };
 
 /** Dictionary entry cho render markdown — dùng chung upload + edit */
 export interface DictionaryForRender {
@@ -70,7 +75,7 @@ function escYaml(s: string): string {
  * Render column_stats object → YAML block (cho metadata.yaml files[].column_stats).
  *
  * Numeric: kind + min + max + histogram[8]
- * Categorical: kind + distinct + segments[top-12]
+ * Categorical: kind + distinct + segments + complete
  *
  * @param indent số space indent cho column key level (thường là 6 — nằm trong files[].column_stats:)
  */
@@ -91,6 +96,14 @@ function renderColumnStatsYaml(
     } else {
       lines.push(`${pad}  kind: categorical`);
       lines.push(`${pad}  distinct: ${stat.distinct}`);
+      // `complete` PHẢI được ghi ra: thiếu nó thì bên đọc không phân biệt được
+      // "cột này chỉ có 12 giá trị" với "cột này bị cắt còn 12" — và sẽ trả lời
+      // "không có Đà Nẵng" cho một dataset thật ra có (D5, FR-038).
+      // Ghi cả khi `true`, để khớp đúng dạng mà `/api/dataset/recompute` ghi ra;
+      // hai bộ ghi cùng một trường mà khác dạng là chỗ để lệch âm thầm.
+      if (stat.complete !== undefined) {
+        lines.push(`${pad}  complete: ${stat.complete}`);
+      }
       if (stat.segments.length > 0) {
         lines.push(`${pad}  segments:`);
         for (const seg of stat.segments) {
@@ -133,6 +146,12 @@ export function renderMetadataYaml(
     crs?: string;
     /** Articles (spec 2026-07-24) — pass-through từ existing YAML khi edit */
     articles?: ArticleForRender[];
+    /**
+     * Khoảng thời gian `[năm đầu, năm cuối]` suy từ DỮ LIỆU (spec 005, FR-047).
+     * Bỏ trống khi dataset không có chiều thời gian — không suy khoảng giả
+     * (FR-048). `index.json` đọc trường này ra `year_range` cho bộ lọc.
+     */
+    coverage_temporal?: [number, number];
   }
 ): string {
   const today = new Date().toISOString().slice(0, 10);
@@ -170,6 +189,13 @@ export function renderMetadataYaml(
       : "";
   const crsLine =
     isGeoJson && options?.crs ? `\ncrs: "${options.crs}"` : "";
+
+  // `coverage` PHẢI được render ở đây, không chỉ được ghi bởi script backfill:
+  // form sửa dataset dựng lại YAML từ đầu bằng chính hàm này, nên trường nào hàm
+  // này không biết render thì lần sửa metadata đầu tiên sẽ xoá mất nó.
+  const coverageBlock = options?.coverage_temporal
+    ? `\ncoverage:\n  temporal: [${options.coverage_temporal.join(", ")}]`
+    : "";
 
   // Nếu có files[] sẵn (edit mode) → giữ nguyên
   let filesSection: string;
@@ -236,7 +262,7 @@ license: internal
 format: ${format}${rowLine}${colLine}${featureLine}${geomLine}${bboxLine}${crsLine}
 confidence: ${meta.confidence}
 uploaded_by: ${uploadedBy}
-uploaded_at: "${uploadedAt}"${articlesSection}
+uploaded_at: "${uploadedAt}"${coverageBlock}${articlesSection}
 files:
 ${filesSection}
 `;

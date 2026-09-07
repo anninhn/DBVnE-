@@ -101,13 +101,24 @@ export interface Resource {
 /**
  * Stats cho 1 cột. Phân biệt bằng `kind`:
  *  - numeric: min/max + histogram (8 bins) — render bar chart
- *  - categorical: distinct count + top segments — render proportion bar
+ *  - categorical: distinct count + danh sách giá trị
  *
  * Canonical location — `src/lib/datasets/types.ts` re-export từ đây.
+ *
+ * `segments` trước đây luôn cắt 12 vì mục đích duy nhất là vẽ thanh tỷ lệ. Từ spec
+ * 005 nó còn dùng để trả lời "dataset này có Đà Nẵng không", nên lưu ĐỦ khi cột có
+ * ít giá trị (FR-038). `complete: false` nghĩa là danh sách BỊ CẮT — nơi nào đọc
+ * `segments` mà bỏ qua cờ này sẽ kết luận sai rằng một giá trị không tồn tại.
  */
 export type ColumnStats =
   | { kind: "numeric"; min: number; max: number; histogram: number[] }
-  | { kind: "categorical"; distinct: number; segments: { label: string; count: number }[] };
+  | {
+      kind: "categorical";
+      distinct: number;
+      segments: { label: string; count: number }[];
+      /** `false` = `segments` chỉ là một phần của `distinct` giá trị thật */
+      complete?: boolean;
+    };
 
 export interface Dataset {
   slug: string;

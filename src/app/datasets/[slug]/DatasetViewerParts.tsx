@@ -53,23 +53,6 @@ export function formatCell(
   return String(value);
 }
 
-/**
- * Windowed pagination — trả danh sách page index (0-based) + "…" cho ellipsis.
- * Luôn show first + last, window current±2 ở giữa. Tránh render 100 button → tràn ngang.
- */
-export function pageWindow(current: number, total: number): (number | "…")[] {
-  if (total <= 7) {
-    return Array.from({ length: total }, (_, i) => i);
-  }
-  const items: (number | "…")[] = [0];
-  const start = Math.max(1, current - 2);
-  const end = Math.min(total - 2, current + 2);
-  if (start > 1) items.push("…");
-  for (let i = start; i <= end; i++) items.push(i);
-  if (end < total - 2) items.push("…");
-  items.push(total - 1);
-  return items;
-}
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Column header — tên + type badge + mini chart
