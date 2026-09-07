@@ -1,6 +1,7 @@
 title: Số giờ nắng các tháng trong năm tại một số trạm quan trắc
 slug: so-gio-nang-cac-thang-trong-nam-tai-mot-so-tram-quan-trac
-description: Dataset thống kê số giờ nắng hàng tháng tại các trạm quan trắc khí tượng ở 15 tỉnh, thành phố trên cả nước, từ năm 2002 đến năm 2024.
+description: Dataset thống kê số giờ nắng hàng tháng tại các trạm quan trắc khí
+  tượng ở 15 tỉnh, thành phố trên cả nước, từ năm 2002 đến năm 2024.
 category: khi-hau
 tags:
   - khi-hau
@@ -30,7 +31,15 @@ files:
         min: 2002
         max: 2024
         distinct: 23
-        histogram: [ 540, 540, 540, 540, 540, 540, 540, 360 ]
+        histogram:
+          - 540
+          - 540
+          - 540
+          - 540
+          - 540
+          - 540
+          - 540
+          - 360
       Tháng:
         kind: numeric
         min: 1
@@ -49,13 +58,33 @@ files:
           - 10
           - 11
           - 12
-        histogram: [ 345, 345, 345, 345, 345, 345, 345, 345, 345, 345, 345, 345 ]
+        histogram:
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
+          - 345
       Số giờ nắng các tháng trong năm tại một số trạm quan trắc:
         kind: numeric
         min: 0
         max: 319.9
         distinct: 1841
-        histogram: [ 177, 337, 578, 939, 922, 607, 448, 131 ]
+        histogram:
+          - 177
+          - 337
+          - 578
+          - 939
+          - 922
+          - 607
+          - 448
+          - 131
       Tỉnh, thành phố:
         kind: categorical
         distinct: 15
@@ -92,10 +121,15 @@ files:
             count: 276
         complete: true
 coverage:
-  temporal: [ 2002, 2024 ]
+  temporal:
+    - 2002
+    - 2024
 last_edited_by: ninh
-last_edited_at: 2026-09-07T09:29:51.120Z
+last_edited_at: 2026-09-07T11:18:05.937Z
 edits:
   - by: ninh
     at: 2026-09-07T09:29:51.120Z
+    summary: Edit metadata
+  - by: ninh
+    at: 2026-09-07T11:18:05.937Z
     summary: Edit metadata
