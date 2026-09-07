@@ -31,11 +31,29 @@ files:
         kind: numeric
         min: 2005
         max: 2023
-        histogram: [ 12, 0, 24, 24, 36, 24, 24, 36 ]
+        distinct: 15
+        values:
+          - 2005
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12 ]
       Số học viên được đào tạo sau đại học và chuyên khoa Y:
         kind: numeric
         min: 242
         max: 121586
+        distinct: 134
         histogram: [ 84, 13, 10, 0, 4, 3, 13, 8 ]
       Số học viên:
         kind: categorical
