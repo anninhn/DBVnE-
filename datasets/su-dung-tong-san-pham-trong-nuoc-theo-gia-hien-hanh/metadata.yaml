@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 40, 40, 30, 40, 40, 30, 40, 40 ]
+        distinct: 30
+        histogram: [ 40, 40, 40, 40, 40, 40, 40, 20 ]
       Giá trị (Tỷ đồng):
         kind: numeric
         min: -308120.5
         max: 11510328.9
+        distinct: 270
         histogram: [ 194, 30, 20, 13, 6, 4, 1, 2 ]
       Cơ cấu (%):
         kind: numeric
         min: -13.6
         max: 100
+        distinct: 178
         histogram: [ 42, 78, 13, 47, 11, 36, 13, 30 ]
       Loại:
         kind: categorical
