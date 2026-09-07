@@ -31,11 +31,18 @@ files:
         kind: numeric
         min: 2018
         max: 2021
-        histogram: [ 288, 0, 288, 0, 0, 288, 0, 96 ]
+        distinct: 4
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+        histogram: [ 288, 288, 288, 96 ]
       Bảng cân đối năng lượng Việt Nam:
         kind: numeric
         min: -33205.76
         max: 100640.88
+        distinct: 318
         histogram: [ 6, 80, 206, 21, 9, 8, 3, 3 ]
       Nguồn cung, tiêu thụ:
         kind: categorical
