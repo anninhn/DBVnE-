@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 36, 36, 36, 24, 36, 36, 36, 36 ]
+        distinct: 23
+        histogram: [ 36, 36, 36, 36, 36, 36, 36, 24 ]
       Số huy chương thể thao quốc tế đạt được:
         kind: numeric
         min: 0
         max: 619
+        distinct: 139
         histogram: [ 133, 39, 24, 11, 6, 1, 2, 2 ]
       Loại huy chương:
         kind: categorical
