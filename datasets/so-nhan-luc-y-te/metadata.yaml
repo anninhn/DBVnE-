@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 1995
         max: 2022
-        histogram: [ 32, 24, 32, 24, 24, 32, 24, 32 ]
+        distinct: 28
+        histogram: [ 32, 32, 32, 32, 32, 32, 32 ]
       Tổng số - Nghìn Người:
         kind: numeric
         min: 1.1
         max: 109.54
+        distinct: 161
         histogram: [ 94, 19, 13, 36, 13, 6, 5, 7 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 22.7
         max: 177.6
+        distinct: 161
         histogram: [ 1, 0, 3, 43, 133, 2, 2, 1 ]
       Cán bộ:
         kind: categorical
