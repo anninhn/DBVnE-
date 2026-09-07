@@ -30,11 +30,18 @@ files:
         kind: numeric
         min: 2019
         max: 2024
-        histogram: [ 14, 14, 0, 0, 0, 0, 14, 14 ]
+        distinct: 4
+        values:
+          - 2019
+          - 2020
+          - 2023
+          - 2024
+        histogram: [ 14, 14, 14, 14 ]
       Trị giá (Nghìn đồng):
         kind: numeric
         min: 915.6
         max: 8316.3
+        distinct: 45
         histogram: [ 4, 8, 18, 8, 6, 1, 2, 3 ]
       Mục đích:
         kind: categorical
