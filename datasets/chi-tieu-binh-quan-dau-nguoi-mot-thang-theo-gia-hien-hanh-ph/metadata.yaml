@@ -31,31 +31,44 @@ files:
         kind: numeric
         min: 2010
         max: 2020
-        histogram: [ 9, 9, 0, 9, 9, 0, 9, 9 ]
+        distinct: 6
+        values:
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2020
+        histogram: [ 9, 9, 9, 9, 9, 9 ]
       Tổng chi tiêu:
         kind: numeric
         min: 866
         max: 3929.61
+        distinct: 53
         histogram: [ 7, 9, 12, 11, 6, 4, 3, 2 ]
       Chi cho đời sống:
         kind: numeric
         min: 815
         max: 3719.24
+        distinct: 53
         histogram: [ 7, 11, 10, 11, 6, 4, 3, 2 ]
       Chi ăn uống, hút:
         kind: numeric
         min: 483
         max: 1827.54
+        distinct: 54
         histogram: [ 6, 11, 13, 12, 4, 5, 1, 2 ]
       Chi không phải ăn uống, hút:
         kind: numeric
         min: 332
         max: 1796
+        distinct: 53
         histogram: [ 7, 10, 10, 13, 5, 1, 6, 2 ]
       Chi tiêu khác:
         kind: numeric
         min: 51
         max: 215.06
+        distinct: 53
         histogram: [ 5, 6, 7, 13, 6, 7, 4, 6 ]
       Phân tổ:
         kind: categorical
