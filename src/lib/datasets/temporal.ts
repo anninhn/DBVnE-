@@ -44,6 +44,11 @@ const YEAR_NAME_HINTS = [
   "thoi gian",
   "thoi ky",
   "thoi diem",
+  // `Giai đoạn` — cột chứa khoảng nhiều năm ("2011-2015"). Thiếu nó thì dataset
+  // TFP có cột `Giai đoạn` với dữ liệu 2011–2023 vẫn bị coi là không có chiều
+  // thời gian, và bộ lọc theo năm âm thầm bỏ sót nó. `yearsInLabel` vốn đã đọc
+  // được dạng khoảng, chỉ thiếu đúng cái tên này.
+  "giai doan",
   "nien do",
   "period",
   "ky",

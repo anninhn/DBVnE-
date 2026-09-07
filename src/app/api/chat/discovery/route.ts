@@ -138,6 +138,16 @@ function asJsonTurn(content: string): string {
 }
 
 export async function POST(req: NextRequest) {
+  /**
+   * Mốc để đo TTFB — đặt ở ĐẦU handler, trước cả bước tra cứu.
+   *
+   * Đặt trong `ReadableStream.start()` là sai: lúc đó `searchDatasets`,
+   * `findValuesInQuery` và `getDataset` đã chạy xong, nên con số ghi ra chỉ là
+   * thời gian của model. Đo sai kiểu đó thì log báo 28/28 lượt dưới 4 giây
+   * (median 1.624ms) trong khi đo từ phía client là 8/12 (median 3.832ms) —
+   * tức là một tiêu chí "đạt" nhờ chỗ đặt đồng hồ.
+   */
+  const requestStart = Date.now();
   // 1. Auth
   const authCheck = await requireUserOr401();
   if (!authCheck.ok) return authCheck.response;
@@ -350,9 +360,14 @@ export async function POST(req: NextRequest) {
     async start(controller) {
       const startTime = Date.now();
       let fullContent = "";
+      // Mốc chữ đầu tiên — tính từ `requestStart` ở đầu handler, KHÔNG từ đây.
+      let ttfbMs: number | null = null;
 
       try {
-        const completion = await getAIClient().chat.completions.create({
+        // `extra_body` không có trong kiểu của SDK OpenAI (nó là đường truyền
+        // tham số riêng của nhà cung cấp), nên phải cast một lần ở đây thay vì
+        // rải `@ts-expect-error`. Xem chú thích `thinking_config` bên dưới.
+        const params = {
           model: AI_MODEL,
           messages: [
             { role: "system", content: systemPrompt },
@@ -376,6 +391,20 @@ export async function POST(req: NextRequest) {
           // trả lời thường dùng ~1.000 nên nâng trần không làm tăng chi phí thật.
           max_tokens: 8000,
           stream: true,
+          /**
+           * Tắt "thinking" của model.
+           *
+           * SC-012 đòi phóng viên thấy chữ đầu tiên trong 4 giây; đo thực tế
+           * 2026-09-04 ra 6,6–10,0s — vượt 1,7 đến 2,7 lần. Ta chỉ chiếm
+           * ~1,5–2,0s (gọi embedding), phần còn lại là model suy nghĩ trước khi
+           * phát token đầu.
+           *
+           * Việc của model ở đây là **chọn dataset trong danh sách có sẵn rồi mô
+           * tả**, không phải suy luận nhiều bước — mọi dữ kiện đã nằm trong ngữ
+           * cảnh, kể cả kết quả tra chỉ mục giá trị. Con số đo được ghi ở commit
+           * kèm theo.
+           */
+          extra_body: { google: { thinking_config: { thinking_budget: 0 } } },
           // Ép JSON ở tầng API, không chỉ nhờ system prompt.
           //
           // Lưu ý: nó KHÔNG chặn hẳn được văn xuôi. Đo lúc kiểm nhánh cắt, model
@@ -389,13 +418,18 @@ export async function POST(req: NextRequest) {
           // thất bại và hiện EmptyState dù nội dung câu trả lời hoàn toàn đúng.
           // Quy tắc trong prompt không đủ khi cuộc trò chuyện dài ra.
           response_format: { type: "json_object" },
-        });
+        } as unknown as Parameters<
+          ReturnType<typeof getAIClient>["chat"]["completions"]["create"]
+        >[0] & { stream: true };
+
+        const completion = await getAIClient().chat.completions.create(params);
 
         let finishReason: string | null = null;
         for await (const chunk of completion) {
           const choice = chunk.choices[0];
           const delta = choice?.delta?.content ?? "";
           if (delta) {
+            if (ttfbMs === null) ttfbMs = Date.now() - requestStart;
             fullContent += delta;
             controller.enqueue(encoder.encode(delta));
           }
@@ -435,7 +469,9 @@ export async function POST(req: NextRequest) {
           query,
           answer_summary: answerSummary,
           datasets_cited: datasetsCited,
-          latency_ms: Date.now() - startTime,
+          latency_ms: Date.now() - requestStart,
+          ttfb_ms: ttfbMs ?? undefined,
+          parse_ok: parsed !== null,
         });
         await incrementDailyQuota();
       } catch (err) {

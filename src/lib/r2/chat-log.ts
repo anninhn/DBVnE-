@@ -53,7 +53,25 @@ export interface ChatLogEntry {
   datasets_cited: string[]; // slugs
   thumbs: "up" | "down" | null;
   feedback_text?: string;
+  /** Tổng thời gian từ lúc nhận request tới lúc stream xong */
   latency_ms: number;
+  /**
+   * Thời gian tới **chữ đầu tiên** người dùng thấy.
+   *
+   * Đây mới là con số SC-012 đặt trần 4 giây. Trước đây log chỉ có `latency_ms`
+   * (tổng thời gian), nên điều kiện đó KHÔNG đo được — và khi đo tay ra
+   * 6,6–10,0s thì tiêu chí đã vượt trần suốt mà không ai thấy.
+   */
+  ttfb_ms?: number;
+  /**
+   * `false` = không parse được JSON của model.
+   *
+   * Cần cờ riêng vì `datasets_cited: []` gộp hai chuyện khác nhau: model nói
+   * "kho chưa có dataset" (đúng) và server không đọc được câu trả lời (lỗi). Đếm
+   * chung thì tỉ lệ "không cite" vô nghĩa — đo ngày 2026-09-04: 19 lượt không
+   * cite, ít nhất 4 lượt thực ra là parse thất bại.
+   */
+  parse_ok?: boolean;
 }
 
 interface DailyQuota {
