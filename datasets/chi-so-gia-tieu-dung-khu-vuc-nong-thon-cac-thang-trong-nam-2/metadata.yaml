@@ -31,16 +31,36 @@ files:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [ 204, 0, 0, 0, 204, 0, 0, 204 ]
+        distinct: 3
+        values:
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 204, 204, 204 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 102, 51, 102, 51, 51, 102, 51, 102 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51, 51 ]
       Chỉ số giá tiêu dùng khu vực nông thôn các tháng trong năm so với tháng trước:
         kind: numeric
         min: 94.01
         max: 105.79
+        distinct: 202
         histogram: [ 1, 2, 13, 65, 486, 28, 10, 7 ]
       Nhóm hàng:
         kind: categorical
