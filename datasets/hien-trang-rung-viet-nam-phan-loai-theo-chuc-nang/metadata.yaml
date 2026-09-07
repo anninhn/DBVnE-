@@ -29,7 +29,8 @@ files:
         kind: numeric
         min: 2005
         max: 2025
-        histogram: [ 2, 4, 6, 4, 6, 4, 6, 6 ]
+        distinct: 19
+        histogram: [ 2, 6, 6, 6, 6, 6, 6 ]
       Loại rừng:
         kind: categorical
         distinct: 2
