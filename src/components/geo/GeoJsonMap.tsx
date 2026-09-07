@@ -127,12 +127,22 @@ export default function GeoJsonMap({
       }).setView([16, 107], 4);
       mapRef.current = map;
 
-      // CartoDB Positron — grayscale tối giản, không màu xanh/đỏ distracting.
-      // Đổi URL sang style khác nếu muốn: dark_all (tối), voyager (màu nhẹ), stamen_toner (đen-trắng).
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      // Nền bản đồ: OpenStreetMap + lọc grayscale bằng CSS.
+      //
+      // Trước đây dùng CartoDB Positron. CARTO đã đóng basemap sau API key và
+      // ĐÓNG DẤU thẳng vào ảnh tile: mỗi tile trả về HTTP 200 kèm chữ
+      // "API KEY REQUIRED / carto.com/basemaps/apikeys" vắt chéo qua bản đồ.
+      // Kiểm 2026-09-07 ở nhiều mức zoom: tile nào cũng bị. Không có lỗi mạng
+      // nào để bắt — ảnh trả về "thành công", chỉ là nội dung bị đóng dấu.
+      //
+      // OSM không cần khoá. Nó có màu, nên lọc grayscale ở CSS để giữ đúng ý đồ
+      // thiết kế ban đầu: nền xám tối giản, không tranh màu với dữ liệu vẽ lên.
+      // Lọc ở tile layer chứ không ở cả map — lọc cả map thì polygon dữ liệu
+      // cũng mất màu, tức mất luôn thứ người ta vào đây để xem.
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
-        subdomains: "abcd",
-        attribution: "© OpenStreetMap contributors © CARTO",
+        attribution: "© OpenStreetMap contributors",
+        className: "vne-basemap-grayscale",
       }).addTo(map);
 
       try {
