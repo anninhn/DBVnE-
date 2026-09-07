@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 44, 44, 66, 44, 44, 66, 44, 66 ]
+        distinct: 19
+        histogram: [ 44, 66, 66, 66, 66, 66, 44 ]
       Tổng số (Nghìn người):
         kind: numeric
         min: 2.3
         max: 54659.2
+        distinct: 410
         histogram: [ 357, 23, 7, 12, 0, 0, 4, 15 ]
       Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 74
         histogram: [ 207, 13, 0, 7, 4, 0, 0, 11 ]
       Ngành:
         kind: categorical
