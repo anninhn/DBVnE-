@@ -27,35 +27,44 @@ files:
     r2_key: "d5ff04f9-6b7b-4dc8-9ead-b04bd4d81ce1/ty-le-ho-gia-dinh-co-ket-noi-internet-phan-theo-thanh-thi-no.csv"
     size_mb: 0
     column_stats:
-      "Tỷ lệ hộ gia đình có kết nối internet":
+      Tỷ lệ hộ gia đình có kết nối internet:
         kind: numeric
         min: 90
         max: 98
-        histogram: [3, 2, 2, 1, 1, 0, 1, 1]
-      "Phân tổ":
+        distinct: 7
+        values:
+          - 90
+          - 91
+          - 92
+          - 93
+          - 94
+          - 96
+          - 98
+        histogram: [ 3, 2, 2, 1, 1, 1, 1 ]
+      Phân tổ:
         kind: categorical
         distinct: 11
-        complete: true
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 1
-          - label: "Thành thị"
+          - label: Thành thị
             count: 1
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 1
-          - label: "Nam"
+          - label: Nam
             count: 1
-          - label: "Nữ"
+          - label: Nữ
             count: 1
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 1
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 1
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 1
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 1
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 1
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 1
+        complete: true
