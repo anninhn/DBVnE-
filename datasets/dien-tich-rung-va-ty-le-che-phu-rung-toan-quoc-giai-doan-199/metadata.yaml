@@ -31,7 +31,8 @@ files:
         kind: numeric
         min: 1999
         max: 2025
-        histogram: [ 4, 3, 3, 3, 4, 3, 3, 4 ]
+        distinct: 27
+        histogram: [ 4, 4, 4, 4, 4, 4, 3 ]
       Diện tích rừng tự nhiên:
         kind: categorical
         distinct: 24
