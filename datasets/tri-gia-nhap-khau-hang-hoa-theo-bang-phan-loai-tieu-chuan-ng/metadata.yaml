@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 60, 60, 45, 60, 60, 45, 60, 60 ]
+        distinct: 30
+        histogram: [ 60, 60, 60, 60, 60, 60, 60, 30 ]
       Trị giá (Triệu đô la Mỹ):
         kind: numeric
         min: 0
         max: 380990.6
+        distinct: 389
         histogram: [ 332, 24, 10, 8, 5, 5, 3, 2 ]
       Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 204
         histogram: [ 212, 77, 31, 10, 0, 5, 25, 30 ]
       Phân loại tiêu chuẩn ngoại thương:
         kind: categorical
