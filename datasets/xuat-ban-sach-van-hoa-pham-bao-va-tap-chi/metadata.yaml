@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 176, 176, 132, 176, 176, 132, 176, 176 ]
+        distinct: 30
+        histogram: [ 176, 176, 176, 176, 176, 176, 176, 88 ]
       Xuất bản sách, văn hóa phẩm, báo và tạp chí:
         kind: numeric
         min: 0.01
         max: 43463
+        distinct: 1033
         histogram: [ 1098, 60, 22, 11, 15, 10, 9, 4 ]
       Cách tính:
         kind: categorical
