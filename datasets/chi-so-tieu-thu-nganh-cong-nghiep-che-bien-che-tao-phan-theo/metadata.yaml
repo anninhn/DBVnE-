@@ -31,11 +31,27 @@ files:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [ 48, 24, 48, 24, 48, 24, 48, 48 ]
+        distinct: 13
+        values:
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24 ]
       Chỉ số tiêu thụ ngành công nghiệp chế biến, chế tạo:
         kind: numeric
         min: 57.7
         max: 182.83
+        distinct: 262
         histogram: [ 1, 13, 98, 149, 19, 4, 2, 1 ]
       Ngành công nghiệp:
         kind: categorical
