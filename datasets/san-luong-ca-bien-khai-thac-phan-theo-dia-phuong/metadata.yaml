@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 140, 140, 105, 140, 140, 105, 140, 140 ]
+        distinct: 30
+        histogram: [ 140, 140, 140, 140, 140, 140, 140, 70 ]
       Sản lượng cá biển khai thác:
         kind: numeric
         min: 0.3
         max: 2923.6
+        distinct: 763
         histogram: [ 931, 35, 22, 15, 4, 3, 3, 7 ]
       Tỉnh, thành phố:
         kind: categorical
