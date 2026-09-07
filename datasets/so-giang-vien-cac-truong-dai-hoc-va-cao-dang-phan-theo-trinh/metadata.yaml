@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2000
         max: 2023
+        distinct: 24
         histogram: [ 36, 36, 36, 36, 36, 36, 36, 36 ]
       Số giảng viên:
         kind: numeric
         min: 2
         max: 91633
+        distinct: 286
         histogram: [ 141, 43, 28, 18, 22, 13, 18, 5 ]
       Chỉ số phát triển (Năm trước = 100) - (%):
         kind: numeric
         min: 10.31
         max: 4130
+        distinct: 256
         histogram: [ 283, 2, 0, 0, 0, 0, 0, 3 ]
       Loại trường:
         kind: categorical
