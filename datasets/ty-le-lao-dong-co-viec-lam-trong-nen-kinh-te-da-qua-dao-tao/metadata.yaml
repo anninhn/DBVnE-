@@ -30,11 +30,30 @@ files:
         kind: numeric
         min: 2009
         max: 2024
-        histogram: [ 44, 44, 44, 44, 44, 44, 44, 44 ]
+        distinct: 16
+        values:
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22 ]
       Tỷ lệ lao động có việc làm trong nền kinh tế đã qua đào tạo:
         kind: numeric
         min: 1.97
         max: 97.2
+        distinct: 305
         histogram: [ 52, 77, 35, 36, 15, 25, 53, 59 ]
       Ngành kinh tế:
         kind: categorical
