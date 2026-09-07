@@ -4,6 +4,7 @@ import type { ColumnStats } from "@/lib/types/dataset";
 import type { NumberSchema } from "@/lib/parse/number";
 import HoverLabelChart, {
   BAR_RADIUS_RATIO,
+  MIN_BAR_HEIGHT,
   topRoundedBarPath,
 } from "@/components/ui/HoverLabelChart";
 import {
@@ -99,8 +100,9 @@ export function ColumnHeader({
         )}
       </div>
 
-      {/* Mini chart */}
-      <div className="mt-1.5 h-8 flex items-end">
+      {/* Mini chart — không đặt chiều cao cố định: biểu đồ số cao 30px còn danh
+          sách tần suất của cột phân loại cần nhiều hơn. */}
+      <div className="mt-1.5 flex items-end">
         {col.isNumeric ? (
           <Histogram rows={rows} colName={col.name} stats={stats} schema={col.schema} />
         ) : (
@@ -225,7 +227,9 @@ function Histogram({
             />
           ))}
           {counts.map((count, i) => {
-            const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
+            // Sàn chiều cao: bin có dữ liệu phải thấy được, xem MIN_BAR_HEIGHT.
+            const raw = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
+            const h = count > 0 ? Math.max(raw, MIN_BAR_HEIGHT) : 0;
             const w = Math.max(BAR_W - 2, 1);
             return (
               <path
@@ -255,6 +259,24 @@ function Histogram({
 }
 
 /** Proportion bar — stacked horizontal segments, top-12 classes. Reads precomputed if available. */
+/**
+ * Tần suất từng giá trị của cột phân loại — thanh ngang, có số đếm.
+ *
+ * Trước đây là MỘT thanh xếp lớp 110×10px chia theo tỉ lệ. Thanh xếp lớp cho
+ * thấy cơ cấu nhưng không đọc được **giá trị nào** và **bao nhiêu dòng** — muốn
+ * biết phải trỏ chuột từng đoạn, mà đoạn nhỏ thì rộng 1–2px.
+ *
+ * Cách này theo mẫu Hugging Face: mỗi giá trị một hàng, tên bên trái, thanh ở
+ * giữa, số đếm bên phải. Đọc được ngay mà không cần hover. API `/statistics` của
+ * họ trả `frequencies: {label: count}` cho `class_label` và `string_label` —
+ * đúng dữ liệu mình đã có trong `column_stats.segments`.
+ *
+ * Chỉ hiện 3 hàng: header cột cao ~99px và đã chia cho tên cột + badge kiểu +
+ * dòng đếm. Phần còn lại ghi "… và N giá trị khác" để không giả vờ đã liệt kê
+ * hết.
+ */
+const CATEGORICAL_ROWS = 3;
+
 function ProportionBar({
   rows,
   colName,
@@ -271,68 +293,49 @@ function ProportionBar({
           total: stats.segments.reduce((s, x) => s + x.count, 0),
         }
       : categoricalSegments(rows, colName);
-  if (!result) return null;
+  if (!result || result.segments.length === 0) return null;
 
-  const W = 110,
-    H = 10;
-  const palette = [
-    "#6B7280", "#9CA3AF", "#D1D5DB", "#A78BFA", "#60A5FA",
-    "#34D399", "#F59E0B", "#EF4444", "#EC4899", "#14B8A6",
-    "#8B5CF6", "#F472B6",
-  ];
-
-  // Precompute width + position của mỗi segment — functional (không mutation)
-  // để tránh react-hooks/immutability rule. n ≤ 12 (palette size) nên O(n²) OK.
-  const widths = result.segments.map((s) => (s.count / result.total) * W);
-  const bars = widths.map((w, i) => ({
-    key: i,
-    x: widths.slice(0, i).reduce((sum, prev) => sum + prev, 0),
-    w,
-    fill: palette[i % palette.length],
-    label: result.segments[i].label,
-    count: result.segments[i].count,
-  }));
-
-  // `complete === false` = danh sách giá trị BỊ CẮT. Phải nói ra ở nhãn hover:
-  // không nói thì thanh tỉ lệ trông như đã phủ hết dataset, và người đọc kết luận
-  // sai về những giá trị không xuất hiện.
+  const shown = result.segments.slice(0, CATEGORICAL_ROWS);
+  const rest = result.segments.length - shown.length;
+  const maxCount = Math.max(...result.segments.map((s) => s.count));
+  // `complete === false` = danh sách giá trị bị cắt lúc tính stats. Phải nói ra,
+  // nếu không "N giá trị khác" trông như đã đếm hết.
   const truncated = stats?.kind === "categorical" && stats.complete === false;
-  const labels = bars.map((b) => {
-    const pct = result.total > 0 ? Math.round((b.count / result.total) * 100) : 0;
-    return `${b.label}: ${b.count.toLocaleString("vi-VN")} dòng (${pct}%)`;
-  });
-  // Nói ra khi danh sách giá trị BỊ CẮT: không nói thì thanh tỉ lệ trông như đã
-  // phủ hết dataset, và người đọc kết luận sai về giá trị không xuất hiện.
-  const labelsWithNote = truncated
-    ? labels.map((l) => `${l} — danh sách bị cắt, dataset còn giá trị khác`)
-    : labels;
+  const distinct =
+    stats?.kind === "categorical" ? stats.distinct : result.segments.length;
 
   return (
-    <HoverLabelChart
-      labels={labelsWithNote}
-      segmentEnds={bars.map((b) => b.x + b.w)}
-      viewBoxWidth={W}
-    >
-      {(hoverIndex) => (
-        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-          {bars.map((b, i) => (
-            <rect
-              key={b.key}
-              x={b.x.toFixed(1)}
-              y={0}
-              width={b.w.toFixed(1)}
-              height={H}
-              fill={b.fill}
-              className="cursor-pointer"
-              // Làm mờ các đoạn khác thay vì tô sáng đoạn đang trỏ: thanh này
-              // vốn nhiều màu, thêm màu nhấn nữa thì không đọc được nữa.
-              fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.4}
-            >
-              <title>{labelsWithNote[i]}</title>
-            </rect>
-          ))}
-        </svg>
+    <div className="w-full space-y-[3px] py-0.5">
+      {shown.map((seg) => {
+        const pct = result.total > 0 ? (seg.count / result.total) * 100 : 0;
+        return (
+          <div
+            key={seg.label}
+            className="flex items-center gap-1.5 text-[10px] leading-none"
+            title={`${seg.label}: ${seg.count.toLocaleString("vi-VN")} dòng (${Math.round(pct)}%)`}
+          >
+            <span className="min-w-0 flex-[0_0_44%] truncate font-normal text-hf-text-muted">
+              {seg.label}
+            </span>
+            <span className="h-[5px] flex-1 overflow-hidden rounded-sm bg-hf-bg-muted">
+              <span
+                className="block h-full rounded-sm bg-hf-chart"
+                style={{ width: `${(seg.count / maxCount) * 100}%` }}
+              />
+            </span>
+            <span className="shrink-0 tabular-nums text-hf-text-faint">
+              {seg.count.toLocaleString("vi-VN")}
+            </span>
+          </div>
+        );
+      })}
+      {(rest > 0 || truncated) && (
+        <div className="text-[10px] leading-none text-hf-text-faint">
+          {truncated
+            ? `… còn nữa (danh sách bị cắt)`
+            : `… và ${(distinct - shown.length).toLocaleString("vi-VN")} giá trị khác`}
+        </div>
       )}
-    </HoverLabelChart>
+    </div>
   );
 }

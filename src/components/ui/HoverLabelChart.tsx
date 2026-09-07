@@ -90,6 +90,27 @@ export default function HoverLabelChart({
 export const BAR_RADIUS_RATIO = 0.16;
 
 /**
+ * Chiều cao tối thiểu của cột có dữ liệu, tính theo đơn vị viewBox.
+ *
+ * Bin nào có ít nhất một dòng thì PHẢI thấy được. Tỉ lệ thuần
+ * `count / maxCount * H` làm bin nhỏ biến mất dưới nửa pixel khi phân bố lệch —
+ * đo trên cột `Tổng diện tích rừng` (hist `[1130,0,0,0,0,0,1,17]`, khung 30px):
+ *
+ *     bin 6 · 1 dòng   → 0,025px
+ *     bin 7 · 17 dòng  → 0,421px
+ *
+ * Cả hai gần như không hiện, nên mắt chỉ đọc được MỘT cột và biểu đồ trông như
+ * bị lỗi. Đây là lỗi vẽ, không phải lỗi chia bin: số liệu vẫn đúng, chỉ là không
+ * nhìn thấy. Sàn này làm "có dữ liệu" khác hẳn "không có dữ liệu" về mặt thị
+ * giác — đúng thứ một biểu đồ phân bố cần nói ra trước tiên.
+ *
+ * Đánh đổi: bin 1 dòng và bin 17 dòng đều cao 1px nên không phân biệt được bằng
+ * mắt. Chấp nhận được vì tooltip cho số chính xác, còn phương án kia là không
+ * thấy gì cả.
+ */
+export const MIN_BAR_HEIGHT = 1;
+
+/**
  * Path cho một cột histogram bo góc **CHỈ Ở ĐỈNH**, chân vuông.
  *
  * `<rect rx>` bo cả bốn góc, nên chân cột cũng tròn và nó trông như đang nổi lên

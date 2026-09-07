@@ -15,6 +15,7 @@ import {
 import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";
 import HoverLabelChart, {
   BAR_RADIUS_RATIO,
+  MIN_BAR_HEIGHT,
   topRoundedBarPath,
 } from "@/components/ui/HoverLabelChart";
 
@@ -456,7 +457,9 @@ function MiniHistogram({
             />
           ))}
           {counts.map((count, i) => {
-            const h = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
+            // Sàn chiều cao: bin có dữ liệu phải thấy được, xem MIN_BAR_HEIGHT.
+            const raw = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
+            const h = count > 0 ? Math.max(raw, MIN_BAR_HEIGHT) : 0;
             const w = Math.max(BAR_W - 1, 1);
             return (
               <path
