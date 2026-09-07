@@ -31,11 +31,15 @@ files:
         kind: numeric
         min: 2024
         max: 2024
-        histogram: [ 70, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 2024
+        histogram: [ 70 ]
       Tỷ lệ hộ gia đình có kết nối internet:
         kind: numeric
         min: 79.7
         max: 100
+        distinct: 54
         histogram: [ 2, 3, 8, 3, 18, 24, 9, 3 ]
       Địa phương:
         kind: categorical
