@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Sản lượng cá nuôi:
         kind: numeric
         min: 0
         max: 3845373
+        distinct: 1992
         histogram: [ 2026, 25, 4, 10, 8, 9, 4, 3 ]
       Tỉnh, thành phố:
         kind: categorical
