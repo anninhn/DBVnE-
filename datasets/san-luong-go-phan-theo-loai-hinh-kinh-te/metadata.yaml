@@ -30,16 +30,34 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 14, 14, 7, 14, 14, 7, 14, 14 ]
+        distinct: 14
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7 ]
       Sản lượng (Nghìn m3):
         kind: numeric
         min: 19
         max: 21632.3
+        distinct: 80
         histogram: [ 44, 3, 9, 7, 5, 4, 5, 3 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 56.43
         max: 217.77
+        distinct: 78
         histogram: [ 5, 8, 53, 8, 2, 2, 0, 2 ]
       Loại hình kinh tế:
         kind: categorical
