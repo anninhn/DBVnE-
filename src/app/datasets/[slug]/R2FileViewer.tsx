@@ -415,6 +415,9 @@ function MiniHistogram({
   /** Format số theo quy ước của cột (group_char/decimal_char) */
   format?: (n: number) => string;
 }) {
+  // Cột chỉ có một giá trị — xem chú thích ở MiniHistogram của DatasetViewerParts.
+  if (min != null && max != null && min === max) return null;
+
   const W = 60;
   const H = 12;
   const BAR_W = W / counts.length;

@@ -84,9 +84,10 @@ export default function HoverLabelChart({
  * cố định làm cái nhỏ trông gần như vuông trong khi cái lớn đã tròn.
  *
  * Markup HF được cung cấp không có `rx`, nên đây là chọn của dự án
- * (HF-DESIGN-SPEC.md § 19.4).
+ * (HF-DESIGN-SPEC.md § 19.4). Đã thử 0,28 — tròn quá, cột 11,75px thành gần như
+ * viên thuốc. 0,16 cho ~1,9px trên cột đó: thấy rõ là bo nhưng vẫn ra hình cột.
  */
-export const BAR_RADIUS_RATIO = 0.28;
+export const BAR_RADIUS_RATIO = 0.16;
 
 /**
  * Path cho một cột histogram bo góc **CHỈ Ở ĐỈNH**, chân vuông.

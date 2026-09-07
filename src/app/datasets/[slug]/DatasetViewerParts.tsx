@@ -180,6 +180,11 @@ function Histogram({
   const lo = stats && stats.kind === "numeric" ? stats.min : fallback?.min;
   const hi = stats && stats.kind === "numeric" ? stats.max : fallback?.max;
   if (!counts) return null;
+  // Cột chỉ có MỘT giá trị (min = max) — vẽ histogram cho nó là vô nghĩa: một
+  // cột duy nhất chiếm 100%, trông y như biểu đồ bị lỗi. Phần `min → max` ở
+  // header cột đã nói đủ. Đo trên kho: 17 cột như vậy (`Năm` khi dataset chỉ có
+  // một năm, `Chung` = 100, `provinceCode`…).
+  if (lo != null && hi != null && lo === hi) return null;
 
   const W = 110,
     H = 30,
