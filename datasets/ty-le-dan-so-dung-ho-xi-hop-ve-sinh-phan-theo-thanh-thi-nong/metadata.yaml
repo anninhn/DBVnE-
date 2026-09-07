@@ -30,11 +30,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 9, 9, 9, 0, 9, 9, 9, 9 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 9, 9, 9, 9, 9, 9, 9 ]
       Tỷ lệ dân số dùng hố xí hợp vệ sinh:
         kind: numeric
         min: 77
         max: 100
+        distinct: 22
         histogram: [ 3, 2, 3, 5, 9, 9, 11, 21 ]
       Thành thị, nông thôn:
         kind: categorical
