@@ -32,11 +32,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 42, 42, 42, 21, 42, 42, 42, 42 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21 ]
       Tỷ lệ thiếu việc làm trong độ tuổi lao động:
         kind: numeric
         min: 0.31
         max: 6.35
+        distinct: 216
         histogram: [ 55, 73, 75, 60, 30, 12, 7, 3 ]
       Thành thị, nông thôn:
         kind: categorical
