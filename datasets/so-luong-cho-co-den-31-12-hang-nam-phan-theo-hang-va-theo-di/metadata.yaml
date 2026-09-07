@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2008
         max: 2024
-        histogram: [ 146, 146, 146, 146, 146, 146, 146, 219 ]
+        distinct: 17
+        histogram: [ 219, 219, 219, 219, 219, 146 ]
       Số lượng chợ có đến 31/12 hàng năm:
         kind: numeric
         min: 1.236
         max: 954
+        distinct: 362
         histogram: [ 653, 471, 19, 61, 4, 2, 14, 17 ]
       Hạng, địa phương:
         kind: categorical
