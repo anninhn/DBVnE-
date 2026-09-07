@@ -31,21 +31,36 @@ files:
         kind: numeric
         min: 2002
         max: 2011
-        histogram: [ 142, 71, 71, 71, 71, 71, 71, 142 ]
+        distinct: 10
+        values:
+          - 2002
+          - 2003
+          - 2004
+          - 2005
+          - 2006
+          - 2007
+          - 2008
+          - 2009
+          - 2010
+          - 2011
+        histogram: [ 71, 71, 71, 71, 71, 71, 71, 71, 71, 71 ]
       Dược sĩ cao cấp:
         kind: numeric
         min: 1.007
         max: 959
+        distinct: 209
         histogram: [ 614, 29, 11, 10, 19, 7, 6, 4 ]
       Dược sĩ trung cấp:
         kind: numeric
         min: 1.007
         max: 977
+        distinct: 363
         histogram: [ 333, 213, 87, 32, 16, 11, 3, 5 ]
       Dược tá:
         kind: numeric
         min: 1
         max: 981
+        distinct: 305
         histogram: [ 512, 82, 44, 24, 18, 4, 10, 5 ]
       Địa phương:
         kind: categorical
