@@ -30,26 +30,40 @@ files:
         kind: numeric
         min: 2002
         max: 2009
+        distinct: 8
+        values:
+          - 2002
+          - 2003
+          - 2004
+          - 2005
+          - 2006
+          - 2007
+          - 2008
+          - 2009
         histogram: [ 72, 72, 72, 72, 72, 72, 72, 72 ]
       Tổng số:
         kind: numeric
         min: 45
         max: 522267
+        distinct: 551
         histogram: [ 526, 29, 3, 0, 0, 0, 0, 8 ]
       Tiểu học:
         kind: numeric
         min: 1410
         max: 308807
+        distinct: 531
         histogram: [ 520, 31, 1, 0, 0, 0, 4, 4 ]
       Trung học cơ sở:
         kind: numeric
         min: 629
         max: 170916
+        distinct: 449
         histogram: [ 455, 23, 5, 0, 0, 0, 0, 7 ]
       Trung học phổ thông:
         kind: numeric
         min: 45
         max: 68638
+        distinct: 432
         histogram: [ 463, 24, 3, 0, 0, 0, 3, 4 ]
       Ðịa phương:
         kind: categorical
