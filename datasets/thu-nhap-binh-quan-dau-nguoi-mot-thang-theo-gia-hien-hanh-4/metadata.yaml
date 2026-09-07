@@ -31,31 +31,44 @@ files:
         kind: numeric
         min: 2010
         max: 2019
-        histogram: [ 12, 12, 0, 12, 0, 12, 0, 24 ]
+        distinct: 6
+        values:
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2019
+        histogram: [ 12, 12, 12, 12, 12, 12 ]
       Tổng số:
         kind: numeric
         min: 905
         max: 6280
+        distinct: 60
         histogram: [ 8, 13, 10, 12, 6, 6, 1, 4 ]
       Thu từ tiền lương, tiền công:
         kind: numeric
         min: 41.23
         max: 3898.05
+        distinct: 60
         histogram: [ 6, 16, 15, 8, 7, 4, 3, 2 ]
       Thu từ nông, lâm nghiệp, thủy sản:
         kind: numeric
         min: 96
         max: 982
+        distinct: 59
         histogram: [ 8, 13, 13, 14, 4, 4, 1, 3 ]
       Thu phi nông, lâm nghiệp, thủy sản:
         kind: numeric
         min: 146
         max: 1530
+        distinct: 60
         histogram: [ 9, 11, 13, 10, 6, 4, 3, 4 ]
       Các khoản thu khác:
         kind: numeric
         min: 67
         max: 740
+        distinct: 58
         histogram: [ 9, 8, 14, 9, 6, 8, 3, 3 ]
       Phân tổ:
         kind: categorical
