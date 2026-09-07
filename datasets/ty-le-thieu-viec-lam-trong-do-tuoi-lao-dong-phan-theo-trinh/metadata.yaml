@@ -30,11 +30,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 6, 6, 6, 0, 6, 6, 6, 6 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 6, 6, 6, 6, 6, 6, 6 ]
       Tỷ lệ thiếu việc làm trong độ tuổi lao động:
         kind: numeric
         min: 0.43
         max: 3.43
+        distinct: 42
         histogram: [ 4, 10, 8, 6, 5, 4, 2, 3 ]
       Trình độ chuyên môn kỹ thuật:
         kind: categorical
