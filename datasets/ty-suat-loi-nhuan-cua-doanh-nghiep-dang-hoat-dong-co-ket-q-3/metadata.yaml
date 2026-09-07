@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 100, 0, 0, 200, 200, 100, 200, 200 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 ]
       Tỷ suất lợi nhuận của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: -207.55
         max: 67.69
+        distinct: 773
         histogram: [ 1, 0, 0, 1, 4, 121, 868, 5 ]
       Ngành kinh tế:
         kind: categorical
