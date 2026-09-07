@@ -59,7 +59,15 @@ export function binRangeLabel(
   min: number | undefined,
   max: number | undefined,
   format: (n: number) => string,
+  /**
+   * Giá trị của từng cột, khi histogram đếm theo GIÁ TRỊ chứ không theo khoảng.
+   *
+   * Có nó thì nhãn là một con số (`2019`), không phải một khoảng (`2002 – 2005`).
+   * Thiếu nó mà cột đang đếm theo giá trị thì nhãn nói sai hẳn nội dung.
+   */
+  values?: number[],
 ): string {
+  if (values && values[index] != null) return format(values[index]);
   if (min == null || max == null) return `khoảng ${index + 1}/${binCount}`;
   const step = (max - min) / binCount;
   const whole = Number.isInteger(min) && Number.isInteger(max);

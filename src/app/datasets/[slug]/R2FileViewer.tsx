@@ -302,6 +302,7 @@ export default function R2FileViewer({
                   counts={hist.counts}
                   min={hist.min}
                   max={hist.max}
+                  values={pre?.kind === "numeric" ? pre.values : undefined}
                   format={(n) => formatNumberWithSchema(n, schema)}
                 />
               </div>
@@ -408,11 +409,14 @@ function MiniHistogram({
   counts,
   min,
   max,
+  values,
   format,
 }: {
   counts: number[];
   min?: number;
   max?: number;
+  /** Có mặt = mỗi cột ứng với đúng một giá trị (nhãn là số, không phải khoảng) */
+  values?: number[];
   /** Format số theo quy ước của cột (group_char/decimal_char) */
   format?: (n: number) => string;
 }) {
@@ -427,7 +431,7 @@ function MiniHistogram({
   const fmt = format ?? ((n: number) => String(Number(n.toFixed(4))));
   const labels = counts.map((count, i) => {
     const pct = total > 0 ? Math.round((count / total) * 100) : 0;
-    return `${binRangeLabel(i, counts.length, min, max, fmt)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
+    return `${binRangeLabel(i, counts.length, min, max, fmt, values)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
   });
 
   return (

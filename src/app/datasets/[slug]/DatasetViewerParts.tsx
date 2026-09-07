@@ -100,10 +100,24 @@ export function ColumnHeader({
         )}
       </div>
 
-      {/* Mini chart — không đặt chiều cao cố định: biểu đồ số cao 30px còn danh
-          sách tần suất của cột phân loại cần nhiều hơn. */}
+      {/*
+        Mini chart. Chọn loại biểu đồ theo `column_stats.kind` TRƯỚC, chỉ dùng
+        `data_type` của dictionary khi chưa có stats.
+
+        Vì sao: `column_stats` do bước phân tích tính trên toàn bộ file, còn
+        `data_type` do AI viết vào dictionary — và hai bên đã lệch nhau thật. Đo
+        2026-09-07: dictionary của dataset số giờ nắng khai `Năm → category`,
+        `mapDictionaryType` đổi thành `text` (read.ts), `isNumeric` thành false,
+        nên nó vẽ ProportionBar; nhưng stats của cột đó có `kind: "numeric"` nên
+        không khớp, và ProportionBar rơi về `categoricalSegments(rows)` — tính
+        trên 1.000 dòng PREVIEW. Kết quả: header ghi "6 giá trị" trong khi file
+        có 23 năm (2002–2024).
+
+        Đọc theo `stats.kind` thì cả lớp lỗi đó biến mất, và không cần tính lại
+        dataset nào.
+      */}
       <div className="mt-1.5 flex items-end">
-        {col.isNumeric ? (
+        {(stats ? stats.kind === "numeric" : col.isNumeric) ? (
           <Histogram rows={rows} colName={col.name} stats={stats} schema={col.schema} />
         ) : (
           <ProportionBar rows={rows} colName={col.name} stats={stats} />
@@ -181,6 +195,8 @@ function Histogram({
     stats && stats.kind === "numeric" ? stats.histogram : fallback?.counts;
   const lo = stats && stats.kind === "numeric" ? stats.min : fallback?.min;
   const hi = stats && stats.kind === "numeric" ? stats.max : fallback?.max;
+  // Có `values` = histogram đếm theo từng giá trị, nhãn là con số chứ không phải khoảng.
+  const binValues = stats && stats.kind === "numeric" ? stats.values : undefined;
   if (!counts) return null;
   // Cột chỉ có MỘT giá trị (min = max) — vẽ histogram cho nó là vô nghĩa: một
   // cột duy nhất chiếm 100%, trông y như biểu đồ bị lỗi. Phần `min → max` ở
@@ -196,7 +212,7 @@ function Histogram({
   const fmt = (n: number) => formatNumberWithSchema(n, schema);
   const labels = counts.map((count, i) => {
     const pct = total > 0 ? Math.round((count / total) * 100) : 0;
-    return `${binRangeLabel(i, counts.length, lo, hi, fmt)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
+    return `${binRangeLabel(i, counts.length, lo, hi, fmt, binValues)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
   });
 
   return (
