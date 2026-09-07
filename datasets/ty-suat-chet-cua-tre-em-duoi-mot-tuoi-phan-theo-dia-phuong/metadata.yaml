@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 142, 142, 213, 142, 142, 213, 142, 213 ]
+        distinct: 19
+        histogram: [ 142, 213, 213, 213, 213, 213, 142 ]
       Tỷ suất chết của trẻ em dưới một tuổi:
         kind: numeric
         min: 7
         max: 62.6
+        distinct: 499
         histogram: [ 607, 462, 142, 66, 40, 12, 1, 2 ]
       Địa phương:
         kind: categorical
