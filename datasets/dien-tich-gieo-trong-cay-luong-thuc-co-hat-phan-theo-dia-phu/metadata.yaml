@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Diện tích gieo trồng cây lương thực có hạt:
         kind: numeric
         min: 4.7
         max: 9074
+        distinct: 1474
         histogram: [ 1967, 59, 1, 29, 0, 0, 3, 27 ]
       Tỉnh, thành phố:
         kind: categorical
