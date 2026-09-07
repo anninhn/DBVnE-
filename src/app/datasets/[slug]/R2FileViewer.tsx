@@ -429,29 +429,45 @@ function MiniHistogram({
       segmentEnds={counts.map((_, i) => (i + 1) * BAR_W)}
       viewBoxWidth={W}
     >
-      <svg
-        width={W}
-        height={H}
-        viewBox={`0 0 ${W} ${H}`}
-        className="inline-block"
-      >
-        {counts.map((count, i) => {
-          const h = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
-          return (
+      {(hoverIndex) => (
+        <svg
+          width={W}
+          height={H}
+          viewBox={`0 0 ${W} ${H}`}
+          className="inline-block"
+        >
+          {/* Vùng bắt chuột theo từng bin — xem chú thích ở MiniHistogram của
+              DatasetViewerParts. */}
+          {counts.map((_, i) => (
             <rect
-              key={i}
-              x={i * BAR_W + 0.5}
-              y={H - h}
-              width={Math.max(BAR_W - 1, 1)}
-              height={h}
-              fill="#9CA3AF"
-              rx={0.5}
-            >
-              <title>{labels[i]}</title>
-            </rect>
-          );
-        })}
-      </svg>
+              key={`hit-${i}`}
+              x={i * BAR_W}
+              y={0}
+              width={BAR_W}
+              height={H}
+              className="cursor-pointer fill-hf-chart"
+              fillOpacity={hoverIndex === i ? 0.12 : 0}
+            />
+          ))}
+          {counts.map((count, i) => {
+            const h = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
+            return (
+              <rect
+                key={i}
+                x={i * BAR_W + 0.5}
+                y={H - h}
+                width={Math.max(BAR_W - 1, 1)}
+                height={h}
+                rx={0.5}
+                className="pointer-events-none fill-hf-chart"
+                fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
+              >
+                <title>{labels[i]}</title>
+              </rect>
+            );
+          })}
+        </svg>
+      )}
     </HoverLabelChart>
   );
 }

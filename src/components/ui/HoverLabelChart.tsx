@@ -29,7 +29,14 @@ export default function HoverLabelChart({
   /** Mốc kết thúc mỗi đoạn theo đơn vị viewBox, tăng dần */
   segmentEnds: number[];
   viewBoxWidth: number;
-  children: ReactNode;
+  /**
+   * Nhận chỉ số đoạn đang trỏ chuột (`null` = không trỏ) để tự tô sáng.
+   *
+   * Dùng render prop chứ không `ReactNode` tĩnh: biểu đồ cần biết đoạn nào đang
+   * hover mới làm nổi được nó, mà state đó nằm ở đây. Truyền xuống qua prop thì
+   * mỗi chỗ gọi lại phải tự quản một state trùng lặp.
+   */
+  children: (hoverIndex: number | null) => ReactNode;
 }) {
   const [hover, setHover] = useState<{ index: number; left: number } | null>(
     null,
@@ -53,7 +60,7 @@ export default function HoverLabelChart({
       onMouseMove={onMove}
       onMouseLeave={() => setHover(null)}
     >
-      {children}
+      {children(hover ? hover.index : null)}
       {hover && (
         <span
           // `pointer-events-none`: tooltip nằm dưới con trỏ, nếu nó nhận chuột

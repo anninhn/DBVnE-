@@ -195,26 +195,48 @@ function Histogram({
       segmentEnds={counts.map((_, i) => (i + 1) * BAR_W)}
       viewBoxWidth={W}
     >
-      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-        {counts.map((count, i) => {
-          const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
-          return (
+      {(hoverIndex) => (
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
+          {/*
+            Vùng bắt chuột CHO TỪNG BIN, cao hết khung — lấy đúng cách Hugging
+            Face làm (`<rect y="0" height="30" fill-opacity="0">` một cái mỗi
+            bin). Nhờ vậy trỏ vào chỗ cột thấp hoặc rỗng vẫn ra đúng bin đó, và
+            khi hover thì cả dải sáng lên chứ không chỉ riêng cái cột.
+            Lần trước tôi dùng MỘT lớp phủ chung cho cả biểu đồ — nó nằm trên
+            các cột và chặn hết.
+          */}
+          {counts.map((_, i) => (
             <rect
-              key={i}
-              x={i * BAR_W + 1}
-              y={H - h}
-              width={Math.max(BAR_W - 2, 1)}
-              height={h}
-              fill="#9CA3AF"
-              rx={1}
-            >
-              {/* Giữ cho trình đọc màn hình — tooltip nhìn thấy được do
-                  HoverLabelChart lo. */}
-              <title>{labels[i]}</title>
-            </rect>
-          );
-        })}
-      </svg>
+              key={`hit-${i}`}
+              x={i * BAR_W}
+              y={0}
+              width={BAR_W}
+              height={H}
+              className="cursor-pointer fill-hf-chart"
+              fillOpacity={hoverIndex === i ? 0.12 : 0}
+            />
+          ))}
+          {counts.map((count, i) => {
+            const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
+            return (
+              <rect
+                key={i}
+                x={i * BAR_W + 1}
+                y={H - h}
+                width={Math.max(BAR_W - 2, 1)}
+                height={h}
+                rx={1}
+                className="pointer-events-none fill-hf-chart"
+                fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
+              >
+                {/* Giữ cho trình đọc màn hình — tooltip nhìn thấy được do
+                    HoverLabelChart lo. */}
+                <title>{labels[i]}</title>
+              </rect>
+            );
+          })}
+        </svg>
+      )}
     </HoverLabelChart>
   );
 }
@@ -278,20 +300,26 @@ function ProportionBar({
       segmentEnds={bars.map((b) => b.x + b.w)}
       viewBoxWidth={W}
     >
-      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-        {bars.map((b, i) => (
-          <rect
-            key={b.key}
-            x={b.x.toFixed(1)}
-            y={0}
-            width={b.w.toFixed(1)}
-            height={H}
-            fill={b.fill}
-          >
-            <title>{labelsWithNote[i]}</title>
-          </rect>
-        ))}
-      </svg>
+      {(hoverIndex) => (
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
+          {bars.map((b, i) => (
+            <rect
+              key={b.key}
+              x={b.x.toFixed(1)}
+              y={0}
+              width={b.w.toFixed(1)}
+              height={H}
+              fill={b.fill}
+              className="cursor-pointer"
+              // Làm mờ các đoạn khác thay vì tô sáng đoạn đang trỏ: thanh này
+              // vốn nhiều màu, thêm màu nhấn nữa thì không đọc được nữa.
+              fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.4}
+            >
+              <title>{labelsWithNote[i]}</title>
+            </rect>
+          ))}
+        </svg>
+      )}
     </HoverLabelChart>
   );
 }
