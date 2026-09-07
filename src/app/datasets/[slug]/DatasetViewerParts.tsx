@@ -4,6 +4,7 @@ import type { ColumnStats } from "@/lib/types/dataset";
 import type { NumberSchema } from "@/lib/parse/number";
 import HoverLabelChart, {
   BAR_RADIUS_RATIO,
+  topRoundedBarPath,
 } from "@/components/ui/HoverLabelChart";
 import {
   binRangeLabel,
@@ -220,21 +221,26 @@ function Histogram({
           ))}
           {counts.map((count, i) => {
             const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
+            const w = Math.max(BAR_W - 2, 1);
             return (
-              <rect
+              <path
                 key={i}
-                x={i * BAR_W + 1}
-                y={H - h}
-                width={Math.max(BAR_W - 2, 1)}
-                height={h}
-                rx={Math.max(BAR_W - 2, 1) * BAR_RADIUS_RATIO}
+                // Bo góc CHỈ Ở ĐỈNH — `<rect rx>` bo cả chân, cột trông như
+                // đang nổi lên chứ không đứng trên trục.
+                d={topRoundedBarPath(
+                  i * BAR_W + 1,
+                  H - h,
+                  w,
+                  h,
+                  w * BAR_RADIUS_RATIO,
+                )}
                 className="pointer-events-none fill-hf-chart"
                 fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
               >
                 {/* Giữ cho trình đọc màn hình — tooltip nhìn thấy được do
                     HoverLabelChart lo. */}
                 <title>{labels[i]}</title>
-              </rect>
+              </path>
             );
           })}
         </svg>

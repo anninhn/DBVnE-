@@ -87,3 +87,42 @@ export default function HoverLabelChart({
  * (HF-DESIGN-SPEC.md § 19.4).
  */
 export const BAR_RADIUS_RATIO = 0.28;
+
+/**
+ * Path cho một cột histogram bo góc **CHỈ Ở ĐỈNH**, chân vuông.
+ *
+ * `<rect rx>` bo cả bốn góc, nên chân cột cũng tròn và nó trông như đang nổi lên
+ * chứ không đứng trên trục. Không có cách nào bo một phía bằng `rect`, phải vẽ
+ * bằng `path`.
+ *
+ * Hai chỗ phải chặn, nếu không path sẽ méo thay vì chỉ hơi lệch:
+ *   - cột thấp hơn bán kính (`h < r`) → cung tròn vượt qua chân cột
+ *   - bán kính lớn hơn nửa bề rộng → hai cung chồng nhau ở giữa
+ *
+ * @param x,y  góc trên-trái
+ * @param w,h  bề rộng, chiều cao
+ * @param r    bán kính mong muốn (sẽ bị kẹp lại nếu quá lớn)
+ */
+export function topRoundedBarPath(
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number,
+): string {
+  if (h <= 0 || w <= 0) return "";
+  const rr = Math.max(0, Math.min(r, w / 2, h));
+  const n = (v: number) => Number(v.toFixed(2));
+  if (rr === 0) {
+    return `M${n(x)} ${n(y)}h${n(w)}v${n(h)}h${n(-w)}Z`;
+  }
+  return [
+    `M${n(x)} ${n(y + h)}`,
+    `V${n(y + rr)}`,
+    `A${n(rr)} ${n(rr)} 0 0 1 ${n(x + rr)} ${n(y)}`,
+    `H${n(x + w - rr)}`,
+    `A${n(rr)} ${n(rr)} 0 0 1 ${n(x + w)} ${n(y + rr)}`,
+    `V${n(y + h)}`,
+    "Z",
+  ].join("");
+}
