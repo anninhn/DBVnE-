@@ -30,16 +30,32 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 612, 612, 612, 408, 612, 612, 612, 612 ]
+        distinct: 23
+        histogram: [ 612, 612, 612, 612, 612, 612, 612, 408 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 782, 391, 782, 391, 391, 782, 391, 782 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 391, 391, 391, 391, 391, 391, 391, 391, 391, 391, 391, 391 ]
       Lượng mưa các tháng trong năm tại một số trạm quan trắc:
         kind: numeric
         min: 0
         max: 2634.7
+        distinct: 2156
         histogram: [ 3376, 517, 77, 19, 9, 3, 0, 1 ]
       Tỉnh, thành phố:
         kind: categorical
