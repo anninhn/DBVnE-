@@ -33,26 +33,31 @@ files:
         kind: numeric
         min: 84
         max: 137155
+        distinct: 69
         histogram: [ 67, 2, 0, 0, 0, 0, 0, 1 ]
       Giáo viên công lập:
         kind: numeric
         min: 70
         max: 66081
+        distinct: 67
         histogram: [ 68, 1, 0, 0, 0, 0, 0, 1 ]
       Học sinh, sinh viên được tuyển mới:
         kind: numeric
         min: 6294
         max: 3458469
+        distinct: 70
         histogram: [ 67, 2, 0, 0, 0, 0, 0, 1 ]
       Học sinh, sinh viên được tuyển mới-Trung cấp:
         kind: numeric
         min: 239
         max: 414882
+        distinct: 70
         histogram: [ 68, 1, 0, 0, 0, 0, 0, 1 ]
       Học sinh, sinh viên được tuyển mới-Cao đẳng:
         kind: numeric
         min: 0
         max: 257637
+        distinct: 69
         histogram: [ 65, 4, 0, 0, 0, 0, 0, 1 ]
       Địa phương:
         kind: categorical
