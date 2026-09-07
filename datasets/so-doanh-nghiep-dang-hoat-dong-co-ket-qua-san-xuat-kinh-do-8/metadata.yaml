@@ -31,51 +31,65 @@ files:
         kind: numeric
         min: 2021
         max: 2023
-        histogram: [ 71, 0, 0, 0, 71, 0, 0, 71 ]
+        distinct: 3
+        values:
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 71, 71, 71 ]
       Tổng số:
         kind: numeric
         min: 1.003
         max: 996
+        distinct: 211
         histogram: [ 183, 12, 3, 0, 3, 2, 2, 8 ]
       Dưới 0,5 tỷ đồng:
         kind: numeric
         min: 0
         max: 889
+        distinct: 188
         histogram: [ 85, 28, 37, 28, 20, 9, 3, 3 ]
       Từ 0,5 đến dưới 1 tỷ đồng:
         kind: numeric
         min: 0
         max: 985
+        distinct: 191
         histogram: [ 83, 25, 45, 18, 17, 12, 10, 3 ]
       Từ 1 đến dưới 5 tỷ đồng:
         kind: numeric
         min: 0
         max: 962
+        distinct: 206
         histogram: [ 159, 3, 14, 1, 12, 6, 11, 7 ]
       Từ 5 đến dưới 10 tỷ đồng:
         kind: numeric
         min: 1
         max: 987
+        distinct: 198
         histogram: [ 97, 16, 24, 19, 11, 17, 19, 10 ]
       Từ 10 đến dưới 50 tỷ:
         kind: numeric
         min: 1.032
         max: 999
+        distinct: 207
         histogram: [ 121, 7, 21, 12, 24, 12, 9, 7 ]
       Từ 50 đến dưới 200:
         kind: numeric
         min: 1.022
         max: 939
+        distinct: 194
         histogram: [ 82, 48, 26, 18, 19, 13, 6, 1 ]
       Từ 200 đến dưới 500 tỷ:
         kind: numeric
         min: 1.097
         max: 949
+        distinct: 135
         histogram: [ 155, 37, 9, 3, 1, 2, 3, 3 ]
       Từ 500 tỷ đồng trở lên:
         kind: numeric
         min: 1
         max: 769
+        distinct: 141
         histogram: [ 142, 48, 9, 2, 5, 2, 3, 2 ]
       Tỉnh/thành phố:
         kind: categorical
