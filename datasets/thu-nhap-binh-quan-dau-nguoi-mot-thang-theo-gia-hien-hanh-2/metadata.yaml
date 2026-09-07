@@ -31,36 +31,49 @@ files:
         kind: numeric
         min: 2010
         max: 2018
-        histogram: [ 70, 0, 70, 0, 70, 0, 70, 70 ]
+        distinct: 5
+        values:
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+        histogram: [ 70, 70, 70, 70, 70 ]
       Bình quân chung:
         kind: numeric
         min: 1.013
         max: 987
+        distinct: 329
         histogram: [ 325, 0, 0, 0, 3, 0, 11, 11 ]
       Nhóm 1:
         kind: numeric
         min: 1.005
         max: 995
+        distinct: 304
         histogram: [ 67, 3, 47, 64, 57, 50, 35, 27 ]
       Nhóm 2:
         kind: numeric
         min: 1.011
         max: 993
+        distinct: 320
         histogram: [ 196, 0, 4, 20, 30, 46, 26, 28 ]
       Nhóm 3:
         kind: numeric
         min: 1
         max: 995
+        distinct: 327
         histogram: [ 267, 0, 1, 3, 7, 20, 23, 29 ]
       Nhóm 4:
         kind: numeric
         min: 1.002
         max: 981
+        distinct: 327
         histogram: [ 333, 0, 0, 1, 1, 4, 3, 8 ]
       Nhóm 5:
         kind: numeric
         min: 1.413
         max: 16.171
+        distinct: 340
         histogram: [ 87, 110, 79, 36, 20, 11, 6, 1 ]
       Địa phương:
         kind: categorical
