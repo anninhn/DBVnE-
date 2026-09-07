@@ -30,11 +30,22 @@ files:
         kind: numeric
         min: 2016
         max: 2023
+        distinct: 8
+        values:
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
         histogram: [ 12, 12, 12, 12, 12, 12, 12, 12 ]
       Số giáo viên giáo dục nghề nghiệp:
         kind: numeric
         min: 1419
         max: 86910
+        distinct: 85
         histogram: [ 24, 19, 14, 13, 5, 2, 1, 7 ]
       Loại hình trường:
         kind: categorical
