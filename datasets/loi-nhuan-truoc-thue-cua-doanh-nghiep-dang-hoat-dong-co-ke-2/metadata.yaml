@@ -31,11 +31,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 71, 0, 0, 142, 142, 71, 142, 142 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 71, 71, 71, 71, 71, 71, 71, 71, 71, 71 ]
       Lợi nhuận trước thuế của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: -28308.09
         max: 1459702.42
+        distinct: 704
         histogram: [ 665, 28, 8, 2, 3, 1, 1, 2 ]
       Tỉnh/thành phố:
         kind: categorical
