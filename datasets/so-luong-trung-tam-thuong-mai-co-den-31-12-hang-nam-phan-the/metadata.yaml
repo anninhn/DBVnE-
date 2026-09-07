@@ -30,12 +30,14 @@ files:
         kind: numeric
         min: 2008
         max: 2024
-        histogram: [ 134, 134, 134, 134, 134, 134, 134, 201 ]
+        distinct: 17
+        histogram: [ 201, 201, 201, 201, 201, 134 ]
       Số lượng trung tâm thương mại có đến 31/12 hàng năm:
         kind: numeric
         min: 1
         max: 276
-        histogram: [ 814, 42, 6, 3, 3, 1, 2, 5 ]
+        distinct: 75
+        histogram: [ 814, 43, 5, 4, 2, 1, 2, 5 ]
       Tỉnh, thành phố:
         kind: categorical
         distinct: 67
