@@ -30,7 +30,8 @@ files:
         kind: numeric
         min: 25747
         max: 27676
-        histogram: [ 36, 0, 0, 26, 32, 24, 17, 33 ]
+        distinct: 168
+        histogram: [ 36, 0, 0, 27, 32, 23, 18, 32 ]
       name:
         kind: categorical
         distinct: 168
@@ -2075,12 +2076,16 @@ files:
         kind: numeric
         min: 0.98
         max: 257.85
+        distinct: 165
         histogram: [ 99, 29, 18, 11, 7, 3, 0, 1 ]
       provinceCode:
         kind: numeric
         min: 79
         max: 79
-        histogram: [ 168, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 79
+        histogram: [ 168 ]
       provinceName:
         kind: categorical
         distinct: 1
