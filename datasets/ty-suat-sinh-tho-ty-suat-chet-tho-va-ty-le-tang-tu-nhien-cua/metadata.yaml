@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 142, 142, 213, 142, 142, 213, 142, 213 ]
+        distinct: 19
+        histogram: [ 142, 213, 213, 213, 213, 213, 142 ]
       Tỷ suất sinh thô:
         kind: numeric
         min: 9.5
         max: 31.2
+        distinct: 327
         histogram: [ 106, 292, 502, 287, 88, 39, 15, 3 ]
       Tỷ suất chết thô:
         kind: numeric
         min: 3.8
         max: 12.8
+        distinct: 64
         histogram: [ 74, 187, 263, 188, 51, 6, 1, 2 ]
       Địa phương:
         kind: categorical
