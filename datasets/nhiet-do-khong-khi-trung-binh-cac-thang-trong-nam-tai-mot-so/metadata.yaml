@@ -30,16 +30,32 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 612, 612, 612, 408, 612, 612, 612, 612 ]
+        distinct: 23
+        histogram: [ 612, 612, 612, 612, 612, 612, 612, 408 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 782, 391, 782, 391, 391, 782, 391, 782 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 391, 391, 391, 391, 391, 391, 391, 391, 391, 391, 391, 391 ]
       Nhiệt độ không khí trung bình các tháng trong năm tại một số trạm quan trắc:
         kind: numeric
         min: 11
         max: 32.8
+        distinct: 196
         histogram: [ 22, 141, 455, 494, 731, 877, 1225, 194 ]
       Tỉnh, thành phố:
         kind: categorical
