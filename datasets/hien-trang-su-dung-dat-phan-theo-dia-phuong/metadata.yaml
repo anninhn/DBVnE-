@@ -24,197 +24,202 @@ confidence: high
 uploaded_by: ninh
 uploaded_at: "2026-09-04T07:58:56.251Z"
 coverage:
-  temporal: [2018, 2023]
+  temporal: [ 2018, 2023 ]
 files:
   - filename: "hien-trang-su-dung-dat-phan-theo-dia-phuong.csv"
     path: "hien-trang-su-dung-dat-phan-theo-dia-phuong/hien-trang-su-dung-dat-phan-theo-dia-phuong.csv"
     r2_key: "551453a0-bff0-4a76-be9b-4751256043b6/hien-trang-su-dung-dat-phan-theo-dia-phuong.csv"
     size_mb: 0.02
     column_stats:
-      "Tổng diện tích":
+      Tổng diện tích:
         kind: numeric
         min: 1.27
         max: 33134.57
-        histogram: [334, 5, 10, 0, 0, 0, 0, 5]
-      "Đất sản xuất nông nghiệp":
+        distinct: 164
+        histogram: [ 334, 5, 10, 0, 0, 0, 0, 5 ]
+      Đất sản xuất nông nghiệp:
         kind: numeric
         min: 0
         max: 11718.39
-        histogram: [327, 20, 0, 0, 0, 0, 0, 5]
-      "Đất lâm nghiệp":
+        distinct: 347
+        histogram: [ 327, 20, 0, 0, 0, 0, 0, 5 ]
+      Đất lâm nghiệp:
         kind: numeric
         min: 0
         max: 15468.17
-        histogram: [326, 5, 6, 4, 0, 0, 0, 5]
-      "Đất chuyên dùng":
+        distinct: 289
+        histogram: [ 326, 5, 6, 4, 0, 0, 0, 5 ]
+      Đất chuyên dùng:
         kind: numeric
         min: 0
         max: 2024.73
-        histogram: [330, 14, 5, 0, 0, 0, 0, 5]
-      "Đất ở":
+        distinct: 336
+        histogram: [ 330, 14, 5, 0, 0, 0, 0, 5 ]
+      Đất ở:
         kind: numeric
         min: 0
         max: 770.27
-        histogram: [328, 16, 4, 0, 0, 0, 0, 5]
-      "Phân theo địa phương":
+        distinct: 308
+        histogram: [ 328, 16, 4, 0, 0, 0, 0, 5 ]
+      Phân theo địa phương:
         kind: categorical
         distinct: 71
-        complete: true
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 5
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 5
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 5
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 5
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 5
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 5
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 5
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 5
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 5
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 5
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 5
-          - label: "Nam Định"
+          - label: Nam Định
             count: 5
-          - label: "Ninh Bình"
+          - label: Ninh Bình
             count: 5
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 5
-          - label: "Hà Giang"
+          - label: Hà Giang
             count: 5
-          - label: "Cao Bằng"
+          - label: Cao Bằng
             count: 5
-          - label: "Bắc Kạn"
+          - label: Bắc Kạn
             count: 5
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 5
-          - label: "Lào Cai"
+          - label: Lào Cai
             count: 5
-          - label: "Yên Bái"
+          - label: Yên Bái
             count: 5
-          - label: "Thái Nguyên"
+          - label: Thái Nguyên
             count: 5
-          - label: "Lạng Sơn"
+          - label: Lạng Sơn
             count: 5
-          - label: "Bắc Giang"
+          - label: Bắc Giang
             count: 5
-          - label: "Phú Thọ"
+          - label: Phú Thọ
             count: 5
-          - label: "Điện Biên"
+          - label: Điện Biên
             count: 5
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 5
-          - label: "Sơn La"
+          - label: Sơn La
             count: 5
-          - label: "Hoà Bình"
+          - label: Hoà Bình
             count: 5
-          - label: "Bắc Trung Bộ và Duyên hải miền Trung"
+          - label: Bắc Trung Bộ và Duyên hải miền Trung
             count: 5
-          - label: "Thanh Hoá"
+          - label: Thanh Hoá
             count: 5
-          - label: "Nghệ An"
+          - label: Nghệ An
             count: 5
-          - label: "Hà Tĩnh"
+          - label: Hà Tĩnh
             count: 5
-          - label: "Quảng Bình"
+          - label: Quảng Bình
             count: 5
-          - label: "Quảng Trị"
+          - label: Quảng Trị
             count: 5
-          - label: "Thừa Thiên Huế"
+          - label: Thừa Thiên Huế
             count: 5
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 5
-          - label: "Quảng Nam"
+          - label: Quảng Nam
             count: 5
-          - label: "Quảng Ngãi"
+          - label: Quảng Ngãi
             count: 5
-          - label: "Bình Định"
+          - label: Bình Định
             count: 5
-          - label: "Phú Yên"
+          - label: Phú Yên
             count: 5
-          - label: "Khánh Hoà"
+          - label: Khánh Hoà
             count: 5
-          - label: "Ninh Thuận"
+          - label: Ninh Thuận
             count: 5
-          - label: "Bình Thuận"
+          - label: Bình Thuận
             count: 5
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 5
-          - label: "Kon Tum"
+          - label: Kon Tum
             count: 5
-          - label: "Gia Lai"
+          - label: Gia Lai
             count: 5
-          - label: "Đắk Lắk"
+          - label: Đắk Lắk
             count: 5
-          - label: "Đắk Nông"
+          - label: Đắk Nông
             count: 5
-          - label: "Lâm Đồng"
+          - label: Lâm Đồng
             count: 5
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 5
-          - label: "Bình Phước"
+          - label: Bình Phước
             count: 5
-          - label: "Tây Ninh"
+          - label: Tây Ninh
             count: 5
-          - label: "Bình Dương"
+          - label: Bình Dương
             count: 5
-          - label: "Đồng Nai"
+          - label: Đồng Nai
             count: 5
-          - label: "Bà Rịa - Vũng Tàu"
+          - label: Bà Rịa - Vũng Tàu
             count: 5
-          - label: "TP.Hồ Chí Minh"
+          - label: TP.Hồ Chí Minh
             count: 5
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 5
-          - label: "Long An"
+          - label: Long An
             count: 5
-          - label: "Tiền Giang"
+          - label: Tiền Giang
             count: 5
-          - label: "Bến Tre"
+          - label: Bến Tre
             count: 5
-          - label: "Trà Vinh"
+          - label: Trà Vinh
             count: 5
-          - label: "Vĩnh Long"
+          - label: Vĩnh Long
             count: 5
-          - label: "Đồng Tháp"
+          - label: Đồng Tháp
             count: 5
-          - label: "An Giang"
+          - label: An Giang
             count: 5
-          - label: "Kiên Giang"
+          - label: Kiên Giang
             count: 5
-          - label: "Cần Thơ"
+          - label: Cần Thơ
             count: 5
-          - label: "Hậu Giang"
+          - label: Hậu Giang
             count: 5
-          - label: "Sóc Trăng"
+          - label: Sóc Trăng
             count: 5
-          - label: "Bạc Liêu"
+          - label: Bạc Liêu
             count: 5
-          - label: "Cà Mau"
+          - label: Cà Mau
             count: 5
-          - label: "Không xác định"
+          - label: Không xác định
             count: 5
-      "Thời điểm":
+        complete: true
+      Thời điểm:
         kind: categorical
         distinct: 5
-        complete: true
         segments:
-          - label: "31/12/2018"
+          - label: 31/12/2018
             count: 71
-          - label: "31/12/2020"
+          - label: 31/12/2020
             count: 71
-          - label: "31/12/2021"
+          - label: 31/12/2021
             count: 71
-          - label: "31/12/2022"
+          - label: 31/12/2022
             count: 71
-          - label: "31/12/2023"
+          - label: 31/12/2023
             count: 71
+        complete: true
