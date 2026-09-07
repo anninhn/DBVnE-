@@ -30,21 +30,25 @@ files:
         kind: numeric
         min: 1991
         max: 2024
-        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+        distinct: 34
+        histogram: [ 5, 5, 5, 5, 5, 5, 4 ]
       Số dự án:
         kind: numeric
         min: 152
         max: 38349
+        distinct: 35
         histogram: [ 35, 0, 0, 0, 0, 0, 0, 1 ]
       Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 1284.4
         max: 523918.6
+        distinct: 36
         histogram: [ 34, 1, 0, 0, 0, 0, 0, 1 ]
       Tổng số vốn thực hiện (Triệu đô la Mỹ):
         kind: numeric
         min: 428.5
         max: 251192.9
+        distinct: 35
         histogram: [ 34, 0, 0, 0, 0, 0, 0, 1 ]
 coverage:
   temporal: [ 1991, 2024 ]
