@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 13, 26, 39, 26, 26, 39, 26, 39 ]
+        distinct: 18
+        histogram: [ 13, 39, 39, 39, 39, 39, 26 ]
       Cơ cấu trị giá xuất khẩu hàng hoá:
         kind: numeric
         min: 0
         max: 100
+        distinct: 130
         histogram: [ 135, 25, 26, 12, 3, 4, 8, 21 ]
       Phân loại tiêu chuẩn ngoại thương:
         kind: categorical
