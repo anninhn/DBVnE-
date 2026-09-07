@@ -30,11 +30,19 @@ files:
         kind: numeric
         min: 2020
         max: 2024
-        histogram: [ 10, 0, 10, 0, 10, 0, 10, 10 ]
+        distinct: 5
+        values:
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 10, 10, 10, 10, 10 ]
       Doanh thu (Tỷ đồng ):
         kind: numeric
         min: 43433
         max: 4928680.94
+        distinct: 50
         histogram: [ 39, 2, 4, 0, 0, 1, 2, 2 ]
       Nhóm hàng:
         kind: categorical
