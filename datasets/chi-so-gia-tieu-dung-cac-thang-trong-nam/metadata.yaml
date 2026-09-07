@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 72, 72, 54, 72, 72, 54, 72, 72 ]
+        distinct: 30
+        histogram: [ 72, 72, 72, 72, 72, 72, 72, 36 ]
       Chỉ số giá tiêu dùng các tháng trong năm:
         kind: numeric
         min: 98.4
         max: 395.03
+        distinct: 252
         histogram: [ 456, 13, 6, 5, 7, 9, 4, 3 ]
       Các tháng (tháng trước = 100):
         kind: categorical
