@@ -70,9 +70,18 @@ export function binRangeLabel(
   if (values && values[index] != null) return format(values[index]);
   if (min == null || max == null) return `khoảng ${index + 1}/${binCount}`;
   const step = (max - min) / binCount;
-  const whole = Number.isInteger(min) && Number.isInteger(max);
   const lo = min + index * step;
   const hi = min + (index + 1) * step;
-  const r = (n: number) => (whole ? Math.round(n) : Number(n.toFixed(4)));
+  // Làm tròn mốc theo độ chính xác của CHÍNH dữ liệu, không theo độ chính xác của
+  // phép chia. Cột `Số giờ nắng` có min 0 / max 319,9 (một chữ số thập phân) mà
+  // chia 8 cho ra mốc 39,9875 — bốn chữ số thập phân đó là của phép chia, không
+  // phải của dữ liệu, và đọc lên chỉ thêm nhiễu.
+  const dec = (n: number) => {
+    const s = String(n);
+    const i = s.indexOf(".");
+    return i < 0 ? 0 : s.length - i - 1;
+  };
+  const places = Math.min(2, Math.max(dec(min), dec(max)));
+  const r = (n: number) => Number(n.toFixed(places));
   return `${format(r(lo))} – ${format(r(hi))}`;
 }
