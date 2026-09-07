@@ -30,26 +30,47 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 8, 8, 8, 4, 8, 8, 8, 8 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ]
       Giá thực tế (Tỷ đồng):
         kind: numeric
         min: 214506
         max: 3692124
+        distinct: 60
         histogram: [ 28, 10, 5, 8, 2, 3, 2, 2 ]
       Cơ cấu thành phần kinh tế (%):
         kind: numeric
         min: 16
         max: 100
+        distinct: 40
         histogram: [ 20, 10, 4, 8, 3, 0, 0, 15 ]
       Giá so sánh 2010 (Tỷ đồng):
         kind: numeric
         min: 177475
         max: 2375855
+        distinct: 60
         histogram: [ 21, 15, 3, 10, 3, 2, 3, 3 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 86.1
         max: 117
+        distinct: 47
         histogram: [ 2, 1, 4, 5, 12, 13, 13, 6 ]
       Thành phần kinh tế:
         kind: categorical
