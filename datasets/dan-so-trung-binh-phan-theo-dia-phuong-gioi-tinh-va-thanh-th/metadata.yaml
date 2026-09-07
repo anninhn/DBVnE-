@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Dân số trung bình:
         kind: numeric
         min: 254.2
         max: 101343.75
+        distinct: 2040
         histogram: [ 1944, 112, 0, 0, 0, 4, 13, 13 ]
       Tỉnh, thành phố:
         kind: categorical
