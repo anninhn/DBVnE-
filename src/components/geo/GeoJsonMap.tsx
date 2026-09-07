@@ -127,35 +127,34 @@ export default function GeoJsonMap({
       }).setView([16, 107], 4);
       mapRef.current = map;
 
-      // Nền bản đồ: Esri World Light Gray Base.
+      // CartoDB Positron — nền xám tối giản, không màu tranh với dữ liệu vẽ lên.
+      // Style khác nếu muốn: dark_all (tối), voyager (màu nhẹ).
       //
-      // Trước đây dùng CartoDB Positron. CARTO đã đóng basemap sau API key và
-      // ĐÓNG DẤU thẳng vào ảnh tile: mỗi tile trả HTTP 200 kèm chữ
-      // "API KEY REQUIRED / carto.com/basemaps/apikeys" vắt chéo qua bản đồ.
-      // Kiểm 2026-09-07 ở zoom 4, 6, 10: tile nào cũng bị. Không có lỗi mạng nào
-      // để bắt — request "thành công", chỉ là nội dung bị đóng dấu.
+      // CÓ ĐÓNG DẤU, VÀ ĐÓ LÀ QUYẾT ĐỊNH ĐÃ CHỐT (2026-09-07). CARTO đã đóng
+      // basemap sau API key: mỗi tile trả HTTP 200 kèm chữ "API KEY REQUIRED /
+      // carto.com/basemaps/apikeys" in thẳng vào ảnh, vắt chéo qua bản đồ ở mọi
+      // mức zoom. Không có lỗi mạng nào để bắt — request "thành công", chỉ là
+      // nội dung bị đóng dấu. Người quyết định chấp nhận chữ đó, không đổi nhà
+      // cung cấp.
       //
-      // Đã thử OpenStreetMap (`tile.openstreetmap.org`) và BỎ: đo từ trình duyệt
-      // trên chính máy dev, tile OSM KHÔNG tải được, trong khi ArcGIS về trong
-      // 78ms. Đổi sang OSM là để map trắng trơn — tệ hơn cả bị đóng dấu.
+      // KHÔNG đổi sang OpenStreetMap: `tile.openstreetmap.org` chạy trên hạ tầng
+      // tình nguyện và chính sách của họ không cho ứng dụng dùng. Hỏi thẳng máy
+      // chủ họ (vượt chặn DNS bằng `--resolve`) trả HTTP 403 kèm ảnh "Access
+      // blocked — App is not following the tile usage policy". Đổi sang OSM là để
+      // map trắng trơn.
       //
-      // Chọn `World_Light_Gray_Base` vì nó vốn đã là nền xám tối giản, đúng ý đồ
-      // thiết kế ban đầu, nên không cần lọc grayscale bằng CSS (lọc thêm chỉ làm
-      // dữ liệu vẽ lên bị nhạt theo).
+      // Đã thử Esri `Canvas/World_Light_Gray_Base` (không cần khoá, xám sạch,
+      // 78ms) nhưng bỏ: điều khoản của Esri cho endpoint tile công khai không nói
+      // rõ về app bên thứ ba, mà map này sẽ đi vào bài báo.
       //
-      // LƯU Ý toạ độ: ArcGIS xếp **{z}/{y}/{x}**, không phải {z}/{x}/{y} như
-      // OSM/CARTO. Kiểm bằng cách đảo hai số: `6/30/50` ra nam Việt Nam, `6/50/30`
-      // ra một vùng khác hẳn. Viết sai thứ tự thì map vẫn hiện tile, chỉ là hiện
-      // sai chỗ trên thế giới — không có lỗi nào báo.
-      L.tileLayer(
-        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-        {
-          maxZoom: 19,
-          // Nguyên văn `copyrightText` của service (đọc từ `?f=json`), không tự viết.
-          attribution:
-            "Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community",
-        },
-      ).addTo(map);
+      // Để bỏ chữ đóng dấu: tạo tài khoản CARTO lấy API key (họ có gói miễn phí).
+      // Dạng URL kèm khoá phải tra tài liệu CARTO lúc làm — tôi không ghi sẵn ở
+      // đây vì chưa kiểm được, và đoán sai thì lỗi lại im lặng đúng như lần này.
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        maxZoom: 19,
+        subdomains: "abcd",
+        attribution: "© OpenStreetMap contributors © CARTO",
+      }).addTo(map);
 
       try {
         const kind = detectGeomKind(data);
