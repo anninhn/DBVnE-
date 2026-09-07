@@ -22,107 +22,110 @@ confidence: high
 uploaded_by: ninh
 uploaded_at: "2026-09-04T07:58:31.253Z"
 coverage:
-  temporal: [2018, 2023]
+  temporal: [ 2018, 2023 ]
 files:
   - filename: "hien-trang-su-dung-dat.csv"
     path: "hien-trang-su-dung-dat/hien-trang-su-dung-dat.csv"
     r2_key: "e89532e4-23ae-4241-9b23-965cb53bf96b/hien-trang-su-dung-dat.csv"
     size_mb: 0.01
     column_stats:
-      "Tổng diện tích":
+      Tổng diện tích:
         kind: numeric
         min: 13.16
         max: 33134.48
-        histogram: [115, 20, 5, 5, 0, 0, 5, 5]
-      "Đất đã giao cho các đối tượng sử dụng":
+        distinct: 154
+        histogram: [ 115, 20, 5, 5, 0, 0, 5, 5 ]
+      Đất đã giao cho các đối tượng sử dụng:
         kind: numeric
         min: 1.61
         max: 27116.5
-        histogram: [110, 24, 1, 10, 0, 0, 0, 10]
-      "Đất đã giao cho các đối tượng quản lý":
+        distinct: 155
+        histogram: [ 110, 24, 1, 10, 0, 0, 0, 10 ]
+      Đất đã giao cho các đối tượng quản lý:
         kind: numeric
         min: 0.02
         max: 6280.8
-        histogram: [102, 28, 8, 9, 1, 0, 0, 5]
-      "Loại đất":
+        distinct: 117
+        histogram: [ 102, 28, 8, 9, 1, 0, 0, 5 ]
+      Loại đất:
         kind: categorical
         distinct: 31
-        complete: true
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 5
-          - label: "Đất nông nghiệp"
+          - label: Đất nông nghiệp
             count: 5
-          - label: "Đất sản xuất nông nghiệp"
+          - label: Đất sản xuất nông nghiệp
             count: 5
-          - label: "Đất trồng cây hàng năm"
+          - label: Đất trồng cây hàng năm
             count: 5
-          - label: "Đất trồng lúa"
+          - label: Đất trồng lúa
             count: 5
-          - label: "Đất trồng cây hàng năm khác"
+          - label: Đất trồng cây hàng năm khác
             count: 5
-          - label: "Đất trồng cây lâu năm"
+          - label: Đất trồng cây lâu năm
             count: 5
-          - label: "Đất lâm nghiệp"
+          - label: Đất lâm nghiệp
             count: 5
-          - label: "Rừng sản xuất"
+          - label: Rừng sản xuất
             count: 5
-          - label: "Rừng phòng hộ"
+          - label: Rừng phòng hộ
             count: 5
-          - label: "Rừng đặc dụng"
+          - label: Rừng đặc dụng
             count: 5
-          - label: "Đất nuôi trồng thuỷ sản"
+          - label: Đất nuôi trồng thuỷ sản
             count: 5
-          - label: "Đất làm muối"
+          - label: Đất làm muối
             count: 5
-          - label: "Đất nông nghiệp khác"
+          - label: Đất nông nghiệp khác
             count: 5
-          - label: "Đất phi nông nghiệp"
+          - label: Đất phi nông nghiệp
             count: 5
-          - label: "Đất ở"
+          - label: Đất ở
             count: 5
-          - label: "Đất ở đô thị"
+          - label: Đất ở đô thị
             count: 5
-          - label: "Đất ở nông thôn"
+          - label: Đất ở nông thôn
             count: 5
-          - label: "Đất chuyên dùng"
+          - label: Đất chuyên dùng
             count: 5
-          - label: "Đất trụ sở cơ quan, công trình sự nghiệp"
+          - label: Đất trụ sở cơ quan, công trình sự nghiệp
             count: 5
-          - label: "Đất quốc phòng, an ninh"
+          - label: Đất quốc phòng, an ninh
             count: 5
-          - label: "Đất sản xuất, kinh doanh phi nông nghiệp"
+          - label: Đất sản xuất, kinh doanh phi nông nghiệp
             count: 5
-          - label: "Đất có mục đích công cộng"
+          - label: Đất có mục đích công cộng
             count: 5
-          - label: "Đất tôn giáo, tín ngưỡng"
+          - label: Đất tôn giáo, tín ngưỡng
             count: 5
-          - label: "Đất nghĩa trang, nghĩa địa"
+          - label: Đất nghĩa trang, nghĩa địa
             count: 5
-          - label: "Đất sông suối và mặt nước chuyên dùng"
+          - label: Đất sông suối và mặt nước chuyên dùng
             count: 5
-          - label: "Đất phi nông nghiệp khác"
+          - label: Đất phi nông nghiệp khác
             count: 5
-          - label: "Đất chưa sử dụng"
+          - label: Đất chưa sử dụng
             count: 5
-          - label: "Đất bằng chưa sử dụng"
+          - label: Đất bằng chưa sử dụng
             count: 5
-          - label: "Đất đồi núi chưa sử dụng"
+          - label: Đất đồi núi chưa sử dụng
             count: 5
-          - label: "Núi đá không có rừng cây"
+          - label: Núi đá không có rừng cây
             count: 5
-      "Thời điểm":
+        complete: true
+      Thời điểm:
         kind: categorical
         distinct: 5
-        complete: true
         segments:
-          - label: "31/12/2018"
+          - label: 31/12/2018
             count: 31
-          - label: "31/12/2020"
+          - label: 31/12/2020
             count: 31
-          - label: "31/12/2021"
+          - label: 31/12/2021
             count: 31
-          - label: "31/12/2022"
+          - label: 31/12/2022
             count: 31
-          - label: "31/12/2023"
+          - label: 31/12/2023
             count: 31
+        complete: true
