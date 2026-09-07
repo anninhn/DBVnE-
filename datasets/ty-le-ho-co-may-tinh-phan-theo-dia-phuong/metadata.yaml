@@ -32,31 +32,37 @@ files:
         kind: numeric
         min: 7.11
         max: 54.34
+        distinct: 63
         histogram: [ 10, 28, 16, 6, 1, 1, 0, 2 ]
       "2021":
         kind: numeric
         min: 11.48
         max: 58.08
+        distinct: 64
         histogram: [ 22, 16, 16, 5, 2, 0, 1, 2 ]
       "2022":
         kind: numeric
         min: 11.06
         max: 54.95
+        distinct: 64
         histogram: [ 15, 23, 9, 11, 3, 0, 0, 3 ]
       "2023":
         kind: numeric
         min: 7.41
         max: 53.4
+        distinct: 64
         histogram: [ 3, 28, 15, 10, 5, 0, 0, 3 ]
       2020*:
         kind: numeric
         min: 9.91
         max: 54.18
+        distinct: 63
         histogram: [ 15, 24, 15, 7, 0, 0, 1, 2 ]
       Sơ bộ Prel. 2024:
         kind: numeric
         min: 4.31
         max: 46.26
+        distinct: 61
         histogram: [ 3, 17, 17, 17, 6, 0, 2, 2 ]
       Địa phương:
         kind: categorical
