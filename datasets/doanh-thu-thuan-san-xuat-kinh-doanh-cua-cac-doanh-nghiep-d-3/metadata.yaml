@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 100, 0, 0, 200, 200, 100, 200, 200 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 ]
       Doanh thu thuần sản xuất kinh doanh của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 0
         max: 36289543.5
+        distinct: 998
         histogram: [ 964, 15, 11, 3, 1, 2, 2, 2 ]
       Ngành kinh tế:
         kind: categorical
