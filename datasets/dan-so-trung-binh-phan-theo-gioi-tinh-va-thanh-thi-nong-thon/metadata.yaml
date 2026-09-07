@@ -31,21 +31,25 @@ files:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [ 25, 20, 20, 20, 25, 20, 20, 25 ]
+        distinct: 35
+        histogram: [ 25, 25, 25, 25, 25, 25, 25 ]
       Tổng số (Nghìn người):
         kind: numeric
         min: 12880.3
         max: 101343.75
+        distinct: 175
         histogram: [ 18, 19, 49, 25, 31, 10, 12, 11 ]
       Tỷ lệ tăng (%):
         kind: numeric
         min: -1.58
         max: 9.18
+        distinct: 118
         histogram: [ 3, 54, 94, 17, 5, 1, 0, 1 ]
       Cơ cấu (%):
         kind: numeric
         min: 19.51
         max: 100
+        distinct: 131
         histogram: [ 19, 16, 28, 42, 15, 16, 4, 35 ]
       Phân tổ:
         kind: categorical
