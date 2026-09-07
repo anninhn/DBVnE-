@@ -30,11 +30,28 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 12, 12, 6, 12, 12, 6, 12, 12 ]
+        distinct: 14
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 ]
       Vốn đầu tư thực hiện toàn xã hội:
         kind: numeric
         min: 13210
         max: 2375855
+        distinct: 90
         histogram: [ 52, 8, 5, 7, 7, 4, 4, 3 ]
       Phân tổ:
         kind: categorical
