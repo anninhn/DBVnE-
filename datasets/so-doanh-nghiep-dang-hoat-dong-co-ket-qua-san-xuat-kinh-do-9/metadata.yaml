@@ -30,16 +30,23 @@ files:
         kind: numeric
         min: 2021
         max: 2023
-        histogram: [ 117, 0, 0, 0, 117, 0, 0, 117 ]
+        distinct: 3
+        values:
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 117, 117, 117 ]
       Doanh nghiệp:
         kind: numeric
         min: 0
         max: 778429
+        distinct: 311
         histogram: [ 313, 20, 9, 0, 0, 3, 0, 6 ]
       Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 227
         histogram: [ 237, 24, 8, 7, 3, 10, 15, 47 ]
       Loại hình doanh nghiệp:
         kind: categorical
