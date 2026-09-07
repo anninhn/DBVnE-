@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2006
         max: 2024
-        histogram: [ 45, 30, 30, 30, 45, 30, 30, 45 ]
+        distinct: 19
+        histogram: [ 45, 45, 45, 45, 45, 45, 15 ]
       Tổng lượng mưa tại một số trạm quan trắc:
         kind: numeric
         min: 819
         max: 4951
+        distinct: 278
         histogram: [ 31, 93, 90, 47, 11, 7, 3, 3 ]
       Tỉnh, thành phố:
         kind: categorical
