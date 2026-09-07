@@ -1739,7 +1739,7 @@
     "slug": "dien-tich-rung-trong-moi-tap-trung-phan-theo-loai-hinh-kinh",
     "title": "Diện tích rừng trồng mới tập trung phân theo loại hình kinh tế",
     "description": "Diện tích rừng trồng mới tập trung hằng năm của Việt Nam, tách theo loại hình kinh tế của đơn vị trồng (Nhà nước, ngoài Nhà nước, khu vực có vốn đầu tư nước ngoài), giai đoạn 2018–2023. Kèm chỉ số phát triển so với năm trước. LƯU Ý VỀ ĐƠN VỊ: bản export gốc của Cục Thống kê ghi cột số liệu là \"Sản lượng (Nghìn m3)\", nhưng đó là lỗi nhãn của nguồn — giá trị là DIỆN TÍCH, đơn vị nghìn ha. Đối chiếu ba dataset cùng chỉ tiêu cho giá trị y hệt ở mọi năm 2018–2023 (282 · 268 · 269 · 290 · 306 · 296), và hai dataset kia ghi đơn vị nghìn ha.",
-    "category": "kinh-te",
+    "category": "moi-truong",
     "tags": [
       "dien-tich-rung",
       "san-luong",
@@ -1750,7 +1750,7 @@
     "uploaded_at": "2026-09-03T03:55:27.608Z",
     "uploaded_by": "ninh",
     "last_edited_by": "ninh",
-    "last_edited_at": "2026-09-07T06:00:55.148Z",
+    "last_edited_at": "2026-09-07T06:04:39.417Z",
     "row_count": 42,
     "file_count": 1,
     "total_size_mb": 0,
