@@ -31,6 +31,7 @@ files:
         kind: numeric
         min: 15.6
         max: 41.9
+        distinct: 101
         histogram: [ 21, 20, 11, 6, 12, 13, 11, 10 ]
       Số học sinh phổ thông:
         kind: categorical
