@@ -31,11 +31,15 @@ files:
         kind: numeric
         min: 2024
         max: 2024
-        histogram: [ 70, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 2024
+        histogram: [ 70 ]
       Tỷ lệ người sử dụng điện thoại di động:
         kind: numeric
         min: 68.9
         max: 90.9
+        distinct: 57
         histogram: [ 1, 1, 6, 7, 11, 17, 18, 9 ]
       Địa phương:
         kind: categorical
