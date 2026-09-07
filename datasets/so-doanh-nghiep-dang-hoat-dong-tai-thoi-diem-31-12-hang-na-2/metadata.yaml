@@ -30,11 +30,22 @@ files:
         kind: numeric
         min: 2017
         max: 2024
+        distinct: 8
+        values:
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
         histogram: [ 70, 70, 70, 70, 70, 70, 70, 70 ]
       Số doanh nghiệp đang hoạt động tại thời điểm 31/12 hàng năm:
         kind: numeric
         min: 1.01
         max: 998
+        distinct: 546
         histogram: [ 510, 14, 18, 0, 2, 7, 4, 5 ]
       Tỉnh/thành phố:
         kind: categorical
