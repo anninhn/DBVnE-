@@ -32,11 +32,13 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 48, 0, 0, 48, 48, 48, 48, 64 ]
+        distinct: 19
+        histogram: [ 48, 0, 48, 64, 64, 64, 16 ]
       Một số chỉ tiêu chủ yếu về tài khoản quốc gia:
         kind: numeric
         min: 2.6
         max: 11510328.9
+        distinct: 273
         histogram: [ 193, 24, 26, 20, 14, 9, 7, 4 ]
       Chỉ tiêu:
         kind: categorical
