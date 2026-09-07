@@ -31,16 +31,30 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 18, 9, 9, 9, 9, 9, 9, 18 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ]
       Trị giá (Nghìn tỷ đồng):
         kind: numeric
         min: 35.2
         max: 15617.1
+        distinct: 90
         histogram: [ 31, 17, 17, 12, 5, 3, 3, 2 ]
       Tốc độ tăng (%):
         kind: numeric
         min: -35.5
         max: 32
+        distinct: 75
         histogram: [ 1, 2, 5, 7, 6, 36, 27, 6 ]
       Chỉ tiêu chủ yếu:
         kind: categorical
