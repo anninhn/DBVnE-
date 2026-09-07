@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 100, 0, 0, 200, 200, 100, 200, 200 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 ]
       Tổng số lao động trong các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm:
         kind: numeric
         min: 0
         max: 954.135
+        distinct: 929
         histogram: [ 527, 178, 95, 50, 32, 21, 19, 11 ]
       Ngành kinh tế:
         kind: categorical
