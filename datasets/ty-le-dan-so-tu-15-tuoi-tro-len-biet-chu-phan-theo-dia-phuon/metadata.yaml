@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2006
         max: 2024
-        histogram: [ 71, 142, 142, 142, 213, 142, 142, 213 ]
+        distinct: 17
+        histogram: [ 71, 213, 213, 213, 213, 213, 71 ]
       Tỷ lệ dân số từ 15 tuổi trở lên biết chữ:
         kind: numeric
         min: 59.2
         max: 99.45
+        distinct: 455
         histogram: [ 9, 9, 15, 32, 29, 103, 314, 680 ]
       Địa phương:
         kind: categorical
