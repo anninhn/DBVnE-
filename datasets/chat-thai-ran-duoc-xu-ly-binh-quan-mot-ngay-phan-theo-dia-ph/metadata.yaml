@@ -30,21 +30,32 @@ files:
         kind: numeric
         min: 2015
         max: 2020
-        histogram: [ 70, 70, 0, 70, 70, 0, 70, 70 ]
+        distinct: 6
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+        histogram: [ 70, 70, 70, 70, 70, 70 ]
       Tổng lượng chất thải rắn thông thường được thu gom:
         kind: numeric
         min: 12
         max: 68451.29
+        distinct: 319
         histogram: [ 386, 16, 2, 2, 2, 1, 0, 1 ]
       Tổng lượng chất thải rắn thông thường thu gom được xử lý đạt tiêu chuẩn, quy chuẩn kỹ thuật quốc gia tương ứng:
         kind: numeric
         min: 0
         max: 58007.32
+        distinct: 297
         histogram: [ 378, 15, 2, 3, 2, 1, 0, 1 ]
       Tỷ lệ chất thải rắn thông thường thu gom được xử lý đạt tiêu chuẩn, quy chuẩn kỹ thuật quốc gia tương ứng:
         kind: numeric
         min: 0
         max: 100
+        distinct: 157
         histogram: [ 7, 3, 8, 9, 20, 29, 36, 87 ]
       Địa phương:
         kind: categorical
