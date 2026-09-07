@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 30, 30, 30, 30, 30, 30, 30, 40 ]
+        distinct: 25
+        histogram: [ 40, 40, 40, 40, 40, 40, 10 ]
       Diện tích thu hoạch thủy sản:
         kind: numeric
         min: 0
         max: 1146.1
+        distinct: 188
         histogram: [ 106, 5, 21, 3, 18, 9, 13, 31 ]
       Diện tích nuôi trồng/thu hoạch thủy sản (Nghìn ha):
         kind: categorical
