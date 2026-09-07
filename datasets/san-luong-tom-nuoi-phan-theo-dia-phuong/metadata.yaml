@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 260, 260, 195, 260, 260, 195, 260, 260 ]
+        distinct: 30
+        histogram: [ 260, 260, 260, 260, 260, 260, 260, 130 ]
       Sản lượng tôm nuôi:
         kind: numeric
         min: 0
         max: 1301774
+        distinct: 1211
         histogram: [ 1652, 26, 11, 8, 5, 5, 3, 3 ]
       Tỉnh, thành phố:
         kind: categorical
