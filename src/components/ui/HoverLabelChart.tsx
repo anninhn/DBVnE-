@@ -75,3 +75,15 @@ export default function HoverLabelChart({
     </span>
   );
 }
+
+/**
+ * Bán kính góc cột, tính theo % bề rộng cột.
+ *
+ * Dùng tỉ lệ chứ không số cố định: biểu đồ ở tab Dataset card cao 30px với cột
+ * rộng ~11,8px, còn cái ở tab Files chỉ cao 12px với cột rộng ~6,5px. Một `rx`
+ * cố định làm cái nhỏ trông gần như vuông trong khi cái lớn đã tròn.
+ *
+ * Markup HF được cung cấp không có `rx`, nên đây là chọn của dự án
+ * (HF-DESIGN-SPEC.md § 19.4).
+ */
+export const BAR_RADIUS_RATIO = 0.28;

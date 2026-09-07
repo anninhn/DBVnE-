@@ -13,7 +13,9 @@ import {
   schemaForColumn,
 } from "@/lib/datasets/number-schema";
 import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";
-import HoverLabelChart from "@/components/ui/HoverLabelChart";
+import HoverLabelChart, {
+  BAR_RADIUS_RATIO,
+} from "@/components/ui/HoverLabelChart";
 
 const PREVIEW_ROW_LIMIT = 100;
 
@@ -458,7 +460,7 @@ function MiniHistogram({
                 y={H - h}
                 width={Math.max(BAR_W - 1, 1)}
                 height={h}
-                rx={0.5}
+                rx={Math.max(BAR_W - 1, 1) * BAR_RADIUS_RATIO}
                 className="pointer-events-none fill-hf-chart"
                 fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
               >

@@ -2,7 +2,9 @@
 
 import type { ColumnStats } from "@/lib/types/dataset";
 import type { NumberSchema } from "@/lib/parse/number";
-import HoverLabelChart from "@/components/ui/HoverLabelChart";
+import HoverLabelChart, {
+  BAR_RADIUS_RATIO,
+} from "@/components/ui/HoverLabelChart";
 import {
   binRangeLabel,
   formatNumberWithSchema,
@@ -225,7 +227,7 @@ function Histogram({
                 y={H - h}
                 width={Math.max(BAR_W - 2, 1)}
                 height={h}
-                rx={1}
+                rx={Math.max(BAR_W - 2, 1) * BAR_RADIUS_RATIO}
                 className="pointer-events-none fill-hf-chart"
                 fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
               >
