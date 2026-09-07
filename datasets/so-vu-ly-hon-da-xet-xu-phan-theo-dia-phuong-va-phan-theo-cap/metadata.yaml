@@ -31,21 +31,36 @@ files:
         kind: numeric
         min: 2013
         max: 2022
-        histogram: [ 140, 70, 70, 70, 70, 70, 70, 140 ]
+        distinct: 10
+        values:
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Tổng số:
         kind: numeric
         min: 11
         max: 29010
+        distinct: 511
         histogram: [ 656, 27, 7, 0, 0, 2, 4, 4 ]
       Cấp tỉnh:
         kind: numeric
         min: 0
         max: 2717
+        distinct: 178
         histogram: [ 605, 32, 2, 0, 4, 3, 2, 1 ]
       Cấp huyện:
         kind: numeric
         min: 11
         max: 26293
+        distinct: 490
         histogram: [ 656, 27, 7, 0, 0, 2, 4, 4 ]
       Tỉnh, thành phố:
         kind: categorical
