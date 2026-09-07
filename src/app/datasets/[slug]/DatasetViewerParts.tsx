@@ -2,6 +2,7 @@
 
 import type { ColumnStats } from "@/lib/types/dataset";
 import type { NumberSchema } from "@/lib/parse/number";
+import HoverLabelChart from "@/components/ui/HoverLabelChart";
 import {
   binRangeLabel,
   formatNumberWithSchema,
@@ -183,41 +184,38 @@ function Histogram({
   const maxCount = Math.max(...counts);
   const total = counts.reduce((a, b) => a + b, 0);
   const fmt = (n: number) => formatNumberWithSchema(n, schema);
+  const labels = counts.map((count, i) => {
+    const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+    return `${binRangeLabel(i, counts.length, lo, hi, fmt)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
+  });
 
   return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-      {counts.map((count, i) => {
-        const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
-        const x = i * BAR_W + 1;
-        const y = H - h;
-        // Nhãn hover: khoảng giá trị của cột + số dòng. Trước đây SVG không có
-        // `<title>` nào nên trỏ chuột vào không ra gì, và trình đọc màn hình cũng
-        // không đọc được — tám cái cột xám không mang thông tin nào ra ngoài.
-        const range = binRangeLabel(i, counts.length, lo, hi, fmt);
-        const pct = total > 0 ? Math.round((count / total) * 100) : 0;
-        return (
-          <rect
-            key={i}
-            x={x}
-            y={y}
-            width={Math.max(BAR_W - 2, 1)}
-            height={h}
-            fill="#9CA3AF"
-            rx={1}
-          >
-            <title>{`${range}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`}</title>
-          </rect>
-        );
-      })}
-      {/* Vùng phủ toàn biểu đồ để hover vào chỗ cột thấp/rỗng vẫn có nhãn. */}
-      <rect x={0} y={0} width={W} height={H} fill="transparent">
-        <title>
-          {lo != null && hi != null
-            ? `${colName}: ${fmt(lo)} – ${fmt(hi)} · ${total.toLocaleString("vi-VN")} dòng`
-            : colName}
-        </title>
-      </rect>
-    </svg>
+    <HoverLabelChart
+      labels={labels}
+      segmentEnds={counts.map((_, i) => (i + 1) * BAR_W)}
+      viewBoxWidth={W}
+    >
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
+        {counts.map((count, i) => {
+          const h = maxCount > 0 ? (count / maxCount) * (H - 2) : 0;
+          return (
+            <rect
+              key={i}
+              x={i * BAR_W + 1}
+              y={H - h}
+              width={Math.max(BAR_W - 2, 1)}
+              height={h}
+              fill="#9CA3AF"
+              rx={1}
+            >
+              {/* Giữ cho trình đọc màn hình — tooltip nhìn thấy được do
+                  HoverLabelChart lo. */}
+              <title>{labels[i]}</title>
+            </rect>
+          );
+        })}
+      </svg>
+    </HoverLabelChart>
   );
 }
 
@@ -264,12 +262,24 @@ function ProportionBar({
   // không nói thì thanh tỉ lệ trông như đã phủ hết dataset, và người đọc kết luận
   // sai về những giá trị không xuất hiện.
   const truncated = stats?.kind === "categorical" && stats.complete === false;
+  const labels = bars.map((b) => {
+    const pct = result.total > 0 ? Math.round((b.count / result.total) * 100) : 0;
+    return `${b.label}: ${b.count.toLocaleString("vi-VN")} dòng (${pct}%)`;
+  });
+  // Nói ra khi danh sách giá trị BỊ CẮT: không nói thì thanh tỉ lệ trông như đã
+  // phủ hết dataset, và người đọc kết luận sai về giá trị không xuất hiện.
+  const labelsWithNote = truncated
+    ? labels.map((l) => `${l} — danh sách bị cắt, dataset còn giá trị khác`)
+    : labels;
 
   return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
-      {bars.map((b) => {
-        const pct = result.total > 0 ? Math.round((b.count / result.total) * 100) : 0;
-        return (
+    <HoverLabelChart
+      labels={labelsWithNote}
+      segmentEnds={bars.map((b) => b.x + b.w)}
+      viewBoxWidth={W}
+    >
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
+        {bars.map((b, i) => (
           <rect
             key={b.key}
             x={b.x.toFixed(1)}
@@ -278,17 +288,10 @@ function ProportionBar({
             height={H}
             fill={b.fill}
           >
-            <title>{`${b.label}: ${b.count.toLocaleString("vi-VN")} dòng (${pct}%)`}</title>
+            <title>{labelsWithNote[i]}</title>
           </rect>
-        );
-      })}
-      {/* Vùng phủ: hover vào segment quá mảnh vẫn ra được nhãn tổng quan. */}
-      <rect x={0} y={0} width={W} height={H} fill="transparent">
-        <title>
-          {`${colName}: ${bars.length} giá trị hiện ra` +
-            (truncated ? " (danh sách bị cắt — dataset còn giá trị khác)" : "")}
-        </title>
-      </rect>
-    </svg>
+        ))}
+      </svg>
+    </HoverLabelChart>
   );
 }

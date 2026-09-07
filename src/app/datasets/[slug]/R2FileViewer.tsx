@@ -13,6 +13,7 @@ import {
   schemaForColumn,
 } from "@/lib/datasets/number-schema";
 import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";
+import HoverLabelChart from "@/components/ui/HoverLabelChart";
 
 const PREVIEW_ROW_LIMIT = 100;
 
@@ -417,35 +418,40 @@ function MiniHistogram({
   const maxCount = Math.max(...counts);
   const total = counts.reduce((a, b) => a + b, 0);
   const fmt = format ?? ((n: number) => String(Number(n.toFixed(4))));
+  const labels = counts.map((count, i) => {
+    const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+    return `${binRangeLabel(i, counts.length, min, max, fmt)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
+  });
 
   return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="inline-block">
-      {counts.map((count, i) => {
-        const h = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
-        const range = binRangeLabel(i, counts.length, min, max, fmt);
-        const pct = total > 0 ? Math.round((count / total) * 100) : 0;
-        return (
-          <rect
-            key={i}
-            x={i * BAR_W + 0.5}
-            y={H - h}
-            width={Math.max(BAR_W - 1, 1)}
-            height={h}
-            fill="#9CA3AF"
-            rx={0.5}
-          >
-            <title>{`${range}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`}</title>
-          </rect>
-        );
-      })}
-      {/* Vùng phủ: hover vào cột thấp/rỗng vẫn có nhãn. */}
-      <rect x={0} y={0} width={W} height={H} fill="transparent">
-        <title>
-          {min != null && max != null
-            ? `${fmt(min)} – ${fmt(max)} · ${total.toLocaleString("vi-VN")} dòng`
-            : `${total.toLocaleString("vi-VN")} dòng`}
-        </title>
-      </rect>
-    </svg>
+    <HoverLabelChart
+      labels={labels}
+      segmentEnds={counts.map((_, i) => (i + 1) * BAR_W)}
+      viewBoxWidth={W}
+    >
+      <svg
+        width={W}
+        height={H}
+        viewBox={`0 0 ${W} ${H}`}
+        className="inline-block"
+      >
+        {counts.map((count, i) => {
+          const h = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
+          return (
+            <rect
+              key={i}
+              x={i * BAR_W + 0.5}
+              y={H - h}
+              width={Math.max(BAR_W - 1, 1)}
+              height={h}
+              fill="#9CA3AF"
+              rx={0.5}
+            >
+              <title>{labels[i]}</title>
+            </rect>
+          );
+        })}
+      </svg>
+    </HoverLabelChart>
   );
 }
