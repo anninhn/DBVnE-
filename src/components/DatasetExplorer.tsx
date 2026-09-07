@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Category, Dataset } from "@/lib/types/dataset";
 import { ALL_CATEGORIES, CATEGORY_LABELS } from "@/lib/types/dataset";
 import { SIZE_BUCKETS } from "@/lib/search/simple-filter";
+import Pagination from "@/components/ui/Pagination";
 import { createSearchAdapter } from "@/lib/search";
 import type { SearchAdapter } from "@/lib/search";
 import { formatCompactNumber } from "@/lib/format";
@@ -370,38 +371,7 @@ export default function DatasetExplorer({ datasets }: DatasetExplorerProps) {
             </div>
           )}
 
-          {/* Pagination — reuse pattern từ DatasetViewer.tsx */}
-          {totalPages > 1 && (
-            <div className="flex justify-center gap-1 py-4">
-              <button
-                onClick={() => setPage((p) => Math.max(0, p - 1))}
-                disabled={currentPage === 0}
-                className="px-2.5 py-1 text-[13px] text-hf-text-muted rounded hover:bg-hf-bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                ‹ Previous
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setPage(i)}
-                  className={`min-w-[32px] px-2 py-1 text-[13px] rounded ${
-                    i === currentPage
-                      ? "bg-hf-text text-white font-medium"
-                      : "text-hf-text-muted hover:bg-hf-bg-muted"
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              ))}
-              <button
-                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-                disabled={currentPage >= totalPages - 1}
-                className="px-2.5 py-1 text-[13px] text-hf-text-muted rounded hover:bg-hf-bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                Next ›
-              </button>
-            </div>
-          )}
+          <Pagination page={currentPage} totalPages={totalPages} onChange={setPage} />
         </main>
       </div>
     </div>
