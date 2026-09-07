@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 224, 224, 168, 224, 224, 168, 224, 224 ]
+        distinct: 30
+        histogram: [ 224, 224, 224, 224, 224, 224, 224, 112 ]
       Một số mặt hàng nhập khẩu chủ yếu:
         kind: numeric
         min: 0.04
         max: 173423
+        distinct: 1144
         histogram: [ 1094, 28, 14, 7, 6, 4, 2, 3 ]
       Sản phẩm:
         kind: categorical
