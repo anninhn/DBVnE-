@@ -260,22 +260,22 @@ function Histogram({
 
 /** Proportion bar — stacked horizontal segments, top-12 classes. Reads precomputed if available. */
 /**
- * Tần suất từng giá trị của cột phân loại — thanh ngang, có số đếm.
+ * Cột phân loại — thanh ngang xếp lớp, mỗi đoạn một giá trị.
  *
- * Trước đây là MỘT thanh xếp lớp 110×10px chia theo tỉ lệ. Thanh xếp lớp cho
- * thấy cơ cấu nhưng không đọc được **giá trị nào** và **bao nhiêu dòng** — muốn
- * biết phải trỏ chuột từng đoạn, mà đoạn nhỏ thì rộng 1–2px.
+ * Theo markup Hugging Face được cung cấp 2026-09-07:
  *
- * Cách này theo mẫu Hugging Face: mỗi giá trị một hàng, tên bên trái, thanh ở
- * giữa, số đếm bên phải. Đọc được ngay mà không cần hover. API `/statistics` của
- * họ trả `frequencies: {label: count}` cho `class_label` và `string_label` —
- * đúng dữ liệu mình đã có trong `column_stats.segments`.
+ *     <rect y="0" fill-opacity="0" class="fill-white cursor-pointer"
+ *           x="65" width="65" height="28">
  *
- * Chỉ hiện 3 hàng: header cột cao ~99px và đã chia cho tên cột + badge kiểu +
- * dòng đếm. Phần còn lại ghi "… và N giá trị khác" để không giả vờ đã liệt kê
- * hết.
+ * Đọc được ba điều: (a) MỘT thanh ngang chia đoạn, không phải danh sách nhiều
+ * hàng; (b) cao **28px**, gần bằng histogram (30px) — không phải dải mảnh 10px;
+ * (c) mỗi đoạn có một `<rect>` trong suốt đè lên làm vùng bắt chuột, và nó
+ * `fill-white` nên hiệu ứng hover là **làm sáng** đoạn đó, không phải đổi màu.
+ *
+ * Bản trước của tôi dựng thành 3 hàng thanh ngang riêng vì hiểu "thanh ngang" là
+ * số nhiều. Sai — nó là một thanh, còn tần suất từng giá trị hiện khi hover.
  */
-const CATEGORICAL_ROWS = 3;
+const CATEGORICAL_H = 28;
 
 function ProportionBar({
   rows,
@@ -295,47 +295,79 @@ function ProportionBar({
       : categoricalSegments(rows, colName);
   if (!result || result.segments.length === 0) return null;
 
-  const shown = result.segments.slice(0, CATEGORICAL_ROWS);
-  const rest = result.segments.length - shown.length;
-  const maxCount = Math.max(...result.segments.map((s) => s.count));
-  // `complete === false` = danh sách giá trị bị cắt lúc tính stats. Phải nói ra,
-  // nếu không "N giá trị khác" trông như đã đếm hết.
+  const W = 110;
+  const H = CATEGORICAL_H;
+  // Palette nguyên bản của dự án — 12 màu khác hẳn nhau. Bản trước tôi đổi sang
+  // 4 sắc indigo dẫn đầu cho khớp màu histogram, nhưng các đoạn cạnh nhau thành
+  // ra khó phân biệt: với 65 tỉnh thì mỗi đoạn chỉ rộng ~1,7px, mà bốn sắc indigo
+  // liền nhau ở cỡ đó nhìn như một khối liền.
+  //
+  // Histogram dùng một màu (indigo) vì trục x đã mang thông tin — vị trí cột nói
+  // lên khoảng giá trị. Thanh xếp lớp thì không có trục, nên **màu chính là thứ
+  // duy nhất tách các đoạn ra**. Hai biểu đồ khác nhu cầu nên khác cách dùng màu.
+  const palette = [
+    "#6B7280", "#9CA3AF", "#D1D5DB", "#A78BFA", "#60A5FA",
+    "#34D399", "#F59E0B", "#EF4444", "#EC4899", "#14B8A6",
+    "#8B5CF6", "#F472B6",
+  ];
+
+  const widths = result.segments.map((s) => (s.count / result.total) * W);
+  const bars = widths.map((w, i) => ({
+    key: i,
+    x: widths.slice(0, i).reduce((sum, prev) => sum + prev, 0),
+    w,
+    fill: palette[i % palette.length],
+    label: result.segments[i].label,
+    count: result.segments[i].count,
+  }));
+
   const truncated = stats?.kind === "categorical" && stats.complete === false;
-  const distinct =
-    stats?.kind === "categorical" ? stats.distinct : result.segments.length;
+  const labels = bars.map((b) => {
+    const pct = result.total > 0 ? Math.round((b.count / result.total) * 100) : 0;
+    return (
+      `${b.label}: ${b.count.toLocaleString("vi-VN")} dòng (${pct}%)` +
+      // Nói ra khi danh sách giá trị bị cắt lúc tính stats — không nói thì thanh
+      // trông như đã phủ hết dataset.
+      (truncated ? " — danh sách bị cắt, dataset còn giá trị khác" : "")
+    );
+  });
 
   return (
-    <div className="w-full space-y-[3px] py-0.5">
-      {shown.map((seg) => {
-        const pct = result.total > 0 ? (seg.count / result.total) * 100 : 0;
-        return (
-          <div
-            key={seg.label}
-            className="flex items-center gap-1.5 text-[10px] leading-none"
-            title={`${seg.label}: ${seg.count.toLocaleString("vi-VN")} dòng (${Math.round(pct)}%)`}
-          >
-            <span className="min-w-0 flex-[0_0_44%] truncate font-normal text-hf-text-muted">
-              {seg.label}
-            </span>
-            <span className="h-[5px] flex-1 overflow-hidden rounded-sm bg-hf-bg-muted">
-              <span
-                className="block h-full rounded-sm bg-hf-chart"
-                style={{ width: `${(seg.count / maxCount) * 100}%` }}
-              />
-            </span>
-            <span className="shrink-0 tabular-nums text-hf-text-faint">
-              {seg.count.toLocaleString("vi-VN")}
-            </span>
-          </div>
-        );
-      })}
-      {(rest > 0 || truncated) && (
-        <div className="text-[10px] leading-none text-hf-text-faint">
-          {truncated
-            ? `… còn nữa (danh sách bị cắt)`
-            : `… và ${(distinct - shown.length).toLocaleString("vi-VN")} giá trị khác`}
-        </div>
+    <HoverLabelChart
+      labels={labels}
+      segmentEnds={bars.map((b) => b.x + b.w)}
+      viewBoxWidth={W}
+    >
+      {(hoverIndex) => (
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="block">
+          {bars.map((b) => (
+            <rect
+              key={b.key}
+              x={b.x.toFixed(2)}
+              y={0}
+              width={Math.max(b.w, 0.5).toFixed(2)}
+              height={H}
+              fill={b.fill}
+            />
+          ))}
+          {/* Vùng bắt chuột theo TỪNG ĐOẠN, phủ trắng khi hover — cùng cách HF
+              làm (`fill-white` + `fill-opacity` 0). Làm sáng chứ không đổi màu,
+              nên vẫn nhận ra được đoạn đó là màu gì. */}
+          {bars.map((b) => (
+            <rect
+              key={`hit-${b.key}`}
+              x={b.x.toFixed(2)}
+              y={0}
+              width={Math.max(b.w, 0.5).toFixed(2)}
+              height={H}
+              className="cursor-pointer fill-white"
+              fillOpacity={hoverIndex === b.key ? 0.35 : 0}
+            >
+              <title>{labels[b.key]}</title>
+            </rect>
+          ))}
+        </svg>
       )}
-    </div>
+    </HoverLabelChart>
   );
 }
