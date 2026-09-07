@@ -30,16 +30,27 @@ files:
         kind: numeric
         min: 2005
         max: 2020
-        histogram: [ 8, 0, 8, 8, 8, 0, 8, 16 ]
+        distinct: 7
+        values:
+          - 2005
+          - 2009
+          - 2011
+          - 2013
+          - 2017
+          - 2019
+          - 2020
+        histogram: [ 8, 8, 8, 8, 8, 8, 8 ]
       Trị giá (Nghìn đồng):
         kind: numeric
         min: 4.6
         max: 1272.4
+        distinct: 56
         histogram: [ 28, 21, 0, 1, 1, 0, 1, 4 ]
       Cơ cấu (%):
         kind: numeric
         min: 0.6
         max: 100
+        distinct: 43
         histogram: [ 21, 25, 3, 0, 0, 0, 0, 7 ]
       Mục đích:
         kind: categorical
