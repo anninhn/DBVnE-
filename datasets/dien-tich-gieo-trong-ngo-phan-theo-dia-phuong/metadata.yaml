@@ -32,11 +32,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Diện tích gieo trồng ngô:
         kind: numeric
         min: 0
         max: 1179
+        distinct: 647
         histogram: [ 1966, 58, 12, 12, 6, 2, 7, 14 ]
       Tỉnh, thành phố:
         kind: categorical
