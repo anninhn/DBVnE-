@@ -30,12 +30,24 @@ files:
         kind: numeric
         min: 2016
         max: 2024
-        histogram: [ 70, 70, 70, 70, 70, 70, 70, 140 ]
+        distinct: 9
+        values:
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Tỷ lệ dân số đô thị được cung cấp nước sạch qua hệ thống cấp nước tập trung:
         kind: numeric
         min: 34
         max: 100
-        histogram: [ 10, 6, 11, 13, 38, 86, 129, 337 ]
+        distinct: 55
+        histogram: [ 10, 10, 8, 22, 60, 113, 197, 210 ]
       Địa phương:
         kind: categorical
         distinct: 70
