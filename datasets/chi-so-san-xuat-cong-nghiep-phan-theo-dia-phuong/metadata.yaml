@@ -31,11 +31,27 @@ files:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [ 140, 70, 140, 70, 140, 70, 140, 140 ]
+        distinct: 13
+        values:
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Chỉ số sản xuất công nghiệp:
         kind: numeric
         min: 43.3
         max: 322.8
+        distinct: 579
         histogram: [ 5, 626, 192, 6, 1, 0, 1, 1 ]
       Tỉnh, thành phố:
         kind: categorical
