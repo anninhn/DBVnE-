@@ -31,11 +31,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Sản lượng thịt lợn hơi xuất chuồng:
         kind: numeric
         min: 4.014
         max: 988.708
+        distinct: 472
         histogram: [ 363, 65, 11, 10, 5, 6, 10, 5 ]
       Tỉnh, thành phố:
         kind: categorical
