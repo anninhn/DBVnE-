@@ -31,11 +31,27 @@ files:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [ 30, 15, 30, 15, 30, 15, 30, 30 ]
+        distinct: 13
+        values:
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 ]
       Chỉ số giá sản xuất dịch vụ (Năm trước = 100):
         kind: numeric
         min: 64.06
         max: 196.16
+        distinct: 157
         histogram: [ 1, 4, 160, 3, 1, 1, 0, 1 ]
       Chỉ số giá sản xuất dịch vụ:
         kind: categorical
