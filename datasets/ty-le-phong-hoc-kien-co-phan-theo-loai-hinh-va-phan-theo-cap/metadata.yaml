@@ -31,127 +31,271 @@ files:
         kind: numeric
         min: 2.8
         max: 96.6
-        histogram: [ 1, 0, 0, 0, 0, 1, 0, 2 ]
+        distinct: 4
+        values:
+          - 2.8
+          - 72.2
+          - 90.8
+          - 96.6
+        histogram: [ 1, 1, 1, 1 ]
       "2017":
         kind: numeric
         min: 2.8
         max: 97.1
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 2.8
+          - 74.1
+          - 91.6
+          - 97.1
+        histogram: [ 1, 1, 1, 1 ]
       "2018":
         kind: numeric
         min: 2.8
         max: 96.8
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 2.8
+          - 75.7
+          - 92.1
+          - 96.8
+        histogram: [ 1, 1, 1, 1 ]
       "2019":
         kind: numeric
         min: 3.4
         max: 97.6
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 3.4
+          - 78.6
+          - 92.9
+          - 97.6
+        histogram: [ 1, 1, 1, 1 ]
       "2020":
         kind: numeric
         min: 4
         max: 96.8
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 4
+          - 79.7
+          - 92.3
+          - 96.8
+        histogram: [ 1, 1, 1, 1 ]
       "2021":
         kind: numeric
         min: 82.47
         max: 98.63
-        histogram: [ 1, 0, 0, 0, 0, 1, 1, 1 ]
+        distinct: 4
+        values:
+          - 82.47
+          - 93.89
+          - 96.49
+          - 98.63
+        histogram: [ 1, 1, 1, 1 ]
       "2022":
         kind: numeric
         min: 84.36
         max: 97.59
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 84.36
+          - 94.41
+          - 97
+          - 97.59
+        histogram: [ 1, 1, 1, 1 ]
       "2023":
         kind: numeric
         min: 84.36
         max: 97.55
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 84.36
+          - 95.41
+          - 97.27
+          - 97.55
+        histogram: [ 1, 1, 1, 1 ]
       1995-1996:
         kind: numeric
         min: 66.9
         max: 108.2
-        histogram: [ 1, 0, 0, 0, 0, 0, 0, 2 ]
+        distinct: 3
+        values:
+          - 66.9
+          - 105.5
+          - 108.2
+        histogram: [ 1, 1, 1 ]
       1996-1997:
         kind: numeric
         min: 74.1
         max: 112.5
-        histogram: [ 1, 0, 0, 0, 0, 0, 0, 2 ]
+        distinct: 3
+        values:
+          - 74.1
+          - 110.7
+          - 112.5
+        histogram: [ 1, 1, 1 ]
       1997-1998:
         kind: numeric
         min: 79.8
         max: 110.1
-        histogram: [ 1, 0, 0, 0, 0, 0, 0, 2 ]
+        distinct: 3
+        values:
+          - 79.8
+          - 107.8
+          - 110.1
+        histogram: [ 1, 1, 1 ]
       1998-1999:
         kind: numeric
         min: 82.6
         max: 103.5
-        histogram: [ 1, 0, 0, 0, 0, 0, 0, 2 ]
+        distinct: 3
+        values:
+          - 82.6
+          - 101.2
+          - 103.5
+        histogram: [ 1, 1, 1 ]
       1999-2000:
         kind: numeric
         min: 84.5
         max: 104.4
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 1 ]
+        distinct: 3
+        values:
+          - 84.5
+          - 101.9
+          - 104.4
+        histogram: [ 1, 1, 1 ]
       2000-2001:
         kind: numeric
         min: 87.1
         max: 105.6
-        histogram: [ 1, 0, 0, 0, 0, 0, 0, 3 ]
+        distinct: 3
+        values:
+          - 87.1
+          - 103.4
+          - 105.6
+        histogram: [ 1, 2, 1 ]
       2001-2002:
         kind: numeric
         min: 87.3
         max: 103.68
-        histogram: [ 1, 0, 0, 0, 0, 0, 2, 1 ]
+        distinct: 4
+        values:
+          - 87.3
+          - 100.23
+          - 100.48
+          - 103.68
+        histogram: [ 1, 1, 1, 1 ]
       2002-2003:
         kind: numeric
         min: 87.4
         max: 103.2
-        histogram: [ 1, 0, 0, 0, 0, 0, 2, 1 ]
+        distinct: 4
+        values:
+          - 87.4
+          - 99.9
+          - 100.1
+          - 103.2
+        histogram: [ 1, 1, 1, 1 ]
       2003-2004:
         kind: numeric
         min: 88.7
         max: 104.4
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 88.7
+          - 101.4
+          - 102.8
+          - 104.4
+        histogram: [ 1, 1, 1, 1 ]
       2004-2005:
         kind: numeric
         min: 93
         max: 105.7
-        histogram: [ 1, 0, 0, 0, 0, 0, 1, 2 ]
+        distinct: 4
+        values:
+          - 93
+          - 104
+          - 104.8
+          - 105.7
+        histogram: [ 1, 1, 1, 1 ]
       2005-2006:
         kind: numeric
         min: 93.9
         max: 105.3
-        histogram: [ 1, 0, 0, 0, 1, 0, 0, 2 ]
+        distinct: 4
+        values:
+          - 93.9
+          - 101
+          - 103.9
+          - 105.3
+        histogram: [ 1, 1, 1, 1 ]
       2006-2007:
         kind: numeric
         min: 97.5
         max: 106
-        histogram: [ 1, 0, 0, 0, 0, 1, 1, 1 ]
+        distinct: 4
+        values:
+          - 97.5
+          - 103.8
+          - 104.9
+          - 106
+        histogram: [ 1, 1, 1, 1 ]
       2007-2008:
         kind: numeric
         min: 99.7
         max: 106.1
-        histogram: [ 1, 1, 0, 1, 0, 0, 0, 1 ]
+        distinct: 4
+        values:
+          - 99.7
+          - 101
+          - 102.3
+          - 106.1
+        histogram: [ 1, 1, 1, 1 ]
       2008-2009:
         kind: numeric
         min: 103.2
         max: 105.9
-        histogram: [ 1, 0, 2, 0, 0, 0, 0, 1 ]
+        distinct: 4
+        values:
+          - 103.2
+          - 103.9
+          - 104.2
+          - 105.9
+        histogram: [ 1, 1, 1, 1 ]
       2009-2010:
         kind: numeric
         min: 101.6
         max: 106.6
-        histogram: [ 1, 1, 0, 0, 1, 0, 0, 1 ]
+        distinct: 4
+        values:
+          - 101.6
+          - 102.6
+          - 104.7
+          - 106.6
+        histogram: [ 1, 1, 1, 1 ]
       2010-2011:
         kind: numeric
         min: 103.4
         max: 119.4
-        histogram: [ 1, 0, 1, 0, 1, 0, 0, 1 ]
+        distinct: 4
+        values:
+          - 103.4
+          - 109
+          - 112
+          - 119.4
+        histogram: [ 1, 1, 1, 1 ]
       Sơ bộ 2024:
         kind: numeric
         min: 87.54
         max: 99.68
-        histogram: [ 1, 0, 0, 0, 0, 1, 1, 1 ]
+        distinct: 4
+        values:
+          - 87.54
+          - 95.39
+          - 97.9
+          - 99.68
+        histogram: [ 1, 1, 1, 1 ]
       Phân theo loại hình:
         kind: categorical
         distinct: 1
