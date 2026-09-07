@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 1995
         max: 2023
-        histogram: [ 80, 60, 80, 60, 80, 60, 80, 80 ]
+        distinct: 29
+        histogram: [ 80, 80, 80, 80, 80, 80, 80, 20 ]
       Tổng số:
         kind: numeric
         min: 4.5
         max: 2363.9
+        distinct: 376
         histogram: [ 264, 44, 18, 28, 10, 15, 10, 6 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 62.8
         max: 189.68
+        distinct: 289
         histogram: [ 4, 33, 233, 84, 14, 4, 4, 2 ]
       Phân tổ:
         kind: categorical
