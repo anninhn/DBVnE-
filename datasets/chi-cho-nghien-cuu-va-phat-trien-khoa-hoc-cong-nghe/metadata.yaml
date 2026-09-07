@@ -30,11 +30,19 @@ files:
         kind: numeric
         min: 2015
         max: 2023
-        histogram: [ 16, 0, 16, 0, 16, 0, 16, 16 ]
+        distinct: 5
+        values:
+          - 2015
+          - 2017
+          - 2019
+          - 2021
+          - 2023
+        histogram: [ 16, 16, 16, 16, 16 ]
       Chi cho nghiên cứu và phát triển khoa học công nghệ:
         kind: numeric
         min: 151.13
         max: 42784
+        distinct: 80
         histogram: [ 55, 5, 3, 4, 5, 5, 2, 1 ]
       Ngân sách, lĩnh vực nghiên cứu, khu vực hoạt động:
         kind: categorical
