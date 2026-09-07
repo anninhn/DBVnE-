@@ -31,11 +31,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 69, 69, 69, 0, 69, 69, 69, 69 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 69, 69, 69, 69, 69, 69, 69 ]
       Chỉ số phát triển tổng sản phẩm trong nước:
         kind: numeric
         min: 89.9
         max: 120.9
+        distinct: 151
         histogram: [ 4, 8, 36, 102, 252, 62, 16, 3 ]
       Tỉnh, thành phố:
         kind: categorical
