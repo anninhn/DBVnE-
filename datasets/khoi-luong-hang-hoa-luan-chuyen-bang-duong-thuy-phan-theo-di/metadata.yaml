@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 186, 186, 186, 186, 186, 186, 186, 248 ]
+        distinct: 25
+        histogram: [ 248, 248, 248, 248, 248, 248, 62 ]
       Khối lượng hàng hoá luân chuyển bằng đường thuỷ:
         kind: numeric
         min: 0
         max: 165962.32
+        distinct: 1242
         histogram: [ 1373, 25, 16, 4, 5, 0, 1, 2 ]
       Tỉnh, thành phố:
         kind: categorical
