@@ -31,26 +31,35 @@ files:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [ 71, 0, 0, 0, 71, 0, 0, 71 ]
+        distinct: 3
+        values:
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 71, 71, 71 ]
       Kết quả thi hành án xong:
         kind: numeric
         min: 660
         max: 621568
+        distinct: 212
         histogram: [ 198, 10, 1, 0, 0, 0, 1, 2 ]
       Số tiền thi hành án xong:
         kind: numeric
         min: 24.54
         max: 117349.21
+        distinct: 212
         histogram: [ 198, 5, 4, 2, 0, 1, 1, 1 ]
       Tỷ lệ thi hành án xong (về việc):
         kind: numeric
         min: 67.32
         max: 94.65
+        distinct: 183
         histogram: [ 3, 3, 5, 13, 82, 76, 13, 17 ]
       Tỷ lệ thi hành án xong (về tiền):
         kind: numeric
         min: 5.9
         max: 90.87
+        distinct: 198
         histogram: [ 2, 6, 12, 48, 111, 21, 9, 3 ]
       Địa phương:
         kind: categorical
