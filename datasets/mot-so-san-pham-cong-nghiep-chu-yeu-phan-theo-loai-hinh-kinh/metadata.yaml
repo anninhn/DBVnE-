@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 40, 40, 120, 80, 80, 120, 80, 120 ]
+        distinct: 17
+        histogram: [ 40, 80, 120, 120, 120, 120, 80 ]
       Một số sản phẩm công nghiệp chủ yếu:
         kind: numeric
         min: 0
         max: 293125.6
+        distinct: 630
         histogram: [ 545, 53, 12, 9, 8, 5, 3, 3 ]
       Sản phẩm chủ yếu:
         kind: categorical
