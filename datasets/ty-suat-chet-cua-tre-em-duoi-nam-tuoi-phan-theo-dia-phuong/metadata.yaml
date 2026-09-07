@@ -32,11 +32,28 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 70, 140, 140, 70, 140, 140, 140, 140 ]
+        distinct: 14
+        values:
+          - 2010
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Tỷ suất chết của trẻ em dưới năm tuổi:
         kind: numeric
         min: 10.72
         max: 73.3
+        distinct: 569
         histogram: [ 392, 349, 94, 71, 35, 23, 11, 5 ]
       Tỉnh/Thành phố:
         kind: categorical
