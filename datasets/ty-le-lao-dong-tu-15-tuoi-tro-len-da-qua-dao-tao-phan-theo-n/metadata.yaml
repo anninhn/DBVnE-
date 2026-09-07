@@ -31,11 +31,30 @@ files:
         kind: numeric
         min: 2009
         max: 2024
-        histogram: [ 18, 18, 18, 18, 18, 18, 18, 18 ]
+        distinct: 16
+        values:
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ]
       Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo:
         kind: numeric
         min: 1.15
         max: 43.08
+        distinct: 127
         histogram: [ 16, 1, 42, 20, 28, 15, 12, 10 ]
       Nhóm tuổi:
         kind: categorical
