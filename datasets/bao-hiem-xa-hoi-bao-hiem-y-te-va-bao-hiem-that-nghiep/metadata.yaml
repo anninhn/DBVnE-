@@ -31,11 +31,28 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 25, 50, 50, 25, 50, 50, 50, 50 ]
+        distinct: 14
+        values:
+          - 2010
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25 ]
       Bảo hiểm xã hội, bảo hiểm y tế và bảo hiểm thất nghiệp:
         kind: numeric
         min: -14155.3
         max: 644592
+        distinct: 285
         histogram: [ 212, 41, 12, 10, 8, 6, 2, 3 ]
       Chỉ tiêu chủ yếu:
         kind: categorical
