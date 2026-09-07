@@ -32,16 +32,23 @@ files:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [ 74, 0, 0, 0, 74, 0, 0, 74 ]
+        distinct: 3
+        values:
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 74, 74, 74 ]
       Số vụ án đã bị khởi tố:
         kind: numeric
         min: 1
         max: 991
+        distinct: 208
         histogram: [ 132, 5, 3, 8, 13, 18, 25, 14 ]
       Số bị can đã bị khởi tố:
         kind: numeric
         min: 1.008
         max: 993
+        distinct: 211
         histogram: [ 189, 2, 1, 2, 3, 4, 7, 10 ]
       Địa phương:
         kind: categorical
