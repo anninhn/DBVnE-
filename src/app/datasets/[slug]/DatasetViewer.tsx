@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import type { Dataset } from "@/lib/types/dataset";
-import type { NumberSchema } from "@/lib/parse/number";
 import { formatCompactNumber } from "@/lib/format";
+import { schemaForColumn } from "@/lib/datasets/number-schema";
 import Pagination from "@/components/ui/Pagination";
 import { useDatasetPreview } from "./useDatasetPreview";
 import {
@@ -46,14 +46,9 @@ export default function DatasetViewer({ dataset, canDownload = true, slug }: Dat
     return order.map((name) => {
       const meta = dataset.data_dictionary.find((d) => d.column_name === name);
       const dtype = meta?.data_type ?? "text";
-      // Build Frictionless schema từ dictionary (decimal_char/group_char)
-      const schema: NumberSchema | undefined =
-        meta?.decimal_char || meta?.group_char
-          ? {
-              decimal_char: meta?.decimal_char,
-              group_char: meta?.group_char,
-            }
-          : undefined;
+      // Dùng hàm chung với R2FileViewer — hai bản sao là lý do hai tab từng cho
+      // hai con số khác nhau.
+      const schema = schemaForColumn(dataset.data_dictionary, name);
       return {
         name,
         label: meta?.label_vi ?? name,
@@ -64,6 +59,11 @@ export default function DatasetViewer({ dataset, canDownload = true, slug }: Dat
       };
     });
   }, [resource, rows, dataset.data_dictionary]);
+
+  // Preview có bị cắt không — `row_count` trong metadata là tổng thật, `rows` là
+  // phần SSR nạp được (trần 1.000 dòng, xem PREVIEW_ROW_LIMIT ở enrichment.ts).
+  const trueRowCount = dataset.row_count ?? rows.length;
+  const isTruncated = trueRowCount > rows.length;
 
   // Filter rows theo search query (client-side, chỉ trong preview rows ≤1000).
   const filteredRows = useMemo(() => {
@@ -207,10 +207,25 @@ export default function DatasetViewer({ dataset, canDownload = true, slug }: Dat
             {formatCompactNumber(filteredRows.length)} / {formatCompactNumber(rows.length)} rows match &quot;{search}&quot;.{" "}
           </span>
         )}
-        End of preview.{" "}
-        <a href="#" className="font-medium text-hf-link hover:underline">
-          Expand
-        </a>
+        {/*
+          Nói rõ preview bị cắt. Trước đây chỉ có "End of preview" — đúng nghĩa
+          nhưng người đọc không biết còn bao nhiêu ở phía sau, mà kho này có 78
+          dataset vượt trần (cao nhất 5.520 dòng). Con số tổng đứng ở sidebar,
+          con số preview đứng trong ô chọn file: hai chỗ rời nhau, dễ đọc lẫn.
+          Lưu ý: thống kê và histogram VẪN tính trên toàn bộ dataset (đọc từ
+          `column_stats`), chỉ bảng này là phần đầu.
+        */}
+        {isTruncated ? (
+          <>
+            {/* Số CHÍNH XÁC, không `formatCompactNumber`: câu này tồn tại để nói
+                còn thiếu bao nhiêu, mà "1K trong 4.1K" thì vẫn không biết. */}
+            Đang xem {rows.length.toLocaleString("vi-VN")} dòng đầu trong{" "}
+            {trueRowCount.toLocaleString("vi-VN")} dòng. Thống kê và biểu đồ ở đầu
+            mỗi cột tính trên toàn bộ dataset — tải file về để xem hết dữ liệu.
+          </>
+        ) : (
+          <>Hết dữ liệu — {rows.length.toLocaleString("vi-VN")} dòng.</>
+        )}
       </div>
     </div>
   );
