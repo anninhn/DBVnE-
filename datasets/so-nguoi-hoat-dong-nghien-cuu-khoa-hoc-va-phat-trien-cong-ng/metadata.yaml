@@ -31,11 +31,19 @@ files:
         kind: numeric
         min: 2015
         max: 2023
-        histogram: [ 17, 0, 17, 0, 17, 0, 17, 17 ]
+        distinct: 5
+        values:
+          - 2015
+          - 2017
+          - 2019
+          - 2021
+          - 2023
+        histogram: [ 17, 17, 17, 17, 17 ]
       Số người hoạt động nghiên cứu khoa học và phát triển công nghệ:
         kind: numeric
         min: 0
         max: 173.041
+        distinct: 75
         histogram: [ 40, 16, 15, 9, 0, 0, 3, 2 ]
       Giới tính, lĩnh vực hoạt động, lĩnh vực khoa học công nghệ, trình độ:
         kind: categorical
