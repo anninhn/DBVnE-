@@ -31,11 +31,28 @@ files:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [ 86, 86, 43, 86, 86, 43, 86, 86 ]
+        distinct: 14
+        values:
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43 ]
       Chỉ số giá nhập khẩu hàng hóa (Theo Đô la Mỹ, năm 2010 = 100):
         kind: numeric
         min: 59.96
         max: 189.53
+        distinct: 549
         histogram: [ 16, 42, 154, 238, 87, 26, 11, 3 ]
       Nhóm hàng:
         kind: categorical
