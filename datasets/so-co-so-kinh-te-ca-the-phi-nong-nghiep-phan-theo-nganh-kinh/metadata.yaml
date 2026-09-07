@@ -31,11 +31,24 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 40, 20, 20, 20, 20, 20, 20, 40 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 ]
       Số cơ sở kinh tế cá thể phi nông nghiệp:
         kind: numeric
         min: 3.13
         max: 964.213
+        distinct: 170
         histogram: [ 110, 3, 23, 4, 0, 0, 16, 14 ]
       Ngành kinh tế:
         kind: categorical
