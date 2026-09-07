@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 142, 142, 213, 142, 142, 213, 142, 213 ]
+        distinct: 19
+        histogram: [ 142, 213, 213, 213, 213, 213, 142 ]
       Tỷ suất nhập cư:
         kind: numeric
         min: 0.1
         max: 89.6
+        distinct: 417
         histogram: [ 1217, 69, 20, 8, 4, 4, 2, 1 ]
       Tỷ suất xuất cư:
         kind: numeric
         min: 0.9
         max: 29.7
+        distinct: 158
         histogram: [ 192, 313, 194, 51, 17, 4, 0, 1 ]
       Tỉnh/Thành phố:
         kind: categorical
