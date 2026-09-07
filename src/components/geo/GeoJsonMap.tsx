@@ -127,23 +127,35 @@ export default function GeoJsonMap({
       }).setView([16, 107], 4);
       mapRef.current = map;
 
-      // Nền bản đồ: OpenStreetMap + lọc grayscale bằng CSS.
+      // Nền bản đồ: Esri World Light Gray Base.
       //
       // Trước đây dùng CartoDB Positron. CARTO đã đóng basemap sau API key và
-      // ĐÓNG DẤU thẳng vào ảnh tile: mỗi tile trả về HTTP 200 kèm chữ
+      // ĐÓNG DẤU thẳng vào ảnh tile: mỗi tile trả HTTP 200 kèm chữ
       // "API KEY REQUIRED / carto.com/basemaps/apikeys" vắt chéo qua bản đồ.
-      // Kiểm 2026-09-07 ở nhiều mức zoom: tile nào cũng bị. Không có lỗi mạng
-      // nào để bắt — ảnh trả về "thành công", chỉ là nội dung bị đóng dấu.
+      // Kiểm 2026-09-07 ở zoom 4, 6, 10: tile nào cũng bị. Không có lỗi mạng nào
+      // để bắt — request "thành công", chỉ là nội dung bị đóng dấu.
       //
-      // OSM không cần khoá. Nó có màu, nên lọc grayscale ở CSS để giữ đúng ý đồ
-      // thiết kế ban đầu: nền xám tối giản, không tranh màu với dữ liệu vẽ lên.
-      // Lọc ở tile layer chứ không ở cả map — lọc cả map thì polygon dữ liệu
-      // cũng mất màu, tức mất luôn thứ người ta vào đây để xem.
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "© OpenStreetMap contributors",
-        className: "vne-basemap-grayscale",
-      }).addTo(map);
+      // Đã thử OpenStreetMap (`tile.openstreetmap.org`) và BỎ: đo từ trình duyệt
+      // trên chính máy dev, tile OSM KHÔNG tải được, trong khi ArcGIS về trong
+      // 78ms. Đổi sang OSM là để map trắng trơn — tệ hơn cả bị đóng dấu.
+      //
+      // Chọn `World_Light_Gray_Base` vì nó vốn đã là nền xám tối giản, đúng ý đồ
+      // thiết kế ban đầu, nên không cần lọc grayscale bằng CSS (lọc thêm chỉ làm
+      // dữ liệu vẽ lên bị nhạt theo).
+      //
+      // LƯU Ý toạ độ: ArcGIS xếp **{z}/{y}/{x}**, không phải {z}/{x}/{y} như
+      // OSM/CARTO. Kiểm bằng cách đảo hai số: `6/30/50` ra nam Việt Nam, `6/50/30`
+      // ra một vùng khác hẳn. Viết sai thứ tự thì map vẫn hiện tile, chỉ là hiện
+      // sai chỗ trên thế giới — không có lỗi nào báo.
+      L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        {
+          maxZoom: 19,
+          // Nguyên văn `copyrightText` của service (đọc từ `?f=json`), không tự viết.
+          attribution:
+            "Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community",
+        },
+      ).addTo(map);
 
       try {
         const kind = detectGeomKind(data);

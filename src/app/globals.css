@@ -42,15 +42,3 @@
 body {
   font-feature-settings: "tnum" 0;
 }
-
-/*
- * Nền bản đồ xám — chỉ áp cho tile layer, KHÔNG áp cho cả bản đồ.
- *
- * Lọc cả `.leaflet-container` thì polygon/điểm dữ liệu cũng mất màu, mà màu của
- * chúng chính là thứ người đọc vào xem. Xem chú thích trong `GeoJsonMap.tsx`
- * về việc vì sao không còn dùng CartoDB Positron.
- */
-.vne-basemap-grayscale {
-  filter: grayscale(1) contrast(0.92) brightness(1.06);
-}
-
