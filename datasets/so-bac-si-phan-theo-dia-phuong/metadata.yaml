@@ -30,26 +30,31 @@ files:
         kind: numeric
         min: 1.004
         max: 990
+        distinct: 67
         histogram: [ 35, 0, 1, 7, 5, 10, 5, 7 ]
       "2019":
         kind: numeric
         min: 1.024
         max: 973
+        distinct: 70
         histogram: [ 42, 0, 0, 1, 9, 4, 3, 11 ]
       "2020":
         kind: numeric
         min: 1.034
         max: 982
+        distinct: 70
         histogram: [ 37, 0, 1, 6, 7, 4, 6, 9 ]
       "2021":
         kind: numeric
         min: 1.002
         max: 951
+        distinct: 70
         histogram: [ 45, 0, 0, 0, 3, 7, 7, 8 ]
       Sơ bộ Prel. 2022:
         kind: numeric
         min: 1.075
         max: 989
+        distinct: 69
         histogram: [ 36, 0, 1, 2, 10, 3, 7, 11 ]
       Địa phương:
         kind: categorical
