@@ -30,21 +30,33 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Tổng số:
         kind: numeric
         min: 1697
         max: 725035
+        distinct: 480
         histogram: [ 461, 21, 1, 0, 0, 0, 5, 2 ]
       Đúng hạn:
         kind: numeric
         min: 853
         max: 508780
+        distinct: 484
         histogram: [ 457, 25, 1, 0, 0, 0, 3, 4 ]
       Quá hạn:
         kind: numeric
         min: 375
         max: 216255
+        distinct: 470
         histogram: [ 469, 6, 8, 0, 0, 3, 3, 1 ]
       Tỉnh, thành phố:
         kind: categorical
