@@ -61,6 +61,64 @@ function sizeBucket(rowCount: number): (typeof SIZE_BUCKETS)[number] {
   return "> 1M";
 }
 
+
+/**
+ * Từ này có dấu không — tức bỏ dấu có làm nó đổi không.
+ */
+function hasDiacritics(word: string): boolean {
+  return normalize(word) !== word.toLowerCase();
+}
+
+/**
+ * Người dùng gõ CÓ DẤU thì dùng chính dấu đó để loại kết quả sai.
+ *
+ * Bỏ dấu gộp `Đà` và `đá` thành cùng một chuỗi `da`, nên truy vấn "Đà Nẵng" khớp
+ * được vào hai từ chẳng liên quan ở hai trường khác nhau. Đo thực tế:
+ *
+ *     "Đà nẵng" → "Tiêu dùng năng lượng bình quân đầu người…"
+ *        "da"   ← `đá`   trong "than đá"        (description)
+ *        "nang" ← `năng` trong "năng lượng"     (title)
+ *
+ * Trong khi **0/493 dataset** có "Đà Nẵng" trong metadata, tức đáp án đúng là
+ * không có kết quả nào. (Địa danh nằm trong DỮ LIỆU, không trong metadata — đó là
+ * việc của `lookupValue` bên hỏi đáp, nó tìm ra 176 dataset.)
+ *
+ * Quy tắc: mỗi token CÓ DẤU của truy vấn phải khớp được một từ mà **hoặc** từ đó
+ * cũng có dấu và trùng dấu, **hoặc** từ đó không có dấu nào (slug luôn không dấu,
+ * nên gõ "Đà Nẵng" vẫn tìm được `ranh-gioi-da-nang`).
+ *
+ * Token KHÔNG dấu thì không bị ràng buộc gì — gõ "da nang" vẫn chạy như cũ, đó là
+ * cách gõ phổ biến nhất và không được làm hỏng.
+ */
+function matchesDiacritics(
+  fields: string[],
+  queryTokens: string[],
+): boolean {
+  const words = fields.flatMap((v) =>
+    String(v ?? "")
+      .split(/[^\p{L}\p{N}]+/u)
+      .filter(Boolean),
+  );
+
+  return queryTokens.every((token, i) => {
+    if (!hasDiacritics(token)) return true;
+    const isLast = i === queryTokens.length - 1;
+    const q = token.toLowerCase();
+    const qFolded = normalize(token);
+    return words.some((w) => {
+      const wLower = w.toLowerCase();
+      const wFolded = normalize(w);
+      const foldedHit = isLast
+        ? wFolded.startsWith(qFolded)
+        : wFolded === qFolded;
+      if (!foldedHit) return false;
+      // Từ không dấu → không phân biệt được, chấp nhận (slug, tên viết không dấu)
+      if (!hasDiacritics(w)) return true;
+      return isLast ? wLower.startsWith(q) : wLower === q;
+    });
+  });
+}
+
 export class MiniSearchAdapter implements SearchAdapter {
   private mini: MiniSearch<Dataset> | null = null;
   private bySlug = new Map<string, Dataset>();
@@ -154,11 +212,28 @@ export class MiniSearchAdapter implements SearchAdapter {
       fuzzy: false,
     });
 
+    // Token của truy vấn, giữ nguyên dấu — xem `matchesDiacritics`.
+    const queryTokens = tokenize(text);
+
     const out: SearchResult[] = [];
     for (const hit of hits) {
       const dataset = this.bySlug.get(hit.id as string);
       if (!dataset) continue;
       if (!this.matchesFilters(dataset, query.filters)) continue;
+      if (
+        !matchesDiacritics(
+          [
+            dataset.title,
+            dataset.slug,
+            dataset.description,
+            dataset.category,
+            ...dataset.tags,
+          ],
+          queryTokens,
+        )
+      ) {
+        continue;
+      }
       out.push({
         dataset,
         score: hit.score,
