@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 66, 33, 33, 33, 33, 33, 33, 66 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 33, 33, 33, 33, 33, 33, 33, 33, 33, 33 ]
       Trị giá (Triệu đô la Mỹ):
         kind: numeric
         min: -33618.6
         max: 405935
+        distinct: 244
         histogram: [ 221, 18, 0, 2, 1, 5, 4, 4 ]
       Chỉ tiêu chủ yếu:
         kind: categorical
