@@ -30,11 +30,27 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 70, 70, 140, 70, 140, 140, 140, 140 ]
+        distinct: 13
+        values:
+          - 2010
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Tuổi kết hôn trung bình lần đầu:
         kind: numeric
         min: 20.3
         max: 30.41
+        distinct: 311
         histogram: [ 31, 59, 120, 281, 242, 134, 37, 6 ]
       Tỉnh, thành phố:
         kind: categorical
