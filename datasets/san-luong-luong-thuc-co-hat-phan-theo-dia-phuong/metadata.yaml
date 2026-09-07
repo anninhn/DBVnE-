@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Sản lượng lương thực có hạt:
         kind: numeric
         min: 24.8
         max: 50379.5
+        distinct: 1928
         histogram: [ 1982, 44, 12, 15, 7, 5, 6, 15 ]
       Tỉnh, thành phố:
         kind: categorical
