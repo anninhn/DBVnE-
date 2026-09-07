@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 13, 0, 0, 26, 26, 13, 26, 26 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 ]
       Thu nhập bình quân một tháng của người lao động trong doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 2950
         max: 17671.15
+        distinct: 130
         histogram: [ 10, 13, 26, 28, 21, 13, 10, 9 ]
       Loại hình doanh nghiệp:
         kind: categorical
