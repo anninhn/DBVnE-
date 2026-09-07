@@ -229,59 +229,83 @@ files:
         kind: numeric
         min: 512601
         max: 14002598
+        distinct: 34
         histogram: [ 13, 10, 9, 0, 1, 0, 0, 1 ]
       Dientich:
         kind: numeric
         min: 2515
         max: 24233
+        distinct: 34
         histogram: [ 6, 8, 8, 5, 3, 2, 0, 2 ]
       SoDVHCcapxa:
         kind: numeric
         min: 38
         max: 168
-        histogram: [ 4, 5, 2, 10, 3, 7, 1, 2 ]
+        distinct: 27
+        histogram: [ 4, 5, 2, 12, 1, 7, 1, 2 ]
       GRDP:
         kind: numeric
         min: 15316
         max: 2715782
+        distinct: 34
         histogram: [ 28, 4, 0, 0, 1, 0, 0, 1 ]
       Thungansach:
         kind: numeric
         min: 1575
         max: 681936
+        distinct: 34
         histogram: [ 31, 1, 0, 0, 0, 1, 0, 1 ]
       Socangbien:
         kind: numeric
         min: 0
         max: 3
-        histogram: [ 11, 0, 15, 0, 0, 5, 0, 3 ]
+        distinct: 4
+        values:
+          - 0
+          - 1
+          - 2
+          - 3
+        histogram: [ 11, 15, 5, 3 ]
       Sosanbay:
         kind: numeric
         min: 0
         max: 2
-        histogram: [ 17, 0, 0, 0, 12, 0, 0, 5 ]
+        distinct: 3
+        values:
+          - 0
+          - 1
+          - 2
+        histogram: [ 17, 12, 5 ]
       Sapnhap:
         kind: numeric
         min: 0
         max: 1
-        histogram: [ 11, 0, 0, 0, 0, 0, 0, 23 ]
+        distinct: 2
+        values:
+          - 0
+          - 1
+        histogram: [ 11, 23 ]
       ThuhangDanso:
         kind: numeric
         min: 1
         max: 34
-        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+        distinct: 34
+        histogram: [ 5, 5, 5, 5, 5, 5, 4 ]
       ThuhangDientich:
         kind: numeric
         min: 1
         max: 34
-        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+        distinct: 34
+        histogram: [ 5, 5, 5, 5, 5, 5, 4 ]
       ThuhangGRDP:
         kind: numeric
         min: 1
         max: 34
-        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+        distinct: 34
+        histogram: [ 5, 5, 5, 5, 5, 5, 4 ]
       ThuhangThungansach:
         kind: numeric
         min: 1
         max: 34
-        histogram: [ 5, 4, 4, 4, 4, 4, 4, 5 ]
+        distinct: 34
+        histogram: [ 5, 5, 5, 5, 5, 5, 4 ]
