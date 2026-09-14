@@ -7,7 +7,8 @@ import type { ComponentProps } from "react";
  * GeoJsonMapLazy — dynamic import wrapper cho GeoJsonMap.
  *
  * MapLibre cần `window`/WebGL context → không thể SSR. Wrapper này lazy-load
- * component chỉ ở client, tránh crash build/SSR.
+ * component chỉ ở client, tránh crash build/SSR, và giữ maplibre-gl (~230KB
+ * gzip) ra khỏi INITIAL chunk của trang detail.
  *
  * Usage:
  *   import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";

@@ -18,6 +18,7 @@ import {
   MAX_STORED_SEGMENTS,
   TRUNCATED_SEGMENTS,
   inspectColumn,
+  numericStats,
 } from "./column";
 
 /**
@@ -98,15 +99,9 @@ function computeCSVStats(
       if (v < min) min = v;
       if (v > max) max = v;
     }
-    const step = (max - min) / BINS || 1;
-    const histogram = new Array(BINS).fill(0);
-    for (const v of values) {
-      let idx = Math.floor((v - min) / step);
-      if (idx >= BINS) idx = BINS - 1;
-      if (idx < 0) idx = 0;
-      histogram[idx]++;
-    }
-    result[col] = { kind: "numeric", min, max, histogram };
+    // Dùng chung với `column.ts` — hai bản sao là lý do các chỗ khác trong dự
+    // án này từng lệch nhau (paging, schema số, pageWindow).
+    result[col] = numericStats(values, min, max, BINS);
   }
 
   // Categorical: lưu ĐỦ giá trị khi cột có ít, cắt khi quá nhiều (FR-038)

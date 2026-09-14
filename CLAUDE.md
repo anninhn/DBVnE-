@@ -65,3 +65,13 @@ Setup CORS R2 (chỉ chạy 1 lần khi config bucket mới):
 node tools/setup-r2-cors.mjs
 ```
 
+Lưu ý: token R2 trong `.env.local` chỉ có quyền đọc/ghi object, KHÔNG có quyền đổi
+config bucket — script trên trả `Access Denied`. Muốn sửa CORS thì vào Cloudflare
+dashboard → bucket → Settings → CORS policy, chép danh sách origin trong script.
+
+Đồng bộ worker MapLibre sang `public/maplibre/` (tự chạy ở `predev`/`prebuild`,
+chỉ cần gọi tay sau khi nâng version `maplibre-gl`):
+```bash
+node tools/sync-maplibre-worker.mjs
+```
+

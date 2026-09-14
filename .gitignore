@@ -16,5 +16,9 @@ tsconfig.tsbuildinfo
 
 # Tài liệu cá nhân — `git add -A` từng quét nguyên một đơn ứng tuyển .docx vào
 # repo (commit acc3d70, đã bỏ ra). Repo này chỉ chứa metadata text + code.
+#
+# CHỈ ignore `.docx`, KHÔNG ignore cả `Documents/`: trong đó có
+# `HF-DESIGN-SPEC.md` — spec thiết kế mà dự án dùng làm tham chiếu, đáng version.
+# Ignore cả thư mục thì sửa spec không vào được git, mà đó lại là chỗ cần lịch sử
+# nhất.
 *.docx
-Documents/

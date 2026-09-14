@@ -61,9 +61,137 @@ function sizeBucket(rowCount: number): (typeof SIZE_BUCKETS)[number] {
   return "> 1M";
 }
 
+/**
+ * Ký tự làm **rào cụm** — cụm liền không được vượt qua.
+ *
+ * Khoảng trắng và `-` KHÔNG phải rào: slug là một cụm liền viết bằng gạch nối, nên
+ * `ranh-gioi-hanh-chinh` phải khớp được truy vấn "ranh giới hành chính".
+ *
+ * Dấu câu thì là rào, và đây không phải chi tiết vụn: bỏ nó đi thì "Nghệ An" khớp
+ * vào `…khoa học công **nghệ, an** sinh xã hội…` — dấu phẩy bị xoá khi tách từ nên
+ * hai từ chẳng liên quan thành kề nhau. Lucene gọi cơ chế này là
+ * `position_increment_gap`.
+ */
+const PHRASE_BARRIER = /[^\p{L}\p{N}\s-]+/u;
+
+/**
+ * Dồn các trường của một dataset thành chuỗi phẳng đã bỏ dấu, để so cụm liền.
+ *
+ * Mỗi đoạn (giữa hai dấu câu) được bọc bằng khoảng trắng và nối bằng `|`, nên phép
+ * so `" a b"` không thể vắt qua hai đoạn.
+ */
+function flattenForPhrase(fields: (string | undefined)[]): string {
+  return fields
+    .map((value) =>
+      String(value ?? "")
+        .split(PHRASE_BARRIER)
+        .map((segment) => tokenize(segment).map(normalize).join(" "))
+        .filter(Boolean)
+        .map((segment) => ` ${segment} `)
+        .join("|"),
+    )
+    .join("|");
+}
+
+/**
+ * Truy vấn nhiều từ thì các từ phải **kề nhau** trong ít nhất một trường.
+ *
+ * Vì sao cần: "Lâm Đồng" là MỘT thực thể, không phải hai từ khoá. `combineWith:
+ * "AND"` chỉ đòi cả hai từ có mặt đâu đó, nên nó khớp vào 31 dataset về lao động —
+ * `lâm` lấy từ "nông lâm thủy sản", `đồng` lấy từ "nghìn đồng", hai chỗ chẳng liên
+ * quan. Bộ lọc dấu (`matchesDiacritics`) không bắt được vì cả hai từ đó CÓ THẬT và
+ * đúng dấu.
+ *
+ * Đây chính là `match_phrase` của Lucene/Elasticsearch. MiniSearch không lưu vị trí
+ * token nên không làm được phrase query — ta tính lại bằng quét chuỗi trên văn bản
+ * đã bỏ dấu. 493 dataset × ~500 ký tự ≈ 250 KB mỗi lần gõ, không đáng kể.
+ *
+ * Token cuối cho khớp ĐẦU từ, khớp với `prefix` của MiniSearch — người dùng đang gõ
+ * dở thì "ranh giới hành ch" vẫn phải ra kết quả.
+ *
+ * Đo trên 20 truy vấn thật: các truy vấn hợp lệ không mất kết quả nào
+ * (`lao động` 65, `giáo dục` 37, `ranh giới hành chính` 4 — y nguyên), còn
+ * `Lâm Đồng` 31 → 0 và `Nghệ An` 1 → 0.
+ *
+ * Đánh đổi đã biết: truy vấn hai khái niệm rời như "rừng Nghệ An" sẽ ra 0. Chấp
+ * nhận được vì kho này KHÔNG có địa danh trong metadata (0/493), nên truy vấn đó
+ * vốn đã không bao giờ đúng — nó thuộc về chỉ mục giá trị `_index/values.json`.
+ */
+function matchesPhrase(flat: string, queryTokens: string[]): boolean {
+  if (queryTokens.length < 2) return true;
+  const head = queryTokens.slice(0, -1).map(normalize).join(" ");
+  const tail = normalize(queryTokens[queryTokens.length - 1]);
+  return flat.includes(` ${head} ${tail}`);
+}
+
+
+/**
+ * Từ này có dấu không — tức bỏ dấu có làm nó đổi không.
+ */
+function hasDiacritics(word: string): boolean {
+  return normalize(word) !== word.toLowerCase();
+}
+
+/**
+ * Người dùng gõ CÓ DẤU thì dùng chính dấu đó để loại kết quả sai.
+ *
+ * Bỏ dấu gộp `Đà` và `đá` thành cùng một chuỗi `da`, nên truy vấn "Đà Nẵng" khớp
+ * được vào hai từ chẳng liên quan ở hai trường khác nhau. Đo thực tế:
+ *
+ *     "Đà nẵng" → "Tiêu dùng năng lượng bình quân đầu người…"
+ *        "da"   ← `đá`   trong "than đá"        (description)
+ *        "nang" ← `năng` trong "năng lượng"     (title)
+ *
+ * Trong khi **0/493 dataset** có "Đà Nẵng" trong metadata, tức đáp án đúng là
+ * không có kết quả nào. (Địa danh nằm trong DỮ LIỆU, không trong metadata — đó là
+ * việc của `lookupValue` bên hỏi đáp, nó tìm ra 176 dataset.)
+ *
+ * Quy tắc: mỗi token CÓ DẤU của truy vấn phải khớp được một từ mà **hoặc** từ đó
+ * cũng có dấu và trùng dấu, **hoặc** từ đó không có dấu nào (slug luôn không dấu,
+ * nên gõ "Đà Nẵng" vẫn tìm được `ranh-gioi-da-nang`).
+ *
+ * Token KHÔNG dấu thì không bị ràng buộc gì — gõ "da nang" vẫn chạy như cũ, đó là
+ * cách gõ phổ biến nhất và không được làm hỏng.
+ *
+ * Sau khi có `matchesPhrase`, hàm này gần như chỉ còn tác dụng với truy vấn MỘT
+ * TỪ — trên 20 truy vấn nhiều từ đã đo, rào cụm liền loại hết những gì nó loại.
+ * Vẫn giữ vì với một từ thì rào cụm không áp được, và ở đó nó cắt rất mạnh:
+ * `cà` 447 → 132 kết quả, `đá` 386 → 367.
+ */
+function matchesDiacritics(
+  fields: string[],
+  queryTokens: string[],
+): boolean {
+  const words = fields.flatMap((v) =>
+    String(v ?? "")
+      .split(/[^\p{L}\p{N}]+/u)
+      .filter(Boolean),
+  );
+
+  return queryTokens.every((token, i) => {
+    if (!hasDiacritics(token)) return true;
+    const isLast = i === queryTokens.length - 1;
+    const q = token.toLowerCase();
+    const qFolded = normalize(token);
+    return words.some((w) => {
+      const wLower = w.toLowerCase();
+      const wFolded = normalize(w);
+      const foldedHit = isLast
+        ? wFolded.startsWith(qFolded)
+        : wFolded === qFolded;
+      if (!foldedHit) return false;
+      // Từ không dấu → không phân biệt được, chấp nhận (slug, tên viết không dấu)
+      if (!hasDiacritics(w)) return true;
+      return isLast ? wLower.startsWith(q) : wLower === q;
+    });
+  });
+}
+
 export class MiniSearchAdapter implements SearchAdapter {
   private mini: MiniSearch<Dataset> | null = null;
   private bySlug = new Map<string, Dataset>();
+  /** Văn bản phẳng đã bỏ dấu theo slug — dựng một lần, dùng cho `matchesPhrase`. */
+  private phraseText = new Map<string, string>();
   /** Mảng đã lập chỉ mục — so bằng reference để biết có phải dựng lại không. */
   private source: Dataset[] | null = null;
 
@@ -121,6 +249,14 @@ export class MiniSearchAdapter implements SearchAdapter {
     this.mini = mini;
     this.source = datasets;
     this.bySlug = new Map(datasets.map((d) => [d.slug, d]));
+    // Dựng cùng lúc với chỉ mục, không dựng lúc search: quét cụm cần văn bản đã bỏ
+    // dấu, mà bỏ dấu 493 dataset trên từng lần gõ thì đắt hơn cả việc so cụm.
+    this.phraseText = new Map(
+      datasets.map((d) => [
+        d.slug,
+        flattenForPhrase([d.title, d.slug, d.description, d.category, ...d.tags]),
+      ]),
+    );
   }
 
   search(query: SearchQuery): SearchResult[] {
@@ -154,11 +290,31 @@ export class MiniSearchAdapter implements SearchAdapter {
       fuzzy: false,
     });
 
+    // Token của truy vấn, giữ nguyên dấu — xem `matchesDiacritics`.
+    const queryTokens = tokenize(text);
+
     const out: SearchResult[] = [];
     for (const hit of hits) {
       const dataset = this.bySlug.get(hit.id as string);
       if (!dataset) continue;
       if (!this.matchesFilters(dataset, query.filters)) continue;
+      if (!matchesPhrase(this.phraseText.get(dataset.slug) ?? "", queryTokens)) {
+        continue;
+      }
+      if (
+        !matchesDiacritics(
+          [
+            dataset.title,
+            dataset.slug,
+            dataset.description,
+            dataset.category,
+            ...dataset.tags,
+          ],
+          queryTokens,
+        )
+      ) {
+        continue;
+      }
       out.push({
         dataset,
         score: hit.score,

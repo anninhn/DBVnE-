@@ -2,12 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { Map as MapIcon, Table as TableIcon } from "lucide-react";
-import type { Resource } from "@/lib/types/dataset";
+import type { DataDictionaryEntry, Resource } from "@/lib/types/dataset";
 import type * as XLSXTypes from "xlsx";
 import { parseCSV } from "@/lib/parse/csv";
 import { formatCompactNumber } from "@/lib/format";
 import { numericStats, histogramBins, countDistinct } from "@/lib/viz/column-stats";
+import {
+  binRangeLabel,
+  formatNumberWithSchema,
+  schemaForColumn,
+} from "@/lib/datasets/number-schema";
 import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";
+import { proxiedR2Url } from "@/lib/r2/proxy";
+import HoverLabelChart, {
+  BAR_RADIUS_RATIO,
+  MIN_BAR_HEIGHT,
+  topRoundedBarPath,
+} from "@/components/ui/HoverLabelChart";
 
 const PREVIEW_ROW_LIMIT = 100;
 
@@ -17,6 +28,13 @@ interface R2FileViewerProps {
   canDownload?: boolean;
   /** Slug dataset — dùng build /login?next khi !canDownload. */
   slug?: string;
+  /**
+   * Data dictionary của dataset — cần để đọc `decimal_char`/`group_char`.
+   *
+   * Thiếu nó thì mọi cột số kiểu Việt (`"144,8"`) parse thất bại và thống kê ra
+   * `min 0 / max 0` kèm histogram một cột — sai mà không có dấu hiệu gì.
+   */
+  dictionary?: DataDictionaryEntry[];
 }
 
 type LoadState = "loading" | "error" | "ready";
@@ -32,7 +50,12 @@ interface TableData {
  * Hỗ trợ: CSV (native parser), XLSX (xlsx package), GeoJSON (features[].properties
  * thành table + histogram), PDF (iframe), MP3 (audio).
  */
-export default function R2FileViewer({ resource, canDownload = true, slug }: R2FileViewerProps) {
+export default function R2FileViewer({
+  resource,
+  canDownload = true,
+  slug,
+  dictionary,
+}: R2FileViewerProps) {
   // Build href cho link download fallback:
   // - Đã login → R2 public URL (download trực tiếp)
   // - Chưa login → /login?next=/datasets/<slug>
@@ -71,7 +94,8 @@ export default function R2FileViewer({ resource, canDownload = true, slug }: R2F
 
     (async () => {
       try {
-        const res = await fetch(fileUrl);
+        // Qua proxy same-origin — fetch thẳng R2 chết CORS khi dev chạy cổng lạ.
+        const res = await fetch(proxiedR2Url(fileUrl));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         if (fileType === "csv") {
@@ -251,8 +275,23 @@ export default function R2FileViewer({ resource, canDownload = true, slug }: R2F
       {numericCols.length > 0 && (
         <div className="flex gap-4 px-3 py-2 bg-hf-bg-subtle border-b border-hf-border text-[11px] text-hf-text-muted">
           {numericCols.map((col) => {
-            const stats = numericStats(rows, col);
-            const hist = histogramBins(rows, col);
+            const schema = schemaForColumn(dictionary, col);
+            // `column_stats` trong metadata được tính trên TOÀN BỘ dataset lúc
+            // upload/recompute. Đọc nó thay vì tự tính lại: tự tính thì con số
+            // phụ thuộc vào những gì tải được ở client, và hai tab của cùng một
+            // dataset cho hai kết quả khác nhau mà không nói cái nào là gì.
+            const pre = resource.column_stats?.[col];
+            const stats =
+              pre?.kind === "numeric"
+                ? {
+                    min: formatNumberWithSchema(pre.min, schema),
+                    max: formatNumberWithSchema(pre.max, schema),
+                  }
+                : numericStats(rows, col, schema);
+            const hist =
+              pre?.kind === "numeric"
+                ? { counts: pre.histogram, min: pre.min, max: pre.max }
+                : histogramBins(rows, col, schema);
             if (!stats || !hist) return null;
             return (
               <div key={col} className="flex items-center gap-1.5">
@@ -261,7 +300,13 @@ export default function R2FileViewer({ resource, canDownload = true, slug }: R2F
                 <span className="text-hf-text-faint">→</span>
                 <span>{stats.max}</span>
                 {/* Mini histogram SVG */}
-                <MiniHistogram counts={hist.counts} />
+                <MiniHistogram
+                  counts={hist.counts}
+                  min={hist.min}
+                  max={hist.max}
+                  values={pre?.kind === "numeric" ? pre.values : undefined}
+                  format={(n) => formatNumberWithSchema(n, schema)}
+                />
               </div>
             );
           })}
@@ -354,29 +399,93 @@ function ToggleButton({
   );
 }
 
-/** Mini histogram SVG — inline trong header bar */
-function MiniHistogram({ counts }: { counts: number[] }) {
+/**
+ * Mini histogram SVG — inline trong header bar.
+ *
+ * `<title>` trong từng `<rect>` là nhãn hover NATIVE của SVG: trỏ chuột vào cột
+ * nào thì hiện khoảng giá trị và số dòng của cột đó, và trình đọc màn hình đọc
+ * được. Trước đây không có `<title>` nào, nên tám cái cột xám không đưa được
+ * thông tin gì ra ngoài.
+ */
+function MiniHistogram({
+  counts,
+  min,
+  max,
+  values,
+  format,
+}: {
+  counts: number[];
+  min?: number;
+  max?: number;
+  /** Có mặt = mỗi cột ứng với đúng một giá trị (nhãn là số, không phải khoảng) */
+  values?: number[];
+  /** Format số theo quy ước của cột (group_char/decimal_char) */
+  format?: (n: number) => string;
+}) {
+  // Cột chỉ có một giá trị — xem chú thích ở MiniHistogram của DatasetViewerParts.
+  if (min != null && max != null && min === max) return null;
+
   const W = 60;
   const H = 12;
   const BAR_W = W / counts.length;
   const maxCount = Math.max(...counts);
+  const total = counts.reduce((a, b) => a + b, 0);
+  const fmt = format ?? ((n: number) => String(Number(n.toFixed(4))));
+  const labels = counts.map((count, i) => {
+    const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+    return `${binRangeLabel(i, counts.length, min, max, fmt, values)}: ${count.toLocaleString("vi-VN")} dòng (${pct}%)`;
+  });
 
   return (
-    <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="inline-block">
-      {counts.map((count, i) => {
-        const h = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
-        return (
-          <rect
-            key={i}
-            x={i * BAR_W + 0.5}
-            y={H - h}
-            width={Math.max(BAR_W - 1, 1)}
-            height={h}
-            fill="#9CA3AF"
-            rx={0.5}
-          />
-        );
-      })}
-    </svg>
+    <HoverLabelChart
+      labels={labels}
+      segmentEnds={counts.map((_, i) => (i + 1) * BAR_W)}
+      viewBoxWidth={W}
+    >
+      {(hoverIndex) => (
+        <svg
+          width={W}
+          height={H}
+          viewBox={`0 0 ${W} ${H}`}
+          className="inline-block"
+        >
+          {/* Vùng bắt chuột theo từng bin — xem chú thích ở MiniHistogram của
+              DatasetViewerParts. */}
+          {counts.map((_, i) => (
+            <rect
+              key={`hit-${i}`}
+              x={i * BAR_W}
+              y={0}
+              width={BAR_W}
+              height={H}
+              className="cursor-pointer fill-hf-chart"
+              fillOpacity={hoverIndex === i ? 0.12 : 0}
+            />
+          ))}
+          {counts.map((count, i) => {
+            // Sàn chiều cao: bin có dữ liệu phải thấy được, xem MIN_BAR_HEIGHT.
+            const raw = maxCount > 0 ? (count / maxCount) * (H - 1) : 0;
+            const h = count > 0 ? Math.max(raw, MIN_BAR_HEIGHT) : 0;
+            const w = Math.max(BAR_W - 1, 1);
+            return (
+              <path
+                key={i}
+                d={topRoundedBarPath(
+                  i * BAR_W + 0.5,
+                  H - h,
+                  w,
+                  h,
+                  w * BAR_RADIUS_RATIO,
+                )}
+                className="pointer-events-none fill-hf-chart"
+                fillOpacity={hoverIndex === null || hoverIndex === i ? 1 : 0.45}
+              >
+                <title>{labels[i]}</title>
+              </path>
+            );
+          })}
+        </svg>
+      )}
+    </HoverLabelChart>
   );
 }
