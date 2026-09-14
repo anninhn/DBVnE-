@@ -48,11 +48,25 @@ export default function UploadDropzone({ onUploaded, onError }: Props) {
 
       // 2. PUT file trực tiếp lên R2 (không qua Vercel)
       setProgress(`Đang upload file (${(file.size / 1024 / 1024).toFixed(1)}MB)...`);
-      const putRes = await fetch(presign.presignedUrl, {
-        method: "PUT",
-        body: file,
-        headers: { "Content-Type": file.type || "application/octet-stream" },
-      });
+      // PUT thẳng lên R2 là request cross-origin duy nhất còn lại (không proxy
+      // qua app được: serverless function của Vercel giới hạn body ~4.5MB).
+      // Nếu origin hiện tại không nằm trong CORS policy của bucket, fetch ném
+      // TypeError "Failed to fetch" trần trụi — không status, không log server.
+      // Dịch nó ra nguyên nhân thật thay vì để người dùng đoán.
+      let putRes: Response;
+      try {
+        putRes = await fetch(presign.presignedUrl, {
+          method: "PUT",
+          body: file,
+          headers: { "Content-Type": file.type || "application/octet-stream" },
+        });
+      } catch {
+        throw new Error(
+          `Trình duyệt không gửi được file lên kho lưu trữ từ ${window.location.origin}. ` +
+            "Nhiều khả năng origin này chưa có trong CORS policy của R2 — chạy " +
+            "`node tools/setup-r2-cors.mjs` hoặc thêm origin trên Cloudflare dashboard."
+        );
+      }
       if (!putRes.ok) {
         throw new Error(`Upload thất bại (${putRes.status}). Vui lòng thử lại.`);
       }

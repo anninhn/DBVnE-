@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import GeoJsonMapLazy from "./GeoJsonMapLazy";
+import { proxiedR2Url } from "@/lib/r2/proxy";
 import type { Dataset } from "@/lib/types/dataset";
 
 /**
@@ -44,7 +45,7 @@ export default function DatasetGeoJsonPreview({ dataset, height = 450, embedded 
     (async () => {
       setState("loading");
       try {
-        const res = await fetch(fileUrl);
+        const res = await fetch(proxiedR2Url(fileUrl));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = (await res.json()) as GeoJSON.FeatureCollection;
         if (!json || json.type !== "FeatureCollection" || !Array.isArray(json.features)) {

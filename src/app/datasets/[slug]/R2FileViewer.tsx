@@ -13,6 +13,7 @@ import {
   schemaForColumn,
 } from "@/lib/datasets/number-schema";
 import GeoJsonMapLazy from "@/components/geo/GeoJsonMapLazy";
+import { proxiedR2Url } from "@/lib/r2/proxy";
 import HoverLabelChart, {
   BAR_RADIUS_RATIO,
   MIN_BAR_HEIGHT,
@@ -93,7 +94,8 @@ export default function R2FileViewer({
 
     (async () => {
       try {
-        const res = await fetch(fileUrl);
+        // Qua proxy same-origin — fetch thẳng R2 chết CORS khi dev chạy cổng lạ.
+        const res = await fetch(proxiedR2Url(fileUrl));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         if (fileType === "csv") {
