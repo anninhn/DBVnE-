@@ -1,15 +1,16 @@
 "use client";
 
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { Map as MapLibreMap, Popup, setWorkerUrl } from "maplibre-gl";
 import { useEffect, useRef, useState } from "react";
 
 /**
- * GeoJsonMap — render GeoJSON FeatureCollection trên Leaflet.
+ * GeoJsonMap — render GeoJSON FeatureCollection trên MapLibre GL.
  *
- * Preview-only: nhẹ (~40KB), không cần WebGL, render bằng Canvas.
- * - Base map: OSM raster tiles
- * - Style per geometry kind (point/line/polygon)
+ * Preview-only:
+ * - Base map: OpenFreeMap Positron (vector tiles, nền xám tối giản)
+ * - Style riêng cho từng loại geometry (point/line/polygon), lọc bằng
+ *   `geometry-type` nên FeatureCollection trộn nhiều loại vẫn vẽ đúng
  * - Auto-fit bounds đến data
  * - Hover popup top 5 properties
  *
@@ -28,40 +29,58 @@ export interface GeoJsonMapProps {
 
 type Phase = "loading" | "ready" | "error";
 
-const DATA_STYLE_POLYGON: L.PathOptions = {
-  color: "#1d4ed8",
-  weight: 0.5,
-  fillColor: "#3b82f6",
-  fillOpacity: 0.25,
-};
-const DATA_STYLE_LINE: L.PathOptions = {
-  color: "#3b82f6",
-  weight: 1.5,
-};
-const DATA_STYLE_POINT: L.CircleMarkerOptions = {
-  radius: 3,
-  color: "#92400e",
-  weight: 0.5,
-  fillColor: "#fbbf24",
-  fillOpacity: 0.9,
-};
+/**
+ * Nền bản đồ: OpenFreeMap Positron — xám tối giản, không tranh màu với dữ liệu.
+ * Style khác nếu muốn: `.../styles/bright`, `.../styles/liberty`, `.../styles/dark`.
+ *
+ * VÌ SAO LÀ OPENFREEMAP (đo lại 2026-09-14):
+ * - Không API key, không đăng ký, không giới hạn request, cho phép dùng thương
+ *   mại. Attribution bắt buộc — MapLibre tự thêm, vì TileJSON `/planet` có sẵn
+ *   field `attribution` (đã kiểm: trả về OpenFreeMap © OpenMapTiles + OSM).
+ *
+ * VÌ SAO KHÔNG PHẢI CARTO (nhà cung cấp cũ, đã bỏ):
+ * - CARTO đóng basemap sau API key. Mỗi tile vẫn trả HTTP 200 nên không có lỗi
+ *   mạng nào để bắt, nhưng ảnh bị in đè chữ "API KEY REQUIRED / carto.com/
+ *   basemaps/apikeys" vắt chéo qua bản đồ ở mọi mức zoom. Kiểm lại 2026-09-14:
+ *   vẫn còn nguyên.
+ *
+ * VÌ SAO KHÔNG PHẢI OPENSTREETMAP:
+ * - `tile.openstreetmap.org` chạy trên hạ tầng tình nguyện và chính sách của họ
+ *   cấm ứng dụng dùng. Máy chủ họ đã từng trả 403 "App is not following the tile
+ *   usage policy" cho app này.
+ *
+ * VÌ SAO KHÔNG PHẢI ESRI:
+ * - `Canvas/World_Light_Gray_Base` không cần khoá và xám sạch, nhưng điều khoản
+ *   của Esri cho endpoint tile công khai không nói rõ về app bên thứ ba, mà map
+ *   này sẽ đi vào bài báo.
+ */
+const BASEMAP_STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
 
-type GeomKind = "point" | "line" | "polygon";
+/**
+ * Trỏ MapLibre vào worker tự phục vụ ở `public/maplibre/`.
+ *
+ * BẮT BUỘC, và phải chạy trước khi dựng Map đầu tiên. MapLibre 6 tự dò worker
+ * theo `import.meta.url` của chunk đã bundle → với Turbopack ra
+ * `/_next/static/chunks/maplibre-gl-worker.mjs`, không tồn tại. Khi worker
+ * không tải được, MapLibre KHÔNG bắn lỗi: canvas vẫn dựng, attribution vẫn
+ * hiện, nhưng mọi tile kẹt `loading` mãi và bản đồ trắng xám. Đã mất một vòng
+ * debug vì triệu chứng trông hệt như lỗi nhà cung cấp tile.
+ *
+ * File trong `public/maplibre/` đồng bộ bằng `tools/sync-maplibre-worker.mjs`
+ * (chạy tự động ở `predev`/`prebuild`).
+ */
+setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
 
-function detectGeomKind(fc: GeoJSON.FeatureCollection): GeomKind {
-  const counts: Record<GeomKind, number> = { point: 0, line: 0, polygon: 0 };
-  for (const f of fc.features) {
-    const t = f.geometry?.type;
-    if (t === "Point" || t === "MultiPoint") counts.point++;
-    else if (t === "LineString" || t === "MultiLineString") counts.line++;
-    else counts.polygon++;
-  }
-  return counts.point >= counts.line && counts.point >= counts.polygon
-    ? "point"
-    : counts.line >= counts.polygon
-      ? "line"
-      : "polygon";
-}
+const SOURCE_ID = "vne-geojson";
+
+const COLOR_POLYGON_FILL = "#3b82f6";
+const COLOR_POLYGON_LINE = "#1d4ed8";
+const COLOR_LINE = "#3b82f6";
+const COLOR_POINT_FILL = "#fbbf24";
+const COLOR_POINT_LINE = "#92400e";
+
+/** Id của các layer vẽ dữ liệu — dùng cho hover popup query. */
+const DATA_LAYER_IDS = ["vne-fill", "vne-outline", "vne-line", "vne-point"];
 
 function escapeHtml(s: string): string {
   return s
@@ -71,9 +90,8 @@ function escapeHtml(s: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function popupHtml(feature: GeoJSON.Feature): string {
-  const props = feature.properties ?? {};
-  const entries = Object.entries(props).slice(0, 5);
+function popupHtml(properties: Record<string, unknown> | null): string {
+  const entries = Object.entries(properties ?? {}).slice(0, 5);
   if (entries.length === 0) return "<div><em>Không có properties</em></div>";
   const rows = entries
     .map(([k, v]) => {
@@ -84,6 +102,50 @@ function popupHtml(feature: GeoJSON.Feature): string {
   return `<table style="font-size:11px;font-family:ui-sans-serif,system-ui">${rows}</table>`;
 }
 
+type Bbox = [number, number, number, number];
+
+/**
+ * Bbox của FeatureCollection.
+ *
+ * MapLibre không có sẵn `getBounds()` cho GeoJSON source như Leaflet, nên phải
+ * tự duyệt. Duyệt đệ quy mảng lồng nhau để một hàm lo được mọi geometry type
+ * (Point → MultiPolygon), kể cả GeometryCollection.
+ */
+function computeBbox(fc: GeoJSON.FeatureCollection): Bbox | null {
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+
+  const walkCoords = (coords: unknown): void => {
+    if (!Array.isArray(coords)) return;
+    if (typeof coords[0] === "number" && typeof coords[1] === "number") {
+      const [x, y] = coords as [number, number];
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+      if (x < minX) minX = x;
+      if (y < minY) minY = y;
+      if (x > maxX) maxX = x;
+      if (y > maxY) maxY = y;
+      return;
+    }
+    for (const c of coords) walkCoords(c);
+  };
+
+  const walkGeometry = (geom: GeoJSON.Geometry | null | undefined): void => {
+    if (!geom) return;
+    if (geom.type === "GeometryCollection") {
+      for (const g of geom.geometries) walkGeometry(g);
+      return;
+    }
+    walkCoords(geom.coordinates);
+  };
+
+  for (const f of fc.features) walkGeometry(f?.geometry);
+
+  if (!Number.isFinite(minX) || !Number.isFinite(minY)) return null;
+  return [minX, minY, maxX, maxY];
+}
+
 export default function GeoJsonMap({
   data,
   height = 400,
@@ -91,7 +153,6 @@ export default function GeoJsonMap({
   showPopup = true,
 }: GeoJsonMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<L.Map | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -103,11 +164,12 @@ export default function GeoJsonMap({
       return;
     }
 
-    // Defer 1 tick — đảm bảo container đã có dimension thực khi Leaflet init.
+    // Defer 1 tick — đảm bảo container đã có dimension thực khi map init.
     // Nếu init ngay trong useEffect, container có thể vẫn 0×0 (layout chưa tính)
-    // → Canvas renderer crash với `this._ctx.clearRect`.
+    // → fitBounds tính ra zoom vô nghĩa.
     let disposed = false;
-    let map: L.Map | null = null;
+    let map: MapLibreMap | null = null;
+    let popup: Popup | null = null;
 
     const initMap = () => {
       if (disposed || !containerRef.current) return;
@@ -119,104 +181,133 @@ export default function GeoJsonMap({
         return;
       }
 
-      // preferCanvas → Canvas renderer, render 1000+ polygons nhanh hơn SVG nhiều.
-      map = L.map(containerRef.current, {
-        preferCanvas: true,
-        scrollWheelZoom: false,
-        attributionControl: true,
-      }).setView([16, 107], 4);
-      mapRef.current = map;
-
-      // CartoDB Positron — nền xám tối giản, không màu tranh với dữ liệu vẽ lên.
-      // Style khác nếu muốn: dark_all (tối), voyager (màu nhẹ).
-      //
-      // CÓ ĐÓNG DẤU, VÀ ĐÓ LÀ QUYẾT ĐỊNH ĐÃ CHỐT (2026-09-07). CARTO đã đóng
-      // basemap sau API key: mỗi tile trả HTTP 200 kèm chữ "API KEY REQUIRED /
-      // carto.com/basemaps/apikeys" in thẳng vào ảnh, vắt chéo qua bản đồ ở mọi
-      // mức zoom. Không có lỗi mạng nào để bắt — request "thành công", chỉ là
-      // nội dung bị đóng dấu. Người quyết định chấp nhận chữ đó, không đổi nhà
-      // cung cấp.
-      //
-      // KHÔNG đổi sang OpenStreetMap: `tile.openstreetmap.org` chạy trên hạ tầng
-      // tình nguyện và chính sách của họ không cho ứng dụng dùng. Hỏi thẳng máy
-      // chủ họ (vượt chặn DNS bằng `--resolve`) trả HTTP 403 kèm ảnh "Access
-      // blocked — App is not following the tile usage policy". Đổi sang OSM là để
-      // map trắng trơn.
-      //
-      // Đã thử Esri `Canvas/World_Light_Gray_Base` (không cần khoá, xám sạch,
-      // 78ms) nhưng bỏ: điều khoản của Esri cho endpoint tile công khai không nói
-      // rõ về app bên thứ ba, mà map này sẽ đi vào bài báo.
-      //
-      // Để bỏ chữ đóng dấu: tạo tài khoản CARTO lấy API key (họ có gói miễn phí).
-      // Dạng URL kèm khoá phải tra tài liệu CARTO lúc làm — tôi không ghi sẵn ở
-      // đây vì chưa kiểm được, và đoán sai thì lỗi lại im lặng đúng như lần này.
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        maxZoom: 19,
-        subdomains: "abcd",
-        attribution: "© OpenStreetMap contributors © CARTO",
-      }).addTo(map);
-
       try {
-        const kind = detectGeomKind(data);
-        const pointToLayer = (_feat: GeoJSON.Feature<GeoJSON.Point>, latlng: L.LatLng) =>
-          L.circleMarker(latlng, DATA_STYLE_POINT);
-
-        const style =
-          kind === "polygon"
-            ? DATA_STYLE_POLYGON
-            : kind === "line"
-              ? DATA_STYLE_LINE
-              : DATA_STYLE_POINT;
-
-        const onEachFeature = (feat: GeoJSON.Feature, layer: L.Layer) => {
-          if (!showPopup) return;
-          // Hover popup — popup nhẹ theo vị trí mouse
-          layer.on("mouseover", (e: L.LeafletMouseEvent) => {
-            const html = popupHtml(feat);
-            L.popup({ closeButton: false, offset: L.point(0, 8), className: "vne-map-popup" })
-              .setLatLng(e.latlng)
-              .setContent(html)
-              .openOn(map!);
-          });
-          layer.on("mouseout", () => {
-            map!.closePopup();
-          });
-        };
-
-        const dataLayer = L.geoJSON(data, {
-          style: kind === "point" ? undefined : style,
-          pointToLayer: kind === "point" ? pointToLayer : undefined,
-          onEachFeature,
-        }).addTo(map);
-
-        // Auto-fit bounds
-        try {
-          const bounds = dataLayer.getBounds();
-          if (bounds.isValid()) {
-            map.fitBounds(bounds, { padding: [20, 20] });
-          }
-        } catch {
-          // bounds có thể invalid với empty geometry, ignore
-        }
-
-        // Force recalc layout sau khi all layers added
-        map.invalidateSize();
-        setPhase("ready");
+        map = new MapLibreMap({
+          container: containerRef.current,
+          style: BASEMAP_STYLE_URL,
+          center: [107, 16],
+          zoom: 4,
+          scrollZoom: false,
+          attributionControl: { compact: true },
+        });
       } catch (err) {
-        console.error("[GeoJsonMap] L.geoJSON failed:", err);
-        setErrorMsg(err instanceof Error ? err.message : "Không render được GeoJSON.");
+        // MapLibre cần WebGL2 — máy/trình duyệt không có thì constructor throw.
+        console.error("[GeoJsonMap] Khởi tạo MapLibre thất bại:", err);
+        setErrorMsg(
+          err instanceof Error && /webgl/i.test(err.message)
+            ? "Trình duyệt không hỗ trợ WebGL để vẽ bản đồ."
+            : "Không khởi tạo được bản đồ."
+        );
         setPhase("error");
+        return;
       }
+
+      const mapInstance = map;
+      let styleLoaded = false;
+
+      mapInstance.on("error", (e) => {
+        console.warn("[GeoJsonMap] MapLibre error:", e.error);
+        // Style hỏng thì `load` không bao giờ bắn → spinner treo vô hạn, không
+        // ai biết vì sao. Chỉ nhận lỗi của chính request style: tile lẻ hỏng
+        // cũng bắn `error` nhưng bản đồ vẫn dùng được, đừng đánh sập vì một ô.
+        const failedUrl = (e.error as Error & { url?: string })?.url;
+        if (!styleLoaded && failedUrl?.startsWith(BASEMAP_STYLE_URL)) {
+          setErrorMsg("Không tải được nền bản đồ.");
+          setPhase("error");
+        }
+      });
+
+      mapInstance.on("load", () => {
+        if (disposed) return;
+        styleLoaded = true;
+        try {
+          mapInstance.addSource(SOURCE_ID, { type: "geojson", data });
+
+          mapInstance.addLayer({
+            id: "vne-fill",
+            type: "fill",
+            source: SOURCE_ID,
+            filter: ["==", ["geometry-type"], "Polygon"],
+            paint: { "fill-color": COLOR_POLYGON_FILL, "fill-opacity": 0.25 },
+          });
+          mapInstance.addLayer({
+            id: "vne-outline",
+            type: "line",
+            source: SOURCE_ID,
+            filter: ["==", ["geometry-type"], "Polygon"],
+            paint: { "line-color": COLOR_POLYGON_LINE, "line-width": 0.5 },
+          });
+          mapInstance.addLayer({
+            id: "vne-line",
+            type: "line",
+            source: SOURCE_ID,
+            filter: ["==", ["geometry-type"], "LineString"],
+            paint: { "line-color": COLOR_LINE, "line-width": 1.5 },
+          });
+          mapInstance.addLayer({
+            id: "vne-point",
+            type: "circle",
+            source: SOURCE_ID,
+            filter: ["==", ["geometry-type"], "Point"],
+            paint: {
+              "circle-radius": 3,
+              "circle-color": COLOR_POINT_FILL,
+              "circle-opacity": 0.9,
+              "circle-stroke-color": COLOR_POINT_LINE,
+              "circle-stroke-width": 0.5,
+            },
+          });
+
+          const bbox = computeBbox(data);
+          if (bbox) {
+            mapInstance.fitBounds(bbox, { padding: 20, animate: false });
+          }
+
+          if (showPopup) {
+            popup = new Popup({
+              closeButton: false,
+              closeOnClick: false,
+              offset: 8,
+              className: "vne-map-popup",
+            });
+
+            mapInstance.on("mousemove", (e) => {
+              const hits = mapInstance.queryRenderedFeatures(e.point, {
+                layers: DATA_LAYER_IDS.filter((id) => mapInstance.getLayer(id)),
+              });
+              if (hits.length === 0) {
+                popup?.remove();
+                mapInstance.getCanvas().style.cursor = "";
+                return;
+              }
+              mapInstance.getCanvas().style.cursor = "pointer";
+              popup
+                ?.setLngLat(e.lngLat)
+                .setHTML(popupHtml(hits[0].properties))
+                .addTo(mapInstance);
+            });
+
+            mapInstance.on("mouseout", () => {
+              popup?.remove();
+              mapInstance.getCanvas().style.cursor = "";
+            });
+          }
+
+          setPhase("ready");
+        } catch (err) {
+          console.error("[GeoJsonMap] Thêm layer GeoJSON thất bại:", err);
+          setErrorMsg(err instanceof Error ? err.message : "Không render được GeoJSON.");
+          setPhase("error");
+        }
+      });
     };
 
     requestAnimationFrame(initMap);
 
     return () => {
       disposed = true;
-      if (map) {
-        map.remove();
-      }
-      mapRef.current = null;
+      popup?.remove();
+      map?.remove();
     };
   }, [data, showPopup]);
 
