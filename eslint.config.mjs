@@ -19,6 +19,9 @@ const eslintConfig = defineConfig([
     "**/node_modules/**",
     // Node maintenance scripts (ESM parse quirks, not app code):
     "tools/**/*.mjs",
+    // Worker MapLibre copy nguyên từ node_modules (xem
+    // tools/sync-maplibre-worker.mjs) — code của thư viện, không lint:
+    "public/maplibre/**",
   ]),
   {
     rules: {
