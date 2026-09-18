@@ -1,5 +1,37 @@
 [
   {
+    "slug": "du-lieu-tong-hop-ve-rung-va-bien-dong-rung-theo-vi-tri-dia-l",
+    "title": "Dữ liệu tổng hợp về rừng và biến động rừng theo vị trí địa lý tại Việt Nam",
+    "description": "Dataset cung cấp thông tin về diện tích rừng, tỷ lệ rừng, và các chỉ số phân tích không gian liên quan đến rừng trên khắp Việt Nam từ năm 1993 đến 2018, được phân loại theo tỉnh và huyện.",
+    "category": "moi-truong",
+    "tags": [
+      "moi-truong",
+      "rung",
+      "lam-nghiep",
+      "bien-dong-rung",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-09-18T07:22:25.763Z",
+    "uploaded_by": "ninh",
+    "row_count": 16049,
+    "file_count": 1,
+    "total_size_mb": 1.59,
+    "format": "csv",
+    "source": "unknown",
+    "source_url": "",
+    "year_range": [
+      1993,
+      2018
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fd9e3aec-07a6-4a9c-b60a-762f16f442db/kepler_tong_hop.csv",
+        "size_mb": 1.59
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non",
     "title": "Tỷ lệ người dân tham gia mạng xã hội phân theo các nhóm đối tượng",
     "description": "Dữ liệu thống kê tỷ lệ phần trăm người dân Việt Nam tham gia mạng xã hội, được phân loại chi tiết theo giới tính, độ tuổi, khu vực sinh sống (thành thị/nông thôn), vùng địa lý và mức độ kỹ năng số.",
