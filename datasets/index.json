@@ -1,5 +1,34 @@
 [
   {
+    "slug": "top-bai-viet-co-luot-xem-cao-nhat-tren-vnexpress",
+    "title": "Top bài viết có lượt xem cao nhất trên VnExpress",
+    "description": "Dữ liệu thống kê 100 bài viết có lượt xem (pageview) cao nhất mỗi tháng trên VnExpress, từ tháng 09/2025 đến tháng 08/2026. Bao gồm thông tin chi tiết về bài viết, chuyên mục, tác giả và các chỉ số tương tác.",
+    "category": "khac",
+    "tags": [
+      "pageview",
+      "bai-viet",
+      "vnexpress",
+      "thong-ke",
+      "media"
+    ],
+    "uploaded_at": "2026-09-29T08:47:57.278Z",
+    "uploaded_by": "ninh",
+    "row_count": 1200,
+    "file_count": 1,
+    "total_size_mb": 0.3,
+    "format": "csv",
+    "source": "VnExpress",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7cd8c5ae-8b72-4272-953a-8185e1814524/Top_Pageviews_Thang_09-2025_08-2026.csv",
+        "size_mb": 0.3
+      }
+    ]
+  },
+  {
     "slug": "du-lieu-tong-hop-ve-rung-va-bien-dong-rung-theo-vi-tri-dia-l",
     "title": "Dữ liệu tổng hợp về rừng và biến động rừng theo vị trí địa lý tại Việt Nam",
     "description": "Dataset cung cấp thông tin về diện tích rừng, tỷ lệ rừng, và các chỉ số phân tích không gian liên quan đến rừng trên khắp Việt Nam từ năm 1993 đến 2018, được phân loại theo tỉnh và huyện.",
