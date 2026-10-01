@@ -1,5 +1,41 @@
 [
   {
+    "slug": "thong-ke-thien-tai-viet-nam-giai-doan-1953-2023",
+    "title": "Thống kê thiên tai Việt Nam giai đoạn 1953-2023",
+    "description": "Dataset tổng hợp thông tin về các sự kiện thiên tai tự nhiên xảy ra tại Việt Nam từ năm 1953 đến 2023. Dữ liệu bao gồm phân loại sự kiện, địa điểm, thời gian, số liệu về người chết, bị thương, ảnh hưởng, và thiệt hại kinh tế.",
+    "category": "moi-truong",
+    "tags": [
+      "thien-tai",
+      "thiet-hai",
+      "tu-vong",
+      "viet-nam",
+      "xa-hoi",
+      "bão",
+      "lũ",
+      "sạt-lở",
+      "lở"
+    ],
+    "uploaded_at": "2026-10-01T02:50:52.867Z",
+    "uploaded_by": "hang",
+    "row_count": 335,
+    "file_count": 1,
+    "total_size_mb": 0.1,
+    "format": "xlsx",
+    "source": "EM-DAT (Centre for Research on the Epidemiology of Disasters)",
+    "source_url": "https://www.emdat.be/",
+    "year_range": [
+      1953,
+      2023
+    ],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "9bc63934-e8d2-481b-8624-2a92c4cce31f/disaster-in-vietnam_1900-to-2024.xlsx",
+        "size_mb": 0.1
+      }
+    ]
+  },
+  {
     "slug": "top-bai-viet-co-luot-xem-cao-nhat-tren-vnexpress",
     "title": "Top bài viết có lượt xem cao nhất trên VnExpress",
     "description": "Dữ liệu thống kê 100 bài viết có lượt xem (pageview) cao nhất mỗi tháng trên VnExpress, từ tháng 09/2025 đến tháng 08/2026. Bao gồm thông tin chi tiết về bài viết, chuyên mục, tác giả và các chỉ số tương tác.",
