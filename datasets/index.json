@@ -1,5 +1,33 @@
 [
   {
+    "slug": "danh-sach-cac-diem-ngap-tai-tp-ho-chi-minh-den-6-2026",
+    "title": "Danh sách các điểm ngập tại TP. Hồ Chí Minh",
+    "description": "Dataset liệt kê 159 điểm ngập tại TP. Hồ Chí Minh, bao gồm nguyên nhân gây ngập (do mưa, triều hoặc cả hai), mức độ ngập (thường xuyên, vừa, nhẹ), địa bàn hành chính và vị trí cụ thể của điểm ngập.",
+    "category": "moi-truong",
+    "tags": [
+      "ngap-lut",
+      "tp-hcm",
+      "moi-truong",
+      "do-thi"
+    ],
+    "uploaded_at": "2026-10-02T03:49:58.862Z",
+    "uploaded_by": "hang",
+    "row_count": 78,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "xlsx",
+    "source": "PV Gia Minh/Thời sự Sài Gòn thu thập từ Sở Xây dựng  TP HCM ngày 2/10/2026)",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "56eb7b04-a371-4de3-bf34-be1a6f1e1b33/159_diem_ngap_3_khu_vuc_gon.xlsx",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
     "slug": "thong-ke-thien-tai-viet-nam-giai-doan-1953-2023",
     "title": "Thống kê thiên tai Việt Nam giai đoạn 1953-2023",
     "description": "Dataset tổng hợp thông tin về các sự kiện thiên tai tự nhiên xảy ra tại Việt Nam từ năm 1953 đến 2023. Dữ liệu bao gồm phân loại sự kiện, địa điểm, thời gian, số liệu về người chết, bị thương, ảnh hưởng, và thiệt hại kinh tế.",
