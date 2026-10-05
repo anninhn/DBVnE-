@@ -1,5 +1,34 @@
 [
   {
+    "slug": "toc-do-tang-truong-grdp-34-tinh-thanh-pho-quy-iii-va-9-thang",
+    "title": "Tốc độ tăng trưởng GRDP 34 tỉnh, thành phố quý III và 9 tháng đầu năm 2026",
+    "description": "Dữ liệu thể hiện tốc độ tăng trưởng tổng sản phẩm trên địa bàn (GRDP) của 34 tỉnh, thành phố trực thuộc Trung ương, ước tính cho quý III và 9 tháng đầu năm 2026. Các chỉ số được tính theo giá so sánh năm 2020 và được phân loại theo các khu vực kinh tế chính.",
+    "category": "kinh-te",
+    "tags": [
+      "grdp",
+      "toc-do-tang-truong",
+      "kinh-te",
+      "tinh-thanh",
+      "2026"
+    ],
+    "uploaded_at": "2026-10-05T07:28:46.529Z",
+    "uploaded_by": "thanhlan",
+    "row_count": 241,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "xlsx",
+    "source": "Tổng cục Thống kê (GSO)",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "376bf752-c575-41ad-83c8-9b6c1239fcc7/01._GRDP_34_t_nh_Q3_9_th_ng_2026_-final.xlsx",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
     "slug": "danh-sach-cac-diem-ngap-tai-tp-ho-chi-minh-den-6-2026",
     "title": "Danh sách các điểm ngập tại TP. Hồ Chí Minh",
     "description": "Dataset liệt kê 159 điểm ngập tại TP. Hồ Chí Minh, bao gồm nguyên nhân gây ngập (do mưa, triều hoặc cả hai), mức độ ngập (thường xuyên, vừa, nhẹ), địa bàn hành chính và vị trí cụ thể của điểm ngập.",
