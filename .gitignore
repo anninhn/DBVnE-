@@ -18,3 +18,6 @@ tsconfig.tsbuildinfo
 # repo (commit acc3d70, đã bỏ ra). Repo này chỉ chứa metadata text + code.
 *.docx
 Documents/
+
+# Pilot harness insight — cache dữ liệu, phiên, cấu hình Claude Code riêng (chỉ local)
+/data/insight/

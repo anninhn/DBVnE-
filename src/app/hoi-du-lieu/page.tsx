@@ -18,6 +18,7 @@ import { auth } from "@/lib/auth";
 import { getDatasetBySlug } from "@/lib/datasets/read";
 import CatalogNav from "@/components/CatalogNav";
 import ChatBox from "@/components/chat/ChatBox";
+import { insightEnabled } from "@/lib/insight/local";
 
 // Dynamic SSR — không cache, auth check mỗi request.
 export const dynamic = "force-dynamic";
@@ -60,6 +61,7 @@ export default async function HoiDuLieuPage({ searchParams }: PageProps) {
             "bạn"
           }
           attachedDataset={attachedDataset}
+          insightEnabled={insightEnabled()}
         />
       </Suspense>
     </>
