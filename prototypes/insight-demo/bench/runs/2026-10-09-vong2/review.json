@@ -1,0 +1,30 @@
+{
+  "_ghi_chu": "Rà soát vòng 2 (lần chạy cuối của vòng). Thang mới — áp cho cả vòng 1 để so: tra_loi_dung | mot_phan_noi_ro | tu_choi_dung | bo_sot_im_lang | sai_y. 'loi_con' = lỗi còn lại, mã ở BAO-CAO.md mục 5.",
+  "reviewer": "Claude Code (Opus) — đọc dấu vết + đối chiếu từng đoạn tăng/giảm với chuỗi gốc trong trace",
+  "reviews": [
+    { "id": "q01", "verdict": "mot_phan_noi_ro", "vong1": "bo_sot_im_lang", "loi_con": ["V2"],
+      "ghi_chu": "Thẻ quan hệ đúng (59 tỉnh, r 0,73). Phạm vi: 'Xếp hạng tỉnh — chưa có'. Ghi chú đang dùng 'Cân nặng theo tuổi', còn 2 thể khác. Văn: 'trên 59' thiếu chữ 'tỉnh'." },
+    { "id": "q02", "verdict": "tra_loi_dung", "vong1": "sai_y", "loi_con": ["V3"],
+      "ghi_chu": "Thẻ quan hệ đúng; thẻ 'GINI thấp nhất' (hoà) không còn. Tít 'tỉnh càng bất bình đẳng thì GRDP càng thấp' nói quá cho r −0,30 (yếu)." },
+    { "id": "q03", "verdict": "tra_loi_dung", "vong1": "sai_y",
+      "ghi_chu": "Đã đối chiếu: 2013→2018 +53,4%, 2018→2021 −21,2%, 2021→2022 +31,1%, 2022 cao nhất — khớp chuỗi gốc. Giữ 'đã xét xử'. Phạm vi báo 'kho chưa có tỷ lệ ly hôn' (đúng: chỉ có số vụ) nhưng lặp do 'tỷ'/'tỉ'." },
+    { "id": "q04", "verdict": "tu_choi_dung", "vong1": "bo_sot_im_lang",
+      "ghi_chu": "Phạm vi: 'So sánh Bắc Trung Bộ – Nghệ An — chưa có'. Không trả thẻ cả nước như câu trả lời. Chưa cảnh báo đổi chuẩn nghèo." },
+    { "id": "q05", "verdict": "tu_choi_dung", "vong1": "bo_sot_im_lang",
+      "ghi_chu": "Phạm vi: xếp hạng chưa có + cảnh báo câu hỏi theo 34, dữ liệu theo 63, quy đổi chưa có." },
+    { "id": "q06", "verdict": "mot_phan_noi_ro", "vong1": "bo_sot_im_lang", "loi_con": ["V1", "V2"],
+      "ghi_chu": "Phạm vi nói rõ vùng TDMNPB chưa có. Thẻ cả nước đúng: 2005→2011 −5,7%, 2011→2020 +6,5%, 2020→2024 −9,9%; huy hiệu 'thiếu 2006'. Văn lủng củng: mở bằng lời dặn 'Phát hiện này chỉ nói về…', lặp '1,99 số con/phụ nữ (1,99 …)', thiếu năm 2011." },
+    { "id": "q07", "verdict": "mot_phan_noi_ro", "vong1": "sai_y",
+      "ghi_chu": "Trả lời thẳng: so với 2004 giảm −4,3%. Các đoạn đúng: 1995→2013 +16,8%, 2013→2022 −10%, 2022→2024 đi ngang +0,3%. ĐBSCL: nói rõ chưa có. Văn: 'giảm −4,3%' thừa dấu." },
+    { "id": "q08", "verdict": "mot_phan_noi_ro", "vong1": "bo_sot_im_lang", "loi_con": ["V1", "V2"],
+      "ghi_chu": "Phạm vi: so sánh Hà Nội – TP.HCM chưa có. Không còn thẻ tương quan số tuyệt đối. Bán lẻ: đợt giảm 2019→2021 (−9,9%) đúng; ghi giá hiện hành + tăng bình quân 14,7%/năm, không nói 'tăng tốc'. Siêu thị: huy hiệu thiếu 2006–2012, không nói 'liên tục'. Văn: AI chép lời dặn 'đây là ý trả lời trực tiếp cho câu hỏi'; '%/năm mỗi năm'; 'mới có 13' thiếu 'năm'. Đoạn 1995→2019 '+3.991,4%' đúng nhưng vô ích với chuỗi tiền." },
+    { "id": "q09", "verdict": "tu_choi_dung", "vong1": "bo_sot_im_lang",
+      "ghi_chu": "Phạm vi: 'Kho chưa có chỉ tiêu cho giá nhà chung cư'. Không còn khái niệm 'phần trăm tăng giá'." },
+    { "id": "q10", "verdict": "tu_choi_dung", "vong1": "bo_sot_im_lang",
+      "ghi_chu": "Phạm vi: thiếu tử vong do ung thư → quan hệ chưa làm được. Không trả thẻ tuổi thọ." },
+    { "id": "q11", "verdict": "tu_choi_dung", "vong1": "tu_choi_dung",
+      "ghi_chu": "Phạm vi nói rõ hai khái niệm kho không có (vòng 1 chỉ có lời chung chung)." },
+    { "id": "q12", "verdict": "tra_loi_dung", "vong1": "tra_loi_dung", "loi_con": ["V3"],
+      "ghi_chu": "Không còn 'nhận định đúng ở tầm quốc gia'. Thẻ bối cảnh thiếu việc làm đúng số (đỉnh 2021 3,1%). Tít 'càng… càng' nói quá cho r −0,37." }
+  ]
+}

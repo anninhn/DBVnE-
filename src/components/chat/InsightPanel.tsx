@@ -53,6 +53,13 @@ interface CardData {
   raw: unknown;
 }
 
+interface Scope {
+  answered: string[];
+  notYet: string[];
+  missing: string[];
+  notes: string[];
+}
+
 type StepKey = "understand" | "select" | "analyze";
 type StepState = { status: "wait" | "run" | "ok" | "skip"; detail?: string; ms?: number };
 
@@ -90,6 +97,7 @@ export default function InsightPanel({ question }: { question: string }) {
   const [provisional, setProvisional] = useState<number[]>([]);
   const [op, setOp] = useState<{ excludeProvisional?: boolean; year?: number }>({});
   const [askBack, setAskBack] = useState<string | null>(null);
+  const [scope, setScope] = useState<Scope | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [total, setTotal] = useState<number | null>(null);
@@ -106,6 +114,7 @@ export default function InsightPanel({ question }: { question: string }) {
     setNotice(null);
     setAskBack(null);
     setCards([]);
+    setScope(null);
     setTotal(null);
     if (rerun) {
       setSteps((p) => ({ ...p, analyze: { status: "run" } }));
@@ -167,6 +176,9 @@ export default function InsightPanel({ question }: { question: string }) {
               patch("analyze", { status: "run" });
               break;
             }
+            case "scope":
+              setScope(ev.scope as Scope);
+              break;
             case "no_measure":
               setNotice(ev.text as string);
               patch("analyze", { status: "skip" });
@@ -282,7 +294,9 @@ export default function InsightPanel({ question }: { question: string }) {
         </div>
       )}
 
-      {notice && <p className="text-amber-800">{notice}</p>}
+      {scope && <ScopeBox scope={scope} />}
+
+      {notice && !scope?.missing.length && <p className="text-amber-800">{notice}</p>}
 
       {cards.map((c) => (
         <InsightCard key={`${c.id}-${c.title}`} card={c} sessionId={sessionId} />
@@ -329,6 +343,33 @@ export default function InsightPanel({ question }: { question: string }) {
           <p className="whitespace-pre-wrap">{error}</p>
         </div>
       )}
+    </div>
+  );
+}
+
+/** Phạm vi trả lời — code viết: phần nào trả lời được, phần nào chưa, khái niệm nào kho không có */
+function ScopeBox({ scope }: { scope: Scope }) {
+  const rows: { items: string[]; label: string; cls: string }[] = [
+    { items: scope.answered, label: "Trả lời được", cls: "text-green-800" },
+    { items: scope.notYet, label: "Chưa làm được", cls: "text-amber-900" },
+    { items: scope.missing, label: "Kho không có", cls: "text-red-800" },
+    { items: scope.notes, label: "Lưu ý", cls: "text-hf-text-muted" },
+  ];
+  return (
+    <div className="border border-hf-border bg-white rounded-md px-3 py-2 space-y-1 text-xs">
+      <div className="text-[11px] font-semibold uppercase tracking-wide text-hf-text-faint">Phạm vi trả lời</div>
+      {rows
+        .filter((r) => r.items.length)
+        .map((r) => (
+          <div key={r.label} className="flex gap-2">
+            <span className={`shrink-0 w-24 font-medium ${r.cls}`}>{r.label}</span>
+            <ul className="space-y-0.5 text-hf-text">
+              {r.items.map((x, i) => (
+                <li key={i}>{x}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
     </div>
   );
 }

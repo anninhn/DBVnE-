@@ -11,6 +11,7 @@
 
 import { callModel } from "./llm";
 import { isMeasurableConcept, schemeFromQuestion } from "./rules";
+import { detectIntents, detectPlaces, detectTimeframe, type Intent, type Place, type Timeframe } from "./scope";
 
 export interface Understanding {
   concepts: string[];
@@ -19,6 +20,10 @@ export interface Understanding {
   route: "chuan" | "hoi_lai";
   askBack?: string;
   agreement: "khop" | "lech";
+  /** Ý định, nơi được nhắc, mốc thời gian — luật trước, model bổ sung (scope.ts) */
+  intents: Intent[];
+  places: Place[];
+  timeframe: Timeframe;
   raw: unknown[];
   ms: number;
 }
@@ -26,12 +31,14 @@ export interface Understanding {
 interface ModelOut {
   khai_niem?: string[];
   cap?: string;
+  y_dinh?: string[];
 }
 
 const SYSTEM = "Bạn phân tích câu hỏi của phóng viên về số liệu. Chỉ trả JSON hợp lệ, không giải thích.";
 
 const PROMPT_A = (q: string) => `Tách câu hỏi thành các CHỈ TIÊU đo được bằng số (vd "thu nhập", "mức sinh", "số bác sĩ"). KHÔNG đưa vào: địa danh, "vùng", "tỉnh", "tương quan", "so sánh", "xu hướng" — đó là cách phân tích, không phải chỉ tiêu. Xác định cấp địa lý: "province" nếu so giữa các tỉnh/vùng, "nation" nếu chỉ nói cả nước.
-Trả: {"khai_niem": [...], "cap": "province|nation"}
+Xác định ý định (một hoặc nhiều): quan_he (quan hệ giữa chỉ tiêu), xep_hang (tỉnh nào cao/thấp nhất), xu_huong (thay đổi theo thời gian), so_sanh (so các nơi cụ thể), mot_noi (một tỉnh/vùng cụ thể), mo (hỏi chung chung).
+Trả: {"khai_niem": [...], "cap": "province|nation", "y_dinh": [...]}
 Câu hỏi: "${q}"`;
 
 const PROMPT_B = (q: string) => `Câu hỏi dưới đây cần những chỉ tiêu thống kê nào? Liệt kê tên chỉ tiêu ngắn gọn bằng chữ của phóng viên — chỉ những thứ đếm/đo được, bỏ mọi từ chỉ địa lý hay phép phân tích. Câu hỏi so sánh giữa các địa phương thì cap = "province", chỉ nói tổng thể cả nước thì cap = "nation".
@@ -67,6 +74,11 @@ export async function understand(question: string): Promise<Understanding> {
   if (level === "nation" && (a.data?.cap === "province" || b.data?.cap === "province")) level = "province";
 
   const scheme = schemeFromQuestion(question);
+  const places = detectPlaces(question);
+  const timeframe = detectTimeframe(question);
+  const intents = detectIntents(question, concepts.length, places, a.data?.y_dinh ?? []);
+  // Nhắc tên tỉnh/vùng → câu hỏi ở cấp địa phương dù không có chữ "tỉnh"
+  if (places.length) level = "province";
   const route = concepts.length ? "chuan" : "hoi_lai";
   return {
     concepts,
@@ -75,6 +87,9 @@ export async function understand(question: string): Promise<Understanding> {
     route,
     ...(route === "hoi_lai" ? { askBack: "Mình chưa nhận ra chỉ tiêu nào đo được trong câu hỏi. Bạn muốn xem số liệu gì (vd thu nhập, mức sinh, số bác sĩ…)?" } : {}),
     agreement,
+    intents,
+    places,
+    timeframe,
     raw: [a.data ?? a.error ?? a.text, b.data ?? b.error ?? b.text],
     ms: Date.now() - t0,
   };

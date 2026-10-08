@@ -68,6 +68,10 @@ export interface Session {
     concepts: string[];
     level: "province" | "nation";
     scheme: "63" | "34" | null;
+    /** Ý định / nơi / mốc thời gian (v2/scope.ts) — giữ để chạy lại khi đổi chip */
+    intents?: string[];
+    places?: { kind: "province" | "region"; code: string; name: string }[];
+    timeframe?: { window?: number; year?: number; fromYear?: number };
     /** Mỗi khái niệm: id chỉ tiêu đang dùng + id các phương án */
     picks: { concept: string; current: string | null; options: string[] }[];
     /** p-value của mọi phép thử trong phiên — BH tính trên toàn bộ */

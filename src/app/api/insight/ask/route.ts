@@ -9,6 +9,8 @@ import { selectMeasures } from "@/lib/insight/v2/select";
 import { analyze } from "@/lib/insight/v2/analyze";
 import { narrate } from "@/lib/insight/v2/narrate";
 import { cleanUnit } from "@/lib/insight/v2/rules";
+import { planAnalysis, scopeOf } from "@/lib/insight/v2/plan";
+import type { Intent } from "@/lib/insight/v2/scope";
 
 /**
  * Luồng chuẩn (bậc 1, THIET-KE-V6 mục 5) — code điều khiển, AI ở 3 điểm.
@@ -89,7 +91,7 @@ export async function POST(req: NextRequest) {
 
           const u = await understand(question);
           ms.understand = u.ms;
-          send({ type: "understood", concepts: u.concepts, level: u.level, scheme: u.scheme, agreement: u.agreement, raw: u.raw });
+          send({ type: "understood", concepts: u.concepts, level: u.level, scheme: u.scheme, agreement: u.agreement, intents: u.intents, places: u.places, timeframe: u.timeframe, raw: u.raw });
           if (u.route === "hoi_lai") {
             send({ type: "ask_back", text: u.askBack });
             send({ type: "timing", ms: { ...ms, total: Date.now() - t0 } });
@@ -104,6 +106,9 @@ export async function POST(req: NextRequest) {
             concepts: u.concepts,
             level: u.level,
             scheme: u.scheme,
+            intents: u.intents,
+            places: u.places,
+            timeframe: u.timeframe,
             picks: sel.picks.map((p) => ({
               concept: p.concept,
               current: p.recommended?.id ?? null,
@@ -136,14 +141,29 @@ export async function POST(req: NextRequest) {
           send({ type: "session", sessionId });
         }
 
-        // ── Phân tích (code) ──
-        const picks = v2!.picks
-          .map((p) => (p.current && byId.get(p.current) ? { entry: byId.get(p.current)!, concept: p.concept } : null))
-          .filter((x): x is { entry: CatalogEntry; concept: string } => !!x);
+        // ── Phân tích (code) — họ nào chạy do ý định câu hỏi quyết ──
+        const uLite = {
+          intents: (v2!.intents ?? ["mo"]) as Intent[],
+          places: v2!.places ?? [],
+          timeframe: v2!.timeframe ?? {},
+          level: v2!.level,
+          scheme: v2!.scheme,
+        };
+        const plan = planAnalysis(
+          cat,
+          uLite,
+          v2!.picks.map((p) => ({
+            concept: p.concept,
+            entry: p.current ? byId.get(p.current) ?? null : null,
+            others: p.options.map((id) => byId.get(id)).filter((e): e is CatalogEntry => !!e),
+          }))
+        );
+        const picks = plan.picks;
         if (!picks.length) {
+          send({ type: "scope", scope: scopeOf(uLite, plan, []) });
           send({ type: "no_measure", text: "Chưa tìm thấy chỉ tiêu dùng được cho câu hỏi này trong các dataset tìm được (không phải toàn bộ kho)." });
         } else {
-          const a = await analyze(picks, { level: v2!.level, sessionP: v2!.pvals, excludeProvisional: body.op?.excludeProvisional, year: body.op?.year });
+          const a = await analyze(picks, { ...plan.opts, sessionP: v2!.pvals, excludeProvisional: body.op?.excludeProvisional, year: body.op?.year ?? plan.opts.year });
           ms.analyze = a.ms;
           v2!.pvals.push(...a.newP);
           // Năm chung của các chỉ tiêu ĐANG dùng — cho chip "đổi năm" ở bước hỏi tiếp
@@ -151,6 +171,7 @@ export async function POST(req: NextRequest) {
           const years = picks.slice(1).reduce((acc, p) => acc.filter((y) => yearsOf(p.entry).includes(y)), yearsOf(picks[0].entry));
           const provisional = [...new Set(picks.flatMap((p) => p.entry.provisional))];
           send({ type: "analysis", ran: a.ranAnalyses, findings: a.findings.length, testsInSession: a.testsInSession, years, provisional, op: body.op ?? null });
+          send({ type: "scope", scope: scopeOf(uLite, plan, a.findings) });
 
           // ── AI 3: viết lời ──
           const n = await narrate(v2!.question, a.findings, v2!.level === "province");

@@ -227,3 +227,38 @@ export async function searchMeasures(
     .filter((e) => e && usableAt(e, level));
   return { entries: ranked.slice(0, limit), ...(degraded ? { degraded } : {}) };
 }
+
+/**
+ * Chuỗi cả nước DÀI NHẤT cùng chỉ tiêu. Hàng "cả nước" của dataset theo tỉnh thường ngắn
+ * hơn dataset cả nước riêng (vòng thử 1, q02: GINI 2018–2024 trong khi kho có 2002–2024).
+ *
+ * "Cùng chỉ tiêu" = cùng nhãn + cùng chiều + cùng đơn vị + CÙNG CHỦ ĐỀ dataset (tên bỏ phần
+ * "phân theo… / tại…"). Vòng 2 chỉ so nhãn: ly hôn ("Tổng số") bị thay bằng "Tổng số" của
+ * tổng tỷ suất sinh; hộ nghèo đa chiều bị thay bằng hộ nghèo chuẩn cũ.
+ */
+function subjectOf(title: string): string {
+  return title
+    .replace(/\s+(phân theo|tại|theo (địa phương|tỉnh|vùng|năm|thời gian|giới tính))\b.*$/i, "")
+    .trim()
+    .toLowerCase();
+}
+
+export function longestNation(cat: Catalog, e: CatalogEntry): CatalogEntry {
+  const subject = subjectOf(e.datasetTitle);
+  const same = (a: CatalogEntry) =>
+    a.label === e.label &&
+    JSON.stringify(a.dims) === JSON.stringify(e.dims) &&
+    (a.unit ?? "") === (e.unit ?? "") &&
+    subjectOf(a.datasetTitle) === subject &&
+    !!a.nation;
+  let best = e;
+  for (const a of cat.entries) {
+    if (a !== e && same(a) && a.nation!.years.length > (best.nation?.years.length ?? 0)) best = a;
+  }
+  return best;
+}
+
+/** Dân số trung bình theo tỉnh — để chia số tuyệt đối theo đầu người */
+export function populationEntry(cat: Catalog): CatalogEntry | null {
+  return cat.entries.find((e) => e.label === "Dân số trung bình" && e.datasetTitle.startsWith("Dân số trung bình phân theo địa phương") && e.province) ?? null;
+}

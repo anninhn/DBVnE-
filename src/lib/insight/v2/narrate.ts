@@ -40,7 +40,13 @@ export async function narrate(question: string, findings: Finding[], provinceLev
   const t0 = Date.now();
   type Out = { the?: { id: string; tieu_de: string; doan: string }[] };
   const check = (f: Finding, title: string, text: string) => {
-    const v = checkProse(`${title}\n${text}`, { allowedSlots: new Set(Object.keys(f.slots)), allowSuperlative: f.allowSuperlative, provinceLevel });
+    const v = checkProse(`${title}\n${text}`, {
+      allowedSlots: new Set(Object.keys(f.slots)),
+      allowSuperlative: f.allowSuperlative,
+      provinceLevel,
+      directions: f.directions,
+      requiredSlots: f.requiredSlots,
+    });
     const low = `${title}\n${text}`.toLowerCase();
     for (const w of f.offTopic ?? []) if (low.includes(w.toLowerCase())) v.push(`lạc đề: không được nói "${w}" trong thẻ này`);
     return v;
@@ -58,9 +64,9 @@ export async function narrate(question: string, findings: Finding[], provinceLev
       v = w ? check(f, w.tieu_de, w.doan) : ["thiếu thẻ"];
     }
     if (w && !v.length) {
-      return { findingId: f.id, title: fillSlots(w.tieu_de, f.slots), text: fillSlots(w.doan, f.slots), writtenBy: "ai", violations: [] };
+      return { findingId: f.id, title: fillSlots(w.tieu_de, f.slots, f.unit), text: fillSlots(w.doan, f.slots, f.unit), writtenBy: "ai", violations: [] };
     }
-    return { findingId: f.id, title: fillSlots(f.templateTitle, f.slots), text: fillSlots(f.templateText, f.slots), writtenBy: "mau", violations: v };
+    return { findingId: f.id, title: fillSlots(f.templateTitle, f.slots, f.unit), text: fillSlots(f.templateText, f.slots, f.unit), writtenBy: "mau", violations: v };
   };
   const cards = await Promise.all(findings.map(one));
   return { cards, ms: Date.now() - t0 };

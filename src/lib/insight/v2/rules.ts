@@ -51,6 +51,17 @@ export const INDIVIDUAL_WORDS = ["người dân", "mỗi gia đình", "các gia 
 /** Từ so sánh nhất — chỉ được dùng khi có phát hiện xếp hạng tương ứng */
 export const SUPERLATIVE_WORDS = ["cao nhất", "thấp nhất", "nhiều nhất", "ít nhất", "đứng đầu", "đứng cuối", "nhanh nhất", "chậm nhất", "kỷ lục"];
 
+/**
+ * Lời bình AI tự thêm, không có trong dữ liệu. Vòng thử 1: "địa hình nghèo", "cần thêm
+ * thời gian để đạt các mục tiêu", "dữ liệu cả nước xác nhận", "nhận định … đúng ở tầm
+ * quốc gia". Bổ sung từ log.
+ */
+export const EDITORIAL_WORDS = ["xác nhận", "chứng minh", "khẳng định", "mục tiêu", "địa hình", "tín hiệu", "đáng báo động", "đầy biến động", "đúng ở", "là đúng", "đã đúng"];
+
+/** Chữ chỉ hướng — dùng để kiểm câu có hai mốc số mà nói ngược chiều thật */
+export const UP_WORDS = ["tăng", "đi lên", "lên mức", "cao hơn", "nhích lên"];
+export const DOWN_WORDS = ["giảm", "đi xuống", "xuống", "còn", "thấp hơn", "sụt", "trượt"];
+
 /** Phần luật câu chữ chèn vào prompt — sinh từ CHÍNH các danh sách trên. */
 export function writingRulesForPrompt(): string {
   return [
@@ -58,6 +69,9 @@ export function writingRulesForPrompt(): string {
     `- Không dùng từ chỉ nhân quả: ${CAUSAL_WORDS.map((w) => `"${w}"`).join(", ")}. Dữ liệu chỉ cho thấy tương quan.`,
     `- Dữ liệu cấp tỉnh: nói về TỈNH, không nói về cá nhân hay hộ (${INDIVIDUAL_WORDS.map((w) => `"${w}"`).join(", ")}).`,
     `- Chỉ dùng từ so sánh nhất (${SUPERLATIVE_WORDS.map((w) => `"${w}"`).join(", ")}) khi phát hiện ghi rõ là kỷ lục / xếp hạng.`,
+    `- CHỈ viết các ý có trong "y_chinh". Không thêm nhận định, ý nghĩa, đánh giá, bối cảnh riêng; không dùng: ${EDITORIAL_WORDS.map((w) => `"${w}"`).join(", ")}.`,
+    "- Hướng tăng / giảm / đi ngang của từng giai đoạn: chép đúng như trong \"y_chinh\", không tự suy.",
+    "- Giá trị trong chỗ trống ĐÃ kèm đơn vị — không viết lại đơn vị sau chỗ trống.",
   ].join("\n");
 }
 
@@ -71,7 +85,7 @@ function hasWord(text: string, w: string): boolean {
  */
 export function checkProse(
   text: string,
-  opts: { allowedSlots: Set<string>; allowSuperlative: boolean; provinceLevel: boolean }
+  opts: { allowedSlots: Set<string>; allowSuperlative: boolean; provinceLevel: boolean; directions?: DirectionPair[]; requiredSlots?: string[] }
 ): string[] {
   const v: string[] = [];
   const withoutSlots = text.replace(/\{[a-z0-9_.]+\}/gi, " ");
@@ -82,12 +96,34 @@ export function checkProse(
   for (const w of CAUSAL_WORDS) if (hasWord(text, w)) v.push(`từ nhân quả "${w}"`);
   if (opts.provinceLevel) for (const w of INDIVIDUAL_WORDS) if (hasWord(text, w)) v.push(`nói về cá nhân "${w}"`);
   if (!opts.allowSuperlative) for (const w of SUPERLATIVE_WORDS) if (hasWord(text, w)) v.push(`từ so sánh nhất "${w}" không có phát hiện xếp hạng`);
+  for (const w of EDITORIAL_WORDS) if (hasWord(text, w)) v.push(`lời bình ngoài dữ liệu "${w}"`);
+  for (const pr of opts.directions ?? []) {
+    for (const sent of text.split(/(?<=[.;:!?])\s+|\n/)) {
+      if (!sent.includes(`{${pr.from}}`) || !sent.includes(`{${pr.to}}`)) continue;
+      const low = sent.toLowerCase();
+      const up = UP_WORDS.some((w) => low.includes(w));
+      const down = DOWN_WORDS.some((w) => low.includes(w));
+      if (pr.dir === "tăng" && down && !up) v.push(`câu nói giảm giữa {${pr.from}} và {${pr.to}} — thực tế tăng`);
+      if (pr.dir === "giảm" && up && !down) v.push(`câu nói tăng giữa {${pr.from}} và {${pr.to}} — thực tế giảm`);
+    }
+  }
+  for (const r of opts.requiredSlots ?? []) if (!text.includes(`{${r}}`)) v.push(`thiếu chỗ trống bắt buộc {${r}}`);
   return v;
 }
 
+/** Cặp mốc số và hướng thật giữa chúng — để bắt câu "giảm từ 6.765 còn 7.127" (vòng thử 1, q07) */
+export interface DirectionPair {
+  from: string;
+  to: string;
+  dir: "tăng" | "giảm" | "gần như đi ngang";
+}
+
 /** Điền chỗ trống bằng số đã định dạng. Chỗ trống không có giá trị → giữ nguyên để lộ lỗi. */
-export function fillSlots(text: string, slots: Record<string, string>): string {
-  return text.replace(/\{([a-z0-9_.]+)\}/gi, (m, k) => slots[k] ?? m);
+export function fillSlots(text: string, slots: Record<string, string>, unit?: string | null): string {
+  let out = text.replace(/\{([a-z0-9_.]+)\}/gi, (m, k) => slots[k] ?? m);
+  // AI hay viết lại đơn vị sau chỗ trống đã có đơn vị: "29.010 vụ vụ ly hôn" (vòng thử 1)
+  if (unit) out = out.split(`${unit} ${unit}`).join(unit);
+  return out;
 }
 
 // ── Khái niệm đo được ────────────────────────────────────────────────────────
@@ -106,6 +142,8 @@ export function isMeasurableConcept(c: string): boolean {
   if (!k) return false;
   if (NON_MEASURE_WORDS.includes(k)) return false;
   // "quan hệ thu nhập - mức sinh", "khác biệt vùng", "so sánh các tỉnh" — phép phân tích, không phải chỉ tiêu
+  // "phần trăm tăng giá", "mức tăng", "tốc độ tăng" — phép tính trên chỉ tiêu, không phải chỉ tiêu (vòng thử 1, q09)
+  if (/^(phần trăm|tỷ lệ tăng|mức tăng|tốc độ tăng|mức giảm|tốc độ giảm|mức thay đổi)(\s|$)/.test(k)) return false;
   return !/^(quan hệ|tương quan|liên quan|so sánh|khác biệt|khác nhau|xu hướng)(\s|$)/.test(k) && !k.includes("tương quan");
 }
 
@@ -118,10 +156,46 @@ export function schemeFromQuestion(q: string): "63" | "34" | null {
 }
 
 /** Đơn vị dùng được để in ra — dictionary đôi khi ghi chữ "unknown". */
-export function cleanUnit(u?: string | null): string | null {
+export function cleanUnit(u?: string | null, label?: string): string | null {
   if (!u) return null;
   const t = u.trim();
-  return /^(unknown|không rõ|n\/a|na|-|)$/i.test(t) ? null : t;
+  if (/^(unknown|không rõ|n\/a|na|-|)$/i.test(t)) return null;
+  // Đơn vị chỉ là tên chỉ tiêu ("hệ số GINI" của chỉ tiêu GINI) → in ra thành "0,37 hệ số GINI"
+  if (label && t.length > 3 && label.toLowerCase().includes(t.toLowerCase()) && !/\d|%|\//.test(t)) return null;
+  return t;
+}
+
+// ── TẠM (THIET-KE-V6 mục 17): các hàm dưới ĐOÁN ngữ nghĩa từ tên / đơn vị kiểu NSO. ──
+// Sẽ thay bằng trường đã xác minh trong hồ sơ ngữ nghĩa của dataset; đừng thêm luật chữ mới vào đây.
+
+/**
+ * Chỉ tiêu "lớn theo quy mô tỉnh" (số tuyệt đối: vụ, người, ha, tỷ đồng…). Tương quan giữa
+ * hai chỉ tiêu loại này chủ yếu đo quy mô (vòng thử 1, q08: siêu thị × bán lẻ r 0,88).
+ * Theo ĐƠN VỊ + TÊN, không theo cờ `additive` (cờ đó sai với dân số, tổng tỷ suất sinh).
+ */
+export function isExtensive(label: string, unit?: string | null): boolean {
+  const l = label.toLowerCase();
+  if (/^(tỷ lệ|tỷ suất|tổng tỷ suất|tỷ số|tỷ trọng|chỉ số|hệ số|tuổi|năng suất|mật độ|cơ cấu)|bình quân|trung bình|trên \d|%/.test(l)) return false;
+  const u = (unit ?? "").toLowerCase();
+  if (/%|‰|\/|hệ số|chỉ số|tuổi|^năm$|lần/.test(u)) return false;
+  return /người|vụ|ha|tấn|đồng|vnd|usd|doanh nghiệp|cơ sở|siêu thị|chợ|trường|giường|con|chiếc|cái|lượt|km|m2|hộ|đơn vị|trung tâm/.test(u) || /^(số|tổng|dân số|diện tích|sản lượng|khối lượng|doanh thu|vốn|giá trị|trị giá)/.test(l);
+}
+
+/** Chuỗi tiền theo giá hiện hành — "tăng tốc" chỉ là lạm phát + tăng theo cấp số nhân (vòng thử 1, q08) */
+export function isNominalMoney(label: string, datasetTitle: string, unit?: string | null): boolean {
+  const u = (unit ?? "").toLowerCase();
+  const money = /đồng|vnd|usd|tỷ|triệu/.test(u) || /thu nhập|doanh thu|giá trị|trị giá|vốn|tổng mức bán lẻ|chi tiêu/.test(label.toLowerCase());
+  return money && !/giá so sánh|chỉ số|%/.test(`${datasetTitle} ${label} ${u}`.toLowerCase());
+}
+
+/**
+ * Tên chỉ tiêu dùng trong lời văn, GIỮ định ngữ. Nhãn cột chung chung ("Tổng số") → lấy
+ * tên dataset bỏ phần "phân theo…" (vòng thử 1, q03: "số vụ ly hôn đã xét xử" thành "ly hôn").
+ */
+export function measureName(label: string, datasetTitle: string): string {
+  const generic = /^(tổng số|tổng|chung|bình quân chung|cả nước|toàn bộ)$/i.test(label.trim());
+  const base = generic ? datasetTitle.replace(/\s+(phân theo|theo|tại|của các)\s.*$/i, "") : label.replace(/\s*\([^)]*\)\s*$/, "");
+  return base.charAt(0).toLowerCase() + base.slice(1);
 }
 
 /**

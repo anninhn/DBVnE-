@@ -282,7 +282,8 @@ Mỗi bậc **dùng được độc lập**; chỉ sang bậc sau khi có lý do
 | **2 · Mở rộng thư viện họ** | Thêm theo thứ tự: xếp hạng & ngoại lệ → chênh lệch → quy mô/tỷ trọng → kỷ lục đầy đủ → kiểm soát biến thứ ba → mùa vụ. **Hợp đồng cho danh sách** (chỉ tiêu sinh bằng đếm / gộp) + **bảng địa lý cấp xã** và luật "địa lý phải khớp tham chiếu" (mục 15) | Mỗi họ có đủ khuôn bốn phần + ca kiểm tra; ít nhất 1 danh sách (vd điểm ngập) vào danh mục | Song song với nghiên cứu họ giả thuyết |
 | **2b · Đọc file không đồng nhất** | Đưa cách đọc (mô tả JSON + bộ thực thi + bản mô tả file + thang xác minh) từ `bench/` vào thư viện dùng chung; thêm thao tác **xoay năm-thành-cột → dòng**, header nhiều tầng, hai bảng cạnh nhau; lưu cách đọc đã xác minh; dùng trước tiên qua skill chuẩn hoá chạy local | 4 file XLSX có cách đọc đã xác minh và chỉ tiêu vào danh mục | Có thể làm song song bậc 2 |
 | **3 · Vòng cải tiến** | Log nhãn + chip đổi; ca kiểm tra tự sinh; quy trình cho Claude Code đọc log | Có ca kiểm tra đầu tiên sinh từ log | Bật ngay khi có phóng viên dùng thử |
-| **4 · Khám phá** | Agent viết code trên API, sandbox | GLM viết code đúng API trên vài câu mở thật | **Chỉ làm khi log cho thấy cần** |
+| **2c · Hồ sơ ngữ nghĩa** (mục 17 — làm TRƯỚC bậc 2) | Schema hồ sơ (hình dạng, chủ thể + bảng tham chiếu, nhịp thời gian, loại số đo, cộng được, mẫu số, chuẩn đo); AI đề xuất + code kiểm bằng dữ liệu; viết lại 2 họ theo hình dạng + điều kiện cần; phạm vi trả lời suy từ điều kiện | Hồ sơ đã xác minh cho một bộ đa dạng (NSO, 4 XLSX, GeoJSON, danh sách); 2 họ chạy trên ≥ 2 loại chủ thể | Bộ đánh giá chống overfit (mục 17.5) qua |
+| **4 · Khám phá** | Agent viết code trên API, sandbox | GLM viết code đúng API trên vài câu mở thật | ~~Chỉ làm khi log cho thấy cần~~ → **kéo lên sau 2c** (mục 17.3 D): làn bao phủ cho dữ liệu không đồng nhất |
 | *Sau* | Remote MCP cho client của phóng viên (tool lớn `analyze(question)`); deploy | — | Chưa quyết |
 
 **Song song (không chặn):** cấu phần nghiên cứu họ giả thuyết — gắn nhãn mẫu bài báo dữ liệu
@@ -593,4 +594,97 @@ Thẻ ra: quan hệ theo vùng (cả nước −0,45, lặp lại 2018; ĐBSH �
 - **Bậc 2 bắt đầu bằng "ý định → họ"** (điểm yếu 2), rồi mới thêm họ xếp hạng & ngoại lệ — họ trả lời được loại câu hỏi phổ biến nhất.
 - Đưa nhận định định tính vào chỗ trống (điểm yếu 3) khi làm họ mới — mỗi họ khai sẵn các nhận định của nó.
 - Sửa đơn vị "unknown" trong dictionary qua app (việc dữ liệu, không phải code).
+
+---
+
+## 17. Nhìn lại: tránh overfit vào kho hiện tại (2026-10-09, sau vòng thử 2)
+
+Bối cảnh: hai vòng thử 12 câu (`bench/runs/2026-10-09-vong1`, `…-vong2`) đưa bỏ-im-lặng 7 → 0 và sai-ý 3 → 0.
+Nhưng gần như mọi sửa là **luật dựa trên chữ** khớp với NSO và với chính 12 câu đó. Kho sẽ nhiều dữ liệu hơn,
+không đồng nhất hơn, nhiều định dạng hơn → cách làm này gãy khi đưa dataset khác vào.
+
+### 17.1 Overfit ở đâu
+
+Giả định ngầm của cả harness: **bảng NSO tidy — tỉnh (63) × năm × chỉ tiêu × vài chiều phụ.**
+
+| Tầng | Giả định | Gãy khi |
+|---|---|---|
+| Đọc | Có cột tỉnh khớp bảng 63/34, cột năm, "Tổng số/Chung" là tổng | Xã, tháng, doanh nghiệp, trường; danh sách sự kiện; GeoJSON; PDF (đã có 10 dataset bị bỏ qua) |
+| Danh mục chỉ tiêu | Dùng được khi ≥ 50 tỉnh | Mọi thứ không ở cấp tỉnh đều vô hình |
+| Họ giả thuyết | "Quan hệ theo vùng" gắn 6 vùng VN; "diễn biến" gắn chuỗi năm cả nước | Chủ thể khác (quận, ngành, nước), nhịp khác |
+| Luật sinh ở vòng 1–2 | Regex trên chữ tiếng Việt / tên NSO: `isExtensive`, `isNominalMoney`, `measureName`, `subjectOf`, bí danh vùng, regex ý định, danh sách lời bình | Nguồn khác đặt tên, ghi đơn vị khác |
+| Đánh giá | 12 câu tự sinh, dùng lại hai vòng, sửa sau khi đã xem | Không biết sửa có tổng quát |
+
+**Dấu hiệu:** mỗi lỗi được sửa bằng một luật chữ; chính vòng 2 cho thấy hậu quả — luật so tên ghép ly hôn với
+mức sinh, luật địa danh nhận "diễn biến" thành Điện Biên. Và `isExtensive` / `isNominalMoney` sinh ra để **vá
+metadata kém** (đơn vị "unknown", cờ cộng được sai) thay vì sửa ở nguồn.
+
+Các hàm đoán ngữ nghĩa này được đánh dấu **TẠM** trong `v2/rules.ts`.
+
+### 17.2 Giữ lại — không phụ thuộc kho
+
+1. Code tính sự thật; AI chọn theo nghĩa và viết từ sự thật (số + hướng vào chỗ trống) — vòng 2: 0 số sai, 0 sai hướng.
+2. **Dữ liệu phân xử, không phải tên** — bài học lặp 3 lần (vai trò cột; chọn chỉ tiêu; ghép chuỗi dài hơn).
+3. Phạm vi trả lời trung thực.
+4. Thang xác minh (luật → cấu trúc → hai lần độc lập → hỏi người).
+5. Đọc tại chỗ + lưu cách đọc đã xác minh (mục 14).
+6. Chạy lại cả bộ sau mỗi sửa.
+
+### 17.3 Đổi trục: từ "dataset NSO" sang "hình dạng + hồ sơ ngữ nghĩa"
+
+**A. Hồ sơ ngữ nghĩa cho mỗi dataset — sinh lúc upload, có xác minh.**
+
+| Trường | Ví dụ |
+|---|---|
+| Hình dạng | chuỗi quan sát (chủ thể × thời gian × số đo) · danh sách sự kiện · đối tượng không gian · tài liệu |
+| Chủ thể | cột nào; loại (tỉnh, xã, doanh nghiệp, nước…); bảng tham chiếu nào; danh mục (63/34) |
+| Thời gian | cột nào; nhịp (năm, quý, tháng, ngày); năm sơ bộ |
+| Mỗi số đo | loại: đếm / tổng tiền / tỷ lệ / chỉ số / bình quân; giá danh nghĩa hay thực; **cộng được không**; mẫu số (nếu là tỷ lệ); đơn vị chuẩn hoá; chuẩn đo / phương pháp nếu biết |
+| Quan hệ tổng | dòng / giá trị nào là tổng; tổng các phần có bằng tổng không |
+
+AI của wizard đề xuất → **code kiểm bằng dữ liệu** (tổng các tỉnh = cả nước nếu khai cộng được; năm đọc được;
+đơn vị nhất quán; chủ thể khớp bảng tham chiếu) → chỗ không chắc hỏi người upload. Harness **đọc khai báo đã
+xác minh, không đoán từ tên**. Đây là "cách đọc đã xác minh" (mục 14) mở rộng thành tầng ngữ nghĩa chung —
+và là nơi sửa đúng của bài học 15.2 #1 ("lỗi đến từ thứ đưa cho model").
+
+**B. Họ giả thuyết viết theo hình dạng, không theo "tỉnh / vùng".** "Quan hệ giữa các chủ thể" chạy cho mọi
+loại chủ thể có ≥ N phần tử cùng thời điểm; "theo nhóm" dùng bất kỳ cấp nào bảng tham chiếu có (tỉnh → vùng,
+xã → tỉnh, doanh nghiệp → ngành). Mỗi họ **khai điều kiện cần** bằng trường của hồ sơ → **thẻ phạm vi suy ra
+từ điều kiện** ("chưa làm được vì dữ liệu không có X"), thay cho danh sách regex ý định.
+
+**C. Bảng tham chiếu cắm được.** Địa giới VN 63 / 34 / xã hôm nay; mã ngành, danh sách nước… sau. Ghép chủ thể
+luôn để dữ liệu phân xử.
+
+**D. Chế độ khám phá lên sớm.** Họ = làn nhanh cho mẫu câu hỏi hay gặp; **bao phủ** dữ liệu không đồng nhất
+cần agent viết code trên API đã kiểm định (đọc hồ sơ, cắt lát), cùng thang xác minh, số lấy từ kết quả code đã
+chạy. Thêm họ mãi không theo kịp sự đa dạng.
+
+**E. Hiểu câu hỏi:** regex ý định là overfit vào cách hỏi. Chuyển sang model + khuôn có cấu trúc (hai lần đọc),
+luật chữ chỉ giữ cho vài mẫu độ chính xác cao; đo lại độ ổn định.
+
+### 17.4 Dừng
+
+- Đánh bóng câu chữ trên 12 câu hiện có (vòng 3 như đề xuất ở vòng 2 mục 4 — **huỷ**, trừ lỗi ảnh hưởng mọi dữ liệu).
+- Thêm luật chữ sau mỗi lỗi.
+- Mở rộng logic riêng cho NSO / 63 tỉnh.
+
+### 17.5 Đánh giá chống overfit
+
+| Thành phần | Nội dung |
+|---|---|
+| Hai bộ câu hỏi | bộ **sửa** (được xem khi sửa) và bộ **để dành** (không xem, chỉ chạy để nghiệm thu); câu thật của phóng viên vào bộ để dành |
+| Bộ dataset đa dạng hình dạng | vài NSO; 4 XLSX (mục 14.5); 1 GeoJSON; 1 danh sách sự kiện; 1 chuỗi tháng; 1 dữ liệu cấp xã |
+| Kiểm biến đổi | đổi tên cột, đổi đơn vị, đảo thứ tự dòng, bản 34 tỉnh của cùng dữ liệu → kết quả phải không đổi (hoặc đổi đúng cách) |
+| Luật nghiệm thu một sửa | phát biểu được thành nguyên tắc chung + qua bộ để dành; **không vá theo chuỗi chữ** |
+| Chỉ số "mùi" | số luật dựa trên chữ trong harness — theo dõi, phải giảm |
+
+### 17.6 Thứ tự làm
+
+1. Schema hồ sơ ngữ nghĩa + bộ sinh (AI) + bộ kiểm (code); áp cho bộ dataset đa dạng (17.5). **Pilot giữ hồ sơ
+   riêng của harness** (không đụng wizard / metadata); đưa vào wizard khi schema ổn — quyết định riêng.
+2. Viết lại 2 họ hiện có theo hình dạng + điều kiện cần; phạm vi suy từ điều kiện; bỏ các hàm TẠM.
+3. Chế độ khám phá tối thiểu cho phần họ chưa phủ.
+4. Dựng bộ đánh giá 17.5; chạy làm mốc trước khi thêm họ (bậc 2).
+
+Mục 16.5 ("bậc 2 bắt đầu bằng ý định → họ") được thay bằng thứ tự này.
 

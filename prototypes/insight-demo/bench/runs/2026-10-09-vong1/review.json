@@ -1,0 +1,30 @@
+{
+  "_ghi_chu": "Rà soát vòng 1. verdict: dat | mot_phan | khong_dat. loi: mã nguyên nhân gốc (xem BAO-CAO.md mục 5). Dùng để so giữa các vòng.",
+  "reviewer": "Claude Code (Opus) — đọc dấu vết + đối chiếu chuỗi số gốc; KHÔNG phải model đã viết thẻ",
+  "reviews": [
+    { "id": "q01", "verdict": "mot_phan", "chon_chi_tieu": "dung", "loi": ["A", "D", "E"],
+      "ghi_chu": "Thẻ quan hệ đúng (r 0,73, 59 tỉnh). Phần 'tỉnh nào cao nhất' bị bỏ im lặng, tít lại hứa trả lời ('…nhiều ở tỉnh nào:'). AI thêm 'địa hình nghèo', 'cần thêm thời gian để đạt các mục tiêu' — không có trong dữ liệu. Chuỗi hộ nghèo đa chiều 2016–2024 nối qua hai thời kỳ chuẩn nghèo — điểm gãy 2021 có thể do đổi chuẩn (chưa kiểm). Chọn 'Cân nặng theo tuổi' trong 3 thể suy dinh dưỡng mà không nói." },
+    { "id": "q02", "verdict": "dat", "chon_chi_tieu": "dung", "loi": ["C", "F", "G"],
+      "ghi_chu": "Hiểu đúng GRDP/người. Thẻ quan hệ đúng, nêu vùng lệch (TDMNPB −0,74). Thẻ kỷ lục: 0,37 năm 2024 BẰNG 2020, 2021, 2023 — 'thấp nhất' là hoà, không phải đáy mới. Kho có chuỗi GINI cả nước 2002–2024 nhưng thẻ dùng chuỗi 2018–2024 của dataset theo tỉnh. Lặp đơn vị '0,37 hệ số GINI'." },
+    { "id": "q03", "verdict": "mot_phan", "chon_chi_tieu": "dung", "loi": ["C", "F"],
+      "ghi_chu": "Đúng dataset; kỷ lục 2022 (29.010) đúng; tổng 63 tỉnh khớp số cả nước. Sai ý: 'từ 2020 tăng nhanh hơn' — thực tế 2019–2021 GIẢM (28.076→22.132) rồi bật lên 2022. Bỏ mất 'đã xét xử' (đây không phải mọi vụ ly hôn). Lặp đơn vị 'vụ vụ'. Không nói đến quy mô dân số nhưng cũng không so tỉnh." },
+    { "id": "q04", "verdict": "khong_dat", "chon_chi_tieu": "dung", "loi": ["A"],
+      "ghi_chu": "Câu hỏi về một tỉnh so với vùng → chỉ ra thẻ xu hướng cả nước. AI tự ghi 'chưa phản ánh riêng Nghệ An' (trung thực) nhưng hệ thống không biết mình không trả lời." },
+    { "id": "q05", "verdict": "khong_dat", "chon_chi_tieu": "dung", "loi": ["A"],
+      "ghi_chu": "Nhận ra danh mục 34 (scheme=34) nhưng KHÔNG cảnh báo, không quy đổi, không xếp hạng; chỉ ra xu hướng dân số cả nước." },
+    { "id": "q06", "verdict": "khong_dat", "chon_chi_tieu": "dung", "loi": ["A"],
+      "ghi_chu": "Hiểu đúng 'tỷ lệ sinh đẻ' → tổng tỷ suất sinh. Bỏ im lặng phần 'miền núi phía bắc' — trả xu hướng cả nước." },
+    { "id": "q07", "verdict": "khong_dat", "chon_chi_tieu": "dung", "loi": ["A", "C"],
+      "ghi_chu": "LỖI NẶNG: 'giảm, từ 6.765,6 nghìn ha năm 1995 còn 7.127,1 nghìn ha năm 2024' — số sau lớn hơn. 'Trước 2013 gần như đi ngang' sai: 1995→2013 tăng 6.766→7.903 (+17%). Ngưỡng đi ngang tính theo năm bỏ qua độ dài đoạn. 'Liên tục giảm' sai nhẹ (2023–2024 tăng). Không trả lời 'giảm bao nhiêu trong 20 năm' (2004→2024: 7.445→7.127, −4,3%). Bỏ im lặng ĐBSCL." },
+    { "id": "q08", "verdict": "khong_dat", "chon_chi_tieu": "dung", "loi": ["A", "D", "E", "C"],
+      "ghi_chu": "Không so Hà Nội–TP.HCM. Thẻ quan hệ r 0,88 giữa hai số TUYỆT ĐỐI — chủ yếu do quy mô tỉnh; AI viết 'dữ liệu cả nước xác nhận'. Chuỗi siêu thị thiếu 2006–2012 nhưng điểm gãy 2017 được tính qua khoảng trống, không cảnh báo. Bán lẻ theo giá hiện hành: 'tăng tốc' là hiệu ứng tăng theo cấp số nhân + lạm phát." },
+    { "id": "q09", "verdict": "mot_phan", "chon_chi_tieu": "dung", "loi": ["B"],
+      "ghi_chu": "Không phân tích nhầm diện tích sàn (tốt). Nhưng tách ra khái niệm 'phần trăm tăng giá' → chọn 'Chỉ số giá sinh hoạt'; kết quả 'không có phát hiện' thay vì nói thẳng 'kho không có giá nhà'." },
+    { "id": "q10", "verdict": "mot_phan", "chon_chi_tieu": "dung", "loi": ["B"],
+      "ghi_chu": "AI từ chối đúng các bẫy (khai tử, HIV, chết trẻ dưới 1 tuổi). Nhưng bỏ im lặng vế ung thư rồi trả thẻ tuổi thọ như thể là câu trả lời. Thẻ tuổi thọ đúng số (đi ngang 2018–2022, nhảy 2023)." },
+    { "id": "q11", "verdict": "dat", "chon_chi_tieu": "dung", "loi": [],
+      "ghi_chu": "Không chọn chỉ tiêu nào (ứng viên là rừng, thu nhập — đều bị loại); không phân tích nhầm. Lời báo vẫn là câu chung chung." },
+    { "id": "q12", "verdict": "dat", "chon_chi_tieu": "dung", "loi": ["D"],
+      "ghi_chu": "Báo kết quả thật (cả nước −0,37; hai vùng gần như không có quan hệ); không dùng từ nhân quả. Nhưng nhận khung của người hỏi: 'nhận định … đúng ở tầm quốc gia' với tương quan yếu–vừa. Thẻ thiếu việc làm đúng số, không nhắc đỉnh 2021 (dịch)." }
+  ]
+}
