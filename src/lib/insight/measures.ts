@@ -69,7 +69,7 @@ const SUBGROUP_PATTERNS: [RegExp, string][] = [
   [/thành thị|nông thôn/i, "chỉ thành thị hoặc nông thôn"],
 ];
 
-function subgroupOf(measure: string): string | null {
+export function subgroupOf(measure: string): string | null {
   for (const [re, why] of SUBGROUP_PATTERNS) if (re.test(measure)) return why;
   return null;
 }

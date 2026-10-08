@@ -17,6 +17,16 @@ export interface DetectorOutput {
   summary: Record<string, unknown>;
   chart?: Record<string, unknown>;
   tests: number;
+  /** Số thô có cấu trúc cho pipeline v2 (BH, mẫu câu) — summary là bản đã định dạng cho AI */
+  data?: Record<string, unknown>;
+}
+
+export interface RegionFitData {
+  region: string;
+  n: number;
+  slope: number;
+  r: number;
+  p: number | null;
 }
 
 export class DetectorError extends Error {}
@@ -184,7 +194,12 @@ export function regionReversal(x: Slice, y: Slice, params: { year?: number }): D
     points: a.pairs.map((p) => ({ geo: provinceName(p.geo, x.scheme ?? "63"), region: p.region, x: p.x, y: p.y })),
   };
 
-  return { summary, chart, tests: a.tests + (b?.tests ?? 0) };
+  return {
+    summary,
+    chart,
+    tests: a.tests + (b?.tests ?? 0),
+    data: { year: main, secondYear: second, pooled: a.pooled, regions: a.regions, secondRegions: b?.regions ?? null, nPairs: a.pairs.length },
+  };
 }
 
 /**
@@ -270,5 +285,24 @@ export function trendBreak(s: Slice, params: { geo?: string }): DetectorOutput {
     yLabel: `${s.label}${s.unit ? ` (${s.unit})` : ""}`,
     series: [{ name: summary.dia_phuong, points: pts.map((p) => [p.year, p.value]) }],
   };
-  return { summary, chart, tests: best ? 1 : 0 };
+  return {
+    summary,
+    chart,
+    tests: best ? 1 : 0,
+    data: {
+      geo,
+      first: { year: pts[0].year, value: pts[0].value },
+      last: { year: last.year, value: last.value, provisional: !!last.provisional },
+      isMax,
+      isMin,
+      highSince: isMax ? pts[0].year : highSince,
+      lowSince: isMin ? pts[0].year : lowSince,
+      nYears: pts.length,
+      breakYear: best ? pts[best.k].year : null,
+      breakFlag: (breakInfo as { co_diem_gay?: boolean }).co_diem_gay ?? false,
+      reversed: (breakInfo as { dao_chieu?: boolean }).dao_chieu ?? false,
+      slopeBefore: (breakInfo as { do_doc_truoc?: number }).do_doc_truoc ?? null,
+      slopeAfter: (breakInfo as { do_doc_sau?: number }).do_doc_sau ?? null,
+    },
+  };
 }

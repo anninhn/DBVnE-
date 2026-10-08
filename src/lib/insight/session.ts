@@ -62,6 +62,20 @@ export interface Session {
   suggestion?: SuggestResult;
   /** Chỉ tiêu phóng viên đã xác nhận — phân tích PHẢI dùng đúng các chỉ tiêu này */
   confirmed?: { ten: string; slug: string; measure: string }[];
+  /** Luồng chuẩn (bậc 1) */
+  v2?: {
+    question: string;
+    concepts: string[];
+    level: "province" | "nation";
+    scheme: "63" | "34" | null;
+    /** Mỗi khái niệm: id chỉ tiêu đang dùng + id các phương án */
+    picks: { concept: string; current: string | null; options: string[] }[];
+    /** p-value của mọi phép thử trong phiên — BH tính trên toàn bộ */
+    pvals: number[];
+    runs: { at: string; picks: (string | null)[]; findings: number; ms: Record<string, number> }[];
+    /** Phóng viên gắn nhãn thẻ — dữ liệu cho bậc 3 (ca học từ nhật ký) */
+    labels?: { at: string; cardId: string; title: string; value: "huu_ich" | "sai" | "da_biet" }[];
+  };
 }
 
 function fileOf(id: string): string {

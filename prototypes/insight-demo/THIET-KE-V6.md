@@ -278,7 +278,7 @@ Mỗi bậc **dùng được độc lập**; chỉ sang bậc sau khi có lý do
 | Bậc | Nội dung | Xong khi | Điều kiện sang bậc sau |
 |---|---|---|---|
 | **0 · Đo** ✅ 2026-10-09 | Đo một lượt gọi GLM ngắn khi giữ tiến trình Claude Code sống (`--input-format stream-json`); đo thời gian dựng danh mục chỉ tiêu | Có số thật cho mục tiêu 15 giây | Luôn sang bậc 1; số đo quyết định có dùng tiến trình sống không |
-| **1 · Luồng chuẩn** | Định tuyến + hiểu câu hỏi (**gọi hai lần song song + luật hậu kiểm**, mục 15); danh mục chỉ tiêu dựng sẵn — **lộ đúng điều quyết định** (nhóm con, năm thật có số, 63/34); **module luật dùng chung** sinh prompt + bộ kiểm; **thang xác minh dùng chung**; chip; chạy song song 2 họ đang có; xếp hạng; viết lời có chỗ trống; rào chắn mới (BH, so sánh nhất, câu chữ); UI mới | Câu "thu nhập × mức sinh" ra thẻ dễ hiểu, không vòng nộp lại, đo được thời gian | Phóng viên dùng thử thấy luồng ổn |
+| **1 · Luồng chuẩn** ✅ 2026-10-09 (mục 16) | Định tuyến + hiểu câu hỏi (**gọi hai lần song song + luật hậu kiểm**, mục 15); danh mục chỉ tiêu dựng sẵn — **lộ đúng điều quyết định** (nhóm con, năm thật có số, 63/34); **module luật dùng chung** sinh prompt + bộ kiểm; **thang xác minh dùng chung**; chip; chạy song song 2 họ đang có; xếp hạng; viết lời có chỗ trống; rào chắn mới (BH, so sánh nhất, câu chữ); UI mới | Câu "thu nhập × mức sinh" ra thẻ dễ hiểu, không vòng nộp lại, đo được thời gian | Phóng viên dùng thử thấy luồng ổn |
 | **2 · Mở rộng thư viện họ** | Thêm theo thứ tự: xếp hạng & ngoại lệ → chênh lệch → quy mô/tỷ trọng → kỷ lục đầy đủ → kiểm soát biến thứ ba → mùa vụ. **Hợp đồng cho danh sách** (chỉ tiêu sinh bằng đếm / gộp) + **bảng địa lý cấp xã** và luật "địa lý phải khớp tham chiếu" (mục 15) | Mỗi họ có đủ khuôn bốn phần + ca kiểm tra; ít nhất 1 danh sách (vd điểm ngập) vào danh mục | Song song với nghiên cứu họ giả thuyết |
 | **2b · Đọc file không đồng nhất** | Đưa cách đọc (mô tả JSON + bộ thực thi + bản mô tả file + thang xác minh) từ `bench/` vào thư viện dùng chung; thêm thao tác **xoay năm-thành-cột → dòng**, header nhiều tầng, hai bảng cạnh nhau; lưu cách đọc đã xác minh; dùng trước tiên qua skill chuẩn hoá chạy local | 4 file XLSX có cách đọc đã xác minh và chỉ tiêu vào danh mục | Có thể làm song song bậc 2 |
 | **3 · Vòng cải tiến** | Log nhãn + chip đổi; ca kiểm tra tự sinh; quy trình cho Claude Code đọc log | Có ca kiểm tra đầu tiên sinh từ log | Bật ngay khi có phóng viên dùng thử |
@@ -530,3 +530,67 @@ Còn lại chỉ là **khác biệt vai trò cột** (không ảnh hưởng dữ
 | Chế độ khám phá trong harness (nơi cách đọc chưa xác minh chạy thật) | **Chưa code** — bậc 4 |
 
 Kết luận: cách làm **chạy được và sửa được theo cách áp dụng chung trên mẫu nhỏ**; chưa đủ để nói tỷ lệ đúng trên file lạ.
+
+---
+
+## 16. Kết quả bậc 1 — luồng chuẩn (2026-10-09)
+
+### 16.1 Đã làm
+
+Code ở `src/lib/insight/v2/` + route `/api/insight/ask` (NDJSON) + `/api/insight/catalog` + `InsightPanel` mới. Chỉ chạy local.
+
+| Thành phần | Cách làm |
+|---|---|
+| Hiểu câu hỏi | 2 lời gọi song song (2 cách hỏi khác nhau) → code loại khái niệm không đo được, gộp trùng nghĩa (chuỗi con), cấp địa lý và 63/34 theo **chữ trong câu hỏi** trước, model sau |
+| Danh mục chỉ tiêu | 3.218 chỉ tiêu / 442 dataset, dựng 4 giây từ file đã cache; 294 dùng được cấp tỉnh; 352 là nhóm con; 10 dataset bỏ qua (XLSX/GeoJSON). Vector **dùng chung của dataset** (embedding miễn phí giới hạn 100 lượt/phút) |
+| Chọn chỉ tiêu | Code tìm 10 ứng viên / khái niệm → AI chọn ≤ 3 đúng nghĩa → luật: số chung trước nhóm con; khái niệm trỏ cùng chỉ tiêu thì gộp; tổ hợp có năm chung **mới nhất** thắng |
+| Phân tích | 2 họ: quan hệ theo vùng, xu hướng/kỷ lục/điểm gãy. BH trên mọi phép thử của phiên |
+| Viết lời | Mỗi thẻ 1 lời gọi, **song song**; số do code điền vào chỗ trống; kiểm câu chữ (nhân quả, cá nhân, so sánh nhất, chỗ trống lạ, **lạc đề**); sai → sửa 1 lần → vẫn sai thì dùng mẫu câu của code |
+| Giao diện | Tự chạy ngay; tiến trình 3 dòng; chip chỉ tiêu đổi được; biểu đồ hệ số theo vùng / đường xu hướng; huy hiệu; "Xem cách tính"; "Chép kèm nguồn"; nhãn Hữu ích / Đã biết / Sai (lưu vào phiên — dữ liệu cho bậc 3); hỏi tiếp: bỏ năm sơ bộ, đổi năm |
+
+### 16.2 Số đo (câu "Thu nhập và mức sinh có liên quan gì nhau giữa các tỉnh? Vùng nào khác biệt?")
+
+| | Lát 1 | Bậc 1 |
+|---|---|---|
+| Hỏi mới | 75–100 giây | **22–29 giây** (hiểu 2,5–4,7 · chọn 4,6–10 · phân tích < 1 · viết lời 13–16) |
+| Đổi chip / hỏi tiếp | chạy lại từ đầu | **~7 giây** |
+| Vòng nộp lại thẻ | có | không |
+| Số sai trong thẻ | rào chắn bắt | **không thể xảy ra** (code điền) |
+
+Chưa đạt mục tiêu 15 giây. Phần lớn là độ trễ model, dao động gấp đôi giữa các lần.
+
+Thẻ ra: quan hệ theo vùng (cả nước −0,45, lặp lại 2018; ĐBSH −0,62; ĐBSCL 0,12 — ngoại lệ), kỷ lục mức sinh (1,91 — thấp nhất từ 2005; đi ngang rồi giảm từ 2020), điểm gãy thu nhập (tăng nhanh hơn từ 2022). Đã đối chiếu chuỗi mức sinh cả nước với số gốc.
+
+### 16.3 Bài học
+
+| # | Bài học | Bằng chứng |
+|---|---|---|
+| 1 | **Số an toàn, ý thì chưa.** Chỗ trống chặn sai số, nhưng model vẫn **tự điền ý** vào chỗ code không nói: hướng xu hướng, chuỗi nào đang nói tới, ý nghĩa của chỗ trống | 4 lỗi: "{nam_dau}" đọc thành số năm; thẻ thu nhập viết thành "liên hệ thu nhập–mức sinh"; mức sinh "đi lên rồi trượt xuống"; "trước 2020 chủ yếu đi lên" (thật ra dao động 2,0–2,1). Cả 4 sửa bằng cách **code tính và nói ra sự thật đó** — không sửa bằng lời dặn chung. Lặp lại bài học 15.2 #1 ở bước viết lời |
+| 2 | **Bộ kiểm câu chữ theo danh sách từ chỉ bắt lỗi đã biết.** Sai hướng xu hướng lọt qua mọi luật | Lỗi chỉ lộ khi người đọc đối chiếu số gốc |
+| 3 | **Có ý nghĩa thống kê ≠ đáng viết.** "Thu nhập cao nhất kể từ 2018" qua mọi kiểm nhưng là điều ai cũng đoán được | Thêm luật "kỷ lục đã được chờ đợi" |
+| 4 | **Luật kiểu ngưỡng đang dồn lên, mỗi cái sinh từ một ví dụ** | 80% số năm, 0,5%/năm, r 0,3, 8 tỉnh/vùng — chưa cái nào kiểm trên câu hỏi thứ hai |
+| 5 | **Chất lượng metadata là trần của harness** | Đơn vị thu nhập ghi "unknown" trong dictionary → thẻ không có đơn vị |
+| 6 | **Song song hoá là đòn bẩy rẻ nhất** | Viết lời 25 → 13–16 giây chỉ bằng tách thẻ |
+
+### 16.4 Phản biện kiến trúc hiện tại
+
+**Điều đã được chứng minh:** code điều khiển + AI ở 3 điểm đúng hướng — nhanh gấp 3–4 lần, không vòng nộp lại, đổi chip không phải gọi lại AI, số không thể sai.
+
+**Điểm yếu (xếp theo mức nghiêm trọng):**
+
+1. **Mới kiểm trên MỘT câu hỏi.** Mọi luật và ngưỡng ở 16.3 #4 khớp với câu này; không biết câu thứ hai sẽ ra sao. Đây là rủi ro lớn nhất — không phải bộ đánh giá chính thức, mà là 5–10 câu hỏi thật của phóng viên trước khi tinh chỉnh thêm.
+2. **Không có bước "câu hỏi cần họ nào".** Hễ có khái niệm đo được là chạy mọi họ khả dụng rồi xếp hạng. Câu "tỉnh nào có X cao nhất" hay "A so với B" sẽ nhận thẻ quan hệ / xu hướng không trả lời câu hỏi. Bước hiểu câu hỏi nên trả thêm **ý định** (quan hệ, xếp hạng, xu hướng, so sánh) và code ánh xạ ý định → họ; thẻ bối cảnh chỉ thêm khi còn chỗ.
+3. **Ý định tính chưa được chống lỗi như số.** Hướng, mức độ, "ngoại lệ" đang nằm trong `y_chinh` dạng chữ — model có thể diễn lại sai. Hướng sửa: đưa cả **nhận định định tính** vào chỗ trống (vd `{huong_truoc}`, `{muc_do}`) để code điền, model chỉ viết câu nối. Đổi lại văn sẽ cứng hơn.
+4. **Hai hệ tìm kiếm chạy cạnh nhau, có thể nói khác nhau.** Discovery liệt kê dataset theo cách của nó (vd vẫn gợi ý "thu nhập đầu người … đến 2018"), panel insight chọn theo danh mục chỉ tiêu. Phóng viên thấy hai danh sách. Nên để chip của panel là nguồn duy nhất cho câu hỏi phân tích, hoặc cho Discovery dùng danh mục chỉ tiêu.
+5. **Vector cấp dataset** đủ cho NSO (mỗi dataset ít chỉ tiêu) nhưng không phân biệt được cột trong dataset nhiều chỉ tiêu; đang dựa vào từ khoá + AI. Sẽ yếu dần khi kho thêm file đa chỉ tiêu.
+6. **Danh mục là file local dựng tay** — dataset mới upload không có cho tới khi dựng lại. Đủ cho pilot, không đủ khi đưa vào app.
+7. **Giá trị của "hiểu câu hỏi hai lần" chưa đo được.** Lệch nhiều lần nhưng lệch chủ yếu là chữ đồng nghĩa ("tỷ suất sinh" / "mức sinh") mà bước chọn chỉ tiêu đã gộp. Nếu log bậc 3 cho thấy lần thứ hai không đổi kết quả, bỏ để giảm tải.
+8. **Họ "quan hệ theo vùng" là tương quan sinh thái** — đã có cảnh báo, nhưng đây là loại phát hiện yếu nhất về mặt báo chí. Thư viện họ (bậc 2) quan trọng hơn tinh chỉnh họ này.
+
+### 16.5 Hệ quả cho bậc tiếp
+
+- **Trước khi tinh chỉnh tiếp:** đưa cho phóng viên dùng thử, thu 5–10 câu hỏi thật + nhãn → đó là ca kiểm tra đầu tiên (bậc 3 kéo lên sớm, chỉ phần thu log).
+- **Bậc 2 bắt đầu bằng "ý định → họ"** (điểm yếu 2), rồi mới thêm họ xếp hạng & ngoại lệ — họ trả lời được loại câu hỏi phổ biến nhất.
+- Đưa nhận định định tính vào chỗ trống (điểm yếu 3) khi làm họ mới — mỗi họ khai sẵn các nhận định của nó.
+- Sửa đơn vị "unknown" trong dictionary qua app (việc dữ liệu, không phải code).
+
