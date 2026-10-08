@@ -383,7 +383,10 @@ export async function POST(req: NextRequest) {
               content: userContent,
             },
           ],
-          temperature: 0.3,
+          // 0 thay vì 0,3 (2026-10-08): cùng câu hỏi phải ra cùng gợi ý — phóng viên hỏi lại
+          // mà được bộ dataset khác thì không biết tin lần nào, và lỗi chọn sai không tái
+          // hiện được để sửa.
+          temperature: 0,
           // 4000 vẫn chạm trần: đo thực tế câu "có dữ liệu gì về Đà Nẵng" bị cắt
           // giữa dòng. Nâng lên 8000 và siết prompt (answer 2–4 câu, tối đa 3
           // dataset) để bớt chạm; kèm nhánh cứu JSON cắt ở `extract-json.ts` vì

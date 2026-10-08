@@ -101,12 +101,19 @@ export async function searchDatasets(
         return { results: [], indexBuiltAt: index.builtAt, total: 0 };
       }
 
+      // Gọi embedding lỗi (mạng, hết hạn mức theo ngày) → vẫn trả kết quả từ nhánh
+      // từ khoá, kèm cờ `degraded`, thay vì làm hỏng cả lượt tìm.
+      let degraded: string | undefined;
       const [queryVector, listing] = await Promise.all([
-        embedQuery(input.query),
+        embedQuery(input.query).catch((err: unknown) => {
+          degraded = `Chỉ tìm theo từ khoá — không gọi được embedding: ${(err as Error)?.message ?? err}`;
+          console.warn(`[retrieval] ${degraded}`);
+          return null;
+        }),
         fetchListingIndex(),
       ]);
 
-      const semantic = rankByVector(index, queryVector);
+      const semantic = queryVector ? rankByVector(index, queryVector) : [];
       const keyword = rankByKeyword(index, input.query);
 
       const meta = new Map(listing.map((e) => [e.slug, e]));
@@ -131,6 +138,7 @@ export async function searchDatasets(
         // Caller cần biết chỉ mục dựng lúc nào để tự đánh giá kết quả có cũ không.
         indexBuiltAt: index.builtAt,
         total: allowed.length,
+        ...(degraded ? { degraded } : {}),
       };
     },
   );
