@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insight Harness — prototype luồng (dữ liệu giả lập)</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">Insight Harness <span>· prototype luồng</span></div>
+    <span class="badge-mock">DỮ LIỆU GIẢ LẬP — KHÔNG TRÍCH DẪN</span>
+    <div class="spacer"></div>
+    <nav class="tabs">
+      <button class="tab active" data-view="chat">Hỏi dữ liệu (AMA)</button>
+      <button class="tab" data-view="brief">Bản tin sáng</button>
+      <button class="tab" data-view="run">Xem cách tính</button>
+      <button class="tab" data-view="summary">Tổng kết đánh giá</button>
+    </nav>
+  </header>
+
+  <!-- ── VIEW: HỎI DỮ LIỆU (AMA) ──────────────────── -->
+  <main class="view" id="view-chat">
+    <div class="chat-scroll" id="chat-scroll">
+      <div class="chat-col">
+        <div class="chat-empty" id="chat-empty">
+          <h2>Hôm nay bạn muốn tìm hiểu gì?</h2>
+          <p class="note">Hỏi bằng tiếng Việt. Mình tìm dataset trong kho, bạn chọn, rồi harness phân tích ra góc bài.</p>
+          <div class="chat-suggest" id="chat-suggest"></div>
+          <p class="note">Prototype có 3 kịch bản dựng sẵn: tìm thấy → thẻ đạt · tìm thấy → rào chắn loại · không tìm thấy → gợi ý góc khác.</p>
+        </div>
+        <div id="chat-log"></div>
+      </div>
+    </div>
+    <form class="chat-form" id="chat-form">
+      <button type="button" id="chat-reset" title="Cuộc trò chuyện mới">↺</button>
+      <input id="chat-input" placeholder="Hỏi về dữ liệu… (vd: mức sinh, y tế, người trẻ rời Hà Nội)" autocomplete="off">
+      <button class="primary" type="submit">Gửi</button>
+    </form>
+  </main>
+
+  <!-- ── VIEW: BẢN TIN SÁNG ───────────────────────── -->
+  <main class="view hidden" id="view-brief">
+    <div class="summary-wrap" id="brief"></div>
+  </main>
+
+  <!-- ── VIEW: XEM CÁCH TÍNH (vết chạy) ───────────── -->
+  <main class="view hidden" id="view-run">
+    <aside class="col-left">
+      <h3>Đầu vào</h3>
+      <div class="mode-filter" id="mode-filter"></div>
+      <ul class="scenario-list" id="scenario-list"></ul>
+      <p class="note">Mỗi đầu vào là một lần harness chạy. Kết quả được giấu cho đến khi chạy xong.</p>
+    </aside>
+
+    <section class="col-mid">
+      <div class="run-bar">
+        <div class="run-input" id="run-input">Chọn một đầu vào bên trái</div>
+        <div class="run-controls">
+          <button id="btn-step" disabled>Bước tiếp ▸</button>
+          <button id="btn-play" class="primary" disabled>Chạy hết ▸▸</button>
+          <button id="btn-reset" disabled>↺</button>
+        </div>
+      </div>
+      <ol class="trace" id="trace"></ol>
+    </section>
+
+    <aside class="col-right">
+      <h3>Harness đang ở đâu</h3>
+      <div class="arch" id="arch">
+        <div class="node" data-comp="input">Đầu vào<small>3 chế độ</small></div>
+        <div class="arrow">↓</div>
+        <div class="loop">
+          <div class="node" data-comp="ai">AI<small>lập kế hoạch · diễn giải · viết</small></div>
+          <div class="arrow-h">⇄</div>
+          <div class="node" data-comp="tools">Tools<small>search · describe · detector · check · report</small></div>
+        </div>
+        <div class="loop-sub">
+          <div class="hint-text">AI không tính số — chỉ gọi tool</div>
+          <div class="node small" data-comp="data">Tầng dữ liệu<small>CSV chuẩn hoá · code</small></div>
+        </div>
+        <div class="arrow">↓ thẻ nháp</div>
+        <div class="node" data-comp="guard">Rào chắn (code)<small>khớp số · artefact · lặp lại · thống kê</small></div>
+        <div class="arrow">↓</div>
+        <div class="node" data-comp="human">Người kiểm<small>đạt · hiển nhiên · diễn giải quá đà</small></div>
+        <div class="arrow">↓</div>
+        <div class="node" data-comp="output">Thẻ đề tài<small>đạt · bị loại · cần dữ liệu</small></div>
+      </div>
+      <h3>Kết quả</h3>
+      <div id="result" class="result empty">Chưa chạy xong.</div>
+    </aside>
+  </main>
+
+  <!-- ── VIEW: TỔNG KẾT ───────────────────────────── -->
+  <main class="view hidden" id="view-summary">
+    <div class="summary-wrap">
+      <h2>Tổng kết một đợt chạy (giả lập)</h2>
+      <p class="note">Đây là bảng mà B3 sẽ sinh ra khi chạy thật ~20 đầu vào. Dùng để quyết “làm được” hay “fail” theo ngưỡng ≥ 3 thẻ đạt, phủ ≥ 2/3 chế độ.</p>
+      <div class="tiles" id="tiles"></div>
+      <table class="tbl" id="summary-table"></table>
+      <div class="verdict" id="verdict"></div>
+    </div>
+  </main>
+</div>
+
+<div id="tooltip" class="tooltip hidden"></div>
+<script src="scenarios.js"></script>
+<script src="charts.js"></script>
+<script src="app.js"></script>
+<script src="chat.js"></script>
+<script src="brief.js"></script>
+</body>
+</html>
