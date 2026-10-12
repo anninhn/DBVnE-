@@ -9,7 +9,7 @@ import { buildCatalog, loadCatalog } from "@/lib/insight/v2/catalog";
  *   POST → dựng lại toàn bộ
  */
 export const dynamic = "force-dynamic";
-export const maxDuration = 800;
+export const maxDuration = 300; // trần của gói Vercel Hobby; route chỉ chạy local nên không bị giới hạn thật
 
 function stats(c: Awaited<ReturnType<typeof loadCatalog>>) {
   if (!c) return { exists: false };

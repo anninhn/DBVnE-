@@ -34,7 +34,7 @@ import { SUGGEST_TOOL_NAMES, TOOL_DEFS } from "@/lib/insight/tools";
  */
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 800;
+export const maxDuration = 300; // trần của gói Vercel Hobby; route chỉ chạy local nên không bị giới hạn thật
 
 const MCP_SCRIPT = path.join(process.cwd(), "tools", "insight-mcp.mjs");
 const CLAUDE_CONFIG_DIR = path.join(INSIGHT_DATA_DIR, "claude-config");
