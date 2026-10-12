@@ -26,6 +26,15 @@
 
   /* Accent — HF yellow */
   --color-hf-yellow: #ffd21e;
+
+  /*
+   * Màu biểu đồ thống kê cột — indigo-500.
+   *
+   * Lấy từ chính markup của Hugging Face dataset viewer (`fill-indigo-500` trên
+   * các `<rect>` của histogram). Trước đây dùng #9CA3AF (xám) nên biểu đồ chìm
+   * vào nền và không ai nhận ra nó là thứ tương tác được.
+   */
+  --color-hf-chart: #6366f1;
   --color-hf-yellow-50: #fef3c7;
 
   /* Functional */

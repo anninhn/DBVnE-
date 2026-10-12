@@ -31,36 +31,56 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 24, 12, 12, 12, 12, 12, 12, 24 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 12, 12, 12, 12, 12, 12, 12, 12, 12, 12 ]
       Đồng bằng sông Hồng:
         kind: numeric
         min: 100
         max: 100
-        histogram: [ 120, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 100
+        histogram: [ 120 ]
       Trung du và miền núi phía Bắc:
         kind: numeric
         min: 74.7
         max: 108.73
+        distinct: 114
         histogram: [ 1, 0, 0, 1, 2, 46, 60, 10 ]
       Bắc Trung Bộ và Duyên hải miền Trung:
         kind: numeric
         min: 88.88
         max: 120.18
+        distinct: 112
         histogram: [ 4, 9, 58, 40, 8, 0, 0, 1 ]
       Tây Nguyên:
         kind: numeric
         min: 78.76
         max: 109.75
+        distinct: 111
         histogram: [ 2, 1, 4, 6, 20, 73, 11, 3 ]
       Đông Nam Bộ:
         kind: numeric
         min: 88.99
         max: 112.74
+        distinct: 108
         histogram: [ 3, 4, 4, 44, 47, 13, 4, 1 ]
       Đồng bằng sông Cửu Long:
         kind: numeric
         min: 82.78
         max: 106.18
+        distinct: 112
         histogram: [ 2, 1, 4, 8, 20, 65, 16, 4 ]
       nhóm hàng:
         kind: categorical

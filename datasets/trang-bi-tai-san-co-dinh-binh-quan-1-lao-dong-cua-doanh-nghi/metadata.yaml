@@ -31,11 +31,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 71, 0, 0, 142, 142, 71, 142, 142 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 71, 71, 71, 71, 71, 71, 71, 71, 71, 71 ]
       Trang bị tài sản cố định bình quân 1 lao động của doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 76.6
         max: 3600.39
+        distinct: 698
         histogram: [ 514, 138, 35, 10, 3, 3, 4, 3 ]
       Tỉnh/thành phố:
         kind: categorical

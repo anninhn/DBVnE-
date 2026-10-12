@@ -31,11 +31,20 @@ files:
         kind: numeric
         min: 2018
         max: 2023
-        histogram: [ 19, 19, 0, 19, 19, 0, 19, 19 ]
+        distinct: 6
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 19, 19, 19, 19, 19, 19 ]
       Chỉ số giá tiêu dùng, chỉ số giá vàng, chỉ số giá đô la Mỹ bình quân năm khu vực thành thị (Năm trước = 100):
         kind: numeric
         min: 89.32
         max: 128.05
+        distinct: 111
         histogram: [ 1, 3, 79, 25, 5, 0, 0, 1 ]
       Nhóm hàng:
         kind: categorical

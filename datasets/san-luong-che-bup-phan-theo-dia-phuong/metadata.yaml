@@ -30,11 +30,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 26, 26, 26, 13, 26, 26, 26, 26 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 ]
       Sản lượng chè búp:
         kind: numeric
         min: 5.5
         max: 1154.1
+        distinct: 184
         histogram: [ 147, 33, 0, 0, 0, 1, 8, 6 ]
       Tỉnh, thành phố:
         kind: categorical

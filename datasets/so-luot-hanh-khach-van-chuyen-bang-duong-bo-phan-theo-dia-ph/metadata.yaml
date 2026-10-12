@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 213, 213, 213, 213, 213, 213, 213, 284 ]
+        distinct: 25
+        histogram: [ 284, 284, 284, 284, 284, 284, 71 ]
       Số lượt hành khách vận chuyển bằng đường bộ:
         kind: numeric
         min: 0.4
         max: 4877.26
+        distinct: 882
         histogram: [ 1661, 50, 21, 4, 3, 4, 2, 3 ]
       Tỉnh, thành phố:
         kind: categorical

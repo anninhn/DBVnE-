@@ -31,12 +31,30 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 18, 9, 18, 9, 9, 18, 27, 27 ]
+        distinct: 15
+        values:
+          - 2002
+          - 2004
+          - 2006
+          - 2008
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ]
       Tỷ lệ dân số được sử dụng nguồn nước hợp vệ sinh:
         kind: numeric
         min: 67
         max: 100
-        histogram: [ 1, 1, 2, 7, 8, 12, 24, 62 ]
+        distinct: 25
+        histogram: [ 1, 1, 7, 9, 13, 27, 59 ]
       Phân tổ:
         kind: categorical
         distinct: 9

@@ -30,11 +30,23 @@ files:
         kind: numeric
         min: 2015
         max: 2023
-        histogram: [ 58, 58, 58, 58, 58, 58, 58, 116 ]
+        distinct: 9
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 58, 58, 58, 58, 58, 58, 58, 58, 58 ]
       Số giảng viên các trường đại học:
         kind: numeric
         min: 11
         max: 84031
+        distinct: 410
         histogram: [ 422, 18, 17, 6, 0, 0, 4, 5 ]
       Địa phương:
         kind: categorical

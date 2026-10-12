@@ -31,31 +31,46 @@ files:
         kind: numeric
         min: 2014
         max: 2024
-        histogram: [ 14, 14, 0, 14, 14, 0, 14, 14 ]
+        distinct: 6
+        values:
+          - 2014
+          - 2016
+          - 2018
+          - 2020
+          - 2022
+          - 2024
+        histogram: [ 14, 14, 14, 14, 14, 14 ]
       Chung:
         kind: numeric
         min: 100
         max: 100
-        histogram: [ 84, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 100
+        histogram: [ 84 ]
       Nhà kiên cố:
         kind: numeric
         min: 7.6
         max: 93.63
+        distinct: 69
         histogram: [ 13, 5, 2, 26, 26, 6, 0, 6 ]
       Nhà bán kiên cố:
         kind: numeric
         min: 6.33
         max: 87
+        distinct: 77
         histogram: [ 6, 0, 13, 34, 13, 1, 6, 11 ]
       Nhà thiếu kiên cố:
         kind: numeric
         min: 0
         max: 16.2
+        distinct: 63
         histogram: [ 36, 14, 15, 7, 4, 3, 3, 2 ]
       Nhà đơn sơ:
         kind: numeric
         min: 0
         max: 10.2
+        distinct: 49
         histogram: [ 49, 14, 9, 5, 1, 2, 1, 2 ]
       Phân tổ:
         kind: categorical

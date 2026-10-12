@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2006
         max: 2024
-        histogram: [ 45, 30, 30, 30, 45, 30, 30, 45 ]
+        distinct: 19
+        histogram: [ 45, 45, 45, 45, 45, 45, 15 ]
       Độ ẩm không khí trung bình tại một số trạm quan trắc:
         kind: numeric
         min: 73.9
         max: 88.4
+        distinct: 129
         histogram: [ 10, 20, 53, 69, 67, 36, 19, 11 ]
       Tỉnh, thành phố:
         kind: categorical

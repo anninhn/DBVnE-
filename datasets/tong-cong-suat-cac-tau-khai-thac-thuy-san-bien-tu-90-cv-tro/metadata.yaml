@@ -30,11 +30,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 68, 68, 68, 34, 68, 68, 68, 68 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34, 34 ]
       Tổng công suất các tàu khai thác thủy sản biển từ 90 CV trở lên:
         kind: numeric
         min: 0
         max: 14723
+        distinct: 485
         histogram: [ 458, 18, 12, 4, 8, 2, 1, 7 ]
       Tỉnh, thành phố:
         kind: categorical

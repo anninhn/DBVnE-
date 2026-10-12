@@ -31,11 +31,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Năng suất lao động:
         kind: numeric
         min: 41.9
         max: 675.5
+        distinct: 423
         histogram: [ 241, 164, 51, 21, 4, 3, 2, 4 ]
       Tỉnh, thành phố:
         kind: categorical

@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Số lượng trâu:
         kind: numeric
         min: 0.1
         max: 2996.4
+        distinct: 977
         histogram: [ 1996, 3, 27, 15, 15, 3, 7, 20 ]
       Tỉnh, thành phố:
         kind: categorical

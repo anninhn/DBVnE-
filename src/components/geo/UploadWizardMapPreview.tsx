@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Map as MapIcon } from "lucide-react";
 import GeoJsonMapLazy from "./GeoJsonMapLazy";
+import { proxiedR2Url } from "@/lib/r2/proxy";
 import type { UploadResult } from "@/components/upload/UploadWizard";
 
 /**
@@ -31,7 +32,7 @@ export default function UploadWizardMapPreview({ upload, height = 250 }: Props) 
     (async () => {
       setState("loading");
       try {
-        const res = await fetch(url);
+        const res = await fetch(proxiedR2Url(url));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const json = (await res.json()) as GeoJSON.FeatureCollection;
         if (!json || json.type !== "FeatureCollection" || !Array.isArray(json.features)) {

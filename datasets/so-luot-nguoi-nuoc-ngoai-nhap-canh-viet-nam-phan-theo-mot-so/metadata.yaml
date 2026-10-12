@@ -30,11 +30,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 56, 56, 56, 28, 56, 56, 56, 56 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28 ]
       Số lượt người nước ngoài nhập cảnh Việt Nam:
         kind: numeric
         min: 0.1
         max: 18008.6
+        distinct: 388
         histogram: [ 396, 9, 5, 4, 1, 2, 1, 2 ]
       Quốc tịch:
         kind: categorical

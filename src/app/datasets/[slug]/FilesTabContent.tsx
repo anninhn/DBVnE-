@@ -9,7 +9,7 @@ import {
   FileAudio,
   File,
 } from "lucide-react";
-import type { Resource } from "@/lib/types/dataset";
+import type { DataDictionaryEntry, Resource } from "@/lib/types/dataset";
 import { formatCompactNumber } from "@/lib/format";
 
 // Lazy-load R2FileViewer — component kéo theo xlsx (~711 KB parsed) và các parser
@@ -41,6 +41,8 @@ interface FilesTabContentProps {
   resources: Resource[];
   slug: string;
   canDownload?: boolean;
+  /** Chuyển tiếp cho R2FileViewer — xem chú thích `dictionary` ở component đó. */
+  dictionary?: DataDictionaryEntry[];
 }
 
 /**
@@ -48,7 +50,12 @@ interface FilesTabContentProps {
  *
  * Client component vì cần state toggle cho mỗi row.
  */
-export default function FilesTabContent({ resources, slug, canDownload = true }: FilesTabContentProps) {
+export default function FilesTabContent({
+  resources,
+  slug,
+  canDownload = true,
+  dictionary,
+}: FilesTabContentProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   if (resources.length === 0) {
@@ -115,7 +122,12 @@ export default function FilesTabContent({ resources, slug, canDownload = true }:
               {expandedId === r.id && (
                 <tr className="border-b border-hf-border">
                   <td colSpan={5} className="px-3 py-2 bg-hf-bg">
-                    <R2FileViewer resource={r} canDownload={canDownload} slug={slug} />
+                    <R2FileViewer
+                      resource={r}
+                      canDownload={canDownload}
+                      slug={slug}
+                      dictionary={dictionary}
+                    />
                   </td>
                 </tr>
               )}

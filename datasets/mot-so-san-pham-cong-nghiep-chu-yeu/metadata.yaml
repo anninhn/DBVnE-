@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 332, 332, 249, 332, 332, 249, 332, 332 ]
+        distinct: 30
+        histogram: [ 332, 332, 332, 332, 332, 332, 332, 166 ]
       Một số sản phẩm công nghiệp chủ yếu:
         kind: numeric
         min: 0
         max: 416972.05
+        distinct: 1977
         histogram: [ 1901, 74, 11, 3, 5, 3, 1, 2 ]
       Sản phẩm chủ yếu:
         kind: categorical

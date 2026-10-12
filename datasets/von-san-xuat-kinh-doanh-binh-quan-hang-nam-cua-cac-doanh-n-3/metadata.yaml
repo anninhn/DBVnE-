@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 100, 0, 0, 200, 200, 100, 200, 200 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 ]
       Vốn sản xuất kinh doanh bình quân hàng năm của các doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh:
         kind: numeric
         min: 0
         max: 61945070
+        distinct: 998
         histogram: [ 968, 18, 6, 2, 1, 2, 1, 2 ]
       Ngành kinh tế:
         kind: categorical

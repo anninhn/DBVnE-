@@ -111,7 +111,26 @@ export interface Resource {
  * `segments` mà bỏ qua cờ này sẽ kết luận sai rằng một giá trị không tồn tại.
  */
 export type ColumnStats =
-  | { kind: "numeric"; min: number; max: number; histogram: number[] }
+  | {
+      kind: "numeric";
+      min: number;
+      max: number;
+      histogram: number[];
+      /** Số giá trị khác nhau — quyết định chia bin theo khoảng hay theo giá trị */
+      distinct?: number;
+      /**
+       * Giá trị của từng cột trong `histogram`, khi cột có ít giá trị khác nhau.
+       *
+       * Có mặt = mỗi cột ứng với ĐÚNG MỘT giá trị (đếm tần suất), không phải một
+       * khoảng. Vắng mặt = chia khoảng đều từ `min` tới `max` như cũ.
+       *
+       * Vì sao cần: nhồi 12 tháng vào 8 khoảng đều tạo ra hình dạng KHÔNG có
+       * trong dữ liệu. Đo thực tế cột `Tháng` (12 tháng × 345 dòng, đều tuyệt
+       * đối) ra `[690,345,690,345,345,690,345,690]` — dãy xen kẽ đó chỉ là hệ quả
+       * của việc mỗi khoảng rộng 1,375 tháng nên chứa 2 hoặc 1 tháng.
+       */
+      values?: number[];
+    }
   | {
       kind: "categorical";
       distinct: number;

@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 20, 20, 15, 20, 20, 15, 20, 20 ]
+        distinct: 30
+        histogram: [ 20, 20, 20, 20, 20, 20, 20, 10 ]
       Lượt hành khách (Triệu lượt người):
         kind: numeric
         min: 1.38
         max: 5481.85
+        distinct: 141
         histogram: [ 100, 13, 7, 9, 7, 7, 4, 3 ]
       Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 37.36
         max: 379.7
+        distinct: 131
         histogram: [ 9, 123, 14, 1, 0, 0, 2, 1 ]
       Ngành:
         kind: categorical

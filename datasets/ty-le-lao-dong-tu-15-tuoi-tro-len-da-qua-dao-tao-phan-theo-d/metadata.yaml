@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2008
         max: 2024
-        histogram: [ 140, 140, 140, 140, 140, 140, 140, 210 ]
+        distinct: 17
+        histogram: [ 210, 210, 210, 210, 210, 140 ]
       Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo:
         kind: numeric
         min: 4.5
         max: 53.9
+        distinct: 587
         histogram: [ 153, 467, 281, 165, 70, 33, 11, 10 ]
       Địa phương:
         kind: categorical

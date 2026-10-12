@@ -30,16 +30,23 @@ files:
         kind: numeric
         min: 38225
         max: 38225
-        histogram: [ 23, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 38225
+        histogram: [ 23 ]
       Năm:
         kind: numeric
         min: 2024
         max: 2024
-        histogram: [ 23, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 2024
+        histogram: [ 23 ]
       Số lượt người đã được trợ giúp pháp lý:
         kind: numeric
         min: 1.195
         max: 251
+        distinct: 20
         histogram: [ 17, 0, 2, 1, 0, 0, 0, 1 ]
       CẢ NƯỚC:
         kind: categorical

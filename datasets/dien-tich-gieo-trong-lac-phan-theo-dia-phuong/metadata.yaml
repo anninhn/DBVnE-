@@ -32,11 +32,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 67, 67, 67, 0, 67, 67, 67, 67 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 67, 67, 67, 67, 67, 67, 67 ]
       Diện tích gieo trồng lạc:
         kind: numeric
         min: 1.006
         max: 990
+        distinct: 446
         histogram: [ 340, 39, 14, 27, 18, 10, 11, 10 ]
       Tỉnh, thành phố:
         kind: categorical

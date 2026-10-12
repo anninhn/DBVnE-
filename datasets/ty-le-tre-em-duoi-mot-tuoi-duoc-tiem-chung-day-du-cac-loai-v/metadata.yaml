@@ -31,11 +31,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 140, 140, 140, 70, 140, 140, 140, 140 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Tỷ lệ trẻ em dưới một tuổi được tiêm chủng đầy đủ các loại vắc xin:
         kind: numeric
         min: 42.7
         max: 100
+        distinct: 499
         histogram: [ 3, 10, 10, 17, 32, 38, 156, 784 ]
       Địa phương:
         kind: categorical

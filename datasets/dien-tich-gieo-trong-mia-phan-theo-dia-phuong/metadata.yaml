@@ -30,11 +30,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 69, 69, 69, 0, 69, 69, 69, 69 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 69, 69, 69, 69, 69, 69, 69 ]
       Diện tích gieo trồng mía:
         kind: numeric
         min: 0
         max: 961
+        distinct: 404
         histogram: [ 288, 87, 50, 19, 14, 4, 6, 10 ]
       Tỉnh, thành phố:
         kind: categorical

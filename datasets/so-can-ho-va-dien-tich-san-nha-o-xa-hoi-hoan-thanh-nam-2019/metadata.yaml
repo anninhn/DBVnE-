@@ -32,12 +32,30 @@ files:
         kind: numeric
         min: 184
         max: 14030
-        histogram: [ 9, 0, 0, 0, 0, 2, 0, 2 ]
+        distinct: 7
+        values:
+          - 184
+          - 556
+          - 1409
+          - 1856
+          - 10025
+          - 12621
+          - 14030
+        histogram: [ 2, 2, 3, 2, 2, 1, 1 ]
       Diện tích sàn nhà ở (m2):
         kind: numeric
         min: 9200
         max: 701500
-        histogram: [ 9, 0, 0, 0, 0, 2, 0, 2 ]
+        distinct: 7
+        values:
+          - 9200
+          - 27800
+          - 70450
+          - 92800
+          - 501250
+          - 631050
+          - 701500
+        histogram: [ 2, 2, 3, 2, 2, 1, 1 ]
       Vùng:
         kind: categorical
         distinct: 6

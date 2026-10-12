@@ -31,22 +31,41 @@ files:
         kind: numeric
         min: 50
         max: 52.2
-        histogram: [ 1, 0, 0, 0, 1, 0, 0, 1 ]
+        distinct: 3
+        values:
+          - 50
+          - 51.2
+          - 52.2
+        histogram: [ 1, 1, 1 ]
       Lao động:
         kind: numeric
         min: 1.8
         max: 15.3
-        histogram: [ 1, 0, 0, 0, 1, 0, 0, 1 ]
+        distinct: 3
+        values:
+          - 1.8
+          - 9.6
+          - 15.3
+        histogram: [ 1, 1, 1 ]
       Năng suất các nhân tố tổng hợp (TFP):
         kind: numeric
         min: 34.7
         max: 46
-        histogram: [ 1, 0, 0, 1, 0, 0, 0, 1 ]
+        distinct: 3
+        values:
+          - 34.7
+          - 39.3
+          - 46
+        histogram: [ 1, 1, 1 ]
       Tốc độ tăng TFP:
         kind: numeric
         min: 2.1
         max: 2.9
-        histogram: [ 2, 0, 0, 0, 0, 0, 0, 1 ]
+        distinct: 2
+        values:
+          - 2.1
+          - 2.9
+        histogram: [ 2, 1 ]
       Giai đoạn:
         kind: categorical
         distinct: 3

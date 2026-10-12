@@ -31,31 +31,44 @@ files:
         kind: numeric
         min: 2002
         max: 2007
-        histogram: [ 71, 71, 0, 71, 71, 0, 71, 71 ]
+        distinct: 6
+        values:
+          - 2002
+          - 2003
+          - 2004
+          - 2005
+          - 2006
+          - 2007
+        histogram: [ 71, 71, 71, 71, 71, 71 ]
       Tổng số:
         kind: numeric
         min: 1.006
         max: 965
+        distinct: 367
         histogram: [ 402, 6, 0, 1, 1, 3, 3, 4 ]
       Bệnh viện:
         kind: numeric
         min: 1
         max: 995
+        distinct: 282
         histogram: [ 318, 1, 1, 9, 9, 22, 33, 27 ]
       Phòng khám khu vực:
         kind: numeric
         min: 1.002
         max: 784
+        distinct: 140
         histogram: [ 165, 132, 64, 14, 11, 6, 2, 4 ]
       B.V điều dưỡng và phục hồi chức năng:
         kind: numeric
         min: 2.491
         max: 950
+        distinct: 55
         histogram: [ 190, 21, 10, 6, 2, 1, 5, 6 ]
       Trạm y tế xã, phường, cơ quan, XN:
         kind: numeric
         min: 1
         max: 983
+        distinct: 254
         histogram: [ 114, 31, 47, 49, 57, 56, 51, 15 ]
       Địa phương:
         kind: categorical

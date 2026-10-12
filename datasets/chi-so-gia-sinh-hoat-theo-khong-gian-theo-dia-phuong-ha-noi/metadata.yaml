@@ -32,11 +32,28 @@ files:
         kind: numeric
         min: 2011
         max: 2024
-        histogram: [ 126, 126, 63, 126, 126, 63, 126, 126 ]
+        distinct: 14
+        values:
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63 ]
       Chỉ số giá sinh hoạt:
         kind: numeric
         min: 78.17
         max: 101.47
+        distinct: 635
         histogram: [ 9, 27, 58, 124, 235, 261, 131, 37 ]
       Tỉnh, thành phố:
         kind: categorical

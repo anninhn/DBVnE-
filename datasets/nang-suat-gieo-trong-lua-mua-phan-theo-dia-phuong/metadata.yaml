@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Năng suất gieo trồng lúa mùa:
         kind: numeric
         min: 3.3
         max: 67.8
+        distinct: 496
         histogram: [ 41, 106, 206, 370, 417, 427, 357, 44 ]
       Tỉnh, thành phố:
         kind: categorical

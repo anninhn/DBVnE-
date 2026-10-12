@@ -31,11 +31,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Thu nhập bình quân một lao động đang làm việc:
         kind: numeric
         min: 2059.77
         max: 10815.26
+        distinct: 489
         histogram: [ 27, 82, 137, 115, 73, 36, 15, 5 ]
       Tỉnh/Thành phố:
         kind: categorical

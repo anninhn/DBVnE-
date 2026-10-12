@@ -31,11 +31,15 @@ files:
         kind: numeric
         min: 2024
         max: 2024
-        histogram: [ 70, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 2024
+        histogram: [ 70 ]
       Kết quả thi hành án dân sự:
         kind: numeric
         min: 1.033
         max: 970
+        distinct: 69
         histogram: [ 12, 6, 10, 13, 13, 6, 2, 8 ]
       Địa phương:
         kind: categorical

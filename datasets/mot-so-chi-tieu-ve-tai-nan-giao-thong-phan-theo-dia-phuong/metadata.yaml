@@ -30,21 +30,29 @@ files:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [ 71, 0, 0, 0, 71, 0, 0, 71 ]
+        distinct: 3
+        values:
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 71, 71, 71 ]
       Số Vụ TNGT (Vụ):
         kind: numeric
         min: 1.138
         max: 894
+        distinct: 188
         histogram: [ 70, 54, 28, 31, 15, 5, 4, 6 ]
       Số người chết (người):
         kind: numeric
         min: 1.04
         max: 959
+        distinct: 169
         histogram: [ 115, 64, 18, 5, 5, 4, 0, 2 ]
       Số người bị thương (Người):
         kind: numeric
         min: 1
         max: 965
+        distinct: 176
         histogram: [ 94, 56, 33, 11, 9, 2, 4, 2 ]
       Địa phương:
         kind: categorical

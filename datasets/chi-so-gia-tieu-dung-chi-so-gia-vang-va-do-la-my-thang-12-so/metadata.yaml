@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 38, 38, 57, 38, 38, 57, 38, 57 ]
+        distinct: 19
+        histogram: [ 38, 57, 57, 57, 57, 57, 38 ]
       Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ tháng 12 so với cùng kỳ năm trước:
         kind: numeric
         min: 75.64
         max: 177.57
+        distinct: 286
         histogram: [ 3, 74, 205, 23, 8, 2, 2, 1 ]
       Nhóm hàng:
         kind: categorical

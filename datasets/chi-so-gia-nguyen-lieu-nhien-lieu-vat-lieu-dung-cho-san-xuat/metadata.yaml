@@ -31,11 +31,24 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 70, 35, 35, 35, 35, 35, 35, 70 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 35, 35, 35, 35, 35, 35, 35, 35, 35, 35 ]
       Chỉ số giá nguyên liệu, nhiên liệu, vật liệu dùng cho sản xuất (Năm 2014 = 100):
         kind: numeric
         min: 68.17
         max: 155.21
+        distinct: 320
         histogram: [ 2, 3, 59, 152, 78, 41, 12, 3 ]
       Mục đích, ngành sản phẩm:
         kind: categorical

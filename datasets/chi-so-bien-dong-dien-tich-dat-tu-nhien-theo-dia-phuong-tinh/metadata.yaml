@@ -24,190 +24,194 @@ confidence: high
 uploaded_by: ninh
 uploaded_at: "2026-09-04T07:57:39.617Z"
 coverage:
-  temporal: [2019, 2023]
+  temporal: [ 2019, 2023 ]
 files:
   - filename: "chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh.csv"
     path: "chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh/chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh.csv"
     r2_key: "009010d9-5741-4891-b3ce-1cedca7dd7bc/chi-so-bien-dong-dien-tich-dat-tu-nhien-theo-dia-phuong-tinh.csv"
     size_mb: 0.02
     column_stats:
-      "Đất sản xuất nông nghiệp":
+      Đất sản xuất nông nghiệp:
         kind: numeric
         min: 63.14
         max: 160
-        histogram: [1, 0, 49, 229, 0, 0, 1, 1]
-      "Đất lâm nghiêp":
+        distinct: 112
+        histogram: [ 1, 0, 49, 229, 0, 0, 1, 1 ]
+      Đất lâm nghiêp:
         kind: numeric
         min: 0
         max: 115.24
-        histogram: [2, 0, 0, 0, 0, 0, 247, 22]
-      "Đất chuyên dùng":
+        distinct: 87
+        histogram: [ 2, 0, 0, 0, 0, 0, 247, 22 ]
+      Đất chuyên dùng:
         kind: numeric
         min: 31.35
         max: 160
-        histogram: [2, 0, 0, 2, 276, 0, 0, 1]
-      "Đất ở":
+        distinct: 193
+        histogram: [ 2, 0, 0, 2, 276, 0, 0, 1 ]
+      Đất ở:
         kind: numeric
         min: 98.84
         max: 112.43
-        histogram: [122, 130, 18, 4, 5, 0, 0, 1]
-      "Phân theo địa phương":
+        distinct: 164
+        histogram: [ 122, 130, 18, 4, 5, 0, 0, 1 ]
+      Phân theo địa phương:
         kind: categorical
         distinct: 71
-        complete: true
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 4
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 4
-          - label: "Hà Nội"
+          - label: Hà Nội
             count: 4
-          - label: "Vĩnh Phúc"
+          - label: Vĩnh Phúc
             count: 4
-          - label: "Bắc Ninh"
+          - label: Bắc Ninh
             count: 4
-          - label: "Quảng Ninh"
+          - label: Quảng Ninh
             count: 4
-          - label: "Hải Dương"
+          - label: Hải Dương
             count: 4
-          - label: "Hải Phòng"
+          - label: Hải Phòng
             count: 4
-          - label: "Hưng Yên"
+          - label: Hưng Yên
             count: 4
-          - label: "Thái Bình"
+          - label: Thái Bình
             count: 4
-          - label: "Hà Nam"
+          - label: Hà Nam
             count: 4
-          - label: "Nam Định"
+          - label: Nam Định
             count: 4
-          - label: "Ninh Bình"
+          - label: Ninh Bình
             count: 4
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 4
-          - label: "Hà Giang"
+          - label: Hà Giang
             count: 4
-          - label: "Cao Bằng"
+          - label: Cao Bằng
             count: 4
-          - label: "Bắc Kạn"
+          - label: Bắc Kạn
             count: 4
-          - label: "Tuyên Quang"
+          - label: Tuyên Quang
             count: 4
-          - label: "Lào Cai"
+          - label: Lào Cai
             count: 4
-          - label: "Yên Bái"
+          - label: Yên Bái
             count: 4
-          - label: "Thái Nguyên"
+          - label: Thái Nguyên
             count: 4
-          - label: "Lạng Sơn"
+          - label: Lạng Sơn
             count: 4
-          - label: "Bắc Giang"
+          - label: Bắc Giang
             count: 4
-          - label: "Phú Thọ"
+          - label: Phú Thọ
             count: 4
-          - label: "Điện Biên"
+          - label: Điện Biên
             count: 4
-          - label: "Lai Châu"
+          - label: Lai Châu
             count: 4
-          - label: "Sơn La"
+          - label: Sơn La
             count: 4
-          - label: "Hoà Bình"
+          - label: Hoà Bình
             count: 4
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 4
-          - label: "Thanh Hoá"
+          - label: Thanh Hoá
             count: 4
-          - label: "Nghệ An"
+          - label: Nghệ An
             count: 4
-          - label: "Hà Tĩnh"
+          - label: Hà Tĩnh
             count: 4
-          - label: "Quảng Bình"
+          - label: Quảng Bình
             count: 4
-          - label: "Quảng Trị"
+          - label: Quảng Trị
             count: 4
-          - label: "Thừa Thiên - Huế"
+          - label: Thừa Thiên - Huế
             count: 4
-          - label: "Đà Nẵng"
+          - label: Đà Nẵng
             count: 4
-          - label: "Quảng Nam"
+          - label: Quảng Nam
             count: 4
-          - label: "Quảng Ngãi"
+          - label: Quảng Ngãi
             count: 4
-          - label: "Bình Định"
+          - label: Bình Định
             count: 4
-          - label: "Phú Yên"
+          - label: Phú Yên
             count: 4
-          - label: "Khánh Hoà"
+          - label: Khánh Hoà
             count: 4
-          - label: "Ninh Thuận"
+          - label: Ninh Thuận
             count: 4
-          - label: "Bình Thuận"
+          - label: Bình Thuận
             count: 4
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 4
-          - label: "Kon Tum"
+          - label: Kon Tum
             count: 4
-          - label: "Gia Lai"
+          - label: Gia Lai
             count: 4
-          - label: "Đắk Lắk"
+          - label: Đắk Lắk
             count: 4
-          - label: "Đắk Nông"
+          - label: Đắk Nông
             count: 4
-          - label: "Lâm Đồng"
+          - label: Lâm Đồng
             count: 4
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 4
-          - label: "Bình Phước"
+          - label: Bình Phước
             count: 4
-          - label: "Tây Ninh"
+          - label: Tây Ninh
             count: 4
-          - label: "Bình Dương"
+          - label: Bình Dương
             count: 4
-          - label: "Đồng Nai"
+          - label: Đồng Nai
             count: 4
-          - label: "Bà Rịa - Vũng Tàu"
+          - label: Bà Rịa - Vũng Tàu
             count: 4
-          - label: "TP. Hồ Chí Minh"
+          - label: TP. Hồ Chí Minh
             count: 4
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 4
-          - label: "Long An"
+          - label: Long An
             count: 4
-          - label: "Tiền Giang"
+          - label: Tiền Giang
             count: 4
-          - label: "Bến Tre"
+          - label: Bến Tre
             count: 4
-          - label: "Trà Vinh"
+          - label: Trà Vinh
             count: 4
-          - label: "Vĩnh Long"
+          - label: Vĩnh Long
             count: 4
-          - label: "Đồng Tháp"
+          - label: Đồng Tháp
             count: 4
-          - label: "An Giang"
+          - label: An Giang
             count: 4
-          - label: "Kiên Giang"
+          - label: Kiên Giang
             count: 4
-          - label: "Cần Thơ"
+          - label: Cần Thơ
             count: 4
-          - label: "Hậu Giang"
+          - label: Hậu Giang
             count: 4
-          - label: "Sóc Trăng"
+          - label: Sóc Trăng
             count: 4
-          - label: "Bạc Liêu"
+          - label: Bạc Liêu
             count: 4
-          - label: "Cà Mau"
+          - label: Cà Mau
             count: 4
-          - label: "Không xác định"
+          - label: Không xác định
             count: 4
-      "Kỳ so sánh":
+        complete: true
+      Kỳ so sánh:
         kind: categorical
         distinct: 4
-        complete: true
         segments:
-          - label: "2020/2019"
+          - label: 2020/2019
             count: 71
-          - label: "2021/2020"
+          - label: 2021/2020
             count: 71
-          - label: "2022/2021"
+          - label: 2022/2021
             count: 71
-          - label: "2023/2022"
+          - label: 2023/2022
             count: 71
+        complete: true

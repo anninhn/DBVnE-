@@ -30,56 +30,71 @@ files:
         kind: numeric
         min: 2021
         max: 2023
-        histogram: [ 71, 0, 0, 0, 71, 0, 0, 71 ]
+        distinct: 3
+        values:
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 71, 71, 71 ]
       Tổng số:
         kind: numeric
         min: 1.003
         max: 996
+        distinct: 211
         histogram: [ 183, 12, 3, 0, 3, 2, 2, 8 ]
       Dưới 5 người:
         kind: numeric
         min: 0
         max: 988
+        distinct: 212
         histogram: [ 173, 7, 3, 12, 6, 3, 2, 7 ]
       5-9 người:
         kind: numeric
         min: 1
         max: 985
+        distinct: 201
         histogram: [ 106, 17, 11, 15, 18, 8, 18, 20 ]
       10-49 người:
         kind: numeric
         min: 1.002
         max: 960
+        distinct: 200
         histogram: [ 106, 12, 20, 25, 14, 14, 11, 11 ]
       50-199 người:
         kind: numeric
         min: 1.773
         max: 935
+        distinct: 179
         histogram: [ 96, 49, 25, 19, 11, 7, 3, 3 ]
       200-299 người:
         kind: numeric
         min: 0
         max: 626
+        distinct: 94
         histogram: [ 180, 14, 5, 3, 5, 3, 1, 2 ]
       300-499 người:
         kind: numeric
         min: 0
         max: 979
+        distinct: 97
         histogram: [ 188, 9, 6, 6, 0, 0, 0, 4 ]
       500-999 người:
         kind: numeric
         min: 0
         max: 779
+        distinct: 82
         histogram: [ 186, 9, 9, 3, 0, 0, 1, 5 ]
       1000-4999 người:
         kind: numeric
         min: 0
         max: 581
+        distinct: 78
         histogram: [ 186, 10, 8, 3, 0, 0, 0, 6 ]
       5000 người trở lên:
         kind: numeric
         min: 0
         max: 237
+        distinct: 36
         histogram: [ 201, 3, 6, 0, 0, 0, 0, 3 ]
       Tỉnh/thành phố:
         kind: categorical

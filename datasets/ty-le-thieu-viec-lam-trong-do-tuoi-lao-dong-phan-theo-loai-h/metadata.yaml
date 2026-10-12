@@ -30,11 +30,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 8, 8, 8, 4, 8, 8, 8, 8 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ]
       Tổng số (%):
         kind: numeric
         min: 0.05
         max: 4.11
+        distinct: 54
         histogram: [ 21, 6, 3, 8, 9, 6, 6, 1 ]
       Thành phần kinh tế:
         kind: categorical

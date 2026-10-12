@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 30, 30, 45, 30, 30, 45, 30, 45 ]
+        distinct: 19
+        histogram: [ 30, 45, 45, 45, 45, 45, 30 ]
       Diện tích (Nghìn ha):
         kind: numeric
         min: 0
         max: 752.4
+        distinct: 213
         histogram: [ 128, 46, 5, 15, 5, 8, 15, 9 ]
       Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 75.7
         max: 125.5
+        distinct: 131
         histogram: [ 3, 3, 9, 75, 108, 21, 7, 3 ]
       Một số cây lâu năm:
         kind: categorical

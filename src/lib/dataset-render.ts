@@ -18,7 +18,15 @@ export interface MetadataForRender {
 
 /** ColumnStats — matches type từ dataset.ts, giữ render file pure (không import type) */
 type ColumnStatsForRender =
-  | { kind: "numeric"; min: number; max: number; histogram: number[] }
+  | {
+      kind: "numeric";
+      min: number;
+      max: number;
+      histogram: number[];
+      distinct?: number;
+      /** Có mặt = mỗi cột histogram ứng với ĐÚNG MỘT giá trị, không phải khoảng */
+      values?: number[];
+    }
   | {
       kind: "categorical";
       distinct: number;
@@ -92,6 +100,15 @@ function renderColumnStatsYaml(
       lines.push(`${pad}  kind: numeric`);
       lines.push(`${pad}  min: ${stat.min}`);
       lines.push(`${pad}  max: ${stat.max}`);
+      if (stat.distinct != null) {
+        lines.push(`${pad}  distinct: ${stat.distinct}`);
+      }
+      // `values` PHẢI ghi ra: thiếu nó thì bên đọc không biết histogram đang đếm
+      // theo giá trị hay chia theo khoảng, và sẽ dán nhãn khoảng sai — ví dụ ghi
+      // "2002 – 2005" cho một cột thật ra đếm riêng từng năm.
+      if (stat.values && stat.values.length > 0) {
+        lines.push(`${pad}  values: [${stat.values.join(", ")}]`);
+      }
       lines.push(`${pad}  histogram: [${stat.histogram.join(", ")}]`);
     } else {
       lines.push(`${pad}  kind: categorical`);

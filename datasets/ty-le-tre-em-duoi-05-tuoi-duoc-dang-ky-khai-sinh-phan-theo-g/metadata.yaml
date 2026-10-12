@@ -31,11 +31,20 @@ files:
         kind: numeric
         min: 2019
         max: 2024
-        histogram: [ 9, 9, 0, 9, 9, 0, 9, 9 ]
+        distinct: 6
+        values:
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 9, 9, 9, 9, 9, 9 ]
       Tỷ lệ trẻ em dưới 05 tuổi được đăng ký khai sinh:
         kind: numeric
         min: 97.11
         max: 99.72
+        distinct: 46
         histogram: [ 2, 4, 4, 3, 6, 19, 9, 7 ]
       Giới tính, vùng:
         kind: categorical

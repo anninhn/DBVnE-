@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 142, 142, 213, 142, 142, 213, 142, 213 ]
+        distinct: 19
+        histogram: [ 142, 213, 213, 213, 213, 213, 142 ]
       Tỷ lệ tăng dân số:
         kind: numeric
         min: -1.22
         max: 8.58
+        distinct: 340
         histogram: [ 82, 863, 313, 50, 12, 4, 3, 2 ]
       Tỉnh/Thành phố:
         kind: categorical

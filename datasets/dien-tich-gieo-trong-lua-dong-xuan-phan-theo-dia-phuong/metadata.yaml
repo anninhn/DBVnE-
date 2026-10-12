@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Diện tích gieo trồng lúa đông xuân:
         kind: numeric
         min: 0.4
         max: 3168
+        distinct: 997
         histogram: [ 1953, 60, 2, 25, 3, 0, 3, 27 ]
       Tỉnh, thành phố:
         kind: categorical

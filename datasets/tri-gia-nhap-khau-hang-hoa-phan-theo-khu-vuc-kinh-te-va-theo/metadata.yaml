@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 48, 48, 36, 48, 48, 36, 48, 48 ]
+        distinct: 30
+        histogram: [ 48, 48, 48, 48, 48, 48, 48, 24 ]
       Giá trị (Triệu đô la Mỹ):
         kind: numeric
         min: 0
         max: 380990.6
+        distinct: 344
         histogram: [ 251, 35, 26, 13, 9, 3, 5, 3 ]
       Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 201
         histogram: [ 163, 5, 34, 32, 26, 21, 4, 59 ]
       Khu vực kinh tế, nhóm hàng:
         kind: categorical

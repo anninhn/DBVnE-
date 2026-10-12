@@ -383,12 +383,16 @@ files:
         kind: numeric
         min: 500000
         max: 500000
-        histogram: [ 1, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 500000
+        histogram: [ 1 ]
       ref:
         kind: numeric
         min: 196
         max: 230
-        histogram: [ 3, 4, 4, 4, 5, 4, 4, 5 ]
+        distinct: 33
+        histogram: [ 3, 5, 5, 5, 5, 5, 5 ]
       colour:
         kind: categorical
         distinct: 1
@@ -400,7 +404,10 @@ files:
         kind: numeric
         min: 140
         max: 140
-        histogram: [ 2, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 140
+        histogram: [ 2 ]
       branch:type:
         kind: categorical
         distinct: 1

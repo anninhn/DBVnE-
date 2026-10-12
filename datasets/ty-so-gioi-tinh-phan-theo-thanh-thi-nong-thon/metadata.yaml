@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 9, 9, 9, 9, 9, 9, 9, 12 ]
+        distinct: 25
+        histogram: [ 12, 12, 12, 12, 12, 12, 3 ]
       Tỷ số giới tính của dân số (Số nam/100 nữ):
         kind: numeric
         min: 94.3
         max: 100.7
+        distinct: 54
         histogram: [ 12, 2, 8, 17, 10, 12, 9, 5 ]
       Tỷ số giới tính khi sinh (Số bé trai/100 bé gái):
         kind: numeric
         min: 99.5
         max: 118
+        distinct: 57
         histogram: [ 1, 1, 6, 7, 17, 31, 10, 2 ]
       Phân tổ:
         kind: categorical

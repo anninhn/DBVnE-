@@ -32,21 +32,36 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 11, 11, 11, 11, 11, 11, 22, 22 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 11, 11, 11, 11, 11, 11, 11, 11, 11, 11 ]
       Thu nhập bình quân đầu người một tháng (Nghìn đồng) - Nhóm thu nhập thấp nhất:
         kind: numeric
         min: 282
         max: 2582.14
+        distinct: 106
         histogram: [ 21, 25, 25, 17, 6, 7, 5, 4 ]
       Thu nhập bình quân đầu người một tháng (Nghìn đồng) - Nhóm thu nhập cao nhất:
         kind: numeric
         min: 2137
         max: 13875
+        distinct: 109
         histogram: [ 9, 13, 13, 24, 18, 14, 11, 8 ]
       Nhóm thu nhập cao nhất so với nhóm thu nhập thấp nhất (Lần):
         kind: numeric
         min: 4.44
         max: 10.5
+        distinct: 71
         histogram: [ 2, 9, 6, 22, 33, 13, 16, 9 ]
       Phân tổ:
         kind: categorical

@@ -1,5 +1,159 @@
 [
   {
+    "slug": "toc-do-tang-truong-grdp-34-tinh-thanh-pho-quy-iii-va-9-thang",
+    "title": "Tốc độ tăng trưởng GRDP 34 tỉnh, thành phố quý III và 9 tháng đầu năm 2026",
+    "description": "Dữ liệu thể hiện tốc độ tăng trưởng tổng sản phẩm trên địa bàn (GRDP) của 34 tỉnh, thành phố trực thuộc Trung ương, ước tính cho quý III và 9 tháng đầu năm 2026. Các chỉ số được tính theo giá so sánh năm 2020 và được phân loại theo các khu vực kinh tế chính.",
+    "category": "kinh-te",
+    "tags": [
+      "grdp",
+      "toc-do-tang-truong",
+      "kinh-te",
+      "tinh-thanh",
+      "2026"
+    ],
+    "uploaded_at": "2026-10-05T07:28:46.529Z",
+    "uploaded_by": "thanhlan",
+    "row_count": 241,
+    "file_count": 1,
+    "total_size_mb": 0.03,
+    "format": "xlsx",
+    "source": "Tổng cục Thống kê (GSO)",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "376bf752-c575-41ad-83c8-9b6c1239fcc7/01._GRDP_34_t_nh_Q3_9_th_ng_2026_-final.xlsx",
+        "size_mb": 0.03
+      }
+    ]
+  },
+  {
+    "slug": "danh-sach-cac-diem-ngap-tai-tp-ho-chi-minh-den-6-2026",
+    "title": "Danh sách các điểm ngập tại TP. Hồ Chí Minh",
+    "description": "Dataset liệt kê 159 điểm ngập tại TP. Hồ Chí Minh, bao gồm nguyên nhân gây ngập (do mưa, triều hoặc cả hai), mức độ ngập (thường xuyên, vừa, nhẹ), địa bàn hành chính và vị trí cụ thể của điểm ngập.",
+    "category": "moi-truong",
+    "tags": [
+      "ngap-lut",
+      "tp-hcm",
+      "moi-truong",
+      "do-thi"
+    ],
+    "uploaded_at": "2026-10-02T03:49:58.862Z",
+    "uploaded_by": "hang",
+    "row_count": 78,
+    "file_count": 1,
+    "total_size_mb": 0.01,
+    "format": "xlsx",
+    "source": "PV Gia Minh/Thời sự Sài Gòn thu thập từ Sở Xây dựng  TP HCM ngày 2/10/2026)",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "56eb7b04-a371-4de3-bf34-be1a6f1e1b33/159_diem_ngap_3_khu_vuc_gon.xlsx",
+        "size_mb": 0.01
+      }
+    ]
+  },
+  {
+    "slug": "thong-ke-thien-tai-viet-nam-giai-doan-1953-2023",
+    "title": "Thống kê thiên tai Việt Nam giai đoạn 1953-2023",
+    "description": "Dataset tổng hợp thông tin về các sự kiện thiên tai tự nhiên xảy ra tại Việt Nam từ năm 1953 đến 2023. Dữ liệu bao gồm phân loại sự kiện, địa điểm, thời gian, số liệu về người chết, bị thương, ảnh hưởng, và thiệt hại kinh tế.",
+    "category": "moi-truong",
+    "tags": [
+      "thien-tai",
+      "thiet-hai",
+      "tu-vong",
+      "viet-nam",
+      "xa-hoi",
+      "bão",
+      "lũ",
+      "sạt-lở",
+      "lở"
+    ],
+    "uploaded_at": "2026-10-01T02:50:52.867Z",
+    "uploaded_by": "hang",
+    "row_count": 335,
+    "file_count": 1,
+    "total_size_mb": 0.1,
+    "format": "xlsx",
+    "source": "EM-DAT (Centre for Research on the Epidemiology of Disasters)",
+    "source_url": "https://www.emdat.be/",
+    "year_range": [
+      1953,
+      2023
+    ],
+    "resources": [
+      {
+        "type": "xlsx",
+        "r2_key": "9bc63934-e8d2-481b-8624-2a92c4cce31f/disaster-in-vietnam_1900-to-2024.xlsx",
+        "size_mb": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "top-bai-viet-co-luot-xem-cao-nhat-tren-vnexpress",
+    "title": "Top bài viết có lượt xem cao nhất trên VnExpress",
+    "description": "Dữ liệu thống kê 100 bài viết có lượt xem (pageview) cao nhất mỗi tháng trên VnExpress, từ tháng 09/2025 đến tháng 08/2026. Bao gồm thông tin chi tiết về bài viết, chuyên mục, tác giả và các chỉ số tương tác.",
+    "category": "khac",
+    "tags": [
+      "pageview",
+      "bai-viet",
+      "vnexpress",
+      "thong-ke",
+      "media"
+    ],
+    "uploaded_at": "2026-09-29T08:47:57.278Z",
+    "uploaded_by": "ninh",
+    "row_count": 1200,
+    "file_count": 1,
+    "total_size_mb": 0.3,
+    "format": "csv",
+    "source": "VnExpress",
+    "source_url": "",
+    "year_range": [],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "7cd8c5ae-8b72-4272-953a-8185e1814524/Top_Pageviews_Thang_09-2025_08-2026.csv",
+        "size_mb": 0.3
+      }
+    ]
+  },
+  {
+    "slug": "du-lieu-tong-hop-ve-rung-va-bien-dong-rung-theo-vi-tri-dia-l",
+    "title": "Dữ liệu tổng hợp về rừng và biến động rừng theo vị trí địa lý tại Việt Nam",
+    "description": "Dataset cung cấp thông tin về diện tích rừng, tỷ lệ rừng, và các chỉ số phân tích không gian liên quan đến rừng trên khắp Việt Nam từ năm 1993 đến 2018, được phân loại theo tỉnh và huyện.",
+    "category": "moi-truong",
+    "tags": [
+      "moi-truong",
+      "rung",
+      "lam-nghiep",
+      "bien-dong-rung",
+      "viet-nam"
+    ],
+    "uploaded_at": "2026-09-18T07:22:25.763Z",
+    "uploaded_by": "ninh",
+    "row_count": 16049,
+    "file_count": 1,
+    "total_size_mb": 1.59,
+    "format": "csv",
+    "source": "unknown",
+    "source_url": "",
+    "year_range": [
+      1993,
+      2018
+    ],
+    "resources": [
+      {
+        "type": "csv",
+        "r2_key": "fd9e3aec-07a6-4a9c-b60a-762f16f442db/kepler_tong_hop.csv",
+        "size_mb": 1.59
+      }
+    ]
+  },
+  {
     "slug": "ty-le-nguoi-dan-tham-gia-mang-xa-hoi-phan-theo-thanh-thi-non",
     "title": "Tỷ lệ người dân tham gia mạng xã hội phân theo các nhóm đối tượng",
     "description": "Dữ liệu thống kê tỷ lệ phần trăm người dân Việt Nam tham gia mạng xã hội, được phân loại chi tiết theo giới tính, độ tuổi, khu vực sinh sống (thành thị/nông thôn), vùng địa lý và mức độ kỹ năng số.",
@@ -514,6 +668,8 @@
     ],
     "uploaded_at": "2026-09-03T04:14:49.694Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:18:05.937Z",
     "row_count": 4140,
     "file_count": 1,
     "total_size_mb": 0.1,
@@ -673,6 +829,8 @@
     ],
     "uploaded_at": "2026-09-03T04:13:10.744Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:19:30.426Z",
     "row_count": 90,
     "file_count": 1,
     "total_size_mb": 0.01,
@@ -2995,6 +3153,8 @@
     ],
     "uploaded_at": "2026-08-28T11:51:59.553Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:18:20.000Z",
     "row_count": 168,
     "file_count": 1,
     "total_size_mb": 0.01,
@@ -3535,6 +3695,8 @@
     ],
     "uploaded_at": "2026-08-28T11:46:21.899Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:18:31.753Z",
     "row_count": 350,
     "file_count": 1,
     "total_size_mb": 0.02,
@@ -7793,6 +7955,8 @@
     ],
     "uploaded_at": "2026-08-28T10:13:05.765Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:18:43.251Z",
     "row_count": 210,
     "file_count": 1,
     "total_size_mb": 0.01,
@@ -10565,6 +10729,8 @@
     ],
     "uploaded_at": "2026-08-28T09:43:00.017Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:18:55.137Z",
     "row_count": 300,
     "file_count": 1,
     "total_size_mb": 0.03,
@@ -13018,6 +13184,8 @@
     ],
     "uploaded_at": "2026-08-28T08:17:21.549Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:19:05.789Z",
     "row_count": 34,
     "file_count": 1,
     "total_size_mb": 0,
@@ -13077,6 +13245,8 @@
     ],
     "uploaded_at": "2026-08-28T08:16:35.076Z",
     "uploaded_by": "ninh",
+    "last_edited_by": "ninh",
+    "last_edited_at": "2026-09-07T11:19:18.365Z",
     "row_count": 36,
     "file_count": 1,
     "total_size_mb": 0,
@@ -15279,7 +15449,7 @@
   },
   {
     "slug": "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024-3",
-    "title": "Hiện trạng rừng các tỉnh thành Việt Nam giai đoạn 2005-2024",
+    "title": "Hiện trạng rừng cả nước và các tỉnh thành Việt Nam giai đoạn 2005-2024",
     "description": "Dataset cung cấp số liệu về tổng diện tích rừng, diện tích rừng tự nhiên, diện tích rừng trồng và tỷ lệ che phủ rừng của các tỉnh thành trên toàn quốc và tổng hợp cho cả nước, từ năm 2005 đến năm 2024.",
     "category": "moi-truong",
     "tags": [
@@ -15291,7 +15461,9 @@
     ],
     "uploaded_at": "2026-08-04T07:42:44.448Z",
     "uploaded_by": "ha",
-    "row_count": 1152,
+    "last_edited_by": "ha",
+    "last_edited_at": "2026-09-17T03:51:38.107Z",
+    "row_count": 1153,
     "file_count": 1,
     "total_size_mb": 0.05,
     "format": "csv",

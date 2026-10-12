@@ -31,7 +31,22 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 15, 15, 30, 15, 30, 30, 30, 30 ]
+        distinct: 13
+        values:
+          - 2010
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 ]
       Chỉ tiêu:
         kind: categorical
         distinct: 15

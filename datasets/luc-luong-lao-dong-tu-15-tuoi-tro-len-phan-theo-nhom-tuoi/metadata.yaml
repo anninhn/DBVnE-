@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 12, 12, 12, 12, 12, 12, 12, 16 ]
+        distinct: 25
+        histogram: [ 16, 16, 16, 16, 16, 16, 4 ]
       Tổng số (Nghìn người):
         kind: numeric
         min: 4641.4
         max: 55767.4
+        distinct: 100
         histogram: [ 36, 14, 0, 9, 16, 4, 6, 15 ]
       Cơ cấu (%):
         kind: numeric
         min: 9.61
         max: 100
+        distinct: 71
         histogram: [ 30, 20, 0, 0, 24, 1, 0, 25 ]
       Nhóm tuổi:
         kind: categorical

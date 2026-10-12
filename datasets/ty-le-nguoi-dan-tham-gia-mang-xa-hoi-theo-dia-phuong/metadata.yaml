@@ -30,11 +30,16 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 70, 0, 0, 0, 0, 0, 0, 70 ]
+        distinct: 2
+        values:
+          - 2010
+          - 2024
+        histogram: [ 70, 70 ]
       Tỷ lệ người dân tham gia mạng xã hội:
         kind: numeric
         min: 1.013
         max: 951
+        distinct: 92
         histogram: [ 119, 0, 0, 0, 1, 2, 5, 13 ]
       Địa phương:
         kind: categorical

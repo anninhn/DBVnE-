@@ -31,21 +31,34 @@ files:
         kind: numeric
         min: 2010
         max: 2024
+        distinct: 8
+        values:
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2020
+          - 2022
+          - 2024
         histogram: [ 16, 16, 16, 16, 16, 16, 16, 16 ]
       Chung:
         kind: numeric
         min: 0.05
         max: 9.7
+        distinct: 64
         histogram: [ 81, 29, 4, 4, 2, 2, 2, 4 ]
       Thành thị:
         kind: numeric
         min: 0.04
         max: 7.7
+        distinct: 63
         histogram: [ 60, 34, 18, 0, 6, 4, 2, 4 ]
       Nông thôn:
         kind: numeric
         min: 0
         max: 10.6
+        distinct: 63
         histogram: [ 86, 25, 5, 4, 0, 2, 2, 4 ]
       Phân tổ:
         kind: categorical

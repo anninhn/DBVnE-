@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 140, 70, 70, 70, 70, 70, 70, 140 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Tỷ lệ người tham gia bảo hiểm xã hội:
         kind: numeric
         min: 6.4
         max: 63.8
+        distinct: 323
         histogram: [ 209, 189, 106, 68, 54, 40, 16, 18 ]
       Tỉnh, thành phố:
         kind: categorical

@@ -31,21 +31,25 @@ files:
         kind: numeric
         min: 2005
         max: 2025
-        histogram: [ 2, 4, 6, 4, 6, 4, 6, 6 ]
+        distinct: 19
+        histogram: [ 2, 6, 6, 6, 6, 6, 6 ]
       Doanh nghiệp ngoài quốc doanh (Tổ chức khoa học và công nghệ, giáo dục, đào tạo):
         kind: numeric
         min: 41.374
         max: 80390
+        distinct: 22
         histogram: [ 19, 0, 0, 1, 0, 1, 0, 1 ]
       Doanh nghiệp 100% vốn nước ngoài:
         kind: numeric
         min: 1.113
         max: 2322000
+        distinct: 20
         histogram: [ 19, 0, 0, 0, 0, 0, 0, 1 ]
       Tổ chức kinh tế khác:
         kind: numeric
         min: 24450.73
         max: 1957008
+        distinct: 17
         histogram: [ 14, 0, 1, 0, 0, 0, 1, 1 ]
       Loại đất  loại rừng:
         kind: categorical

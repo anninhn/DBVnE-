@@ -30,11 +30,29 @@ files:
         kind: numeric
         min: 2010
         max: 2024
-        histogram: [ 40, 40, 40, 20, 40, 40, 40, 40 ]
+        distinct: 15
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 ]
       Vốn đầu tư thực hiện của khu vực kinh tế Nhà nước:
         kind: numeric
         min: 1.194
         max: 649.126
+        distinct: 299
         histogram: [ 274, 8, 1, 3, 3, 6, 3, 2 ]
       Ngành kinh tế:
         kind: categorical

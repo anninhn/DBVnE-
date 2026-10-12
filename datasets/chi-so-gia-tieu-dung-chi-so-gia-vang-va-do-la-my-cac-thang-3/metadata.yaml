@@ -32,16 +32,32 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 720, 720, 720, 480, 720, 720, 720, 720 ]
+        distinct: 23
+        histogram: [ 720, 720, 720, 720, 720, 720, 720, 480 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 920, 460, 920, 460, 460, 920, 460, 920 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460, 460 ]
       Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng trong năm so với tháng trước:
         kind: numeric
         min: 86.14
         max: 124.34
+        distinct: 628
         histogram: [ 1, 14, 3027, 1362, 49, 7, 2, 2 ]
       Nhóm hàng:
         kind: categorical

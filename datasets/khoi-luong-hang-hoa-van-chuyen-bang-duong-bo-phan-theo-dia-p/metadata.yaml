@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 213, 213, 213, 213, 213, 213, 213, 284 ]
+        distinct: 25
+        histogram: [ 284, 284, 284, 284, 284, 284, 71 ]
       Khối lượng hàng hoá vận chuyển bằng đường bộ:
         kind: numeric
         min: 118
         max: 2029956.7
+        distinct: 1719
         histogram: [ 1705, 25, 8, 3, 2, 3, 1, 2 ]
       Tỉnh, thành phố:
         kind: categorical

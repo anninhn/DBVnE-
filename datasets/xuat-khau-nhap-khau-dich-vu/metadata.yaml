@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 48, 32, 48, 32, 32, 48, 32, 48 ]
+        distinct: 20
+        histogram: [ 48, 48, 48, 48, 48, 48, 32 ]
       Xuất khẩu, nhập khẩu dịch vụ:
         kind: numeric
         min: 30
         max: 35557
+        distinct: 274
         histogram: [ 233, 50, 16, 8, 8, 2, 2, 1 ]
       Giá trị:
         kind: categorical

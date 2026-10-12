@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 140, 70, 70, 70, 70, 70, 70, 140 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Lao động trong các cơ sở kinh tế cá thể phi nông nghiệp:
         kind: numeric
         min: 14.166
         max: 894.274
+        distinct: 646
         histogram: [ 381, 199, 31, 9, 0, 6, 13, 11 ]
       Tỉnh/thành phố:
         kind: categorical

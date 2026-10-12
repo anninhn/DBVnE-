@@ -31,31 +31,42 @@ files:
         kind: numeric
         min: 2011
         max: 2014
-        histogram: [ 71, 0, 71, 0, 0, 71, 0, 71 ]
+        distinct: 4
+        values:
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+        histogram: [ 71, 71, 71, 71 ]
       Số người nhiễm HIV - Phát hiện mới:
         kind: numeric
         min: 6
         max: 14127
+        distinct: 209
         histogram: [ 257, 17, 2, 0, 0, 0, 1, 3 ]
       Số bệnh nhân AIDS - Phát hiện mới:
         kind: numeric
         min: 2
         max: 6734
+        distinct: 162
         histogram: [ 256, 17, 4, 0, 0, 0, 0, 4 ]
       Số người nhiễm HIV còn sống - Lũy kế tính đến 31/12:
         kind: numeric
         min: 169
         max: 226964
+        distinct: 272
         histogram: [ 256, 16, 4, 0, 0, 0, 1, 3 ]
       Số bệnh nhân AIDS còn sống - Lũy kế tính đến 31/12:
         kind: numeric
         min: 19
         max: 71433
+        distinct: 252
         histogram: [ 260, 10, 7, 0, 0, 1, 1, 2 ]
       Số người chết do HIV/AIDS trong năm:
         kind: numeric
         min: 0
         max: 2413
+        distinct: 112
         histogram: [ 257, 13, 4, 0, 0, 0, 0, 4 ]
       Địa phương:
         kind: categorical

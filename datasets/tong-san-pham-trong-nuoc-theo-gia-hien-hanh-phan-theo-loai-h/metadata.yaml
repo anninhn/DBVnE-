@@ -30,16 +30,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 87, 58, 87, 58, 58, 87, 58, 87 ]
+        distinct: 20
+        histogram: [ 87, 87, 87, 87, 87, 87, 58 ]
       Giá trị (Tỷ đồng):
         kind: numeric
         min: 1421
         max: 11510328.9
+        distinct: 495
         histogram: [ 459, 29, 7, 6, 3, 3, 1, 2 ]
       Cơ cấu (%):
         kind: numeric
         min: 0.1
         max: 100
+        distinct: 165
         histogram: [ 393, 72, 4, 9, 12, 0, 0, 40 ]
       Chỉ tiêu:
         kind: categorical

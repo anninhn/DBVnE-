@@ -31,27 +31,62 @@ files:
         kind: numeric
         min: 2010
         max: 2017
-        histogram: [ 8, 8, 0, 0, 8, 8, 8, 8 ]
+        distinct: 6
+        values:
+          - 2010
+          - 2011
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+        histogram: [ 8, 8, 8, 8, 8, 8 ]
       Tổng số:
         kind: numeric
         min: 1.03
         max: 710
+        distinct: 38
         histogram: [ 36, 0, 0, 0, 0, 0, 3, 9 ]
       Bộ Y tế quản lý:
         kind: numeric
         min: 1
         max: 48
-        histogram: [ 8, 0, 0, 0, 0, 0, 1, 11 ]
+        distinct: 8
+        values:
+          - 1
+          - 2
+          - 3
+          - 42
+          - 43
+          - 46
+          - 47
+          - 48
+        histogram: [ 2, 3, 3, 1, 4, 4, 1, 2 ]
       Sở y tế quản lý:
         kind: numeric
         min: 1.002
         max: 994
+        distinct: 35
         histogram: [ 33, 0, 0, 0, 6, 0, 0, 3 ]
       Các ngành khác quản lý:
         kind: numeric
         min: 7
         max: 781
-        histogram: [ 18, 0, 0, 0, 0, 0, 0, 18 ]
+        distinct: 13
+        values:
+          - 7
+          - 10
+          - 11
+          - 17
+          - 18
+          - 22
+          - 26
+          - 27
+          - 710
+          - 753
+          - 766
+          - 780
+          - 781
+        histogram: [ 2, 1, 1, 2, 1, 3, 3, 5, 12, 1, 2, 2, 1 ]
       Loại cơ sở:
         kind: categorical
         distinct: 8

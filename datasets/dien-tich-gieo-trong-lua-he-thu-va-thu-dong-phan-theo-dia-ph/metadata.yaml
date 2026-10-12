@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 148, 148, 111, 148, 148, 111, 148, 148 ]
+        distinct: 30
+        histogram: [ 148, 148, 148, 148, 148, 148, 148, 74 ]
       Diện tích gieo trồng lúa hè thu và thu đông:
         kind: numeric
         min: 0
         max: 2876.7
+        distinct: 730
         histogram: [ 972, 27, 0, 1, 4, 17, 24, 14 ]
       Tỉnh, thành phố:
         kind: categorical

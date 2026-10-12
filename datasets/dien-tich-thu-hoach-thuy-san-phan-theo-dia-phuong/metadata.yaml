@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1988
         max: 2024
-        histogram: [ 71, 142, 284, 284, 355, 284, 355, 355 ]
+        distinct: 30
+        histogram: [ 71, 213, 284, 355, 355, 355, 355, 142 ]
       Diện tích thu hoạch thuỷ sản:
         kind: numeric
         min: 0.08
         max: 1138
+        distinct: 872
         histogram: [ 1987, 24, 22, 7, 6, 20, 4, 18 ]
       Tỉnh, thành phố:
         kind: categorical

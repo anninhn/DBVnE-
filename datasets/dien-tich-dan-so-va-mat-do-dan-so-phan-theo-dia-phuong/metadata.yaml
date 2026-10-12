@@ -31,21 +31,36 @@ files:
         kind: numeric
         min: 2011
         max: 2020
-        histogram: [ 140, 70, 70, 70, 70, 70, 70, 140 ]
+        distinct: 10
+        values:
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Diện tích (Km2):
         kind: numeric
         min: 822.7
         max: 331317.1
+        distinct: 336
         histogram: [ 660, 10, 20, 0, 0, 0, 0, 10 ]
       Dân số trung bình (Nghìn người):
         kind: numeric
         min: 298.7
         max: 97582.7
+        distinct: 686
         histogram: [ 648, 42, 0, 0, 0, 0, 0, 10 ]
       Mật độ dân số (Người/km2):
         kind: numeric
         min: 43.3
         max: 4404
+        distinct: 651
         histogram: [ 518, 120, 41, 5, 6, 0, 3, 7 ]
       Địa phương:
         kind: categorical

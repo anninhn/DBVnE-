@@ -31,16 +31,30 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ]
       Số lao động (Người):
         kind: numeric
         min: 613269
         max: 7653794
+        distinct: 40
         histogram: [ 15, 5, 1, 0, 10, 0, 2, 7 ]
       Cơ cấu (%):
         kind: numeric
         min: 13.81
         max: 100
+        distinct: 31
         histogram: [ 20, 0, 0, 0, 10, 0, 0, 10 ]
       Trình độ công nghệ:
         kind: categorical

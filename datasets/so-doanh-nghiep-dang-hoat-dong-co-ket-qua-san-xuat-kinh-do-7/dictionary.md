@@ -3,7 +3,7 @@
 | Column | Type | Dec | Group | Unit | Description |
 |--------|------|-----|-------|------|-------------|
 | `Ngành kinh tế` | category | - | - | - | Ngành kinh tế của doanh nghiệp, phân loại theo hệ thống ngành kinh tế Việt Nam (VSIC). |
-| `Năm` | date | - | - | năm | Năm thống kê dữ liệu. |
+| `Năm` | number | - | - | năm | Năm thống kê dữ liệu. |
 | `Tổng số` | number | - | - | doanh nghiệp | Tổng số doanh nghiệp đang hoạt động có kết quả sản xuất kinh doanh. |
 | `Dưới 5 người` | number | - | - | doanh nghiệp | Số doanh nghiệp có dưới 5 lao động. |
 | `5-9 người` | number | - | - | doanh nghiệp | Số doanh nghiệp có từ 5 đến 9 lao động. |

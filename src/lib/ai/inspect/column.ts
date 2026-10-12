@@ -194,6 +194,86 @@ export function inspectColumn(
  * XLSX files trong app đều nhỏ (< 1MB) → safe parse full.
  * GeoJSON feature_count cap ở STATS_FEATURE_CAP (10000) → safe parse first N features.
  */
+/**
+ * Số cột tối đa khi đếm theo từng giá trị.
+ *
+ * Biểu đồ rộng 110px, nên 16 cột là ~6,9px mỗi cột — vẫn phân biệt được. Nhiều
+ * hơn thì quay về chia khoảng.
+ */
+const MAX_PER_VALUE_BARS = 16;
+
+/**
+ * Thống kê một cột số: chọn giữa **đếm theo giá trị** và **chia theo khoảng**.
+ *
+ * 1. **Ít giá trị khác nhau (≤16) → một cột mỗi giá trị.** Chia khoảng ở đây tạo
+ *    ra hình dạng KHÔNG có trong dữ liệu: đo thực tế cột `Tháng` (12 tháng × 345
+ *    dòng, đều tuyệt đối) bị 8 khoảng rộng 1,375 tháng biến thành
+ *    `[690,345,690,345,345,690,345,690]`, và cột `Năm` 7 năm đều nhau ra
+ *    `[21,21,21,0,21,21,21,21]` — một khoảng RỖNG giữa dữ liệu đầy.
+ *    Quét toàn kho: 480/1469 cột số (32,7%) rơi vào nhóm bị chia bin sai kiểu.
+ *
+ * 2. **Cột nguyên nhiều giá trị → bề rộng khoảng là SỐ NGUYÊN.** Nguồn của hiện
+ *    tượng xen kẽ là bề rộng lẻ (1,375 tháng): khoảng này chứa 2 giá trị, khoảng
+ *    kia chứa 1. Bề rộng nguyên thì mọi khoảng chứa cùng số giá trị khả dĩ.
+ *
+ * 3. **Cột thực → chia đều `min`…`max`** như cũ.
+ *
+ * Thứ tự cột luôn theo GIÁ TRỊ, không theo số đếm. Với cột năm/tháng thì thứ tự
+ * thời gian là thông tin quan trọng nhất — sắp theo số đếm thì một dataset hụt
+ * hẳn một năm nhìn y như một dataset đủ.
+ */
+export function numericStats(
+  values: number[],
+  min: number,
+  max: number,
+  bins: number,
+): ColumnStats {
+  const uniq = Array.from(new Set(values)).sort((a, b) => a - b);
+  const distinct = uniq.length;
+
+  if (distinct <= MAX_PER_VALUE_BARS) {
+    const counts = new Map<number, number>();
+    for (const v of values) counts.set(v, (counts.get(v) ?? 0) + 1);
+    return {
+      kind: "numeric",
+      min,
+      max,
+      distinct,
+      values: uniq,
+      histogram: uniq.map((v) => counts.get(v) ?? 0),
+    };
+  }
+
+  const allInt =
+    Number.isInteger(min) &&
+    Number.isInteger(max) &&
+    values.every((v) => Number.isInteger(v));
+
+  if (allInt) {
+    const span = max - min + 1;
+    const width = Math.max(1, Math.ceil(span / bins));
+    const n = Math.ceil(span / width);
+    const histogram = new Array(n).fill(0);
+    for (const v of values) {
+      let idx = Math.floor((v - min) / width);
+      if (idx >= n) idx = n - 1;
+      if (idx < 0) idx = 0;
+      histogram[idx]++;
+    }
+    return { kind: "numeric", min, max, distinct, histogram };
+  }
+
+  const step = (max - min) / bins || 1;
+  const histogram = new Array(bins).fill(0);
+  for (const v of values) {
+    let idx = Math.floor((v - min) / step);
+    if (idx >= bins) idx = bins - 1;
+    if (idx < 0) idx = 0;
+    histogram[idx]++;
+  }
+  return { kind: "numeric", min, max, distinct, histogram };
+}
+
 export function computeStatsFromRows(
   allRows: Record<string, unknown>[],
   columnNames: string[],
@@ -232,15 +312,7 @@ export function computeStatsFromRows(
         if (v < min) min = v;
         if (v > max) max = v;
       }
-      const step = (max - min) / BINS || 1;
-      const histogram = new Array(BINS).fill(0);
-      for (const v of values) {
-        let idx = Math.floor((v - min) / step);
-        if (idx >= BINS) idx = BINS - 1;
-        if (idx < 0) idx = 0;
-        histogram[idx]++;
-      }
-      result[col] = { kind: "numeric", min, max, histogram };
+      result[col] = numericStats(values, min, max, BINS);
     } else {
       const counts = new Map<string, number>();
       for (const row of allRows) {

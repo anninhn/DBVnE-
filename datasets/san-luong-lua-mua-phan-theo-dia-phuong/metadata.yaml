@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Sản lượng lúa mùa:
         kind: numeric
         min: 0.2
         max: 9644.9
+        distinct: 1505
         histogram: [ 1835, 75, 28, 0, 0, 0, 17, 13 ]
       Tỉnh, thành phố:
         kind: categorical

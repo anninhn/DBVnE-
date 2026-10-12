@@ -31,21 +31,25 @@ files:
         kind: numeric
         min: 1990
         max: 2024
-        histogram: [ 5, 4, 4, 4, 5, 4, 4, 5 ]
+        distinct: 35
+        histogram: [ 5, 5, 5, 5, 5, 5, 5 ]
       Tổng thu nhập quốc gia (Tỷ đồng):
         kind: numeric
         min: 39284
         max: 11131019.9
+        distinct: 35
         histogram: [ 18, 3, 2, 4, 2, 3, 1, 2 ]
       Tổng sản phẩm trong nước (Tỷ đồng):
         kind: numeric
         min: 41955
         max: 11510328.9
+        distinct: 35
         histogram: [ 18, 3, 2, 4, 2, 3, 1, 2 ]
       Tỷ lệ tổng thu nhập quốc gia so với tổng sản phẩm trong nước (%):
         kind: numeric
         min: 93.6
         max: 99.9
+        distinct: 26
         histogram: [ 2, 7, 3, 5, 6, 5, 6, 1 ]
       Ghi chú:
         kind: categorical

@@ -2,7 +2,7 @@
  * Pure functions tính thống kê cột — dùng chung cho DatasetViewer + R2FileViewer.
  *
  * Không có React deps, thuần logic số liệu.
- *  - numericStats: min/max dạng chuỗi định dạng vi-VN
+ *  - numericStats: min/max dạng chuỗi, format theo group_char/decimal_char của cột
  *  - histogramBins: 8 bins từ min→max
  *  - countDistinct: số giá trị unique
  *  - categoricalSegments: top-12 segments theo count desc
@@ -12,6 +12,7 @@
  */
 
 import type { NumberSchema } from "@/lib/parse/number";
+import { formatNumberWithSchema } from "@/lib/datasets/number-schema";
 import { parseNumberWithSchema } from "@/lib/parse/number";
 
 type CellValue = string | number | boolean | null | undefined;
@@ -39,7 +40,14 @@ function extractNumericValues(
     .filter((n): n is number => n != null && !Number.isNaN(n));
 }
 
-/** Min/max dạng chuỗi định dạng vi-VN — cho hiển thị stats header. */
+/**
+ * Min/max dạng chuỗi, format theo quy ước của CHÍNH cột đó.
+ *
+ * Trước đây format cứng bằng `toLocaleString("vi-VN")`, nên cột `Năm` hiện 2019
+ * thành `2.019` — dấu nhóm hàng nghìn trên con số năm làm người đọc hiểu sai.
+ * `formatNumberWithSchema` dùng `group_char` mà dictionary khai cho cột đó: cột
+ * năm không khai gì nên không nhóm.
+ */
 export function numericStats(
   rows: DataRow[],
   colName: string,
@@ -47,17 +55,24 @@ export function numericStats(
 ): { min: string; max: string } | null {
   const values = extractNumericValues(rows, colName, schema);
   if (values.length === 0) return null;
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  return { min: min.toLocaleString("vi-VN"), max: max.toLocaleString("vi-VN") };
+  return {
+    min: formatNumberWithSchema(Math.min(...values), schema),
+    max: formatNumberWithSchema(Math.max(...values), schema),
+  };
 }
 
-/** Histogram 8 bins — trả counts array cho inline SVG chart. */
+/**
+ * Histogram 8 bins — trả counts array cho inline SVG chart.
+ *
+ * Trả kèm `min`/`max` để chỗ vẽ ghi được nhãn khoảng của từng cột khi hover.
+ * Thiếu hai số này thì biểu đồ không có cách nào nói cột đang đứng cho khoảng
+ * giá trị nào — người đọc chỉ thấy tám cái cột xám.
+ */
 export function histogramBins(
   rows: DataRow[],
   colName: string,
   schema?: NumberSchema
-): { counts: number[] } | null {
+): { counts: number[]; min: number; max: number } | null {
   const values = extractNumericValues(rows, colName, schema);
   if (values.length === 0) return null;
   const min = Math.min(...values);
@@ -70,7 +85,7 @@ export function histogramBins(
     if (idx >= BINS) idx = BINS - 1;
     counts[idx]++;
   });
-  return { counts };
+  return { counts, min, max };
 }
 
 /** Đếm số giá trị distinct trong cột. */

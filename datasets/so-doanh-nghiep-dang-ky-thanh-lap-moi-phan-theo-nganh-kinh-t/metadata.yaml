@@ -30,11 +30,23 @@ files:
         kind: numeric
         min: 2016
         max: 2024
-        histogram: [ 21, 21, 21, 21, 21, 21, 21, 42 ]
+        distinct: 9
+        values:
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 21, 21, 21, 21, 21, 21, 21, 21, 21 ]
       Số doanh nghiệp đăng ký thành lập mới:
         kind: numeric
         min: 1.026
         max: 951
+        distinct: 189
         histogram: [ 163, 7, 0, 0, 1, 8, 4, 6 ]
       Ngành:
         kind: categorical

@@ -30,41 +30,81 @@ files:
         kind: numeric
         min: 2009
         max: 2013
-        histogram: [ 70, 0, 70, 0, 70, 0, 70, 70 ]
+        distinct: 5
+        values:
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+        histogram: [ 70, 70, 70, 70, 70 ]
       Thành phố trực thuộc tỉnh:
         kind: numeric
         min: 1
         max: 64
+        distinct: 17
         histogram: [ 263, 20, 0, 0, 0, 1, 2, 2 ]
       Quận:
         kind: numeric
         min: 5
         max: 49
-        histogram: [ 29, 1, 15, 0, 0, 0, 0, 5 ]
+        distinct: 9
+        values:
+          - 5
+          - 6
+          - 7
+          - 10
+          - 12
+          - 17
+          - 19
+          - 47
+          - 49
+        histogram: [ 10, 10, 5, 4, 1, 4, 11, 4, 1 ]
       Thị xã:
         kind: numeric
         min: 1
         max: 48
-        histogram: [ 151, 18, 0, 0, 0, 0, 0, 4 ]
+        distinct: 15
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 12
+          - 43
+          - 45
+          - 46
+          - 48
+        histogram: [ 113, 27, 5, 3, 1, 2, 7, 3, 4, 2, 2, 1, 1, 1, 1 ]
       Huyện:
         kind: numeric
         min: 2
         max: 556
+        distinct: 35
         histogram: [ 260, 15, 1, 0, 0, 0, 0, 4 ]
       Phường:
         kind: numeric
         min: 1.366
         max: 400
+        distinct: 57
         histogram: [ 242, 10, 4, 8, 0, 6, 4, 6 ]
       Thị trấn:
         kind: numeric
         min: 3
         max: 625
+        distinct: 38
         histogram: [ 256, 16, 0, 0, 0, 0, 0, 4 ]
       Xã:
         kind: numeric
         min: 1.299
         max: 598
+        distinct: 94
         histogram: [ 56, 136, 52, 16, 0, 8, 4, 8 ]
       Phân theo địa phương:
         kind: categorical

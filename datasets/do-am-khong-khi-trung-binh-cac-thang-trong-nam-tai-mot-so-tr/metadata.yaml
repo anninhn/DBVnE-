@@ -31,17 +31,33 @@ files:
         kind: numeric
         min: 2002
         max: 2024
-        histogram: [ 612, 612, 612, 408, 612, 612, 612, 612 ]
+        distinct: 23
+        histogram: [ 612, 612, 612, 612, 612, 612, 612, 408 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 782, 391, 782, 391, 391, 782, 391, 782 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 391, 391, 391, 391, 391, 391, 391, 391, 391, 391, 391, 391 ]
       Độ ẩm không khí trung bình các tháng trong năm tại một số trạm quan trắc:
         kind: numeric
         min: 56
         max: 99
-        histogram: [ 5, 25, 236, 793, 1393, 1280, 377, 31 ]
+        distinct: 40
+        histogram: [ 5, 47, 291, 1243, 1643, 800, 109, 2 ]
       Tỉnh, thành phố:
         kind: categorical
         distinct: 17

@@ -31,11 +31,18 @@ files:
         kind: numeric
         min: 2017
         max: 2024
-        histogram: [ 28, 0, 28, 0, 0, 0, 28, 28 ]
+        distinct: 4
+        values:
+          - 2017
+          - 2019
+          - 2023
+          - 2024
+        histogram: [ 28, 28, 28, 28 ]
       Chi tiêu bình quân một lượt khách quốc tế đến Việt Nam:
         kind: numeric
         min: 343.5
         max: 4788.2
+        distinct: 112
         histogram: [ 28, 65, 15, 3, 0, 0, 0, 1 ]
       Quốc tịch:
         kind: categorical

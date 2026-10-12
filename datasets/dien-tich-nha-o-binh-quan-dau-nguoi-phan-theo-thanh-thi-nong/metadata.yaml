@@ -32,12 +32,26 @@ files:
         kind: numeric
         min: 2004
         max: 2024
-        histogram: [ 28, 14, 14, 14, 28, 14, 14, 28 ]
+        distinct: 11
+        values:
+          - 2004
+          - 2006
+          - 2008
+          - 2010
+          - 2012
+          - 2014
+          - 2016
+          - 2018
+          - 2020
+          - 2022
+          - 2024
+        histogram: [ 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14 ]
       Diện tích nhà ở bình quân đầu người:
         kind: numeric
         min: 10
         max: 38
-        histogram: [ 8, 19, 34, 30, 32, 10, 7, 2 ]
+        distinct: 26
+        histogram: [ 8, 29, 37, 34, 24, 6, 3, 1 ]
       Phân tổ:
         kind: categorical
         distinct: 14

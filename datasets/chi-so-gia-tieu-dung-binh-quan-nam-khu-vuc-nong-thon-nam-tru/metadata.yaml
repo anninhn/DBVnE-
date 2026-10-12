@@ -32,11 +32,20 @@ files:
         kind: numeric
         min: 2018
         max: 2023
-        histogram: [ 17, 17, 0, 17, 17, 0, 17, 17 ]
+        distinct: 6
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 17, 17, 17, 17, 17, 17 ]
       Chỉ số giá tiêu dùng bình quân năm khu vực nông thôn (Năm trước = 100):
         kind: numeric
         min: 88.24
         max: 116.68
+        distinct: 96
         histogram: [ 1, 0, 4, 52, 34, 5, 3, 3 ]
       Nhóm hàng:
         kind: categorical

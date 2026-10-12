@@ -31,31 +31,54 @@ files:
         kind: numeric
         min: 2008
         max: 2024
-        histogram: [ 134, 134, 134, 134, 67, 134, 134, 201 ]
+        distinct: 16
+        values:
+          - 2008
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67 ]
       total_forest_area_nghin_ha:
         kind: numeric
         min: 0.6
         max: 14874.3
+        distinct: 806
         histogram: [ 1008, 16, 28, 4, 0, 0, 0, 16 ]
       natural_forest_nghin_ha:
         kind: numeric
         min: 0
         max: 10423.8
+        distinct: 665
         histogram: [ 932, 12, 36, 0, 0, 0, 0, 16 ]
       planted_forest_nghin_ha:
         kind: numeric
         min: 0.6
         max: 4740.4
+        distinct: 706
         histogram: [ 1024, 7, 20, 5, 2, 3, 4, 7 ]
       new_planting_nghin_ha:
         kind: numeric
         min: 0
         max: 540.9
+        distinct: 199
         histogram: [ 397, 5, 8, 1, 0, 5, 1, 1 ]
       forest_cover_pct:
         kind: numeric
         min: 0.5
         max: 73.4
+        distinct: 409
         histogram: [ 274, 93, 64, 39, 193, 221, 106, 46 ]
       scope:
         kind: categorical

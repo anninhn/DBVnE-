@@ -30,11 +30,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Tỷ lệ thất nghiệp trong độ tuổi lao động:
         kind: numeric
         min: 0.08
         max: 9.41
+        distinct: 278
         histogram: [ 93, 191, 143, 46, 10, 2, 3, 2 ]
       Tỉnh/Thành phố:
         kind: categorical

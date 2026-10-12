@@ -358,7 +358,6 @@ export async function POST(req: NextRequest) {
     .join("\n\n");
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
-      const startTime = Date.now();
       let fullContent = "";
       // Mốc chữ đầu tiên — tính từ `requestStart` ở đầu handler, KHÔNG từ đây.
       let ttfbMs: number | null = null;

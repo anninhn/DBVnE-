@@ -32,46 +32,64 @@ files:
         kind: numeric
         min: 1
         max: 37
-        histogram: [ 5, 4, 5, 4, 5, 4, 5, 5 ]
+        distinct: 37
+        histogram: [ 5, 5, 5, 5, 5, 5, 5, 2 ]
       Latitude:
         kind: numeric
         min: 8.7009282
         max: 22.635689
+        distinct: 36
         histogram: [ 6, 6, 3, 4, 3, 2, 4, 8 ]
       Longitude:
         kind: numeric
         min: 103.0063608
         max: 109.3440042
+        distinct: 36
         histogram: [ 3, 3, 2, 5, 6, 5, 6, 6 ]
       Công suất thiết kế dự kiến 2030:
         kind: numeric
         min: 0.02
         max: 50
+        distinct: 18
         histogram: [ 28, 2, 0, 3, 1, 1, 0, 1 ]
       Công suất thiết kế dự kiến 2050:
         kind: numeric
         min: 0.5
         max: 100
+        distinct: 17
         histogram: [ 26, 4, 2, 4, 0, 0, 0, 1 ]
       Diện tích đất dự kiến đến 2030 (ha):
         kind: numeric
         min: 171.7
         max: 5000
+        distinct: 36
         histogram: [ 27, 4, 2, 2, 0, 0, 0, 1 ]
       Diện tích đất dự kiến đến 2050 (ha):
         kind: numeric
         min: 233.36
         max: 2094.49
-        histogram: [ 3, 1, 1, 1, 0, 1, 0, 1 ]
+        distinct: 8
+        values:
+          - 233.36
+          - 244.43
+          - 376.69
+          - 488.89
+          - 835.56
+          - 1092.53
+          - 1500
+          - 2094.49
+        histogram: [ 1, 1, 1, 1, 1, 1, 1, 1 ]
       Ước tính chi phí đầu tư 2030 (tỷ đồng):
         kind: numeric
         min: 1.605
         max: 9982
+        distinct: 34
         histogram: [ 32, 0, 0, 0, 0, 0, 0, 2 ]
       Ước tính chi phí đầu tư 2050 (tỷ đồng):
         kind: numeric
         min: 1.257
         max: 5900
+        distinct: 27
         histogram: [ 25, 2, 0, 0, 0, 0, 0, 1 ]
       Tên Cảng hàng không:
         kind: categorical

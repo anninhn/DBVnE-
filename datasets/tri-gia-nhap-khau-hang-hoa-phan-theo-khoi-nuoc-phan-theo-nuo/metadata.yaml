@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 260, 260, 195, 260, 260, 195, 260, 260 ]
+        distinct: 30
+        histogram: [ 260, 260, 260, 260, 260, 260, 260, 130 ]
       Trị giá nhập khẩu hàng hoá:
         kind: numeric
         min: 0
         max: 380990.6
+        distinct: 1665
         histogram: [ 1855, 21, 9, 6, 5, 4, 3, 2 ]
       Khối nước, nước, vùng lãnh thổ chủ yếu:
         kind: categorical

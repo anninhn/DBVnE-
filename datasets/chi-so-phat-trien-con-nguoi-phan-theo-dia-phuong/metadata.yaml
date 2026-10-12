@@ -31,11 +31,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 64, 64, 64, 0, 64, 64, 64, 64 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 64, 64, 64, 64, 64, 64, 64 ]
       Chỉ số phát triển con người:
         kind: numeric
         min: 0.57
         max: 0.83
+        distinct: 27
         histogram: [ 13, 18, 63, 111, 130, 52, 36, 25 ]
       Tỉnh/Thành phố:
         kind: categorical

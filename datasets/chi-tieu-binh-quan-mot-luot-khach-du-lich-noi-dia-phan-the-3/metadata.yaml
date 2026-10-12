@@ -31,11 +31,19 @@ files:
         kind: numeric
         min: 2017
         max: 2024
-        histogram: [ 12, 0, 12, 12, 0, 0, 12, 12 ]
+        distinct: 5
+        values:
+          - 2017
+          - 2019
+          - 2020
+          - 2023
+          - 2024
+        histogram: [ 12, 12, 12, 12, 12 ]
       Chi tiêu bình quân một lượt khách du lịch nội địa:
         kind: numeric
         min: 1860
         max: 8759.7
+        distinct: 60
         histogram: [ 8, 28, 13, 4, 4, 1, 0, 2 ]
       Loại cơ sở lưu trú:
         kind: categorical

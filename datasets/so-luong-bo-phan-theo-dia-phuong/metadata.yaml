@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Số lượng bò:
         kind: numeric
         min: 0
         max: 6724.7
+        distinct: 1367
         histogram: [ 1979, 37, 27, 3, 8, 2, 6, 14 ]
       Tỉnh, thành phố:
         kind: categorical

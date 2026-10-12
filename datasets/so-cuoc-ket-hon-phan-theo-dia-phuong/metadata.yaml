@@ -31,21 +31,33 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Tổng số:
         kind: numeric
         min: 1872
         max: 735292
+        distinct: 480
         histogram: [ 456, 27, 0, 0, 0, 1, 2, 4 ]
       Kết hôn lần đầu:
         kind: numeric
         min: 1578
         max: 661890
+        distinct: 485
         histogram: [ 460, 23, 0, 0, 0, 1, 3, 3 ]
       Lần thứ 2 trở lên:
         kind: numeric
         min: 64
         max: 107185
+        distinct: 450
         histogram: [ 460, 23, 0, 0, 1, 3, 0, 3 ]
       Địa phương:
         kind: categorical

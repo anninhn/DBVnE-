@@ -32,16 +32,19 @@ files:
         kind: numeric
         min: 2001
         max: 2024
+        distinct: 24
         histogram: [ 15, 15, 15, 15, 15, 15, 15, 15 ]
       Tỷ suất chết của trẻ em dưới một tuổi (Trẻ em dưới một tuổi tử vong/1000 trẻ sinh sống):
         kind: numeric
         min: 6.96
         max: 32.9
+        distinct: 89
         histogram: [ 22, 23, 32, 27, 8, 3, 3, 2 ]
       Tỷ suất chết của trẻ em dưới năm tuổi (Trẻ em dưới năm tuổi tử vong/1000 trẻ sinh sống):
         kind: numeric
         min: 10.51
         max: 56.5
+        distinct: 102
         histogram: [ 35, 20, 34, 22, 2, 3, 3, 1 ]
       Phân tổ:
         kind: categorical

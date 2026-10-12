@@ -31,16 +31,24 @@ files:
         kind: numeric
         min: 2017
         max: 2024
-        histogram: [ 8, 0, 8, 0, 0, 0, 8, 8 ]
+        distinct: 4
+        values:
+          - 2017
+          - 2019
+          - 2023
+          - 2024
+        histogram: [ 8, 8, 8, 8 ]
       Trị giá (Đô la Mỹ):
         kind: numeric
         min: 10.1
         max: 1449.7
+        distinct: 32
         histogram: [ 17, 9, 2, 0, 0, 0, 3, 1 ]
       Cơ cấu (%):
         kind: numeric
         min: 0.8
         max: 100
+        distinct: 29
         histogram: [ 14, 10, 4, 0, 0, 0, 0, 4 ]
       Mục đích:
         kind: categorical

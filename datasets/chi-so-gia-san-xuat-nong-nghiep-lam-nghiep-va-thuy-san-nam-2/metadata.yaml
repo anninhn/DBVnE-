@@ -32,11 +32,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 14, 14, 42, 28, 28, 42, 28, 42 ]
+        distinct: 17
+        histogram: [ 14, 28, 42, 42, 42, 42, 28 ]
       Chỉ số giá sản xuất nông nghiệp, lâm nghiệp và thuỷ sản (Năm 2010 = 100):
         kind: numeric
         min: 47.28
         max: 226.28
+        distinct: 212
         histogram: [ 7, 12, 18, 55, 63, 39, 27, 9 ]
       Nhóm hàng:
         kind: categorical

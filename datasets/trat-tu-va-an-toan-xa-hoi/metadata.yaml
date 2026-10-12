@@ -30,11 +30,27 @@ files:
         kind: numeric
         min: 2012
         max: 2024
-        histogram: [ 18, 9, 18, 9, 18, 9, 18, 18 ]
+        distinct: 13
+        values:
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 ]
       Trật tự và an toàn xã hội:
         kind: numeric
         min: 85
         max: 38060
+        distinct: 109
         histogram: [ 51, 19, 18, 9, 8, 3, 2, 2 ]
       Phân tổ:
         kind: categorical

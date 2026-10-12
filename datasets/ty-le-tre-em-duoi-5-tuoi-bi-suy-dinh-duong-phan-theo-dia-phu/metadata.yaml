@@ -30,7 +30,13 @@ files:
         kind: numeric
         min: 2021
         max: 2024
-        histogram: [ 70, 0, 70, 0, 0, 70, 0, 70 ]
+        distinct: 4
+        values:
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70 ]
       Địa phương:
         kind: categorical
         distinct: 70

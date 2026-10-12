@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 3.19
         max: 17908.17
+        distinct: 118
         histogram: [ 100, 5, 5, 3, 2, 0, 0, 5 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 92.38
         max: 118.96
+        distinct: 94
         histogram: [ 3, 6, 38, 15, 10, 17, 4, 3 ]
       Phân loại:
         kind: categorical

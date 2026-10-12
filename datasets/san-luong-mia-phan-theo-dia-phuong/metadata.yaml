@@ -30,11 +30,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 69, 69, 69, 0, 69, 69, 69, 69 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 69, 69, 69, 69, 69, 69, 69 ]
       Sản lượng mía:
         kind: numeric
         min: 0
         max: 17945.2
+        distinct: 352
         histogram: [ 452, 16, 4, 0, 2, 3, 1, 1 ]
       Tỉnh, thành phố:
         kind: categorical

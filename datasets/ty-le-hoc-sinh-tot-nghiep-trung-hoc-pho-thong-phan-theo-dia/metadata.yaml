@@ -31,6 +31,7 @@ files:
         kind: numeric
         min: 38.57
         max: 99.98
+        distinct: 822
         histogram: [ 3, 3, 5, 26, 62, 135, 238, 619 ]
       Địa phương:
         kind: categorical

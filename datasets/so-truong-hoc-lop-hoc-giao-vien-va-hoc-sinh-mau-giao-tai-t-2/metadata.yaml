@@ -31,11 +31,20 @@ files:
         kind: numeric
         min: 2002
         max: 2007
-        histogram: [ 355, 355, 0, 355, 355, 0, 355, 355 ]
+        distinct: 6
+        values:
+          - 2002
+          - 2003
+          - 2004
+          - 2005
+          - 2006
+          - 2007
+        histogram: [ 355, 355, 355, 355, 355, 355 ]
       Số trường học, lớp học, giáo viên và học sinh mẫu giáo tại thời điểm 30/9:
         kind: numeric
         min: 8.97
         max: 130352
+        distinct: 1298
         histogram: [ 1495, 35, 2, 0, 0, 5, 4, 3 ]
       Ðịa phương:
         kind: categorical

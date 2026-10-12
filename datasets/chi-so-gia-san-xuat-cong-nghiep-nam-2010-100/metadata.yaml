@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 29, 29, 87, 58, 58, 87, 58, 87 ]
+        distinct: 17
+        histogram: [ 29, 58, 87, 87, 87, 87, 58 ]
       Chỉ số giá sản xuất công nghiệp (Năm 2010 = 100):
         kind: numeric
         min: 37.56
         max: 318.71
+        distinct: 458
         histogram: [ 27, 86, 246, 102, 16, 9, 5, 2 ]
       Nhóm hàng:
         kind: categorical

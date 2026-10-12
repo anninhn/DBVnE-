@@ -33,11 +33,13 @@ files:
         kind: numeric
         min: 10.59
         max: 12111
+        distinct: 36
         histogram: [ 27, 0, 6, 0, 0, 0, 0, 3 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 90.69
         max: 133.2
+        distinct: 24
         histogram: [ 2, 12, 5, 2, 0, 1, 1, 1 ]
       Chỉ số phát triển:
         kind: categorical

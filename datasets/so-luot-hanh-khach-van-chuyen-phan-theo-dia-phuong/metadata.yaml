@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 213, 213, 213, 213, 213, 213, 213, 284 ]
+        distinct: 25
+        histogram: [ 284, 284, 284, 284, 284, 284, 71 ]
       Số lượt hành khách vận chuyển:
         kind: numeric
         min: 0.4
         max: 5409.81
+        distinct: 921
         histogram: [ 1665, 50, 18, 5, 3, 4, 2, 2 ]
       Địa phương:
         kind: categorical

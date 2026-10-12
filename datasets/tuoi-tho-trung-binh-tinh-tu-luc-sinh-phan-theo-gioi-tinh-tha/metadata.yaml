@@ -32,11 +32,13 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 11, 11, 33, 22, 22, 33, 22, 33 ]
+        distinct: 17
+        histogram: [ 11, 22, 33, 33, 33, 33, 22 ]
       Tuổi thọ trung bình tính từ lúc sinh:
         kind: numeric
         min: 68.7
         max: 77.28
+        distinct: 93
         histogram: [ 7, 21, 16, 22, 20, 33, 31, 13 ]
       Giới tính, thành thị, nông thôn, vùng:
         kind: categorical

@@ -30,6 +30,7 @@ files:
         kind: numeric
         min: 4
         max: 10489
+        distinct: 126
         histogram: [ 61, 0, 0, 1, 0, 0, 4, 60 ]
       name:
         kind: categorical
@@ -1577,12 +1578,16 @@ files:
         kind: numeric
         min: 1.68
         max: 81.27
+        distinct: 126
         histogram: [ 44, 14, 18, 19, 12, 12, 4, 3 ]
       provinceCode:
         kind: numeric
         min: 1
         max: 1
-        histogram: [ 126, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 1
+        histogram: [ 126 ]
       provinceName:
         kind: categorical
         distinct: 1

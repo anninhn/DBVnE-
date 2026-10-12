@@ -31,21 +31,31 @@ files:
         kind: numeric
         min: 2020
         max: 2024
-        histogram: [ 70, 0, 70, 0, 70, 0, 70, 70 ]
+        distinct: 5
+        values:
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70 ]
       Tổng số khu công nghiệp, khu chế xuất đã đi vào hoạt động (khu):
         kind: numeric
         min: 0
         max: 324
-        histogram: [ 324, 12, 6, 0, 0, 0, 0, 5 ]
+        distinct: 42
+        histogram: [ 324, 12, 6, 0, 0, 0, 1, 4 ]
       Số lượng các khu công nghiệp, khu chế xuất đã đi vào hoạt động có nhà máy xử lý nước thải tập trung đạt tiêu chuẩn môi trường (khu):
         kind: numeric
         min: 0
         max: 298
-        histogram: [ 313, 10, 6, 0, 0, 0, 1, 4 ]
+        distinct: 42
+        histogram: [ 313, 10, 6, 0, 0, 0, 2, 3 ]
       Tỷ lệ khu công nghiệp, khu chế xuất đã đi vào hoạt động có nhà máy xử lý nước thải tập trung đạt tiêu chuẩn môi trường (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 40
         histogram: [ 15, 1, 7, 4, 19, 20, 34, 222 ]
       Tỉnh/thành phố:
         kind: categorical

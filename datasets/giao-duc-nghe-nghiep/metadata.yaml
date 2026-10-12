@@ -32,11 +32,22 @@ files:
         kind: numeric
         min: 2016
         max: 2023
+        distinct: 8
+        values:
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
         histogram: [ 17, 17, 17, 17, 17, 17, 17, 17 ]
       Giáo dục nghề nghiệp:
         kind: numeric
         min: 19.8
         max: 3024
+        distinct: 86
         histogram: [ 40, 6, 5, 16, 7, 4, 1, 7 ]
       Chỉ tiêu:
         kind: categorical

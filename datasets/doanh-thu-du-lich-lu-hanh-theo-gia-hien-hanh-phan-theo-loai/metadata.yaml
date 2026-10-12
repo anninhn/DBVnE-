@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2001
         max: 2024
+        distinct: 24
         histogram: [ 21, 21, 21, 21, 21, 21, 21, 21 ]
       Doanh thu (Tỷ đồng ):
         kind: numeric
         min: 0.9
         max: 78990.47
+        distinct: 140
         histogram: [ 106, 13, 10, 7, 5, 2, 3, 1 ]
       Cơ cấu (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 99
         histogram: [ 47, 19, 12, 12, 8, 8, 10, 30 ]
       Thành phần kinh tế:
         kind: categorical

@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 148, 148, 111, 148, 148, 111, 148, 148 ]
+        distinct: 30
+        histogram: [ 148, 148, 148, 148, 148, 148, 148, 74 ]
       Sản lượng lúa hè thu và thu đông:
         kind: numeric
         min: 0
         max: 15461.2
+        distinct: 946
         histogram: [ 961, 37, 3, 10, 11, 8, 15, 13 ]
       Tỉnh, thành phố:
         kind: categorical

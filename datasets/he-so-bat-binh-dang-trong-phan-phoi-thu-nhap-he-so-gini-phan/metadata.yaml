@@ -31,11 +31,21 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 70, 70, 70, 0, 70, 70, 70, 70 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70, 70, 70, 70, 70 ]
       Hệ số bất bình đẳng trong phân phối thu nhập (hệ số GINI):
         kind: numeric
         min: 0.2
         max: 0.53
+        distinct: 32
         histogram: [ 6, 28, 85, 151, 121, 65, 26, 8 ]
       Địa phương:
         kind: categorical

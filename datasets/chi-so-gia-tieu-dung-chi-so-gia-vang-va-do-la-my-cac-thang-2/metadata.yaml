@@ -31,16 +31,38 @@ files:
         kind: numeric
         min: 2020
         max: 2024
-        histogram: [ 228, 0, 228, 0, 228, 0, 228, 228 ]
+        distinct: 5
+        values:
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 228, 228, 228, 228, 228 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 190, 95, 190, 95, 95, 190, 95, 190 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95 ]
       Chỉ số giá tiêu dùng, chỉ số giá vàng và đô la Mỹ các tháng so với kỳ gốc 2019:
         kind: numeric
         min: 81.62
         max: 219.14
+        distinct: 874
         histogram: [ 77, 830, 138, 36, 11, 3, 5, 4 ]
       Nhóm hàng:
         kind: categorical

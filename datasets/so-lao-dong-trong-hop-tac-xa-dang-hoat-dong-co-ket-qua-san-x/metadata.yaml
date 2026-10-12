@@ -30,11 +30,24 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 70, 0, 0, 140, 140, 70, 140, 140 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 70, 70, 70, 70, 70, 70, 70, 70, 70, 70 ]
       Số lao động trong hợp tác xã đang hoạt động có kết quả sản xuất kinh doanh tại thời điểm 31/12 hàng năm:
         kind: numeric
         min: 1.004
         max: 999
+        distinct: 648
         histogram: [ 555, 11, 16, 21, 6, 22, 28, 41 ]
       Tỉnh/thành phố:
         kind: categorical

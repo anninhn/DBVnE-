@@ -31,31 +31,37 @@ files:
         kind: numeric
         min: 2000
         max: 2024
-        histogram: [ 6, 6, 6, 6, 6, 6, 6, 8 ]
+        distinct: 25
+        histogram: [ 8, 8, 8, 8, 8, 8, 2 ]
       Tổng số:
         kind: numeric
         min: 10.3
         max: 31.01
+        distinct: 41
         histogram: [ 6, 7, 6, 5, 6, 4, 4, 5 ]
       Nam:
         kind: numeric
         min: 11.8
         max: 33.62
+        distinct: 42
         histogram: [ 6, 9, 4, 4, 9, 2, 6, 3 ]
       Nữ:
         kind: numeric
         min: 8.6
         max: 27.83
+        distinct: 41
         histogram: [ 6, 7, 6, 4, 6, 5, 5, 4 ]
       Thành thị:
         kind: numeric
         min: 24.2
         max: 44.92
+        distinct: 40
         histogram: [ 5, 2, 7, 6, 4, 9, 5, 5 ]
       Nông thôn:
         kind: numeric
         min: 5.3
         max: 21.85
+        distinct: 39
         histogram: [ 5, 11, 5, 4, 6, 5, 5, 2 ]
       Tỷ lệ Lao động:
         kind: categorical

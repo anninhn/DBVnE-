@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng:
         kind: numeric
         min: 117
         max: 6447397.35
+        distinct: 2078
         histogram: [ 2033, 37, 6, 3, 2, 2, 3, 2 ]
       Tỉnh, thành phố:
         kind: categorical

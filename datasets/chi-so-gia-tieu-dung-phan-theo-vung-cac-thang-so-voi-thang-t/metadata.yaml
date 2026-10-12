@@ -31,16 +31,35 @@ files:
         kind: numeric
         min: 2022
         max: 2023
-        histogram: [ 84, 0, 0, 0, 0, 0, 0, 84 ]
+        distinct: 2
+        values:
+          - 2022
+          - 2023
+        histogram: [ 84, 84 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 28, 14, 28, 14, 14, 28, 14, 28 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14 ]
       Chỉ số giá tiêu dùng:
         kind: numeric
         min: 99.24
         max: 101.97
+        distinct: 99
         histogram: [ 5, 17, 54, 55, 29, 6, 1, 1 ]
       Vùng:
         kind: categorical

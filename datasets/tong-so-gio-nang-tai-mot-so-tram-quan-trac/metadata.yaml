@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 2006
         max: 2024
-        histogram: [ 45, 30, 30, 30, 45, 30, 30, 45 ]
+        distinct: 19
+        histogram: [ 45, 45, 45, 45, 45, 45, 15 ]
       Tổng số giờ nắng tại một số trạm quan trắc:
         kind: numeric
         min: 909.7
         max: 2937.8
+        distinct: 276
         histogram: [ 6, 41, 48, 37, 57, 49, 35, 12 ]
       Tỉnh, thành phố:
         kind: categorical

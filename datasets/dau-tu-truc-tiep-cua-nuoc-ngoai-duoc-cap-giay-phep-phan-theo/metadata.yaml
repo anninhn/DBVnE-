@@ -30,11 +30,13 @@ files:
         kind: numeric
         min: 1
         max: 42002
+        distinct: 66
         histogram: [ 66, 1, 2, 0, 1, 0, 0, 1 ]
       Tổng vốn đăng ký (Triệu đô la Mỹ):
         kind: numeric
         min: 1.5
         max: 502820.9
+        distinct: 71
         histogram: [ 67, 1, 1, 1, 0, 0, 0, 1 ]
       Tỉnh, thành phố:
         kind: categorical

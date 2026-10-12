@@ -31,16 +31,30 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 4, 0, 0, 8, 8, 4, 8, 8 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 ]
       Giá trị (Tỷ đồng):
         kind: numeric
         min: 178284
         max: 4767788.47
+        distinct: 40
         histogram: [ 5, 14, 12, 1, 2, 1, 2, 3 ]
       Cơ cấu (%):
         kind: numeric
         min: 17.65
         max: 100
+        distinct: 31
         histogram: [ 3, 25, 2, 0, 0, 0, 0, 10 ]
       Trình độ công nghệ:
         kind: categorical

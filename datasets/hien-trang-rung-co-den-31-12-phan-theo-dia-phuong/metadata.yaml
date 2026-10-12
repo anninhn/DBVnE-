@@ -31,31 +31,44 @@ files:
         kind: numeric
         min: 2008
         max: 2013
-        histogram: [ 67, 67, 0, 67, 67, 0, 67, 67 ]
+        distinct: 6
+        values:
+          - 2008
+          - 2009
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+        histogram: [ 67, 67, 67, 67, 67, 67 ]
       Tổng diện tích rừng:
         kind: numeric
         min: 0.6
         max: 13954.4
+        distinct: 344
         histogram: [ 378, 6, 12, 0, 0, 0, 0, 6 ]
       Rừng tự nhiên:
         kind: numeric
         min: 0
         max: 10423.8
+        distinct: 283
         histogram: [ 348, 2, 16, 0, 0, 0, 0, 6 ]
       Rừng trồng:
         kind: numeric
         min: 0.6
         max: 3556.3
+        distinct: 318
         histogram: [ 384, 0, 12, 0, 0, 0, 3, 3 ]
       Mới trồng:
         kind: numeric
         min: 0
         max: 398.4
+        distinct: 161
         histogram: [ 283, 0, 6, 4, 0, 0, 1, 4 ]
       Tỷ lệ che phủ rừng (%):
         kind: numeric
         min: 0.5
         max: 70.8
+        distinct: 233
         histogram: [ 93, 39, 19, 18, 58, 92, 27, 20 ]
       Tỉnh, thành phố:
         kind: categorical

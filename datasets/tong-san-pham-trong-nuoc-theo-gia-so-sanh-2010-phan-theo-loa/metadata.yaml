@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 84, 56, 84, 56, 56, 84, 56, 84 ]
+        distinct: 20
+        histogram: [ 84, 84, 84, 84, 84, 84, 56 ]
       Giá trị (Tỷ đồng):
         kind: numeric
         min: 2374
         max: 6261036.3
+        distinct: 495
         histogram: [ 444, 34, 11, 8, 4, 3, 3, 3 ]
       Chỉ số phát triển (%):
         kind: numeric
         min: 78.9
         max: 141
+        distinct: 149
         histogram: [ 4, 9, 31, 404, 56, 1, 1, 2 ]
       Chỉ tiêu:
         kind: categorical

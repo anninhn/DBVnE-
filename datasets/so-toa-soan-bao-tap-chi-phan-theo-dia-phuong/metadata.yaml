@@ -31,12 +31,14 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 70, 70, 210, 140, 140, 210, 140, 210 ]
+        distinct: 17
+        histogram: [ 70, 140, 210, 210, 210, 210, 140 ]
       Số tòa soạn báo, tạp chí:
         kind: numeric
         min: 1
         max: 902
-        histogram: [ 1136, 3, 0, 0, 18, 15, 5, 13 ]
+        distinct: 92
+        histogram: [ 1136, 3, 0, 0, 19, 14, 5, 13 ]
       Địa phương:
         kind: categorical
         distinct: 70

@@ -31,66 +31,82 @@ files:
         kind: numeric
         min: 2022
         max: 2023
-        histogram: [ 19, 0, 0, 0, 0, 0, 0, 19 ]
+        distinct: 2
+        values:
+          - 2022
+          - 2023
+        histogram: [ 19, 19 ]
       Tháng 1:
         kind: numeric
         min: 97.95
         max: 101.52
+        distinct: 35
         histogram: [ 1, 0, 0, 1, 16, 12, 4, 4 ]
       Tháng 2:
         kind: numeric
         min: 98.15
         max: 103.53
+        distinct: 35
         histogram: [ 1, 1, 8, 12, 12, 1, 0, 3 ]
       Tháng 3:
         kind: numeric
         min: 98.25
         max: 108.09
+        distinct: 37
         histogram: [ 3, 17, 13, 2, 1, 0, 0, 2 ]
       Tháng 4:
         kind: numeric
         min: 96.77
         max: 108.38
+        distinct: 37
         histogram: [ 3, 3, 18, 8, 4, 0, 0, 2 ]
       Tháng 5:
         kind: numeric
         min: 96.67
         max: 109.83
+        distinct: 37
         histogram: [ 3, 3, 21, 6, 3, 0, 1, 1 ]
       Tháng 6:
         kind: numeric
         min: 96.71
         max: 113.7
+        distinct: 38
         histogram: [ 3, 13, 15, 5, 1, 0, 0, 1 ]
       Tháng 7:
         kind: numeric
         min: 96.71
         max: 110.74
+        distinct: 37
         histogram: [ 3, 4, 15, 10, 5, 0, 0, 1 ]
       Tháng 8:
         kind: numeric
         min: 97.87
         max: 105.76
+        distinct: 35
         histogram: [ 4, 0, 8, 3, 10, 4, 4, 5 ]
       Tháng 9:
         kind: numeric
         min: 98.2
         max: 109.86
+        distinct: 38
         histogram: [ 1, 10, 7, 6, 6, 3, 2, 3 ]
       Tháng 10:
         kind: numeric
         min: 98.04
         max: 111.87
+        distinct: 38
         histogram: [ 1, 10, 9, 9, 4, 0, 1, 4 ]
       Tháng 11:
         kind: numeric
         min: 97.9
         max: 112.04
+        distinct: 37
         histogram: [ 1, 7, 11, 8, 3, 2, 1, 5 ]
       Tháng 12:
         kind: numeric
         min: 98.03
         max: 113.13
+        distinct: 38
         histogram: [ 2, 8, 10, 9, 2, 1, 1, 5 ]
       Nhóm hàng:
         kind: categorical

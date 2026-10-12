@@ -31,11 +31,24 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 34, 17, 17, 17, 17, 17, 17, 34 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 17, 17, 17, 17, 17, 17, 17, 17, 17, 17 ]
       Lãi suất, tỷ giá trung tâm:
         kind: numeric
         min: 0
         max: 24170.4
+        distinct: 65
         histogram: [ 160, 0, 0, 0, 0, 0, 0, 7 ]
       Chỉ tiêu:
         kind: categorical

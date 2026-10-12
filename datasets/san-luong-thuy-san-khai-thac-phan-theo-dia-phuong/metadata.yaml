@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Sản lượng thủy sản khai thác:
         kind: numeric
         min: 5
         max: 3940108
+        distinct: 1912
         histogram: [ 1993, 35, 23, 16, 5, 4, 3, 8 ]
       Tỉnh, thành phố:
         kind: categorical

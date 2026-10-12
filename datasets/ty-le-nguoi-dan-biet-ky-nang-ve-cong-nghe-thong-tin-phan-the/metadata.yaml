@@ -28,63 +28,64 @@ files:
     r2_key: "14f2c8e7-e3fa-4a12-a38b-11df9e6c580b/ty-le-nguoi-dan-biet-ky-nang-ve-cong-nghe-thong-tin-phan-the.csv"
     size_mb: 0
     column_stats:
-      "Tỷ lệ người dân biết kỹ năng về công nghệ thông tin":
+      Tỷ lệ người dân biết kỹ năng về công nghệ thông tin:
         kind: numeric
         min: 18
         max: 90
-        histogram: [3, 1, 7, 5, 4, 1, 1, 3]
-      "Phân tổ":
+        distinct: 22
+        histogram: [ 3, 2, 8, 6, 2, 1, 2, 1 ]
+      Phân tổ:
         kind: categorical
         distinct: 25
-        complete: true
         segments:
-          - label: "CẢ NƯỚC"
+          - label: CẢ NƯỚC
             count: 1
-          - label: "Thành thị"
+          - label: Thành thị
             count: 1
-          - label: "Nông thôn"
+          - label: Nông thôn
             count: 1
-          - label: "Nam"
+          - label: Nam
             count: 1
-          - label: "Nữ"
+          - label: Nữ
             count: 1
-          - label: "6-11 tuổi"
+          - label: 6-11 tuổi
             count: 1
-          - label: "12-15 tuổi"
+          - label: 12-15 tuổi
             count: 1
-          - label: "16 - 18 tuổi"
+          - label: 16 - 18 tuổi
             count: 1
-          - label: "19 - 24 tuổi"
+          - label: 19 - 24 tuổi
             count: 1
-          - label: "25 - 29 tuổi"
+          - label: 25 - 29 tuổi
             count: 1
-          - label: "30 - 34 tuổi"
+          - label: 30 - 34 tuổi
             count: 1
-          - label: "35 - 39 tuổi"
+          - label: 35 - 39 tuổi
             count: 1
-          - label: "40 - 44 tuổi"
+          - label: 40 - 44 tuổi
             count: 1
-          - label: "45 - 49 tuổi"
+          - label: 45 - 49 tuổi
             count: 1
-          - label: "50 - 54 tuổi"
+          - label: 50 - 54 tuổi
             count: 1
-          - label: "55 - 59 tuổi"
+          - label: 55 - 59 tuổi
             count: 1
-          - label: "60+ tuổi"
+          - label: 60+ tuổi
             count: 1
-          - label: "Kỹ năng cơ bản - Basic skill"
+          - label: Kỹ năng cơ bản - Basic skill
             count: 1
-          - label: "Kỹ năng nâng cao - Advance skill"
+          - label: Kỹ năng nâng cao - Advance skill
             count: 1
-          - label: "Đồng bằng sông Hồng"
+          - label: Đồng bằng sông Hồng
             count: 1
-          - label: "Trung du và miền núi phía Bắc"
+          - label: Trung du và miền núi phía Bắc
             count: 1
-          - label: "Bắc Trung Bộ và duyên hải miền Trung"
+          - label: Bắc Trung Bộ và duyên hải miền Trung
             count: 1
-          - label: "Tây Nguyên"
+          - label: Tây Nguyên
             count: 1
-          - label: "Đông Nam Bộ"
+          - label: Đông Nam Bộ
             count: 1
-          - label: "Đồng bằng sông Cửu Long"
+          - label: Đồng bằng sông Cửu Long
             count: 1
+        complete: true

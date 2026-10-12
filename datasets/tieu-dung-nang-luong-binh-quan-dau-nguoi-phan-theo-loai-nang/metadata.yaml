@@ -31,11 +31,18 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 18, 0, 18, 0, 0, 18, 0, 18 ]
+        distinct: 4
+        values:
+          - 2018
+          - 2020
+          - 2022
+          - 2024
+        histogram: [ 18, 18, 18, 18 ]
       Tiêu dùng năng lượng bình quân đầu người:
         kind: numeric
         min: 0.81
         max: 7380.94
+        distinct: 68
         histogram: [ 32, 3, 5, 4, 6, 8, 6, 4 ]
       Phân tổ:
         kind: categorical

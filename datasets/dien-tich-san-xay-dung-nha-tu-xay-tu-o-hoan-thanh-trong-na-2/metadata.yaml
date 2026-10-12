@@ -31,11 +31,28 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 16, 16, 8, 16, 16, 8, 16, 16 ]
+        distinct: 14
+        values:
+          - 2010
+          - 2011
+          - 2012
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8 ]
       Diện tích sàn xây dựng nhà tự xây, tự ở hoàn thành trong năm của hộ dân cư:
         kind: numeric
         min: 1.104
         max: 984
+        distinct: 112
         histogram: [ 91, 0, 3, 5, 8, 3, 1, 1 ]
       Loại nhà:
         kind: categorical

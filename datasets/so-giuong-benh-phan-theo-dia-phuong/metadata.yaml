@@ -32,21 +32,29 @@ files:
         kind: numeric
         min: 2021
         max: 2023
-        histogram: [ 70, 0, 0, 0, 70, 0, 0, 70 ]
+        distinct: 3
+        values:
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 70, 70, 70 ]
       Tổng số:
         kind: numeric
         min: 0
         max: 905
+        distinct: 203
         histogram: [ 206, 0, 3, 0, 0, 0, 0, 1 ]
       Công lập:
         kind: numeric
         min: 1.03
         max: 905
+        distinct: 199
         histogram: [ 204, 0, 3, 0, 0, 0, 0, 1 ]
       Ngoài công lập:
         kind: numeric
         min: 1
         max: 968
+        distinct: 108
         histogram: [ 73, 24, 13, 11, 9, 6, 7, 6 ]
       Địa phương:
         kind: categorical

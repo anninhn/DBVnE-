@@ -32,22 +32,43 @@ files:
         kind: numeric
         min: 2015
         max: 2024
-        histogram: [ 40, 20, 20, 20, 20, 20, 20, 40 ]
+        distinct: 10
+        values:
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 ]
       Trị giá (Nghìn tỷ đồng):
         kind: numeric
         min: 0
         max: 17914.6
+        distinct: 145
         histogram: [ 100, 13, 19, 8, 7, 5, 3, 3 ]
       Tốc độ tăng so với 31 tháng 12 năm trước (%):
         kind: numeric
         min: -75.8
         max: 104.6
+        distinct: 126
         histogram: [ 2, 3, 7, 80, 53, 8, 2, 3 ]
       Tỷ lệ tổng phương tiện thanh toán so với GDP (%):
         kind: numeric
         min: 147.9
         max: 157.9
-        histogram: [ 1, 0, 1, 0, 0, 1, 1, 1 ]
+        distinct: 5
+        values:
+          - 147.9
+          - 150.5
+          - 155
+          - 155.6
+          - 157.9
+        histogram: [ 1, 1, 1, 1, 1 ]
       Chỉ tiêu chủ yếu:
         kind: categorical
         distinct: 20

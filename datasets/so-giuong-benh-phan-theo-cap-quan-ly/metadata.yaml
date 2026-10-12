@@ -30,17 +30,29 @@ files:
         kind: numeric
         min: 2005
         max: 2012
+        distinct: 8
+        values:
+          - 2005
+          - 2006
+          - 2007
+          - 2008
+          - 2009
+          - 2010
+          - 2011
+          - 2012
         histogram: [ 28, 28, 28, 28, 28, 28, 28, 14 ]
       Số giường:
         kind: numeric
         min: 1.1
         max: 680
+        distinct: 136
         histogram: [ 118, 15, 18, 10, 3, 2, 3, 2 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 29
         max: 191
-        histogram: [ 1, 6, 7, 126, 18, 4, 3, 4 ]
+        distinct: 50
+        histogram: [ 1, 6, 7, 135, 11, 3, 5, 1 ]
       Loại cơ sở:
         kind: categorical
         distinct: 7

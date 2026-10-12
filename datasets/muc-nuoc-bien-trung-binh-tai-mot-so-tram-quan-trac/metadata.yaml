@@ -30,11 +30,26 @@ files:
         kind: numeric
         min: 2013
         max: 2024
-        histogram: [ 32, 16, 32, 16, 16, 32, 16, 32 ]
+        distinct: 12
+        values:
+          - 2013
+          - 2014
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16 ]
       Mực nước biển trung bình tại một số trạm quan trắc:
         kind: numeric
         min: 70
         max: 277
+        distinct: 94
         histogram: [ 24, 20, 0, 35, 18, 40, 18, 30 ]
       Trạm:
         kind: categorical

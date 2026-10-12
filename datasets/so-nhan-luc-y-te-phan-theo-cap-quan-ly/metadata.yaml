@@ -31,16 +31,28 @@ files:
         kind: numeric
         min: 2005
         max: 2014
-        histogram: [ 56, 28, 28, 28, 28, 0, 28, 14 ]
+        distinct: 8
+        values:
+          - 2005
+          - 2006
+          - 2007
+          - 2008
+          - 2009
+          - 2010
+          - 2012
+          - 2014
+        histogram: [ 28, 28, 28, 28, 28, 28, 28, 14 ]
       Tổng số - Người:
         kind: numeric
         min: 26
         max: 102011
+        distinct: 200
         histogram: [ 142, 17, 6, 18, 18, 5, 2, 2 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 1.5
         max: 2808.9
+        distinct: 149
         histogram: [ 209, 0, 0, 0, 0, 0, 0, 1 ]
       Cán bộ:
         kind: categorical

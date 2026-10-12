@@ -31,21 +31,29 @@ files:
         kind: numeric
         min: 2022
         max: 2024
-        histogram: [ 70, 0, 0, 0, 70, 0, 0, 70 ]
+        distinct: 3
+        values:
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 70, 70, 70 ]
       Tổng số cụm công nghiệp đang hoạt động (Cụm):
         kind: numeric
         min: 0
         max: 734
+        distinct: 54
         histogram: [ 191, 3, 6, 0, 0, 0, 0, 3 ]
       Số lượng cụm công nghiệp đang hoạt động có hệ thống xử lý nước thải tập trung đạt tiêu chuẩn môi trường (Cụm):
         kind: numeric
         min: 0
         max: 216
+        distinct: 34
         histogram: [ 168, 7, 3, 0, 0, 0, 2, 1 ]
       Tỷ lệ cụm công nghiệp đang hoạt động có hệ thống xử lý nước thải tập trung đạt tiêu chuẩn môi trường (%):
         kind: numeric
         min: 0
         max: 100
+        distinct: 71
         histogram: [ 67, 33, 26, 16, 13, 5, 8, 13 ]
       Tỉnh/thành phố:
         kind: categorical

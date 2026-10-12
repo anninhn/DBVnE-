@@ -30,16 +30,35 @@ files:
         kind: numeric
         min: 2022
         max: 2023
-        histogram: [ 84, 0, 0, 0, 0, 0, 0, 84 ]
+        distinct: 2
+        values:
+          - 2022
+          - 2023
+        histogram: [ 84, 84 ]
       Tháng:
         kind: numeric
         min: 1
         max: 12
-        histogram: [ 28, 14, 28, 14, 14, 28, 14, 28 ]
+        distinct: 12
+        values:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        histogram: [ 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14 ]
       Chỉ số giá vàng:
         kind: numeric
         min: 97.2
         max: 106.73
+        distinct: 136
         histogram: [ 13, 32, 44, 52, 13, 11, 2, 1 ]
       Vùng:
         kind: categorical

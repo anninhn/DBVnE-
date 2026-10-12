@@ -79,6 +79,26 @@
       "createdAt": "2026-07-24T00:00:00Z",
       "active": true,
       "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000008",
+      "username": "thanhlan",
+      "passwordHash": "$2b$12$whWGy1qQ8tfYyyWUdOg1V.OJrIBlklR.4W7pVHWUI2LBXxfBwUyca",
+      "displayName": "Thanh Lan",
+      "role": "editor",
+      "createdAt": "2026-10-02T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000009",
+      "username": "phuongdong",
+      "passwordHash": "$2b$12$whWGy1qQ8tfYyyWUdOg1V.OJrIBlklR.4W7pVHWUI2LBXxfBwUyca",
+      "displayName": "Phuong Dong",
+      "role": "editor",
+      "createdAt": "2026-10-02T00:00:00Z",
+      "active": true,
+      "_initial_password": "ChangeMe_VnExpress_2026! — đổi ngay sau lần login đầu tiên qua tools/hash-password.mjs"
     }
   ]
 }

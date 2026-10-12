@@ -181,6 +181,7 @@ export default async function DatasetPage({ params }: PageProps) {
             resources={dataset.resources}
             slug={slug}
             canDownload={!!currentUser}
+            dictionary={dataset.data_dictionary}
           />
 
           {/* ── Articles tab (spec 2026-07-24-article-linking) ── */}

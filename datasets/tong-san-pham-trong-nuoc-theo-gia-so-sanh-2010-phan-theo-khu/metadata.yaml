@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 15, 10, 15, 10, 10, 15, 10, 15 ]
+        distinct: 20
+        histogram: [ 15, 15, 15, 15, 15, 15, 10 ]
       Giá trị (Tỷ đồng):
         kind: numeric
         min: 300688.5
         max: 6261036.3
+        distinct: 95
         histogram: [ 48, 16, 14, 6, 3, 2, 3, 3 ]
       Chỉ số phát triển (Năm trước = 100) (%):
         kind: numeric
         min: 98.1
         max: 110.7
+        distinct: 56
         histogram: [ 1, 1, 10, 19, 10, 35, 16, 2 ]
       Khu vực kinh tế:
         kind: categorical

@@ -31,26 +31,50 @@ files:
         kind: numeric
         min: 2023
         max: 2023
-        histogram: [ 30, 0, 0, 0, 0, 0, 0, 0 ]
+        distinct: 1
+        values:
+          - 2023
+        histogram: [ 30 ]
       Tổng lượng chất thải nguy hại phát sinh (Tấn):
         kind: numeric
         min: 91
         max: 653943
+        distinct: 29
         histogram: [ 24, 1, 2, 1, 0, 0, 0, 2 ]
       Tổng lượng chất thải nguy hại được thu gom (Tấn):
         kind: numeric
         min: 91
         max: 652763
+        distinct: 29
         histogram: [ 24, 1, 2, 1, 0, 0, 0, 2 ]
       Tổng lượng chất thải nguy hại được xử lý (Tấn):
         kind: numeric
         min: 85.51
         max: 585.19
-        histogram: [ 24, 0, 0, 1, 1, 2, 0, 2 ]
+        distinct: 16
+        values:
+          - 85.51
+          - 90.91
+          - 91.89
+          - 95.41
+          - 97.28
+          - 99.24
+          - 99.7
+          - 99.82
+          - 99.98
+          - 100
+          - 287.28
+          - 387.26
+          - 399.18
+          - 399.76
+          - 578.15
+          - 585.19
+        histogram: [ 1, 1, 1, 1, 1, 1, 1, 1, 13, 3, 1, 1, 1, 1, 1, 1 ]
       Tỷ lệ chất thải nguy hại được thu gom, xử lý (%):
         kind: numeric
         min: 0.02
         max: 109.89
+        distinct: 27
         histogram: [ 21, 3, 2, 0, 0, 1, 2, 1 ]
       Tỉnh/thành phố:
         kind: categorical

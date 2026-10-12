@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 15, 10, 15, 10, 10, 15, 10, 15 ]
+        distinct: 20
+        histogram: [ 15, 15, 15, 15, 15, 15, 10 ]
       Tổng số - Nghìn người:
         kind: numeric
         min: 10689.1
         max: 54659.2
+        distinct: 100
         histogram: [ 10, 12, 29, 15, 14, 1, 6, 13 ]
       Tỷ lệ so với dân số (%):
         kind: numeric
         min: 46.21
         max: 60.6
+        distinct: 82
         histogram: [ 6, 7, 10, 18, 16, 13, 11, 19 ]
       Phân tổ:
         kind: categorical

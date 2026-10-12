@@ -30,6 +30,7 @@ files:
         kind: numeric
         min: 1
         max: 96
+        distinct: 34
         histogram: [ 5, 6, 3, 7, 3, 2, 4, 4 ]
       name:
         kind: categorical
@@ -473,6 +474,7 @@ files:
         kind: numeric
         min: 2514.81
         max: 24233.07
+        distinct: 34
         histogram: [ 6, 8, 8, 5, 3, 2, 0, 2 ]
 edits:
   - by: ninh

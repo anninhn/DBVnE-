@@ -31,16 +31,19 @@ files:
         kind: numeric
         min: 2005
         max: 2024
-        histogram: [ 9, 6, 9, 6, 6, 9, 6, 9 ]
+        distinct: 20
+        histogram: [ 9, 9, 9, 9, 9, 9, 6 ]
       Tổng số - Nghìn thuê bao:
         kind: numeric
         min: 210
         max: 141229.8
+        distinct: 60
         histogram: [ 18, 6, 1, 1, 1, 2, 7, 24 ]
       Chỉ số phát triển (Năm trước =100) (%):
         kind: numeric
         min: 91.1
         max: 250.5
+        distinct: 54
         histogram: [ 30, 16, 2, 3, 1, 1, 2, 2 ]
       Viễn thông:
         kind: categorical

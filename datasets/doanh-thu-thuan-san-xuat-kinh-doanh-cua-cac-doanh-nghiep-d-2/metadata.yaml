@@ -30,16 +30,30 @@ files:
         kind: numeric
         min: 2010
         max: 2023
-        histogram: [ 13, 0, 0, 26, 26, 13, 26, 26 ]
+        distinct: 10
+        values:
+          - 2010
+          - 2015
+          - 2016
+          - 2017
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+        histogram: [ 13, 13, 13, 13, 13, 13, 13, 13, 13, 13 ]
       Nghìn tỷ đồng:
         kind: numeric
         min: 0.4
         max: 36289.54
+        distinct: 130
         histogram: [ 81, 23, 12, 5, 3, 2, 2, 2 ]
       Cơ cấu (%):
         kind: numeric
         min: 0.01
         max: 100
+        distinct: 112
         histogram: [ 62, 23, 25, 0, 10, 0, 0, 10 ]
       Loại hình doanh nghiệp:
         kind: categorical

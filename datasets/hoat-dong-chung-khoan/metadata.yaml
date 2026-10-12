@@ -31,36 +31,97 @@ files:
         kind: numeric
         min: 2018
         max: 2024
-        histogram: [ 1, 1, 1, 0, 1, 1, 1, 1 ]
+        distinct: 7
+        values:
+          - 2018
+          - 2019
+          - 2020
+          - 2021
+          - 2022
+          - 2023
+          - 2024
+        histogram: [ 1, 1, 1, 1, 1, 1, 1 ]
       Giá trị vốn hóa thị trường cổ phiếu (Tỷ đồng):
         kind: numeric
         min: 3961457
         max: 7766606.6
-        histogram: [ 2, 0, 2, 0, 1, 0, 1, 1 ]
+        distinct: 7
+        values:
+          - 3961457
+          - 4383580
+          - 5226608.6
+          - 5293773
+          - 5936591.1
+          - 7173318.5
+          - 7766606.6
+        histogram: [ 1, 1, 1, 1, 1, 1, 1 ]
       Tốc độ tăng giá trị vốn hóa thị trường cổ phiếu (%):
         kind: numeric
         min: -32.7
         max: 46.7
-        histogram: [ 1, 0, 0, 0, 3, 2, 0, 1 ]
+        distinct: 6
+        values:
+          - -32.7
+          - 10.7
+          - 12.7
+          - 13.6
+          - 20.8
+          - 46.7
+        histogram: [ 1, 1, 1, 1, 2, 1 ]
       Tỷ lệ vốn hóa thị trường cổ phiếu so với tổng sản phẩm trong nước (%):
         kind: numeric
         min: 54.3
         max: 91.5
-        histogram: [ 4, 1, 1, 0, 0, 0, 0, 1 ]
+        distinct: 7
+        values:
+          - 54.3
+          - 56.5
+          - 56.9
+          - 57.5
+          - 62.3
+          - 65.8
+          - 91.5
+        histogram: [ 1, 1, 1, 1, 1, 1, 1 ]
       Quy mô thị trường trái phiếu (Tỷ đồng):
         kind: numeric
         min: 1121307
         max: 2309558.7
-        histogram: [ 2, 1, 1, 0, 1, 0, 1, 1 ]
+        distinct: 7
+        values:
+          - 1121307
+          - 1189085
+          - 1385867
+          - 1543282.1
+          - 1742628.7
+          - 2029930.9
+          - 2309558.7
+        histogram: [ 1, 1, 1, 1, 1, 1, 1 ]
       Quy mô thị trường trái phiếu so với tổng sản phẩm trong nước (%):
         kind: numeric
         min: 15.4
         max: 20.1
-        histogram: [ 1, 1, 0, 1, 2, 0, 0, 2 ]
+        distinct: 7
+        values:
+          - 15.4
+          - 16
+          - 17.2
+          - 18.1
+          - 18.2
+          - 19.7
+          - 20.1
+        histogram: [ 1, 1, 1, 1, 1, 1, 1 ]
       Tốc độ tăng quy mô thị trường trái phiếu (%):
         kind: numeric
         min: 6
         max: 16.5
-        histogram: [ 1, 0, 0, 1, 1, 2, 0, 2 ]
+        distinct: 6
+        values:
+          - 6
+          - 10.6
+          - 11.4
+          - 12.9
+          - 13.8
+          - 16.5
+        histogram: [ 1, 1, 1, 1, 1, 2 ]
 coverage:
   temporal: [ 2018, 2024 ]

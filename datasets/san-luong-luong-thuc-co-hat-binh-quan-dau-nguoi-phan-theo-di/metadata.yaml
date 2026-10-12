@@ -31,11 +31,13 @@ files:
         kind: numeric
         min: 1995
         max: 2024
-        histogram: [ 284, 284, 213, 284, 284, 213, 284, 284 ]
+        distinct: 30
+        histogram: [ 284, 284, 284, 284, 284, 284, 284, 142 ]
       Sản lượng lương thực có hạt bình quân đầu người:
         kind: numeric
         min: 8.6
         max: 2723.2
+        distinct: 1836
         histogram: [ 822, 894, 126, 109, 58, 46, 19, 12 ]
       Tỉnh, thành phố:
         kind: categorical
