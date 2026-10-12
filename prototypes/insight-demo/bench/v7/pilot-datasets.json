@@ -1,0 +1,258 @@
+{
+ "_ghi_chu": "Bộ dataset đa dạng hình dạng cho bước 1 v7 (THIET-KE-V7 mục 6). Chọn 2026-10-09.",
+ "datasets": [
+  {
+   "slug": "tong-ty-suat-sinh-phan-theo-dia-phuong",
+   "title": "Tổng tỷ suất sinh phân theo địa phương",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 1349,
+   "size_mb": 0.04,
+   "vi_sao": "chuỗi quan sát tỉnh × năm, tỷ lệ — mốc so sánh"
+  },
+  {
+   "slug": "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th",
+   "title": "Dân số trung bình phân theo địa phương và năm",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 2130,
+   "size_mb": 0.06,
+   "vi_sao": "số đếm cộng được, nhiều chiều; mẫu số cho bình quân"
+  },
+  {
+   "slug": "so-vu-ly-hon-da-xet-xu-phan-theo-dia-phuong-va-phan-theo-cap",
+   "title": "Số vụ ly hôn đã xét xử phân theo địa phương và cấp tòa án",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 700,
+   "size_mb": 0.03,
+   "vi_sao": "số đếm + chiều có dòng tổng (Tổng số = cấp tỉnh + cấp huyện)"
+  },
+  {
+   "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-theo",
+   "title": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng theo tỉnh, thành phố và vùng",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 2130,
+   "size_mb": 0.07,
+   "vi_sao": "tiền theo giá hiện hành"
+  },
+  {
+   "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini-phan",
+   "title": "Hệ số GINI về bất bình đẳng thu nhập theo địa phương và năm",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 490,
+   "size_mb": 0.01,
+   "vi_sao": "cặp cùng chỉ tiêu hai nguồn (theo tỉnh)"
+  },
+  {
+   "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini",
+   "title": "Hệ số GINI về bất bình đẳng thu nhập tại Việt Nam",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 135,
+   "size_mb": 0,
+   "vi_sao": "cặp cùng chỉ tiêu hai nguồn (cả nước, chuỗi dài)"
+  },
+  {
+   "slug": "ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dia-phuon",
+   "title": "Tỷ lệ hộ nghèo theo chuẩn nghèo đa chiều phân theo địa phương và năm",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 630,
+   "size_mb": 0.02,
+   "vi_sao": "cùng tên, khác chuẩn đo (đa chiều)"
+  },
+  {
+   "slug": "ty-le-ho-ngheo-phan-theo-dia-phuong",
+   "title": "Tỷ lệ hộ nghèo phân theo địa phương và năm",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 923,
+   "size_mb": 0.02,
+   "vi_sao": "cùng tên, khác chuẩn đo (chuẩn thu nhập), năm thiếu"
+  },
+  {
+   "slug": "luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac",
+   "title": "Lượng mưa hàng tháng tại các trạm quan trắc Việt Nam",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 4692,
+   "size_mb": 0.11,
+   "vi_sao": "chủ thể = trạm quan trắc, nhịp tháng"
+  },
+  {
+   "slug": "tri-gia-xuat-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo",
+   "title": "Trị giá xuất khẩu hàng hóa phân theo khối nước, nước, vùng lãnh thổ",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 2130,
+   "size_mb": 0.05,
+   "vi_sao": "chủ thể = nước / khối nước"
+  },
+  {
+   "slug": "thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-ngan",
+   "title": "Thu nhập bình quân một lao động đang làm việc phân theo ngành",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 154,
+   "size_mb": 0.01,
+   "vi_sao": "chủ thể = ngành kinh tế"
+  },
+  {
+   "slug": "mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-dia-phuong",
+   "title": "Số liệu tai nạn giao thông phân theo địa phương và năm",
+   "source": "Cục Thống kê (NSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 213,
+   "size_mb": 0.01,
+   "vi_sao": "chuỗi ngắn (3 năm), nhiều số đo"
+  },
+  {
+   "slug": "danh-sach-cac-diem-ngap-tai-tp-ho-chi-minh-den-6-2026",
+   "title": "Danh sách các điểm ngập tại TP. Hồ Chí Minh",
+   "source": "PV Gia Minh/Thời sự Sài Gòn thu thập từ Sở Xây dựng  TP HCM ngày 2/10/2026)",
+   "files": [
+    "xlsx"
+   ],
+   "rows": 78,
+   "size_mb": 0.01,
+   "vi_sao": "XLSX danh sách, cấp phường/xã"
+  },
+  {
+   "slug": "thong-ke-thien-tai-viet-nam-giai-doan-1953-2023",
+   "title": "Thống kê thiên tai Việt Nam giai đoạn 1953-2023",
+   "source": "EM-DAT (Centre for Research on the Epidemiology of Disasters)",
+   "files": [
+    "xlsx"
+   ],
+   "rows": 335,
+   "size_mb": 0.1,
+   "vi_sao": "XLSX danh sách sự kiện (EM-DAT)"
+  },
+  {
+   "slug": "toc-do-tang-truong-grdp-34-tinh-thanh-pho-quy-iii-va-9-thang",
+   "title": "Tốc độ tăng trưởng GRDP 34 tỉnh, thành phố quý III và 9 tháng đầu năm 2026",
+   "source": "Tổng cục Thống kê (GSO)",
+   "files": [
+    "xlsx"
+   ],
+   "rows": 241,
+   "size_mb": 0.03,
+   "vi_sao": "XLSX theo quý, danh mục 34, tốc độ tăng %"
+  },
+  {
+   "slug": "thong-tin-34-tinhthanh-pho",
+   "title": "Thông tin 34 tỉnh/thành phố và kịch bản sáp nhập hành chính đề xuất",
+   "source": "unknown",
+   "files": [
+    "xlsx"
+   ],
+   "rows": 34,
+   "size_mb": 0.76,
+   "vi_sao": "XLSX thông tin tham chiếu 34 tỉnh / sáp nhập"
+  },
+  {
+   "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-tp-ho-chi-minh",
+   "title": "Ranh giới hành chính cấp phường/xã TP. Hồ Chí Minh",
+   "source": "thanglequoc/vietnamese-provinces-database (Tổng hợp từ GSO)",
+   "files": [
+    "geojson"
+   ],
+   "rows": 168,
+   "size_mb": 5.2,
+   "vi_sao": "GeoJSON — không gian / bảng tham chiếu cấp xã"
+  },
+  {
+   "slug": "top-bai-viet-co-luot-xem-cao-nhat-tren-vnexpress",
+   "title": "Top bài viết có lượt xem cao nhất trên VnExpress",
+   "source": "VnExpress",
+   "files": [
+    "csv"
+   ],
+   "rows": 1200,
+   "size_mb": 0.3,
+   "vi_sao": "bản ghi không phải thống kê (bài báo)"
+  },
+  {
+   "slug": "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024-3",
+   "title": "Hiện trạng rừng cả nước và các tỉnh thành Việt Nam giai đoạn 2005-2024",
+   "source": "Báo cáo hiện trạng rừng quốc gia theo từng năm - Bộ Nông nghiệp và Phát triển nông thôn ",
+   "files": [
+    "csv"
+   ],
+   "rows": 1153,
+   "size_mb": 0.05,
+   "vi_sao": "nguồn Bộ NN, trùng chủ đề với dataset GSO"
+  },
+  {
+   "slug": "hien-trang-rung-phan-theo-dia-phuong-va-vung-2008-2024",
+   "title": "Hiện trạng rừng phân theo địa phương và vùng giai đoạn 2008-2024",
+   "source": "Tổng cục Thống kê (GSO)",
+   "files": [
+    "csv"
+   ],
+   "rows": 1072,
+   "size_mb": 0.05,
+   "vi_sao": "nguồn GSO, trùng chủ đề — kiểm mapping"
+  },
+  {
+   "slug": "quy-hoach-he-thong-cang-hang-khong-viet-nam-2030-2050",
+   "title": "Quy hoạch hệ thống cảng hàng không Việt Nam đến năm 2030 và 2050",
+   "source": "Bộ Xây dựng (Quyết định số 1140/QĐ-BXD ngày 01 tháng 7 năm 2026)",
+   "files": [
+    "csv"
+   ],
+   "rows": 37,
+   "size_mb": 0,
+   "vi_sao": "danh sách thực thể có thuộc tính quy hoạch"
+  },
+  {
+   "slug": "diem-thi-tot-nghiep-thpt-quoc-gia",
+   "title": "Điểm thi tốt nghiệp THPT Quốc gia",
+   "source": "VnExpress tổng hợp từ Bộ Giáo dục và Đào tạo (Bộ GD&ĐT)",
+   "files": [
+    "csv"
+   ],
+   "rows": 6443905,
+   "size_mb": 429.47,
+   "vi_sao": "bản ghi rất lớn (429 MB) — phải gộp theo luồng"
+  },
+  {
+   "slug": "thu-tuc-hanh-chinh-theo-linh-vuc-va-co-quan-quan-ly",
+   "title": "Thủ tục hành chính theo lĩnh vực và cơ quan quản lý",
+   "source": "Văn phòng Chính phủ",
+   "files": [
+    "csv"
+   ],
+   "rows": 272,
+   "size_mb": 0.03,
+   "vi_sao": "đếm theo phân loại, không có thời gian"
+  }
+ ]
+}

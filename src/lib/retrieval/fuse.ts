@@ -4,6 +4,19 @@
  * Hai nhánh cho điểm ở hai thang khác nhau: cosine nằm trong [0,1] còn điểm từ khoá
  * là tổng log không có trần. Cộng thẳng thì nhánh từ khoá lấn hoàn toàn — nên phải
  * chuẩn hoá mỗi nhánh về [0,1] trước.
+ *
+ * SỬA 2026-10-08 — THỨ TỰ xếp bằng thứ hạng (Reciprocal Rank Fusion), không bằng
+ * tổng điểm. Chuẩn hoá về [0,1] vẫn chưa đủ: cosine của MỌI dataset dồn trong một
+ * dải hẹp (~0,5–0,72), còn điểm từ khoá đã chuẩn hoá trải đều 0–1, nên nhánh từ khoá
+ * vẫn quyết định thứ tự. Đo trên kho 498 dataset: "Thu nhập và mức sinh có liên quan
+ * gì nhau giữa các tỉnh?" — dataset "Tổng tỷ suất sinh" hạng 2 theo ngữ nghĩa nhưng
+ * hạng 55 sau khi trộn (chữ "mức sinh" không khớp từ khoá "tỷ suất sinh"; "sinh" lại
+ * khớp "giá sinh hoạt"), rơi khỏi top-20 gửi cho model → hệ thống trả lời "kho chưa
+ * có dataset về mức sinh". RRF chỉ dùng THỨ HẠNG trong mỗi nhánh nên lệch thang điểm
+ * không còn tác dụng.
+ *
+ * Tổng điểm tuyến tính (`score`) VẪN được tính và VẪN là thứ lọc rác qua `MIN_SCORE`
+ * — ngưỡng đó đã được đo trên thang này (xem dưới), đổi sang RRF thì con số mất nghĩa.
  */
 
 import type { SearchHit } from "./types";
@@ -45,6 +58,29 @@ const KEYWORD_WEIGHT = 0.5;
  * "chưa có". Ngưỡng ở đây chỉ để `total` không phải lúc nào cũng bằng cả kho.
  */
 const MIN_SCORE = 0.35;
+
+/**
+ * Hằng số K của RRF: điểm thứ tự = Σ 1 / (K + hạng). K = 60 là giá trị chuẩn trong
+ * tài liệu gốc của RRF (Cormack và cộng sự, 2009); K lớn làm chênh lệch giữa các hạng
+ * đầu bớt gắt để một nhánh không áp đảo chỉ vì một hạng 1.
+ */
+const RRF_K = 60;
+
+/**
+ * Trọng số nhánh từ khoá TRONG RRF (nhánh ngữ nghĩa = 1). Đo 2026-10-08 trên 12 câu
+ * có đáp án biết trước + 6 câu dựa vào tên riêng/viết tắt (GINI, TFR, lúa hè thu…):
+ *
+ *   cách trộn                 | "thu nhập và mức sinh" | "hộ nghèo và thu nhập" | câu tên riêng
+ *   cộng điểm cũ (50/50)      | hạng 55                | hạng 5                | như nhau
+ *   RRF, từ khoá = 1          | hạng 20                | hạng 16               | như nhau
+ *   RRF, từ khoá = 0,3        | hạng 9                 | hạng 4                | như nhau
+ *
+ * Câu diễn đạt tự nhiên thì nhánh từ khoá nhiễu ("sinh" khớp "giá sinh hoạt", "mức"
+ * khớp "mức thay đổi lượng mưa"); câu tên riêng thì cả hai nhánh đã đồng thuận nên
+ * hạ trọng số không làm mất gì. Câu hỏi theo giá trị (tên tỉnh) đi đường riêng
+ * `findValuesInQuery`, không phụ thuộc trọng số này.
+ */
+const RRF_KEYWORD_WEIGHT = 0.3;
 
 export interface BranchHit {
   slug: string;
@@ -105,7 +141,18 @@ export function fuse(
     });
   }
 
-  return merged.sort((a, b) => b.score - a.score).slice(0, limit);
+  // Thứ tự theo RRF trên hạng của từng nhánh (hạng tính trên TOÀN BỘ nhánh, trước lọc).
+  const semRank = new Map([...semantic].sort((a, b) => b.score - a.score).map((h, i) => [h.slug, i + 1]));
+  const kwRank = new Map([...keyword].sort((a, b) => b.score - a.score).map((h, i) => [h.slug, i + 1]));
+  const rrf = (slug: string) => {
+    const r1 = semRank.get(slug);
+    const r2 = kwRank.get(slug);
+    return (r1 ? 1 / (RRF_K + r1) : 0) + (r2 ? RRF_KEYWORD_WEIGHT / (RRF_K + r2) : 0);
+  };
+  const order = new Map(merged.map((h) => [h.slug, rrf(h.slug)]));
+  return merged
+    .sort((a, b) => order.get(b.slug)! - order.get(a.slug)! || b.score - a.score)
+    .slice(0, limit);
 }
 
 /*
@@ -126,4 +173,4 @@ export function fuse(
  * ngưỡng cosine.
  */
 
-export { MIN_SCORE, SEMANTIC_WEIGHT, KEYWORD_WEIGHT };
+export { MIN_SCORE, SEMANTIC_WEIGHT, KEYWORD_WEIGHT, RRF_K, RRF_KEYWORD_WEIGHT };

@@ -76,7 +76,7 @@ const INCLUDE_DELETED = process.argv.includes("--include-deleted");
  *
  * Thêm tính năng nào ghi thẳng vào R2 thì phải khai prefix ở đây.
  */
-const PROTECTED_PREFIXES = ["logs/", "_counters/", "_index/"];
+const PROTECTED_PREFIXES = ["logs/", "_counters/", "_index/", "_mcp/"];
 
 const isProtectedKey = (key) =>
   PROTECTED_PREFIXES.some((prefix) => key.startsWith(prefix));

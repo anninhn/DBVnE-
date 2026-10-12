@@ -25,6 +25,7 @@ import CitationCard from "./CitationCard";
 import FollowUpPills from "./FollowUpPills";
 import ThumbsFeedback from "./ThumbsFeedback";
 import EmptyState from "./EmptyState";
+import InsightPanel from "./InsightPanel";
 import {
   extractDiscoveryJSON,
   type DiscoveryResponse,
@@ -114,9 +115,12 @@ interface ChatEntry {
 export default function ChatBox({
   displayName,
   attachedDataset: initialAttached,
+  insightEnabled = false,
 }: {
   displayName: string;
   attachedDataset?: { slug: string; title: string } | null;
+  /** Pilot harness insight — chỉ true khi chạy local với INSIGHT_LOCAL=1 */
+  insightEnabled?: boolean;
 }) {
   const searchParams = useSearchParams();
   const [input, setInput] = useState("");
@@ -458,6 +462,8 @@ export default function ChatBox({
                       </div>
                     ) : entry.response ? (
                       <ResponseView
+                        insightEnabled={insightEnabled}
+                        question={entries[idx - 1]?.query ?? entry.query}
                         response={entry.response}
                         disabled={loading}
                         onPrefill={setInput}
@@ -509,7 +515,11 @@ function ResponseView({
   disabled,
   onPrefill,
   chatId,
+  insightEnabled,
+  question,
 }: {
+  insightEnabled?: boolean;
+  question: string;
   response: DiscoveryResponse;
   disabled?: boolean;
   onPrefill: (q: string) => void;
@@ -540,6 +550,10 @@ function ResponseView({
           ))}
         </div>
       )}
+
+      {/* Pilot harness insight — tự đề xuất chỉ tiêu, KHÔNG dựa vào danh sách dataset ở trên
+          (danh sách đó có thể sót/sai). Hiện cả khi Discovery không trả dataset nào. */}
+      {insightEnabled && <InsightPanel question={question} />}
 
       {/* Câu trả lời bị cắt vì chạm trần token — nói rõ, đừng để người đọc tưởng
           phần nhận được là toàn bộ. */}

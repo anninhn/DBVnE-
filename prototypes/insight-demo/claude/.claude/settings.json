@@ -1,0 +1,34 @@
+{
+  "claudeMdExcludes": [
+    "**/DB_VNExpress/CLAUDE.md"
+  ],
+  "enabledMcpjsonServers": [
+    "insight-data"
+  ],
+  "permissions": {
+    "allow": [
+      "mcp__insight-data"
+    ],
+    "deny": [
+      "Bash",
+      "Edit",
+      "Write",
+      "NotebookEdit",
+      "WebFetch",
+      "WebSearch"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PROJECT_DIR}/../../../tools/insight-stop-hook.sh\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

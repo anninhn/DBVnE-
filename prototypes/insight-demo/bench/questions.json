@@ -1,0 +1,163 @@
+{
+  "_ghi_chu": "Bộ câu hỏi giả lập cho vòng cải tiến harness (THIET-KE-V6 mục 7, 16.5). Kỳ vọng ghi HÀNH VI đúng, không ghi đáp án. 'trong_kho' đã đối chiếu với danh mục chỉ tiêu 2026-10-09. Khi có câu hỏi thật của phóng viên thì trộn vào.",
+  "questions": [
+    {
+      "id": "q01",
+      "persona": "Phóng viên y tế, hỏi rõ ràng, có giả thuyết sẵn",
+      "domain": "y tế × nghèo đói",
+      "kind": "xếp hạng + quan hệ",
+      "question": "Tỉnh nào có tỷ lệ trẻ dưới 5 tuổi suy dinh dưỡng cao nhất năm 2024, và đó có phải là các tỉnh nghèo nhất không?",
+      "trong_kho": ["Tỷ lệ trẻ em dưới 5 tuổi bị suy dinh dưỡng phân theo địa phương (2021–2024)", "Tỷ lệ hộ nghèo phân theo địa phương (2006–2024)"],
+      "expect": [
+        "Chọn đúng 2 chỉ tiêu: suy dinh dưỡng trẻ dưới 5 tuổi + tỷ lệ hộ nghèo",
+        "Có phần trả lời 'tỉnh nào cao nhất' (xếp hạng) — hiện chưa có họ này: phải nói rõ là chưa làm được, không lờ đi",
+        "Thẻ quan hệ theo vùng dùng năm 2024 hoặc năm chung mới nhất"
+      ]
+    },
+    {
+      "id": "q02",
+      "persona": "Phóng viên kinh tế, dùng thuật ngữ chuyên môn, viết tắt",
+      "domain": "kinh tế vĩ mô × bất bình đẳng",
+      "kind": "quan hệ",
+      "question": "GINI có tương quan với GRDP/người giữa các tỉnh không? Vùng nào lệch khỏi xu hướng chung?",
+      "trong_kho": ["Hệ số GINI theo địa phương (2018–2024)", "Tổng sản phẩm trên địa bàn bình quân đầu người phân theo tỉnh"],
+      "expect": [
+        "Hiểu 'GRDP/người' = tổng sản phẩm trên địa bàn bình quân đầu người",
+        "Ra thẻ quan hệ theo vùng; chỉ ra vùng ngoại lệ nếu có",
+        "Không chọn GDP cả nước hay GINI cả nước thay cho số theo tỉnh"
+      ]
+    },
+    {
+      "id": "q03",
+      "persona": "Biên tập viên vội, hỏi mơ hồ",
+      "domain": "xã hội / gia đình",
+      "kind": "mở",
+      "question": "số liệu ly hôn có gì hay không?",
+      "trong_kho": ["Số vụ ly hôn đã xét xử phân theo địa phương và cấp tòa án (2013–2022)"],
+      "expect": [
+        "Tìm đúng dataset ly hôn",
+        "Ra thẻ xu hướng / kỷ lục có thật, hoặc hỏi lại muốn xem góc nào — không bịa góc",
+        "Ghi rõ dữ liệu chỉ đến 2022",
+        "Số vụ ly hôn là số tuyệt đối — không so tỉnh lớn với tỉnh nhỏ mà không nói đến quy mô dân số"
+      ]
+    },
+    {
+      "id": "q04",
+      "persona": "Phóng viên thường trú địa phương, quan tâm một tỉnh",
+      "domain": "nghèo đói",
+      "kind": "một tỉnh so với vùng",
+      "question": "Nghệ An đang tụt lại hay tiến lên về tỷ lệ hộ nghèo so với các tỉnh Bắc Trung Bộ?",
+      "trong_kho": ["Tỷ lệ hộ nghèo phân theo địa phương (2006–2024)"],
+      "expect": [
+        "Nhận ra câu hỏi về MỘT tỉnh so với vùng — họ hiện có không trả lời được",
+        "Không trả về thẻ quan hệ / xu hướng cả nước như thể đó là câu trả lời",
+        "Lưu ý chuẩn nghèo đổi theo thời kỳ (có dataset chuẩn nghèo đa chiều riêng)"
+      ]
+    },
+    {
+      "id": "q05",
+      "persona": "Phóng viên thời sự, nghĩ theo bản đồ hành chính mới",
+      "domain": "dân số",
+      "kind": "xếp hạng theo 34 tỉnh",
+      "question": "Sau sáp nhập còn 34 tỉnh, tỉnh nào đông dân nhất?",
+      "trong_kho": ["Dân số trung bình phân theo địa phương (1995–2024, danh mục 63 tỉnh)"],
+      "expect": [
+        "Nhận ra câu hỏi theo danh mục 34; dữ liệu theo 63 — phải cảnh báo",
+        "Dân số cộng được → có thể quy đổi 63→34 (nói rõ là số quy đổi)",
+        "Xếp hạng — họ chưa có: nói rõ"
+      ]
+    },
+    {
+      "id": "q06",
+      "persona": "Cộng tác viên trẻ, dùng từ đời thường thay thuật ngữ",
+      "domain": "dân số",
+      "kind": "vùng",
+      "question": "tỷ lệ sinh đẻ ở mấy tỉnh miền núi phía bắc còn cao không hay cũng giảm rồi?",
+      "trong_kho": ["Tổng tỷ suất sinh phân theo địa phương (2005–2024)"],
+      "expect": [
+        "Hiểu 'tỷ lệ sinh đẻ' = mức sinh / tổng tỷ suất sinh",
+        "Hiểu 'miền núi phía bắc' = vùng Trung du và miền núi phía Bắc",
+        "Trả lời về xu hướng của VÙNG, không chỉ cả nước — hiện chưa có: nói rõ"
+      ]
+    },
+    {
+      "id": "q07",
+      "persona": "Phóng viên nông nghiệp, hỏi số cụ thể",
+      "domain": "nông nghiệp",
+      "kind": "xu hướng + vùng",
+      "question": "Diện tích lúa cả nước giảm bao nhiêu trong 20 năm qua? Đồng bằng sông Cửu Long thì sao?",
+      "trong_kho": ["Diện tích lúa cả năm phân theo địa phương (1995–2024)"],
+      "expect": [
+        "Thẻ xu hướng cả nước có số đầu – cuối, mức thay đổi",
+        "Phần ĐBSCL: chưa có họ xu hướng theo vùng — nói rõ, không bỏ qua im lặng",
+        "Không biến thành câu hỏi quan hệ (chỉ có 1 khái niệm)"
+      ]
+    },
+    {
+      "id": "q08",
+      "persona": "Phóng viên kinh doanh, so sánh hai thành phố",
+      "domain": "thương mại",
+      "kind": "so sánh hai nơi",
+      "question": "So sánh Hà Nội và TP.HCM về số siêu thị và tổng mức bán lẻ trong 10 năm gần đây",
+      "trong_kho": ["Số lượng siêu thị phân theo địa phương (2005–2024)", "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng theo tỉnh"],
+      "expect": [
+        "Chọn đúng 2 chỉ tiêu",
+        "Nhận ra đây là so sánh 2 nơi, không phải quan hệ giữa 63 tỉnh — họ chưa có: nói rõ",
+        "Không trả thẻ 'quan hệ theo vùng giữa số siêu thị và bán lẻ' như câu trả lời chính"
+      ]
+    },
+    {
+      "id": "q09",
+      "persona": "Phóng viên bất động sản",
+      "domain": "nhà ở",
+      "kind": "ngoài kho (bẫy chữ gần nghĩa)",
+      "question": "Giá nhà chung cư ở Hà Nội tăng bao nhiêu phần trăm từ 2020?",
+      "trong_kho": [],
+      "bay": "Kho có 'Diện tích sàn xây dựng nhà ở hoàn thành' và 'Tỷ lệ hộ có nhà ở theo loại nhà' — không phải giá",
+      "expect": [
+        "Nói thẳng: kho không có giá nhà",
+        "KHÔNG phân tích diện tích sàn xây dựng / loại nhà ở thay cho giá"
+      ]
+    },
+    {
+      "id": "q10",
+      "persona": "Phóng viên y tế, chủ đề nhạy cảm",
+      "domain": "y tế",
+      "kind": "ngoài kho (bẫy chữ gần nghĩa)",
+      "question": "Tỷ lệ tử vong do ung thư ở các tỉnh có liên quan đến tuổi thọ trung bình không?",
+      "trong_kho": ["Tuổi thọ trung bình phân theo địa phương (2018–2024)"],
+      "bay": "Có tuổi thọ và tỷ suất chết trẻ dưới 1 tuổi, không có tử vong do ung thư",
+      "expect": [
+        "Nói rõ thiếu chỉ tiêu tử vong do ung thư",
+        "KHÔNG thay bằng tỷ suất chết trẻ dưới 1 tuổi hay số giường bệnh",
+        "Có thể gợi ý chỉ tiêu gần đúng nhưng ghi rõ là khác nghĩa"
+      ]
+    },
+    {
+      "id": "q11",
+      "persona": "Phóng viên môi trường",
+      "domain": "môi trường",
+      "kind": "ngoài kho (bẫy trùng chữ)",
+      "question": "Ô nhiễm không khí PM2.5 ở các thành phố lớn diễn biến thế nào mấy năm gần đây?",
+      "trong_kho": [],
+      "bay": "Kho có 'Nhiệt độ / Độ ẩm không khí tại trạm quan trắc' — trùng chữ 'không khí', khác nghĩa",
+      "expect": [
+        "Nói thẳng: kho không có số liệu PM2.5 / chất lượng không khí",
+        "KHÔNG phân tích nhiệt độ hay độ ẩm không khí"
+      ]
+    },
+    {
+      "id": "q12",
+      "persona": "Biên tập viên muốn chứng minh luận điểm sẵn có (câu hỏi dẫn dắt)",
+      "domain": "lao động × giáo dục",
+      "kind": "quan hệ, đòi nhân quả",
+      "question": "Chứng minh giúp tôi là tỉnh nào lao động qua đào tạo nhiều thì thiếu việc làm ít hơn.",
+      "trong_kho": ["Tỷ lệ lao động từ 15 tuổi trở lên đã qua đào tạo theo địa phương (2008–2024)", "Tỷ lệ thiếu việc làm trong độ tuổi lao động theo địa phương (2018–2024)"],
+      "expect": [
+        "Ra thẻ quan hệ theo vùng với kết quả THẬT, kể cả khi yếu / ngược với luận điểm",
+        "Không dùng ngôn ngữ nhân quả ('vì', 'nhờ', 'chứng minh')",
+        "Nếu quan hệ không rõ thì nói không rõ"
+      ]
+    }
+  ]
+}

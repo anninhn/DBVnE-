@@ -1,0 +1,93 @@
+# Giá trị hợp lệ cho các trường trích xuất. Script validate (bước 3) đọc file này.
+# File này là nguồn chuẩn của enum. Bảng định nghĩa cuối spec/02_extract_prompt.md phải khớp file này.
+
+group: [kinh_doanh, dat_hang, khac]
+
+subj_t:            # loại đối tượng của chỉ tiêu
+  - country        # quốc gia, khối nước (EU, ASEAN)
+  - province       # tỉnh, thành phố, quận, huyện, xã, vùng trong nước
+  - company        # doanh nghiệp (trừ ngân hàng)
+  - bank           # ngân hàng, công ty tài chính
+  - security       # mã cổ phiếu, trái phiếu, chứng chỉ quỹ
+  - market_index   # chỉ số thị trường: VN-Index, VN30, Dow Jones, DXY. CPI và chỉ số giá của cơ quan thống kê KHÔNG thuộc loại này: subj là quốc gia/tỉnh
+  - commodity      # vàng, dầu, gạo, cà phê, thép...
+  - industry       # ngành, lĩnh vực
+  - product        # sản phẩm, gói dịch vụ cụ thể
+  - person         # cá nhân (tài sản tỷ phú, lương CEO)
+  - other          # dùng cả khi subj = null
+
+meas:              # loại số đo
+  - level          # giá trị mức: 5,8 tỷ USD
+  - change_pct     # % thay đổi: tăng 21%
+  - change_abs     # thay đổi tuyệt đối: tăng 300 tỷ đồng, giảm 15 điểm
+  - multiple       # gấp N lần, bằng một nửa
+  - share          # tỷ trọng: chiếm 40%
+  - rank           # thứ hạng: đứng thứ 3
+  - ratio          # tỷ lệ khác: lãi suất, nợ xấu, biên lợi nhuận, thuế suất
+
+cmp:               # mốc so sánh, chỉ điền khi meas in [change_pct, change_abs, multiple]
+  - yoy            # so với cùng kỳ năm trước
+  - mom            # so với tháng trước
+  - qoq            # so với quý trước
+  - wow            # so với tuần trước
+  - dod            # so với phiên/ngày trước
+  - ytd            # so với đầu năm
+  - vs_target      # so với kế hoạch
+  - vs_peak        # so với đỉnh hoặc đáy (lịch sử, nhiều năm)
+  - vs_other       # so với đối tượng khác hoặc mốc khác
+  - unspecified
+
+kind:              # bản chất con số
+  - actual         # đã xảy ra
+  - estimate       # ước tính cho kỳ đã qua hoặc đang diễn ra
+  - forecast       # dự báo cho kỳ tương lai
+  - target         # kế hoạch, mục tiêu đã được thông qua hoặc đặt ra
+  - proposed       # đề xuất, dự thảo chưa ban hành, mức "có thể áp"
+  - rule           # mức quy định trong văn bản đã ban hành: thuế suất, phí, mức phạt, trần, sàn
+  - offer          # điều khoản sản phẩm/khuyến mãi do doanh nghiệp đưa ra: lãi suất gói vay, giảm giá, bảo hành
+
+attr:              # nguồn được gắn với con số như thế nào
+  - explicit       # nguồn nằm trong cùng unit
+  - context        # nguồn nằm ở unit khác trong thân bài và rõ ràng áp dụng cho số này
+  - article_end    # nguồn chỉ có ở dòng nguồn trong END (không tính tên tác giả) hoặc ở LEAD kiểu "theo Reuters"
+  - none           # không có nguồn
+
+src_t:             # loại nguồn
+  - stat_office          # Cục Thống kê (Tổng cục Thống kê cũ), chi cục thống kê, cơ quan thống kê nước ngoài
+  - ministry_agency      # bộ, cục, sở, Hải quan, Thuế, Kho bạc, Chính phủ, Thủ tướng, UBND, Quốc hội; cơ quan nhà nước nước ngoài (Bộ Thương mại Mỹ, Nhà Trắng, EIA)
+  - central_bank         # NHNN, Fed, ECB, BOJ, PBOC
+  - exchange             # HoSE, HNX, VSDC, UBCKNN, sàn hàng hóa (CME, LME, MXV, ICE)
+  - company_report       # báo cáo tài chính, nghị quyết ĐHCĐ, công bố, thông cáo của chính doanh nghiệp
+  - company_person       # lãnh đạo/đại diện doanh nghiệp phát biểu
+  - association          # hiệp hội ngành, VCCI
+  - intl_org             # WB, IMF, ADB, IEA, OPEC, WGC, IATA, FAO, WTO, OECD, LHQ
+  - securities_firm      # công ty chứng khoán, quỹ đầu tư, ngân hàng đầu tư (báo cáo phân tích)
+  - data_vendor          # công ty dữ liệu, nghiên cứu thị trường, xếp hạng: Kpler, LSEG, Kitco, Statista, FiinGroup, CoinMarketCap, Savills, CBRE, Brand Finance, danh sách Forbes, Bloomberg Billionaires Index
+  - research_consulting  # tư vấn, think tank, viện nghiên cứu, trường đại học
+  - news_agency          # hãng tin, báo khác: Reuters, Bloomberg (khi là tin, không phải chỉ số/bảng xếp hạng), CNBC, AP, WSJ, CoinDesk
+  - expert               # chuyên gia, nhà kinh tế phát biểu với tư cách cá nhân
+  - legal_doc            # văn bản pháp luật, quy hoạch, nghị quyết, dự thảo
+  - informal             # người dân, nông dân, thương lái, tiểu thương, khách hàng phát biểu
+  - field_obs            # phóng viên ghi nhận, khảo sát tại chỗ (giá tại chợ, cửa hàng). attr = explicit hoặc context, src = "phóng viên ghi nhận"
+  - newsroom             # tòa soạn tự tổng hợp ("VnExpress tổng hợp") hoặc phóng viên tự tính (der = true, không nêu nguồn: attr = none, src = null)
+  - unknown              # không có nguồn
+
+dom:               # lĩnh vực (tầng 1); tầng 2 tạo ở bước chuẩn hóa
+  - macro                 # GDP, CPI, lạm phát, sản xuất công nghiệp, PMI, FDI, đầu tư toàn xã hội
+  - public_finance        # thu chi ngân sách, nợ công, đầu tư công, giải ngân
+  - trade                 # xuất nhập khẩu, thuế quan thương mại
+  - banking_fx            # lãi suất, tín dụng, huy động, nợ xấu, tỷ giá, ngân hàng
+  - stock                 # chỉ số, giá cổ phiếu, thanh khoản, khối ngoại, trái phiếu doanh nghiệp
+  - commodity_price       # giá vàng, xăng dầu, nông sản, kim loại, phân bón
+  - company_perf          # doanh thu, lợi nhuận, tài sản, vốn, nhân sự của doanh nghiệp
+  - real_estate           # giá nhà, nguồn cung, giao dịch BĐS, giá đất
+  - energy                # điện, than, khí, năng lượng tái tạo (sản lượng, công suất, giá điện)
+  - transport_logistics   # hàng không, cảng, vận tải, logistics, hạ tầng giao thông
+  - consumer_retail       # bán lẻ, tiêu dùng, TMĐT, du lịch, khách hàng
+  - agri_production       # sản lượng, diện tích, năng suất nông lâm thủy sản
+  - labor_income          # việc làm, lương, thu nhập, bảo hiểm xã hội
+  - tax_fee_rule          # thuế, phí, lệ phí, mức phạt theo quy định
+  - tech_crypto           # công nghệ, tiền số, startup, AI
+  - environment_esg       # phát thải, môi trường, ESG
+  - product_spec          # thông số kỹ thuật sản phẩm (dung tích, công suất máy, pin)
+  - other

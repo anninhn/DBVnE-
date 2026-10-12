@@ -1,0 +1,310 @@
+{
+  "_ghi_chu": "Thẻ thành phần harness v8 (dạng 2). Mô hình meta theo khung Wikibase: thực thể · thuộc tính · giá trị có kiểu · qualifier · nguồn · rank — không gắn lĩnh vực, không gắn ban. Mỗi thành phần: mẫu (từ vựng Anthropic), giả định nó mã hoá, sản phẩm trao tay, gate, gỡ bỏ khi, bằng chứng. Chữ ký: src/lib/insight/v8/interfaces.ts.",
+  "pha": [
+    {
+      "id": "tiep_nhan",
+      "ten": "Pha tiếp nhận — làm một lần cho mỗi tài liệu, lưu lại",
+      "kieu": "workflow (prompt chaining + gate)",
+      "thanh_phan": [
+        {
+          "id": "demand_sensor",
+          "ten": "Dòng bài báo làm cảm biến",
+          "mau": "workflow phụ (AI trích như kd-data-demand + code)",
+          "ai": true,
+          "chu_ky": "sense(articles) → {nhu cầu theo thuộc tính, nơi phát hành được trích, nhận định trung gian}",
+          "gia_dinh": "Không ai biết trước nguồn nào quan trọng và nằm ở đâu; bài đã đăng cho biết điều đó",
+          "san_pham": "source_registry (thuộc tính → nơi phát hành gốc → mẫu tài liệu); nhận định trung gian làm đầu mối và đáp án tham chiếu",
+          "gate": "nguồn trong bài chỉ là đầu mối — phải lần tới nơi phát hành mới nâng rank",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "KD: 99,85% số trích có thật trong bài; 41% số không ghi nguồn → cảm biến cũng đo khoảng trống nguồn"
+        },
+        {
+          "id": "source_adapter",
+          "ten": "Bộ tiếp nhận theo định dạng / kênh",
+          "mau": "tool (code)",
+          "ai": false,
+          "chu_ky": "SourceAdapter(format).discover(since) → DocRef[]; read(doc) → Passage[]",
+          "gia_dinh": "Không có — đây là đọc file/feed tất định, không bù cho model",
+          "san_pham": "passages (đoạn có vị trí trang/bảng/ô) — GeoJSON: mỗi feature thành thực thể có geometry (vai DỮ LIỆU) hoặc vào tài sản ranh giới (vai THAM CHIẾU)",
+          "gate": "đọc được, có vị trí",
+          "go_bo_khi": "không gỡ; thêm định dạng mới khi gặp (csv, xlsx, pdf, html, feed, geojson, chữ trong bài)",
+          "bang_chung": "Định dạng là danh sách hữu hạn, dùng chung mọi ban; v6–v7: 23 dataset gồm csv, xlsx (danh sách, dòng nhóm), geojson"
+        },
+        {
+          "id": "template_reading",
+          "ten": "Cách đọc theo mẫu tài liệu",
+          "mau": "augmented LLM (đề xuất) + gate (code) — một lần mỗi mẫu",
+          "ai": true,
+          "chu_ky": "learnTemplate(publisher, docs[]) → ReadingSpec; apply(spec, doc) → Passage[] có vai trò cột",
+          "gia_dinh": "Đọc từng tài liệu bằng AI thì tốn và không ổn định; nơi phát hành lặp lại mẫu (BCTC, thông cáo NSO, bảng HoSE)",
+          "san_pham": "reading_specs/<publisher>/<template>.json (máy đọc)",
+          "gate": "hai lần đọc độc lập khớp + hợp đồng (tổng = thành phần, năm đọc được); chạy lại trên tài liệu kỳ sau của cùng mẫu",
+          "go_bo_khi": "không gỡ; mẫu đổi → học lại",
+          "bang_chung": "v6 mục 14.5: 13/13 sheet XLSX đọc đúng sau khi sửa khuôn; KD: top 20 nơi phát hành phủ 94,5%"
+        },
+        {
+          "id": "extract",
+          "ten": "AI trích theo từ vựng",
+          "mau": "augmented LLM (ontology snippet như ODKE+)",
+          "ai": true,
+          "chu_ky": "Extract(passage, snippet) → {candidates, proposals}",
+          "gia_dinh": "Model trích tự do thì đặt tên thuộc tính tràn lan; cái chưa có trong từ vựng phải thành ĐỀ XUẤT có bằng chứng, không tự thêm",
+          "san_pham": "candidates.jsonl + vocab_proposals.jsonl",
+          "gate": "Ground (code) ngay sau",
+          "go_bo_khi": "model ánh xạ đúng vào từ vựng mà không cần snippet — đo bằng bỏ thử",
+          "bang_chung": "KD: 61.181 cách ghi / 140.294 số; AI tự đặt nhóm → 1.677 nhóm trùng; có danh sách duyệt → xếp đúng 96,3–100%. ODKE+: ontology snippet trong prompt"
+        },
+        {
+          "id": "ground",
+          "ten": "Kiểm bằng code",
+          "mau": "gate",
+          "ai": false,
+          "chu_ky": "Ground(candidate, passage) → {ok, reasons}",
+          "gia_dinh": "Không phải bù cho model yếu — kiểm sự thật: giá trị có trong nguồn, đơn vị và kỳ đọc được, chủ thể quy mã được",
+          "san_pham": "candidate đã kiểm / bị loại kèm lý do",
+          "gate": "chính nó",
+          "go_bo_khi": "không bao giờ",
+          "bang_chung": "KD: 99,85% số AI tách có thật trong bài (kiểm bằng code c1–c6)"
+        },
+        {
+          "id": "vocab_grow",
+          "ten": "Từ vựng lớn dần",
+          "mau": "gate (code) + người kiểm mẫu",
+          "ai": false,
+          "chu_ky": "accept(VocabProposal) → Property | EntityType | gộp vào id có sẵn",
+          "gia_dinh": "Từ vựng đóng theo ban / nhóm là overfit; từ vựng mở không kiểm thì phình trùng nghĩa",
+          "san_pham": "vocab/properties.json, vocab/entity_types.json (máy đọc)",
+          "gate": "kiểm trùng nghĩa với id gần nhất (embedding + kiểu giá trị + đơn vị); đủ bằng chứng mới thêm",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "Wikibase: thuộc tính là đối tượng mở rộng được; ODKE+: thuộc tính mới thêm 'declaratively'"
+        },
+        {
+          "id": "commit",
+          "ten": "Quy id, chuẩn hoá, xác minh không cần nhiều nguồn, xếp rank",
+          "mau": "tool (code) + dữ liệu phân xử",
+          "ai": false,
+          "chu_ky": "Commit(candidate) → Statement; verify(statement, store) → {so_hoc, chuoi, goc}",
+          "gia_dinh": "Tên giống nhau không cùng nghĩa; số mới thường chỉ có một nguồn nên không bỏ phiếu được",
+          "san_pham": "statements với rank + trạng thái xác minh: đã kiểm ở nguồn gốc / chỉ nguồn trung gian / một nguồn chưa đối chiếu / lệch giữa nguồn",
+          "gate": "số học của lượng (mức ↔ thay đổi, tổng ↔ thành phần, kỳ ↔ kỳ con), so với chuỗi đã lưu, lần tới nơi phát hành gốc; nhiều nguồn thì đối chiếu",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "KD: 20,1% số có cặp mức + thay đổi cùng bài; v6 vòng 2: dữ liệu phân xử giữ 5/6 cặp"
+        }
+      ]
+    },
+    {
+      "id": "tra_loi",
+      "ten": "Pha trả lời — khi phóng viên hỏi",
+      "kieu": "workflow (routing + parallel voting + tool + evaluator-optimizer 1 vòng)",
+      "thanh_phan": [
+        {
+          "id": "plan",
+          "ten": "AI-1 lập kế hoạch",
+          "mau": "routing + voting (2 lần đọc)",
+          "ai": true,
+          "chu_ky": "plan(question) → Plan",
+          "gia_dinh": "Một lần đọc không ổn định",
+          "san_pham": "plan.json",
+          "gate": "hai lần đọc khớp; khái niệm đo được",
+          "go_bo_khi": "đo thấy hai lần luôn khớp → bỏ lần thứ hai",
+          "bang_chung": "bậc 0: định tuyến lệch 2/4 lần"
+        },
+        {
+          "id": "select",
+          "ten": "AI-2 chọn trong ứng viên",
+          "mau": "augmented LLM (retrieval)",
+          "ai": true,
+          "chu_ky": "select(plan, candidates) → {indicatorIds, subjectIds}",
+          "gia_dinh": "Tự tìm thì chọn trùng chữ, sai nghĩa",
+          "san_pham": "id chỉ tiêu, id chủ thể",
+          "gate": "id phải có trong ứng viên",
+          "go_bo_khi": "không gỡ; ứng viên có thể ít đi",
+          "bang_chung": "v6: 12/12 đúng, bẫy 3/3 khi chọn trong ứng viên"
+        },
+        {
+          "id": "ops",
+          "ten": "Phép tính theo kiểu giá trị",
+          "mau": "tool (poka-yoke)",
+          "ai": false,
+          "chu_ky": "QuantityOps (latest, change, record, trend, rank, compare, planVsActual, relation, aggregate) · TimeOps (between, inForce) · EntityOps (related) · TextOps (quote)",
+          "gia_dinh": "Model tự tính / tự viết SQL thì sai số; phép theo lĩnh vực thì không dùng lại được giữa các ban",
+          "san_pham": "Result {giá trị, nhận định nguồn, claims đã tính, lý do phạm vi}",
+          "gate": "điều kiện cần khai bằng Property / Entity + gate SO SÁNH ĐƯỢC: từ chối so hai số khác qualifier (sơ bộ vs chính thức, kế hoạch vs thực hiện, giá hiện hành vs so sánh)",
+          "go_bo_khi": "không bao giờ",
+          "bang_chung": "v6: 0 số sai qua 24 lượt hỏi"
+        },
+        {
+          "id": "narrate",
+          "ten": "AI-3 viết lời quanh chỗ trống + kiểm câu",
+          "mau": "evaluator-optimizer (1 vòng sửa)",
+          "ai": true,
+          "chu_ky": "narrate(results) → Card",
+          "gia_dinh": "Model tự điền ý (hướng, kỷ lục) sai",
+          "san_pham": "card",
+          "gate": "bộ kiểm câu: chỗ trống lạ, hướng ngược, lời bình, nhân quả",
+          "go_bo_khi": "bộ để dành cho thấy 0 lỗi ý khi bỏ chỗ trống",
+          "bang_chung": "v6 vòng 1: 4 thẻ sai ý; vòng 2: 0 sau khi code điền nhận định"
+        },
+        {
+          "id": "visualize",
+          "ten": "Hình minh hoạ + bản nháp",
+          "mau": "tool (code)",
+          "ai": false,
+          "chu_ky": "Visualize(result, op) → VisualSpec; Draft = cards + visuals + sources",
+          "gia_dinh": "Để AI chọn và vẽ biểu đồ / bản đồ thì sai dữ liệu hoặc sai ranh giới",
+          "san_pham": "draft.json (tít, đoạn, biểu đồ / bản đồ, nguồn từng số) — bản nháp cho phóng viên, không tự đăng",
+          "gate": "loại hình theo phép + kiểu thực thể; bản đồ chỉ khi số và ranh giới cùng danh mục (63 vs 34) hoặc quy đổi được",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "Kho có ranh giới 34 tỉnh + xã 2025, KHÔNG có 63 tỉnh, trong khi số NSO theo 63; nền tảng đã có component vẽ GeoJSON"
+        },
+        {
+          "id": "reporter_confirm",
+          "ten": "Phóng viên xác nhận khi dùng",
+          "mau": "human checkpoint (trong luồng làm việc, không hàng đợi)",
+          "ai": false,
+          "chu_ky": "confirm(statementId, articleId) → rank ↑",
+          "gia_dinh": "Không có đội chuyên trách mapping; người duy nhất kiểm số hằng ngày là phóng viên",
+          "san_pham": "nhận định được xác nhận + liên kết tới bài đã dùng",
+          "gate": "—",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "Ninh: không hàng đợi review, không chặn người hỏi; ODKE+: người kiểm mẫu là thước đo chất lượng"
+        }
+      ]
+    },
+    {
+      "id": "cai_tien",
+      "ten": "Vòng cải tiến — multi-agent, theo quy trình 'Writing effective tools for agents'",
+      "kieu": "orchestrator-workers + evaluator; người duyệt ở cuối mỗi vòng",
+      "thanh_phan": [
+        {
+          "id": "task_writer",
+          "ten": "Người ra đề",
+          "mau": "worker (Claude, cách ly)",
+          "ai": true,
+          "chu_ky": "write_tasks(sample, n) → Task[] (mỗi task có đáp án kiểm được)",
+          "gia_dinh": "Người xây harness tự ra đề sẽ ra đề hợp với harness",
+          "san_pham": "tasks.jsonl, chia sửa / để dành theo hash — người ra đề không biết câu nào thuộc bộ nào",
+          "gate": "đáp án lấy từ con số THẬT trong bài thuộc MẪU NGẪU NHIÊN TOÀN SITE, không do model nghĩ ra, không theo ban",
+          "go_bo_khi": "có đủ câu hỏi thật của phóng viên từ log",
+          "bang_chung": "Anthropic: 'generate many realistic tasks, each paired with a verifiable outcome'"
+        },
+        {
+          "id": "runner",
+          "ten": "Chạy harness",
+          "mau": "harness đang thử (GLM)",
+          "ai": true,
+          "chu_ky": "run(task) → transcript",
+          "gia_dinh": "—",
+          "san_pham": "transcripts.jsonl (mọi bước, mọi lời gọi tool)",
+          "gate": "—",
+          "go_bo_khi": "—",
+          "bang_chung": "bench/run-questions.mts đã làm việc này ở v6"
+        },
+        {
+          "id": "grader",
+          "ten": "Chấm",
+          "mau": "gate (code trước, LLM sau)",
+          "ai": false,
+          "chu_ky": "grade(task, transcript) → {dung_so, dung_ky, dung_chu_the, dung_nguon, pham_vi_trung_thuc}",
+          "gia_dinh": "LLM chấm LLM có cùng điểm mù",
+          "san_pham": "grades.jsonl",
+          "gate": "so số / kỳ / chủ thể bằng code; LLM chỉ chấm phần chữ",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "v6: lỗi ý chỉ lộ khi đối chiếu số gốc"
+        },
+        {
+          "id": "analyst",
+          "ten": "Đọc transcript",
+          "mau": "worker (Claude)",
+          "ai": true,
+          "chu_ky": "analyze(transcripts, grades, components.json) → RootCause[]",
+          "gia_dinh": "Sửa theo triệu chứng sẽ ra luật chữ",
+          "san_pham": "bao_cao_vong.md: lỗi gom theo NGUYÊN NHÂN GỐC, gắn vào giả định của thẻ thành phần",
+          "gate": "mỗi đề xuất phải phát biểu thành nguyên tắc chung",
+          "go_bo_khi": "—",
+          "bang_chung": "Anthropic: 'observe where your agents get stumped or confused'"
+        },
+        {
+          "id": "fixer",
+          "ten": "Sửa",
+          "mau": "worker (Claude Code, worktree riêng)",
+          "ai": true,
+          "chu_ky": "fix(rootCause) → diff",
+          "gia_dinh": "—",
+          "san_pham": "diff trên tool / từ vựng / prompt",
+          "gate": "không thêm luật chữ; ưu tiên sửa từ vựng (khai báo) hơn sửa lõi",
+          "go_bo_khi": "—",
+          "bang_chung": "Anthropic: 'Claude-optimized tools sometimes beat expert-written ones'"
+        },
+        {
+          "id": "acceptance",
+          "ten": "Nghiệm thu",
+          "mau": "gate (code)",
+          "ai": false,
+          "chu_ky": "accept(diff) → {dev_tot_len, heldout_khong_te_di, dong_loi_bi_sua, so_luat_chu}",
+          "gia_dinh": "Sửa trên bộ sửa dễ overfit",
+          "san_pham": "nhận / trả diff",
+          "gate": "bộ để dành không tệ đi; số dòng lõi bị sửa và số luật chữ được ghi lại",
+          "go_bo_khi": "không gỡ",
+          "bang_chung": "Anthropic: dùng held-out test set để tránh overfit"
+        },
+        {
+          "id": "human",
+          "ten": "Người duyệt (Ninh)",
+          "mau": "human checkpoint",
+          "ai": false,
+          "chu_ky": "review(bao_cao_vong) → duyệt / sửa hướng",
+          "gia_dinh": "Thay đổi từ vựng và nguyên tắc cần người",
+          "san_pham": "quyết định",
+          "gate": "—",
+          "go_bo_khi": "—",
+          "bang_chung": "ODKE+: đội người kiểm ~2.000 fact/tuần, ngưỡng ≥ 95%"
+        }
+      ]
+    }
+  ],
+  "khoang_trong": [
+    {
+      "gia_dinh_cu": "Thiết kế schema trước, ít nguồn ổn định",
+      "huong": "Data warehouse / ETL",
+      "toa_soan_pha": "Nguồn đến hằng ngày, mọi lĩnh vực, phần lớn dùng một lần",
+      "co_che_thay": "Mô hình meta mở (Wikibase) + học cách đọc theo MẪU TÀI LIỆU của nơi phát hành, dùng lại",
+      "bang_chung": "KD: 35 loại nơi phát hành; top 10 phủ 83,9%, top 20 phủ 94,5% số có nơi phát hành"
+    },
+    {
+      "gia_dinh_cu": "Ánh xạ tốt dần nhờ phản hồi qua nhiều câu hỏi lặp",
+      "huong": "Dataspaces (pay-as-you-go)",
+      "toa_soan_pha": "Cần ngay theo sự kiện, không chờ",
+      "co_che_thay": "Đường vào tức thời: tài liệu chưa có cách đọc vẫn sinh nhận định ngay, gắn nhãn 'chưa xác minh'; xác minh sau khi mẫu tài liệu được học",
+      "bang_chung": "Nhu cầu đột biến 2–5 lần theo sự kiện (report KD)"
+    },
+    {
+      "gia_dinh_cu": "Có ontology sẵn; fact lặp ở nhiều nguồn để bỏ phiếu",
+      "huong": "Xây kho tri thức (Knowledge Vault, ODKE+)",
+      "toa_soan_pha": "Số mới thường chỉ có MỘT nguồn; chưa có ontology",
+      "co_che_thay": "Xác minh không cần nhiều nguồn: (1) giá trị có trong đoạn nguồn — code; (2) lần tới nơi phát hành gốc rồi kiểm lại ở đó; (3) SỐ HỌC của lượng: mức ↔ thay đổi, tổng ↔ thành phần, kỳ ↔ kỳ con, so với chuỗi đã lưu",
+      "bang_chung": "KD: 20,1% con số có cặp mức + thay đổi trong cùng bài — tự kiểm được dù một nguồn"
+    },
+    {
+      "gia_dinh_cu": "Nơi phát hành đã công bố dạng có cấu trúc; có đội mapping",
+      "huong": "Mô hình thống kê (SDMX, Data Commons)",
+      "toa_soan_pha": "Phần lớn là doanh nghiệp tự công bố, văn bản, PDF; đội nhỏ",
+      "co_che_thay": "Phóng viên xác nhận NGAY TRONG lúc viết (bấm 'dùng số này') — không hàng đợi; xác nhận nâng rank nhận định",
+      "bang_chung": "Doanh nghiệp tự công bố là nơi phát hành của 40.708 / 99.069 số có nơi phát hành (KD)"
+    },
+    {
+      "gia_dinh_cu": "Không cần chuẩn bị, model tự đọc",
+      "huong": "LLM đọc tài liệu (RAG)",
+      "toa_soan_pha": "Số không kiểm được, không truy nguồn",
+      "co_che_thay": "Code tính số + nhận định; mọi số mang nguồn tới vị trí trong tài liệu",
+      "bang_chung": "v6: 0 số sai, 0 sai ý sau khi code điền nhận định"
+    },
+    {
+      "gia_dinh_cu": "Fact ít đổi, không điều kiện",
+      "huong": "(chung cho KB)",
+      "toa_soan_pha": "Nghĩa của số nằm ở qualifier: kỳ, sơ bộ/chính thức, kế hoạch/thực hiện, giá hiện hành/so sánh, đơn vị",
+      "co_che_thay": "Qualifier bắt buộc (cho phép 'không rõ' nhưng phải ghi); gate so sánh được: từ chối so hai số khác qualifier",
+      "bang_chung": "v6: GINI hoà, hộ nghèo đổi chuẩn; KD: 7 loại 'bản chất con số'"
+    }
+  ]
+}

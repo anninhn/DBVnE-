@@ -1,0 +1,58 @@
+order,pattern_regex_ignorecase,source_canon,src_t
+1,"eurostat|census|cục điều tra dân số|cục thống kê lao động|\bbls\b|(cục|cơ quan|văn phòng|tổng cục) thống kê.*\b(mỹ|hoa kỳ|nhật bản|trung quốc|hàn quốc|ấn độ|eu|châu âu|anh|vương quốc anh|đức|(?<!tư )pháp|nga|úc|australia|canada|singapore|thái lan|indonesia|malaysia|philippines|campuchia|lào|đài loan|hong kong|hồng kông)\s*(\)|,|;|$)",Cơ quan thống kê nước ngoài,stat_office
+2,chi cục thống kê|thống kê tp|thống kê hà nội,Chi cục Thống kê địa phương,stat_office
+3,tổng cục thống kê|cục thống kê|\bgso\b|\bnso\b,Cục Thống kê (trước 3/2025: Tổng cục Thống kê),stat_office
+4,\bfed\b|cục dự trữ liên bang,Fed,central_bank
+5,ngân hàng trung ương châu âu|\becb\b,ECB,central_bank
+6,ngân hàng trung ương|ngân hàng nhân dân trung quốc|\bboj\b|\bpboc\b,Ngân hàng trung ương nước ngoài,central_bank
+7,\beia\b|thông tin năng lượng,EIA (Mỹ),ministry_agency
+8,"hải quan.*\b(mỹ|hoa kỳ|nhật bản|trung quốc|hàn quốc|ấn độ|eu|châu âu|anh|vương quốc anh|đức|(?<!tư )pháp|nga|úc|australia|canada|singapore|thái lan|indonesia|malaysia|philippines|campuchia|lào|đài loan|hong kong|hồng kông)\s*(\)|,|;|$)",Hải quan nước ngoài,ministry_agency
+9,"\b(bộ|cục|cơ quan|văn phòng|ủy ban|chính phủ|tổng thống|thủ tướng)\b.*\b(mỹ|hoa kỳ|nhật bản|trung quốc|hàn quốc|ấn độ|eu|châu âu|anh|vương quốc anh|đức|(?<!tư )pháp|nga|úc|australia|canada|singapore|thái lan|indonesia|malaysia|philippines|campuchia|lào|đài loan|hong kong|hồng kông)\s*(\)|,|;|$)|nhà trắng|\bustr\b|văn phòng đại diện thương mại",Cơ quan nhà nước nước ngoài,ministry_agency
+10,hải quan,Cục Hải quan,ministry_agency
+11,cục thuế|tổng cục thuế|cơ quan thuế,Cục Thuế,ministry_agency
+12,cục đầu tư nước ngoài,Cục Đầu tư nước ngoài,ministry_agency
+13,kho bạc,Kho bạc Nhà nước,ministry_agency
+14,bộ tài chính,Bộ Tài chính,ministry_agency
+15,bộ công thương|liên bộ công thương|cục xuất nhập khẩu,Bộ Công Thương,ministry_agency
+16,bộ nông nghiệp,Bộ Nông nghiệp và Môi trường,ministry_agency
+17,cục hàng không,Cục Hàng không Việt Nam,ministry_agency
+18,bộ xây dựng,Bộ Xây dựng,ministry_agency
+19,bộ kế hoạch,Bộ Kế hoạch và Đầu tư (đến 3/2025),ministry_agency
+20,ngân hàng nhà nước|\bnhnn\b,Ngân hàng Nhà nước,central_bank
+21,sở giao dịch chứng khoán tp|\bhose\b|\bhsx\b,HoSE,exchange
+22,sở giao dịch chứng khoán hà nội|\bhnx\b,HNX,exchange
+23,vsdc|tổng công ty lưu ký,VSDC,exchange
+24,ủy ban chứng khoán|ubcknn,UBCKNN,exchange
+25,sở giao dịch hàng hóa|\bmxv\b,MXV,exchange
+26,\bevn\b|tập đoàn điện lực,EVN,company_report
+27,báo cáo tài chính|bctc|kết quả kinh doanh|nghị quyết đhcđ|đại hội (đồng )?cổ đông|đhcđ,"Báo cáo, công bố của doanh nghiệp",company_report
+28,vndirect|\bssi\b|vcbs|\bmbs\b|vietcap|\bbsc\b|acbs|kbsv|yuanta|mirae|công ty chứng khoán|dragon capital|vinacapital,"Công ty chứng khoán, quỹ",securities_firm
+29,fiin,FiinGroup,data_vendor
+30,vasep,VASEP,association
+31,hiệp hội rau quả|vinafruit,Hiệp hội Rau quả Việt Nam,association
+32,hiệp hội lương thực|\bvfa\b,Hiệp hội Lương thực Việt Nam,association
+33,vcci,VCCI,association
+34,hiệp hội,Hiệp hội ngành khác,association
+35,ngân hàng thế giới|world bank|\bwb\b,World Bank,intl_org
+36,\bimf\b|quỹ tiền tệ,IMF,intl_org
+37,\badb\b|ngân hàng phát triển châu á,ADB,intl_org
+38,\biea\b|năng lượng quốc tế,IEA,intl_org
+39,opec,OPEC,intl_org
+40,\bwgc\b|hội đồng vàng,World Gold Council,intl_org
+41,iata,IATA,intl_org
+42,liên hợp quốc|\bfao\b|unctad|\bwto\b|oecd|\bilo\b|undp|\bwho\b,"Tổ chức LHQ, WTO, OECD",intl_org
+43,kpler,Kpler,data_vendor
+44,lseg|refinitiv,LSEG,data_vendor
+45,kitco,Kitco,data_vendor
+46,coinmarketcap|coingecko|coinglass,"Dữ liệu tiền số (CoinMarketCap, CoinGecko, CoinGlass)",data_vendor
+47,chainalysis,Chainalysis,data_vendor
+48,statista|mordor|grand view|allied market|research and markets|research & market,Công ty nghiên cứu thị trường,data_vendor
+49,savills|cbre|jll|dkra|one housing|batdongsan|cushman|knight frank|avison|colliers,Công ty dữ liệu bất động sản,data_vendor
+50,brand finance|forbes|fortune|bloomberg billionaires,"Bảng xếp hạng (Forbes, Brand Finance...)",data_vendor
+51,\bmetric\b|younet|vietdata|momentum works|nielsen|kantar|euromonitor,"Dữ liệu bán lẻ, TMĐT",data_vendor
+52,mckinsey|pwc|deloitte|kpmg|\bey\b|bain|ember|eurasia group|alixpartners|capital economics|oxford economics,"Tư vấn, think tank",research_consulting
+53,reuters|cnbc|financial times|\bft\b|wsj|wall street journal|nikkei|xinhua|tân hoa xã|\bap\b|afp|scmp|bbc|cnn|economist|yonhap|bloomberg|coindesk,"Hãng tin, báo nước ngoài",news_agency
+54,vnexpress,VnExpress tổng hợp,newsroom
+55,phóng viên ghi nhận|ghi nhận của phóng viên,Phóng viên ghi nhận,field_obs
+56,nghị định|nghị quyết|luật|thông tư|quyết định|quy hoạch|đạo luật|dự thảo|chỉ thị,"Văn bản pháp luật, quy hoạch",legal_doc
+57,chính phủ|thủ tướng|quốc hội|ubnd|ủy ban nhân dân|\bsở (tài chính|công thương|xây dựng|nông nghiệp|kế hoạch|du lịch|lao động|y tế|giáo dục|nội vụ|khoa học),"Chính phủ, Quốc hội, chính quyền địa phương",ministry_agency

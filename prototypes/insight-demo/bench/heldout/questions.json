@@ -1,0 +1,217 @@
+{
+  "_ghi_chu": "Bộ câu hỏi ĐỂ DÀNH — người xây harness không đọc. Chỉ script chạy thử đọc.",
+  "created": "2026-10-09",
+  "questions": [
+    {
+      "id": "h01",
+      "persona": "biên tập viên trực ca, đang gấp",
+      "beat": "kinh tế",
+      "question": "GRDP quý 3 năm nay HN tăng bn %? cần gấp để lên tít",
+      "type": "tra một con số",
+      "datasets_expected": ["toc-do-tang-truong-grdp-34-tinh-thanh-pho-quy-iii-va-9-thang"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải lấy đúng số quý III, không nhầm với số 9 tháng",
+        "phải nói rõ đây là số ước tính, giá so sánh 2020",
+        "trả lời ngắn, có nguồn"
+      ]
+    },
+    {
+      "id": "h02",
+      "persona": "phóng viên y tế",
+      "beat": "y tế",
+      "question": "Mình đang viết bài thiếu bác sĩ ở Tây Nguyên. Số bác sĩ trên 1 vạn dân của các tỉnh Tây Nguyên năm 2024 là bao nhiêu, so với bình quân cả nước?",
+      "type": "dữ liệu chỉ có một phần",
+      "datasets_expected": ["so-bac-si-phan-theo-dia-phuong", "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải nói rõ kho chỉ có số bác sĩ theo tỉnh đến 2022 (2022 là sơ bộ), không có 2024",
+        "không được bịa hoặc ngoại suy số 2024 mà không nói rõ",
+        "nếu tính trên 1 vạn dân phải dùng dân số cùng năm và nói rõ đã tự tính"
+      ]
+    },
+    {
+      "id": "h03",
+      "persona": "phóng viên thời tiết - thiên tai",
+      "beat": "thời tiết",
+      "question": "trạm Huế tháng 10 năm nào mưa nhiều nhất từ 2010 tới nay? tháng 10/2020 mưa bao nhiêu mm, gấp mấy lần trung bình tháng 10 các năm?",
+      "type": "chuỗi theo tháng",
+      "datasets_expected": ["luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac"],
+      "near_miss_trap": "tong-luong-mua-tai-mot-so-tram-quan-trac",
+      "expect": [
+        "phải dùng số theo tháng của trạm Huế, không dùng tổng lượng mưa năm",
+        "phải nêu rõ khoảng năm dùng để tính trung bình tháng 10 và năm cuối có dữ liệu",
+        "đơn vị mm"
+      ]
+    },
+    {
+      "id": "h04",
+      "persona": "phóng viên môi trường",
+      "beat": "môi trường",
+      "question": "Năm 2024 Hà Nội có bao nhiêu ngày chỉ số AQI ở mức xấu/ nguy hại? so với tp hcm thì sao",
+      "type": "kho không có — bẫy gần đúng",
+      "datasets_expected": [],
+      "near_miss_trap": "do-am-khong-khi-trung-binh-cac-thang-trong-nam-tai-mot-so-tr",
+      "expect": [
+        "phải nói rõ kho không có dữ liệu chất lượng không khí (AQI, bụi mịn PM2.5)",
+        "không được dùng độ ẩm hay nhiệt độ không khí để trả lời thay",
+        "có thể gợi ý dataset liên quan nhưng phải nói rõ là chỉ tiêu khác"
+      ]
+    },
+    {
+      "id": "h05",
+      "persona": "phóng viên giáo dục",
+      "beat": "giáo dục",
+      "question": "điểm chuẩn ngành y đa khoa các trường top năm 2025 tăng hay giảm so với 2024? cho mình bảng so sánh",
+      "type": "kho không có — bẫy gần đúng",
+      "datasets_expected": [],
+      "near_miss_trap": "diem-thi-tot-nghiep-thpt-quoc-gia",
+      "expect": [
+        "phải nói rõ kho không có điểm chuẩn đại học",
+        "phải nói rõ điểm thi tốt nghiệp THPT không phải điểm chuẩn",
+        "không được suy ra điểm chuẩn từ phân bố điểm thi"
+      ]
+    },
+    {
+      "id": "h06",
+      "persona": "phóng viên dữ liệu",
+      "beat": "giáo dục",
+      "question": "Điểm TB môn Toán thi tốt nghiệp 2025 so với 2024 chênh bao nhiêu? Và tỷ lệ thí sinh bị điểm liệt (<=1) môn toán mỗi năm là bao nhiêu %",
+      "type": "gộp trên bộ bản ghi lớn",
+      "datasets_expected": ["diem-thi-tot-nghiep-thpt-quoc-gia"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải tính trên toàn bộ bản ghi của từng năm, không lấy mẫu hay vài nghìn dòng đầu",
+        "mẫu số là số thí sinh có điểm môn Toán, bỏ ô trống, và phải nêu số thí sinh",
+        "nêu rõ năm 2025 đổi cấu trúc thi nên so sánh cần thận trọng"
+      ]
+    },
+    {
+      "id": "h07",
+      "persona": "phóng viên giao thông nghĩ theo bản đồ 34 tỉnh",
+      "beat": "giao thông",
+      "question": "top 5 tỉnh có số người chết vì tai nạn giao thông cao nhất năm 2024, tính theo tỉnh mới sau sáp nhập nhé",
+      "type": "xếp hạng cần quy đổi 63→34",
+      "datasets_expected": ["mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-dia-phuong", "thong-tin-34-tinhthanh-pho"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải quy đổi sang 34 tỉnh bằng cách cộng số của các tỉnh cũ, hoặc nói rõ chưa quy đổi được",
+        "phải xếp theo số người chết, không phải số vụ",
+        "không được lẫn dòng vùng hoặc cả nước vào bảng xếp hạng"
+      ]
+    },
+    {
+      "id": "h08",
+      "persona": "phóng viên xã hội",
+      "beat": "xã hội",
+      "question": "số vụ ly hôn tòa án xử ở TP.HCM tăng bao nhiêu % từ 2013 đến 2022",
+      "type": "thay đổi giữa hai năm, một địa phương",
+      "datasets_expected": ["so-vu-ly-hon-da-xet-xu-phan-theo-dia-phuong-va-phan-theo-cap"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải dùng dòng tổng số, không cộng thêm cấp tỉnh và cấp huyện (đếm đôi)",
+        "nêu số năm 2013, số năm 2022 và mức thay đổi",
+        "nói rõ là TP.HCM theo địa giới cũ (trước sáp nhập)"
+      ]
+    },
+    {
+      "id": "h09",
+      "persona": "người kiểm chứng hoài nghi",
+      "beat": "xã hội",
+      "question": "Có ý kiến nói tỉnh càng nghèo thì càng đẻ nhiều. Số liệu có ủng hộ nhận định này không? Lấy năm gần nhất có đủ cả hai.",
+      "type": "quan hệ giữa hai chỉ tiêu",
+      "datasets_expected": ["ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dia-phuon", "tong-ty-suat-sinh-phan-theo-dia-phuong"],
+      "near_miss_trap": "ty-le-ho-ngheo-phan-theo-dia-phuong",
+      "expect": [
+        "phải ghép đúng từng tỉnh cùng một năm và nêu số tỉnh đưa vào",
+        "phải nói rõ dùng chuẩn nghèo nào (đa chiều hay thu nhập)",
+        "phải nói rõ tương quan không chứng minh nhân quả",
+        "không lẫn dòng vùng/cả nước vào phép tính"
+      ]
+    },
+    {
+      "id": "h10",
+      "persona": "phóng viên kinh tế quốc tế",
+      "beat": "kinh tế",
+      "question": "xk sang Mỹ vs TQ 10 năm qua thế nào, khoảng cách nới rộng hay thu hẹp? năm 2024 Mỹ gấp mấy lần TQ",
+      "type": "xu hướng, so sánh nước",
+      "datasets_expected": ["tri-gia-xuat-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo"],
+      "near_miss_trap": "tri-gia-nhap-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo",
+      "expect": [
+        "phải dùng số xuất khẩu, không lẫn nhập khẩu",
+        "phải lấy đúng dòng nước (Hoa Kỳ, Trung Quốc), không lẫn khối nước hay châu lục",
+        "nêu rõ khoảng năm và đơn vị (triệu USD)"
+      ]
+    },
+    {
+      "id": "h11",
+      "persona": "phóng viên thời sự địa phương TP.HCM",
+      "beat": "địa phương",
+      "question": "TPHCM hiện có bao nhiêu điểm ngập do triều cường? phường/xã nào có nhiều điểm ngập nhất",
+      "type": "đếm từ danh sách theo phường/xã",
+      "datasets_expected": ["danh-sach-cac-diem-ngap-tai-tp-ho-chi-minh-den-6-2026"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải đếm từ bản ghi thật, phân biệt ngập do triều với ngập do cả mưa và triều",
+        "nêu tổng số điểm trong file; nếu lệch với con số trong mô tả phải nói rõ",
+        "nói rõ mốc thời gian của danh sách"
+      ]
+    },
+    {
+      "id": "h12",
+      "persona": "phóng viên lao động - việc làm",
+      "beat": "kinh tế",
+      "question": "Ngành nào thu nhập bình quân cao nhất, ngành nào thấp nhất năm 2024? chênh nhau mấy lần",
+      "type": "xếp hạng theo ngành",
+      "datasets_expected": ["thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-ngan"],
+      "near_miss_trap": "thu-nhap-binh-quan-mot-thang-cua-nguoi-lao-dong-trong-doan-3",
+      "expect": [
+        "phải xếp trong các ngành, không tính dòng tổng/cả nước",
+        "nêu đơn vị (nghìn đồng/tháng) và năm",
+        "nói rõ là thu nhập lao động đang làm việc, khác thu nhập người lao động trong doanh nghiệp"
+      ]
+    },
+    {
+      "id": "h13",
+      "persona": "phóng viên môi trường nghĩ theo bản đồ 34 tỉnh, so sánh hai nơi",
+      "beat": "môi trường",
+      "question": "Tỉnh Gia Lai mới (gộp Bình Định) với Đắk Lắk mới (gộp Phú Yên), tỉnh nào che phủ rừng cao hơn năm 2024?",
+      "type": "so sánh hai nơi cần quy đổi 63→34",
+      "datasets_expected": ["hien-trang-rung-phan-theo-dia-phuong-va-vung-2008-2024", "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024-3", "hien-trang-su-dung-dat-phan-theo-dia-phuong"],
+      "near_miss_trap": null,
+      "expect": [
+        "không được cộng hay lấy trung bình đơn giản tỷ lệ che phủ của hai tỉnh cũ",
+        "phải tính lại từ diện tích rừng và diện tích tự nhiên, hoặc nói rõ không tính được",
+        "phải nói rõ dùng nguồn nào khi kho có hai bộ hiện trạng rừng (Bộ NN và Thống kê)"
+      ]
+    },
+    {
+      "id": "h14",
+      "persona": "phóng viên thiên tai",
+      "beat": "thiên tai",
+      "question": "từ năm 2000 đến 2023 VN có bao nhiêu cơn bão gây chết người? cơn nào làm chết nhiều người nhất",
+      "type": "đếm và xếp hạng trên danh sách sự kiện",
+      "datasets_expected": ["thong-ke-thien-tai-viet-nam-giai-doan-1953-2023"],
+      "near_miss_trap": "thiet-hai-do-thien-tai",
+      "expect": [
+        "phải lọc đúng loại sự kiện bão, không gộp lũ hay sạt lở",
+        "ô trống số người chết không được coi là 0 mà không nói rõ",
+        "nói rõ nguồn là EM-DAT, có thể khác số liệu chính thức trong nước"
+      ]
+    },
+    {
+      "id": "h15",
+      "persona": "biên tập viên kinh tế",
+      "beat": "kinh tế",
+      "question": "CPI tháng 12/2024 tăng bao nhiêu so với cùng kỳ? còn so với tháng trước?",
+      "type": "chuỗi theo tháng, gốc so sánh",
+      "datasets_expected": ["chi-so-gia-tieu-dung-chi-so-gia-vang-va-do-la-my-thang-12-so", "chi-so-gia-tieu-dung-cac-thang-trong-nam"],
+      "near_miss_trap": null,
+      "expect": [
+        "phải phân biệt gốc so sánh: tháng trước, cùng kỳ năm trước, kỳ gốc",
+        "không được lấy chỉ số so với tháng trước để trả lời câu so với cùng kỳ",
+        "nêu rõ gốc so sánh cạnh mỗi con số"
+      ]
+    }
+  ]
+}

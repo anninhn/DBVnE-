@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "insight-data": {
+      "command": "bash",
+      "args": ["${CLAUDE_PROJECT_DIR:-.}/../../../tools/insight-data-mcp.sh"]
+    }
+  }
+}

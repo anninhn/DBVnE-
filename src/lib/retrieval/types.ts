@@ -54,6 +54,12 @@ export interface SearchDatasetsResult {
   indexBuiltAt: string;
   /** Số dataset khớp TRƯỚC khi cắt `limit` */
   total: number;
+  /**
+   * Có mặt khi nhánh ngữ nghĩa không chạy được (gọi embedding lỗi / hết hạn mức) và
+   * kết quả CHỈ dựa trên từ khoá. Caller phải nói ra điều này — kết quả kém hơn bình
+   * thường, im lặng thì người dùng tưởng kho không có gì.
+   */
+  degraded?: string;
 }
 
 // ── getDataset ────────────────────────────────────────────────────────────────

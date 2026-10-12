@@ -22,3 +22,6 @@ tsconfig.tsbuildinfo
 # Ignore cả thư mục thì sửa spec không vào được git, mà đó lại là chỗ cần lịch sử
 # nhất.
 *.docx
+
+# Pilot harness insight — cache dữ liệu, phiên, cấu hình Claude Code riêng (chỉ local)
+/data/insight/
