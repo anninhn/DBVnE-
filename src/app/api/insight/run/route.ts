@@ -180,7 +180,7 @@ export async function POST(req: NextRequest) {
     CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC: "1",
   } satisfies NodeJS.ProcessEnv;
 
-  const child = spawn(process.env.INSIGHT_CLAUDE_BIN ?? "claude", args, {
+  const child = spawn(/*turbopackIgnore: true*/ process.env.INSIGHT_CLAUDE_BIN ?? "claude", args, {
     cwd: WORK_DIR,
     env,
     stdio: ["ignore", "pipe", "pipe"],

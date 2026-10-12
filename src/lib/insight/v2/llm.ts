@@ -70,7 +70,7 @@ export async function callModel<T>(system: string, prompt: string): Promise<Mode
 
   const t0 = Date.now();
   return new Promise((resolve) => {
-    const child = spawn(process.env.INSIGHT_CLAUDE_BIN ?? "claude", args, {
+    const child = spawn(/*turbopackIgnore: true*/ process.env.INSIGHT_CLAUDE_BIN ?? "claude", args, {
       cwd: WORK_DIR,
       env,
       stdio: ["ignore", "pipe", "pipe"],
