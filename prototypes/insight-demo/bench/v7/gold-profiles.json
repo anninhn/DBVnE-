@@ -1,0 +1,355 @@
+{
+  "_ghi_chu": "NHÃN ĐÚNG hồ sơ ngữ nghĩa (schema: src/lib/insight/v7/profile.ts) cho bộ thử v7. Gắn bởi Claude Code 2026-10-09 từ bản tóm tắt cấu trúc (data/insight/v7/dumps) — CHỜ NINH DUYỆT. Trường trong 'unsure' là chỗ người gắn không chắc. Dùng để đo độ chính xác hồ sơ do AI đề xuất.",
+  "labels": [
+    {
+      "profile": {
+        "slug": "tong-ty-suat-sinh-phan-theo-dia-phuong", "part": "tong-ty-suat-sinh-phan-theo-dia-phuong.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Địa phương", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": "cột Ghi chú = \"Sơ bộ\"" },
+        "measures": [ { "column": "Tổng tỷ suất sinh", "name": "tổng tỷ suất sinh", "kind": "rate", "unit": "số con/phụ nữ", "additive": false, "denominator": "phụ nữ 15–49 tuổi (theo tuổi)", "priceBasis": "n/a" } ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "đánh dấu số sơ bộ" },
+        "caveats": ["Cột địa phương trộn CẢ NƯỚC, 6 vùng, 63 tỉnh và Hà Tây (đến 2007)", "Năm 2006 không có số"]
+      },
+      "unsure": [], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th", "part": "dan-so-trung-binh-phan-theo-dia-phuong-gioi-tinh-va-thanh-th.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Tỉnh, thành phố", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": "cột Ghi chú = \"Sơ bộ\"" },
+        "measures": [ { "column": "Dân số trung bình", "name": "dân số trung bình", "kind": "count", "unit": "nghìn người", "unitMultiplier": 1000, "additive": true, "priceBasis": "n/a" } ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "đánh dấu số sơ bộ" },
+        "caveats": ["Trộn cả nước / vùng / tỉnh; có Hà Tây", "Tên vùng dùng chữ Ð (U+00D0) khác Đ"]
+      },
+      "unsure": [], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "so-vu-ly-hon-da-xet-xu-phan-theo-dia-phuong-va-phan-theo-cap", "part": "so-vu-ly-hon-da-xet-xu-phan-theo-dia-phuong-va-phan-theo-cap.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Tỉnh, thành phố", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": null },
+        "measures": [
+          { "column": "Tổng số", "name": "số vụ ly hôn đã xét xử", "kind": "count", "unit": "vụ", "additive": true, "priceBasis": "n/a", "sumOf": ["Cấp tỉnh", "Cấp huyện"] },
+          { "column": "Cấp tỉnh", "name": "số vụ ly hôn do tòa án cấp tỉnh xét xử", "kind": "count", "unit": "vụ", "additive": true, "priceBasis": "n/a" },
+          { "column": "Cấp huyện", "name": "số vụ ly hôn do tòa án cấp huyện xét xử", "kind": "count", "unit": "vụ", "additive": true, "priceBasis": "n/a" }
+        ],
+        "dimensions": [],
+        "caveats": ["Chỉ vụ ĐÃ XÉT XỬ — không phải mọi vụ ly hôn", "Cấp tỉnh trống 51 dòng (khi đó Tổng số = Cấp huyện?)"]
+      },
+      "unsure": ["sumOf đúng ở dòng Cấp tỉnh trống hay không — để bộ kiểm dữ liệu trả lời"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-theo", "part": "tong-muc-ban-le-hang-hoa-va-doanh-thu-dich-vu-tieu-dung-theo.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Tỉnh, thành phố", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": "cột Ghi chú = \"Sơ bộ\"" },
+        "measures": [ { "column": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng", "name": "tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng", "kind": "money", "unit": "tỷ đồng", "unitMultiplier": 1000000000, "additive": true, "priceBasis": "current" } ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "đánh dấu số sơ bộ" },
+        "caveats": ["Giá hiện hành — chưa trừ lạm phát"]
+      },
+      "unsure": [], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini-phan", "part": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini-phan.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Địa phương", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": null },
+        "measures": [ { "column": "Hệ số bất bình đẳng trong phân phối thu nhập (hệ số GINI)", "name": "hệ số GINI (bất bình đẳng phân phối thu nhập)", "kind": "index", "unit": null, "additive": false, "priceBasis": "n/a", "indicatorCode": "gini_thu_nhap" } ],
+        "dimensions": [],
+        "caveats": ["Dòng cả nước ghi là \"TỔNG SỐ\""]
+      },
+      "unsure": [], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini", "part": "he-so-bat-binh-dang-trong-phan-phoi-thu-nhap-he-so-gini.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Phân tổ", "kind": "region", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": null },
+        "measures": [ { "column": "Hệ số bất bình đẳng trong phân phối thu nhập (hệ số GINI)", "name": "hệ số GINI (bất bình đẳng phân phối thu nhập)", "kind": "index", "unit": null, "additive": false, "priceBasis": "n/a", "indicatorCode": "gini_thu_nhap" } ],
+        "dimensions": [],
+        "caveats": ["Cột \"Phân tổ\" TRỘN địa lý (cả nước, 6 vùng) với khu vực thành thị / nông thôn — không phải một loại chủ thể", "Năm cách quãng 2 năm đến 2018"]
+      },
+      "unsure": ["Cách mô tả cột trộn địa lý + thành thị/nông thôn: entity mixedLevels, hay tách thành chiều phụ"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dia-phuon", "part": "ty-le-ho-ngheo-theo-chuan-ngheo-da-chieu-phan-theo-dia-phuon.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Địa phương", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": "cột Ghi chú = \"Sơ bộ\"" },
+        "measures": [ { "column": "Tỷ lệ hộ nghèo", "name": "tỷ lệ hộ nghèo theo chuẩn nghèo đa chiều", "kind": "rate", "unit": "%", "additive": false, "denominator": "tổng số hộ", "priceBasis": "n/a", "standard": "chuẩn nghèo đa chiều (2016–2020 và 2022–2025 là hai chuẩn khác nhau)", "indicatorCode": "ty_le_ho_ngheo_da_chieu" } ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "đánh dấu số sơ bộ" },
+        "caveats": ["Chuỗi nối qua đổi chuẩn nghèo đa chiều — so trước/sau 2021 phải cảnh báo"]
+      },
+      "unsure": ["Năm đổi chuẩn chính xác (2021 hay 2022) — chưa kiểm tài liệu NSO"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "ty-le-ho-ngheo-phan-theo-dia-phuong", "part": "ty-le-ho-ngheo-phan-theo-dia-phuong.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Địa phương", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": null },
+        "measures": [ { "column": "Tỷ lệ hộ nghèo", "name": "tỷ lệ hộ nghèo", "kind": "rate", "unit": "%", "additive": false, "denominator": "tổng số hộ", "priceBasis": "n/a", "standard": "nhiều chuẩn nối nhau; từ 2020 khớp số chuẩn đa chiều", "indicatorCode": null } ],
+        "dimensions": [],
+        "caveats": ["Năm thiếu: 2007, 2009, 2011, 2017–2019", "Từ 2020 số khớp dataset chuẩn đa chiều; 2016 lệch hẳn (5,8 vs 9,2) → hai chuẩn khác nhau, KHÔNG cùng mã chỉ tiêu"]
+      },
+      "unsure": ["Chuẩn đo của từng giai đoạn trước 2016"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac", "part": "luong-mua-cac-thang-trong-nam-tai-mot-so-tram-quan-trac.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Tỉnh, thành phố", "kind": "station", "gazetteer": null, "mixedLevels": false },
+        "time": { "column": "Năm", "grain": "month", "provisionalMarker": null },
+        "measures": [ { "column": "Lượng mưa các tháng trong năm tại một số trạm quan trắc", "name": "lượng mưa tháng tại trạm quan trắc", "kind": "amount", "unit": "mm", "additive": false, "priceBasis": "n/a" } ],
+        "dimensions": [],
+        "otherColumns": { "Tháng": "tháng — cùng cột Năm tạo thành thời gian theo tháng" },
+        "caveats": ["Chủ thể là TRẠM, không phải tỉnh, dù cột tên \"Tỉnh, thành phố\" và nhiều giá trị trùng tên tỉnh (Vinh, Huế, Hà Nội (Láng))", "Cộng 12 tháng ra lượng mưa năm của trạm được; cộng giữa các trạm thì không", "690 ô trống"]
+      },
+      "unsure": ["Thời gian 2 cột (Năm + Tháng): schema TimeRole chỉ có một cột — cần hỗ trợ thời gian ghép"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "tri-gia-xuat-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo", "part": "tri-gia-xuat-khau-hang-hoa-phan-theo-khoi-nuoc-phan-theo-nuo.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Khối nước, nước, vùng lãnh thổ", "kind": "country", "gazetteer": null, "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": "cột Ghi chú = \"Sơ bộ\"" },
+        "measures": [ { "column": "Trị giá xuất khẩu hàng hoá", "name": "trị giá xuất khẩu hàng hóa của Việt Nam sang đối tác", "kind": "money", "unit": "triệu USD", "unitMultiplier": 1000000, "additive": true, "priceBasis": "current" } ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "đánh dấu số sơ bộ" },
+        "caveats": ["Cột chủ thể trộn TỔNG SỐ, khối nước CHỒNG LẤN (ASEAN, APEC, EU, OPEC) và từng nước — cộng các khối sẽ đếm trùng", "Chỉ cộng được giữa các nước, không giữa các khối"]
+      },
+      "unsure": [], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-ngan", "part": "thu-nhap-binh-quan-mot-lao-dong-dang-lam-viec-phan-theo-ngan.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Ngành", "kind": "industry", "gazetteer": "vsic-cap-1", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": "cột Ghi chú = \"Sơ bộ\"" },
+        "measures": [ { "column": "Thu nhập bình quân một lao động đang làm việc", "name": "thu nhập bình quân một lao động đang làm việc (tháng)", "kind": "average", "unit": "nghìn đồng/tháng", "unitMultiplier": 1000, "additive": false, "denominator": "số lao động đang làm việc", "priceBasis": "current" } ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "đánh dấu số sơ bộ" },
+        "caveats": ["Dictionary ghi đơn vị \"unknown\"", "Dòng TỔNG SỐ là bình quân chung, không phải tổng các ngành"]
+      },
+      "unsure": ["Đơn vị nghìn đồng/tháng — suy từ độ lớn (4.849 năm 2018) và cách NSO công bố; dictionary không ghi", "Tên bảng tham chiếu ngành (VSIC 2018 cấp 1)"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-dia-phuong", "part": "mot-so-chi-tieu-ve-tai-nan-giao-thong-phan-theo-dia-phuong.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Địa phương", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": null },
+        "measures": [
+          { "column": "Số Vụ TNGT (Vụ)", "name": "số vụ tai nạn giao thông", "kind": "count", "unit": "vụ", "additive": true, "priceBasis": "n/a" },
+          { "column": "Số người chết (người)", "name": "số người chết do tai nạn giao thông", "kind": "count", "unit": "người", "additive": true, "priceBasis": "n/a" },
+          { "column": "Số người bị thương (Người)", "name": "số người bị thương do tai nạn giao thông", "kind": "count", "unit": "người", "additive": true, "priceBasis": "n/a" }
+        ],
+        "dimensions": [],
+        "caveats": ["Chỉ 3 năm", "Cả nước 2022: 11.457 vụ → 2023: 22.067 vụ (gần gấp đôi) — nhiều khả năng đổi cách thống kê; không so 2022 với 2023 khi chưa rõ"]
+      },
+      "unsure": ["Lý do 2022 bằng một nửa 2023 — chưa kiểm tài liệu nguồn"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "danh-sach-cac-diem-ngap-tai-tp-ho-chi-minh-den-6-2026", "part": "159_diem_ngap_3_khu_vuc_gon.xlsx (3 sheet: TP HCM cu, Binh Duong, BR-VT)",
+        "shape": "records", "tidy": false,
+        "readingNote": "Mỗi sheet là một khu vực (tỉnh cũ trước 7/2025); dòng 0 = tên khu vực, dòng 1 = tóm tắt, dòng 2 = header, dữ liệu từ dòng 3. Gộp 3 sheet, thêm cột khu vực từ tên sheet.",
+        "entity": { "column": "Địa bàn", "kind": "ward", "gazetteer": null, "mixedLevels": true },
+        "time": { "column": null, "grain": "none", "fixed": "đến 6/2026" },
+        "measures": [],
+        "dimensions": [ { "column": "Nguyên nhân", "totalValue": null }, { "column": "Mức độ", "totalValue": null } ],
+        "otherColumns": { "STT": "số thứ tự", "Vị trí ngập": "mô tả vị trí (tên đường) — văn bản" },
+        "caveats": ["Mỗi dòng là một điểm ngập — số liệu sinh bằng ĐẾM theo địa bàn / nguyên nhân / mức độ", "Địa bàn trộn phường mới (TP HCM cũ, BR-VT) với 'Thành phố Thủ Dầu Một'... (cấp huyện cũ, Bình Dương)", "Một ô có thể chứa nhiều phường (\"Phường Thông Tây Hội, An Hội\")", "Mức độ trống ở sheet Bình Dương"]
+      },
+      "unsure": ["Bảng tham chiếu cấp xã nào khớp (sau 7/2025) — Bình Dương dùng tên cấp huyện cũ nên sẽ không khớp"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "thong-ke-thien-tai-viet-nam-giai-doan-1953-2023", "part": "disaster-in-vietnam_1900-to-2024.xlsx / sheet Data",
+        "shape": "records", "tidy": true,
+        "entity": { "column": "DisNo.", "kind": "event", "gazetteer": null, "mixedLevels": false },
+        "time": { "column": "Start Year", "grain": "year", "provisionalMarker": null },
+        "measures": [
+          { "column": "Total Deaths", "name": "số người chết", "kind": "count", "unit": "người", "additive": true, "priceBasis": "n/a" },
+          { "column": "Total Affected", "name": "số người bị ảnh hưởng", "kind": "count", "unit": "người", "additive": true, "priceBasis": "n/a" },
+          { "column": "Total Damage ('000 US$)", "name": "thiệt hại", "kind": "money", "unit": "nghìn USD", "unitMultiplier": 1000, "additive": true, "priceBasis": "current" },
+          { "column": "Total Damage, Adjusted ('000 US$)", "name": "thiệt hại đã điều chỉnh lạm phát", "kind": "money", "unit": "nghìn USD", "unitMultiplier": 1000, "additive": true, "priceBasis": "constant" }
+        ],
+        "dimensions": [ { "column": "Disaster Type", "totalValue": null }, { "column": "Disaster Subtype", "totalValue": null }, { "column": "Disaster Group", "totalValue": null } ],
+        "otherColumns": { "Location": "địa điểm dạng văn bản tự do (tiếng Anh, nhiều tỉnh trong một ô)", "Admin Units": "đơn vị hành chính bị ảnh hưởng (dạng có cấu trúc — chưa xem)", "Start Month / Start Day / End Year / End Month / End Day": "thời gian chi tiết", "No. Injured / No. Affected / No. Homeless / Reconstruction / Insured Damage / CPI": "số đo phụ", "Event Name": "tên bão", "Column Description (sheet)": "từ điển cột — không phải dữ liệu" },
+        "caveats": ["Mỗi dòng một sự kiện — số liệu sinh bằng đếm / cộng theo năm, loại thiên tai", "Địa điểm là văn bản tự do, không quy mã tỉnh trực tiếp được", "Sheet thứ hai là mô tả cột", "Dữ liệu đầu kỳ thưa — số sự kiện tăng theo thời gian một phần do ghi chép tốt hơn"]
+      },
+      "unsure": ["Cột 'Admin Units' (đơn vị hành chính có cấu trúc?) có quy được mã tỉnh không — chưa xem nội dung"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "toc-do-tang-truong-grdp-34-tinh-thanh-pho-quy-iii-va-9-thang", "part": "01._GRDP_34_t_nh_Q3_9_th_ng_2026_-final.xlsx / sheet TĐ",
+        "shape": "observations", "tidy": false,
+        "readingNote": "Header dòng 2, dòng 3 là số thứ tự cột (bỏ). Dòng có STT là dòng NHÓM (tỉnh, dạng '01.Thành phố Hà Nội'), các dòng dưới không có STT là chỉ tiêu con (GRDP, 4 khu vực, 'Trong đó: Công nghiệp'). Hai cột số = hai kỳ.",
+        "entity": { "column": "Tỉnh, thành phố (dòng nhóm)", "kind": "province", "gazetteer": "vn-admin-34", "mixedLevels": false },
+        "time": { "column": null, "grain": "quarter", "fixed": "quý III/2026 và 9 tháng đầu 2026 (ước tính)", "provisionalMarker": "toàn bộ là ước tính" },
+        "measures": [
+          { "column": "Quý III (Ước tính)", "name": "chỉ số phát triển GRDP quý III so cùng kỳ", "kind": "index", "unit": "% (cùng kỳ năm trước = 100)", "additive": false, "priceBasis": "constant" },
+          { "column": "9 tháng đầu năm (Ước tính)", "name": "chỉ số phát triển GRDP 9 tháng so cùng kỳ", "kind": "index", "unit": "% (cùng kỳ năm trước = 100)", "additive": false, "priceBasis": "constant" }
+        ],
+        "dimensions": [ { "column": "khu vực kinh tế (dòng con)", "totalValue": "GRDP", "notAdditiveAcross": true } ],
+        "otherColumns": { "sheet RANK canuoc thu tu cap nhat": "xếp hạng — SỐ SUY RA từ sheet TĐ, không phải dữ liệu gốc" },
+        "caveats": ["Chỉ số (110,02 = tăng 10,02%), không phải mức GRDP", "Danh mục 34 tỉnh mới", "Tên tỉnh có tiền tố số và 'Thành phố/Tỉnh'", "'Trong đó: Công nghiệp' là một phần của khu vực 2 — không cộng"]
+      },
+      "unsure": ["Giá so sánh (constant) — suy từ cách NSO tính chỉ số phát triển; file không ghi"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "thong-tin-34-tinhthanh-pho", "part": "250703_34tinhthanh_Cleaned_.xlsx / sheet Thongtintinhthanh",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "TinhThanh", "kind": "province", "gazetteer": "vn-admin-34", "mixedLevels": false },
+        "time": { "column": null, "grain": "none", "fixed": "khoảng 7/2025 (số liệu nền của đề án sáp nhập — năm số liệu không ghi)" },
+        "measures": [
+          { "column": "Danso", "name": "dân số", "kind": "count", "unit": "người", "additive": true, "priceBasis": "n/a" },
+          { "column": "Dientich", "name": "diện tích", "kind": "amount", "unit": "km²", "additive": true, "priceBasis": "n/a" },
+          { "column": "SoDVHCcapxa", "name": "số đơn vị hành chính cấp xã", "kind": "count", "unit": "đơn vị", "additive": true, "priceBasis": "n/a" },
+          { "column": "GRDP", "name": "GRDP", "kind": "money", "unit": "tỷ đồng", "unitMultiplier": 1000000000, "additive": true, "priceBasis": "current" },
+          { "column": "Thungansach", "name": "thu ngân sách", "kind": "money", "unit": "tỷ đồng", "unitMultiplier": 1000000000, "additive": true, "priceBasis": "current" },
+          { "column": "Socangbien", "name": "số cảng biển", "kind": "count", "unit": "cảng", "additive": true, "priceBasis": "n/a" },
+          { "column": "Sosanbay", "name": "số sân bay", "kind": "count", "unit": "sân bay", "additive": true, "priceBasis": "n/a" }
+        ],
+        "dimensions": [],
+        "otherColumns": { "Truocsapnhap": "danh sách tỉnh cũ hợp thành — BẢNG TƯƠNG ỨNG 63→34", "Trungtamhanhchinhmoi": "văn bản", "Sapnhap": "cờ 0/1", "ThuhangDanso / ThuhangDientich / ThuhangGRDP / ThuhangThungansach": "xếp hạng — SỐ SUY RA" },
+        "caveats": ["Năm số liệu không ghi", "Đơn vị không ghi trong file", "Sheet Xaphuongmoi: bảng tương ứng xã cũ → xã mới (tham chiếu, shape records); sheet (chuachuan)Xaphuong: bản nháp chưa chuẩn"]
+      },
+      "unsure": ["Đơn vị GRDP và thu ngân sách (tỷ đồng) — suy từ độ lớn", "Năm số liệu", "GRDP giá hiện hành — suy đoán"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "ranh-gioi-hanh-chinh-cap-phuongxa-tp-ho-chi-minh", "part": "tphcm_wards_full.geojson",
+        "shape": "spatial", "tidy": true,
+        "entity": { "column": "code", "kind": "ward", "gazetteer": "vn-ward-2025", "mixedLevels": false },
+        "time": { "column": null, "grain": "none", "fixed": "địa giới sau 1/7/2025" },
+        "measures": [ { "column": "areaKm2", "name": "diện tích phường/xã", "kind": "amount", "unit": "km²", "additive": true, "priceBasis": "n/a" } ],
+        "dimensions": [],
+        "otherColumns": { "name / fullName / nameEn / codeName": "tên", "provinceCode / provinceName": "tỉnh cha (mã 79)", "gisServerId": "mã nội bộ nguồn" },
+        "caveats": ["Là BẢNG THAM CHIẾU cấp xã cho TP HCM mới (gồm cả Bình Dương, BR-VT cũ) — dùng để quy mã, ít khi để hỏi số"]
+      },
+      "unsure": [], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "top-bai-viet-co-luot-xem-cao-nhat-tren-vnexpress", "part": "Top_Pageviews_Thang_09-2025_08-2026.csv",
+        "shape": "records", "tidy": true,
+        "entity": { "column": "article_id", "kind": "article", "gazetteer": null, "mixedLevels": false },
+        "time": { "column": "month", "grain": "month", "provisionalMarker": null },
+        "measures": [
+          { "column": "total_pageview", "name": "lượt xem", "kind": "count", "unit": "lượt", "additive": true, "priceBasis": "n/a" },
+          { "column": "total_user", "name": "số người đọc", "kind": "count", "unit": "người", "additive": false, "priceBasis": "n/a" },
+          { "column": "total_comment", "name": "số bình luận", "kind": "count", "unit": "bình luận", "additive": true, "priceBasis": "n/a" },
+          { "column": "word_count", "name": "số chữ", "kind": "count", "unit": "chữ", "additive": false, "priceBasis": "n/a" },
+          { "column": "engage", "name": "chỉ số tương tác", "kind": "rate", "unit": null, "additive": false, "priceBasis": "n/a" }
+        ],
+        "dimensions": [ { "column": "ban", "totalValue": null }, { "column": "cate_1_name", "totalValue": null }, { "column": "cate_original_name", "totalValue": null }, { "column": "author_name", "totalValue": null }, { "column": "group", "totalValue": null }, { "column": "article_type", "totalValue": null } ],
+        "otherColumns": { "rank": "hạng trong tháng — SỐ SUY RA", "title / url": "văn bản", "publish_date / pageview_updated_at": "thời điểm (định dạng m/d/yyyy)", "is_contract": "cờ" },
+        "caveats": ["Chỉ top 100 bài mỗi tháng — không phải toàn bộ bài; mọi tổng / trung bình chỉ đúng trong top", "total_user không cộng được giữa bài (một người đọc nhiều bài)", "Ngày theo kiểu Mỹ m/d/yyyy"]
+      },
+      "unsure": ["Ý nghĩa 'engage' và mã article_type"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "hien-trang-rung-cac-tinh-thanh-viet-nam-giai-doan-2005-2024-3", "part": "Hi_n_tr_ng_r_ng_c_c_t_nh_th_nh_2005-2024.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Tỉnh thành", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "Năm", "grain": "year", "provisionalMarker": null },
+        "measures": [
+          { "column": "Tổng diện tích rừng", "name": "tổng diện tích rừng", "kind": "amount", "unit": "ha", "unitMultiplier": 1, "additive": true, "priceBasis": "n/a", "indicatorCode": "dien_tich_rung", "sumOf": ["Diện tích rừng tự nhiên", "Diện tích rừng trồng"] },
+          { "column": "Diện tích rừng tự nhiên", "name": "diện tích rừng tự nhiên", "kind": "amount", "unit": "ha", "unitMultiplier": 1, "additive": true, "priceBasis": "n/a", "indicatorCode": "dien_tich_rung_tu_nhien" },
+          { "column": "Diện tích rừng trồng", "name": "diện tích rừng trồng", "kind": "amount", "unit": "ha", "unitMultiplier": 1, "additive": true, "priceBasis": "n/a", "indicatorCode": "dien_tich_rung_trong" },
+          { "column": "Tỷ lệ che phủ rừng", "name": "tỷ lệ che phủ rừng", "kind": "rate", "unit": "%", "additive": false, "denominator": "diện tích tự nhiên", "priceBasis": "n/a", "indicatorCode": "ty_le_che_phu_rung" }
+        ],
+        "dimensions": [],
+        "otherColumns": { "Ghi chú": "ghi chú nguồn" },
+        "caveats": ["Đơn vị HA (không phải nghìn ha như dataset GSO cùng chủ đề)", "Dòng cả nước ghi \"Toàn quốc\"; không có dòng vùng", "Số thập phân dùng dấu chấm (khác CSV NSO dùng dấu phẩy)", "Có thể có tỉnh không phân biệt (65 giá trị chủ thể)"]
+      },
+      "unsure": ["Đơn vị ha — dictionary? (suy từ độ lớn 12.616.699 cả nước)", "sumOf có khớp đúng không (rừng tự nhiên + trồng = tổng) — để bộ kiểm trả lời"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "hien-trang-rung-phan-theo-dia-phuong-va-vung-2008-2024", "part": "Hie__n_tra_ng_ru__ng_co___e__n_31-12_ha__ng_na_m_pha_n_theo__i_a_phu_o_ng.csv",
+        "shape": "observations", "tidy": false,
+        "readingNote": "Chủ thể nằm ở HAI cột: 'province' (scope=province) hoặc 'region' (scope=region, gồm CẢ NƯỚC). Ghép thành một cột chủ thể theo scope.",
+        "entity": { "column": "province | region (theo scope)", "kind": "province", "gazetteer": "vn-admin-63", "mixedLevels": true },
+        "time": { "column": "year", "grain": "year", "provisionalMarker": null },
+        "measures": [
+          { "column": "total_forest_area_nghin_ha", "name": "tổng diện tích rừng", "kind": "amount", "unit": "nghìn ha", "unitMultiplier": 1000, "additive": true, "priceBasis": "n/a", "indicatorCode": "dien_tich_rung" },
+          { "column": "natural_forest_nghin_ha", "name": "diện tích rừng tự nhiên", "kind": "amount", "unit": "nghìn ha", "unitMultiplier": 1000, "additive": true, "priceBasis": "n/a", "indicatorCode": "dien_tich_rung_tu_nhien" },
+          { "column": "planted_forest_nghin_ha", "name": "diện tích rừng trồng", "kind": "amount", "unit": "nghìn ha", "unitMultiplier": 1000, "additive": true, "priceBasis": "n/a", "indicatorCode": "dien_tich_rung_trong" },
+          { "column": "new_planting_nghin_ha", "name": "diện tích rừng trồng mới", "kind": "amount", "unit": "nghìn ha", "unitMultiplier": 1000, "additive": true, "priceBasis": "n/a" },
+          { "column": "forest_cover_pct", "name": "tỷ lệ che phủ rừng", "kind": "rate", "unit": "%", "additive": false, "denominator": "diện tích tự nhiên", "priceBasis": "n/a", "indicatorCode": "ty_le_che_phu_rung" }
+        ],
+        "dimensions": [],
+        "otherColumns": { "scope": "cấp của dòng (region / province)", "flag": "trống" },
+        "caveats": ["Tên cột tiếng Anh", "new_planting trống 654 dòng"]
+      },
+      "unsure": ["Hai dataset rừng có cùng mã chỉ tiêu không — để dữ liệu phân xử (số trùng năm sau quy đơn vị)"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "quy-hoach-he-thong-cang-hang-khong-viet-nam-2030-2050", "part": "Quy_hoa_ch_he___tho__ng_ca_ng_ha_ng_kho_ng_….csv",
+        "shape": "records", "tidy": true,
+        "entity": { "column": "Tên Cảng hàng không", "kind": "facility", "gazetteer": null, "mixedLevels": false },
+        "time": { "column": null, "grain": "none", "fixed": "quy hoạch: mốc 2030 và 2050 nằm trong tên cột" },
+        "measures": [
+          { "column": "Công suất thiết kế dự kiến 2030", "name": "công suất thiết kế dự kiến 2030", "kind": "amount", "unit": "triệu hành khách/năm", "additive": true, "priceBasis": "n/a" },
+          { "column": "Công suất thiết kế dự kiến 2050", "name": "công suất thiết kế dự kiến 2050", "kind": "amount", "unit": "triệu hành khách/năm", "additive": true, "priceBasis": "n/a" },
+          { "column": "Diện tích đất dự kiến đến 2030 (ha)", "name": "diện tích đất dự kiến đến 2030", "kind": "amount", "unit": "ha", "additive": true, "priceBasis": "n/a" },
+          { "column": "Diện tích đất dự kiến đến 2050 (ha)", "name": "diện tích đất dự kiến đến 2050", "kind": "amount", "unit": "ha", "additive": true, "priceBasis": "n/a" },
+          { "column": "Ước tính chi phí đầu tư 2030 (tỷ đồng)", "name": "ước tính chi phí đầu tư đến 2030", "kind": "money", "unit": "tỷ đồng", "additive": true, "priceBasis": "current" },
+          { "column": "Ước tính chi phí đầu tư 2050 (tỷ đồng)", "name": "ước tính chi phí đầu tư đến 2050", "kind": "money", "unit": "tỷ đồng", "additive": true, "priceBasis": "current" }
+        ],
+        "dimensions": [ { "column": "Quy mô, cấp sân bay", "totalValue": null }, { "column": "Nhóm Sân bay", "totalValue": null } ],
+        "otherColumns": { "TT": "số thứ tự", "Latitude / Longitude": "toạ độ — có thể coi là spatial", "Tỉnh/Thành phố": "tỉnh đặt sân bay (thuộc tính, có thể dùng nhóm)" },
+        "caveats": ["Cột chi phí TRỘN cách viết số: '9200', '161.6', '9.325', '11.695' — dấu chấm lúc là thập phân lúc là hàng nghìn; KHÔNG dùng được khi chưa làm sạch", "Công suất dùng dấu phẩy thập phân", "Một sân bay (Thủ đô thứ 2) thiếu toạ độ và tỉnh", "Nhóm Sân bay trống 17 dòng"]
+      },
+      "unsure": ["Đơn vị công suất (triệu hành khách/năm) — suy từ độ lớn, không ghi trong file", "Giá trị thật của cột chi phí"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "diem-thi-tot-nghiep-thpt-quoc-gia", "part": "diem_thi_tong_hop.csv (429 MB)",
+        "shape": "records", "tidy": true,
+        "entity": { "column": "SOBAODANH", "kind": "person", "gazetteer": null, "mixedLevels": false },
+        "time": { "column": "year", "grain": "year", "provisionalMarker": null },
+        "measures": [
+          { "column": "Toán", "name": "điểm Toán", "kind": "average", "unit": "điểm (thang 10)", "additive": false, "priceBasis": "n/a" },
+          { "column": "Ngữ văn", "name": "điểm Ngữ văn", "kind": "average", "unit": "điểm (thang 10)", "additive": false, "priceBasis": "n/a" },
+          { "column": "Ngoại ngữ", "name": "điểm Ngoại ngữ", "kind": "average", "unit": "điểm (thang 10)", "additive": false, "priceBasis": "n/a" },
+          { "column": "(các môn còn lại)", "name": "điểm từng môn", "kind": "average", "unit": "điểm (thang 10)", "additive": false, "priceBasis": "n/a" }
+        ],
+        "dimensions": [ { "column": "Tỉnh thành", "totalValue": null }, { "column": "mã môn ngoại ngữ", "totalValue": null } ],
+        "otherColumns": { "number": "số thứ tự trong tỉnh", "code": "mã tỉnh (sở GD)", "SOBAODANH": "định danh thí sinh — DỮ LIỆU CÁ NHÂN" },
+        "caveats": ["Mỗi dòng một thí sinh — số liệu sinh bằng gộp (trung bình, phân phối, tỷ lệ đạt) theo tỉnh / năm / môn", "429 MB — phải đọc theo luồng và gộp trước", "Điểm trống = không thi môn đó, KHÔNG phải điểm 0", "Môn mới (Tin học, Công nghệ, GD KT&PL) chỉ có từ chương trình 2025", "Mã tỉnh theo sở GD (63 cũ) dù câu hỏi có thể theo 34"]
+      },
+      "unsure": ["Kind cho điểm: average không hẳn đúng (là giá trị đo của một cá nhân) — có thể cần kind riêng 'score'", "Các năm có trong file — chỉ đọc 256 KB đầu (2021)"], "reviewed": "chua_duyet"
+    },
+    {
+      "profile": {
+        "slug": "thu-tuc-hanh-chinh-theo-linh-vuc-va-co-quan-quan-ly", "part": "…To__ng.csv",
+        "shape": "observations", "tidy": true,
+        "entity": { "column": "Tên lĩnh vực", "kind": "other", "gazetteer": null, "mixedLevels": false },
+        "time": { "column": null, "grain": "none", "fixed": "sau sáp nhập bộ ngành 2025" },
+        "measures": [ { "column": "Số lượng thủ tục", "name": "số thủ tục hành chính", "kind": "count", "unit": "thủ tục", "additive": true, "priceBasis": "n/a" } ],
+        "dimensions": [ { "column": "Cơ quan quản lý sau sáp nhập", "totalValue": null }, { "column": "Cơ quan quản lý lĩnh vực trước sáp nhập", "totalValue": null } ],
+        "otherColumns": { "Nguồn Văn bản Quy phạm pháp luật…": "văn bản / đường dẫn (trống 244 dòng)" },
+        "caveats": ["Một ô cơ quan có thể chứa NHIỀU bộ (\"Bộ Xây dựng Bộ Quốc phòng Bộ C…\") — đếm theo bộ phải tách", "Tên lĩnh vực có trùng (266 giá trị / 272 dòng)", "Có thể có dòng tổng (1 dòng trống số lượng)"]
+      },
+      "unsure": ["Có dòng tổng ở cuối hay không"], "reviewed": "chua_duyet"
+    }
+  ]
+}

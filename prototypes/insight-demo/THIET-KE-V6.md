@@ -1,5 +1,8 @@
 # Thiết kế harness insight v6 — định tuyến: luồng chuẩn + khám phá, pilot từng bậc
 
+> **Đã có v7 (2026-10-09): `THIET-KE-V7.md` là thiết kế hiện hành.** File này giữ làm lịch sử.
+
+
 > Trạng thái: **đã duyệt hướng** (Ninh, 2026-10-08). Thay phần kiến trúc điều phối của
 > `PHUONG-PHAP.md` (v5). Những phần v5 vẫn giữ nguyên giá trị được ghi rõ ở mục 9.
 >

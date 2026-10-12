@@ -1,0 +1,61 @@
+group_id,ind_group,includes,main_publisher
+1,Kết quả kinh doanh doanh nghiệp,"doanh thu, lợi nhuận trước/sau thuế, lỗ, biên lợi nhuận, chi phí (giá vốn, chi phí quản lý, chi phí lãi vay), tăng trưởng doanh thu/lợi nhuận","Báo cáo tài chính (HoSE, HNX, doanh nghiệp)"
+2,"Tài sản, nợ, vốn doanh nghiệp","tổng tài sản, nợ phải trả, vốn chủ sở hữu, vốn điều lệ",Báo cáo tài chính
+3,Kế hoạch kinh doanh và tiến độ,"kế hoạch doanh thu, kế hoạch lợi nhuận, tiến độ hoàn thành kế hoạch",Nghị quyết đại hội cổ đông
+4,Cổ tức và phát hành cổ phiếu,"tỷ lệ cổ tức, phát hành thêm, khối lượng đăng ký mua","Công bố thông tin, VSDC"
+5,Sở hữu và giao dịch cổ đông,"tỷ lệ sở hữu, số cổ phiếu nắm giữ, giao dịch nội bộ","Công bố thông tin, UBCKNN"
+6,Quy mô hoạt động doanh nghiệp,"số nhân viên, số khách hàng, mạng lưới, số cửa hàng, số chi nhánh",Doanh nghiệp
+7,Vốn đầu tư dự án,"tổng vốn đầu tư, công suất thiết kế dự án (điện, bất động sản, cảng, nhà máy)","Doanh nghiệp, cơ quan cấp phép"
+8,"Gọi vốn, M&A, định giá","vốn huy động, định giá startup, giá trị thương vụ mua bán sáp nhập","Doanh nghiệp, quỹ đầu tư"
+9,Tài sản tỷ phú và xếp hạng giàu có,"tài sản ròng, thứ hạng người giàu, số tỷ phú","Forbes, Bloomberg"
+10,Giá cổ phiếu,"giá cổ phiếu, biến động, mức tăng/giảm, biên độ, giá đóng cửa","HoSE, HNX"
+11,Chỉ số và vốn hóa thị trường Việt Nam,"VN-Index, VN30, HNX-Index, vốn hóa thị trường, đóng góp vào chỉ số","HoSE, HNX"
+12,Thanh khoản và độ rộng thị trường,"giá trị/khối lượng giao dịch, số mã tăng/giảm, chuỗi phiên, số tài khoản, thị phần môi giới","HoSE, HNX, VSDC"
+13,Giao dịch khối ngoại,"giá trị mua/bán ròng của khối ngoại, chuỗi phiên ròng","HoSE, HNX"
+14,Chỉ số chứng khoán quốc tế,"S&P 500, DJIA, Nasdaq, Nikkei, chỉ số chứng khoán nước ngoài",Sàn quốc tế
+15,Trái phiếu doanh nghiệp,"phát hành, lưu hành, nợ quá hạn trái phiếu doanh nghiệp","HNX, VBMA"
+16,Lãi suất huy động và cho vay,"lãi suất huy động theo kỳ hạn, lãi suất cho vay, lãi suất vay mua nhà",Ngân hàng thương mại
+17,Lãi suất điều hành và lợi suất trái phiếu chính phủ,"lãi suất điều hành NHNN/Fed/ECB, lãi suất liên ngân hàng, lợi suất trái phiếu chính phủ","NHNN, Fed, HNX"
+18,Tín dụng và huy động toàn hệ thống,"dư nợ tín dụng, tăng trưởng tín dụng, tiền gửi, huy động vốn",NHNN
+19,Tỷ giá,"USD/VND, tỷ giá trung tâm, tỷ giá tự do, Dollar Index","NHNN, ngân hàng thương mại"
+20,An toàn hoạt động ngân hàng,"tỷ lệ nợ xấu, tỷ lệ an toàn vốn CAR, dự phòng rủi ro","Báo cáo tài chính ngân hàng, NHNN"
+21,"Thẻ, thanh toán số, ưu đãi ngân hàng","số thẻ, giao dịch thanh toán số, hoàn tiền, ưu đãi của ngân hàng","Ngân hàng, NAPAS"
+22,"Giá vàng, bạc trong nước","giá vàng miếng, vàng nhẫn, bạc miếng trong nước, chênh lệch mua/bán","SJC, PNJ, Bảo Tín Minh Châu, Phú Quý"
+23,Giá vàng và kim loại quý thế giới,"vàng giao ngay, bạc, bạch kim, palladium thế giới, chênh lệch với giá trong nước, dự báo giá vàng, nhu cầu vàng","Kitco, COMEX, WGC"
+24,Giá xăng dầu bán lẻ trong nước,"giá xăng dầu theo kỳ điều hành, mức tăng/giảm, quỹ bình ổn giá","Liên bộ Công Thương - Tài chính, Petrolimex"
+25,Giá dầu thô và xăng dầu thế giới,"giá dầu Brent, WTI, giá xăng dầu thành phẩm thế giới","ICE, NYMEX, Platts"
+26,"Giá nông sản, thực phẩm và hàng hóa khác","giá heo hơi, cà phê, sầu riêng, rau quả, thép, phân bón, kim loại công nghiệp","Bộ NN&MT, hiệp hội, chợ đầu mối"
+27,Kim ngạch xuất nhập khẩu và cán cân thương mại,"tổng kim ngạch, xuất khẩu, nhập khẩu, thặng dư/thâm hụt thương mại","Cục Hải quan, Cục Thống kê"
+28,Xuất nhập khẩu theo mặt hàng,"kim ngạch/khối lượng xuất nhập khẩu rau quả, cà phê, thủy sản, gạo, gỗ, dệt may, xăng dầu","Cục Hải quan, hiệp hội ngành"
+29,Xuất nhập khẩu theo thị trường,"kim ngạch song phương, tỷ trọng xuất nhập khẩu theo nước đối tác","Cục Hải quan, cơ quan thống kê nước đối tác"
+30,Thuế quan và phòng vệ thương mại,"thuế nhập khẩu, thuế đối ứng, thuế chống bán phá giá, thuế MFN","Văn bản pháp luật, USTR, Nhà Trắng"
+31,GDP và tăng trưởng,"GDP, GRDP, GDP bình quân đầu người, cơ cấu kinh tế, mục tiêu và dự báo tăng trưởng","Cục Thống kê, IMF, WB, ADB"
+32,Lạm phát và chỉ số giá,"CPI, lạm phát, PCE, chỉ số giá vàng/USD của cơ quan thống kê","Cục Thống kê, cơ quan thống kê nước ngoài"
+33,FDI và đầu tư toàn xã hội,"vốn FDI đăng ký/thực hiện, số dự án FDI, vốn đầu tư toàn xã hội","Cục Đầu tư nước ngoài, Cục Thống kê"
+34,"Doanh nghiệp thành lập, rút lui và hộ kinh doanh","số doanh nghiệp thành lập mới, quay lại hoạt động, giải thể, số hộ kinh doanh","Cục Thống kê, Cục Đăng ký kinh doanh"
+35,"Sản xuất công nghiệp, PMI và niềm tin kinh doanh","chỉ số sản xuất công nghiệp IIP, PMI, giá trị tăng thêm ngành, chỉ số niềm tin tiêu dùng, tỷ lệ doanh nghiệp đánh giá kinh doanh tốt hơn/lạc quan","Cục Thống kê, S&P Global"
+36,"Thu chi ngân sách, nợ công, đầu tư công","thu/chi ngân sách, bội chi, nợ công, giải ngân đầu tư công, nộp ngân sách của doanh nghiệp","Bộ Tài chính, Kho bạc"
+37,Thuế thu nhập cá nhân,"thuế suất, bậc thuế, giảm trừ gia cảnh thuế thu nhập cá nhân","Văn bản pháp luật, Bộ Tài chính"
+38,"Thuế, phí khác","VAT, thuế tiêu thụ đặc biệt, thuế bảo vệ môi trường, thuế TNDN, lệ phí trước bạ",Văn bản pháp luật
+39,Quy định hộ kinh doanh và hóa đơn,"ngưỡng doanh thu chịu thuế, phân nhóm hộ kinh doanh, hóa đơn điện tử","Văn bản pháp luật, Cục Thuế"
+40,Mức phạt và xử lý vi phạm,"mức phạt hành chính, nợ thuế, cưỡng chế, kiểm tra vi phạm","Văn bản pháp luật, cơ quan thuế"
+41,Bán lẻ và tiêu dùng,"tổng mức bán lẻ hàng hóa và doanh thu dịch vụ, sức mua, doanh số bán lẻ",Cục Thống kê
+42,Du lịch và lượt khách,"lượt khách quốc tế, lượt khách nội địa, doanh thu du lịch","Cục Du lịch, Cục Thống kê"
+43,Thương mại điện tử,"quy mô thị trường thương mại điện tử, GMV, số đơn hàng, thị phần sàn","Metric, Bộ Công Thương"
+44,"Ô tô, xe máy, xe điện","doanh số, thị phần, giá xe, trạm sạc, xe điện","VAMA, VinFast, doanh nghiệp"
+45,"Giá bán, khuyến mãi, ưu đãi sản phẩm","giá bán sản phẩm, mức giảm giá, voucher, quà tặng, mức hóa đơn áp dụng ưu đãi",Doanh nghiệp (bài đặt hàng)
+46,"Giải thưởng, xổ số, quà tặng","giá trị giải thưởng, giải jackpot, tổng giá trị quà tặng","Doanh nghiệp, Vietlott"
+47,Thông số kỹ thuật sản phẩm,"công suất, dung tích, quãng đường mỗi lần sạc, thời hạn bảo hành, kích thước",Doanh nghiệp
+48,"Điện: sản lượng, công suất, giá, tiêu thụ","công suất lắp đặt, sản lượng điện, giá bán lẻ điện, điện mặt trời, điện gió, nhu cầu điện","EVN, Bộ Công Thương"
+49,"Dầu khí: khai thác, trữ lượng, cung cầu toàn cầu","sản lượng khai thác dầu khí, trữ lượng, tồn kho, OPEC+, LNG","PVN, EIA, IEA, OPEC"
+50,Hàng không,"lượt hành khách, đội bay, đường bay, tỷ lệ đúng giờ, giá vé máy bay","Cục Hàng không, hãng bay, ACV"
+51,Cảng biển và logistics,"sản lượng container, hàng hóa qua cảng, kho bãi, chi phí logistics, giao hàng","Cục Hàng hải, cảng, VLA"
+52,Hạ tầng giao thông,"chiều dài cao tốc, đường sắt, tiến độ, vốn dự án giao thông",Bộ Xây dựng
+53,Bất động sản và khu công nghiệp,"giá nhà, giá thuê, nguồn cung, nhà ở xã hội, tỷ lệ lấp đầy, diện tích dự án/khu công nghiệp","Bộ Xây dựng, CBRE, Savills, VARS"
+54,"Nông nghiệp: diện tích, sản lượng, chăn nuôi","diện tích trồng, sản lượng, năng suất, đàn gia súc, dịch bệnh vật nuôi","Bộ NN&MT, Cục Thống kê"
+55,"Lao động, việc làm, thu nhập","thu nhập bình quân, số lao động, thất nghiệp, cắt giảm việc làm, lương thưởng","Cục Thống kê, Bộ Nội vụ, doanh nghiệp"
+56,"Môi trường, phát thải, tín chỉ carbon","phát thải khí nhà kính, giảm phát thải, giá tín chỉ carbon, rác thải nhựa, trồng cây","Bộ NN&MT, doanh nghiệp, tổ chức quốc tế"
+57,Tiền số và công nghệ,"giá bitcoin, ETF tiền số, người dùng nền tảng số, số startup","CoinMarketCap, doanh nghiệp"
+58,Xếp hạng và khảo sát,"thứ hạng và bảng xếp hạng: GFCI, giá trị/thứ hạng thương hiệu, Fortune 500, nơi làm việc tốt nhất, chỉ số cạnh tranh, xếp hạng tín nhiệm (không gồm khảo sát niềm tin, PMI)",Tổ chức xếp hạng
+59,"Sự kiện, từ thiện, học bổng","số người tham dự sự kiện, tiền quyên góp, học bổng","Doanh nghiệp, ban tổ chức"
+60,Khác,không xếp được vào nhóm nào ở trên,
