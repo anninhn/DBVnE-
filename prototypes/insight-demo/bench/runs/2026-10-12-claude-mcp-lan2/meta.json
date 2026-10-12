@@ -1,0 +1,8 @@
+{
+  "run": "2026-10-12-claude-mcp-lan2",
+  "client": "claude-code -p + MCP insight-data + Stop hook",
+  "startedAt": "2026-10-12T05:46:05.424Z",
+  "commit": "cdaafc9",
+  "claudeVersion": "2.1.296 (Claude Code)",
+  "configDir": "/Users/ninhnguyen/.claude-insight"
+}

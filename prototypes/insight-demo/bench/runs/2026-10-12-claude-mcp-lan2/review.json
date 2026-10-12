@@ -1,0 +1,84 @@
+{
+ "_ghi_chu": "Rà soát lần 2 (bản đã sửa sau lần 1). Thang giống vòng 2 của bậc 1: tra_loi_dung | mot_phan_noi_ro | tu_choi_dung | bo_sot_im_lang | sai_y. 'nho_tool_moi' = câu trả lời tốt hơn bậc 1 chủ yếu nhờ phép mới (rank/compare/vùng), không phải nhờ client.",
+ "reviewer": "Claude Code (Opus) — đọc trace + tính lại các số chính bằng chính tool (xếp hạng suy dinh dưỡng/hộ nghèo, chuỗi TFR vùng, ly hôn)",
+ "reviews": [
+  {
+   "id": "q01",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "mot_phan_noi_ro",
+   "nho_tool_moi": true,
+   "ghi_chu": "Xếp hạng nhẹ cân + thấp còi + hộ nghèo, so trùng nhóm, r 0,73 theo vùng. Đã tính lại: khớp. Nêu 4 tỉnh thiếu số."
+  },
+  {
+   "id": "q02",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "tra_loi_dung",
+   "ghi_chu": "Đúng như bậc 1, không còn tít 'càng… càng'. Lọt chữ 'bộ kiểm' trong câu trả lời."
+  },
+  {
+   "id": "q03",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "tra_loi_dung",
+   "nho_tool_moi": true,
+   "ghi_chu": "Diễn biến đúng + góc theo dân số (Cà Mau đứng đầu) + vùng + ngoại lệ — trả lời kỳ vọng 'không so tỉnh lớn với nhỏ mà không nói quy mô'. Số lẻ quá chi tiết (0,08794)."
+  },
+  {
+   "id": "q04",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "tu_choi_dung",
+   "nho_tool_moi": true,
+   "ghi_chu": "Nghệ An: thứ hạng trong vùng 2016 vs 2024, so 5 tỉnh BTB, so số chung vùng 9 năm. Nói rõ kho không có số riêng 6 tỉnh BTB. Câu 'chuẩn nghèo điều chỉnh từ 2022' là kiến thức riêng của model, không từ tool — lọt gate vì 2022 trùng năm có số."
+  },
+  {
+   "id": "q05",
+   "verdict": "mot_phan_noi_ro",
+   "bac1_vong2": "tu_choi_dung",
+   "ghi_chu": "Đưa top 63 tỉnh + nêu Bình Dương, BR-VT nay thuộc TP.HCM; nói rõ công cụ chưa gộp 63→34. Lỗ hổng tool: sliceTable có quy đổi 34 nhưng compute chưa lộ tham số scheme."
+  },
+  {
+   "id": "q06",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "mot_phan_noi_ro",
+   "nho_tool_moi": true,
+   "ghi_chu": "Vùng TDMNPB + từng tỉnh vùng cao, luôn cao hơn cả nước 19 năm, bước nhảy 2013→2014 đưa vào 'cần kiểm'. Đã tính lại chuỗi: khớp. Tít 'đang giảm dần' hơi quá: 2024 (2,34) nhích hơn 2023 (2,32)."
+  },
+  {
+   "id": "q07",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "mot_phan_noi_ro",
+   "nho_tool_moi": true,
+   "ghi_chu": "Cả nước −4,27% so 2004 (khớp bậc 1) + ĐBSCL +1,12% so 2004 nhưng −11,1% so 2013; nêu kết luận phụ thuộc năm mốc; diện tích gieo trồng ≠ đất lúa."
+  },
+  {
+   "id": "q08",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "mot_phan_noi_ro",
+   "nho_tool_moi": true,
+   "ghi_chu": "So hai thành phố cả hai chỉ tiêu, giá hiện hành, TP.HCM 2024 chưa về mức 2019."
+  },
+  {
+   "id": "q09",
+   "verdict": "tu_choi_dung",
+   "bac1_vong2": "tu_choi_dung",
+   "ghi_chu": "Nêu rõ các chỉ tiêu gần chữ và vì sao không dùng thay."
+  },
+  {
+   "id": "q10",
+   "verdict": "tu_choi_dung",
+   "bac1_vong2": "tu_choi_dung",
+   "ghi_chu": "Không thay bằng tử vong trẻ em / HIV. 'Số người chết do HIV/AIDS' có thật trong kho (đã kiểm catalog)."
+  },
+  {
+   "id": "q11",
+   "verdict": "tu_choi_dung",
+   "bac1_vong2": "tu_choi_dung",
+   "ghi_chu": "Không dùng độ ẩm không khí."
+  },
+  {
+   "id": "q12",
+   "verdict": "tra_loi_dung",
+   "bac1_vong2": "tra_loi_dung",
+   "ghi_chu": "Từ chối 'chứng minh', r −0,37 cả nước, các vùng không có ý nghĩa — nêu khả năng chênh lệch giữa vùng."
+  }
+ ]
+}

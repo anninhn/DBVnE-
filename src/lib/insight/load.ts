@@ -13,7 +13,7 @@ import { getDatasetBySlug } from "@/lib/datasets/read";
 import { getObject } from "@/lib/r2/get";
 import { parseCSV } from "@/lib/parse/csv";
 import { INSIGHT_DATA_DIR } from "./session";
-import { profileTable, type DatasetProfile, type RawTable } from "./dataset";
+import { profileTable, verifyAdditive, type DatasetProfile, type RawTable } from "./dataset";
 
 const CACHE_DIR = path.join(INSIGHT_DATA_DIR, "cache");
 
@@ -72,7 +72,9 @@ export async function loadDataset(slug: string): Promise<{ table: RawTable; prof
     header: rows[0].map((h) => h.trim()),
     rows: rows.slice(1),
   };
-  const out = { table, profile: profileTable(table) };
+  const profile = profileTable(table);
+  verifyAdditive(table, profile);
+  const out = { table, profile };
   memo.set(slug, out);
   return out;
 }

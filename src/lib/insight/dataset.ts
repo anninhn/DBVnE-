@@ -97,16 +97,33 @@ function unitOf(name: string, dict?: DataDictionaryEntry): string | undefined {
  * Chỉ tiêu cộng được qua tỉnh? Không chắc → coi là KHÔNG (an toàn: harness chỉ cảnh
  * báo thay vì cộng sai một tỷ lệ).
  */
-function additiveOf(name: string, unit?: string): { additive: boolean; reason: string } {
+/** Đơn vị dạng "x/y" mà mẫu số không phải thời gian (con/phụ nữ, người/km2, nghìn đồng/tháng/người…) là tỷ lệ */
+function isRateUnit(unit?: string): boolean {
+  if (!unit || !unit.includes("/")) return false;
+  const parts = unit.split("/").slice(1).map((x) => colKey(x));
+  return parts.some((x) => !["nam", "thang", "quy", "ngay"].includes(x));
+}
+
+/** Tên cột chung chung — nghĩa nằm ở tên dataset (vd "Tổng số" của "Tổng tỷ suất sinh phân theo thành thị…") */
+const GENERIC_NAMES = new Set(["tongso", "tong", "chung", "binhquanchung", "canuoc", "thanhthi", "nongthon", "nam", "nu", "giatri", "sobo"]);
+
+/**
+ * Cộng được qua tỉnh? DỰ PHÒNG theo tên — `verifyAdditive` (load.ts) dùng dữ liệu phân xử trước khi
+ * tin kết quả này. Bản cũ chỉ xét tên cột + đơn vị: tổng tỷ suất sinh (cột "Tổng số") bị coi là cộng được.
+ */
+function additiveOf(name: string, unit?: string, title = ""): { additive: boolean; reason: string } {
+  if (isRateUnit(unit)) return { additive: false, reason: `đơn vị tỷ lệ "${unit}"` };
   const k = colKey(`${name} ${unit ?? ""}`);
+  const generic = GENERIC_NAMES.has(colKey(name));
+  const kt = generic ? `${k}${colKey(title)}` : k;
   const nonAdditive = [
     "tyle", "tysuat", "tyso", "binhquan", "chiso", "matdo", "toc", "hesogini", "gini",
     "phantram", "trungbinh", "nangsuat", "thunhap", "tuoitho", "diem",
   ];
   for (const w of nonAdditive) {
-    if (k.includes(w)) return { additive: false, reason: `tên/đơn vị chứa "${w}"` };
+    if (kt.includes(w)) return { additive: false, reason: `${generic && !k.includes(w) ? "tên dataset" : "tên/đơn vị"} chứa "${w}"` };
   }
-  if (/%/.test(`${name} ${unit ?? ""}`)) return { additive: false, reason: "đơn vị %" };
+  if (/%|‰/.test(`${name} ${unit ?? ""}`)) return { additive: false, reason: "đơn vị % / ‰" };
   // "so…" chỉ tính khi đứng đầu tên ("Số bác sĩ", "Số doanh nghiệp")
   if (k.startsWith("so")) return { additive: true, reason: 'tên bắt đầu bằng "Số"' };
   const additive = ["tong", "sanluong", "dientich", "danso", "giatri", "vondautu", "doanhthu"];
@@ -114,6 +131,43 @@ function additiveOf(name: string, unit?: string): { additive: boolean; reason: s
     if (k.includes(w)) return { additive: true, reason: `tên chứa "${w}"` };
   }
   return { additive: false, reason: "không chắc — mặc định không cộng" };
+}
+
+/**
+ * Dữ liệu phân xử: tổng các tỉnh so với số cả nước cùng năm. Khớp (≤ 2%) ở mọi năm đủ tỉnh → cộng được;
+ * lệch > 10% ở phần lớn các năm → không cộng được. Không đủ dữ liệu → giữ kết quả theo tên.
+ */
+export function verifyAdditive(t: RawTable, p: DatasetProfile): void {
+  for (const m of p.measures) {
+    let prov: Slice, nat: Slice;
+    try {
+      prov = sliceTable(t, p, { slug: p.slug, measure: m.name, level: "province" });
+      nat = sliceTable(t, p, { slug: p.slug, measure: m.name, level: "nation" });
+    } catch {
+      continue;
+    }
+    const sums = new Map<number, { s: number; n: number }>();
+    for (const x of prov.points) {
+      const c = sums.get(x.year) ?? { s: 0, n: 0 };
+      sums.set(x.year, { s: c.s + x.value, n: c.n + 1 });
+    }
+    const maxN = Math.max(0, ...[...sums.values()].map((v) => v.n));
+    if (maxN < 30) continue;
+    const ratios = nat.points
+      .filter((x) => x.value && sums.get(x.year)?.n === maxN)
+      .sort((a, b) => a.year - b.year)
+      .map((x) => sums.get(x.year)!.s / x.value);
+    if (ratios.length < 1) continue;
+    // Năm cũ có thể lệch vì địa giới đổi (Hà Tây nhập Hà Nội 2008) → yêu cầu năm mới nhất khớp + ≥ 80% số năm khớp
+    const match = (r: number) => Math.abs(r - 1) <= 0.02;
+    if (match(ratios[ratios.length - 1]) && ratios.filter(match).length >= 0.8 * ratios.length) {
+      m.additive = true;
+      m.additiveReason = `dữ liệu: tổng các tỉnh khớp số cả nước (${ratios.length} năm)`;
+    } else if (ratios.filter((r) => Math.abs(r - 1) > 0.1).length > ratios.length / 2) {
+      m.additive = false;
+      m.additiveReason = `dữ liệu: tổng các tỉnh ≠ số cả nước (gấp ~${Math.round(ratios[ratios.length - 1] * 10) / 10} lần)`;
+    }
+  }
 }
 
 function numberSchemaFor(name: string, dict: DataDictionaryEntry | undefined, samples: string[]): NumberSchema {
@@ -164,7 +218,7 @@ export function profileTable(t: RawTable): DatasetProfile {
     const ok = nums.filter((n): n is number => n !== null);
     if (ok.length / vals.length >= 0.95) {
       const unit = unitOf(name, dictBy.get(name));
-      const add = additiveOf(name, unit);
+      const add = additiveOf(name, unit, t.title);
       measures.push({
         name,
         unit,
