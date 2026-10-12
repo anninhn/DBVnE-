@@ -13,7 +13,7 @@ export function GET(req: Request) {
   const c = checkAuthorize(url.searchParams, origin);
   if (!c.ok) {
     if (c.fatal) return new NextResponse(`Lỗi kết nối: ${c.description}`, { status: 400, headers: { "content-type": "text/plain; charset=utf-8" } });
-    return NextResponse.redirect(redirectWith(c.redirect!, { error: c.error, error_description: c.description, state: c.state }));
+    return NextResponse.redirect(redirectWith(c.redirect!, { error: c.error, error_description: c.description, state: c.state, iss: origin }));
   }
   return NextResponse.redirect(`${origin}/oauth/consent?${url.searchParams.toString()}`);
 }

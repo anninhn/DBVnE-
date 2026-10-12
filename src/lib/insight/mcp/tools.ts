@@ -1,6 +1,6 @@
 /**
- * Bộ tool MCP cho Claude Code (THIET-KE-V8 mục 3b). Tool là CODE THUẦN — không gọi AI bên
- * trong, nên token chỉ tính vào tài khoản Claude của người dùng.
+ * Bộ tool MCP (THIET-KE-V8 mục 3b) — dùng được với mọi client MCP (Claude, ChatGPT, Cursor, VS Code…).
+ * Tool là CODE THUẦN — không gọi AI bên trong, nên token chỉ tính vào tài khoản AI của người dùng.
  *
  * Tên tool + mô tả tiếng Anh (tên tool MCP chỉ nhận ASCII); dữ liệu trả về giữ tiếng Việt.
  * Mỗi kết quả có `result_id`, được giữ trong tiến trình (một phiên Claude Code = một tiến trình
@@ -16,7 +16,7 @@ import { detectPlaces, detectTimeframe } from "../v2/scope";
 import { schemeFromQuestion } from "../v2/rules";
 import { checkAnswer } from "./check";
 import { entryOf, OPS, OpError, provenance, runOp, storyTypes, type Op, type OpArgs } from "./ops";
-import { MemoryStore, R2Store, type ResultStore, type StoredResult } from "./results-store";
+import { MemoryStore, R2Store, saveChart, type ResultStore, type StoredResult } from "./results-store";
 
 const LOG_DIR = path.join(INSIGHT_DATA_DIR, "mcp-log");
 
@@ -59,8 +59,8 @@ export const TOOL_DEFS: ToolDef[] = [
   {
     name: "compute",
     description: [
-      "Run exactly one operation. Every number you write in the answer must come from a tool result.",
-      "Most results include `bieu_do`: a Vega-Lite v5 spec built by code from the same numbers. To show a chart, render that spec unchanged (e.g. an HTML artifact using vega-embed from cdn.jsdelivr.net). Never redraw a chart from hand-copied numbers.",
+      "Run exactly one operation. RULES (the server's instructions may not reach you): every number in your answer must come from a tool result, written Vietnamese-style (1.234,5); no causal words in sentences with figures; say plainly what cannot be answered; end with a source line (publisher — dataset); call check_answer before sending.",
+      "Most results include `bieu_do_url` (a chart page rendered by the platform — always give it to the user) and `bieu_do` (Vega-Lite v5 spec built by code from the same numbers; if your app renders HTML/artifacts you may render it unchanged). Never redraw a chart from hand-copied numbers.",
       "ops: series (values by year for one place, default national) · change (from_year → to_year, one or more places) · trend (national segments up/down, record, reversal; window = 'N năm qua') · rank (level province|region, optional within=<region> for drill down; adds per-capita ranking for absolute counts) · compare (2+ places at one year) · outlier (robust z, median + MAD) · composition (parts of a dimension vs its total; checks parts sum to total) · crossing (2 ids with same unit, or 1 id + 2 places) · aggregate (zoom out province → region; only when summable or official regional figures exist) · relation (2 ids across provinces, by region, BH-corrected).",
     ].join("\n"),
     inputSchema: {
@@ -89,7 +89,7 @@ export const TOOL_DEFS: ToolDef[] = [
   {
     name: "check_answer",
     description:
-      "Check a draft answer before sending it: every number must appear in a tool result (Vietnamese number format 1.234,5), no causal or editorial words in sentences with figures, superlatives only after rank/outlier/record results, up/down wording must match the real direction, and a source line is required. Fix every error and check again. The same check runs automatically when you finish.",
+      "Check a draft answer before sending it: every number must appear in a tool result (Vietnamese number format 1.234,5), no causal or editorial words in sentences with figures, superlatives only after rank/outlier/record results, up/down wording must match the real direction, and a source line is required. Fix every error and check again before sending the answer.",
     inputSchema: {
       type: "object",
       properties: {
@@ -113,6 +113,8 @@ let catalog: Catalog | null = null;
 export interface CallContext {
   /** Email người dùng đã xác thực (production). Không có → chạy local, giữ trong bộ nhớ. */
   user?: string;
+  /** Gốc URL công khai (production) — để trả link trang biểu đồ */
+  origin?: string;
 }
 const runId = `${new Date().toISOString().replace(/[:.]/g, "-")}-${process.pid}`;
 
@@ -122,9 +124,11 @@ async function cat(): Promise<Catalog> {
   return catalog;
 }
 
-async function store(rs: ResultStore, op: string, args: unknown, data: Record<string, unknown>): Promise<Record<string, unknown>> {
+async function store(rs: ResultStore, op: string, args: unknown, data: Record<string, unknown>, ctx: CallContext): Promise<Record<string, unknown>> {
   const id = await rs.put({ op, args, data });
-  return { result_id: id, op, ...data };
+  // Link trang biểu đồ: client nào cũng mở được, kể cả client không hiển thị được HTML
+  const url = data.bieu_do && ctx.origin ? `${ctx.origin}/bieu-do/${await saveChart(data.bieu_do).catch(() => "")}` : null;
+  return { result_id: id, op, ...(url && !url.endsWith("/") ? { bieu_do_url: url } : {}), ...data };
 }
 
 async function log(entry: Record<string, unknown>) {
@@ -185,7 +189,7 @@ async function describeMeasure(a: { id: string }) {
   };
 }
 
-async function scan(a: { ids: string[]; places?: string[] }, rs: ResultStore) {
+async function scan(a: { ids: string[]; places?: string[] }, rs: ResultStore, ctx: CallContext) {
   const c = await cat();
   const es = a.ids.slice(0, 2).map((id) => entryOf(c, id));
   const plan: { op: Op; args: OpArgs; why: string }[] = [];
@@ -208,7 +212,7 @@ async function scan(a: { ids: string[]; places?: string[] }, rs: ResultStore) {
   const skipped: { phep: string; loai: string; ly_do: string }[] = [];
   for (const p of plan) {
     try {
-      done.push({ loai: p.why, ...(await store(rs, p.op, p.args, await runOp(c, p.op, p.args, sessionP))) });
+      done.push({ loai: p.why, ...(await store(rs, p.op, p.args, await runOp(c, p.op, p.args, sessionP), ctx)) });
     } catch (err) {
       if (!(err instanceof OpError)) throw err;
       skipped.push({ phep: p.op, loai: p.why, ly_do: err.message });
@@ -278,11 +282,11 @@ export async function callTool(name: string, args: Record<string, unknown>, ctx:
         out = await describeMeasure(args as never);
         break;
       case "scan":
-        out = await scan(args as never, rs);
+        out = await scan(args as never, rs, ctx);
         break;
       case "compute": {
         const { op, ...rest } = args as unknown as { op: Op } & OpArgs;
-        out = await store(rs, op, rest, await runOp(await cat(), op, rest, sessionP));
+        out = await store(rs, op, rest, await runOp(await cat(), op, rest, sessionP), ctx);
         break;
       }
       case "answer_scope":

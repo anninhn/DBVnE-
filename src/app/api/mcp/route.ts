@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { handleRpc, type RpcMessage } from "@/lib/insight/mcp/rpc";
 import { originOf, resourceOf, verify } from "@/lib/oauth/core";
+import { corsPreflight, withCors } from "@/lib/oauth/cors";
 
 /**
  * MCP connector cho claude.ai / Claude Desktop (spec 2026-10-12-mcp-connector).
@@ -25,6 +26,10 @@ function unauthorized(req: Request, description: string, header: string) {
 }
 
 export async function POST(req: Request) {
+  return withCors(await handlePost(req));
+}
+
+async function handlePost(req: Request): Promise<Response> {
   const token = (req.headers.get("authorization") ?? "").replace(/^Bearer\s+/i, "");
   const claims = verify<{ u: string; res: string }>("access", token);
   if (!claims) return unauthorized(req, token ? "token sai hoặc đã hết hạn" : "cần đăng nhập", token ? "invalid or expired token" : "authentication required");
@@ -36,7 +41,7 @@ export async function POST(req: Request) {
   } catch {
     return NextResponse.json({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "JSON không hợp lệ" } }, { status: 400 });
   }
-  const ctx = { user: claims.u };
+  const ctx = { user: claims.u, origin: originOf(req) };
   if (Array.isArray(body)) {
     const out = (await Promise.all(body.map((m) => handleRpc(m, ctx)))).filter(Boolean);
     return out.length ? NextResponse.json(out) : new NextResponse(null, { status: 202 });
@@ -47,8 +52,9 @@ export async function POST(req: Request) {
 
 /** Không mở luồng SSE từ máy chủ, không giữ phiên */
 export function GET() {
-  return new NextResponse(null, { status: 405, headers: { Allow: "POST" } });
+  return withCors(new NextResponse(null, { status: 405, headers: { Allow: "POST" } }));
 }
 export function DELETE() {
-  return new NextResponse(null, { status: 405, headers: { Allow: "POST" } });
+  return withCors(new NextResponse(null, { status: 405, headers: { Allow: "POST" } }));
 }
+export const OPTIONS = corsPreflight;

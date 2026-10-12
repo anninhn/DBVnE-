@@ -49,6 +49,27 @@ export class MemoryStore implements ResultStore {
 }
 
 const TTL_MS = 24 * 3600_000;
+const CHART_PREFIX = "_mcp/charts/";
+
+/** Lưu spec biểu đồ để trang /bieu-do/<id> vẽ — cho mọi client (kể cả client không hiển thị được HTML). Số liệu công khai, id ngẫu nhiên. */
+export async function saveChart(spec: unknown): Promise<string> {
+  const id = randomBytes(8).toString("hex");
+  await getR2Client().send(
+    new PutObjectCommand({ Bucket: getR2Bucket(), Key: `${CHART_PREFIX}${id}.json`, Body: JSON.stringify(spec), ContentType: "application/json" })
+  );
+  return id;
+}
+
+export async function loadChart(id: string): Promise<Record<string, unknown> | null> {
+  if (!/^[0-9a-f]{16}$/.test(id)) return null;
+  try {
+    const res = await getR2Client().send(new GetObjectCommand({ Bucket: getR2Bucket(), Key: `${CHART_PREFIX}${id}.json` }));
+    const body = await res.Body?.transformToString();
+    return body ? JSON.parse(body) : null;
+  } catch {
+    return null;
+  }
+}
 const PREFIX = "_mcp/results/";
 
 export class R2Store implements ResultStore {
