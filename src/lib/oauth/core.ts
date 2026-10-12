@@ -74,13 +74,21 @@ export function originFromHeaders(h: Headers): string {
 /** URL của tài nguyên MCP — Claude đòi `resource` khớp đúng chuỗi này */
 export const resourceOf = (origin: string) => `${origin}/api/mcp`;
 
-/** Chỉ nhận redirect https, hoặc loopback http (Claude Code dùng http://localhost/callback) */
+const BLOCKED_SCHEMES = new Set(["javascript:", "data:", "file:", "vbscript:", "about:", "blob:", "ftp:", "ws:", "wss:"]);
+
+/**
+ * Redirect hợp lệ (RFC 8252 + tài liệu client, kiểm 2026-10-12):
+ *  - https bất kỳ (claude.ai, chatgpt.com, cursor.com, vscode.dev…)
+ *  - http chỉ loopback, mọi cổng / đường (Claude Code, Codex, Gemini CLI, Cursor desktop, VS Code)
+ *  - scheme riêng của ứng dụng (cursor://…) — trừ các scheme nguy hiểm
+ */
 export function isAllowedRedirect(uri: string): boolean {
   try {
     const u = new URL(uri);
     if (u.hash) return false;
     if (u.protocol === "https:") return true;
-    return u.protocol === "http:" && (u.hostname === "localhost" || u.hostname === "127.0.0.1");
+    if (u.protocol === "http:") return ["localhost", "127.0.0.1", "[::1]"].includes(u.hostname);
+    return !BLOCKED_SCHEMES.has(u.protocol) && /^[a-z][a-z0-9+.-]*:$/.test(u.protocol);
   } catch {
     return false;
   }
@@ -91,7 +99,7 @@ export function redirectMatches(registered: string[], uri: string): boolean {
   if (registered.includes(uri)) return true;
   try {
     const u = new URL(uri);
-    if (u.protocol !== "http:" || !["localhost", "127.0.0.1"].includes(u.hostname)) return false;
+    if (u.protocol !== "http:" || !["localhost", "127.0.0.1", "[::1]"].includes(u.hostname)) return false;
     return registered.some((r) => {
       const x = new URL(r);
       return x.protocol === "http:" && x.hostname === u.hostname && x.pathname === u.pathname;
@@ -104,6 +112,34 @@ export function redirectMatches(registered: string[], uri: string): boolean {
 export interface ClientPayload extends Record<string, unknown> {
   r: string[];
   n?: string;
+  /** Phương thức xác thực ở token endpoint client đã đăng ký: none | client_secret_post | client_secret_basic */
+  m?: string;
+}
+
+/** Client có secret: secret dẫn xuất từ client_id (không lưu) — kiểm lại bằng cùng phép */
+export function clientSecretOf(clientId: string): string {
+  return createHmac("sha256", key()).update(`secret:${clientId}`).digest("base64url");
+}
+
+/** client_id + secret từ body hoặc header Basic (client_secret_basic) */
+export function clientCredentials(req: Request, body: Record<string, string>): { id: string; secret?: string } {
+  const h = req.headers.get("authorization") ?? "";
+  if (/^basic\s+/i.test(h)) {
+    const [id, secret] = Buffer.from(h.replace(/^basic\s+/i, ""), "base64").toString("utf8").split(":");
+    return { id: decodeURIComponent(id ?? ""), secret: secret === undefined ? undefined : decodeURIComponent(secret) };
+  }
+  return { id: body.client_id ?? "", secret: body.client_secret };
+}
+
+/** Client đăng ký có secret thì bắt buộc đúng secret; client công khai thì bỏ qua */
+export function clientAuthOk(clientId: string, secret: string | undefined): boolean {
+  const c = verify<ClientPayload>("client", clientId);
+  if (!c) return false;
+  if (!c.m || c.m === "none") return true;
+  if (!secret) return false;
+  const a = Buffer.from(secret);
+  const b = Buffer.from(clientSecretOf(clientId));
+  return a.length === b.length && timingSafeEqual(a, b);
 }
 
 export interface AuthorizeRequest extends Record<string, unknown> {
@@ -142,6 +178,7 @@ export function checkAuthorize(
   };
 }
 
+/** RFC 9207: mọi phản hồi authorize (cả lỗi) kèm `iss` — ChatGPT, Codex dùng để chọn redirect cố định */
 export function redirectWith(uri: string, params: Record<string, string | undefined>): string {
   const u = new URL(uri);
   for (const [k, v] of Object.entries(params)) if (v !== undefined) u.searchParams.set(k, v);
@@ -155,7 +192,8 @@ export function issueTokens(user: string, clientId: string, resource: string, sc
     token_type: "Bearer",
     expires_in: ACCESS_TTL_S,
     refresh_token: sign("refresh", { u: user, c: createHash("sha256").update(clientId).digest("base64url"), res: resource }, REFRESH_TTL_S),
-    ...(scope ? { scope } : {}),
+    // Chỉ báo lại scope mình thật sự hỗ trợ (ChatGPT mặc định xin openid/email/profile — không cấp id_token)
+    ...(scope && /\boffline_access\b/.test(scope) ? { scope: "offline_access" } : {}),
   };
 }
 
