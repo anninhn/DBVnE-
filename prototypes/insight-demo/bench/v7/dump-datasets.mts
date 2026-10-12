@@ -66,7 +66,7 @@ for (const d of datasets) {
     `nguồn: ${JSON.stringify(ds.source)}`,
     `mô tả: ${cut(ds.description, 600)}`,
     `năm (metadata): ${JSON.stringify(ds.year_range)}`,
-    `dictionary: ${JSON.stringify((ds.data_dictionary ?? []).map((c: Record<string, unknown>) => ({ ten: c.name ?? c.column, kieu: c.type, don_vi: c.unit, mo_ta: cut(c.description, 80) })))}`,
+    `dictionary: ${JSON.stringify(((ds.data_dictionary ?? []) as unknown as Record<string, unknown>[]).map((c) => ({ ten: c.name ?? c.column, kieu: c.type, don_vi: c.unit, mo_ta: cut(c.description, 80) })))}`,
   ];
   for (const r of ds.resources) {
     if (!r.file_url) continue;

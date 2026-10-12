@@ -10,12 +10,8 @@
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
-import { readFileSync } from "fs";
 import { TOOL_DEFS, callTool } from "@/lib/insight/mcp/tools";
-
-// Hướng dẫn cho client (MCP `instructions`). Claude Code còn đọc CLAUDE.md của thư mục chạy; Claude Desktop thì
-// chỉ có thể đọc qua trường này — tài liệu Claude chưa nói rõ có đưa vào system prompt hay không.
-const instructions = readFileSync(new URL("../prototypes/insight-demo/claude/CLAUDE.md", import.meta.url), "utf8");
+import { MCP_INSTRUCTIONS as instructions } from "@/lib/insight/mcp/instructions";
 
 const server = new Server({ name: "insight-data", version: "0.1.0" }, { capabilities: { tools: {} }, instructions });
 

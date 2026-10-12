@@ -11,7 +11,9 @@ import path from "path";
 import { randomBytes, randomUUID } from "crypto";
 import type { ConceptCandidates, Level, SuggestResult } from "./measures";
 
-export const INSIGHT_DATA_DIR = path.join(process.cwd(), "data", "insight");
+/** Local: data/insight. Vercel: chỉ /tmp ghi được. Đổi bằng INSIGHT_DATA_DIR. */
+export const INSIGHT_DATA_DIR =
+  process.env.INSIGHT_DATA_DIR ?? (process.env.VERCEL ? "/tmp/insight" : path.join(process.cwd(), "data", "insight"));
 const SESSION_DIR = path.join(INSIGHT_DATA_DIR, "sessions");
 
 export interface ToolResult {

@@ -16,6 +16,7 @@ import { detectPlaces, detectTimeframe } from "../v2/scope";
 import { schemeFromQuestion } from "../v2/rules";
 import { checkAnswer } from "./check";
 import { entryOf, OPS, OpError, provenance, runOp, storyTypes, type Op, type OpArgs } from "./ops";
+import { MemoryStore, R2Store, type ResultStore, type StoredResult } from "./results-store";
 
 const LOG_DIR = path.join(INSIGHT_DATA_DIR, "mcp-log");
 
@@ -103,28 +104,26 @@ export const TOOL_DEFS: ToolDef[] = [
 
 // ── Trạng thái tiến trình ────────────────────────────────────────────────────
 
-interface Stored {
-  op: string;
-  args: unknown;
-  data: Record<string, unknown>;
-}
-const results = new Map<string, Stored>();
-/** Kết quả find / describe / scope — không có result_id nhưng số trong đó trích được (năm có số, số tỉnh…) */
-const context: Stored[] = [];
+/** Local: một tiến trình = một phiên, giữ trong bộ nhớ. Production: lưu R2 theo người dùng (stateless). */
+const memory = new MemoryStore();
+/** p-value các phép thử trong phiên (BH). Production stateless → chỉ tính trong một lần gọi. */
 const sessionP: number[] = [];
-let counter = 0;
 let catalog: Catalog | null = null;
+
+export interface CallContext {
+  /** Email người dùng đã xác thực (production). Không có → chạy local, giữ trong bộ nhớ. */
+  user?: string;
+}
 const runId = `${new Date().toISOString().replace(/[:.]/g, "-")}-${process.pid}`;
 
 async function cat(): Promise<Catalog> {
   if (!catalog) catalog = await loadCatalog();
-  if (!catalog) throw new OpError("Chưa có danh mục chỉ tiêu (data/insight/catalog.json).");
+  if (!catalog) throw new OpError("Chưa có danh mục chỉ tiêu (data/insight/catalog.json hoặc R2 _index/measures.json).");
   return catalog;
 }
 
-function store(op: string, args: unknown, data: Record<string, unknown>): Record<string, unknown> {
-  const id = `r${++counter}`;
-  results.set(id, { op, args, data });
+async function store(rs: ResultStore, op: string, args: unknown, data: Record<string, unknown>): Promise<Record<string, unknown>> {
+  const id = await rs.put({ op, args, data });
   return { result_id: id, op, ...data };
 }
 
@@ -186,7 +185,7 @@ async function describeMeasure(a: { id: string }) {
   };
 }
 
-async function scan(a: { ids: string[]; places?: string[] }) {
+async function scan(a: { ids: string[]; places?: string[] }, rs: ResultStore) {
   const c = await cat();
   const es = a.ids.slice(0, 2).map((id) => entryOf(c, id));
   const plan: { op: Op; args: OpArgs; why: string }[] = [];
@@ -209,7 +208,7 @@ async function scan(a: { ids: string[]; places?: string[] }) {
   const skipped: { phep: string; loai: string; ly_do: string }[] = [];
   for (const p of plan) {
     try {
-      done.push({ loai: p.why, ...store(p.op, p.args, await runOp(c, p.op, p.args, sessionP)) });
+      done.push({ loai: p.why, ...(await store(rs, p.op, p.args, await runOp(c, p.op, p.args, sessionP))) });
     } catch (err) {
       if (!(err instanceof OpError)) throw err;
       skipped.push({ phep: p.op, loai: p.why, ly_do: err.message });
@@ -256,16 +255,18 @@ async function answerScope(a: { question: string; ids: string[] }) {
   };
 }
 
-function checkTool(a: { answer: string; question?: string; result_ids?: string[] }) {
-  const picked = a.result_ids?.length ? (a.result_ids.map((id) => results.get(id)).filter(Boolean) as Stored[]) : [...results.values(), ...context];
-  const missing = (a.result_ids ?? []).filter((id) => !results.has(id));
+async function checkTool(a: { answer: string; question?: string; result_ids?: string[] }, rs: ResultStore) {
+  const found = a.result_ids?.length ? await rs.get(a.result_ids) : null;
+  const picked: StoredResult[] = found ? [...found.values()] : await rs.recent();
+  const missing = (a.result_ids ?? []).filter((id) => !found?.has(id));
   const out = checkAnswer(a.answer, picked.map((r) => ({ op: r.op, data: r.data })), a.question ?? "");
   if (missing.length) out.errors.unshift(`result_id không có trong phiên: ${missing.join(", ")}`);
   return { ...out, ok: out.ok && !missing.length };
 }
 
-export async function callTool(name: string, args: Record<string, unknown>): Promise<{ ok: boolean; text: string }> {
+export async function callTool(name: string, args: Record<string, unknown>, ctx: CallContext = {}): Promise<{ ok: boolean; text: string }> {
   const t0 = Date.now();
+  const rs: ResultStore = ctx.user ? new R2Store(ctx.user) : memory;
   let out: Record<string, unknown>;
   let ok = true;
   try {
@@ -277,18 +278,18 @@ export async function callTool(name: string, args: Record<string, unknown>): Pro
         out = await describeMeasure(args as never);
         break;
       case "scan":
-        out = await scan(args as never);
+        out = await scan(args as never, rs);
         break;
       case "compute": {
         const { op, ...rest } = args as unknown as { op: Op } & OpArgs;
-        out = store(op, rest, await runOp(await cat(), op, rest, sessionP));
+        out = await store(rs, op, rest, await runOp(await cat(), op, rest, sessionP));
         break;
       }
       case "answer_scope":
         out = await answerScope(args as never);
         break;
       case "check_answer":
-        out = checkTool(args as never);
+        out = await checkTool(args as never, rs);
         ok = out.ok as boolean;
         break;
       default:
@@ -299,7 +300,8 @@ export async function callTool(name: string, args: Record<string, unknown>): Pro
     out = { loi: err instanceof OpError ? err.message : `Lỗi hệ thống: ${(err as Error).message}` };
     if (!(err instanceof OpError)) console.error(`[insight-data] ${name}:`, err);
   }
-  if (ok && ["find_measures", "describe_measure", "answer_scope"].includes(name)) context.push({ op: name, args, data: out });
-  await log({ tool: name, args, ok, ms: Date.now() - t0, out }).catch(() => {});
+  if (ok && ["find_measures", "describe_measure", "answer_scope"].includes(name)) await rs.putContext({ op: name, args, data: out }).catch(() => {});
+  // Log ra đĩa chỉ khi chạy local; production chưa log (ngoài phạm vi spec 2026-10-12)
+  if (!ctx.user) await log({ tool: name, args, ok, ms: Date.now() - t0, out }).catch(() => {});
   return { ok, text: JSON.stringify(out) };
 }

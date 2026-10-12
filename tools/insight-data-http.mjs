@@ -11,39 +11,10 @@
  * Chạy: tools/insight-data-http.sh   (cổng mặc định 8765, đổi bằng INSIGHT_MCP_PORT)
  */
 import http from "http";
-import { readFileSync } from "fs";
-import { TOOL_DEFS, callTool } from "@/lib/insight/mcp/tools";
+import { handleRpc } from "@/lib/insight/mcp/rpc";
 
 const PORT = Number(process.env.INSIGHT_MCP_PORT ?? 8765);
-const instructions = readFileSync(new URL("../prototypes/insight-demo/claude/CLAUDE.md", import.meta.url), "utf8");
-
-async function handle(msg) {
-  const ok = (result) => ({ jsonrpc: "2.0", id: msg.id, result });
-  switch (msg.method) {
-    case "initialize":
-      return ok({
-        protocolVersion: msg.params?.protocolVersion ?? "2025-06-18",
-        capabilities: { tools: {} },
-        serverInfo: { name: "insight-data", version: "0.1.0" },
-        instructions,
-      });
-    case "ping":
-      return ok({});
-    case "tools/list":
-      return ok({ tools: TOOL_DEFS });
-    case "tools/call": {
-      const out = await callTool(msg.params.name, msg.params.arguments ?? {});
-      return ok({ content: [{ type: "text", text: out.text }], isError: !out.ok });
-    }
-    case "resources/list":
-      return ok({ resources: [] });
-    case "prompts/list":
-      return ok({ prompts: [] });
-    default:
-      return msg.id === undefined ? null : { jsonrpc: "2.0", id: msg.id, error: { code: -32601, message: `Không hỗ trợ ${msg.method}` } };
-  }
-}
-
+const handle = (msg) => handleRpc(msg);
 http
   .createServer((req, res) => {
     if (req.method !== "POST" || req.url !== "/rpc") return res.writeHead(404).end();

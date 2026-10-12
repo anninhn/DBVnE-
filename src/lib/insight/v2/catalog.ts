@@ -24,6 +24,7 @@ import { rankByKeyword } from "@/lib/retrieval/keyword";
 import { fuse } from "@/lib/retrieval/fuse";
 import { tokenize } from "@/lib/retrieval";
 import type { RetrievalIndex } from "@/lib/retrieval/types";
+import { readIndex, writeIndex } from "@/lib/retrieval/store";
 import { loadDataset } from "../load";
 import { sliceTable, SliceError, type DatasetProfile, type RawTable } from "../dataset";
 import { subgroupOf } from "../measures";
@@ -74,15 +75,37 @@ function decodeVec(s: string): number[] {
   return Array.from(new Float32Array(b.buffer, b.byteOffset, b.byteLength / 4));
 }
 
+/** Bản lưu trên R2 — dựng bằng tools/build-measures-index.mjs (prefix `_index/` đã được bảo vệ khỏi dọn rác) */
+export const MEASURES_INDEX_KEY = "_index/measures.json";
+
+type StoredCatalog = Omit<Catalog, "entries"> & { entries: (Omit<CatalogEntry, "vector"> & { v: string })[] };
+
+function decodeCatalog(raw: StoredCatalog): Catalog {
+  return { ...raw, entries: raw.entries.map(({ v, ...e }) => ({ ...e, vector: decodeVec(v) })) };
+}
+
+/** File local trước (pilot), không có thì đọc R2 (production) */
 export async function loadCatalog(): Promise<Catalog | null> {
   if (memo) return memo;
   try {
-    const raw = JSON.parse(await fs.readFile(CATALOG_FILE, "utf8"));
-    memo = { ...raw, entries: raw.entries.map((e: CatalogEntry & { v: string }) => ({ ...e, vector: decodeVec(e.v) })) };
+    memo = decodeCatalog(JSON.parse(await fs.readFile(CATALOG_FILE, "utf8")));
+    return memo;
+  } catch {
+    // không có file local → thử R2
+  }
+  try {
+    memo = decodeCatalog(await readIndex<StoredCatalog>(MEASURES_INDEX_KEY, "danh mục chỉ tiêu"));
     return memo;
   } catch {
     return null;
   }
+}
+
+/** Đẩy danh mục đã dựng (file local) lên R2 cho production */
+export async function publishCatalog(): Promise<{ entries: number }> {
+  const raw = JSON.parse(await fs.readFile(CATALOG_FILE, "utf8")) as StoredCatalog;
+  await writeIndex(MEASURES_INDEX_KEY, raw);
+  return { entries: raw.entries.length };
 }
 
 async function saveCatalog(c: Catalog) {
