@@ -172,8 +172,11 @@ function segmentsOf(P: Pt[]): Segment[] {
     const a = P[piv[i]];
     const b = P[piv[i + 1]];
     const d = b.value - a.value;
-    const dir: SegDir = Math.abs(d) < thr ? "gần như đi ngang" : d > 0 ? "tăng" : "giảm";
-    segs.push({ from: a, to: b, dir, pct: a.value ? (d / Math.abs(a.value)) * 100 : 0 });
+    const pct = a.value ? (d / Math.abs(a.value)) * 100 : 0;
+    // Hướng theo % thay đổi CỦA CHÍNH ĐOẠN — ngưỡng tuyệt đối `thr` (đã nới để bớt đoạn) gọi +12,4% của thủy sản
+    // 2023→2024 là "đi ngang" (chuỗi tăng 17 lần trong 30 năm, phát hiện 2026-10-12)
+    const dir: SegDir = Math.abs(pct) < ZIGZAG_SHARE * 100 ? "gần như đi ngang" : d > 0 ? "tăng" : "giảm";
+    segs.push({ from: a, to: b, dir, pct });
   }
   return segs;
 }
